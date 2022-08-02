@@ -3,11 +3,7 @@
       <SearchBar/>
       <v-main>
       {{$vuetify.display.name}}
+      <v-btn>test</v-btn>
       </v-main>
     </div>
 </template>
-
-<style>
-
-
-</style>

@@ -1,0 +1,46 @@
+
+main .v-btn {
+    height: 28px !important;
+    min-width: 50px !important;
+    padding: 0 12.4444444444px !important;
+    background-color: #f5f5f5 !important;
+    font-size: .75rem !important;
+    font-weight: 700 !important;
+    border-radius: 28px !important;
+    -webkit-box-align: center;
+    align-items: center;
+    display: inline-flex;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    letter-spacing: .0892857143em !important;
+    justify-content: center;
+    position: relative;
+    text-decoration: none;
+    text-indent: 0.0892857143em !important;
+    text-transform: uppercase !important;
+    transition-duration: .28s;
+    transition-property: box-shadow,transform,opacity,-webkit-box-shadow,-webkit-transform !important;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    box-shadow: none !important;
+
+}
+
+.router-content {
+    width: 100%;
+    position: relative;
+    padding-left: calc((100vw - 1000px) / 2) !important;
+    padding-right: calc((100vw - 1000px) / 2) !important;
+    padding-top: 128px !important;
+}
+
+form {
+    width: 100%;
+}
+
+.v-input-control {
+    border-radius: 28px !important;
+    border: solid 1px black;
+    width: 100%;
+}

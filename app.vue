@@ -34,15 +34,3 @@
     })
   }
 </script>
-
-<style>
-
-.router-content {
-    padding-left: calc((100vw - 1200px) / 2) !important;
-    padding-right: calc((100vw - 1200px) / 2) !important;
-    padding-top: 128px !important;
-
-}
-
-
-</style>

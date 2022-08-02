@@ -1,6 +1,6 @@
 <template>
     <div>
-      <SearchBar/>
+      <SearchForm/>
       <v-main>
       {{$vuetify.display.name}}
       <v-btn>test</v-btn>

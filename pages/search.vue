@@ -1,6 +1,6 @@
 <template>
 <div>
-  <SearchBar/>
+  <SearchForm/>
   <NuxtLink to="/">
     Index page
   </NuxtLink>

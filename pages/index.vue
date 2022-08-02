@@ -1,10 +1,13 @@
 <template>
     <div>
-    <NuxtLink to="/bm/search">
-      Search
-    </NuxtLink><br>
-    <NuxtLink to="/about">
-      About page
-    </NuxtLink>
+      <SearchBar/>
+      <v-main>
+      {{$vuetify.display.name}}
+      </v-main>
     </div>
 </template>
+
+<style>
+
+
+</style>

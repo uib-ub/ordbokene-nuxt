@@ -35,20 +35,10 @@
     </div>
   </div>
 </nav>
+<button  type="button" class="btn btn-secondary pill">Test</button>
     <NuxtPage />
 </template>
 
-<script setup lang="ts">
-
-import type { Navbar } from "bootstrap";
-const { $bootstrap } = useNuxtApp();
-let navbar: Navbar;
-
-onMounted(() => {
-  navbar = new $bootstrap.Navbar(document.getElementById("navbar-main"));
-});
-
-</script>
 
 <style>
 .example a {

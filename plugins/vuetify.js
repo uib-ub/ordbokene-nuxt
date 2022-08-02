@@ -1,6 +1,7 @@
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
+import { aliases, mdi } from 'vuetify/lib/iconsets/mdi-svg'
 
 export default defineNuxtPlugin(nuxtApp => {
   const vuetify = createVuetify({
@@ -19,22 +20,26 @@ export default defineNuxtPlugin(nuxtApp => {
         customProperties: true
       },
       themes: {
-        lightTheme: {
+        light: {
+          variables: {},
           dark: false,
           colors: {
             primary: '#560027',
             secondary: '#BC477B',
             tertiary: '#FDF4F5',
             anchor: '#880E4F',
-            error: '#FDF4F5',
-            border: '#9E9E9E',
-            button: '#f5f5f5',
-            text: '#000000'
-          },
-          variables: {} //ADD AN EMPTY OBJECT
+            error: '#FDF4F5'
+          }
         }
       }
      },
+     icons: {
+      defaultSet: 'mdi',
+      aliases,
+      sets: {
+        mdi
+      }
+    }
   })
 
   

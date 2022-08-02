@@ -3,7 +3,7 @@
           <v-app-bar
           color="primary"
           density="compact"
-          
+        
         >
           <template v-if="$vuetify.display.smAndDown" v-slot:append>
             <v-app-bar-nav-icon></v-app-bar-nav-icon>
@@ -16,7 +16,8 @@
           <v-btn to="/settings">Innstillinger</v-btn>
           <v-btn to="/contact">Kontakt oss</v-btn>
           </div>
-          <v-btn><v-icon>language</v-icon></v-btn>
+          <v-divider vertical/>
+          <v-btn><v-icon :icon="mdiWeb"/></v-btn>
   
         </v-app-bar>
     <NuxtPage class="router-content"/>
@@ -24,8 +25,24 @@
 </template>
 
 
+<script>
+  import { mdiWeb  } from '@mdi/js'
+
+  export default {
+    data: () => ({
+      mdiWeb
+    })
+  }
+</script>
+
 <style>
 
+.router-content {
+    padding-left: calc((100vw - 1200px) / 2) !important;
+    padding-right: calc((100vw - 1200px) / 2) !important;
+    padding-top: 128px !important;
+
+}
 
 
 </style>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    HEIHEI
     <NuxtLink to="/bm/search">
       Search
     </NuxtLink><br>

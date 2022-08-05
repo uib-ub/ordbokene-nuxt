@@ -39,6 +39,15 @@
     <NuxtPage />
 </template>
 
+<script setup lang="ts">
+const { $bootstrap } = useNuxtApp();
+let modal: Modal;
+onMounted(() => {
+  modal = new $bootstrap.Modal(document.getElementById("navbar-main"));
+});
+
+</script>
+
 
 <style>
 .example a {

@@ -5,8 +5,12 @@ $theme-colors: (
   'info': #ff7d50,
   'warning': #ffbe0b,
   'danger': #ff007f,
-  'light': #c0ccda,
+  'light': #f5f5f5,
   'dark': #001738,
+  'link': #880E4F
 );
+
+
+$body-bg: #fdf4f5;
 
 @import '~/node_modules/bootstrap/scss/bootstrap.scss';

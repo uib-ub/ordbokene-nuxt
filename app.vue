@@ -40,7 +40,7 @@
 
 
 <div class="dropdown">
-  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+  <button class="btn btn-primary link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
     Dropdown button
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -49,7 +49,9 @@
     <li><a class="dropdown-item" href="#">Something else here</a></li>
   </ul></div>
 
+  <main>
     <NuxtPage />
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -58,9 +60,11 @@
 
 
 <style>
-.example a {
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 1rem 10rem;
-  display: block;
+
+main {
+  position: relative;
+  padding-left: calc((100vw - 1200px) / 2);
+  padding-right: calc((100vw - 1200px) / 2);
 }
+
 </style>

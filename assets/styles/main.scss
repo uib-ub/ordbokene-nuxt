@@ -1,4 +1,12 @@
-@import 'bootstrap/scss/bootstrap';
+$theme-colors: (
+  'primary': #560027,
+  'secondary': #BC477B,
+  'success': #1ce1ac,
+  'info': #ff7d50,
+  'warning': #ffbe0b,
+  'danger': #ff007f,
+  'light': #c0ccda,
+  'dark': #001738,
+);
 
-
-$btn-border-radius: 50%;
+@import '~/node_modules/bootstrap/scss/bootstrap.scss';

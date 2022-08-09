@@ -1,4 +1,5 @@
 <template>
+<div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand" to="/">Ordbøkene.no</NuxtLink>
@@ -9,6 +10,9 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'help'}" aria-current="page" to="/help">Hjelp til søk</NuxtLink>
+        </li>
+        <li class="nav-item">
+          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'search'}" to="/bm,nn/search">Avansert søk</NuxtLink>
         </li>
         <li class="nav-item">
           <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'about'}" to="/about">Om ordbøkene</NuxtLink>
@@ -36,28 +40,21 @@
   </div>
 </nav>
 <br>
-<button  type="button" class="btn btn-secondary pill">Test</button>
-
-
-<div class="dropdown">
-  <button class="btn btn-primary link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-    Dropdown button
-  </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-    <li><a class="dropdown-item" href="#">Action</a></li>
-    <li><a class="dropdown-item" href="#">Another action</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul></div>
-
-  <main>
+{{concepts_nn}}
     <NuxtPage />
-  </main>
+
+
+  <footer>
+    test
+  </footer>
+  </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
+const { concepts_nn } = await useAsyncData('count', () => $fetch('https://oda.uib.no/opal/dev/nn/concepts.json'))
+const { concepts_bm } = await useAsyncData('count', () => $fetch('https://oda.uib.no/opal/dev/bm/concepts.json'))
 
 </script>
-
 
 <style>
 

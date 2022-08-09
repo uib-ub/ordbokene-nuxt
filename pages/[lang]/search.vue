@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h1>Search</h1>
+  <h1>Advanced search</h1>
   <NuxtLink to="/">
     Index page
   </NuxtLink>

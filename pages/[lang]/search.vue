@@ -7,5 +7,12 @@
   <br>
   {{$route.params}}
   {{$route.query}}
+  her {{store.query}} hei
 </div>
 </template>
+
+
+<script setup lang="ts">
+import { useSearchStore } from '~/stores/searchStore'
+const store = useSearchStore()
+</script>

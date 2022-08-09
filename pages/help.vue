@@ -8,3 +8,9 @@
   {{$route.params}}
   </div>
 </template>
+
+<script>
+
+
+</script>
+

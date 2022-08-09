@@ -1,6 +1,6 @@
 <template>
     
-    <form>
+    <form @submit="$emit('submit')">
 
   <input>
 

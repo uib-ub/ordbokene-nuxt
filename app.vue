@@ -40,7 +40,6 @@
   </div>
 </nav>
 <br>
-{{concepts_nn}}
     <NuxtPage />
 
 
@@ -50,11 +49,6 @@
   </div>
 </template>
 
-<script setup>
-const { concepts_nn } = await useAsyncData('count', () => $fetch('https://oda.uib.no/opal/dev/nn/concepts.json'))
-const { concepts_bm } = await useAsyncData('count', () => $fetch('https://oda.uib.no/opal/dev/bm/concepts.json'))
-
-</script>
 
 <style>
 

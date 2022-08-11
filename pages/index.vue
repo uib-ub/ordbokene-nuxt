@@ -8,8 +8,8 @@ const store = useSearchStore()
 <template>
   <div>
     <h1>Ordbøkene</h1>
-    {{store.$state}}
-    <SearchForm/>
+    PINIA: {{store.$state}}
+    <SearchForm @submit="store.submit"/>
     <NuxtLink to="/bm/search">
       <SearchResults />
     </NuxtLink><br>

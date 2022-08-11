@@ -15,8 +15,9 @@ export const useSearchStore = defineStore('searchStore', {
     },
   
     actions: {
-      submit(newValue) {
+      submit(newValue,hei) {
         console.log(newValue)
+        console.log(hei)
       }
     }
   })

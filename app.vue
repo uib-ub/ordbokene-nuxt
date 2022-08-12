@@ -43,6 +43,16 @@
     <NuxtPage />
 
 
+    <h1>{{ $t('hello', { name: 'vue-i18n' }) }}</h1>
+    <form>
+      <label for="locale-select">{{ $t('settings.locale.title') }}: </label>
+      <select id="locale-select" v-model="$i18n.locale">
+        <option value="eng">English</option>
+        <option value="nno">Nynorsk</option>
+        <option value="nob">Bokmål</option>
+      </select>
+    </form>
+
   <footer>
     test
   </footer>

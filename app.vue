@@ -23,7 +23,9 @@
                 <li class="nav-item">
           <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'contact'}" to="/contact">Kontakt oss</NuxtLink>
         </li>
-        <li class="nav-item dropdown">
+      </ul>
+      <div class="navbar-nav ml-auto">
+        <div class="nav-item dropdown">
           <NuxtLink class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
              <i class="bi bi-globe"/>Bokmål
           </NuxtLink>
@@ -32,26 +34,22 @@
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
+        </ul>
+        </div>
+      </div>
 
     </div>
   </div>
 </nav>
-<br>
-    <NuxtPage />
-
-
-    <h1>{{ $t('hello', { name: 'vue-i18n' }) }}</h1>
-    <form>
       <label for="locale-select">{{ $t('settings.locale.title') }}: </label>
-      <select id="locale-select" v-model="$i18n.locale">
+      <select id="locale-select" class="nav-link dropdown-toggle " v-model="$i18n.locale">
         <option value="eng">English</option>
         <option value="nno">Nynorsk</option>
         <option value="nob">Bokmål</option>
       </select>
-    </form>
+<br>
+    <NuxtPage />
+
 
   <footer>
     test

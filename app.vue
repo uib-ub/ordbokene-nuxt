@@ -25,13 +25,12 @@
       <div class="navbar-nav ml-auto">
         <div class="nav-item dropdown">
           <NuxtLink class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             <i class="bi bi-globe"/>Bokmål
+             <i :aria-label="$t('settings.locale.title')" class="bi bi-globe"/> {{$t('name')}}
           </NuxtLink>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><button class="dropdown-item" @click="$i18n.locale = 'eng'">English</button></li>
+            <li><button class="dropdown-item" @click="$i18n.locale = 'nob'">Norsk (bokmål)</button></li>
+            <li><button class="dropdown-item" @click="$i18n.locale = 'nno'">Norsk (nynorsk)</button></li>
         </ul>
         </div>
       </div>
@@ -39,12 +38,7 @@
     </div>
   </div>
 </nav>
-      <label for="locale-select">{{ $t('settings.locale.title') }}: </label>
-      <select id="locale-select" class="nav-link dropdown-toggle " v-model="$i18n.locale">
-        <option value="eng">English</option>
-        <option value="nno">Nynorsk</option>
-        <option value="nob">Bokmål</option>
-      </select>
+
 <br>
     <NuxtPage />
 

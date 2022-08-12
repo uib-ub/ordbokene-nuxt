@@ -5,7 +5,8 @@ import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-    css: ['~/assets/styles/main.scss'],
+    css: ['~/assets/styles/main.scss',
+  "bootstrap-icons/font/bootstrap-icons.scss"],
     buildModules: [
         '@pinia/nuxt',
       ],

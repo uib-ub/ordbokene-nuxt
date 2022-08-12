@@ -2,7 +2,7 @@
 <div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
-    <NuxtLink class="navbar-brand" to="/">Ordbøkene.no</NuxtLink>
+    <NuxtLink class="navbar-brand" to="/">ordbøkene.no</NuxtLink>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,7 +40,7 @@
 </nav>
 
 <br>
-    <NuxtPage />
+    <NuxtPage class="page-container" />
 
 
   <footer>
@@ -52,10 +52,25 @@
 
 <style>
 
-main, #navbar-main, footer>div {
+.page-container, #navbar-main, footer>div {
   position: relative;
   padding-left: calc((100vw - 1200px) / 2);
   padding-right: calc((100vw - 1200px) / 2);
+  
+}
+
+h1 {
+  font-family: Inria Serif;
+  color: var(--bs-primary);
+  font-weight: bold;
+
+}
+
+.navbar-brand{
+  font-family: Inria Serif;
+  
+}
+
 }
 
 footer {

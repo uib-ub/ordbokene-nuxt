@@ -5,6 +5,7 @@ export const useSearchStore = defineStore('searchStore', {
       q: "test",
       scope: "e",
       dict: "bm,nn",
+      autocomplete: {},
       suggest: {},
       results_nn: [],
       results_bm: []

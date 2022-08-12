@@ -12,11 +12,11 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.3.1",
+    "@popperjs/core": "^2.11.6",
     "@vueuse/core": "^9.1.0",
-    "pinia": "^2.0.17",
-    "@popperjs/core": "^2.11.5",
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.9.1",
+    "pinia": "^2.0.17",
     "sass": "^1.54.0"
   }
 }

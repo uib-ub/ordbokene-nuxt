@@ -1,9 +1,5 @@
-import { Collapse } from 'bootstrap'
+import bootstrap from 'bootstrap/dist/js/bootstrap.bundle'
 
-export default defineNuxtPlugin(() => ({
-  provide: {
-    bootstrap: {
-      Collapse,
-    },
-  },
-}));
+export default defineNuxtPlugin(nuxtApp => {
+  nuxtApp.provide('bootstrap', bootstrap)
+})

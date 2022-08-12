@@ -50,18 +50,23 @@
 
 
   <footer>
-    test
-  </footer>
+<div>test</div>
+</footer>
   </div>
 </template>
 
 
 <style>
 
-main {
+main, #navbar-main, footer>div {
   position: relative;
   padding-left: calc((100vw - 1200px) / 2);
   padding-right: calc((100vw - 1200px) / 2);
+}
+
+footer {
+  background-color: var(--bs-primary);
+  color: white;
 }
 
 </style>

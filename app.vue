@@ -71,8 +71,6 @@ h1 {
   
 }
 
-}
-
 footer {
   background-color: var(--bs-primary);
   color: white;

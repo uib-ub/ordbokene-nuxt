@@ -1,5 +1,8 @@
 {
   "sub_title": "Bokmålsordboka and Nynorskordboka",
+  "help": "Help",
+  "advanced": "Advanced search",
+  "about": "About",
   "monthly": "Titbits from the dictionaries",
   "photo": "Photo by Clay Banks on unsplash.com",
   "close": "Close",
@@ -35,11 +38,6 @@
     "bm": "bokmål",
     "bm,nn": "both"
   },
-  "menu": {
-      "title": "Menu",
-      "help": "Help",
-      "about": "About"
-      },
   "options": {
     "title": "Search options",
     "inflected": "Include inflected forms",

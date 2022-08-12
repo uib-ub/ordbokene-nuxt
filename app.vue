@@ -9,19 +9,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'help'}" aria-current="page" to="/help">Hjelp til søk</NuxtLink>
+          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'help'}" aria-current="page" to="/help">{{$t('help')}}</NuxtLink>
         </li>
+
         <li class="nav-item">
-          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'search'}" to="/bm,nn/search">Avansert søk</NuxtLink>
-        </li>
-        <li class="nav-item">
-          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'about'}" to="/about">Om ordbøkene</NuxtLink>
+          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'about'}" to="/about">{{$t('about')}}</NuxtLink>
         </li>
                 <li class="nav-item">
-          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'settings'}" to="/settings">Innstillinger</NuxtLink>
+          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'settings'}" to="/settings">{{$t('settings.title')}}</NuxtLink>
         </li>
                 <li class="nav-item">
-          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'contact'}" to="/contact">Kontakt oss</NuxtLink>
+          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'contact'}" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
       </ul>
       <div class="navbar-nav ml-auto">

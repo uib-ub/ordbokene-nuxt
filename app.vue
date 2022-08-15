@@ -66,7 +66,7 @@ h1 {
 
 }
 
-.navbar-brand{
+.navbar-brand {
   font-family: Inria Serif;
   
 }

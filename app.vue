@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="d-flex flex-column h-100">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand" to="/">ordbøkene.no</NuxtLink>
@@ -43,7 +43,7 @@
     <NuxtPage class="page-container" />
 
 
-  <footer>
+  <footer class="footer mt-auto py-3 bg-darkoter">
 <div>test</div>
 </footer>
   </div>
@@ -51,6 +51,10 @@
 
 
 <style>
+
+html, body, #__nuxt {
+  height: 100% !important;
+}
 
 .page-container, #navbar-main, footer>div {
   position: relative;

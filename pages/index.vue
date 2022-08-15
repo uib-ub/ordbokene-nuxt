@@ -16,14 +16,21 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
 <template>
   <div>
     <h1>Ordbøkene</h1>
+    PENDING{{nn_pending}}
     PINIA: {{store.$state}}
     
     <SearchForm @submit="store.submit"/>
     
 
   <main>
+    <div v-if="bm_pending || nn_pending">
+    <h1>WAITING</h1>
+  
+    </div>
+    <div v-else>
       <Article :article_id="welcome_nn.front_article.value"></Article>
       <Article :article_id="welcome_bm.front_article.value"></Article>
+    </div>
   </main>
 
   </div>

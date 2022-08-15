@@ -66,14 +66,25 @@ h1 {
 
 }
 
+.navbar {
+  padding-top: 0.25rem;
+}
+
 .navbar-brand {
   font-family: Inria Serif;
   
 }
 
 .navbar-expand-lg .nav-item.active {
-  border-bottom: 3px solid var(--bs-secondary);
-  box-sizing: border-box;
+  border-bottom: 0.25rem solid var(--bs-secondary);
+}
+
+.navbar-expand-lg .nav-item {
+  border-bottom: 0.25rem solid var(--bs-primary);
+}
+
+.navbar-brand  {
+  border-bottom: 0.25rem solid var(--bs-primary);
 }
 
 footer {

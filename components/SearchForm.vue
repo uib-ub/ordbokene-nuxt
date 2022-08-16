@@ -1,29 +1,17 @@
 <template>
-<form class="input-group mb-3 active" :class="{active: isActive}">
+<form class="input-group active" :class="{active: isActive}">
 <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
   <ul class="dropdown-menu">
-    <li class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+    <li class="form-check" v-for="(item, idx) in ['bm,nn', 'bm', 'nn']" :key="idx">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" :value="$t(`dicts.${item}`)" @click="updateDict(item)">
   <label class="form-check-label" for="flexRadioDefault1">
-    {{$t('dicts.bm,nn')}}
-  </label>
-</li>
-<li class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-  <label class="form-check-label" for="flexRadioDefault2">
-    {{$t('dicts.bm')}}
-  </label>
-</li>
-<li class="form-check">
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-  <label class="form-check-label" for="flexRadioDefault3">
-    {{$t('dicts.nn')}}
+    {{$t(`dicts.${item}`)}}
   </label>
 </li>
   </ul>
   <i class="bi bi-search input-group-text" aria-hidden="true"></i>
   <input type="text" class="form-control" :aria-label="$t('search_placeholder')" :placeholder="$t('search_placeholder')" v-model="searchValue">
-  <button class="" @click="clearText"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  <button class="clear btn" @click="clearText"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
 </form>
 </template>
 
@@ -38,14 +26,36 @@ export default {
     clearText() {
       this.searchValue = "";
     },
+    updateDict(dict){
+      this.$emit(dict)
+
+    }
   },
 };
 </script>
 
 <style scoped>
+.dropdown-menu{
+  padding: 0.5rem;
+  border-color: var(--bs-primary);
+  box-shadow: 2px 2px 1px var(--bs-primary);
+  margin-top: 0.4rem !important;
+}
+.form-check-input:checked{
+  background-color: var(--bs-primary);
+  border-color: var(--bs-primary);
+}
+.clear.btn{
+  background: transparent;
+  border-radius: 0 2rem 2rem 0;
+}
+.clear.btn:hover{
+  border: transparent;
+  transition: none;
+}
 .input-group{
-  border: solid 1px var(--bs-primary);
-  width: 90%;
+  outline: solid 1px var(--bs-primary);
+  width: 95%;
   margin: 0 auto;
   border-radius: 2rem;
   background-color: white;
@@ -71,7 +81,7 @@ box-shadow: 2px 2px 1px var(--bs-primary);
   background-color: transparent;
   border: none;
   border-radius: 0;
-  padding: 0.5rem 0 0.5rem 0.5rem;
+  padding: 0.3rem 0 0.3rem 0.5rem;
   font-size: 1.3rem;
 }
 </style>

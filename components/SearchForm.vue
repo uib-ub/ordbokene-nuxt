@@ -3,6 +3,7 @@
 <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
   <ul class="dropdown-menu">
     <li class="form-check" v-for="(item, idx) in ['bm,nn', 'bm', 'nn']" :key="idx">
+      <button><NuxtLink :to="item">{{$t(`dicts.${item}`)}}</NuxtLink></button>
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" :value="$t(`dicts.${item}`)" @click="updateDict(item)">
   <label class="form-check-label" for="flexRadioDefault1">
     {{$t(`dicts.${item}`)}}
@@ -35,6 +36,9 @@ export default {
 </script>
 
 <style scoped>
+input[type="text"]:focus,input[type="radio"],.btn:focus{
+  box-shadow: none;
+}
 .dropdown-menu{
   padding: 0.5rem;
   border-color: var(--bs-primary);

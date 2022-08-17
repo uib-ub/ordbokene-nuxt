@@ -1,5 +1,9 @@
 <template>
 <form class="input-group active" :class="{active: isActive}">
+{{searchStore.$state.dict}}
+<select class="dropdown-toggle" v-model="searchStore.$state.dict">
+  <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx">{{item}}</option>
+</select>
 <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
   <ul class="dropdown-menu">
     <li class="form-check" v-for="(item, idx) in ['bm,nn', 'bm', 'nn']" :key="idx">
@@ -17,7 +21,16 @@
 </template>
 
 <script>
-export default {
+import { useSearchStore } from '~/stores/searchStore'
+
+export default defineComponent({
+  setup() {
+    const searchStore = useSearchStore()
+    //const filtersList = filtersStore.filtersList
+
+    return { searchStore }
+  },
+  
   data() {
     return {
       searchValue: "",
@@ -37,7 +50,7 @@ export default {
 //      return {words}
 //    },
   },
-};
+});
 </script>
 
 <style scoped>

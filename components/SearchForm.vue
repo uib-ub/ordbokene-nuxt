@@ -1,5 +1,4 @@
 <template>
-<div>
 <form class="input-group active">
 <select class="dropdown-toggle btn btn-outline-primary" v-model="searchStore.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item">{{$t(`dicts.${item}`)}}</option>
@@ -12,10 +11,10 @@
 </li>
   </ul>-->
   <i class="bi bi-search input-group-text" aria-hidden="true"></i>
-  <input type="text" class="form-control" :aria-label="$t('search_placeholder')" :placeholder="$t('search_placeholder')" v-model="searchValue">
-  <button class="clear btn" @click="clearText"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  <input type="text" class="form-control" :aria-label="$t('search_placeholder')" :placeholder="$t('search_placeholder')" v-model="searchStore.q">
+  <button class="clear btn" @click.prevent="clearText"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  <Autocomplete/>
 </form>
-<p>{{words}}</p></div>
 </template>
 
 <script>
@@ -24,18 +23,11 @@ import { useSearchStore } from '~/stores/searchStore'
 export default defineComponent({
   setup() {
     const searchStore = useSearchStore()
-    //const filtersList = filtersStore.filtersList
-
     return { searchStore }
   },
-  data() {
-    return {
-      searchValue: "",
-    };
-  },
-  methods: {
+methods: {
     clearText() {
-      this.searchValue = "";
+      this.searchStore.q = ""
     },
   },
 });

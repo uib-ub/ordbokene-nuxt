@@ -1,6 +1,6 @@
 <template>
 <div class="d-flex flex-column h-100">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
+      <nav role="navigation" class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand" to="/">ordbøkene.no</NuxtLink>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -3,16 +3,16 @@
 <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
   <ul class="dropdown-menu">
     <li class="form-check" v-for="(item, idx) in ['bm,nn', 'bm', 'nn']" :key="idx">
-      <button><NuxtLink :to="item">{{$t(`dicts.${item}`)}}</NuxtLink></button>
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" :value="$t(`dicts.${item}`)" @click="updateDict(item)">
-  <label class="form-check-label" for="flexRadioDefault1">
-    {{$t(`dicts.${item}`)}}
-  </label>
+      <button class="btn"><NuxtLink :to="item">{{$t(`dicts.${item}`)}}</NuxtLink></button>
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" :value="$t(`dicts.${item}`)">
 </li>
   </ul>
   <i class="bi bi-search input-group-text" aria-hidden="true"></i>
   <input type="text" class="form-control" :aria-label="$t('search_placeholder')" :placeholder="$t('search_placeholder')" v-model="searchValue">
   <button class="clear btn" @click="clearText"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  <ul>
+    <li></li>
+  </ul>
 </form>
 </template>
 
@@ -27,10 +27,15 @@ export default {
     clearText() {
       this.searchValue = "";
     },
-    updateDict(dict){
-      this.$emit(dict)
-
-    }
+    params: {
+      q: this.searchValue, 
+      dict: "nn", 
+      include: "e"
+      },
+//    async setup(props) {
+//      const {data: words} = await useFetch(`https://ord.uib.no/api/suggest?${this.params}`)
+//      return {words}
+//    },
   },
 };
 </script>

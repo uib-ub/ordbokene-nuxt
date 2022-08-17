@@ -11,11 +11,11 @@
 </li>
   </ul>-->
   <i class="bi bi-search input-group-text" aria-hidden="true"></i>
-  <input type="text" class="form-control" :aria-label="$t('search_placeholder')" :placeholder="$t('search_placeholder')" v-model="searchValue">
-  <button class="clear btn" @click="clearText"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
   <ul>
     <li></li>
   </ul>
+  <input type="text" class="form-control" :aria-label="$t('search_placeholder')" :placeholder="$t('search_placeholder')" v-model="searchStore.q">
+  <button class="clear btn" @click.prevent="clearText"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
 </form>
 </template>
 
@@ -25,19 +25,11 @@ import { useSearchStore } from '~/stores/searchStore'
 export default defineComponent({
   setup() {
     const searchStore = useSearchStore()
-    //const filtersList = filtersStore.filtersList
-
     return { searchStore }
-  },
-  
-  data() {
-    return {
-      searchValue: "",
-    };
   },
   methods: {
     clearText() {
-      this.searchValue = "";
+      this.searchStore.q = ""
     },
   },
 });

@@ -80,8 +80,29 @@ h1 {
 }
 
 .navbar-expand-lg .nav-item.active {
-  border-bottom: 0.25rem solid var(--bs-secondary);
+  border-left: 0.25rem solid var(--bs-secondary);
 }
+
+.navbar-expand-lg .nav-item {
+  border-left: 0.25rem solid var(--bs-primary);
+  padding-left: 0.5rem;
+}
+
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .nav-item.active {
+  border-bottom: 0.25rem solid var(--bs-secondary);
+  border-left: 0.25rem solid var(--bs-primary);
+  padding-left: 0px;
+  }
+
+  .navbar-expand-lg .nav-item {
+  padding-left: 0px;
+  }
+
+
+}
+
 
 .navbar-expand-lg .nav-item {
   border-bottom: 0.25rem solid var(--bs-primary);

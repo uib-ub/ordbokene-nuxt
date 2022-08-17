@@ -1,4 +1,5 @@
 <template>
+<div>
 <form class="input-group active">
 <select class="dropdown-toggle btn btn-outline-primary" v-model="searchStore.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item">{{$t(`dicts.${item}`)}}</option>
@@ -13,10 +14,8 @@
   <i class="bi bi-search input-group-text" aria-hidden="true"></i>
   <input type="text" class="form-control" :aria-label="$t('search_placeholder')" :placeholder="$t('search_placeholder')" v-model="searchValue">
   <button class="clear btn" @click="clearText"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
-  <ul>
-    <li></li>
-  </ul>
 </form>
+<p>{{words}}</p></div>
 </template>
 
 <script>
@@ -29,7 +28,6 @@ export default defineComponent({
 
     return { searchStore }
   },
-  
   data() {
     return {
       searchValue: "",

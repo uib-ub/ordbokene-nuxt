@@ -1,6 +1,8 @@
+// Store that syncronizes with routing
 import { defineStore } from 'pinia'
 
-export const useSearchStore = defineStore('searchStore', {
+
+export const useStore = defineStore('store', {
     state: () => ({
       q: "test",
       scope: "e",

@@ -8,11 +8,12 @@
   {{$route.params}}
   {{$route.query}}
   her {{store.query}} hei
+  PINIA: {{store.$state}}
 </div>
 </template>
 
 
 <script setup lang="ts">
-import { useSearchStore } from '~/stores/searchStore'
-const store = useSearchStore()
+import { useStore } from '~/stores/searchStore'
+const store = useStore()
 </script>

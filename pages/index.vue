@@ -1,8 +1,8 @@
 
 
 <script setup>
-import { useSearchStore } from '~/stores/searchStore'
-const store = useSearchStore()
+import { useStore } from '~/stores/searchStore'
+const store = useStore()
 
 const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = await Promise.all([
     useLazyAsyncData('welcome_bm', () => $fetch('https://oda.uib.no/opal/dev/bm/parameters.json')),
@@ -16,8 +16,6 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
 <template>
   <div>
     <h1>Ordbøkene</h1>
-   
-    PINIA: {{store.$state}}
     
     <SearchForm @submit="store.submit"/>
 

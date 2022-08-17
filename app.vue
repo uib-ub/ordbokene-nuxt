@@ -1,6 +1,6 @@
 <template>
-<div>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
+<div class="d-flex flex-column h-100">
+      <nav role="navigation" class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand" to="/">ordbøkene.no</NuxtLink>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,18 +8,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'help'}" aria-current="page" to="/help">{{$t('help')}}</NuxtLink>
+        <li class="nav-item" v-bind:class="{'active': $route.name == 'help'}">
+          <NuxtLink class="nav-link" aria-current="page" to="/help">{{$t('help')}}</NuxtLink>
         </li>
 
-        <li class="nav-item">
-          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'about'}" to="/about">{{$t('about')}}</NuxtLink>
+        <li class="nav-item" v-bind:class="{'active': $route.name == 'about'}">
+          <NuxtLink class="nav-link" to="/about">{{$t('about')}}</NuxtLink>
         </li>
-                <li class="nav-item">
-          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'settings'}" to="/settings">{{$t('settings.title')}}</NuxtLink>
+                <li class="nav-item" v-bind:class="{'active': $route.name == 'settings'}">
+          <NuxtLink class="nav-link"  to="/settings">{{$t('settings.title')}}</NuxtLink>
         </li>
-                <li class="nav-item">
-          <NuxtLink class="nav-link" v-bind:class="{'active': $route.name == 'contact'}" to="/contact">{{$t('contact.title')}}</NuxtLink>
+                <li class="nav-item" v-bind:class="{'active': $route.name == 'contact'}">
+          <NuxtLink class="nav-link" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
       </ul>
       <div class="navbar-nav ml-auto">
@@ -43,7 +43,7 @@
     <NuxtPage class="page-container" />
 
 
-  <footer>
+  <footer class="footer mt-auto py-3 bg-darkoter">
 <div>test</div>
 </footer>
   </div>
@@ -51,6 +51,10 @@
 
 
 <style>
+
+html, body, #__nuxt {
+  height: 100% !important;
+}
 
 .page-container, #navbar-main, footer>div {
   position: relative;
@@ -66,9 +70,46 @@ h1 {
 
 }
 
-.navbar-brand{
+.navbar {
+  padding-top: 0.25rem;
+}
+
+.navbar-brand {
   font-family: Inria Serif;
   
+}
+
+.navbar-expand-lg .nav-item.active {
+  border-left: 0.25rem solid var(--bs-secondary);
+}
+
+.navbar-expand-lg .nav-item {
+  border-left: 0.25rem solid var(--bs-primary);
+  padding-left: 0.5rem;
+}
+
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .nav-item.active {
+  border-bottom: 0.25rem solid var(--bs-secondary);
+  border-left: 0.25rem solid var(--bs-primary);
+  padding-left: 0px;
+  }
+
+  .navbar-expand-lg .nav-item {
+  padding-left: 0px;
+  }
+
+
+}
+
+
+.navbar-expand-lg .nav-item {
+  border-bottom: 0.25rem solid var(--bs-primary);
+}
+
+.navbar-brand  {
+  border-bottom: 0.25rem solid var(--bs-primary);
 }
 
 footer {

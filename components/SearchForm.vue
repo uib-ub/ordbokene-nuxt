@@ -1,16 +1,15 @@
 <template>
-<form class="input-group active" :class="{active: isActive}">
-{{searchStore.$state.dict}}
-<select class="dropdown-toggle" v-model="searchStore.$state.dict">
-  <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx">{{item}}</option>
+<form class="input-group active">
+<select class="dropdown-toggle btn btn-outline-primary" v-model="searchStore.$state.dict">
+  <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item">{{$t(`dicts.${item}`)}}</option>
 </select>
-<button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+<!--<button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
   <ul class="dropdown-menu">
     <li class="form-check" v-for="(item, idx) in ['bm,nn', 'bm', 'nn']" :key="idx">
       <button class="btn"><NuxtLink :to="item">{{$t(`dicts.${item}`)}}</NuxtLink></button>
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" :value="$t(`dicts.${item}`)">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" :value="$t(`dicts.${item}`)" v-model="searchStore.$state.dict">
 </li>
-  </ul>
+  </ul>-->
   <i class="bi bi-search input-group-text" aria-hidden="true"></i>
   <input type="text" class="form-control" :aria-label="$t('search_placeholder')" :placeholder="$t('search_placeholder')" v-model="searchValue">
   <button class="clear btn" @click="clearText"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
@@ -40,15 +39,6 @@ export default defineComponent({
     clearText() {
       this.searchValue = "";
     },
-    params: {
-      q: this.searchValue, 
-      dict: "nn", 
-      include: "e"
-      },
-//    async setup(props) {
-//      const {data: words} = await useFetch(`https://ord.uib.no/api/suggest?${this.params}`)
-//      return {words}
-//    },
   },
 });
 </script>
@@ -91,6 +81,14 @@ box-shadow: 2px 2px 1px var(--bs-primary);
 }
 .btn{
   border-radius: 2rem 0 0 2rem;
+}
+.btn:hover,.btn:focus{
+  background-color: white;
+  color: var(--bs-primary);
+}
+option:hover,option:focus{
+  background-color: var(--bs-primary) !important;
+  color: white !important;
 }
 .form-control{
   border: none;

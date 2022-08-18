@@ -19,7 +19,7 @@
 <div class="autocomplete">
 
 <ul v-if="store.q && autocomplete.a">
-    <li v-for="(item, idx) in autocomplete.a.exact" :key="idx">{{item}}</li>   
+    <li v-for="(item, idx) in autocomplete.a.exact" :key="idx">{{item}}</li>
 </ul>
 </div>
 

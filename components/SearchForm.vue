@@ -1,6 +1,6 @@
 <template>
 <div>
-<form class="input-group active">
+<form class="input-group active" :class="{activeAutocomplete: store.q && autocomplete.a}">
 <select class="dropdown-toggle btn btn-outline-primary" v-model="store.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item">{{$t(`dicts.${item}`)}}</option>
 </select>
@@ -13,12 +13,11 @@
   </ul>-->
   <i class="bi bi-search input-group-text" aria-hidden="true"></i>
   <input @keyup="fetchAutocomplete" type="text" class="form-control" :aria-label="$t('search_placeholder')" :placeholder="$t('search_placeholder')" v-model="store.q">
-  <button class="clear btn" @click.prevent="clearText"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  <button class="clear btn" @click.prevent="clearText" v-if="store.q && autocomplete.a"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
 </form>
 
-<div class="autocomplete">
-
-<ul v-if="store.q && autocomplete.a">
+<div class="autocomplete" v-if="store.q && autocomplete.a">
+<ul>
     <li v-for="(item, idx) in autocomplete.a.exact" :key="idx">{{item}}</li>
 </ul>
 </div>
@@ -45,6 +44,28 @@ async function fetchAutocomplete() {
 input[type="text"]:focus,input[type="radio"],.btn:focus{
   box-shadow: none;
 }
+.input-group{
+  outline: solid 1px var(--bs-primary);
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 2rem;
+  background-color: white;
+}
+.active:focus-within{
+  box-shadow: 2px 2px 1px var(--bs-primary);
+} 
+.activeAutocomplete{
+  border-radius: 1rem 1rem 0 0;
+}
+.autocomplete {
+  outline: solid 1px var(--bs-primary);
+  box-shadow: 2px 2px 1px var(--bs-primary);
+  border-radius: 0 0 1rem 1rem;
+  background-color: white;
+  width: 95%;
+  margin: 0 auto;
+}
+
 .dropdown-menu{
   padding: 0.5rem;
   border-color: var(--bs-primary);
@@ -54,31 +75,6 @@ input[type="text"]:focus,input[type="radio"],.btn:focus{
 .form-check-input:checked{
   background-color: var(--bs-primary);
   border-color: var(--bs-primary);
-}
-.clear.btn{
-  background: transparent;
-  border-radius: 0 2rem 2rem 0;
-}
-.clear.btn:hover{
-  border: transparent;
-  transition: none;
-}
-.input-group{
-  outline: solid 1px var(--bs-primary);
-  width: 95%;
-  margin: 0 auto;
-  border-radius: 2rem;
-  background-color: white;
-}
-.active:focus-within{
-box-shadow: 2px 2px 1px var(--bs-primary);
-}
-
-.autocomplete {
-  outline: solid 1px var(--bs-primary);
-  box-shadow: 2px 2px 1px var(--bs-primary);
-  border-radius: 1rem;
-  background-color: white;
 }
 
 .btn-outline-primary{
@@ -96,6 +92,7 @@ option:hover,option:focus{
   background-color: var(--bs-primary) !important;
   color: white !important;
 }
+
 .form-control{
   border: none;
   border-radius: 0 2rem 2rem 0;
@@ -109,5 +106,13 @@ option:hover,option:focus{
   border-radius: 0;
   padding: 0.3rem 0 0.3rem 0.5rem;
   font-size: 1.3rem;
+}
+
+.clear.btn{
+  background: transparent;
+  border-radius: 2rem;
+}
+.clear.btn:hover{
+  border: transparent;
 }
 </style>

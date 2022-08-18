@@ -18,7 +18,8 @@
 
 <div class="autocomplete" v-if="store.q && autocomplete.a">
 <ul>
-    <li v-for="(item, idx) in autocomplete.a.exact" :key="idx">{{item}}</li>
+    <li v-for="(item, idx) in autocomplete.a.exact" :key="idx"><span class="autocomplete-item">{{item[0]}}</span> <span class="autocomplete-dict"><span v-if="item[1] === 1">({{$t('dicts.bm')}})</span><span v-if="item[1] === 2">({{$t('dicts.nn')}})</span><span v-if="item[1] === 3">({{$t('dicts.bm,nn')}})</span>
+    </span></li>
 </ul>
 </div>
 
@@ -70,6 +71,24 @@ input[type="text"]:focus,input[type="radio"],.btn:focus{
   position: absolute;
   z-index: 100;
   left: 0;
+}
+ul{
+  padding: 0;
+}
+.dropdown-menu.auto{
+  display: block !important;
+}
+li{
+  padding: 0.3rem 1rem;
+}
+.autocomplete-item{
+  list-style-type: none;
+  color: var(--bs-primary);
+  font-weight: bolder;
+}
+.autocomplete-dict{
+  color: rgba(0,0,0,.6);
+  font-size: 85%;
 }
 
 .dropdown-menu{

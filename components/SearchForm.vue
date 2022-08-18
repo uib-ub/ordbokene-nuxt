@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="searchForm">
 <form class="input-group active" :class="{activeAutocomplete: store.q && autocomplete.a}">
 <select class="dropdown-toggle btn btn-outline-primary" v-model="store.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item">{{$t(`dicts.${item}`)}}</option>
@@ -41,13 +41,17 @@ async function fetchAutocomplete() {
 </script>
 
 <style scoped>
+.searchForm{
+  position: relative;
+  width: 95%;
+  margin: 0 auto;
+}
+
 input[type="text"]:focus,input[type="radio"],.btn:focus{
   box-shadow: none;
 }
 .input-group{
   outline: solid 1px var(--bs-primary);
-  width: 95%;
-  margin: 0 auto;
   border-radius: 2rem;
   background-color: white;
 }
@@ -62,8 +66,10 @@ input[type="text"]:focus,input[type="radio"],.btn:focus{
   box-shadow: 2px 2px 1px var(--bs-primary);
   border-radius: 0 0 1rem 1rem;
   background-color: white;
-  width: 95%;
-  margin: 0 auto;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  left: 0;
 }
 
 .dropdown-menu{

@@ -7,7 +7,7 @@ export const useStore = defineStore('store', {
       q: "test",
       scope: "e",
       dict: "bm,nn",
-      autocomplete: {},
+      autocomplete: [],
       suggest: {},
       results_nn: [],
       results_bm: []

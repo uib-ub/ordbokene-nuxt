@@ -1,14 +1,38 @@
+<script setup>
+import { useStore } from '~/stores/searchStore'
+const store = useStore()
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxButton,
+  ComboboxOptions,
+  ComboboxOption,
+  TransitionRoot,
+} from '@headlessui/vue'
+
+
+let selected = ref('')
+
+async function fetchPeople(q) {
+    store.autocomplete.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
+    console.log("PEOPLE", store.autocomplete.value)
+    store.autocomplete.value = store.autocomplete.value.a.exact || []
+    
+
+}
+</script>
+
 <template>
   <div class="searchField">
-    <Combobox v-model="selected" nullable>
+    <Combobox nullable>
       <div class="">
         <div class="">
           <ComboboxInput
             class="form-control"
             autofocus="true"
             :displayValue="(person) => person[0]"
-            @change="query = $event.target.value"
-            @keypress="fetchPeople"
+            @change="query = $event.target.value; fetchPeople($event.target.value);"
+            @submit="alert($event.target.value)"
           />
         </div>
         <TransitionRoot
@@ -19,9 +43,9 @@
           <ComboboxOptions class="list-group autocomplete">
 
             <ComboboxOption
-              v-for="(person, idx) in people"
+              v-for="person in store.autocomplete.value"
               as="template"
-              :key="idx"
+              :key="person[0]"
               :value="person[0]"
               v-slot="{ active }"
             >
@@ -36,39 +60,10 @@
           </ComboboxOptions>
         </TransitionRoot>
       </div>
-    </Combobox>
-    PEOPLE2:{{people}}
+    </Combobox>{{selected}}
   </div>
 </template>
 
-<script setup>
-import { useStore } from '~/stores/searchStore'
-const store = useStore()
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxButton,
-  ComboboxOptions,
-  ComboboxOption,
-  TransitionRoot,
-} from '@headlessui/vue'
-
-let people = ref([])
-
-let selected = ref('')
-let query = ref('')
-
-async function fetchPeople() {
-    people.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${query.value}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
-    console.log("PEOPLE", people.value)
-    people.value = people.value.a.exact
-
-}
-
-
-
-
-</script>
 <style scoped>
 .searchField{
     width: 100%;

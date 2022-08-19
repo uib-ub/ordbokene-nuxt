@@ -1,27 +1,12 @@
 <template>
 <div class="searchForm">
-<form class="input-group active" :class="{activeAutocomplete: store.q && autocomplete}" action="/search">
+<form class="input-group active" @submit.prevent="alert('hello')" :class="{activeAutocomplete: store.autocomplete.length}" action="/search">
 <select class="dropdown-toggle btn btn-outline-primary" v-model="store.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item">{{$t(`dicts.${item}`)}}</option>
 </select>
-<!--<button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
-  <ul class="dropdown-menu">
-    <li class="form-check" v-for="(item, idx) in ['bm,nn', 'bm', 'nn']" :key="idx">
-      <button class="btn"><NuxtLink :to="item">{{$t(`dicts.${item}`)}}</NuxtLink></button>
-  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" :value="$t(`dicts.${item}`)" v-model="store.$state.dict">
-</li>
-  </ul>-->
   <i class="bi bi-search input-group-text" aria-hidden="true"></i>
   <Autocomplete/>
-  <input @keyup="fetchAutocomplete" type="text" class="form-control" :aria-label="$t('search_placeholder')" :placeholder="$t('search_placeholder')" v-model="store.q">
-  <button class="clear btn" @click.prevent="clearText" v-if="store.q && autocomplete"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
 </form>
-
-<div class="autocomplete" v-if="store.q && autocomplete">
-<ul>
-    <li v-for="(item, idx) in autocomplete" :key="idx">{{item}}</li>
-</ul>
-</div>
 
 </div>
 </template>
@@ -33,12 +18,6 @@ const clearText = () => {
  store.q = ""
 }
 
-let autocomplete = ref({})
-
-async function fetchAutocomplete() {
-    autocomplete.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
-    autocomplete.value = autocomplete.value.a.exact
-}
 </script>
 
 <style scoped>

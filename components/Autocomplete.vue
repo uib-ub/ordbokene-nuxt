@@ -13,10 +13,10 @@ import {
 
 let selected = ref('')
 
-async function fetchPeople(q) {
+async function fetchAutocomplete(q) {
     store.autocomplete.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
     console.log("PEOPLE", store.autocomplete.value)
-    store.autocomplete.value = store.autocomplete.value.a.exact || []
+    store.autocomplete = store.autocomplete.value.a.exact || []
     
 
 }
@@ -31,7 +31,7 @@ async function fetchPeople(q) {
             class="form-control"
             autofocus="true"
             :displayValue="(person) => person[0]"
-            @change="query = $event.target.value; fetchPeople($event.target.value);"
+            @change="query = $event.target.value; fetchAutocomplete($event.target.value);"
             @submit="alert($event.target.value)"
           />
         </div>
@@ -43,7 +43,7 @@ async function fetchPeople(q) {
           <ComboboxOptions class="list-group autocomplete">
 
             <ComboboxOption
-              v-for="person in store.autocomplete.value"
+              v-for="person in store.autocomplete"
               as="template"
               :key="person[0]"
               :value="person[0]"
@@ -60,7 +60,7 @@ async function fetchPeople(q) {
           </ComboboxOptions>
         </TransitionRoot>
       </div>
-    </Combobox>{{selected}}
+    </Combobox>
   </div>
 </template>
 

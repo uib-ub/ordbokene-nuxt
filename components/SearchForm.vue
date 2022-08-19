@@ -12,6 +12,7 @@
 </li>
   </ul>-->
   <i class="bi bi-search input-group-text" aria-hidden="true"></i>
+  <Autocomplete/>
   <input @keyup="fetchAutocomplete" type="text" class="form-control" :aria-label="$t('search_placeholder')" :placeholder="$t('search_placeholder')" v-model="store.q">
   <button class="clear btn" @click.prevent="clearText" v-if="store.q && autocomplete.a"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
 </form>

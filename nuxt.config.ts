@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     buildModules: [
         '@pinia/nuxt',
       ],
+      build: {
+        transpile: ['@headlessui/vue'],
+      },
 
     vite: {
       resolve: {

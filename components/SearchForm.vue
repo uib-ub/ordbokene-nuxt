@@ -55,6 +55,7 @@ input[type="text"]:focus,input[type="radio"],.btn:focus{
   outline: solid 1px var(--bs-primary);
   border-radius: 2rem;
   background-color: white;
+  flex-wrap: unset;
 }
 .active:focus-within{
   box-shadow: 2px 2px 1px var(--bs-primary);
@@ -103,7 +104,6 @@ option:hover,option:focus{
 .form-control{
   border: none;
   border-radius: 0 2rem 2rem 0;
-  height: 40px;
   background-color: white;
 }
 .input-group-text{

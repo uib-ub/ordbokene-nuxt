@@ -1,58 +1,35 @@
 <template>
-  <div class="fixed top-16 w-72">
-    QUERY: {{query}}
-    <Combobox v-model="selected" name="q">
-      <div class="relative mt-1">
-        <div
-          class="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm"
-        >
+  <div class="searchField">
+    <Combobox v-model="selected" nullable>
+      <div class="">
+        <div class="">
           <ComboboxInput
-            class="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0"
+            class="form-control"
             autofocus="true"
             :displayValue="(person) => person[0]"
             @change="query = $event.target.value"
             @keypress="fetchPeople"
           />
-          <ComboboxButton
-            class="absolute inset-y-0 right-0 flex items-center pr-2"
-          >
-          </ComboboxButton>
         </div>
         <TransitionRoot
           leave="transition ease-in duration-100"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
-          @after-leave="query = ''"
-        >
-          <ComboboxOptions
-            class="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-          >
+          @after-leave="query = ''">
+          <ComboboxOptions class="list-group autocomplete">
 
             <ComboboxOption
               v-for="(person, idx) in people"
               as="template"
               :key="idx"
               :value="person[0]"
-              v-slot="{ selected, active }"
+              v-slot="{ active }"
             >
               <li
-                class="relative cursor-default select-none py-2 pl-10 pr-4"
-                :class="{
-                  'bg-teal-600 text-white': active,
-                  'text-gray-900': !active,
-                }"
-              >
-                <span
-                  class="block truncate"
-                  :class="{ 'font-medium': selected, 'font-normal': !selected }"
-                >
+                class="list-group-item"
+                :class="{'active': active, '': !active,}">
+                <span class="">
                   {{ person[0] }}
-                </span>
-                <span
-                  v-if="selected"
-                  class="absolute inset-y-0 left-0 flex items-center pl-3"
-                  :class="{ 'text-white': active, 'text-teal-600': !active }"
-                >
                 </span>
               </li>
             </ComboboxOption>
@@ -85,10 +62,39 @@ async function fetchPeople() {
     people.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${query.value}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
     console.log("PEOPLE", people.value)
     people.value = people.value.a.exact
-    
+
 }
 
 
 
 
 </script>
+<style scoped>
+.searchField{
+    width: 100%;
+}
+.form-control{
+  border: none;
+  border-radius: 0 2rem 2rem 0;
+  background-color: white;
+  position: relative;
+}
+.autocomplete {
+  outline: solid 1px var(--bs-primary);
+  box-shadow: 2px 2px 1px var(--bs-primary);
+  border-radius: 0 0 1rem 1rem;
+  background-color: white;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  left: 0;
+}
+.active{
+    background-color: rgb(225, 225, 225);
+    border: none;
+}
+.list-group-item{
+    color: var(--bs-primary);
+    font-weight: bolder;
+}
+</style>

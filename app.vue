@@ -51,6 +51,9 @@
 
 
 <style>
+input[type="text"]:focus,input[type="radio"],.btn:focus{
+  box-shadow: none;
+}
 
 html, body, #__nuxt {
   height: 100% !important;

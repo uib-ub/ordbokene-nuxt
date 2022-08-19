@@ -1,6 +1,6 @@
 <template>
 <div class="searchForm">
-<form class="input-group active" :class="{activeAutocomplete: store.q && autocomplete.a}">
+<form class="input-group active" :class="{activeAutocomplete: store.q && autocomplete}" action="/search">
 <select class="dropdown-toggle btn btn-outline-primary" v-model="store.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item">{{$t(`dicts.${item}`)}}</option>
 </select>
@@ -14,12 +14,12 @@
   <i class="bi bi-search input-group-text" aria-hidden="true"></i>
   <Autocomplete/>
   <input @keyup="fetchAutocomplete" type="text" class="form-control" :aria-label="$t('search_placeholder')" :placeholder="$t('search_placeholder')" v-model="store.q">
-  <button class="clear btn" @click.prevent="clearText" v-if="store.q && autocomplete.a"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
+  <button class="clear btn" @click.prevent="clearText" v-if="store.q && autocomplete"><i class="bi bi-x-lg" aria-hidden="true"></i></button>
 </form>
 
-<div class="autocomplete" v-if="store.q && autocomplete.a">
+<div class="autocomplete" v-if="store.q && autocomplete">
 <ul>
-    <li v-for="(item, idx) in autocomplete.a.exact" :key="idx">{{item}}</li>
+    <li v-for="(item, idx) in autocomplete" :key="idx">{{item}}</li>
 </ul>
 </div>
 
@@ -36,8 +36,8 @@ const clearText = () => {
 let autocomplete = ref({})
 
 async function fetchAutocomplete() {
-    autocomplete.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`, {
-})
+    autocomplete.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
+    autocomplete.value = autocomplete.value.a.exact
 }
 </script>
 

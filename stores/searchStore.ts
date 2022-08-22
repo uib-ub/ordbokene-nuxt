@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 
 export const useStore = defineStore('store', {
     state: () => ({
-      q: "test",
+      q: "",
       scope: "e",
       dict: "bm,nn",
       autocomplete: [],

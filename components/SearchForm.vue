@@ -6,7 +6,7 @@
 </select>
   <i class="bi bi-search input-group-text" aria-hidden="true"/>
   <Autocomplete/>
-  <button :aria-label="$t('search')" class="btn-floating"> <i class="bi bi-search input-group-text" aria-hidden="true"/></button>
+  <button :aria-label="$t('search')" class="btn rounded-pill"> <i class="bi bi-search input-group-text" aria-hidden="true"/></button>
 </form>
 
 </div>

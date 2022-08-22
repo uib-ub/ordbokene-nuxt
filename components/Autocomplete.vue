@@ -42,7 +42,7 @@ async function fetchAutocomplete(q) {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
           @after-leave="query = ''">
-          <ComboboxOptions class="list-group autocomplete">
+          <ComboboxOptions class="list-group autocomplete" v-show="store.autocomplete[0]">
 
             <ComboboxOption
               v-for="(item, idx) in store.autocomplete"

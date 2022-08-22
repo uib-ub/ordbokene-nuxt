@@ -27,9 +27,6 @@ const clearText = () => {
   margin: 0 auto;
 }
 
-input[type="text"]:focus,input[type="radio"],.btn:focus{
-  box-shadow: none;
-}
 .input-group{
   outline: solid 1px var(--bs-primary);
   border-radius: 2rem;

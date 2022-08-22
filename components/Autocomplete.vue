@@ -30,7 +30,7 @@ async function fetchAutocomplete(q) {
           <ComboboxInput
             class="form-control"
             autofocus="true"
-            :displayValue="(person) => person[0]"
+            :displayValue="(item) => item[0]"
             @change="query = $event.target.value; fetchAutocomplete($event.target.value);"
             @submit="alert($event.target.value)"
           />
@@ -43,18 +43,16 @@ async function fetchAutocomplete(q) {
           <ComboboxOptions class="list-group autocomplete">
 
             <ComboboxOption
-              v-for="person in store.autocomplete"
+              v-for="item in store.autocomplete"
               as="template"
-              :key="person[0]"
-              :value="person[0]"
+              :key="item[0]"
+              :value="item[0]"
               v-slot="{ active }"
             >
               <li
                 class="list-group-item"
                 :class="{'active': active, '': !active,}">
-                <span class="">
-                  {{ person[0] }}
-                </span>
+                <span class="">{{ item[0] }}</span> <span class="dict-parentheses">({{["bokmål","nynorsk","bokmål, nynorsk"][item[1]-1]}})</span>
               </li>
             </ComboboxOption>
           </ComboboxOptions>
@@ -91,5 +89,10 @@ async function fetchAutocomplete(q) {
 .list-group-item{
     color: var(--bs-primary);
     font-weight: bolder;
+}
+.dict-parentheses {
+    color: rgba(0,0,0,.6);
+    font-size: 85%;
+    font-weight: 400;
 }
 </style>

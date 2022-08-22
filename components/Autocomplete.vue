@@ -45,9 +45,9 @@ async function fetchAutocomplete(q) {
           <ComboboxOptions class="list-group autocomplete">
 
             <ComboboxOption
-              v-for="item in store.autocomplete"
+              v-for="(item, idx) in store.autocomplete"
               as="template"
-              :key="item[0]"
+              :key="idx"
               :value="item[0]"
               v-slot="{ active }"
             >

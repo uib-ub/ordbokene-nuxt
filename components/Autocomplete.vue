@@ -33,6 +33,9 @@ async function fetchAutocomplete(q) {
             :displayValue="(item) => item[0]"
             @change="query = $event.target.value; fetchAutocomplete($event.target.value);"
             @submit="alert($event.target.value)"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
           />
         </div>
         <TransitionRoot

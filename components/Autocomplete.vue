@@ -15,7 +15,6 @@ let selected = ref('')
 
 async function fetchAutocomplete(q) {
     store.autocomplete.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
-    console.log("PEOPLE", store.autocomplete.value)
     store.autocomplete = store.autocomplete.value.a.exact || []
     
 

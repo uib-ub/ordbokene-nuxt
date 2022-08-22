@@ -23,25 +23,27 @@ async function fetchAutocomplete(q) {
 
 <template>
   <div class="searchField">
-    <Combobox nullable>
-      <div class="">
-        <div class="">
+    <Combobox v-model="store.q" nullable>
+      <div>
+        <div>
           <ComboboxInput
             class="form-control"
+            name="q"
+            :value="store.q"
             autofocus="true"
-            :displayValue="(item) => item[0]"
-            @change="query = $event.target.value; fetchAutocomplete($event.target.value);"
-            @submit="alert($event.target.value)"
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
+            @input="store.q = $event.target.value; fetchAutocomplete($event.target.value)"
+            
+
           />
         </div>
         <TransitionRoot
           leave="transition ease-in duration-100"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
-          @after-leave="query = ''">
+          @after-leave="store.autocomplete=[]">
           <ComboboxOptions class="list-group autocomplete" v-show="store.autocomplete[0]">
 
             <ComboboxOption

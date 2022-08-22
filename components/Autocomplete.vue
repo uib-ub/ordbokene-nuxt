@@ -34,6 +34,7 @@ async function fetchAutocomplete(q) {
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
+            required="true"
             @input="store.q = $event.target.value; fetchAutocomplete($event.target.value)"
             
 

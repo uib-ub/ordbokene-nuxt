@@ -4,8 +4,9 @@
 <select class="dropdown-toggle btn btn-outline-primary" v-model="store.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item">{{$t(`dicts.${item}`)}}</option>
 </select>
-  <i class="bi bi-search input-group-text" aria-hidden="true"></i>
+  <i class="bi bi-search input-group-text" aria-hidden="true"/>
   <Autocomplete/>
+  <button :aria-label="$t('search')" class="btn-floating"> <i class="bi bi-search input-group-text" aria-hidden="true"/></button>
 </form>
 
 </div>

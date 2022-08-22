@@ -86,9 +86,8 @@ async function fetchAutocomplete(q) {
   z-index: 100;
   left: 0;
 }
-.active{
+.active {
     background-color: rgb(225, 225, 225);
-    border: none;
 }
 .list-group-item{
     color: var(--bs-primary);

@@ -21,6 +21,9 @@ $navbar-padding-y: 0px;
 
 $list-group-active-border-color: rgb(0 0 0 / 26%);
 
+$list-group-active-bg: rgb(225, 225, 225);
+$list-group-active-color: black;
+
 @import 'bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');

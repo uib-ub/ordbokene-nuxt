@@ -19,11 +19,21 @@ async function fetchAutocomplete(q) {
     
 
 }
+
+const input = ref(null)
+defineExpose({ input })
+const emit = defineEmits(['submit'])
+const submit = () => {
+  input.value.$el.select()
+  emit('submit')
+
+}
+
 </script>
 
 <template>
   <div class="searchField">
-    <Combobox v-model="store.q" nullable>
+    <Combobox v-model="store.q" v-on:update:modelValue="submit">
       <div>
         <div>
           <ComboboxInput
@@ -35,6 +45,7 @@ async function fetchAutocomplete(q) {
             autocorrect="off"
             autocapitalize="off"
             required="true"
+            ref="input"
             @input="store.q = $event.target.value; fetchAutocomplete($event.target.value)"
             
 

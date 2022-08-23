@@ -1,11 +1,11 @@
 <template>
 <div class="searchForm">
-<form class="input-group active" @submit.prevent="alert('hello')" :class="{activeAutocomplete: store.autocomplete.length}" action="/search">
+<form class="input-group active" :class="{activeAutocomplete: store.autocomplete.length}" @submit.prevent="submitForm" ref="form">
 <select class="dropdown-toggle btn btn-outline-primary" v-model="store.$state.dict">
-  <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item">{{$t(`dicts.${item}`)}}</option>
+  <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item" name="dict">{{$t(`dicts.${item}`)}}</option>
 </select>
   <i class="bi bi-search input-group-text" aria-hidden="true"/>
-  <Autocomplete/>
+  <Autocomplete v-on:submit="submitForm"/>
   <button :aria-label="$t('search')" class="btn rounded-pill"> <i class="bi bi-search input-group-text" aria-hidden="true"/></button>
 </form>
 
@@ -15,8 +15,14 @@
 <script setup>
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
+
 const clearText = () => {
  store.q = ""
+}
+
+const submitForm = () => {
+  store.autocomplete = []
+  navigateTo('/'+store.dict+'/'+store.q, { replace: true })
 }
 
 </script>

@@ -11,16 +11,5 @@ export const useStore = defineStore('store', {
       suggest: {},
       results_nn: [],
       results_bm: []
-    }),
-  
-    getters: {
-      query(state) { return  {'q': state.q, 'scope': state.scope} },
-    },
-  
-    actions: {
-      submit(newValue,hei) {
-        console.log(newValue)
-        console.log(hei)
-      }
-    }
+    })
   })

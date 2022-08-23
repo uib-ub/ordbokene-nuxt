@@ -14,10 +14,50 @@ import {
 let selected = ref('')
 
 async function fetchAutocomplete(q) {
-    store.autocomplete.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
-    store.autocomplete = store.autocomplete.value.a.exact || []
-    
+    q = q.trim()
+    if (q.length == 0) {
+      store.autocomplete = [];
+      return
+    }
+    const time = Date.now()
+    if (store.autocomplete[0]) {
+      if (store.autocomplete[0].time < time) {
+        store.autocomplete.splice(0,1, {q, time, type: "empty"})
+      }
+    }
+    else {
+      store.autocomplete.push({q, time, type: "empty"})
+    }
 
+    // Intercept queries containing too many words or characters
+    let words = q.split(/ |\|/)
+    if (words.length > 20) {
+      store.autocomplete = [{q, time, type: "empty"}]
+      return
+    }
+    for (let i = 0; i < words.length; i++) {
+      if (words[i].length > 40) {
+        store.autocomplete = [{q, time, type: "empty"}]
+        return
+      }
+    }
+    
+    let response = ref([])
+    response.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
+    let autocomplete_suggestions = []
+    if (store.q.trim() == q && response.value.a.exact) {
+      autocomplete_suggestions = response.value.a.exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "exact"}))
+    }
+
+    if (autocomplete_suggestions.length) {
+      if (autocomplete_suggestions[0].q.toLowerCase() != q.toLowerCase()) {
+        autocomplete_suggestions.unshift({q, time, type: "empty"})
+      }
+      store.autocomplete = autocomplete_suggestions
+    }
+    else {
+      store.autocomplete = [{q, time, type: "empty"}]
+    }
 }
 
 const input = ref(null)

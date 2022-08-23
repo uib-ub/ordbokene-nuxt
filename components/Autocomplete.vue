@@ -102,13 +102,14 @@ const submit = () => {
               v-for="(item, idx) in store.autocomplete"
               as="template"
               :key="idx"
-              :value="item[0]"
+              :value="item.q"
               v-slot="{ active }"
             >
               <li
                 class="list-group-item"
                 :class="{'active': active, '': !active,}">
-                <span class="">{{ item[0] }}</span> <span class="dict-parentheses">({{["bokmål","nynorsk","bokmål, nynorsk"][item[1]-1]}})</span>
+
+                <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span>
               </li>
             </ComboboxOption>
           </ComboboxOptions>

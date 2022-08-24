@@ -11,10 +11,23 @@ import {
 } from '@headlessui/vue'
 
 
-let selected = ref('')
+
+const input = ref(null)
+defineExpose({ input })
+
+onUpdated(() => {
+  if (store.q) {
+    input.value.$el.select()
+
+  }
+  
+})
+
+
+
 
 async function fetchAutocomplete(q) {
-  store.suggestion = true
+  store.suggesting = true
     q = q.target.value.trim()
     if (q.length == 0) {
       store.autocomplete = [];

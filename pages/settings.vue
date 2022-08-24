@@ -12,13 +12,9 @@ const resetSettings = (settings) => {
 </script>
 
 <template>
-<div>
+<main class="secondary-page">
   <h1>Settings</h1>
-  <NuxtLink to="/">
-    Index page
-  </NuxtLink>
-  <br>
-  {{$route.params}}
+
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="" id="checkOne" v-model="settings.$state.inflectionExpanded">
     <label class="form-check-label" for="checkOne">
@@ -40,7 +36,7 @@ const resetSettings = (settings) => {
   <button class="btn" @click="resetSettings(settings)">
     <i class="bi bi-trash-fill"></i> <span>{{$t('settings.reset')}}</span>
   </button>
-</div>
+</main>
 </template>
 
 <style scoped>

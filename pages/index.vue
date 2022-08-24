@@ -17,11 +17,7 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
   <div>
     <h1>Ordbøkene</h1>
     
-    <SearchForm @submit="store.submit"/>
-
-    NN: {{welcome_nn}}<br>
-    BM: {{welcome_bm}}
-    
+    <SearchForm @submit="store.submit"/>   
 
   <main>
 

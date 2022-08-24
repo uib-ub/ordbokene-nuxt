@@ -1,10 +1,7 @@
 <template>
-<div>
+<main class="secondary-page">
   <h1>Contact us</h1>
-  <NuxtLink to="/">
-    Index page
-  </NuxtLink>
-  <br>
-  {{$route.params}}
-  </div>
+  <p>Text</p>
+
+  </main>
 </template>

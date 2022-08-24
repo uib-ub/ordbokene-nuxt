@@ -15,15 +15,18 @@
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
 
-const clearText = () => {
- store.q = ""
-}
-
 const submitForm = (item) => {
   store.autocomplete = []
-  console.log("ITEM", item)
+  
+  if (store.selected && store.selected.q && store.selected.q != store.q) {
+    //TODO: logging in plausible
+    store.q = store.selected.q
+  }
+
+
   if (store.selected.type == "word") {
     let searchUrl = '/'+store.dict+'/'+store.q
+    console.log("SUBMITTING", item)
     store.searchUrl = searchUrl
     navigateTo(searchUrl, { replace: true })
   }

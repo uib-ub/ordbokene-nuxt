@@ -38,13 +38,13 @@
     </div>
   </div>
 </nav>
-<div class="container p-2 back-to-search" v-if="!$route.params.word && !$route.params.q && store.searchUrl">
+<div class="container p-2 back-to-search" v-if="$route.name!='index' && !$route.params.word && !$route.params.q && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><i class="bi bi-arrow-left primary-text" aria-hidden="true"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
     <NuxtPage class="page-container container" />
 
 
-  <footer class="footer mt-auto p-3 bg-darkoter">
+  <footer class="footer mt-auto p-3 bg-primary text-white">
 <div>test</div>
 </footer>
   </div>
@@ -119,10 +119,7 @@ h1 {
   border-bottom: 0.25rem solid var(--bs-primary);
 }
 
-footer {
-  background-color: var(--bs-primary);
-  color: white;
-}
+
 
 main a  {
   border-bottom: 1px solid var(--bs-link);

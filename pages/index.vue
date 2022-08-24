@@ -17,7 +17,7 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
   <div class="p-3">
     <div class="mx-auto">
     <h1>Ordbøkene</h1>
-    <p class="sub-title pb-4">{{$t("sub_title")}}</p>
+    <p class="sub-title">{{$t("sub_title")}}</p>
     </div>
     
     <SearchForm @submit="store.submit"/>   

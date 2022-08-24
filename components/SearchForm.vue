@@ -15,24 +15,27 @@
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
 
-const submitForm = (item) => {
+async function submitForm(item) {
   store.autocomplete = []
   
   if (store.selected && store.selected.q && store.selected.q != store.q) {
     //TODO: logging in plausible
+    console.log("not equal")
     store.q = store.selected.q
   }
 
 
   if (store.selected.type == "word") {
-    let searchUrl = '/'+store.dict+'/'+store.q
-    console.log("SUBMITTING", item)
-    store.searchUrl = searchUrl
-    navigateTo(searchUrl, { replace: true })
+    store.searchUrl = '/'+store.dict+'/'+store.q
+    await navigateTo(store.searchUrl, { replace: true })
   }
   
-  if (store.selected.type == "empty") {
-    console.log("SHOW SUGGESTIONS")
+  if (!store.selected.type || store.selected.type == "empty") {
+    
+    store.searchUrl = '/'+store.dict+'/suggest?q='+store.q
+    console.log("SUGGESTING", store.searchUrl)
+
+    await navigateTo(store.searchUrl, { replace: true })
   }
   
   

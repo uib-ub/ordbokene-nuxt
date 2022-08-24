@@ -49,7 +49,7 @@
     </div>
   </div>
 </nav>
-<div class="container p-2 back-to-search" v-if="$route.name!='index' && !$route.params.word && !$route.params.q && store.searchUrl">
+<div class="container p-2 back-to-search" v-if="$route.name!='index' && $route.name!='dict-suggest' && !$route.params.word && !$route.params.q && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><i class="bi bi-arrow-left primary-text" aria-hidden="true"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
     <NuxtPage class="page-container container p-3" />
@@ -63,7 +63,13 @@
 
 <script setup>
 import { useStore } from '~/stores/searchStore'
+import { useRoute } from 'vue-router'
 const store = useStore()
+const route = useRoute()
+  
+store.q = route.params.word || route.query.q || ""
+store.dict = route.params.dict || "bm,nn"
+
 </script>
 
 

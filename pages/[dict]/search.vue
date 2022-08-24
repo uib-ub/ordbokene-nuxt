@@ -1,11 +1,8 @@
 <template>
 <div>
+  <SearchForm/>
 
+  {{$route.params}}
+  {{$route.query}}
 </div>
 </template>
-
-
-<script setup lang="ts">
-import { useStore } from '~/stores/searchStore'
-const store = useStore()
-</script>

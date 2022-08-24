@@ -38,9 +38,10 @@
     </div>
   </div>
 </nav>
-
-<br>
-    <NuxtPage class="page-container" />
+<div class="container back-to-search" v-if="!$route.params.word && !$route.params.q && store.searchUrl">
+<NuxtLink :to="store.searchUrl"> <i class="bi bi-arrow-left" aria-hidden="true"/> {{$t('notifications.back')}}</NuxtLink>
+</div>
+    <NuxtPage class="page-container container" />
 
 
   <footer class="footer mt-auto py-3 bg-darkoter">
@@ -59,11 +60,9 @@ html, body, #__nuxt {
   height: 100% !important;
 }
 
-.page-container, #navbar-main, footer>div {
-  position: relative;
-  padding-left: calc((100vw - 1200px) / 2);
-  padding-right: calc((100vw - 1200px) / 2);
-  
+
+.back-to-search {
+  font-size: larger;
 }
 
 h1 {

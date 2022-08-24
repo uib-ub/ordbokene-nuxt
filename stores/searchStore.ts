@@ -12,6 +12,7 @@ export const useStore = defineStore('store', {
       autocomplete: [],
       suggest: {},
       results_nn: [],
-      results_bm: []
+      results_bm: [],
+      searchUrl: null
     })
   })

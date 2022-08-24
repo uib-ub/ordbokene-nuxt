@@ -20,9 +20,18 @@ const clearText = () => {
  store.q = ""
 }
 
-const submitForm = () => {
+const submitForm = (item) => {
   store.autocomplete = []
-  navigateTo('/'+store.dict+'/'+store.q, { replace: true })
+  console.log("ITEM", item)
+  if (store.selected.type == "word") {
+    navigateTo('/'+store.dict+'/'+store.q, { replace: true })
+  }
+  
+  if (store.selected.type == "empty") {
+    alert("ingen treff")
+  }
+  
+  
 }
 
 </script>

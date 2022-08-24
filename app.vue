@@ -51,7 +51,7 @@
 
 
 <style>
-input[type="text"]:focus,input[type="radio"],.btn:focus{
+input[type="text"]:focus,input[type="radio"]:focus,.btn:focus,input[type="checkbox"]:focus{
   box-shadow: none;
 }
 

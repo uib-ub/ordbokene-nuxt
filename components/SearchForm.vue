@@ -27,7 +27,7 @@ const submitForm = (item) => {
   }
   
   if (store.selected.type == "empty") {
-    alert("ingen treff")
+    console.log("SHOW SUGGESTIONS")
   }
   
   

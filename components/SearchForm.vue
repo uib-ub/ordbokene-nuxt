@@ -1,5 +1,5 @@
 <template>
-<div class="searchForm">
+<div class="py-1">
 <form class="input-group active" :class="{activeAutocomplete: store.autocomplete.length}" @submit.prevent="submitForm" ref="form">
 <select class="dropdown-toggle btn btn-outline-primary" v-model="store.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item" name="dict">{{$t(`dicts.${item}`)}}</option>
@@ -23,7 +23,9 @@ const submitForm = (item) => {
   store.autocomplete = []
   console.log("ITEM", item)
   if (store.selected.type == "word") {
-    navigateTo('/'+store.dict+'/'+store.q, { replace: true })
+    let searchUrl = '/'+store.dict+'/'+store.q
+    store.searchUrl = searchUrl
+    navigateTo(searchUrl, { replace: true })
   }
   
   if (store.selected.type == "empty") {
@@ -36,11 +38,6 @@ const submitForm = (item) => {
 </script>
 
 <style scoped>
-.searchForm{
-  position: relative;
-  width: 95%;
-  margin: 0 auto;
-}
 
 .input-group{
   outline: solid 1px var(--bs-primary);

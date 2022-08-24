@@ -12,7 +12,7 @@ const resetSettings = (settings) => {
 </script>
 
 <template>
-<main class="secondary-page">
+<main class="secondary-page p-3">
   <h1>Settings</h1>
 
   <div class="form-check">

@@ -27,7 +27,7 @@ onUpdated(() => {
 
 
 async function fetchAutocomplete(q) {
-  store.suggesting = true
+  store.autocompletePending = true
     q = q.target.value.trim()
     if (q.length == 0) {
       store.autocomplete = [];
@@ -60,7 +60,7 @@ async function fetchAutocomplete(q) {
     response.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
     
     // prevent suggestions after submit
-    if (store.suggesting && q == store.q) {
+    if (store.autocompletePending && q == store.q) {
       let autocomplete_suggestions = []
       if (store.q.trim() == q && response.value.a.exact) {
         autocomplete_suggestions = response.value.a.exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "word"}))
@@ -85,7 +85,12 @@ const emit = defineEmits(['submit'])
 const submit = (item) => {
   emit('submit', item)
   store.autocomplete = []
-  store.suggesting = false
+  store.autocompletePending = false
+}
+
+
+const clearText = () => {
+ store.q = ""
 }
 
 </script>

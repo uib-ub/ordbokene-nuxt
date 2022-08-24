@@ -140,6 +140,10 @@ const submit = () => {
   left: 0;
 }
 
+.list-group-item  {
+  cursor: pointer;
+}
+
 .list-group-item .exact {
     color: var(--bs-primary);
     font-weight: bolder;

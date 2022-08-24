@@ -56,7 +56,7 @@
 
 
   <footer class="footer mt-auto p-3 bg-primary text-white">
-<div>test</div>
+<div>{{store.$state}}</div>
 </footer>
   </div>
 </template>

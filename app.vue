@@ -38,16 +38,22 @@
     </div>
   </div>
 </nav>
+<div class="container p-2 back-to-search" v-if="!$route.params.word && !$route.params.q && store.searchUrl">
+<NuxtLink :to="store.searchUrl"> <strong><i class="bi bi-arrow-left primary-text" aria-hidden="true"/></strong> {{$t('notifications.back')}}</NuxtLink>
+</div>
+    <NuxtPage class="page-container container" />
 
-<br>
-    <NuxtPage class="page-container" />
 
-
-  <footer class="footer mt-auto py-3 bg-darkoter">
+  <footer class="footer mt-auto p-3 bg-darkoter">
 <div>test</div>
 </footer>
   </div>
 </template>
+
+<script setup>
+import { useStore } from '~/stores/searchStore'
+const store = useStore()
+</script>
 
 
 <style>
@@ -59,11 +65,9 @@ html, body, #__nuxt {
   height: 100% !important;
 }
 
-.page-container, #navbar-main, footer>div {
-  position: relative;
-  padding-left: calc((100vw - 1200px) / 2);
-  padding-right: calc((100vw - 1200px) / 2);
-  
+
+.back-to-search {
+  font-size: larger;
 }
 
 h1 {
@@ -119,5 +123,14 @@ footer {
   background-color: var(--bs-primary);
   color: white;
 }
+
+main a  {
+  border-bottom: 1px solid var(--bs-link);
+}
+
+.secondary-page {
+  background-color: white;
+}
+
 
 </style>

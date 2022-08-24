@@ -1,10 +1,9 @@
 <template>
-<div class="searchForm">
+<div class="py-1">
 <form class="input-group active" :class="{activeAutocomplete: store.autocomplete.length}" @submit.prevent="submitForm" ref="form">
 <select class="dropdown-toggle btn btn-outline-primary" v-model="store.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item" name="dict">{{$t(`dicts.${item}`)}}</option>
 </select>
-  <i class="bi bi-search input-group-text" aria-hidden="true"/>
   <Autocomplete v-on:submit="submitForm"/>
   <button :aria-label="$t('search')" class="btn rounded-pill"> <i class="bi bi-search input-group-text" aria-hidden="true"/></button>
 </form>
@@ -20,19 +19,25 @@ const clearText = () => {
  store.q = ""
 }
 
-const submitForm = () => {
+const submitForm = (item) => {
   store.autocomplete = []
-  navigateTo('/'+store.dict+'/'+store.q, { replace: true })
+  console.log("ITEM", item)
+  if (store.selected.type == "word") {
+    let searchUrl = '/'+store.dict+'/'+store.q
+    store.searchUrl = searchUrl
+    navigateTo(searchUrl, { replace: true })
+  }
+  
+  if (store.selected.type == "empty") {
+    console.log("SHOW SUGGESTIONS")
+  }
+  
+  
 }
 
 </script>
 
 <style scoped>
-.searchForm{
-  position: relative;
-  width: 95%;
-  margin: 0 auto;
-}
 
 .input-group{
   outline: solid 1px var(--bs-primary);

@@ -11,10 +11,24 @@ import {
 } from '@headlessui/vue'
 
 
-let selected = ref('')
+
+const input = ref(null)
+defineExpose({ input })
+
+onUpdated(() => {
+  if (store.q) {
+    input.value.$el.select()
+
+  }
+  
+})
+
+
+
 
 async function fetchAutocomplete(q) {
-    q = q.trim()
+  store.suggesting = true
+    q = q.target.value.trim()
     if (q.length == 0) {
       store.autocomplete = [];
       return
@@ -44,49 +58,54 @@ async function fetchAutocomplete(q) {
     
     let response = ref([])
     response.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
-    let autocomplete_suggestions = []
-    if (store.q.trim() == q && response.value.a.exact) {
-      autocomplete_suggestions = response.value.a.exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "exact"}))
+    
+    // prevent suggestions after submit
+    if (store.suggesting && q == store.q) {
+      let autocomplete_suggestions = []
+      if (store.q.trim() == q && response.value.a.exact) {
+        autocomplete_suggestions = response.value.a.exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "word"}))
+      }
+
+      if (autocomplete_suggestions.length) {
+        if (autocomplete_suggestions[0].q.toLowerCase() != q.toLowerCase()) {
+          autocomplete_suggestions.unshift({q, time, type: "empty"})
+        }
+        store.autocomplete = autocomplete_suggestions
+      }
+      else {
+        store.autocomplete = [{q, time, type: "empty"}]
+      }
+
     }
 
-    if (autocomplete_suggestions.length) {
-      if (autocomplete_suggestions[0].q.toLowerCase() != q.toLowerCase()) {
-        autocomplete_suggestions.unshift({q, time, type: "empty"})
-      }
-      store.autocomplete = autocomplete_suggestions
-    }
-    else {
-      store.autocomplete = [{q, time, type: "empty"}]
-    }
 }
 
-const input = ref(null)
-defineExpose({ input })
-const emit = defineEmits(['submit'])
-const submit = () => {
-  input.value.$el.select()
-  emit('submit')
 
+const emit = defineEmits(['submit'])
+const submit = (item) => {
+  emit('submit', item)
+  store.autocomplete = []
+  store.suggesting = false
 }
 
 </script>
 
 <template>
   <div class="searchField">
-    <Combobox v-model="store.q" v-on:update:modelValue="submit">
+    <Combobox v-model="store.selected" v-on:update:modelValue="submit" @submit.prevent="submit">
       <div>
         <div>
           <ComboboxInput
             class="form-control"
             name="q"
-            :value="store.q"
+            :displayValue="(item) => item.q"
             autofocus="true"
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
             required="true"
             ref="input"
-            @input="store.q = $event.target.value; fetchAutocomplete($event.target.value)"
+            @input="store.q = $event.target.value; fetchAutocomplete($event)"
             
 
           />
@@ -102,7 +121,7 @@ const submit = () => {
               v-for="(item, idx) in store.autocomplete"
               as="template"
               :key="idx"
-              :value="item.q"
+              :value="item"
               v-slot="{ active }"
             >
               <li
@@ -140,7 +159,11 @@ const submit = () => {
   left: 0;
 }
 
-.list-group-item .exact {
+.list-group-item  {
+  cursor: pointer;
+}
+
+.list-group-item .word {
     color: var(--bs-primary);
     font-weight: bolder;
 }

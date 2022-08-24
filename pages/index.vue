@@ -14,14 +14,13 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
 </script>
 
 <template>
-  <div>
+  <div class="p-3">
+    <div class="mx-auto">
     <h1>Ordbøkene</h1>
+    <p class="sub-title pb-4">{{$t("sub_title")}}</p>
+    </div>
     
-    <SearchForm @submit="store.submit"/>
-
-    NN: {{welcome_nn}}<br>
-    BM: {{welcome_bm}}
-    
+    <SearchForm @submit="store.submit"/>   
 
   <main>
 
@@ -38,3 +37,14 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
   </div>
   
 </template>
+
+<style scoped>
+.sub-title {
+  font-size: 1.25rem;
+  margin: 0px;
+  margin-bottom: 0px !important;
+  color: var(--bs-primary) !important;
+}
+
+
+</style>

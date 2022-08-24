@@ -91,10 +91,6 @@ h1 {
   padding-top: 0.25rem;
 }
 
-.navbar-brand {
-  font-family: Inria Serif;
-  
-}
 
 .navbar-expand-lg .nav-item.active {
   border-left: 0.25rem solid var(--bs-secondary);
@@ -137,6 +133,12 @@ main a  {
 
 .secondary-page {
   background-color: white;
+}
+
+.secondary-page h2 {
+  font-family: Inria Serif;
+  color: var(--bs-primary);
+  font-weight:600;
 }
 
 

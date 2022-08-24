@@ -11,7 +11,7 @@ function MyPiniaPlugin({ store }: PiniaPluginContext) {
   return { creationTime: new Date() }
 }
 
-const defineNuxtPlugin = ({ $pinia }) => {
+const defineNuxtPlugin = (nuxtApp, { $pinia }) => {
   $pinia.use(MyPiniaPlugin)
 }
 

@@ -1,6 +1,14 @@
 <script setup>
 import {useSettingsStore } from '~/stores/settingsStore'
 const settings = useSettingsStore()
+
+const resetSettings = (settings) => {
+    settings.$patch({
+      inflectionExpanded: false, 
+      inflectionNo: false, 
+      inflectionTableContext: false, 
+    })
+};
 </script>
 
 <template>
@@ -29,7 +37,7 @@ const settings = useSettingsStore()
       {{$t('settings.inflection_table_context')}}
     </label>
   </div>
-  <button class="btn" @click="settings.$reset()">
+  <button class="btn" @click="resetSettings(settings)">
     <i class="bi bi-trash-fill"></i> <span>{{$t('settings.reset')}}</span>
   </button>
 </div>

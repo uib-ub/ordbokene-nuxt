@@ -1,6 +1,5 @@
 <template>
 <div>
-  <h1>Word</h1>
   <SearchForm/>
   <NuxtLink to="/">
     Index page

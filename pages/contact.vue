@@ -1,6 +1,6 @@
 <template>
-<main class="secondary-page p-3">
-  <h1>Contact us</h1>
+<main class="secondary-page">
+  <h2>Contact us</h2>
   <p>Text</p>
 
   </main>

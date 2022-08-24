@@ -12,8 +12,8 @@ const resetSettings = (settings) => {
 </script>
 
 <template>
-<main class="secondary-page p-3">
-  <h1>Settings</h1>
+<main class="secondary-page">
+  <h2>Settings</h2>
 
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="" id="checkOne" v-model="settings.$state.inflectionExpanded">

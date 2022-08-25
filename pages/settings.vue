@@ -40,18 +40,7 @@ const resetSettings = (settings) => {
 </template>
 
 <style scoped>
-.form-check-input:checked{
-background-color: var(--bs-primary);
-border-color: var(--bs-primary);
-}
-.form-check-input:focus{
-  border-color: var(--bs-primary);
-}
-
 .bi{
   color: rgba(0,0,0,.54);
-}
-.btn:focus,.btn:hover{
-  border-color: var(--bs-primary);
 }
 </style>

@@ -57,9 +57,9 @@ const store = useStore()
 
 
 <style>
-input[type="text"]:focus,input[type="radio"]:focus,.btn:focus,input[type="checkbox"]:focus{
+/*input[type="text"]:focus,input[type="radio"]:focus,.btn:focus,input[type="checkbox"]:focus{
   box-shadow: none;
-}
+}*/
 
 html, body, #__nuxt {
   height: 100% !important;

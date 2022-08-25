@@ -1,6 +1,8 @@
 $theme-colors: (
   'primary': #560027,
   'secondary': #BC477B,
+  'tertiary': #FDF4F5,
+  'error': #FDF4F5,
   'success': #1ce1ac,
   'info': #ff7d50,
   'warning': #ffbe0b,
@@ -10,11 +12,14 @@ $theme-colors: (
   'link': #880E4F
 );
 
-
+$primary: #560027;
+$secondary: #BC477B;
+$light: #f5f5f5;
+$dark: #001738;
+$link: #880E4F;
 
 $link-color: black;
 $link-decoration: none;
-
 
 $body-bg: #fdf4f5;
 
@@ -24,6 +29,8 @@ $navbar-padding-y: 0px;
 $list-group-active-border-color: rgb(0 0 0 / 26%);
 $list-group-active-bg: rgb(225, 225, 225);
 $list-group-active-color: black;
+
+$form-select-indicator-color: rgb(225, 225, 225);
 
 @import 'bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');

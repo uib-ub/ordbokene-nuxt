@@ -148,6 +148,9 @@ const submit = (item) => {
   background-color: white;
   position: relative;
 }
+.form-control:focus{
+    box-shadow: none;
+}
 .autocomplete {
   outline: solid 1px var(--bs-primary);
   box-shadow: 2px 2px 1px var(--bs-primary);

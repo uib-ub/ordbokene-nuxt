@@ -1,6 +1,6 @@
 <template>
-<div class="py-1">
-<form class="input-group active" :class="{activeAutocomplete: store.autocomplete.length}" @submit.prevent="submitForm" ref="form">
+<div class="my-3">
+<form class="input-group active p-md-2" :class="{activeAutocomplete: store.autocomplete.length}" @submit.prevent="submitForm" ref="form">
 <select class="dropdown-toggle btn btn-outline-primary" v-model="store.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item" name="dict">{{$t(`dicts.${item}`)}}</option>
 </select>
@@ -15,15 +15,18 @@
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
 
-const clearText = () => {
- store.q = ""
-}
-
 const submitForm = (item) => {
   store.autocomplete = []
-  console.log("ITEM", item)
+  
+  if (store.selected && store.selected.q && store.selected.q != store.q) {
+    //TODO: logging in plausible
+    store.q = store.selected.q
+  }
+
+
   if (store.selected.type == "word") {
     let searchUrl = '/'+store.dict+'/'+store.q
+    console.log("SUBMITTING", item)
     store.searchUrl = searchUrl
     navigateTo(searchUrl, { replace: true })
   }

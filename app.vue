@@ -1,13 +1,24 @@
 <template>
+
 <div class="d-flex flex-column h-100">
       <nav role="navigation" class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
-    <NuxtLink class="navbar-brand" to="/">ordbøkene.no</NuxtLink>
+    <NuxtLink class="navbar-brand text-white" to="/">
+      <div v-show="false"><h1>ordbøkene.no</h1></div>
+      <div><h1>Ordbøkene</h1>
+      <p>{{$t("sub_title")}}</p>
+      </div>
+      
+      </NuxtLink>
+        <div class="mx-auto">
+    
+    
+    </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item" v-bind:class="{'active': $route.name == 'help'}">
           <NuxtLink class="nav-link" aria-current="page" to="/help">{{$t('help')}}</NuxtLink>
         </li>
@@ -29,8 +40,8 @@
           </NuxtLink>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><button class="dropdown-item" @click="$i18n.locale = 'eng'">English</button></li>
-            <li><button class="dropdown-item" @click="$i18n.locale = 'nob'">Norsk (bokmål)</button></li>
-            <li><button class="dropdown-item" @click="$i18n.locale = 'nno'">Norsk (nynorsk)</button></li>
+            <li><button class="dropdown-item" @click="$i18n.locale = 'nob'">Bokmål</button></li>
+            <li><button class="dropdown-item" @click="$i18n.locale = 'nno'">Nynorsk</button></li>
         </ul>
         </div>
       </div>
@@ -38,14 +49,14 @@
     </div>
   </div>
 </nav>
-<div class="container p-2 back-to-search" v-if="!$route.params.word && !$route.params.q && store.searchUrl">
+<div class="container p-2 back-to-search" v-if="$route.name!='index' && !$route.params.word && !$route.params.q && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><i class="bi bi-arrow-left primary-text" aria-hidden="true"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
-    <NuxtPage class="page-container container" />
+    <NuxtPage class="page-container container p-3" />
 
 
-  <footer class="footer mt-auto p-3 bg-darkoter">
-<div>test</div>
+  <footer class="footer mt-auto p-3 bg-primary text-white">
+<div>{{store.$state}}</div>
 </footer>
   </div>
 </template>
@@ -72,7 +83,6 @@ html, body, #__nuxt {
 
 h1 {
   font-family: Inria Serif;
-  color: var(--bs-primary);
   font-weight: bold;
 
 }
@@ -81,10 +91,6 @@ h1 {
   padding-top: 0.25rem;
 }
 
-.navbar-brand {
-  font-family: Inria Serif;
-  
-}
 
 .navbar-expand-lg .nav-item.active {
   border-left: 0.25rem solid var(--bs-secondary);
@@ -119,10 +125,7 @@ h1 {
   border-bottom: 0.25rem solid var(--bs-primary);
 }
 
-footer {
-  background-color: var(--bs-primary);
-  color: white;
-}
+
 
 main a  {
   border-bottom: 1px solid var(--bs-link);
@@ -130,6 +133,12 @@ main a  {
 
 .secondary-page {
   background-color: white;
+}
+
+.secondary-page h2 {
+  font-family: Inria Serif;
+  color: var(--bs-primary);
+  font-weight:600;
 }
 
 

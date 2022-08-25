@@ -1,6 +1,6 @@
 <template>
 <div class="my-3">
-<form class="input-group active" :class="{activeAutocomplete: store.autocomplete.length}" @submit.prevent="submitForm" ref="form">
+<form class="input-group active p-md-2" :class="{activeAutocomplete: store.autocomplete.length}" @submit.prevent="submitForm" ref="form">
 <select class="dropdown-toggle btn btn-outline-primary" v-model="store.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item" name="dict">{{$t(`dicts.${item}`)}}</option>
 </select>

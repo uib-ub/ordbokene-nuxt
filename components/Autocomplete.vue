@@ -23,8 +23,6 @@ onUpdated(() => {
   
 })
 
-let selected = ref('')
-
 
 async function fetchAutocomplete(q) {
   store.autocompletePending = true

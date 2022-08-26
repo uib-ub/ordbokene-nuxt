@@ -67,8 +67,6 @@ import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
   
-store.input = route.query.q || ""
-store.dict = route.params.dict || "bm,nn"
 
 </script>
 

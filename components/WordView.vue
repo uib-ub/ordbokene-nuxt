@@ -1,0 +1,3 @@
+<template>
+    WORD VIEW
+</template>

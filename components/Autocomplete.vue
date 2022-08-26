@@ -48,9 +48,9 @@ async function fetchAutocomplete(q) {
     response.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
     
     // prevent suggestions after submit
-    if (store.autocompletePending && q == store.q) {
+    if (store.autocompletePending && q == store.input) {
       let autocomplete_suggestions = []
-      if (store.q.trim() == q && response.value.a.exact) {
+      if (store.input.trim() == q && response.value.a.exact) {
         autocomplete_suggestions = response.value.a.exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "word"}))
       }
 
@@ -78,27 +78,27 @@ const submit = (item) => {
 
 
 const clearText = () => {
- store.q = ""
+ store.input = ""
 }
 
 </script>
 
 <template>
   <div class="searchField">
-    <Combobox v-model="store.q" v-on:update:modelValue="submit" @submit.prevent="submit">
+    <Combobox v-model="store.input" v-on:update:modelValue="submit" @submit.prevent="submit">
       <div>
         <div>
           <ComboboxInput
             class="form-control"
             name="q"
-            :value="store.q"
+            :value="store.input"
             autofocus="true"
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
             required="true"
             ref="input"
-            @input="store.q = $event.target.value; fetchAutocomplete($event.target.value)"
+            @input="store.input = $event.target.value; fetchAutocomplete($event.target.value)"
             
 
           />

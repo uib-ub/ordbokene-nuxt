@@ -1,0 +1,3 @@
+<template>
+    ARTICLE VIEW
+</template>

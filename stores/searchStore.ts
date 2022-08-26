@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 
 export const useStore = defineStore('store', {
     state: () => ({
-      q: "",
+      input: "",
       selected: {},
       scope: "e",
       dict: "bm,nn",
@@ -13,6 +13,7 @@ export const useStore = defineStore('store', {
       suggest: {},
       results_nn: [],
       results_bm: [],
-      searchUrl: null
+      searchUrl: null,
+      view: null
     })
   })

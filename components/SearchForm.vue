@@ -1,7 +1,7 @@
 <template>
 <div class="my-3">
 <form class="input-group active p-md-2" :class="{activeAutocomplete: store.autocomplete.length}" @submit.prevent="submitForm" ref="form">
-<select class="dropdown-toggle btn btn-outline-primary" v-model="store.$state.dict">
+<select class="dropdown-toggle btn btn-outline-primary" @change="change_dict" v-model="store.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item" name="dict">{{$t(`dicts.${item}`)}}</option>
 </select>
   <Autocomplete v-on:submit="submitForm"/>
@@ -13,13 +13,19 @@
 
 <script setup>
 import { useStore } from '~/stores/searchStore'
+import { useRoute } from 'vue-router'
 const store = useStore()
+const route = useRoute()
 
 async function submitForm(item) {
   store.autocomplete = []
   
-    store.searchUrl = '/'+store.dict+'/'+store.q
+    store.searchUrl = '/'+store.dict+'/'+store.input
     await navigateTo(store.searchUrl, { replace: true })
+  
+}
+
+const change_dict = function(event) {
   
 }
 

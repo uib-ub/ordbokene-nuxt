@@ -13,7 +13,7 @@ const resetSettings = (settings) => {
 
 <template>
 <main class="secondary-page">
-  <h2>Settings</h2>
+  <h2>{{$t('settings.title')}}</h2>
 
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="" id="checkOne" v-model="settings.$state.inflectionExpanded">

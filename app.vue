@@ -141,5 +141,12 @@ main a  {
   font-weight:600;
 }
 
+.secondary-page h3 {
+  color: var(--bs-primary);
+  font-weight:600;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
 
 </style>

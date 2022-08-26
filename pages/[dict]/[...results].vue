@@ -1,8 +1,9 @@
 <template>
 <div>
-  <SearchForm/>
+  WORD
 
   {{$route.params}}
   {{$route.query}}
+  {{$route.name}}
 </div>
 </template>

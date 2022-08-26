@@ -12,16 +12,6 @@ import {
 
 
 
-const input = ref(null)
-defineExpose({ input })
-
-onUpdated(() => {
-  if (store.q) {
-    input.value.$el.select()
-
-  }
-  
-})
 
 
 async function fetchAutocomplete(q) {

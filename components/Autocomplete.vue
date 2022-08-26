@@ -23,12 +23,12 @@ onUpdated(() => {
   
 })
 
-
+let selected = ref('')
 
 
 async function fetchAutocomplete(q) {
   store.autocompletePending = true
-    q = q.target.value.trim()
+  q = q.trim()
     if (q.length == 0) {
       store.autocomplete = [];
       return
@@ -97,20 +97,20 @@ const clearText = () => {
 
 <template>
   <div class="searchField">
-    <Combobox v-model="store.selected" v-on:update:modelValue="submit" @submit.prevent="submit">
+    <Combobox v-model="store.q" v-on:update:modelValue="submit" @submit.prevent="submit">
       <div>
         <div>
           <ComboboxInput
             class="form-control"
             name="q"
-            :displayValue="(item) => item.q"
+            :value="store.q"
             autofocus="true"
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
             required="true"
             ref="input"
-            @input="store.q = $event.target.value; fetchAutocomplete($event)"
+            @input="store.q = $event.target.value; fetchAutocomplete($event.target.value)"
             
 
           />
@@ -126,7 +126,7 @@ const clearText = () => {
               v-for="(item, idx) in store.autocomplete"
               as="template"
               :key="idx"
-              :value="item"
+              :value="item.q"
               v-slot="{ active }"
             >
               <li

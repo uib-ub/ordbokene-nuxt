@@ -18,26 +18,8 @@ const store = useStore()
 async function submitForm(item) {
   store.autocomplete = []
   
-  if (store.selected && store.selected.q && store.selected.q != store.q) {
-    //TODO: logging in plausible
-    console.log("not equal")
-    store.q = store.selected.q
-  }
-
-
-  if (store.selected.type == "word") {
     store.searchUrl = '/'+store.dict+'/'+store.q
     await navigateTo(store.searchUrl, { replace: true })
-  }
-  
-  if (!store.selected.type || store.selected.type == "empty") {
-    
-    store.searchUrl = '/'+store.dict+'/suggest?q='+store.q
-    console.log("SUGGESTING", store.searchUrl)
-
-    await navigateTo(store.searchUrl, { replace: true })
-  }
-  
   
 }
 

@@ -33,7 +33,7 @@ const resetSettings = (settings) => {
       {{$t('settings.inflection_table_context')}}
     </label>
   </div>
-  <button class="btn" @click="resetSettings(settings)">
+  <button class="btn btn-outline-primary" @click="resetSettings(settings)">
     <i class="bi bi-trash-fill"></i> <span>{{$t('settings.reset')}}</span>
   </button>
 </main>
@@ -42,5 +42,13 @@ const resetSettings = (settings) => {
 <style scoped>
 .bi{
   color: rgba(0,0,0,.54);
+}
+.btn-outline-primary{
+  border: none;
+  color: black;
+}
+.btn-outline-primary:hover,.btn-outline-primary:focus{
+  background-color: white;
+  color: black;
 }
 </style>

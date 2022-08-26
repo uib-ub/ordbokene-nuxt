@@ -6,11 +6,17 @@
 
   {{route.params}}
   {{route.query}}
-  {{route.name}}
+  <br>
+  {{route.name}}<br>
+  {{store.suggest}}
 </div>
 </template>
 
 <script setup>
+
+definePageMeta({
+  middleware: 'word-search'
+})
 
 
 
@@ -22,38 +28,9 @@ const route = useRoute()
 
 console.log(route.params.view)
 
-onMounted(() => {
-  // Article lookup
-if (/^[0-9]+$/.test(route.params.view[0])) {
-  store.view = 'article'
-
-}
-else {
-  store.searchUrl=route.fullPath
-  // Simple search
-  if (route.params.view[0] == 'search') {
-    store.q = route.query.q
-    store.input = store.input || store.q
-    store.view = 'search'
-  }
-  else {
-    store.q = route.params.view[0]
-    store.input = store.input || store.q
-    store.view = 'word'
-    
-  }
-  // advanced search
-  let q = route.params.q || route.params.view[0]
-  console.log("QUERY:", q)
-}
-
-})
 
 
-
-
-
-//const suggest = await $fetch('https://oda.uib.no/opal/dev/bm/parameters.json')
+ 
 
 
 

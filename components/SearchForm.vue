@@ -21,7 +21,9 @@ async function submitForm(item) {
   store.autocomplete = []
   
     store.searchUrl = '/'+store.dict+'/'+store.input
+    store.q = store.input
     await navigateTo(store.searchUrl, { replace: true })
+    
   
 }
 

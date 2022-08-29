@@ -40,6 +40,9 @@
     "bm": "bokmål",
     "bm,nn": "both"
   },
+  "menu": {
+    "title": "Menu"
+  },
   "options": {
     "title": "Search options",
     "inflected": "Include inflected forms",

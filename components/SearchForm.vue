@@ -50,27 +50,6 @@ const change_dict = function(event) {
 .activeAutocomplete{
   border-radius: 1rem 1rem 0 0;
 }
-.autocomplete {
-  outline: solid 1px var(--bs-primary);
-  box-shadow: 2px 2px 1px var(--bs-primary);
-  border-radius: 0 0 1rem 1rem;
-  background-color: white;
-  width: 100%;
-  position: absolute;
-  z-index: 100;
-  left: 0;
-}
-
-.dropdown-menu{
-  padding: 0.5rem;
-  border-color: var(--bs-primary);
-  box-shadow: 2px 2px 1px var(--bs-primary);
-  margin-top: 0.4rem !important;
-}
-.form-check-input:checked{
-  background-color: var(--bs-primary);
-  border-color: var(--bs-primary);
-}
 
 .btn-outline-primary{
   border: none;
@@ -83,16 +62,7 @@ const change_dict = function(event) {
   background-color: white;
   color: var(--bs-primary);
 }
-option:hover,option:focus{
-  background-color: var(--bs-primary) !important;
-  color: white !important;
-}
 
-.form-control{
-  border: none;
-  border-radius: 0 2rem 2rem 0;
-  background-color: white;
-}
 .input-group-text{
   color: var(--bs-primary);
   background-color: transparent;
@@ -100,13 +70,5 @@ option:hover,option:focus{
   border-radius: 0;
   padding: 0.3rem 0 0.3rem 0.5rem;
   font-size: 1.3rem;
-}
-
-.clear.btn{
-  background: transparent;
-  border-radius: 2rem;
-}
-.clear.btn:hover{
-  border: transparent;
 }
 </style>

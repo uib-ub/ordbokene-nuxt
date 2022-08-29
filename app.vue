@@ -73,9 +73,9 @@ const route = useRoute()
 
 
 <style>
-input[type="text"]:focus,input[type="radio"]:focus,.btn:focus,input[type="checkbox"]:focus{
+/*input[type="text"]:focus,input[type="radio"]:focus,.btn:focus,input[type="checkbox"]:focus{
   box-shadow: none;
-}
+}*/
 
 html, body, #__nuxt {
   height: 100% !important;
@@ -144,6 +144,13 @@ main a  {
   font-family: Inria Serif;
   color: var(--bs-primary);
   font-weight:600;
+}
+
+.secondary-page h3 {
+  color: var(--bs-primary);
+  font-weight:600;
+  text-transform: uppercase;
+  font-size: 1rem;
 }
 
 

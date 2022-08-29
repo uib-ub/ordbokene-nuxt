@@ -13,7 +13,7 @@ const resetSettings = (settings) => {
 
 <template>
 <main class="secondary-page">
-  <h2>Settings</h2>
+  <h2>{{$t('settings.title')}}</h2>
 
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="" id="checkOne" v-model="settings.$state.inflectionExpanded">
@@ -33,25 +33,22 @@ const resetSettings = (settings) => {
       {{$t('settings.inflection_table_context')}}
     </label>
   </div>
-  <button class="btn" @click="resetSettings(settings)">
+  <button class="btn btn-outline-primary" @click="resetSettings(settings)">
     <i class="bi bi-trash-fill"></i> <span>{{$t('settings.reset')}}</span>
   </button>
 </main>
 </template>
 
 <style scoped>
-.form-check-input:checked{
-background-color: var(--bs-primary);
-border-color: var(--bs-primary);
-}
-.form-check-input:focus{
-  border-color: var(--bs-primary);
-}
-
 .bi{
   color: rgba(0,0,0,.54);
 }
-.btn:focus,.btn:hover{
-  border-color: var(--bs-primary);
+.btn-outline-primary{
+  border: none;
+  color: black;
+}
+.btn-outline-primary:hover,.btn-outline-primary:focus{
+  background-color: white;
+  color: black;
 }
 </style>

@@ -18,9 +18,12 @@ const store = useStore()
 const route = useRoute()
 
 async function submitForm(item) {
-  store.autocomplete = []
-  
-    store.searchUrl = '/'+store.dict+'/'+store.input
+  store.autocomplete = [] 
+    store.searchUrl = '/'+store.dict+'/search?q='+store.input
+    if (store.advanced) {
+      store.searchUrl += "&scope=ei"
+
+    }
     store.q = store.input
     await navigateTo(store.searchUrl, { replace: true })
     

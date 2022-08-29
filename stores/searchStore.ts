@@ -8,6 +8,7 @@ export const useStore = defineStore('store', {
       input: "",
       selected: {},
       scope: "e",
+      advanced: false,
       dict: "bm,nn",
       autocompletePending: false,
       autocomplete: [],

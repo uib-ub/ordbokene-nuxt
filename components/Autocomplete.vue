@@ -21,51 +21,54 @@ async function fetchAutocomplete(q) {
       store.autocomplete = [];
       return
     }
+    let blank = specialSymbols(q) ? "advanced" : "empty"
     const time = Date.now()
     if (store.autocomplete[0]) {
       if (store.autocomplete[0].time < time) {
-        store.autocomplete.splice(0,1, {q, time, type: "empty"})
+        store.autocomplete.splice(0,1, {q, time, type: blank})
       }
     }
     else {
-      store.autocomplete.push({q, time, type: "empty"})
+      store.autocomplete.push({q, time, type: blank})
     }
 
     // Intercept queries containing too many words or characters
     let words = q.split(/ |\|/)
     if (words.length > 20) {
-      store.autocomplete = [{q, time, type: "empty"}]
+      store.autocomplete = [{q, time, type: blank}]
       return
     }
     for (let i = 0; i < words.length; i++) {
       if (words[i].length > 40) {
-        store.autocomplete = [{q, time, type: "empty"}]
+        store.autocomplete = [{q, time, type: blank}]
         return
       }
     }
-    
-    let response = ref([])
-    response.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
-    
-    // prevent suggestions after submit
-    if (store.autocompletePending && q == store.input) {
-      let autocomplete_suggestions = []
-      if (store.input.trim() == q && response.value.a.exact) {
-        autocomplete_suggestions = response.value.a.exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "word"}))
-      }
 
-      if (autocomplete_suggestions.length) {
-        if (autocomplete_suggestions[0].q.toLowerCase() != q.toLowerCase()) {
-          autocomplete_suggestions.unshift({q, time, type: "empty"})
+    if (blank != "advanced") {
+    
+      let response = ref([])
+      response.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
+      
+      // prevent suggestions after submit
+      if (store.autocompletePending && q == store.input) {
+        let autocomplete_suggestions = []
+        if (store.input.trim() == q && response.value.a.exact) {
+          autocomplete_suggestions = response.value.a.exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "word"}))
         }
-        store.autocomplete = autocomplete_suggestions
-      }
-      else {
-        store.autocomplete = [{q, time, type: "empty"}]
-      }
 
+        if (autocomplete_suggestions.length) {
+          if (autocomplete_suggestions[0].q.toLowerCase() != q.toLowerCase()) {
+            autocomplete_suggestions.unshift({q, time, type: "empty"})
+          }
+          store.autocomplete = autocomplete_suggestions
+        }
+        else {
+          store.autocomplete = [{q, time, type: "empty"}]
+        }
+
+      }
     }
-
 }
 
 
@@ -121,7 +124,7 @@ const clearText = () => {
                 class="list-group-item"
                 :class="{'active': active, '': !active,}">
 
-                <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span>
+                <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced'" class="dict-parentheses">(Avansert søk <i class="bi bi-arrow-right"/>)</span>
               </li>
             </ComboboxOption>
           </ComboboxOptions>

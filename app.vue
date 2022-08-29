@@ -4,12 +4,12 @@
       <nav role="navigation" class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand text-white" to="/">
-      <hgroup class="small mx-2">
+      <div class="small mx-2">
       <div v-show="false"><h1>ordbøkene.no</h1></div>
       <div><h1>Ordbøkene</h1>
       <p class="d-none d-sm-block">{{$t("sub_title")}}</p>
       </div>
-      </hgroup>
+    </div>
       </NuxtLink>
         <div class="mx-auto">
     

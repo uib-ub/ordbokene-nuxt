@@ -20,6 +20,7 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
 
 <template>
   <div>
+    FRACTION{{fraction('1', '2')}}
   <main>
 PARAMS {{$route.params}}
     <div v-if="welcome_bm || welcome_nn">

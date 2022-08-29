@@ -1,7 +1,9 @@
 <template>
+    <component :is="'article'">
     <h2>ID: {{ article_id }}</h2>
     <h3>Body</h3>
     <p>{{article}}</p>
+    </component>
 </template>
 
 <script>

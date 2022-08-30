@@ -40,9 +40,9 @@
              <i :aria-label="$t('settings.locale.title')" class="bi bi-globe"/> {{$t('name')}}
           </NuxtLink>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><button class="dropdown-item" @click="$i18n.locale = 'eng'">English</button></li>
-            <li><button class="dropdown-item" @click="$i18n.locale = 'nob'">Bokmål</button></li>
-            <li><button class="dropdown-item" @click="$i18n.locale = 'nno'">Nynorsk</button></li>
+            <li><button class="dropdown-item" @click="update_locale('eng')">English</button></li>
+            <li><button class="dropdown-item" @click="update_locale('nob')">Bokmål</button></li>
+            <li><button class="dropdown-item" @click="update_locale('nno')">Nynorsk</button></li>
         </ul>
         </div>
       </div>
@@ -63,11 +63,35 @@
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
+const i18n = useI18n()
+
+const locale = useCookie("locale")
+locale.value = locale.value || (Math.random() < 0.5 ? 'nno' : 'nob')
+i18n.locale.value = locale.value
+
 import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
+
+useHead({
+  htmlAttrs: {
+    lang: i18n.locale
+  }
   
+})
+
+
+const update_locale = (newLocale) => {
+  i18n.locale.value = newLocale
+  locale.value = newLocale
+}
+
+
+
+
+
 
 </script>
 

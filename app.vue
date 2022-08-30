@@ -67,8 +67,11 @@ import { useI18n } from 'vue-i18n'
 const i18n = useI18n()
 
 const locale = useCookie("locale")
-locale.value = locale.value || (Math.random() < 0.5 ? 'nno' : 'nob')
+
+// Default to bokmål on odd days
+locale.value = locale.value || (new Date().getDate() % 2 ? 'nno' : 'nob')
 i18n.locale.value = locale.value
+
 
 import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'

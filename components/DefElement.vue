@@ -22,18 +22,10 @@
   </template>
   
   <script>
-  import entities from '../utils/entities.js'
   import helpers from '../utils/helpers.js'
-  
-  function replace_grammar_id(item, lang) {
-    let content = item.content
-    if (content.includes('$') && (item.items[0].id)){
-      let replacement_item = entities[lang][item.items[0].id]['expansion']
-      content = content.replace('$', replacement_item)}
-  
-    return content
-  }
-  
+
+  const settings = useSettingsStore()
+    
   export default {
     name: 'DefElement',
     props: {
@@ -51,7 +43,7 @@
     },
     computed: {
       fulltext_highlight: function() {
-        return this.$store.state.fulltextHighlight
+        return settings.fulltextHighlight
       },
       unparsed: function(){
         try {
@@ -86,7 +78,7 @@
               else if (item.type_ == 'superscript') return {type: item.type_, html: item.text, tag: 'sup'}
               else if (item.type_ == 'subscript') return {type: item.type_, html: item.text, tag: 'sub'}
               else if (item.type_ == 'quote_inset') return {type: item.type_, body: item, html: '', tag: 'DefElement', props: {body: item, tag: 'i', dictionary: lang}}
-              else if (item.type_ == 'fraction') return helpers.fraction(item.numerator, item.denominator)
+              else if (item.type_ == 'fraction') return fraction(item.numerator, item.denominator)
               else if (item.id) return {type: item.type_, html:  (entities[lang][item.id] || {})['expansion'] || item.id}
               else return {type: item.type_ || 'plain', html: item}
           }
@@ -127,8 +119,7 @@
       },
       article_error: function(payload) {
         this.$emit('error', payload)
-      },
-      roman_hgno: helpers.roman_hgno
+      }
     }
   }
   </script>

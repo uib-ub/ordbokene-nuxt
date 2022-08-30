@@ -729,7 +729,6 @@
 		  <li>{{$t('contact.content[2]')}}<a href="mailto:ordbok@uib.no">ordbok@uib.no</a></li>
 		  <li>{{$t('contact.content[3]')}}<a href="mailto:ordbok-teknisk@uib.no">ordbok-teknisk@uib.no</a></li>
 	  </ul>
-
     <details>
       <summary>Hva betyr det om du ikke finner et ord i ordboka?</summary>
       <div>
@@ -746,7 +745,6 @@
         <p>Dersom du ikke finner ordet du leter etter, kan du sjekke de større og dokumenterende ordbøkene <a href="https://alfa.norsk-ordbok.no">Norsk Ordbok</a> (for dialektord og nynorsk) og <a href="https://naob.no/">NAOB</a> (for bokmål).</p>
       </div>
     </details>
-
     <details>
       <summary>Kvalitetssikret innhold</summary>
       <div>
@@ -755,7 +753,6 @@
         <p>Siden 2016 har det redaksjonelle arbeidet med standardordbøkene blitt utført ved Universitetet i Bergen, der flere avdelinger er involvert. <a href="https://www.uib.no/ub/101277/norsk-kulturarv-i-skrift-og-tale">Språksamlingane</a> forvalter ordbøkene og kildegrunnlaget de bygger på, ordbokredaktørene er ansatt ved <a href="https://www.uib.no/lle">Institutt for lingvistiske, litterære og estetiske studium</a>, og det datatekniske arbeidet foregår ved IT-avdelingen. Innholdet i ordbøkene er kvalitetssikret av Språkrådet.</p>
       </div>
     </details>
-
     <details>
       <summary>Sitere ordbøkene</summary>
       <div>
@@ -764,7 +761,6 @@
         <p>Begge eierne av ordboka, Språkrådet og Universitetet i Bergen, bør nevnes i referansen.</p>
       </div>
     </details>
-
     <details>
       <summary>Ordbøkene på smarttelefon</summary>
       <div>
@@ -786,7 +782,6 @@
         <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="favicon.ico"  aria-hidden="true"/> ligger nå på startsiden din, og du kommer direkte inn på ordboksiden ved å klikke på det. NB! I noen modeller fra Samsung ligger valget «Legg til side i» i en meny nederst på siden. Derfra velger du startsiden.</p>
       </div>
     </details>
-
     <details>
       <summary>Åpne data</summary>
       <div>
@@ -794,7 +789,6 @@
         <p>Informasjonen i bøyingstabellene i <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> er hentet fra Norsk ordbank. Ordbanken er en leksikalsk database for bokmål og nynorsk med informasjon om ordklasse og normert bøying for langt flere ord enn de som er oppslagsord i standardordbøkene. Norsk ordbank ligger <a href="https://www.nb.no/sprakbanken/ressurskatalog/?_search=ordbank">tilgjengelig for nedlasting hos Språkbanken</a> ved Nasjonalbiblioteket under lisensen CC-BY. </p>
       </div>
     </details>
-
     <details>
       <summary>Historikk</summary>
       <div>
@@ -803,7 +797,6 @@
         <p>Universitetet i Bergen og Språkrådet kommer ikke til publisere flere trykte utgaver av standardordbøkene.</p>
       </div>
     </details>
-
     <details>
       <summary>Revisjonsprosjektet</summary>
       <div>
@@ -839,7 +832,6 @@
         <p><a href="https://www.netlife.com/">Netlife</a> har gjennomført brukerundersøkelser og utarbeidet designskisser til ordbøkene.no.</p>
       </div>
     </details>
-
     <details>
       <summary>Grammatiske koder i ordbøkene</summary>
       <p>Kodene nedenfor viser de regelrette bøyningene for substantiv, adjektiv og verb. Ord med med ufullstendige eller uregelrette bøyninger i disse ordklassene har koder uten tall. De er merket med f. (femininum, hunkjønn), m. (maskulinum, hankjønn), n. (nøytrum, intetkjønn), subst. (substantiv), adj. (adjektiv) eller v. (verb).</p>
@@ -1097,150 +1089,185 @@
 		      <td> visa</td>
 		      <td> viser</td>
 		      <td> visene</td>
-	    </tr>
-    	<tr>
-	     	<td>f3</td>
-		    <td> dronning</td>
-		    <td> dronninga</td>
-		    <td> dronningar</td>
-		    <td> dronningane</td>
-	    </tr>
-	    <tr>
-		    <td>m1</td>
-		    <td> båt</td>
-		    <td> båten</td>
-	    	<td> båtar</td>
-		    <td> båtane</td>
-	    </tr>
-	    <tr>
-		    <td>&nbsp;</td>
-		    <td>hage</td>
-		    <td>hagen</td>
-		    <td>hagar</td>
-		    <td>hagane</td>
-	    </tr>
-	    <tr>
-		    <td>&nbsp;</td>
-		    <td> lærar</td>
-		    <td> læraren</td>
-		    <td> lærarar</td>
-		    <td> lærarane</td>
-	    </tr>
-	    <tr>
-		    <td>n1</td>
-		    <td> hus</td>
-	    	<td> huset</td>
-		    <td> hus</td>
-		    <td> husa</td>
-	    </tr>
-	    <tr>
-		    <td>&nbsp;</td>
-		    <td> rike</td>
-		    <td> riket</td>
-		    <td> rike</td>
-		    <td> rika</td>
-	    </tr>
-    </table>
-    <h3>Adjektiv (Nynorskordboka)</h3>
-    <table>
-      <tr>
-        <th>Kode</th>
-        <th>Hankjønn og hokjønn</th>
-        <th>Inkjekjønn</th>
-        <th>Bunden form</th>
-        <th>Fleirtal</th>
-      </tr>
-	    <tr>
-		    <td>a1</td>
-		    <td> sterk</td>
-		    <td> sterkt</td>
-		    <td> sterke</td>
-		    <td> sterke</td>
-	    </tr>
-	    <tr>
-	    	<td>a2</td>
-		    <td> norsk</td>
-		    <td> norsk</td>
-	    	<td> norske</td>
-	    	<td> norske</td>
-	    </tr>
-	    <tr>
-	     	<td>a3</td>
-		    <td> grepa</td>
-		    <td> grepa</td>
-	     	<td> grepa</td>
-		    <td> grepa</td>
-	    </tr>
-	    <tr>
-		    <td>a4</td>
-		    <td> open</td>
-		    <td> ope el. opent</td>
-		    <td> opne</td>
-		    <td> opne</td>
-	    </tr>
-	    <tr>
-	    	<td>a5</td>
-		    <td> vaksen</td>
-		    <td> vakse</td>
-		    <td> vaksne</td>
-		    <td> vaksne</td>
-	    </tr>
-    </table>
-    <h3>Verb (Nynorskordboka)</h3>
-    <table>
-      <tr>
-		    <th>Kode</th>
-		    <th>Infinitiv</th>
-		    <th>Presens (Notid)</th>
-		    <th>Preteritum (Fortid)</th>
-		    <th>Perfektum partisipp (Supinum)</th>
-	    </tr>
-	    <tr>
-		    <td>v1</td>
-		    <td> kasta el. kaste</td>
-		    <td> kastar</td>
-		    <td> kasta</td>
-		    <td> kasta</td>
-	    </tr>
-    	<tr>
-		    <td></td>
-		    <td> ropa el. rope</td>
-		    <td> ropar</td>
-		    <td> ropa</td>
-		    <td> ropa</td>
-	    </tr>
-	    <tr>
-		    <td>v2</td>
-		    <td> kvila el. kvile</td>
-		    <td> kviler</td>
-		    <td> kvilte</td>
-		    <td> kvilt</td>
-	    </tr>
-	    <tr>
-	    	<td></td>
-	     	<td>ropa el. rope</td>
-	  		<td> roper</td>
-		   	<td> ropte</td>
-		  	<td> ropt</td>
-	    </tr>
-      <tr>
-		    <td>v3</td>
-		    <td> ropa el. rope</td>
-		    <td> ropar</td>
-		    <td> ropte</td>
-		    <td> ropt</td>
-	    </tr>
-    </table>
-  </details>
-
-
-
-
-
-
-
-
-
+	      </tr>
+      	<tr>
+  	     	<td>f3</td>
+	  	    <td> dronning</td>
+		      <td> dronninga</td>
+		      <td> dronningar</td>
+		      <td> dronningane</td>
+  	    </tr>
+  	    <tr>
+  		    <td>m1</td>
+	  	    <td> båt</td>
+		      <td> båten</td>
+	      	<td> båtar</td>
+		      <td> båtane</td>
+  	    </tr>
+	      <tr>
+  		    <td>&nbsp;</td>
+	  	    <td>hage</td>
+		      <td>hagen</td>
+		      <td>hagar</td>
+		      <td>hagane</td>
+  	    </tr>
+	      <tr>
+  		    <td>&nbsp;</td>
+	  	    <td> lærar</td>
+		      <td> læraren</td>
+		      <td> lærarar</td>
+		      <td> lærarane</td>
+  	    </tr>
+	      <tr>
+  		    <td>n1</td>
+	  	    <td> hus</td>
+	      	<td> huset</td>
+		      <td> hus</td>
+		      <td> husa</td>
+  	    </tr>
+	      <tr>
+		      <td>&nbsp;</td>
+		      <td> rike</td>
+		      <td> riket</td>
+  		    <td> rike</td>
+	  	    <td> rika</td>
+	      </tr>
+      </table>
+      <h3>Adjektiv (Nynorskordboka)</h3>
+      <table>
+        <tr>
+          <th>Kode</th>
+          <th>Hankjønn og hokjønn</th>
+          <th>Inkjekjønn</th>
+          <th>Bunden form</th>
+          <th>Fleirtal</th>
+        </tr>
+	      <tr>
+		      <td>a1</td>
+		      <td> sterk</td>
+		      <td> sterkt</td>
+  		    <td> sterke</td>
+	  	    <td> sterke</td>
+	      </tr>
+	      <tr>
+  	    	<td>a2</td>
+	  	    <td> norsk</td>
+		      <td> norsk</td>
+	      	<td> norske</td>
+	    	  <td> norske</td>
+  	    </tr>
+	      <tr>
+	       	<td>a3</td>
+		      <td> grepa</td>
+		      <td> grepa</td>
+  	     	<td> grepa</td>
+	  	    <td> grepa</td>
+	      </tr>
+	      <tr>
+		      <td>a4</td>
+  		    <td> open</td>
+	  	    <td> ope el. opent</td>
+		      <td> opne</td>
+		      <td> opne</td>
+  	    </tr>
+	      <tr>
+	      	<td>a5</td>
+		      <td> vaksen</td>
+		      <td> vakse</td>
+		      <td> vaksne</td>
+		      <td> vaksne</td>
+	      </tr>
+      </table>
+      <h3>Verb (Nynorskordboka)</h3>
+      <table>
+        <tr>
+		      <th>Kode</th>
+		      <th>Infinitiv</th>
+		      <th>Presens (Notid)</th>
+		      <th>Preteritum (Fortid)</th>
+		      <th>Perfektum partisipp (Supinum)</th>
+	      </tr>
+	      <tr>
+		      <td>v1</td>
+		      <td> kasta el. kaste</td>
+		      <td> kastar</td>
+		      <td> kasta</td>
+		      <td> kasta</td>
+	      </tr>
+    	  <tr>
+		      <td></td>
+		      <td> ropa el. rope</td>
+		      <td> ropar</td>
+		      <td> ropa</td>
+		      <td> ropa</td>
+	      </tr>
+	      <tr>
+		      <td>v2</td>
+		      <td> kvila el. kvile</td>
+		      <td> kviler</td>
+		      <td> kvilte</td>
+		      <td> kvilt</td>
+	      </tr>
+	      <tr>
+	    	  <td></td>
+	     	  <td>ropa el. rope</td>
+	  		  <td> roper</td>
+		   	  <td> ropte</td>
+		  	  <td> ropt</td>
+	      </tr>
+        <tr>
+	  	    <td>v3</td>
+		      <td> ropa el. rope</td>
+		      <td> ropar</td>
+		      <td> ropte</td>
+		      <td> ropt</td>
+	      </tr>
+      </table>
+    </details>
+    <details>
+      <summary>Nyttige språklenker</summary>
+      <div>
+        <p>Har du spørsmål om klar, god og korrekt språkbruk, kan du ta kontakt med <a href="mailto:sporsmal@sprakradet.no">Språkrådets svartjeneste</a>.</p>
+        <h3>Språkressurser på nettet</h3>
+        <p>Språksamlingene ved Universitetsbiblioteket i Bergen har en rekke språkressurser, blant annet:</p>
+        <ul>
+          <li><a href="https://ord.uib.no/">ord.uib.no:</a> ordlister og API-beskrivelse for Ordbøkene (<a href="https://ordbokene.no/api/swagger-ui.html">interaktiv dokumentasjon</a>).</li>
+          <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=72&tabid=1106">Norsk ordbank, bokmål:</a> søk i fullformslister for bokmål</li>
+          <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=73&tabid=1116">Norsk ordbank, nynorsk:</a> søk i fullformslister for nynorsk</li>
+          <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=7&tabid=571">Metaordboka:</a> felles database over alle dokumenterte ord sortert på normert nynorsk oppslagsord</li>
+          <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=118&tabid=1777">Ordbokhotellet:</a> elektronisk indeks over ordformer fra en rekke lokale ordsamlinger sortert under normert oppslagsform</li>
+          <li><a href="http://inger.uib.no/perl/search/search.cgi">Alle digitale språkressurser under språksamlingene</a></li>
+        </ul>
+        <p><a href="http://www.sprakradet.no/">Språkrådet</a> har mange språkressurser samlet under menyen Språkhjelp, gå til <a href="http://www.sprakradet.no/sprakhjelp/Skriveregler/">skriveregler</a>, <a href="http://www.sprakradet.no/sprakhjelp/Praktisk-grammatikk/">praktisk grammatikk</a> eller <a href="http://www.sprakradet.no/sprakhjelp/Skriverad/">skriveråd</a>.</p>
+        <p>Norsk ordbank ligger også tilgjengelig for nedlasting hos <a href="https://www.nb.no/sprakbanken/ressurskatalog/?_search=ordbank">Språkbanken ved Nasjonalbiblioteket</a> under lisensen CC-BY. Ordbanken inneholder bl.a. fullformslister for bokmål og nynorsk med informasjon om ordklasse og normert bøying.</p>
+        <h3>Andre kvalitetssikrede og fritt tilgjengelige ordbøker</h3>
+        <ul>
+          <li><a href="https://alfa.norsk-ordbok.noperl/ordbok/no2014.cgi">Norsk Ordbok:</a> Ordboka over det norske folkemålet og det nynorske skriftmålet</li>
+          <li><a href="https://naob.no/">NAOB:</a> Det Norske Akademis Ordbok: bokmål og riksmål fra tidlig 1800-tall fram til i dag</li>
+          <li><a href="http://lexin.udir.no/">LEXIN:</a> ordbøker for minoritetsspråklige elever i grunnskolen, videregående og voksenopplæring</li>
+          <li><a href="http://www.islex.no/">Islex:</a> ordbok fra islandsk til norsk (bokmål og nynorsk), svensk, dansk, færøysk og finsk</li>
+          <li><a href="http://ordnet.dk/">ordnet.dk:</a> flere danske ordbøker og korpus</li>
+          <li><a href="https://svenska.se/">svenska.se:</a> flere svenske ordbøker</li>
+        </ul>
+      </div>
+    </details>
+    <details>
+      <summary>Bruk av ordbøkene.no i skolen</summary>
+      <p>Blant norskspråklige ordbøker og ordlister er det bare de som er godkjent av Språkrådet, som kan brukes i undervisning og på prøver og eksamen. <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> er blant disse, og de andre finner du på <a href ="https://www.sprakradet.no/sprakhjelp/Skriverad/Ordlister/Ordlister-til-skulebruk/"> Språkrådets oversikt over godkjente ressurser</a>.</p>
+      <p>Når skolene stenger en del nettsider på prøver og eksamen, må et utvalg andre sider være åpne for at ordbøkene.no skal fungere. Her er domenene som ordboksida bruker:</p>
+      <ul>
+        <li><a href="https://ordbokene.no/">https://ordbokene.no/</a></li>
+        <li><a href="https://oda.uib.no/">https://oda.uib.no/</a></li>
+        <li><a href="https://odd.uib.no/">https://odd.uib.no/</a></li>
+        <li><a href="https://plausible.io/">https://plausible.io/</a></li>
+      </ul>
+      <p>Nynorsksenteret har skrevet to saker om bruk av ordbøkene.no i skolen:</p>
+      <ul>
+        <li><a href="https://nynorsksenteret.no/vidaregaande/grammatikk/gode-tips-til-bruk-av-nettordboka">Gode tips til bruk av nettordboka</a></li>
+        <li><a href="https://nynorsksenteret.no/blogg/ta-i-bruk-dei-nye-ordbokene">Ta i bruk dei nye ordbøkene</a></li>
+      </ul>
+      <p>Nynorsksenteret har dessuten et opplegg for ungdomsskolen om <a href="https://nynorsksenteret.no/ungdomsskule/skriving/kreativ-skriving/hiphop-ordboka-som-kreativt-verktoy">hiphop og bruk av ordbøkene som kreative verktøy</a></p>
+    </details>
   </div>
 </main>
 </template>

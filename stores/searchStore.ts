@@ -1,7 +1,5 @@
-// Store that syncronizes with routing
+// Some values syncronized with routing in middleware
 import { defineStore } from 'pinia'
-
-
 export const useStore = defineStore('store', {
     state: () => ({
       q:"",

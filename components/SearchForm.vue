@@ -5,7 +5,7 @@
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item" name="dict">{{$t(`dicts.${item}`)}}</option>
 </select>
   <Autocomplete v-on:submit="submitForm"/>
-  <button :aria-label="$t('search')" class="btn rounded-pill"> <i class="bi bi-search input-group-text" aria-hidden="true"/></button>
+  <button :aria-label="$t('search')" class="btn btn-outline-primary rounded-pill"> <i class="bi bi-search input-group-text" aria-hidden="true"/></button>
 </form>
 
 </div>
@@ -61,6 +61,9 @@ const change_dict = function(event) {
 .btn:hover,.btn:focus{
   background-color: white;
   color: var(--bs-primary);
+}
+.rounded-pill{
+  border: none;
 }
 
 .input-group-text{

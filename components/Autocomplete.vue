@@ -90,7 +90,7 @@ const clearText = () => {
   <div class="searchField">
     <Combobox v-model="store.input" v-on:update:modelValue="submit" @submit.prevent="submit">
       <div>
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between">
           <ComboboxInput
             class="form-control"
             name="q"
@@ -103,7 +103,9 @@ const clearText = () => {
             ref="input"
             @input="store.input = $event.target.value; fetchAutocomplete($event.target.value)"
           />
-          <button type="button" class="btn-close" aria-label="Clear" v-on:click="clearText"></button>
+          <div v-if="store.input.length > 0">
+            <button type="button" class="btn-close" aria-label="Clear" v-on:click="clearText"></button>
+          </div>
         </div>
         <TransitionRoot
           leave="transition ease-in duration-100"
@@ -139,9 +141,9 @@ const clearText = () => {
 }
 .form-control{
   border: none;
-  border-radius: 0 2rem 2rem 0;
   background-color: white;
   position: relative;
+  width: 95%;
 }
 .form-control:focus{
     box-shadow: none;

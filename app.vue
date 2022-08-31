@@ -108,6 +108,10 @@ html, body, #__nuxt {
   height: 100% !important;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 
 .back-to-search {
   font-size: larger;

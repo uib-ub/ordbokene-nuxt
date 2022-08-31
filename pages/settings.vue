@@ -9,6 +9,19 @@ const resetSettings = (settings) => {
       inflectionTableContext: false, 
     })
 };
+
+const inflectionExpanded = useCookie('expanded')
+
+let expanded = ref(false)
+
+if(inflectionExpanded.value){
+  expanded = inflectionExpanded.value
+}
+
+watch(expanded, () => {
+  console.log(expanded.value)
+  inflectionExpanded.value = expanded.value
+})
 </script>
 
 <template>
@@ -20,7 +33,7 @@ const resetSettings = (settings) => {
   <br>
   {{$route.params}}
   <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="checkOne" v-model="settings.$state.inflectionExpanded">
+    <input class="form-check-input" type="checkbox" value="" id="checkOne" v-model="expanded">
     <label class="form-check-label" for="checkOne">
       {{$t('settings.inflection_expanded')}}
     </label>

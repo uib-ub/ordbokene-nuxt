@@ -1,10 +1,11 @@
 <template>
     <article>
-        <h2 v-if="store.view != 'article'" class="dict-label" role="heading" aria-level="2">{{{"bm":"BOKMÅLSORDBOKA","nn":"NYNORSKORDBOKA"}[dict]}}</h2>
+        <h2 v-if="store.view != 'article'" class="dict-label" role="heading" aria-level="2">{{dict_label}}</h2>
         <div class="p-3">
         <h3>test</h3>
         <ArticleHeader/><br><br>
     {{article}}
+
         </div>
     </article>
 </template>
@@ -17,7 +18,7 @@ import { useRoute } from 'vue-router'
 export default {
     props: {
         article_id: String,
-        dict: String
+        dict_label: String
     },
     async setup(props) {
         const store = useStore()

@@ -1,21 +1,71 @@
 <template>
-    <component :is="'article'">
-    <h2>ID: {{ article_id }}</h2>
-    <h3>Body</h3>
-    <p>{{article}}</p>
-    </component>
+    <article>
+        <h2 v-if="store.view != 'article'" class="dict-label" role="heading" aria-level="2">{{{"bm":"BOKMÅLSORDBOKA","nn":"NYNORSKORDBOKA"}[dict]}}</h2>
+        <div class="p-3">
+        <h3>test</h3>
+        <ArticleHeader/><br><br>
+    {{article}}
+        </div>
+    </article>
 </template>
 
 <script>
+import { useStore } from '~/stores/searchStore'
+import { useRoute } from 'vue-router'
+
 
 export default {
     props: {
         article_id: String,
+        dict: String
     },
     async setup(props) {
+        const store = useStore()
         const { data: article } = await useLazyAsyncData('article', () => $fetch(`https://oda.uib.no/opal/dev/nn/article/${props.article_id}.json`))
-        return {article}
+        return {article, store}
   
+    },
+    computed: {
+        test: function() {
+            return this.store.input
+
+        }
     }
 }
 </script>
+
+<style scoped>
+
+ h2 {
+    color: gray;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0rem;
+    letter-spacing: .1rem;
+    font-weight: 500;
+    z-index: 2;
+    font-variant-caps: all-small-caps;
+    font-size: 1.25rem;
+
+}
+
+h3 {
+    font-family: Inria Serif;
+  color: var(--bs-primary);
+  font-weight:600;
+
+}
+
+article {
+    border-radius: 2rem;
+    border: solid 1px gray;
+    background-color: white;
+}
+
+article:focus-within {
+    border: solid 1px var(--bs-primary);
+
+}
+
+
+</style>

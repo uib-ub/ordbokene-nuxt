@@ -24,8 +24,7 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
   <main>
 PARAMS {{$route.params}}
     <div v-if="welcome_bm || welcome_nn">
-      <Article :article_id="welcome_nn.front_article.value"/>
-      <Article :article_id="welcome_bm.front_article.value"/>
+      <Article :article_id="welcome_nn.front_article.value" dict="nn"/>
     </div>
         <div v-else>
     <h1>WAITING</h1>

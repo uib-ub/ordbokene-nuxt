@@ -62,10 +62,6 @@ article {
     background-color: white;
 }
 
-article:focus-within {
-    border: solid 1px var(--bs-primary);
-
-}
 
 
 </style>

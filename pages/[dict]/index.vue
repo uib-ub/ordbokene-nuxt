@@ -24,12 +24,13 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
     <div class="row" v-if="welcome_bm && welcome_nn">
       <div class="col-lg">
       <Article :article_id="welcome_bm.front_article.value" dict="bm"/>
-      <Article :article_id="welcome_bm.front_article.value" dict="bm"/>
+      <Article :article_id="'60484'" dict="bm"/>
+      <Article :article_id="'60494'" dict="bm"/>
       </div>
       <div class="col-lg">
-        <Article :article_id="'61640'" dict="nn"/>
       <Article :article_id="welcome_nn.front_article.value" dict="nn"/>
-      <Article :article_id="welcome_nn.front_article.value" dict="nn"/>
+      <Article :article_id="'78569'" dict="nn"/>
+      <Article :article_id="'78586'" dict="nn"/>
       </div>
     </div>
         <div v-else>

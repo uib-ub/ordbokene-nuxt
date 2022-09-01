@@ -2,8 +2,23 @@
     <article>
         <h2 v-if="store.view != 'article'" class="dict-label" role="heading" aria-level="2">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div class="p-3">
-        <h3>test</h3>
-        {{article_id}}
+        <h3>test</h3><button class="inflection-button py-1 px-3" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
+            {{$t('article.show_inflection')}}
+        </button>
+        <p>
+           HERE {{collapsed}}
+
+        
+        </p>
+        <div class="collapse" :id="'inflection-'+article_id" ref="inflection_table">
+        <div class="inflection-container card card-body ">
+
+            {{lemmas_with_word_class_and_lang}}
+            
+            <inflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
+
+        </div>
+        </div>
         <ArticleHeader/>
         {{data}}
         
@@ -29,10 +44,14 @@ export default {
   
     },
     computed: {
-        test: function() {
-            return this.store.input
+        collapsed: function() {
+            return this.$refs
 
-        }
+        },
+        lemmas_with_word_class_and_lang: function() {
+      return this.data.lemmas.map(lemma => Object.assign({language: this.dict == 'bm' ? 'nob' : 'nno',
+                                                     word_class: lemma.paradigm_info[0].inflection_group.split('_')[0]}, lemma))
+    },
     }
 }
 </script>
@@ -66,6 +85,24 @@ article {
     margin-bottom: 1rem;
 }
 
+.inflection-button {
+    border: solid 1px var(--bs-primary);
+    color: var(--bs-primary);
+    background-color: white;
+    border-radius: 2rem;
+
+}
+
+.inflection-button:focus {
+    box-shadow: 1px 1px 1px var(--bs-primary);
+}
+
+
+.inflection-container {
+    box-shadow: 1px 1px 1px rgba(0,0,0, .6);
+    border: solid 1px rgba(0,0,0, .6);
+    border-radius: 1.5rem;
+}
 
 
 </style>

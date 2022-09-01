@@ -40,12 +40,11 @@ export default {
 <style scoped>
 
  h2 {
-    color: gray;
+    color: rgba(0,0,0,.6);
     margin-left: 1rem;
     margin-top: 0.5rem;
     margin-bottom: 0rem;
     letter-spacing: .1rem;
-    font-weight: 500;
     z-index: 2;
     font-variant-caps: all-small-caps;
     font-size: 1.25rem;

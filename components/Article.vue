@@ -59,8 +59,10 @@ h3 {
 
 article {
     border-radius: 2rem;
-    border: solid 1px rgba(0,0,0,.25);;
+    border: solid 1px rgba(0,0,0, .2);
     background-color: white;
+    box-shadow: 2px 2px 1px rgba(0,0,0, .2);
+    margin-bottom: 1rem;
 }
 
 

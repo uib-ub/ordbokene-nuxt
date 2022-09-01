@@ -11,9 +11,7 @@ export const useSettingsStore = defineStore('settings', {
     //hydrate(state, initialState){state.inflectionExpanded = useCookie('expanded')}
     actions: {
         setCookie(){
-          watch(this.inflectionExpanded, () => {
-            this.setting.value = this.inflectionExpanded 
-          })
+          this.setting.value = this.inflectionExpanded.value
         }
 
     }

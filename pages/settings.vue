@@ -10,18 +10,13 @@ const resetSettings = (settings) => {
     })
 };
 
-const inflectionExpanded = useCookie('expanded')
+//const inflectionExpanded = useCookie('expanded')
 
-let expanded = ref(false)
+//let expanded = ref(false)
 
-if(inflectionExpanded.value){
-  expanded = inflectionExpanded.value
-}
-
-watch(expanded, () => {
-  console.log(expanded.value)
-  inflectionExpanded.value = expanded.value
-})
+//if(inflectionExpanded.value){
+//  expanded = inflectionExpanded.value
+//}
 </script>
 
 <template>
@@ -33,7 +28,7 @@ watch(expanded, () => {
   <br>
   {{$route.params}}
   <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="checkOne" v-model="expanded">
+    <input class="form-check-input" type="checkbox" value="" id="checkOne" v-model="settings.$state.inflectionExpanded" @click="settings.setCookie()">
     <label class="form-check-label" for="checkOne">
       {{$t('settings.inflection_expanded')}}
     </label>

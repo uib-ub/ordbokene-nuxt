@@ -1,10 +1,12 @@
 <template>
     <article>
-        <h2 v-if="store.view != 'article'" class="dict-label" role="heading" aria-level="2">{{dict_label}}</h2>
+        <h2 v-if="store.view != 'article'" class="dict-label" role="heading" aria-level="2">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div class="p-3">
         <h3>test</h3>
-        <ArticleHeader/><br><br>
-    {{article}}
+        {{article_id}}
+        <ArticleHeader/>
+        {{data}}
+        
 
         </div>
     </article>
@@ -18,12 +20,12 @@ import { useRoute } from 'vue-router'
 export default {
     props: {
         article_id: String,
-        dict_label: String
+        dict: String
     },
     async setup(props) {
         const store = useStore()
-        const { data: article } = await useLazyAsyncData('article', () => $fetch(`https://oda.uib.no/opal/dev/nn/article/${props.article_id}.json`))
-        return {article, store}
+        const { pending, data } = await useAsyncData('articlee'+props.article_id, () => $fetch(`https://oda.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`))
+        return {data, pending, store}
   
     },
     computed: {

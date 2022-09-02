@@ -69,7 +69,7 @@
       <summary>Dictionary revision</summary>
       <p>The Bokmålsordboka and Nynorskordboka are currently undergoing an extensive content update. During the period 2018–2023, an editorial group is revising both dictionaries from a to å. The most important tasks are to bring in new words and update meanings, and make sure that the content is in line with current language use. Making the selection of words more similar in the two dictionaries is also a priority. More information can be found on the Dictionary Revision Project’s website (in Norwegian). </p>
       <p>Current editorial staff of <em>Bokmålsordboka</em> and <em>Nynorskordboka</em>:</p>
-      <ul>
+      <ul class="no-bullet">
         <li>Anne Engø, editor 2018–2023</li>
         <li>Marita Kristiansen, editor 2020–2021</li>
         <li>Gunn Inger Lyse, editor 2018–2023</li>
@@ -82,14 +82,14 @@
         <li>Terje Svardal, editor at the Norwegian Language Collections</li>
       </ul>
       <p>Quality controllers in the Language Council:</p>
-      <ul>
+      <ul class="no-bullet">
         <li>Sturla Berg-Olsen, senior adviser</li>
         <li>Knut E. Karlsen, senior adviser</li>
         <li>Dagfinn Rødningen, senior adviser</li>
         <li>Ålov Runde, senior adviser</li>
       </ul>
       <p>IT Developers at the University of Bergen</p>
-      <ul>
+      <ul class="no-bullet">
         <li>Henrik Askjer, head engineer, Norwegian Language Collections</li>
         <li>Eirik T. Gullaksen, head engineer, IT department</li>
         <li>Paul Meurer, senior engineer, Norwegian Language Collections</li>
@@ -250,7 +250,7 @@
           <a href="https://www.uib.no/lle/revisjonsprosjektet">nettsida til Revisjonsprosjektet</a>.
         </p>
         <p>Noverande redaksjon for <em>Bokmålsordboka </em>og <em>Nynorskordboka</em>:</p>
-        <ul>
+        <ul class="no-bullet">
           <li>Anne Engø, redaktør 2018–2023</li>
           <li>Marita Kristiansen, redaktør 2020–2021</li>
           <li>Gunn Inger Lyse, redaktør 2018–2023</li>
@@ -263,14 +263,14 @@
           <li>Terje Svardal, redaktør ved Språksamlingane</li>
         </ul>
         <p>Kvalitetskontrollørar i Språkrådet:</p>
-        <ul>
+        <ul class="no-bullet">
           <li>Sturla Berg-Olsen, seniorrådgjevar</li>
           <li>Knut E. Karlsen, seniorrådgjevar</li>
           <li>Ålov Runde, seniorrådgjevar</li>
           <li>Dagfinn Rødningen, seniorrådgjevar</li>
         </ul>
         <p>Denne sida har blitt utforma av utviklarar på IT-avdelinga ved Universitetet i Bergen og Språksamlingane:</p>
-        <ul>
+        <ul class="no-bullet">
           <li>Henrik Askjer, overingeniør, Språksamlingane</li>
           <li>Eirik T. Gullaksen, overingeniør, IT-avdelinga</li>
           <li>Paul Meurer, senioringeniør, Språksamlingane</lI>
@@ -284,7 +284,7 @@
       <summary>Grammatiske kodar i ordbøkene</summary>
       <p>Kodane nedanfor viser dei regelrette bøyingane for substantiv, adjektiv og verb. Ord med ufullstendige eller uregelrette bøyingar i desse ordklassane har bøyingskodar utan tal. Dei er merkte f. (femininum, hokjønn), m. (maskulinum, hankjønn), n. (nøytrum, inkjekjønn), subst. (substantiv), adj. (adjektiv) eller v. (verb).</p>
       <h3>Substantiv (Nynorskordboka)</h3>
-      <table>
+      <table class="table table-bordered">
         <tr>
           <th>Kode</th>
           <th>Ubunden form eintal</th>
@@ -350,7 +350,7 @@
 	      </tr>
       </table>
       <h3>Adjektiv (Nynorskordboka)</h3>
-      <table>
+      <table class="table table-bordered">
         <tr>
           <th>Kode</th>
           <th>Hankjønn og hokjønn</th>
@@ -395,7 +395,7 @@
 	      </tr>
       </table>
       <h3>Verb (Nynorskordboka)</h3>
-      <table>
+      <table class="table table-bordered">
         <tr>
           <th>Kode</th>
 		      <th>Infinitiv</th>
@@ -440,7 +440,7 @@
 	      </tr>
       </table>
       <h3>Substantiv (Bokmålsordboka)</h3>
-      <table>
+      <table class="table table-bordered">
         <tbody>
           <tr>
 	          <th>Kode</th>
@@ -550,7 +550,7 @@
         </tbody>
       </table>
       <h3>Adjektiv (Bokmålsordboka)</h3>
-      <table>
+      <table class="table table-bordered">
         <tbody>
           <tr>
             <th>Kode</th>
@@ -611,7 +611,7 @@
         </tbody>
       </table>
       <h3>Verb (Bokmålsordboka)</h3>
-      <table>
+      <table class="table table-bordered">
         <tbody>
           <tr>
             <th>Kode</th>
@@ -802,7 +802,7 @@
       <div>
         <p>Det pågår for tiden et omfattende arbeid med å oppdatere innholdet i <em>Bokmålsordboka</em> og <em>Nynorskordboka</em>. I perioden 2018–2023 går en gruppe redaktører gjennom begge ordbøkene fra a til å. De viktigste oppgavene er å få inn nye ord og betydninger, passe på at innholdet er i tråd med dagens språkbruk, og gjøre utvalget av ord likere i de to ordbøkene. Mer informasjon finner du på  <a href="https://www.uib.no/lle/revisjonsprosjektet">nettsiden til Revisjonsprosjektet</a>.</p>
         <p>Nåværende redaksjon for <em>Bokmålsordboka</em> og <em>Nynorskordboka</em>:</p>
-        <ul>
+        <ul class="no-bullet">
           <li>Anne Engø, redaktør 2018–2023</li>
           <li>Marita Kristiansen, redaktør 2020–2021</li>
           <li>Gunn Inger Lyse, redaktør 2018–2023</li>
@@ -815,14 +815,14 @@
           <li>Terje Svardal, redaktør ved Språksamlingene</li>
         </ul>
         <p>Kvalitetskontrollører i Språkrådet:</p>
-        <ul>
+        <ul class="no-bullet">
           <li>Sturla Berg-Olsen, seniorrådgiver</li>
           <li>Knut E. Karlsen, seniorrådgiver</li>
           <li>Dagfinn Rødningen, seniorrådgiver</li>
           <li>Ålov Runde, seniorrådgiver</li>
         </ul>
         <p>Denne siden har blitt utformet av utviklere på IT-avdelingen ved Universitetet i Bergen og Språksamlingane:</p>
-        <ul>
+        <ul class="no-bullet">
           <li>Henrik Askjer, overingeniør, Språksamlingane</li>
           <li>Eirik T. Gullaksen, overingeniør, IT-avdelingen</li>
           <li>Paul Meurer, senioringeniør, Språksamlingane</li>
@@ -836,7 +836,7 @@
       <summary>Grammatiske koder i ordbøkene</summary>
       <p>Kodene nedenfor viser de regelrette bøyningene for substantiv, adjektiv og verb. Ord med med ufullstendige eller uregelrette bøyninger i disse ordklassene har koder uten tall. De er merket med f. (femininum, hunkjønn), m. (maskulinum, hankjønn), n. (nøytrum, intetkjønn), subst. (substantiv), adj. (adjektiv) eller v. (verb).</p>
       <h3>Substantiv (Bokmålsordboka)</h3>
-      <table>
+      <table class="table table-bordered">
         <tbody>
           <tr>
             <th>Kode</th>
@@ -946,7 +946,7 @@
         </tbody>
       </table>
       <h3>Adjektiv (Bokmålsordboka)</h3>
-      <table>
+      <table class="table table-bordered">
         <tbody>
           <tr>
             <th>Kode</th>
@@ -1007,7 +1007,7 @@
         </tbody>
       </table>
       <h3>Verb (Bokmålsordboka)</h3>
-      <table>
+      <table class="table table-bordered">
         <tbody>
           <tr>
             <th>Kode</th>
@@ -1068,7 +1068,7 @@
         </tbody>
       </table>
       <h3>Substantiv (Nynorskordboka)</h3>
-      <table>
+      <table class="table table-bordered">
         <tr>
           <th>Kode</th>
           <th>Ubunden form eintal</th>
@@ -1134,7 +1134,7 @@
 	      </tr>
       </table>
       <h3>Adjektiv (Nynorskordboka)</h3>
-      <table>
+      <table class="table table-bordered">
         <tr>
           <th>Kode</th>
           <th>Hankjønn og hokjønn</th>
@@ -1179,7 +1179,7 @@
 	      </tr>
       </table>
       <h3>Verb (Nynorskordboka)</h3>
-      <table>
+      <table class="table table-bordered">
         <tr>
 		      <th>Kode</th>
 		      <th>Infinitiv</th>
@@ -1271,3 +1271,15 @@
   </div>
 </main>
 </template>
+
+<style scoped>
+summary{
+  color: var(--bs-primary);
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.no-bullet{
+  list-style-type: none;
+}
+</style>

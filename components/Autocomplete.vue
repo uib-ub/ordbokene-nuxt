@@ -90,7 +90,7 @@ const clearText = () => {
   <div class="searchField">
     <Combobox v-model="store.input" v-on:update:modelValue="submit" @submit.prevent="submit">
       <div>
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="height d-flex align-items-center justify-content-between">
           <ComboboxInput
             class="form-control"
             name="q"
@@ -138,6 +138,9 @@ const clearText = () => {
 <style scoped>
 .searchField{
     width: 100%;
+}
+.height{
+    height: 42.391px;
 }
 .form-control{
   border: none;

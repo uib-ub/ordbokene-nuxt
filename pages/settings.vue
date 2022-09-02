@@ -9,6 +9,7 @@ const resetSettings = (settings) => {
       inflectionTableContext: false, 
     })
 };
+
 </script>
 
 <template>

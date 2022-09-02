@@ -1,4 +1,3 @@
-import { setBlockTracking } from "nuxt/dist/app/compat/capi";
 import { defineStore } from "pinia";
 
 

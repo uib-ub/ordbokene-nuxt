@@ -13,9 +13,7 @@
         <div class="collapse" :id="'inflection-'+article_id" ref="inflection_table">
         <div class="inflection-container card card-body ">
 
-            {{lemmas_with_word_class_and_lang}}
-            
-            <inflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
+            <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
 
         </div>
         </div>
@@ -102,6 +100,11 @@ article {
     box-shadow: 1px 1px 1px rgba(0,0,0, .6);
     border: solid 1px rgba(0,0,0, .6);
     border-radius: 1.5rem;
+    display: inline-flex;
+}
+
+.inflection-wrapper {
+    overflow: hidden;
 }
 
 

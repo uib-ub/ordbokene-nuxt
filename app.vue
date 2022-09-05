@@ -73,9 +73,11 @@ const route = useRoute()
 
 
 <style>
-/*input[type="text"]:focus,input[type="radio"]:focus,.btn:focus,input[type="checkbox"]:focus{
-  box-shadow: none;
-}*/
+
+::selection {
+  background-color: var(--bs-secondary);
+  color: white;
+}
 
 html, body, #__nuxt {
   height: 100% !important;

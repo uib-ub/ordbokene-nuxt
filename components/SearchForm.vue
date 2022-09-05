@@ -1,9 +1,15 @@
 <template>
 <div class="my-3">
 <form class="input-group active p-md-2" :class="{activeAutocomplete: store.autocomplete.length}" @submit.prevent="submitForm" ref="form">
-<select class="dropdown-toggle btn btn-outline-primary" @change="change_dict" v-model="store.$state.dict">
+  <div class="dropdown">
+    <button class="btn btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{{$t(`dicts.${store.dict}`)}}<span class=".d-sm-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
+    <ul class="dropdown-menu">
+      <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button class="dropdown-item" @click="store.dict = item">{{$t(`dicts.${item}`)}}</button></li>
+    </ul>
+  </div>
+<!--<select class="dropdown-toggle btn btn-outline-primary" @change="change_dict" v-model="store.$state.dict">
   <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item" name="dict">{{$t(`dicts.${item}`)}}</option>
-</select>
+</select>-->
   <Autocomplete v-on:submit="submitForm"/>
   <button :aria-label="$t('search')" class="btn btn-outline-primary rounded-pill"> <i class="bi bi-search input-group-text" aria-hidden="true"/></button>
 </form>
@@ -51,9 +57,14 @@ const change_dict = function(event) {
   border-radius: 1rem 1rem 0 0;
 }
 
+.dropdown-menu{
+  border: solid 1px var(--bs-primary);
+  box-shadow: 1.5px 1.5px 1px var(--bs-primary);
+}
 .btn-outline-primary{
   border: none;
   border-right: solid 1px var(--bs-primary);
+  height: 100%;
 }
 .btn{
   border-radius: 2rem 0 0 2rem;

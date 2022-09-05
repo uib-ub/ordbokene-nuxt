@@ -101,7 +101,8 @@ const clearText = () => {
             autocapitalize="off"
             required="true"
             ref="input"
-            @input="store.input = $event.target.value; fetchAutocomplete($event.target.value)"
+            @input="store.input = $event.target.value; fetchAutocomplete($event.target.value)" 
+            :placeholder="$t('search_placeholder')"
           />
           <div v-if="store.input.length > 0">
             <button type="button" class="btn-close" aria-label="Clear" v-on:click="clearText"></button>
@@ -150,6 +151,13 @@ const clearText = () => {
 }
 .form-control:focus{
     box-shadow: none;
+}
+.form-control::placeholder{
+    color: var(--bs-primary);
+    font-style: italic;
+}
+.form-control:focus::placeholder{
+    opacity: 0.5;
 }
 .autocomplete {
   outline: solid 1px var(--bs-primary);

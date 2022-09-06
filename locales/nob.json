@@ -29,7 +29,7 @@
   "dicts": {
       "nn": "Nynorskordboka",
       "bm": "Bokmålsordboka",
-      "bm,nn": "begge ordbøkene"
+      "bm,nn": "Begge ordbøkene"
   },
   "dicts_inline": {
       "nn": "Nynorskordboka",
@@ -37,9 +37,9 @@
       "bm,nn": "ordbøkene"
   },
   "dicts_short": {
-    "nn": "nynorsk",
-    "bm": "bokmål",
-    "bm,nn": "begge"
+    "nn": "Nynorsk",
+    "bm": "Bokmål",
+    "bm,nn": "Begge"
   },
   "menu": {
       "title": "Meny",

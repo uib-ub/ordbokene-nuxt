@@ -36,9 +36,9 @@
       "bm,nn": "the dictionaries"
   },
   "dicts_short": {
-    "nn": "nynorsk",
-    "bm": "bokmål",
-    "bm,nn": "both"
+    "nn": "Nynorsk",
+    "bm": "Bokmål",
+    "bm,nn": "Both"
   },
   "menu": {
     "title": "Menu"

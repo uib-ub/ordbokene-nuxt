@@ -136,6 +136,12 @@ h1 {
 }
 
 
+.nav-link {
+  font-variant-caps: all-small-caps;
+  font-size: 1.25rem;
+  letter-spacing: .1rem;
+}
+
 .navbar-expand-lg .nav-item.active {
   border-left: 0.25rem solid var(--bs-secondary);
 }

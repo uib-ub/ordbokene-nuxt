@@ -84,21 +84,21 @@ article {
 }
 
 .inflection-button {
-    border: solid 1px var(--bs-primary);
-    color: var(--bs-primary);
+    border: solid 1px var(--bs-link);
+    color: var(--bs-link);
     background-color: white;
     border-radius: 2rem;
 
 }
 
 .inflection-button:focus {
-    box-shadow: 1px 1px 1px var(--bs-primary);
+    box-shadow: 1px 1px 1px var(--bs-link);
 }
 
 
 .inflection-container {
-    box-shadow: 1px 1px 1px rgba(0,0,0, .6);
-    border: solid 1px rgba(0,0,0, .6);
+    box-shadow: 1px 1px 1px var(--bs-link);
+    border: solid 1px var(--bs-link);
     border-radius: 1.5rem;
     display: inline-flex;
 }

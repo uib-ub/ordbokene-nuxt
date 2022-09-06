@@ -31,7 +31,7 @@ async function submitForm(item) {
 
     }
     store.q = store.input
-    await navigateTo(store.searchUrl, { replace: true })
+    await navigateTo(searchUrl)
     
   
 }

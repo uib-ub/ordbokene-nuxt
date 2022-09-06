@@ -1,23 +1,21 @@
 <template>
     <article>
-        <h2 v-if="store.view != 'article'" class="dict-label" role="heading" aria-level="2">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
+        <h2 v-if="store.view != 'article'" class="dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div class="p-3">
         <h3>test</h3><button class="inflection-button py-1 px-3" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
             {{$t('article.show_inflection')}}
         </button>
         <p>
-           HERE {{collapsed}}
 
         
         </p>
         <div class="collapse" :id="'inflection-'+article_id" ref="inflection_table">
-        <div class="inflection-container card card-body ">
+        <div class="inflection-container card card-body">
 
             <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
 
         </div>
         </div>
-        <ArticleHeader/>
         {{data}}
         
 

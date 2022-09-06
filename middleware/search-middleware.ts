@@ -27,12 +27,14 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
                         // kun hvis resultatet er et uttrykk eller har litt andre tegn?
                         console.log("EXACT", exact[0][0])
                         store.searchUrl = "/bm,nn/" + exact[0][0]
+                        store.originalInput = to.query.q
                         return store.searchUrl
                     }
                 }
                 if (inflect) {
                         console.log("INFLECT", inflect[0][0])
                         store.searchUrl = "/bm,nn/" + inflect[0][0]
+                        store.originalInput = to.query.q
                         return store.searchUrl
                     
                 }
@@ -53,7 +55,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     else if (to.params.slug[0] == 'search') {
         console.log("SEARCH")
         store.view = "search"
-        tore.q = to.query.q
+        store.q = to.query.q
         store.input = to.query.q
         store.searchUrl = to.fullPath
 
@@ -76,7 +78,14 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         console.log("TO", to)
         console.log("FROM", from)
         store.q = to.params.slug[0]
-        store.input = to.params.slug[0]
+        if (store.originalInput) {
+            store.input = store.originalInput
+            store.originalInput = ""
+        }
+        else {
+            store.input = to.params.slug[0]
+        }
+        
         store.view = 'word'
         store.searchUrl = to.fullPath
     }
@@ -99,5 +108,8 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     
     
   }
-}
-   )
+  else {
+    store.q = ""
+    store.input = ""
+  }
+})

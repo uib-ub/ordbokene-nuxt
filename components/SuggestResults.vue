@@ -1,10 +1,11 @@
 <template>
-<div>
-<ul>
-    <li v-for="(item, idx) in data.a.similar" :key="idx">{{item[0]}}</li>
-
-</ul>
-{{data}}
+<div v-if="store.suggest.a" class="row">
+    <h3>Mente du</h3>
+    <ul class = "nav nav-pills">
+        <li v-for="(item, idx) in suggestions" :key="idx+store.q">
+            <button>{{item[0]}}</button>
+        </li>
+    </ul>
 </div>
 </template>
 
@@ -13,10 +14,38 @@
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
 
+const suggestions = computed(() => {
+    let assembled = []
+    let seen = new Set()
 
-const { data } = await useLazyAsyncData('suggest', () => $fetch(`https://oda.uib.no/opal/dev/api/suggest?q=${store.selected.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=eifs`))
+    if (store.suggest.a.inflect) {
+        store.suggest.a.inflect.forEach(item => {
+            if (store.q != item[0]) {
+                assembled.push(item)
+                seen.add(item[0])
+            }
+        })
+    }
+
+    if (store.suggest.a.exact) {
+        store.suggest.a.exact.forEach(item => {
+            if (!seen.has(item[0])
+            && store.q != item[0] 
+            && (item[0].length <= store.q.length 
+            || (item[0].slice(0, store.q.length) != store.q && item[0] != "å "+store.q))) {
+                assembled.push(item)
+            }
+        })
+    }
+
+    if (store.suggest.a.similar) {
+        store.suggest.a.similar.forEach(item => {
+                assembled.push(item)
+        })
+    }
 
 
-
+    return assembled  
+});
 
 </script>

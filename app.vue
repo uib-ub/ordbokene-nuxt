@@ -56,8 +56,18 @@
     <NuxtPage class="page-container container p-3" />
 
 
-  <footer class="footer mt-auto p-3 bg-primary text-white">
-<div>{{store.$state}}</div>
+<footer class="footer mt-auto p-3 bg-primary text-white">
+  <div>
+    <img id="srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
+    <img id="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
+  </div>
+  <div><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}
+    <button>{{$t('about')}}</button>
+    <button>{{$t('help')}}</button>
+    <button>{{$t('settings.title')}}</button>
+    <button>{{$t('contact.title')}}</button>
+  </div>
+<!--<div>{{store.$state}}</div>-->
 </footer>
   </div>
 </template>

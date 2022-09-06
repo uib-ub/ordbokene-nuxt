@@ -183,6 +183,7 @@ main a  {
 
 .secondary-page {
   background-color: white;
+  padding: 3rem !important;
 }
 
 .secondary-page h2 {

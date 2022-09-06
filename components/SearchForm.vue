@@ -25,9 +25,9 @@ const route = useRoute()
 
 async function submitForm(item) {
   store.autocomplete = [] 
-    store.searchUrl = '/'+store.dict+'/search?q='+store.input
+    let searchUrl = '/'+store.dict+'/submit?q='+store.input
     if (store.advanced) {
-      store.searchUrl += "&scope=ei"
+      searchUrl += "&scope=ei"
 
     }
     store.q = store.input

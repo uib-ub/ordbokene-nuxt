@@ -734,10 +734,8 @@ export default {
     },
     methods: {
         highlighted: function(rowindex, lemmaId) {
-          console.log("HIGHLIGHTING", lemmaId, this.highlightedLemma)
           if(lemmaId == this.highlightedLemma)
           for(const item of rowindex) {
-            console.log('item',item)
             if (this.highlightedRows.includes(item)) {
               return true
             }
@@ -747,10 +745,8 @@ export default {
 
         },
         hilite: function(rowindex, lemmaId) {
-          console.log("HILITE", rowindex, lemmaId)
           this.highlightedLemma = lemmaId
           this.highlightedRows = rowindex
-          console.log("THE ID", this.highlightedId, rowindex.join('-'))
         },
         unhilite: function() {
           this.highlightedLemma = null

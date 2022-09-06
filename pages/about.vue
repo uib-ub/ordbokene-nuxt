@@ -1275,9 +1275,9 @@
 <style scoped>
 summary{
   color: var(--bs-primary);
-  text-transform: uppercase;
+  font-variant: all-small-caps;
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .no-bullet{
   list-style-type: none;

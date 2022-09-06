@@ -30,18 +30,18 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
                         return store.searchUrl
                     }
                 }
-                else if (inflect) {
+                if (inflect) {
                         console.log("INFLECT", inflect[0][0])
                         store.searchUrl = "/bm,nn/" + inflect[0][0]
                         return store.searchUrl
                     
                 }
-                else {
-                    console.log("REDIRECT SUGGEST")
-                    store.searchUrl = "suggest?q="+to.query.q
-                    return store.searchUrl
+
+                console.log("REDIRECT SUGGEST")
+                store.searchUrl = "suggest?q="+to.query.q
+                return store.searchUrl
                     
-                }
+
 
 
 

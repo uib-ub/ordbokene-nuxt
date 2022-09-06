@@ -99,7 +99,6 @@ const clearText = () => {
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
-            required="true"
             ref="input"
             @input="store.input = $event.target.value; fetchAutocomplete($event.target.value)" 
             :placeholder="$t('search_placeholder')"

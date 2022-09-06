@@ -1,6 +1,7 @@
 <template>
 <tr>
-  <template v-for="([prefix, [rowspan,rowindex,forms], gender, colref], index) in cells" :key="index"> 
+  <template v-for="([prefix, [rowspan,rowindex,forms], gender, colref], index) in cells" 
+    :key="index"> 
     <th v-if="gender"
         class="infl-label"
         :id="colref"
@@ -8,7 +9,7 @@
         headers="gender"
         :rowspan="rowspan"
         :index="rowindex"
-        @mouseover.stop="hiliteRow(rowindex)">
+        v-on:mouseover="$emit('hilite', rowindex, lemma.id)">
       <span class='comma'
             v-for="(form, i) in forms"
             :key="i">{{tagToName(form)}}</span>
@@ -18,7 +19,11 @@
         :headers="colref"
         :rowspan="rowspan"
         :index="rowindex"
-        @mouseover.stop="hiliteRow(rowindex)">
+        v-bind:class="{hilite: $parent.highlighted(rowindex, lemma.id)}"
+        v-on:mouseover="$emit('hilite', rowindex, lemma.id)"
+        v-on:mouseleave="$emit('unhilite')"
+        v-on:focusin="$emit('hilite', rowindex, lemma.id)"
+        v-on:focusout="$emit('unhilite')">
       <span class='comma'
             v-for="(form, i) in forms"
             :key="i"><em v-if="prefix" class="context">{{prefix}}</em>&nbsp;<span v-html="formattedForm(form)"/></span>
@@ -68,10 +73,6 @@ export default {
         },
         tagToName: function (tag) {
             return tagToName(tag, this.language)
-        },
-        hiliteRow: function (rowindex) {
-            $('td[index]').removeClass('hilite')
-            rowindex.forEach(i => $('#lemma' + this.lemma.id + ' td[index*='+ i + ']').addClass('hilite'))
         }
     }
 }

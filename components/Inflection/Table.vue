@@ -1,5 +1,5 @@
 <template>
-<div @mouseover="unhiliteRows()" :id="'lemma'+lemma.id">
+<div :id="'lemma'+lemma.id">
   <div class="infl-wrapper">
     <template v-if="lemma && lemma.word_class=='NOUN'">
       <div v-if="mq!='xs'"
@@ -54,7 +54,9 @@
                                  :showGender="!nounGender"
                                  :language="language"
                                  :lemma="lemma"
-                                 :paradigm="paradigm"/>
+                                 :paradigm="paradigm"
+                                 v-on:hilite="hilite"
+                                 v-on:unhilite="unhilite"/>
             </tbody>
           </table>
         </div>
@@ -646,7 +648,9 @@ export default {
                                   { block: 'Sing', label: 'Fem', tags: ['Fem'] },
                                   { block: 'Sing', label: 'Neuter', tags: ['Neuter']},
                                   { block: 'Sing', label: 'Def', tags: ['Def']}
-                                ]
+                                ],
+                  highlightedLemma: null,
+                  highlightedRows: []
                }
     },
     computed: {
@@ -729,6 +733,30 @@ export default {
         }
     },
     methods: {
+        highlighted: function(rowindex, lemmaId) {
+          console.log("HIGHLIGHTING", lemmaId, this.highlightedLemma)
+          if(lemmaId == this.highlightedLemma)
+          for(const item of rowindex) {
+            console.log('item',item)
+            if (this.highlightedRows.includes(item)) {
+              return true
+            }
+          }
+          return false
+          
+
+        },
+        hilite: function(rowindex, lemmaId) {
+          console.log("HILITE", rowindex, lemmaId)
+          this.highlightedLemma = lemmaId
+          this.highlightedRows = rowindex
+          console.log("THE ID", this.highlightedId, rowindex.join('-'))
+        },
+        unhilite: function() {
+          this.highlightedLemma = null
+          this.highlightedRows = []
+
+        },
         tagToName: function (tag) {
             return tagToName(tag,this.language)
         },
@@ -867,9 +895,6 @@ export default {
                 }
             })
             return this.gender
-        },
-        unhiliteRows: function () {
-            $('td[index]').removeClass('hilite')
         }
     }
 }
@@ -935,7 +960,7 @@ th, td {
 
 th {
   font-variant-caps: all-small-caps;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .infl-label {

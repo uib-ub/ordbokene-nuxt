@@ -1,8 +1,9 @@
 <template>
 <div>
   <ArticleView v-if="store.view == 'article'"/>
-  <WordView v-if="store.view == 'word'"/>
+  <WordView v-if="store.view == 'word'" :key ="store.q"/>
   <SearchView v-if="store.view == 'search'"/>
+  <SuggestResults v-if="store.view == 'suggest'" :key ="store.q"/>
 
   {{$route.params}}
   {{$route.query}}

@@ -12,7 +12,9 @@
         :key="index"
         :colspan="rowspan"
         :index="rowindex"
-        @mouseover.stop="hiliteRow(rowindex)">
+        v-bind:class="{hilite: $parent.highlighted(rowindex, lemmaId)}"
+        v-on:mouseover="$emit('hilite', rowindex, lemmaId)"
+        v-on:mouseleave="$emit('unhilite')">
       <span class='comma'
             v-for="(form, index) in forms"
             :key="index">
@@ -24,7 +26,7 @@
 
 <script>
 
-import $ from 'jquery'
+
 
 import { inflectedForm, tagToName
        } from './mixins/ordbankUtils.js' 
@@ -43,10 +45,6 @@ export default {
         inflForm: function (paradigm, tagList) {
             let forms = inflectedForm(paradigm, tagList, [])
             return forms || [1,0,[this.lemma]] // workaround for missing inflection
-        },
-        hiliteRow: function (rowindex) {
-            $('td[index]').removeClass('hilite')
-            rowindex.forEach(i => $('#lemma' + this.lemmaId + ' td[index*='+ i + ']').addClass('hilite'))
         },
         tagToName: function (tag) {
             return tagToName(tag, this.language)

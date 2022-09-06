@@ -6,7 +6,7 @@
            class="infl-wordclass"
            :class="mq">
         <div>
-          <table class="infl-table" :class="mq">
+          <table class="table" :class="mq">
             <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette substantivet</caption>
             <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette substantivet</caption>
             <caption class="visually-hidden" v-else>Inflection table for this noun</caption>
@@ -70,14 +70,16 @@
         <span class="sub" v-if="nounGender"> {{nounGender}}</span>
       </div>
       <div>
-        <table class="infl-table" :class="mq">
+        <table class="table" :class="mq">
           <inflectionRowsNoun v-for="(tags, index) in inflTagsNoun"
                               :key="index"
                               :showGender="!nounGender"
                               :tags="tags"
                               :language="language"
                               :lemma="lemma"
-                              :paradigms="standardParadigms"/>
+                              :paradigms="standardParadigms"
+                              v-on:hilite="hilite"
+                              v-on:unhilite="unhilite"/>
         </table>
       </div>
     </div>
@@ -86,7 +88,7 @@
     <div v-if="mq!='xs'"
            class="infl-wordclass" :class="mq">
       <div v-for="i in mq=='xs' ? [1,2] : [0]" :key="i">
-        <table class="infl-table" :class="mq">
+        <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette verbet</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette verbet</caption>
           <caption class="visually-hidden" v-else>Inflection table for this verb</caption>
@@ -104,12 +106,14 @@
                                :key="index"
                                :part="i"
                                :lemmaId="lemma.id"
-                               :paradigm="paradigm"/>
+                               :paradigm="paradigm"
+                               v-on:hilite="hilite"
+                               v-on:unhilite="unhilite"/>
           </tbody>
         </table>
       </div>
       <div v-for="j in mq=='xs' ? [3,4] : [-1]" :key="j">
-        <table class="infl-table" :class="mq">
+        <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette verbet (partisippformer)</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette verbet (partisippformer)</caption>
           <caption class="visually-hidden" v-else>Inflection table for the participles of this verb</caption>
@@ -162,7 +166,9 @@
                                      :hasPerfPart="hasPerfPart"
                                      :lemmaId="lemma.id"
                                      :paradigm="paradigm"
-                                     :context="context"/>
+                                     :context="context"
+                                     v-on:hilite="hilite"
+                                     v-on:unhilite="unhilite"/>
           </tbody>
         </table>
       </div>
@@ -174,13 +180,15 @@
           <span class="sub">{{wordClass}}</span>
       </div>
       <div>
-        <table class="infl-table" :class="mq" >
+        <table class="table" :class="mq" >
           <inflectionRowsVerb v-for="(tags, index) in inflTagsVerb"
                               :key="index"
                               :tags="tags"
                               :language="language"
                               :lemmaId="lemma.id"
-                              :paradigms="standardParadigms"/>
+                              :paradigms="standardParadigms"
+                              v-on:hilite="hilite"
+                              v-on:unhilite="unhilite"/>
         </table>
       </div>
     </div>
@@ -190,7 +198,7 @@
            class="infl-wordclass"
            :class="mq">
       <div>
-        <table class="infl-table" :class="mq">
+        <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette adjektivet</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette adjektivet</caption>
           <caption class="visually-hidden" v-else>Inflection table for this adjective</caption>
@@ -252,12 +260,14 @@
                               :hasFem="hasFem"
                               :hasSing="hasSingAdj"
                               :lemmaId="lemma.id"
-                              :paradigm="paradigm"/>
+                              :paradigm="paradigm"
+                              v-on:hilite="hilite"
+                              v-on:unhilite="unhilite"/>
           </tbody>
         </table>
       </div>
       <div v-if="hasDeg">
-        <table class="infl-table" :class="mq">
+        <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette adjektivet (gradbøying)</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette adjektivet (gradbøyning)</caption>
           <caption class="visually-hidden" v-else>Inflection table for this adjective (comparative, superlative)</caption>
@@ -293,7 +303,9 @@
             <inflectionRowAdjDeg v-for="(paradigm, index) in standardParadigms"
                                  :key="index"
                                  :lemmaId="lemma.id"
-                                 :paradigm="paradigm"/>
+                                 :paradigm="paradigm"
+                              v-on:hilite="hilite"
+                              v-on:unhilite="unhilite"/>
           </tbody>
         </table>
       </div>
@@ -305,13 +317,15 @@
           <span class="sub">{{wordClass}}</span>
       </div>
       <div>
-        <table class="infl-table" :class="mq" >
+        <table class="table" :class="mq" >
           <inflectionRowsAdj v-for="(tags, index) in inflTagsAdj"
                              :key="index"
                              :tags="tags"
                              :language="language"
                              :lemmaId="lemma.id"
-                             :paradigms="standardParadigms"/>
+                             :paradigms="standardParadigms"
+                              v-on:hilite="hilite"
+                              v-on:unhilite="unhilite"/>
         </table>
       </div>
     </div>
@@ -321,7 +335,7 @@
            class="infl-wordclass"
            :class="mq">
       <div v-if="hasDeg">
-        <table class="infl-table" :class="mq">
+        <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette adverbet</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette adverbet</caption>
           <caption class="visually-hidden" v-else>Inflection table for this adverb</caption>
@@ -342,7 +356,9 @@
             <inflectionRowAdjAdv v-for="(paradigm, index) in standardParadigms"
                                  :key="index"
                                  :lemmaId="lemma.id"
-                                 :paradigm="paradigm"/>
+                                 :paradigm="paradigm"
+                              v-on:hilite="hilite"
+                              v-on:unhilite="unhilite"/>
           </tbody>
         </table>
       </div>
@@ -354,13 +370,15 @@
           <span class="sub">{{wordClass}}</span>
       </div>
       <div>
-        <table class="infl-table" :class="mq" >
+        <table class="table" :class="mq" >
           <inflectionRowsAdj v-for="(tags, index) in inflTagsAdjAdv"
                              :key="index"
                              :tags="tags"
                              :language="language"
                              :lemmaId="lemma.id"
-                             :paradigms="standardParadigms"/>
+                             :paradigms="standardParadigms"
+                              v-on:hilite="hilite"
+                              v-on:unhilite="unhilite"/>
         </table>
       </div>
     </div>
@@ -370,7 +388,7 @@
          class="infl-wordclass"
          :class="mq">
       <div>
-        <table class="infl-table" :class="mq">
+        <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette pronomenet</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette pronomenet</caption>
           <caption class="visually-hidden" v-else>Inflection table for this pronoun</caption>
@@ -392,7 +410,9 @@
                                :key="index"
                                :language="language"
                                :lemmaId="lemma.id"
-                               :paradigm="paradigm"/>
+                               :paradigm="paradigm"
+                              v-on:hilite="hilite"
+                              v-on:unhilite="unhilite"/>
           </tbody>
         </table>
       </div>
@@ -406,14 +426,16 @@
         <span class="sub" v-if="nounGender"> {{nounGender}}</span>
       </div>
       <div>
-        <table class="infl-table" :class="mq">
+        <table class="table" :class="mq">
           <inflectionRowsPron v-for="(tags, index) in inflTagsPron"
                               :key="index"
                               :tags="tags"
                               :lemma="lemma.lemma"
                               :language="language"
                               :lemmaId="lemma.id"
-                              :paradigms="standardParadigms"/>
+                              :paradigms="standardParadigms"
+                              v-on:hilite="hilite"
+                              v-on:unhilite="unhilite"/>
         </table>
       </div>
     </div>
@@ -423,7 +445,7 @@
          class="infl-wordclass"
          :class="mq">
       <div>
-        <table class="infl-table" :class="mq">
+        <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette determinativet</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette determinativet</caption>
           <caption class="visually-hidden" v-else>Inflection table for this determinative</caption>
@@ -473,7 +495,9 @@
                               :key="index"
                               :language="language"
                               :lemmaId="lemma.id"
-                              :paradigm="paradigm"/>
+                              :paradigm="paradigm"
+                              v-on:hilite="hilite"
+                              v-on:unhilite="unhilite"/>
           </tbody>
         </table>
       </div>
@@ -487,14 +511,16 @@
         <span class="sub" v-if="nounGender"> {{nounGender}}</span>
       </div>
       <div>
-        <table class="infl-table" :class="mq">
+        <table class="table" :class="mq">
           <inflectionRowsDet v-for="(tags, index) in inflTagsDet"
                               :key="index"
                               :tags="tags"
                               :lemma="lemma.lemma"
                               :language="language"
                               :lemmaId="lemma.id"
-                              :paradigms="standardParadigms"/>
+                              :paradigms="standardParadigms"
+                              v-on:hilite="hilite"
+                              v-on:unhilite="unhilite"/>
         </table>
       </div>
     </div>
@@ -502,7 +528,7 @@
   <template v-if="lemma && isUninflected && !isADJ_Adv">
     <div class="infl-wordclass" :class="mq">
       <div>
-        <table class="infl-table" :class="mq">
+        <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette adverbet</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette adverbet</caption>
           <caption class="visually-hidden" v-else>Inflection table for this adverb</caption>
@@ -525,8 +551,6 @@
 </template>
 
 <script>
-
-import $ from 'jquery'
 
 import inflectionRowNoun from './inflectionRowNoun.vue'
 import inflectionRowAdj from './inflectionRowAdj.vue'

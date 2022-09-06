@@ -13,7 +13,9 @@
           scope="row"
           :colspan="rowspan"
           :index="rowindex"
-          @mouseover.stop="hiliteRow(rowindex)">
+          v-bind:class="{hilite: $parent.highlighted(rowindex, lemma.id)}"
+        v-on:mouseover="$emit('hilite', rowindex, lemma.id)"
+        v-on:mouseleave="$emit('unhilite')">
         <span v-html="formattedForm(tags,forms[0])"/>
       </th>
       <td v-else
@@ -21,7 +23,9 @@
           :colspan="rowspan"
           :index="rowindex"
           :headers="headers"
-          @mouseover.stop="hiliteRow(rowindex)">
+          v-bind:class="{hilite: $parent.highlighted(rowindex, lemma.id)}"
+        v-on:mouseover="$emit('hilite', rowindex, lemma.id)"
+        v-on:mouseleave="$emit('unhilite')">
         <span class='comma'
               v-for="(form, index) in forms"
               :key="index">
@@ -44,7 +48,7 @@
 
 <script>
 
-import $ from 'jquery'
+
 
 import { inflectedForm, tagToName, markdownToHTML
        } from './mixins/ordbankUtils.js' 
@@ -111,11 +115,6 @@ export default {
                 let gender = (this.showGender && forms[3]) ? forms[3].join(' ') + ' ' : ''
                 return [prefix, forms, gender + tagList[0] +  ' ' + tagList[0] + tagList[1]]
             }
-        },
-        hiliteRow: function (rowindex) {
-            alert()
-            $('td[index]').removeClass('hilite')
-            rowindex.forEach(i => $('#lemma' + this.lemma.id + ' td[index*='+ i + ']').addClass('hilite'))
         },
         tagToName: function (tag) {
             return tagToName(tag, this.language)

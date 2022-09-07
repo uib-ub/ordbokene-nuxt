@@ -7,6 +7,9 @@
   <li class="nav-item">
     <NuxtLink class="nav-link py-0" :to="$route.path+'/search'">Avansert søk</NuxtLink>
   </li>
+  <li class="nav-item">
+    <NuxtLink class="nav-link py-0" :to="$route.path+'/search'">Lagrede ord</NuxtLink>
+  </li>
 </ul>
 
     <SearchForm/>

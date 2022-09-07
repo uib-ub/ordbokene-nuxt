@@ -4,7 +4,7 @@
         <div class="p-3">
         <ArticleHeader :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict"/>
         
-        <button v-if="inflected" class="inflection-button py-1 px-3" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
+        <button v-if="inflected" class="inflection-button py-1 px-3 mx-2" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
             {{$t('article.show_inflection')}}
         </button>
 
@@ -15,8 +15,8 @@
 
         </div>
         </div>
-
-        {{data}}
+<p class="pt-3">
+        {{data}}</p>
         
 
         </div>

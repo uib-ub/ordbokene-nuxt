@@ -136,4 +136,10 @@ h3 {
 
 }
 
+.header_group_list {
+    font-variant: all-small-caps;
+    font-style: normal;
+    font-size: 1.5rem;
+}
+
 </style>

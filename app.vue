@@ -57,15 +57,17 @@
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
-  <div>
-    <img id="srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
-    <img id="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
+  <div class="container d-flex justify-content-around">
+  <div class="pe-5 d-flex align-items-center">
+    <img class="pe-3 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
+    <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
   </div>
   <div><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}
-    <button>{{$t('about')}}</button>
-    <button>{{$t('help')}}</button>
-    <button>{{$t('settings.title')}}</button>
-    <button>{{$t('contact.title')}}</button>
+    <button class="btn btn-outline-tertiary"><i class="bi bi-info-circle-fill"></i> {{$t('about')}}</button>
+    <button class="btn btn-outline-tertiary"><i class="bi bi-question-circle-fill"></i> {{$t('help')}}</button>
+    <button class="btn btn-outline-tertiary"><i class="bi bi-gear-fill"></i> {{$t('settings.title')}}</button>
+    <button class="btn btn-outline-tertiary"><i class="bi bi-envelope-fill"></i> {{$t('contact.title')}}</button>
+  </div>
   </div>
 <!--<div>{{store.$state}}</div>-->
 </footer>
@@ -83,6 +85,9 @@ const route = useRoute()
 
 
 <style>
+.btn-outline-tertiary{
+  border: none;
+}
 
 ::selection {
   background-color: var(--bs-secondary);
@@ -165,5 +170,11 @@ main a  {
   font-size: 1rem;
 }
 
+.srlogo{
+  height: 20px;
+}
+.uiblogo{
+  height: 60px;
+}
 
 </style>

@@ -1,6 +1,12 @@
 <template>
     <div>
-    <div class="row" v-if="!pending">
+    <div v-if="pending" class="d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+        </div>
+  
+    </div>
+    <div class="row" v-if="articles">
       <div class="col-lg">
       <Article v-for="(article_id, idx) in articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>
       </div>
@@ -9,13 +15,7 @@
       </div>
 
     </div>
-    <div v-if="pending" class="d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status">
-  <span class="visually-hidden">Loading...</span>
-        </div>
-  
-    </div>
-    ARTIKLER: {{articles}}
+
 </div>
 
     

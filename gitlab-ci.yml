@@ -1,0 +1,59 @@
+stages:
+  - build
+  - deploy
+
+
+build-dev:
+  image: node:16
+  tags:
+    - spraaksamlingene_01
+  stage: build
+
+  when: manual
+  script:
+    - npm install --progress=false
+    - npm run build -- --mode dev_server
+    - 'echo -e "\nDisallow: /" >> dist/robots.txt'
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+
+deploy-dev:
+  image: uibit/awscli:latest
+  tags:
+    - spraaksamlingene_01
+  stage: deploy
+  rules:
+  - if: $CI_COMMIT_TAG != null
+    when: never
+  - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_PIPELINE_SOURCE == 'merge_request_event'
+    when: on_success
+  - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'merge_request_event'
+    when: manual
+  script:
+  - rm -rf ~/.aws
+  - mv  .aws ~/
+  - export AWS_ACCESS_KEY_ID=$AWS_DEV_ACCESS_KEY_ID
+  - export AWS_SECRET_ACCESS_KEY=$AWS_DEV_SECRET_ACCESS_KEY
+  - STACK_NAME=ordbok-frontend-dev
+  - CERT_ARN=arn:aws:acm:us-east-1:${AWS_DEV_ACCOUNT}:certificate/15c0111e-b2f7-4a24-8c94-b7034a900d55
+  - aws cloudformation deploy --stack-name ${STACK_NAME}
+                              --template-file "aws/beta.ordbok.uib.no_stack.yaml"
+                              --parameter-overrides "CertificateArn=${CERT_ARN}"
+                                                    "AltDomainName=dev.ordbok.uib.no"
+                                                    "DomainName=beta.ordbok-dev.aws.uib.no"
+                                                    "ZoneDomainName=ordbok-dev.aws.uib.no"
+                                                    "PathRewriteLambdaARN=arn:aws:lambda:us-east-1:${AWS_DEV_ACCOUNT}:function:rewrite_request:6"
+                                                    "OrdbokCacheOriginDomain=8mwl23g34a.execute-api.eu-west-1.amazonaws.com"
+                                                    "OrdbokCacheStage=DEV"
+                              --no-fail-on-empty-changeset
+                              --capabilities CAPABILITY_IAM
+  - aws s3 rm "s3://${STACK_NAME}.aws.uib.no" --recursive
+  - aws s3 sync dist/ "s3://${STACK_NAME}.aws.uib.no" --delete
+  - aws s3 sync api_static/ "s3://${STACK_NAME}.aws.uib.no"
+  - DISTRO_ID=$(aws cloudformation describe-stack-resource
+                                   --stack-name ${STACK_NAME}
+                                   --logical-resource-id Distribution
+                                   --query 'StackResourceDetail.PhysicalResourceId' | jq -r)
+  - aws cloudfront create-invalidation --distribution-id ${DISTRO_ID} --paths "/*"

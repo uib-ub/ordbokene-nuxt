@@ -7,13 +7,13 @@
       <div class="small mx-2">
       <div v-show="false"><h1>ordbøkene.no</h1></div>
       <div><h1>Ordbøkene</h1>
-      <p class="d-none d-sm-block">{{$t("sub_title")}}</p>
+      <p class="d-none d-xl-block">{{$t("sub_title")}}</p>
       </div>
     </div>
       </NuxtLink>
         <div class="mx-auto">
-    
-    
+
+
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -95,7 +95,7 @@ useHead({
   htmlAttrs: {
     lang: i18n.locale
   }
-  
+
 })
 
 
@@ -152,6 +152,12 @@ h1 {
 }
 
 
+.nav-link {
+  font-variant-caps: all-small-caps;
+  font-size: 1.25rem;
+  letter-spacing: .1rem;
+}
+
 .navbar-expand-lg .nav-item.active {
   border-left: 0.25rem solid var(--bs-secondary);
 }
@@ -193,6 +199,7 @@ main a  {
 
 .secondary-page {
   background-color: white;
+  padding: 3rem !important;
 }
 
 .secondary-page h2 {
@@ -216,6 +223,24 @@ main a  {
 }
 .uiblogo{
   height: 60px;
+}
+
+.callout {
+  border-left: solid 4px var(--bs-primary);
+   border-top: solid 1px rgba(0,0,0, .1);
+   border-bottom: solid 1px rgba(0,0,0, .1);
+   border-right: solid 1px rgba(0,0,0, .1);
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+   padding: 1rem;
+   background-color: rgba(255,255,255, .5);
+   box-shadow: 2px 2px 1px rgba(0,0,0, .1);
+}
+
+.callout i {
+  color: var(--bs-primary);
+  padding-right: 0.5rem;
+  font-size: 1.25rem;
 }
 
 </style>

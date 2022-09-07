@@ -21,14 +21,17 @@
     <span v-if="settings.inflectionNo" class="inflection_classes">{{lemma_group.inflection_classes}}</span>
 
     </span>
-
     </span>
 </template>
 
 
 <script setup>
 import {useSettingsStore } from '~/stores/settingsStore'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 const settings = useSettingsStore()
+const test = t('or')
 
 const props = defineProps({
     lemmas: Array,
@@ -67,7 +70,7 @@ const lemma_groups = computed(() => {
     let groups = [{lemmas: props.lemmas}]
       try {
         if (props.lemmas[0].paradigm_info[0] && props.lemmas[0].paradigm_info[0].tags[0] != 'NOUN' && props.lemmas[0].paradigm_info[0].tags[0] != 'EXPR') {
-          groups = [{description: $t('tags.'+props.lemmas[0].paradigm_info[0].tags[0], props.content_locale), lemmas: props.lemmas}]
+          groups = [{description:  t('tags.'+props.lemmas[0].paradigm_info[0].tags[0], props.content_locale), lemmas: props.lemmas}]
         }
         else if (props.lemmas[0].paradigm_info[0].tags[0] == 'NOUN') {
             let genus_map  = {}
@@ -78,9 +81,9 @@ const lemma_groups = computed(() => {
               })
               let genus_description = ""
               if (genera.size == 3) {
-                genus_description += $t('tags.Masc') + ', ' + $t('tags.Fem', props.content_locale) + $t('or') + $t('tags.Neuter', props.content_locale)
+                genus_description +=  t('tags.Masc') + ', ' +  t('tags.Fem', props.content_locale) +  t('or') +  t('tags.Neuter', props.content_locale)
               } else {
-                genus_description += Array.from(genera).map(code => $t('tags.'+code, props.content_locale)).sort().join($t('or'))
+                genus_description += Array.from(genera).map(code =>  t('tags.'+code, props.content_locale)).sort().join(t('or'))
               }
               if (genus_map[genus_description]) {
                 genus_map[genus_description].push(lemma)
@@ -90,7 +93,7 @@ const lemma_groups = computed(() => {
               }
             })
             groups = Object.keys(genus_map).map(key => {
-              return {description: $t('tags.NOUN', props.content_locale), genus: key, lemmas: genus_map[key], }
+              return {description:  t('tags.NOUN', props.content_locale), genus: key, lemmas: genus_map[key], }
             })
 
         

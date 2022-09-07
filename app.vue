@@ -63,10 +63,10 @@
     <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
   </div>
   <div><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}
-    <button class="btn btn-outline-tertiary"><i class="bi bi-info-circle-fill"></i> {{$t('about')}}</button>
-    <button class="btn btn-outline-tertiary"><i class="bi bi-question-circle-fill"></i> {{$t('help')}}</button>
-    <button class="btn btn-outline-tertiary"><i class="bi bi-gear-fill"></i> {{$t('settings.title')}}</button>
-    <button class="btn btn-outline-tertiary"><i class="bi bi-envelope-fill"></i> {{$t('contact.title')}}</button>
+    <NuxtLink class="btn btn-outline-tertiary" aria-current="page" to="/about"><i class="bi bi-info-circle-fill"></i> {{$t('about')}}</NuxtLink>
+    <NuxtLink class="btn btn-outline-tertiary" aria-current="page" to="/help"><i class="bi bi-question-circle-fill"></i> {{$t('help')}}</NuxtLink>
+    <NuxtLink class="btn btn-outline-tertiary" aria-current="page" to="/settings"><i class="bi bi-gear-fill"></i> {{$t('settings.title')}}</NuxtLink>
+    <NuxtLink class="btn btn-outline-tertiary" aria-current="page" to="/contact"><i class="bi bi-envelope-fill"></i> {{$t('contact.title')}}</NuxtLink>
   </div>
   </div>
 <!--<div>{{store.$state}}</div>-->

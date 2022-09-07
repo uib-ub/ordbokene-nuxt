@@ -9,7 +9,8 @@ const different = store.input!= store.q && store.input
 
 <template>
     <div>
-    <span v-if="different">{{different}} er ikke et oppslagsord i {{store.dict}}. Viser ordet {{$route.params.slug[0]}}</span>
+    <div class="callout" v-if="different"><i class="bi-info-circle-fill" aria-hidden="true"/> <strong>{{different}}</strong> er ikke et oppslagsord i {{store.dict}}. Viser ordet <strong>{{$route.params.slug[0]}}</strong></div>
+    <Results/>
     <SuggestResults :key="store.q"/>
     </div>
 

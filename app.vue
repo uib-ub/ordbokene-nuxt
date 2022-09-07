@@ -202,5 +202,23 @@ main a  {
   font-size: 1.5rem;
 }
 
+.callout {
+  border-left: solid 4px var(--bs-primary);
+   border-top: solid 1px rgba(0,0,0, .1);
+   border-bottom: solid 1px rgba(0,0,0, .1);
+   border-right: solid 1px rgba(0,0,0, .1);
+   margin-top: 1rem;
+   margin-bottom: 1rem;
+   padding: 1rem;
+   background-color: rgba(255,255,255, .5);
+   box-shadow: 2px 2px 1px rgba(0,0,0, .1);
+}
+
+.callout i {
+  color: var(--bs-primary);
+  padding-right: 0.5rem;
+  font-size: 1.25rem;
+}
+
 
 </style>

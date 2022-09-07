@@ -1,11 +1,11 @@
 <template>
 <div :id="'lemma'+lemma.id">
-  <div class="infl-wrapper table-responsive">
+  <div class="infl-wrapper">
     <template v-if="lemma && lemma.word_class=='NOUN'">
       <div v-if="mq!='xs'"
            class="infl-wordclass"
            :class="mq">
-        <div class="table-responsive">
+        <div>
           <table class="table" :class="mq">
             <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette substantivet</caption>
             <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette substantivet</caption>
@@ -69,7 +69,7 @@
         <span class="sub"> {{wordClass}}</span>
         <span class="sub" v-if="nounGender"> {{nounGender}}</span>
       </div>
-      <div class="table-responsive">
+      <div>
         <table class="table" :class="mq">
           <inflectionRowsNoun v-for="(tags, index) in inflTagsNoun"
                               :key="index"

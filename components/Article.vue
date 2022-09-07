@@ -2,14 +2,14 @@
     <article>
         <h2 v-if="store.view != 'article'" class="dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div class="p-3">
-        <h3>test</h3><button class="inflection-button py-1 px-3" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
+        <h3>{{data.lemmas[0].lemma}}    </h3><button v-if="inflected" class="inflection-button py-1 px-3" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
             {{$t('article.show_inflection')}}
         </button>
         <p>
 
         
         </p>
-        <div class="collapse" :id="'inflection-'+article_id" ref="inflection_table">
+        <div v-if="inflected" class="collapse" :id="'inflection-'+article_id" ref="inflection_table">
         <div class="inflection-container card card-body">
 
             <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
@@ -43,6 +43,9 @@ export default {
         collapsed: function() {
             return this.$refs
 
+        },
+        inflected: function() {
+      return this.data.lemmas.reduce((acc, lemma) => acc += lemma.paradigm_info.reduce((acc2, digm) => digm.inflection_group.includes("uninfl") ? 0 : acc2 += digm.inflection.length, 0), 0) > this.data.lemmas.length
         },
         lemmas_with_word_class_and_lang: function() {
       return this.data.lemmas.map(lemma => Object.assign({language: this.dict == 'bm' ? 'nob' : 'nno',

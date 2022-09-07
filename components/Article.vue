@@ -2,21 +2,20 @@
     <article>
         <h2 v-if="store.view != 'article'" class="dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div class="p-3">
+        <ArticleHeader :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict"/>
         
-        <h3>{{data.lemmas[0].lemma}}    </h3><button v-if="inflected" class="inflection-button py-1 px-3" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
+        <button v-if="inflected" class="inflection-button py-1 px-3" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
             {{$t('article.show_inflection')}}
         </button>
-        <p>
 
-        
-        </p>
-        <div v-if="inflected" class="collapse" :id="'inflection-'+article_id" ref="inflection_table">
+        <div v-if="inflected" class="collapse py-2" :id="'inflection-'+article_id" ref="inflection_table">
         <div class="inflection-container card card-body">
 
             <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
 
         </div>
         </div>
+
         {{data}}
         
 
@@ -26,17 +25,26 @@
 
 <script setup>
 import { useStore } from '~/stores/searchStore'
-import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const i18n = useI18n()
+const store = useStore()
 
 const props = defineProps({
     article_id: Number,
     dict: String
 })
 
-const store = useStore()
+const content_locale = computed(() => {
+    if (i18n.locale == 'eng') {
+        return 'eng'
+      } else {
+        return {bm: 'nob', nn: 'nno'}[props.dict]
+      }
+})
+
+
 const { pending, data } = await useAsyncData('article_'+props.article_id, () => $fetch(`https://oda.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`))
-
-
 
 const inflected = computed(() => {
     return data.value.lemmas.reduce((acc, lemma) => acc += lemma.paradigm_info.reduce((acc2, digm) => digm.inflection_group.includes("uninfl") ? 0 : acc2 += digm.inflection.length, 0), 0) > data.value.lemmas.length
@@ -46,9 +54,7 @@ const inflected = computed(() => {
 const lemmas_with_word_class_and_lang = computed(() => {
     return data.value.lemmas.map(lemma => Object.assign({language: props.dict == 'bm' ? 'nob' : 'nno',
                                                      word_class: lemma.paradigm_info[0].inflection_group.split('_')[0]}, lemma))
-
 })
-
 
 </script>
 
@@ -63,13 +69,6 @@ const lemmas_with_word_class_and_lang = computed(() => {
     font-variant-caps: all-small-caps;
     font-weight: 600;
     font-size: 1.25rem;
-
-}
-
-h3 {
-    font-family: Inria Serif;
-  color: var(--bs-primary);
-  font-weight:600;
 
 }
 

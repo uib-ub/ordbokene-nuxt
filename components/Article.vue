@@ -30,7 +30,7 @@ import { useRoute } from 'vue-router'
 
 export default {
     props: {
-        article_id: String,
+        article_id: Number,
         dict: String
     },
     async setup(props) {

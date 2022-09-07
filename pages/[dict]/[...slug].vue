@@ -1,7 +1,7 @@
 <template>
 <div>
   <ArticleView v-if="store.view == 'article'"/>
-  <WordView v-if="store.view == 'word'" :key ="store.q"/>
+  <WordView v-if="store.view == 'word'"/>
   <SearchView v-if="store.view == 'search'"/>
   <SuggestResults v-if="store.view == 'suggest'" :key ="store.q"/>
 

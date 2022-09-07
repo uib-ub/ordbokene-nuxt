@@ -34,7 +34,7 @@ const route = useRoute()
 
 .nav-link.active {
     border-bottom: solid 2px var(--bs-secondary);
-    background-color: rgba(0,0,0,.05);;
+    background-color: rgba(0,0,0,.05);
     color: black;
 }
 

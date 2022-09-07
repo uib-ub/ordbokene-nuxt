@@ -21,17 +21,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item" v-bind:class="{'active': $route.name == 'help'}">
-          <NuxtLink class="nav-link" aria-current="page" to="/help">{{$t('help')}}</NuxtLink>
+          <NuxtLink class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
         </li>
 
         <li class="nav-item" v-bind:class="{'active': $route.name == 'about'}">
-          <NuxtLink class="nav-link" to="/about">{{$t('about')}}</NuxtLink>
+          <NuxtLink class="nav-link" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink>
         </li>
                 <li class="nav-item" v-bind:class="{'active': $route.name == 'settings'}">
-          <NuxtLink class="nav-link"  to="/settings">{{$t('settings.title')}}</NuxtLink>
+          <NuxtLink class="nav-link"  :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink>
         </li>
                 <li class="nav-item" v-bind:class="{'active': $route.name == 'contact'}">
-          <NuxtLink class="nav-link" to="/contact">{{$t('contact.title')}}</NuxtLink>
+          <NuxtLink class="nav-link" :aria-current="$route.name == 'contacthelp' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
       </ul>
       <div class="navbar-nav ml-auto">
@@ -63,10 +63,10 @@
     <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
   </div>
   <div><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}
-    <NuxtLink class="btn btn-outline-tertiary" aria-current="page" to="/about"><i class="bi bi-info-circle-fill"></i> {{$t('about')}}</NuxtLink>
-    <NuxtLink class="btn btn-outline-tertiary" aria-current="page" to="/help"><i class="bi bi-question-circle-fill"></i> {{$t('help')}}</NuxtLink>
-    <NuxtLink class="btn btn-outline-tertiary" aria-current="page" to="/settings"><i class="bi bi-gear-fill"></i> {{$t('settings.title')}}</NuxtLink>
-    <NuxtLink class="btn btn-outline-tertiary" aria-current="page" to="/contact"><i class="bi bi-envelope-fill"></i> {{$t('contact.title')}}</NuxtLink>
+    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'about' && 'page'" to="/about"><i class="bi bi-info-circle-fill"></i> {{$t('about')}}</NuxtLink>
+    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'help' && 'page'" to="/help"><i class="bi bi-question-circle-fill"></i> {{$t('help')}}</NuxtLink>
+    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'settings' && 'page'" to="/settings"><i class="bi bi-gear-fill"></i> {{$t('settings.title')}}</NuxtLink>
+    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'contact' && 'page'" to="/contact"><i class="bi bi-envelope-fill"></i> {{$t('contact.title')}}</NuxtLink>
   </div>
   </div>
 <!--<div>{{store.$state}}</div>-->

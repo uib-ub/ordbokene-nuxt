@@ -85,15 +85,15 @@ article {
 }
 
 .inflection-button {
-    border: solid 1px var(--bs-link);
-    color: var(--bs-link);
+    border: solid 1px var(--bs-primary);
+    color: var(--bs-primary);
     background-color: white;
     border-radius: 2rem;
 
 }
 
 .inflection-button:focus {
-    box-shadow: 1px 1px 1px var(--bs-link);
+    box-shadow: 1px 1px 1px var(--bs-primary);
 }
 
 

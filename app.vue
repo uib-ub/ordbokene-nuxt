@@ -149,6 +149,7 @@ h1 {
   font-variant-caps: all-small-caps;
   font-size: 1.25rem;
   letter-spacing: .1rem;
+  font-weight: 600;
 }
 
 .navbar-expand-lg .nav-item.active {

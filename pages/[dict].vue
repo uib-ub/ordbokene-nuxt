@@ -26,9 +26,9 @@ const route = useRoute()
 .nav-link {
     color: rgba(0,0,0,.8);
     letter-spacing: .1rem;
-    z-index: 2;
     font-variant-caps: all-small-caps;
     font-size: 1.25rem;
+    font-weight: 600;
     
 }
 

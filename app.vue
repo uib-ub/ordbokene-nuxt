@@ -188,7 +188,7 @@ h1 {
 
 
 main a  {
-  border-bottom: 1px solid var(--bs-link);
+  border-bottom: 2px solid var(--bs-link);
 }
 
 .secondary-page {

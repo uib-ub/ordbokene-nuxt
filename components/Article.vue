@@ -98,8 +98,8 @@ article {
 
 
 .inflection-container {
-    box-shadow: 1px 1px 1px var(--bs-link);
-    border: solid 1px var(--bs-link);
+    box-shadow: 1px 1px 1px var(--bs-primary);
+    border: solid 1px var(--bs-primary);
     border-radius: 1.5rem;
     display: inline-flex;
 }

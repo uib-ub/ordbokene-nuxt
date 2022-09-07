@@ -1,6 +1,6 @@
 <template>
 <div>
-    <ul class="nav px-2">
+    <ul class="nav px-1">
   <li class="nav-item">
     <a class="nav-link py-0 active" aria-current="page" href="/">Søk i oppslagsord</a>
   </li>

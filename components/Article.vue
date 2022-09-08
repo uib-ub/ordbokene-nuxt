@@ -40,7 +40,6 @@
             </div>
         </div>
     </div>
-    {{data.body}}
     </article>
 </template>
 

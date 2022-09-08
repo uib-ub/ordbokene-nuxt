@@ -1,6 +1,6 @@
 <template>
     <article>
-        <h2 v-if="store.view != 'article'" class="dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
+        <h2 v-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div class="p-3">
         <ArticleHeader :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict"/>
         

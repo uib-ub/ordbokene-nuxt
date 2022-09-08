@@ -8,9 +8,11 @@
     </div>
     <div class="row" v-if="articles">
       <div class="col-lg">
+        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span class="result-count">  | {{articles.meta.bm.total}} treff</span></div>
       <Article v-for="(article_id, idx) in articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>
       </div>
       <div class="col-lg">
+        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Nynorskordboka</h2><span class="result-count"> | {{articles.meta.nn.total}} treff</span></div>
       <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
       </div>
 
@@ -34,4 +36,17 @@ const { pending, data: articles } = useLazyFetch(`https://oda.uib.no/opal/dev/ap
         width: 18rem;
         height: 18rem;
     }
+
+h2 {
+    color: var(--bs-primary);
+    font-weight: 600;
+    font-variant: all-small-caps;
+    font-weight: bold;
+    font-size: 1.75rem;
+    
+}
+
+.result-count {
+    font-size: 1.17rem;
+}
 </style>

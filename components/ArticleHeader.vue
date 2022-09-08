@@ -142,4 +142,10 @@ h3 {
     font-size: 1.5rem;
 }
 
+.hgno {
+  color: rgba(0,0,0,.6) !important;
+  font-family: unset;
+  font-size: 1rem;
+}
+
 </style>

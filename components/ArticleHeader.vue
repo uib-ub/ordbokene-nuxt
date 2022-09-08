@@ -43,7 +43,7 @@ const props = defineProps({
 
 const emit = defineEmits(['invalid'])
 
-const inflection_classes = () => {
+const inflection_classes = (lemmas) => {
       let inf_classes = new Set()
       let ureg = false
       lemmas.forEach((lemma, i) => {

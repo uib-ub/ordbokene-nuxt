@@ -77,7 +77,12 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { useStore } from '~/stores/searchStore'
+import { useRoute } from 'vue-router'
+const store = useStore()
+const route = useRoute()
 const i18n = useI18n()
+
 
 const locale = useCookie("locale")
 
@@ -86,10 +91,7 @@ locale.value = locale.value || (new Date().getDate() % 2 ? 'nno' : 'nob')
 i18n.locale.value = locale.value
 
 
-import { useStore } from '~/stores/searchStore'
-import { useRoute } from 'vue-router'
-const store = useStore()
-const route = useRoute()
+
 
 useHead({
   htmlAttrs: {

@@ -80,7 +80,7 @@ const unparsed = computed(() => {
             else return {type: item.type_ || 'plain', html: item}
             }
         catch(error) {
-            emit('error', {location: "unparsed", message: error.message} )
+            console.log(error)
             return {type: 'plain', html: item}
             }
         
@@ -91,7 +91,7 @@ const unparsed = computed(() => {
 const assemble_text = computed(() => {
     try {
         var old_parts = props.body.content.split(/(\$)/)
-        var text_items = unparsed.slice(0).reverse()
+        var text_items = unparsed.value.slice(0).reverse()
         var new_parts = []
         old_parts.forEach(function(item){
         if(item == '$') {
@@ -103,7 +103,7 @@ const assemble_text = computed(() => {
         return new_parts
         }
         catch(error) {
-        emit('error', {location: "assemble_text", message: error.message} )
+          console.log(error)
         return []
         }
 })

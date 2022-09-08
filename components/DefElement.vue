@@ -1,0 +1,97 @@
+<template>
+    {{body}}<br>
+    TEXT
+{{unparsed}}
+    
+
+</template>
+
+
+<script setup>
+import { useStore } from '~/stores/searchStore'
+const store = useStore()
+
+const emit = defineEmits(['error'])
+
+const props = defineProps({
+    body: Object,
+    tag: {
+      type: String,
+      default: 'li'
+    },
+    dict: String
+})
+
+const { cpncepts: entities_bm } = useLazyFetch('https://oda.uib.no/opal/dev/bm/concepts.json')
+const { concepts: entities_nn } = useLazyFetch('https://oda.uib.no/opal/dev/nn/concepts.json')
+
+
+const unparsed = computed(() => {
+
+        return props.body.items.map(
+          function(item){
+            try {
+            
+            if (item.type_ == 'usage') {
+              if (item.items) {
+                item.content = item.text
+                return {type: item.type_, html: '', tag: 'DefElement', props: {body: item, tag: 'i', dict: props.dict}}
+              }
+              else {
+                return {type: item.type_, html: item.text, tag: 'i'}
+              }
+            }
+            else if (item.type_ == 'article_ref') {
+                return {
+                    type: item.type_,
+                    html: '',
+                    lemmas: item.lemmas,
+                    link_text: item.word_form || item.lemmas[0].annotated_lemma ||  item.lemmas[0].lemma,
+                    ref: '/' + props.dict + '/' + item.article_id + (item.definition_id ? '#def' + item.definition_id : ''),
+                    article_id: item.article_id,
+                    definition_id: item.definition_id,
+                    definition_order: item.definition_order,
+                    source: "" //TODO: handle focus when returning from article
+                    }
+                } 
+            else if (item.type_ == 'pronunciation') return {type: item.type_, html: item.string}
+            else if (item.type_ == 'pronunciation_guide') return {type: item.type_, body: item, html: '', tag: 'DefElement', props: {body: item, tag: 'i', dict: props.dict}}
+            else if (item.type_ == 'superscript') return {type: item.type_, html: item.text, tag: 'sup'}
+            else if (item.type_ == 'subscript') return {type: item.type_, html: item.text, tag: 'sub'}
+            else if (item.type_ == 'quote_inset') return {type: item.type_, body: item, html: '', tag: 'DefElement', props: {body: item, tag: 'i', dict: props.dict}}
+            else if (item.type_ == 'fraction') return fraction(item.numerator, item.denominator)
+            else if (item.id) return {type: item.type_, html:  ({"nn":entities_nn, "bm":entities_bm}[props.dict][item.id] || {})['expansion'] || item.id}
+            else return {type: item.type_ || 'plain', html: item}
+            }
+        catch(error) {
+            emit('error', {location: "unparsed", message: error.message} )
+            return {type: 'plain', html: item}
+            }
+        
+        }
+    )
+})
+
+const assemble_text = computed(() => {
+    try {
+        var old_parts = props.body.content.split(/(\$)/)
+        var text_items = unparsed.slice(0).reverse()
+        var new_parts = []
+        old_parts.forEach(function(item){
+        if(item == '$') {
+            new_parts.push(text_items.pop())
+        } else if (item.length) {
+            new_parts.push({type: 'plain', html: item})
+        }
+        })
+        return new_parts
+        }
+        catch(error) {
+        emit('error', {location: "assemble_text", message: error.message} )
+        return []
+        }
+})
+
+
+
+</script>

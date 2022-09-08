@@ -23,7 +23,7 @@ import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
 
-    </script>
+</script>
 
 <style scoped>
 .nav-link {

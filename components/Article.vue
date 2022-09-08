@@ -9,17 +9,20 @@
         </button>
 
         <div v-if="inflected" class="collapse py-2" :id="'inflection-'+article_id" ref="inflection_table">
-        <div class="inflection-container card card-body">
-
-            <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
-
+            <div class="inflection-container card card-body">
+                <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
+            </div>
         </div>
+        <div class="article_content pt-3" ref="article_content">
+            <div class="definitions">
+                <h4>{{$t('article.headings.definitions', content_locale)}}</h4>
+                <ol>
+                <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' @error="element_error"/>
+                </ol>
+            </div>
         </div>
-<p class="pt-3">
-        {{data}}</p>
-        
-
-        </div>
+    </div>
+    {{data.body}}
     </article>
 </template>
 
@@ -29,6 +32,11 @@ import { useI18n } from 'vue-i18n'
 
 const i18n = useI18n()
 const store = useStore()
+
+
+const element_error = (event) => {
+    console.log("ERROR", event)
+}
 
 const props = defineProps({
     article_id: Number,
@@ -42,6 +50,17 @@ const content_locale = computed(() => {
         return {bm: 'nob', nn: 'nno'}[props.dict]
       }
 })
+
+const has_content = () => {
+    for (const definition of props.body.definitions) {
+        for (const element of definition.elements) {
+          if (['explanation', 'example', 'compound_list', 'definition'].includes(element.type_)) {
+            return true
+          }
+        }
+      }
+      return false
+}
 
 
 const { pending, data } = await useAsyncData('article_'+props.article_id, () => $fetch(`https://oda.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`))

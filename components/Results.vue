@@ -7,10 +7,10 @@
   
     </div>
     <div class="row" v-if="articles">
-      <div class="col-lg">
+      <div class="col-lg w-50">
       <Article v-for="(article_id, idx) in articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>
       </div>
-      <div class="col-lg">
+      <div class="col-lg w-50">
       <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
       </div>
 

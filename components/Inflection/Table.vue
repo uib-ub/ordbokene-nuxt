@@ -3,9 +3,9 @@
   <div class="infl-wrapper">
     <template v-if="lemma && lemma.word_class=='NOUN'">
       <div v-if="mq!='xs'"
-           class="infl-wordclass"
+           class="infl-wordclass table-responsive"
            :class="mq">
-        <div>
+        <div class="table-responsive">
           <table class="table" :class="mq">
             <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette substantivet</caption>
             <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette substantivet</caption>
@@ -62,14 +62,14 @@
         </div>
     </div>
     <div v-else
-         class="infl-wordclass"
+         class="infl-wordclass table-responsive"
          :class="mq">
       <div class="lemma">
         <span class="infl-lemma" v-html="formattedLemma"/>
         <span class="sub"> {{wordClass}}</span>
         <span class="sub" v-if="nounGender"> {{nounGender}}</span>
       </div>
-      <div>
+      <div class="table-responsive">
         <table class="table" :class="mq">
           <inflectionRowsNoun v-for="(tags, index) in inflTagsNoun"
                               :key="index"
@@ -86,8 +86,8 @@
   </template>
   <template v-if="lemma && lemma.word_class=='VERB'">
     <div v-if="mq!='xs'"
-           class="infl-wordclass" :class="mq">
-      <div v-for="i in mq=='xs' ? [1,2] : [0]" :key="i">
+           class="infl-wordclass table-responsive" :class="mq">
+      <div v-for="i in mq=='xs' ? [1,2] : [0]" :key="i" class="table-responsive">
         <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette verbet</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette verbet</caption>
@@ -112,7 +112,7 @@
           </tbody>
         </table>
       </div>
-      <div v-for="j in mq=='xs' ? [3,4] : [-1]" :key="j">
+      <div v-for="j in mq=='xs' ? [3,4] : [-1]" :key="j" class="table-responsive">
         <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette verbet (partisippformer)</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette verbet (partisippformer)</caption>
@@ -174,12 +174,12 @@
       </div>
     </div>
     <div v-else
-         class="infl-wordclass" :class="mq">
+         class="infl-wordclass table-responsive" :class="mq">
       <div class="lemma">
           <span class="infl-lemma">{{lemma.lemma}} </span>
           <span class="sub">{{wordClass}}</span>
       </div>
-      <div>
+      <div class="table-responsive">
         <table class="table" :class="mq" >
           <inflectionRowsVerb v-for="(tags, index) in inflTagsVerb"
                               :key="index"
@@ -195,9 +195,9 @@
   </template>
   <template v-if="lemma && lemma.word_class=='ADJ'">
     <div v-if="mq!='xs'"
-           class="infl-wordclass"
+           class="infl-wordclass table-responsive"
            :class="mq">
-      <div>
+      <div class="table-responsive">
         <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette adjektivet</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette adjektivet</caption>
@@ -266,7 +266,7 @@
           </tbody>
         </table>
       </div>
-      <div v-if="hasDeg">
+      <div v-if="hasDeg" class="table-responsive">
         <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette adjektivet (gradbøying)</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette adjektivet (gradbøyning)</caption>
@@ -311,12 +311,12 @@
       </div>
     </div>
     <div v-else
-      class="infl-wordclass" :class="mq">
+      class="infl-wordclass table-responsive" :class="mq">
       <div class="lemma">
           <span class="infl-lemma">{{lemma.lemma}} </span>
           <span class="sub">{{wordClass}}</span>
       </div>
-      <div>
+      <div class="table-responsive">
         <table class="table" :class="mq" >
           <inflectionRowsAdj v-for="(tags, index) in inflTagsAdj"
                              :key="index"
@@ -332,9 +332,9 @@
   </template>
   <template v-if="lemma && lemma.word_class=='ADV' && isADJ_Adv">
     <div v-if="mq!='xs'"
-           class="infl-wordclass"
+           class="infl-wordclass table-responsive"
            :class="mq">
-      <div v-if="hasDeg">
+      <div v-if="hasDeg" class="table-responsive">
         <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette adverbet</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette adverbet</caption>
@@ -364,12 +364,12 @@
       </div>
     </div>
     <div v-else
-      class="infl-wordclass" :class="mq">
+      class="infl-wordclass table-responsive" :class="mq">
       <div class="lemma">
           <span class="infl-lemma">{{lemma.lemma}} </span>
           <span class="sub">{{wordClass}}</span>
       </div>
-      <div>
+      <div class="table-responsive">
         <table class="table" :class="mq" >
           <inflectionRowsAdj v-for="(tags, index) in inflTagsAdjAdv"
                              :key="index"
@@ -385,9 +385,9 @@
   </template>
   <template v-if="lemma && lemma.word_class=='PRON' && standardParadigms[0].inflection">
     <div v-if="mq!='xs'"
-         class="infl-wordclass"
+         class="infl-wordclass table-responsive"
          :class="mq">
-      <div>
+      <div class="table-responsive">
         <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette pronomenet</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette pronomenet</caption>
@@ -418,14 +418,14 @@
       </div>
     </div>
     <div v-else
-         class="infl-wordclass"
+         class="infl-wordclass table-responsive"
          :class="mq">
       <div class="lemma">
         <span class="infl-lemma">{{lemma.lemma}} </span>
         <span class="sub">{{wordClass}}</span>
         <span class="sub" v-if="nounGender"> {{nounGender}}</span>
       </div>
-      <div>
+      <div class="table-responsive">
         <table class="table" :class="mq">
           <inflectionRowsPron v-for="(tags, index) in inflTagsPron"
                               :key="index"
@@ -442,9 +442,9 @@
   </template>
   <template v-if="lemma && lemma.word_class=='DET' && !isUninflected">
     <div v-if="mq!='xs'"
-         class="infl-wordclass"
+         class="infl-wordclass table-responsive"
          :class="mq">
-      <div>
+      <div class="table-responsive">
         <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette determinativet</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette determinativet</caption>
@@ -503,14 +503,14 @@
       </div>
     </div>
     <div v-else
-         class="infl-wordclass"
+         class="infl-wordclass table-responsive"
          :class="mq">
       <div class="lemma">
         <span class="infl-lemma">{{lemma.lemma}} </span>
         <span class="sub">{{wordClass}}</span>
         <span class="sub" v-if="nounGender"> {{nounGender}}</span>
       </div>
-      <div>
+      <div class="table-responsive">
         <table class="table" :class="mq">
           <inflectionRowsDet v-for="(tags, index) in inflTagsDet"
                               :key="index"
@@ -526,8 +526,8 @@
     </div>
   </template>
   <template v-if="lemma && isUninflected && !isADJ_Adv">
-    <div class="infl-wordclass" :class="mq">
-      <div>
+    <div class="infl-wordclass table-responsive" :class="mq">
+      <div class="table-responsive">
         <table class="table" :class="mq">
           <caption class="visually-hidden" v-if="language=='nob'">Bøyingstabell for dette adverbet</caption>
           <caption class="visually-hidden" v-else-if="language=='nno'">Bøyningstabell for dette adverbet</caption>

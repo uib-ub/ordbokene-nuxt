@@ -1,6 +1,5 @@
 <script setup>
 import { useStore } from '~/stores/searchStore'
-const store = useStore()
 import {
   Combobox,
   ComboboxInput,
@@ -10,7 +9,7 @@ import {
   TransitionRoot,
 } from '@headlessui/vue'
 
-
+const store = useStore()
 
 
 
@@ -112,7 +111,7 @@ const clearText = () => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
           @after-leave="store.autocomplete=[]">
-          <ComboboxOptions class="list-group autocomplete" v-show="store.autocomplete[0]">
+          <ComboboxOptions class="list-group list-group-flush autocomplete overflow-auto" v-show="store.autocomplete[0]">
 
             <ComboboxOption
               v-for="(item, idx) in store.autocomplete"
@@ -168,6 +167,9 @@ const clearText = () => {
   z-index: 100;
   left: 0;
 }
+.list-group{
+  height: 50vh;
+}
 
 .list-group-item  {
   cursor: pointer;
@@ -181,5 +183,22 @@ const clearText = () => {
     color: rgba(0,0,0,.6);
     font-size: 85%;
     font-weight: 400;
+}
+
+
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 0 0 1rem 0;
+}
+::-webkit-scrollbar-track {
+  background: #ffff;
+  border-radius: 0 0 1rem 0;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(189, 189, 189); 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(141, 141, 141); 
 }
 </style>

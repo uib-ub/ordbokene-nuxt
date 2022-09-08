@@ -39,14 +39,15 @@ const { pending, data: articles } = useLazyFetch(`https://oda.uib.no/opal/dev/ap
 
 h2 {
     color: var(--bs-primary);
-    font-weight: 600;
+    font-weight: 600 !important;
+    letter-spacing: .1rem;
     font-variant: all-small-caps;
     font-weight: bold;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     
 }
 
 .result-count {
-    font-size: 1.17rem;
+    font-size: 1rem;
 }
 </style>

@@ -1,9 +1,24 @@
 <template>
-    {{body}}<br>
-    TEXT
-{{unparsed}}
-    
+  <component :is="tag" :class="body.type_"><!--
+ --><component :is="item.tag || 'span'" v-for="(item, index) in assemble_text"
+          :class="item.type"
+          @error="article_error"
+          :key="index"
+           v-bind="item.props"><!--
+          -->{{item.html}}<!--
+          
+       --><router-link class="article_ref" v-if="item.type == 'article_ref'" :to="item.ref" @click="link_click(item)" :key="index"><!--
+       --><DefElement tag='span' v-if="item.link_text.type_" :dict="dict" :key="item.id+'_sub'" :body='item.link_text' :content_locale="content_locale"/><span v-else>{{item.link_text}}</span><!--
+       --><span class="homograph" v-if="item.lemmas[0].hgno" :aria-label="`${dict=='bm'? 'Betydning': 'Tyding'} ${item.lemmas[0].hgno}`" :title="`${dict=='bm'? 'Betydning': 'Tyding'} ${item.lemmas[0].hgno}`" :key="index"><!--
+        --> ({{roman_hgno(item.lemmas[0])}}{{item.definition_order ? '': ')'}}</span>
+        <span class="def_order" v-if="item.definition_order" :aria-label="'definisjon '+item.definition_order">{{item.lemmas[0].hgno ? ', ': ' ('}}{{item.definition_order}})</span>
+       </router-link>
 
+       <!--
+       --><span class="numerator" v-if="item.type == 'fraction'">{{item.num}}</span><!--
+       -->{{item.type == 'fraction' ? '⁄' : ''}}<!--
+       --><span class="denominator" v-if="item.type == 'fraction'">{{item.denom}}</span><!--
+ --></component></component>
 </template>
 
 
@@ -19,7 +34,8 @@ const props = defineProps({
       type: String,
       default: 'li'
     },
-    dict: String
+    dict: String,
+    content_locale: String
 })
 
 const { cpncepts: entities_bm } = useLazyFetch('https://oda.uib.no/opal/dev/bm/concepts.json')

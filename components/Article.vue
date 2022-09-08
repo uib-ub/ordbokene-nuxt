@@ -14,11 +14,29 @@
             </div>
         </div>
         <div class="article_content pt-3" ref="article_content">
-            <div class="definitions">
+            <div v-if="data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
+                <h4>{{$t('article.headings.pronunciation', content_locale)}}</h4>
+                <ul>
+                <DefElement v-for="(element, index) in data.body.pronunciation" :dict="dict" :key="index" :body='element' v-on:rticle-click="link_click"/>
+                </ul>
+            </div>
+            <div v-if="data.body.etymology && data.body.etymology.length" class="etymology">
+                <h4>{{$t('article.headings.etymology', content_locale)}}</h4>
+                <ul>
+                <DefElement v-for="(element, index) in data.body.etymology" :dict="dict" :key="index" :body='element' v-on:rticle-click="link_click"/>
+                </ul>
+            </div>
+            <div class="definitions" v-if="has_content">
                 <h4>{{$t('article.headings.definitions', content_locale)}}</h4>
                 <ol>
-                <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' @error="element_error"/>
+                <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:rticle-click="link_click"/>
                 </ol>
+            </div>
+            <div v-if="sub_articles.length" class="expressions">
+                <h4>{{$t('article.headings.expressions', content_locale)}}</h4>
+                <ul>
+                <SubArticle :body="subart" v-for="(subart, index) in sub_articles" :dict="dict" :key="index" v-on:rticle-click="link_click"/>
+                </ul>
             </div>
         </div>
     </div>
@@ -44,11 +62,7 @@ const props = defineProps({
 })
 
 const content_locale = computed(() => {
-    if (i18n.locale == 'eng') {
-        return 'eng'
-      } else {
-        return {bm: 'nob', nn: 'nno'}[props.dict]
-      }
+    return i18n.locale == 'eng' ? 'eng' : {bm: 'nob', nn: 'nno'}[props.dict]
 })
 
 const has_content = () => {
@@ -63,6 +77,7 @@ const has_content = () => {
 }
 
 
+
 const { pending, data } = await useAsyncData('article_'+props.article_id, () => $fetch(`https://oda.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`))
 
 const inflected = computed(() => {
@@ -74,6 +89,36 @@ const lemmas_with_word_class_and_lang = computed(() => {
     return data.value.lemmas.map(lemma => Object.assign({language: props.dict == 'bm' ? 'nob' : 'nno',
                                                      word_class: lemma.paradigm_info[0].inflection_group.split('_')[0]}, lemma))
 })
+
+
+const find_sub_articles = (definition) => {
+    let sub_art_list = []
+  try {
+    let sub_definitions = definition.elements.filter(el => el.type_ == 'definition')
+    let sub_articles = definition.elements.filter(el => el.type_ == 'sub_article' && el.lemmas)
+
+      sub_definitions.forEach((subdef, i) => {
+        sub_art_list = sub_art_list.concat(find_sub_articles(subdef))
+      })
+      sub_art_list = sub_art_list.concat(sub_articles)
+  return sub_art_list
+
+  }
+  catch(error) {
+    console.log("find_sub_articles", this.article.article_id, this.dictionary,  '"'+error.message+'"')
+
+    return []
+  }
+}
+const sub_articles = computed(() => {
+    return data.value.body.definitions.reduce((acc, val) => acc.concat(find_sub_articles(val)), []).sort((s1, s2) => s1.lemmas[0].localeCompare(s2.lemmas[0]))
+})
+
+
+
+const link_click = (event) => {
+    console.log("ARTICLE CLICKED", event)
+}
 
 </script>
 

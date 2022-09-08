@@ -1,7 +1,7 @@
 <template>
 <li class="example">
-    <DefElement tag="q" :body="body.quote"  v-on:link-click="link_click" :dictionary="dictionary" /><span v-if="body.explanation && body.explanation.content.length"> – </span>
-    <DefElement tag="span" :body="body.explanation" v-if="body.explanation && body.explanation.content.length" v-on:link-click="link_click" :dictionary="dictionary" />
+    <DefElement tag="q" :body="body.quote"  v-on:link-click="link_click" :dictionary="dictionary" :content_locale="content_locale"/><span v-if="body.explanation && body.explanation.content.length"> – </span>
+    <DefElement tag="span" :body="body.explanation" v-if="body.explanation && body.explanation.content.length" v-on:link-click="link_click" :dictionary="dictionary" :content_locale="content_locale"/>
 </li>
     
 </template>
@@ -9,7 +9,8 @@
 
 const props = defineProps({
     body: Object,
-    dict: String
+    dict: String,
+    content_locale: String
 })
 
 const emit = defineEmits(['link-click'])

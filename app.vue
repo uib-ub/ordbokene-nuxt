@@ -264,8 +264,80 @@ article h5 {
   color: var(--bs-primary);
   font-weight: 600;
   font-size: 1rem;
-  padding-left: 0.75rem;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
+}
+
+article .level1>ol {
+  padding-left: 1.25rem;
+}
+
+article li {
+  margin-bottom: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+article ul {
+  margin-bottom: 1rem;
+}
+
+article ol {
+  margin-bottom: 2rem;
+}
+
+
+section {
+  padding-top: 10px;
+  padding-bottom: 10px
+}
+
+
+article section.etymology > h4, section.pronunciation > h4 {
+  display: inline;
+}
+
+article section.etymology ul, section.pronunciation ul, section.etymology li, section.pronunciation li {
+  display: inline;
+}
+
+article section.etymology li:not(:first-child):not(:last-child):before, section.pronunciation li:not(:first-child):not(:last-child):before {
+  content: ", ";
+}
+
+article section.etymology li:not(:first-child):last-child:before, section.pronunciation li:not(:first-child):last-child:before {
+  content: "; ";
+  font-size: smaller;
+}
+
+
+
+li.level1.definition {
+  list-style: upper-alpha;
+}
+
+li.level2.definition {
+  list-style: decimal;
+}
+
+li.level3.definition {
+  /* Norsk ordbok skal ha "lower.alpha" her */
+  list-style: disc;
+}
+
+li.sub_article > ul {
+  padding-left: 0px;
+}
+
+article li::marker {
+  color: var(--bs-primary);
+  font-weight: bold;
+}
+
+li.level2>div {
+  padding-left: 1rem;
+}
+
+ol.sub_definitions {
+  padding-left: 1.25rem;
 }
 
 

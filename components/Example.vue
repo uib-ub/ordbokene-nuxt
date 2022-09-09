@@ -21,8 +21,17 @@ const link_click = (event) => {
 </script>
 
 <style scoped>
-    ul {
-        padding-left: 0px;
-    }
+
+li {
+    list-style: none;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
+q {
+    font-style: italic;
+    display: inline;
+}
+
 </style>
     

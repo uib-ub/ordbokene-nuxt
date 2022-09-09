@@ -169,55 +169,6 @@ article {
 }
 
 
-section {
-  padding-top: 10px;
-  padding-bottom: 10px
-}
-
-
-section.etymology > h4, section.pronunciation > h4 {
-  display: inline;
-}
-
-section.etymology ul, section.pronunciation ul, section.etymology li, section.pronunciation li {
-  display: inline;
-}
-
-section.etymology li:not(:first-child):not(:last-child):before, section.pronunciation li:not(:first-child):not(:last-child):before {
-  content: ", ";
-}
-
-section.etymology li:not(:first-child):last-child:before, section.pronunciation li:not(:first-child):last-child:before {
-  content: "; ";
-  font-size: smaller;
-}
-
-li {
-  padding-bottom: 4px;
-}
-
-li.level1.definition {
-  list-style: upper-alpha;
-}
-
-li.level2.definition {
-  list-style: decimal;
-}
-
-li.level3.definition {
-  /* Norsk ordbok skal ha "lower.alpha" her */
-  list-style: disc;
-}
-
-li.sub_article > ul {
-  padding-left: 0px;
-}
-
-::marker {
-  font-weight: bold;
-  color: var(--v-primary-base);
-}
-
 ol > li:only-child.level1, li:only-child.level2 {
   /* level3 a.k.a. underdefinisjoner skal vises med bullet selv om de står alene */
   /* list-style: none;*/

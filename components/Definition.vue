@@ -1,9 +1,9 @@
 <template>
-      <component :is="level==1 ? 'div':'li'" :class="['definition', 'level'+level]"  :ref="level != 9 ? 'def' + body.id : ''" :id="level != 9? 'def' + body.id : ''">
+      <component :is="level==1 ? 'div' : 'li'" :class="['definition', 'level'+level]"  :ref="level != 9 ? 'def' + body.id : ''" :id="level != 9? 'def' + body.id : ''">
     <span v-if="level!=9"/>
-    <ul class="explanations">
+    <span class="explanations">
       <DefElement :body="explanation" :dict="dict" :has_article_ref=has_article_ref(explanation) v-for="(explanation, index) in explanations" :key="index" v-on:link-click="link_click" :content_locale="content_locale"/>
-    </ul>
+    </span>
     <div v-if="examples.length">
       <h5>{{$t('article.headings.examples', content_locale)}}</h5>
       <ul class="examples">

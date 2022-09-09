@@ -16,21 +16,21 @@
         <div class="article_content pt-3" ref="article_content">
             <section v-if="data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
                 <h4>{{$t('article.headings.pronunciation', content_locale)}}</h4>
-                <ul>
+
                 <DefElement v-for="(element, index) in data.body.pronunciation" :dict="dict" :key="index" :body='element' v-on:rticle-click="link_click"/>
-                </ul>
+
             </section>
             <section v-if="data.body.etymology && data.body.etymology.length" class="etymology">
                 <h4>{{$t('article.headings.etymology', content_locale)}}</h4>
-                <ul>
+
                 <DefElement v-for="(element, index) in data.body.etymology" :dict="dict" :key="index" :body='element' v-on:rticle-click="link_click"/>
-                </ul>
+
             </section>
             <section class="definitions" v-if="has_content">
                 <h4>{{$t('article.headings.definitions', content_locale)}}</h4>
-                <ol>
+
                 <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:rticle-click="link_click"/>
-                </ol>
+
             </section>
             <section v-if="sub_articles.length" class="expressions">
                 <h4>{{$t('article.headings.expressions', content_locale)}}</h4>
@@ -131,7 +131,7 @@ const link_click = (event) => {
     letter-spacing: .1rem;
     font-variant-caps: all-small-caps;
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.25rem !important;
 
 }
 
@@ -246,6 +246,7 @@ h4 {
   color: var(--bs-primary);
   font-variant: all-small-caps;
   font-weight: 600;
+  padding-right: 1rem;
 
 }
 

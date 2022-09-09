@@ -7,7 +7,7 @@
       <div class="small mx-2">
       <div v-show="false"><h1>ordbøkene.no</h1></div>
       <div><h1>Ordbøkene</h1>
-      <p class="d-none d-xl-block">{{$t("sub_title")}}</p>
+      <div class="d-none d-xl-block p-1">{{$t("sub_title")}}</div>
       </div>
     </div>
       </NuxtLink>

@@ -4,10 +4,10 @@
       <nav role="navigation" class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand text-white" to="/">
-      <div class="small mx-2">
+      <div class="small mx-2 my-1">
       <div v-show="false"><h1>ordbøkene.no</h1></div>
-      <div><h1>Ordbøkene</h1>
-      <p class="d-none d-xl-block">{{$t("sub_title")}}</p>
+      <div><h1 class="brand-title">Ordbøkene</h1>
+      <p class="d-none d-xl-block brand-subtitle">{{$t("sub_title")}}</p>
       </div>
     </div>
       </NuxtLink>
@@ -115,6 +115,16 @@ const update_locale = (newLocale) => {
 
 
 <style>
+
+.brand-title {
+  margin-bottom: 0.125rem;
+}
+
+.brand-subtitle {
+  margin-left: 0.125rem;
+  margin-bottom: 0.5rem;
+}
+
 .btn-outline-tertiary{
   border: none;
 }
@@ -239,5 +249,14 @@ main a  {
   padding-right: 0.5rem;
   font-size: 1.25rem;
 }
+
+article h5 {
+  color: var(--bs-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  padding-left: 0.75rem;
+  padding-top: 0.5rem;
+}
+
 
 </style>

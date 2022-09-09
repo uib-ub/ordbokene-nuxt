@@ -1,0 +1,45 @@
+<template>
+    <li class="compound_list">
+      <ul>
+        <DefElement :body="body.intro" v-if="body.intro" :dict="dict" :content_locale="content_locale"/>
+        <li
+          :key="index"
+          v-for="(item, index) in body.elements"
+          >{{' '}}<NuxtLink
+            :to="'/' + dict + '/' + item.article_id + (item.definition_id ? '#def'+item.definition_id : '')"
+            @click="link_click(item)"
+            >{{item.lemmas[0].lemma}}</NuxtLink>
+        </li>
+      </ul>
+    </li>
+  </template>
+<script setup>
+
+const props = defineProps({
+    body: Object,
+    dict: String,
+    content_locale: String
+})
+
+const emit = defineEmits(['link-click'])
+const link_click = (event) => {
+    emit('link-click', event)
+}
+
+</script>
+
+<style scoped>
+
+li.compound_list ul li {
+    display: inline;
+  }
+
+  li.compound_list li:not(:last-child):not(:first-child):after {
+    content: ",";
+  }
+
+  ul {
+    padding-left: 0px !important;
+  }
+</style>
+    

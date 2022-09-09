@@ -3,7 +3,7 @@
     <h3>
                 <!--
     --><span v-for="(lemma, index) in lemma_group.lemmas"
-          :key="index"><DefElement v-if="lemma.annotated_lemma" :body="lemma.annotated_lemma" tag="span"/><span v-else>{{lemma.lemma}}</span><!--
+          :key="index"><DefElement v-if="lemma.annotated_lemma" :body="lemma.annotated_lemma" tag="span" :content_locale="content_locale"/><span v-else>{{lemma.lemma}}</span><!--
           --><span v-if="lemma.hgno"
                    :aria-label="$t('accessibility.homograph') + parseInt(lemma.hgno)"
                    :title="$t('accessibility.homograph')+parseInt(lemma.hgno)"
@@ -139,6 +139,10 @@ h3 {
     font-variant: all-small-caps;
     font-style: normal;
     font-size: 1.5rem;
+}
+
+.subheader {
+  font-size: 1.17rem;
 }
 
 .hgno {

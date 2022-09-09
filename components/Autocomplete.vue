@@ -168,7 +168,7 @@ const clearText = () => {
   left: 0;
 }
 .list-group{
-  height: 50vh;
+  max-height: 50vh;
 }
 
 .list-group-item  {

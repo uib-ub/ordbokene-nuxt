@@ -254,8 +254,8 @@ article h5 {
   color: var(--bs-primary);
   font-weight: 600;
   font-size: 1rem;
-  padding-left: 12px;
-  padding-top: 6px;
+  padding-left: 0.75rem;
+  padding-top: 0.5rem;
 }
 
 

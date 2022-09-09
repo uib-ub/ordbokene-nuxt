@@ -220,7 +220,7 @@ main a  {
 .secondary-page h4 {
   color: var(--bs-primary);
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 

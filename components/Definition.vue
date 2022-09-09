@@ -41,7 +41,7 @@ const explanations = computed(() => {
 })
 
 const examples = computed(() => {
-    return props.body.elements.filter(el => el.type_ == 'examples')
+    return props.body.elements.filter(el => el.type_ == 'example')
 })
 
 const compound_lists = computed(() => {

@@ -2,7 +2,6 @@
   <component :is="tag" :class="body.type_"><!--
  --><component :is="item.tag || 'span'" v-for="(item, index) in assemble_text"
           :class="item.type"
-          @error="article_error"
           :key="index"
            v-bind="item.props"><!--
           -->{{item.html}}<!--
@@ -77,8 +76,8 @@ const unparsed = computed(() => {
             else return {type: item.type_ || 'plain', html: item}
             }
         catch(error) {
-            console.log(error)
-            return {type: 'plain', html: item}
+            console.log(error) // todo: add plausible logging
+            return {type: 'plain', html: ""}
             }
         
         }

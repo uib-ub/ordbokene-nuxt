@@ -219,7 +219,8 @@ li.sub_article > ul {
 
 ol > li:only-child.level1, li:only-child.level2 {
   /* level3 a.k.a. underdefinisjoner skal vises med bullet selv om de står alene */
-  list-style: none;
+  /* list-style: none;*/
+  color: blue;
 }
 
 li:only-child.level1 > ol {
@@ -231,7 +232,8 @@ ul, ol {
 }
 
 ul li {
-  list-style:none;
+  /*list-style:none; */
+  color: red;
 }
 
 ul li.definition {
@@ -245,6 +247,5 @@ h4 {
   font-weight: 600;
 
 }
-
 
 </style>

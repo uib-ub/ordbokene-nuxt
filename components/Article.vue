@@ -124,7 +124,7 @@ const link_click = (event) => {
 <style scoped>
 
  h2 {
-    color: rgba(0,0,0,.6);
+    color: rgba(0,0,0,.6) !important;
     margin-left: 1rem;
     margin-top: 0.5rem;
     margin-bottom: 0rem;

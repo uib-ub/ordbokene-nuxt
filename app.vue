@@ -209,19 +209,23 @@ main a  {
   padding: 3rem !important;
 }
 
+
+
 .secondary-page h2 {
   font-family: Inria Serif;
   color: var(--bs-primary);
-  font-weight:600;
+  font-weight: bold;
 }
 
 
 
-.secondary-page h3 {
+.secondary-page h3, .dict-view h2 {
   color: var(--bs-primary);
-  font-weight:600;
+  font-weight: 600;
   font-variant: all-small-caps;
-  font-weight: bold;
+  font-size: 1.75rem;
+}
+.secondary-page summary::marker {
   font-size: 1.5rem;
 }
 

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="dict-view">
     <ul class="nav px-2">
   <li class="nav-item">
     <a class="nav-link py-0 active" aria-current="page" href="/">Søk i oppslagsord</a>

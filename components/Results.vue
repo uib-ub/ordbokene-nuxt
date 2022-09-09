@@ -8,7 +8,7 @@
     </div>
     <div class="row" v-if="articles">
       <div class="col-lg-6">
-        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span class="result-count">  | {{articles.meta.bm.total}} treff</span></div>
+        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span class="result-count">  | {{articles.meta.bm.total}} {{$t('results')}}</span></div>
       <Article v-for="(article_id, idx) in articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>
       </div>
       <div class="col-lg-6">
@@ -36,16 +36,6 @@ const { pending, data: articles } = useLazyFetch(`https://oda.uib.no/opal/dev/ap
         width: 18rem;
         height: 18rem;
     }
-
-h2 {
-    color: var(--bs-primary);
-    font-weight: 600 !important;
-    letter-spacing: .1rem;
-    font-variant: all-small-caps;
-    font-weight: bold;
-    font-size: 1.5rem;
-
-}
 
 .result-count {
     font-size: 1rem;

@@ -141,6 +141,10 @@ h3 {
     font-size: 1.5rem;
 }
 
+.subheader {
+  font-size: 1.17rem;
+}
+
 .hgno {
   color: rgba(0,0,0,.6) !important;
   font-family: unset;

@@ -217,6 +217,12 @@ main a  {
   font-weight: bold;
 }
 
+.secondary-page h4 {
+  color: var(--bs-primary);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
 
 
 .secondary-page h3, .dict-view h2 {

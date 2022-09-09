@@ -38,14 +38,14 @@
     <details>
       <summary><h3>Adding a shortcut on your smartphone</h3></summary>
       <p>The website, ordbøkene.no, has a responsive design. This means that the dictionary content adapts to screens of all sizes. If you wish to have a shortcut to Bokmålsordboka and Nynorskordboka on your smartphone, search for ordbøkene.no in the browser and place it as an icon on the screen. The icon looks like an app, and you can click right into the website without opening your browser.</p>
-      <h3>For iPhone / iOS</h3>
+      <h4>For iPhone / iOS</h4>
       <ul>
         <li>Open your browser and type ordbokene.no or ordbøkene.no.</li>
         <li>From the front page, select the share icon <v-icon>ios_share</v-icon> at the bottom of the page.</li>
         <li>From the double row of sub-options, select the icon "Add to Home Screen" <v-icon>add_box</v-icon>. You may need to drag the row from the right to get to the icon.</li>
       </ul>
       <p>The dictionaries icon <img class="ordbokene-icon" src="/favicon.ico" aria-hidden="true"/> is now on your home screen, and you can access the dictionary page directly by clicking on it.</p>
-      <h3>For Android</h3>
+      <h4>For Android</h4>
       <ul>
         <li>Open the browser and type ordbokene.no or ordbøkene.no.</li>
         <li>From the front page, select the icon with the three vertical dots in the upper right corner.</li>
@@ -101,7 +101,7 @@
     <details>
       <summary><h3>Useful Links to Language Resources</h3></summary>
       <p>Should you have questions about clear, good and correct Norwegian language use, please contact the <a href="mailto:sporsmal@sprakradet.no">Language Council's response service.</a></p>
-      <h3>Online language resources</h3>
+      <h4>Online language resources</h4>
       <p>The Norwegian Language Collections at the University of Bergen Library have a number of language resources, including:</p>
       <ul>
         <li><a href="https://ord.uib.no/">ord.uib.no:</a> word lists and API-description for Ordbøkene.no (Norwegian. <a href="https://ordbokene.no/api/swagger-ui.html">Interactive documentation in english</a>).</li>
@@ -112,7 +112,7 @@
       </ul>
       <p><a href="http://www.sprakradet.no/">The Language Council</a> has several language resources under the menu “Language Help”, go to <a href="http://www.sprakradet.no/sprakhjelp/Skriveregler/">spelling rules</a>, <a href="http://www.sprakradet.no/sprakhjelp/Praktisk-grammatikk/">practical grammar</a> or <a href="http://www.sprakradet.no/sprakhjelp/Skriverad/">writing advice</a>.</p>
       <p>Norsk ordbank (Norwegian Word Database) is also available for download at <a href="https://www.nb.no/sprakbanken/ressurskatalog/?_search=ordbank">Språkbanken at the National Library</a> under a CC-BY license. The dictionary contains word lists for Bokmål and Nynorsk with information on word class and standard inflection.</p>
-      <h3>Other quality-assured and freely available dictionaries</h3>
+      <h4>Other quality-assured and freely available dictionaries</h4>
       <ul>
         <li><a href="https://alfa.norsk-ordbok.noperl/ordbok/no2014.cgi">Norsk Ordbok</a>: The dictionary of the Norwegian vernacular and written Nynorsk  </li>
         <li><a href="https://naob.no/">NAOB</a>: The Norwegian Academy's Dictionary: Bokmål and Riksmål from the early 1800s until today </li>
@@ -200,14 +200,14 @@
       <summary><h3>Ordbøkene på smarttelefon</h3></summary>
       <div>
         <p>Nettsida ordbøkene.no har responsivt design, som gjer at innhaldet tilpassar seg både store og små skjermar. Ynskjer du å ha lenkja til Bokmålsordboka og Nynorskordboka på mobilskjermen din, søkjer du opp ordbøkene.no i nettlesaren og legg henne ut som ikon på skjermen. Ikonet ut som ein app, og du kan trykkje deg rett inn på nettsida, utan å gå vegen om nettlesaren.</p>
-        <h3>For iPhone/iOs</h3>
+        <h4>For iPhone/iOs</h4>
         <ul>
           <li>Opne nettlesaren og skriv inn enten ordbokene.no eller ordbøkene.no.</li>
           <li>Når du er inne på forsida, vel du ikonet nedst på sida for å dele:  <v-icon>ios_share</v-icon>.</li>
           <li>Det kjem opp delealternativ i to rader. I den nedste rada vel du «Legg til på Heim-skjerm» med ikonet <v-icon>add_box</v-icon> Det kan hende du må drage rada frå høgre for å kome til ikonet.</li>
         </ul>
         <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico"  aria-hidden="true"/> ligg no på heim-skjermen din, og du kjem direkte inn på ordboksida ved å klikke på det.</p>
-        <h3>For Android</h3>
+        <h4>For Android</h4>
         <ul>
           <li>Opne nettlesaren og skriv inn enten ordbokene.no eller ordbøkene.no.</li>
           <li>Når du er inne på forsida, vel du ikonet med dei tre loddrette prikkane i øvre høgre hjørnet:  <v-icon>more_vert</v-icon>.</li>
@@ -283,7 +283,7 @@
     <details>
       <summary><h3>Grammatiske kodar i ordbøkene</h3></summary>
       <p>Kodane nedanfor viser dei regelrette bøyingane for substantiv, adjektiv og verb. Ord med ufullstendige eller uregelrette bøyingar i desse ordklassane har bøyingskodar utan tal. Dei er merkte f. (femininum, hokjønn), m. (maskulinum, hankjønn), n. (nøytrum, inkjekjønn), subst. (substantiv), adj. (adjektiv) eller v. (verb).</p>
-      <h3>Substantiv (Nynorskordboka)</h3>
+      <h4>Substantiv (Nynorskordboka)</h4>
       <table class="table table-bordered">
         <tr>
           <th>Kode</th>
@@ -349,7 +349,7 @@
 		      <td> rika</td>
 	      </tr>
       </table>
-      <h3>Adjektiv (Nynorskordboka)</h3>
+      <h4>Adjektiv (Nynorskordboka)</h4>
       <table class="table table-bordered">
         <tr>
           <th>Kode</th>
@@ -394,7 +394,7 @@
 		      <td> vaksne</td>
 	      </tr>
       </table>
-      <h3>Verb (Nynorskordboka)</h3>
+      <h4>Verb (Nynorskordboka)</h4>
       <table class="table table-bordered">
         <tr>
           <th>Kode</th>
@@ -439,7 +439,7 @@
 		      <td> ropt</td>
 	      </tr>
       </table>
-      <h3>Substantiv (Bokmålsordboka)</h3>
+      <h4>Substantiv (Bokmålsordboka)</h4>
       <table class="table table-bordered">
         <tbody>
           <tr>
@@ -549,7 +549,7 @@
           </tr>
         </tbody>
       </table>
-      <h3>Adjektiv (Bokmålsordboka)</h3>
+      <h4>Adjektiv (Bokmålsordboka)</h4>
       <table class="table table-bordered">
         <tbody>
           <tr>
@@ -610,7 +610,7 @@
           </tr>
         </tbody>
       </table>
-      <h3>Verb (Bokmålsordboka)</h3>
+      <h4>Verb (Bokmålsordboka)</h4>
       <table class="table table-bordered">
         <tbody>
           <tr>
@@ -688,7 +688,7 @@
         <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=118&amp;tabid=1777">Ordbokhotellet</a> : elektronisk indeks over ordformer frå ei rekkje lokale ordsamlingar sortert under normert oppslagsform</li>
         <li><a href="http://inger.uib.no/perl/search/search.cgi">Alle digitale språkressursar under Språksamlingane</a></li>
       </ul>
-      <h3>Andre kvalitetssikra og fritt tilgjengelege ordbøker:</h3>
+      <h4>Andre kvalitetssikra og fritt tilgjengelege ordbøker:</h4>
       <ul>
         <li><a href="https://alfa.norsk-ordbok.no">Norsk Ordbok</a> : Ordboka over det norske folkemålet og det nynorske skriftmålet</li>
         <li><a href="http://www.naob.no/">NAOB</a> : Det Norske Akademis Ordbok: bokmål og riksmål frå tidleg 1800-tall fram til i dag</li>
@@ -765,14 +765,14 @@
       <summary><h3>Ordbøkene på smarttelefon</h3></summary>
       <div>
         <p> Nettsiden ordbøkene.no har responsivt design, som gjør at innholdet tilpasser seg skjermer av alle størrelser. Ønsker du å ha lenken til <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> på mobilskjermen din, søker du opp ordbøkene.no i nettleseren og legger den til som ikon på skjermen. Ikonet ser ut som en app, og du kan trykke deg rett inn på nettsiden, uten å gå veien om nettleseren.</p>
-        <h3>For iPhone/iOs:</h3>
+        <h4>For iPhone/iOs:</h4>
         <ul>
           <li>Åpne nettleseren og skriv inn enten ordbokene.no eller ordbøkene.no.</li>
           <li>Når du er inne på forsiden, velger du ikonet nederst på siden for å dele:  <v-icon>ios_share</v-icon>.</li>
           <li>Det kommer opp delealternativer i to rader. I den nederste raden velger du «Legg til på Hjem-skjerm» med ikonet <v-icon>add_box</v-icon> . Det kan hende du må dra raden fra høyre for å komme til ikonet.</li>
         </ul>
         <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico"  aria-hidden="true"/> ligger nå på hjem-skjermen din, og du kommer direkte inn på ordboksiden ved å klikke på det.</p>
-        <h3>For Android:</h3>
+        <h4>For Android:</h4>
         <ul>
           <li>Åpne nettleseren og skriv inn enten ordbokene.no eller ordbøkene.no.</li>
           <li>Når du er inne på forsiden, velger du ikonet med de tre loddrette prikkene i øvre høyre hjørnet: <v-icon>more_vert</v-icon>.</li>
@@ -835,7 +835,7 @@
     <details>
       <summary><h3>Grammatiske koder i ordbøkene</h3></summary>
       <p>Kodene nedenfor viser de regelrette bøyningene for substantiv, adjektiv og verb. Ord med med ufullstendige eller uregelrette bøyninger i disse ordklassene har koder uten tall. De er merket med f. (femininum, hunkjønn), m. (maskulinum, hankjønn), n. (nøytrum, intetkjønn), subst. (substantiv), adj. (adjektiv) eller v. (verb).</p>
-      <h3>Substantiv (Bokmålsordboka)</h3>
+      <h4>Substantiv (Bokmålsordboka)</h4>
       <table class="table table-bordered">
         <tbody>
           <tr>
@@ -945,7 +945,7 @@
           </tr>
         </tbody>
       </table>
-      <h3>Adjektiv (Bokmålsordboka)</h3>
+      <h4>Adjektiv (Bokmålsordboka)</h4>
       <table class="table table-bordered">
         <tbody>
           <tr>
@@ -1006,7 +1006,7 @@
       	  </tr>
         </tbody>
       </table>
-      <h3>Verb (Bokmålsordboka)</h3>
+      <h4>Verb (Bokmålsordboka)</h4>
       <table class="table table-bordered">
         <tbody>
           <tr>
@@ -1067,7 +1067,7 @@
 	        </tr>
         </tbody>
       </table>
-      <h3>Substantiv (Nynorskordboka)</h3>
+      <h4>Substantiv (Nynorskordboka)</h4>
       <table class="table table-bordered">
         <tr>
           <th>Kode</th>
@@ -1133,7 +1133,7 @@
 	  	    <td> rika</td>
 	      </tr>
       </table>
-      <h3>Adjektiv (Nynorskordboka)</h3>
+      <h4>Adjektiv (Nynorskordboka)</h4>
       <table class="table table-bordered">
         <tr>
           <th>Kode</th>
@@ -1178,7 +1178,7 @@
 		      <td> vaksne</td>
 	      </tr>
       </table>
-      <h3>Verb (Nynorskordboka)</h3>
+      <h4>Verb (Nynorskordboka)</h4>
       <table class="table table-bordered">
         <tr>
 		      <th>Kode</th>
@@ -1228,7 +1228,7 @@
       <summary><h3>Nyttige språklenker</h3></summary>
       <div>
         <p>Har du spørsmål om klar, god og korrekt språkbruk, kan du ta kontakt med <a href="mailto:sporsmal@sprakradet.no">Språkrådets svartjeneste</a>.</p>
-        <h3>Språkressurser på nettet</h3>
+        <h4>Språkressurser på nettet</h4>
         <p>Språksamlingene ved Universitetsbiblioteket i Bergen har en rekke språkressurser, blant annet:</p>
         <ul>
           <li><a href="https://ord.uib.no/">ord.uib.no:</a> ordlister og API-beskrivelse for Ordbøkene (<a href="https://ordbokene.no/api/swagger-ui.html">interaktiv dokumentasjon</a>).</li>
@@ -1240,7 +1240,7 @@
         </ul>
         <p><a href="http://www.sprakradet.no/">Språkrådet</a> har mange språkressurser samlet under menyen Språkhjelp, gå til <a href="http://www.sprakradet.no/sprakhjelp/Skriveregler/">skriveregler</a>, <a href="http://www.sprakradet.no/sprakhjelp/Praktisk-grammatikk/">praktisk grammatikk</a> eller <a href="http://www.sprakradet.no/sprakhjelp/Skriverad/">skriveråd</a>.</p>
         <p>Norsk ordbank ligger også tilgjengelig for nedlasting hos <a href="https://www.nb.no/sprakbanken/ressurskatalog/?_search=ordbank">Språkbanken ved Nasjonalbiblioteket</a> under lisensen CC-BY. Ordbanken inneholder bl.a. fullformslister for bokmål og nynorsk med informasjon om ordklasse og normert bøying.</p>
-        <h3>Andre kvalitetssikrede og fritt tilgjengelige ordbøker</h3>
+        <h4>Andre kvalitetssikrede og fritt tilgjengelige ordbøker</h4>
         <ul>
           <li><a href="https://alfa.norsk-ordbok.noperl/ordbok/no2014.cgi">Norsk Ordbok:</a> Ordboka over det norske folkemålet og det nynorske skriftmålet</li>
           <li><a href="https://naob.no/">NAOB:</a> Det Norske Akademis Ordbok: bokmål og riksmål fra tidlig 1800-tall fram til i dag</li>

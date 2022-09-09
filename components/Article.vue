@@ -98,6 +98,7 @@ article {
     border: solid 1px var(--bs-primary);
     border-radius: 1.5rem;
     display: inline-flex;
+    width: 100%;
 }
 
 .inflection-wrapper {

@@ -333,7 +333,7 @@ article li::marker {
 }
 
 li.level2>div {
-  padding-left: 1rem;
+  padding-left: 0.5rem;
 }
 
 ol.sub_definitions {

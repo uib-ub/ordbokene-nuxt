@@ -15,7 +15,7 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
 </script>
 
 <template>
-  <div>
+
   <main>
     <div class="row" v-if="welcome_bm && welcome_nn">
       <div class="col-lg">
@@ -29,8 +29,5 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
     <h1>WAITING</h1>
   
     </div>
-  </main>
-
-  </div>
-  
+  </main> 
 </template>

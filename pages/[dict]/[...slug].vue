@@ -1,10 +1,10 @@
 <template>
-<div>
+<main>
   <ArticleView v-if="store.view == 'article'"/>
   <WordView v-if="store.view == 'word'"/>
   <SearchView v-if="store.view == 'search'"/>
   <SuggestResults v-if="store.view == 'suggest'"/>
-</div>
+</main>
 </template>
 
 <script setup>

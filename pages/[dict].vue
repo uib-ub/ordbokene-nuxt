@@ -23,6 +23,11 @@ import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
 
+
+store.concepts_bm  = await useLazyFetch('https://oda.uib.no/opal/dev/bm/concepts.json')
+store.concepts_nn  = await useLazyFetch('https://oda.uib.no/opal/dev/nn/concepts.json')
+
+
 </script>
 
 <style scoped>

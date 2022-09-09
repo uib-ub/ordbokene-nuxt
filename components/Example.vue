@@ -1,7 +1,7 @@
 <template>
 <li class="example">
-    <em><DefElement tag="q" :body="body.quote"  v-on:link-click="link_click" :dictionary="dictionary" :content_locale="content_locale"/><span v-if="body.explanation && body.explanation.content.length"> – </span>
-    <DefElement tag="span" :body="body.explanation" v-if="body.explanation && body.explanation.content.length" v-on:link-click="link_click" :dictionary="dictionary" :content_locale="content_locale"/></em>
+    <DefElement tag="q" :body="body.quote"  v-on:link-click="link_click" :dict="dict" :content_locale="content_locale"/><span v-if="body.explanation && body.explanation.content.length"> – </span>
+    <DefElement tag="span" :body="body.explanation" v-if="body.explanation && body.explanation.content.length" v-on:link-click="link_click" :dict="dict" :content_locale="content_locale"/>
 </li>
     
 </template>

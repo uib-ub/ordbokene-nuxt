@@ -104,7 +104,7 @@ const find_sub_articles = (definition) => {
 
   }
   catch(error) {
-    console.log("find_sub_articles", this.article.article_id, this.dictionary,  '"'+error.message+'"')
+    console.log("find_sub_articles", props.article_id, props.dict,  '"'+error.message+'"')
 
     return []
   }

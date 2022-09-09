@@ -11,7 +11,7 @@
       </ul>
     </div>
     <ul class="compound_lists">
-      <CompoundList :dict="dict" v-for="(compound_list, index) in compound_lists" :body="compound_list" :key="index" v-on:link-click="link_click" />
+      <CompoundList :dict="dict" v-for="(compound_list, index) in compound_lists" :body="compound_list" :key="index" v-on:link-click="link_click" :content_locale="content_locale"/>
     </ul>
     <component :is="level < 3 ? 'ol' : 'ul'" class="sub_definitions" v-if="subdefs.length">
       <Definition :def_number='index+1' :level="level+1" :body="subdef" v-for="(subdef, index) in subdefs"  :dict="dict" :key="index" v-on:link-click="link_click" :content_locale="content_locale"/>

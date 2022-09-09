@@ -4,8 +4,8 @@
     {{body.lemmas[0]}}
     </span>
     <ul>
-    <DefElement :body="body.intro" v-if="body.intro" :dictionary="dictionary" @article-click="article_click"/>
-    <Definition :level="9" :body="body.article.body.definitions[0]" :dictionary="dictionary" @article-click="article_click" :content_locale="content_locale"/>
+    <DefElement :body="body.intro" v-if="body.intro" :dict="dict" @link-click="link_click"/>
+    <Definition :level="9" :body="body.article.body.definitions[0]" :dict="dict" @link-click="link_click" :content_locale="content_locale"/>
     </ul>
 </li>
 </template>

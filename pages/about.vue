@@ -1282,4 +1282,8 @@ summary{
 .no-bullet{
   list-style-type: none;
 }
+
+.ordbokene-icon {
+  width: 1.25rem;
+}
 </style>

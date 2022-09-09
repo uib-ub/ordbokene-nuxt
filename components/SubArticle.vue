@@ -26,8 +26,24 @@ const link_click = (event) => {
 </script>
 
 <style scoped>
-    ul {
-        padding-left: 0px;
-    }
+
+.sub_article_header {
+  font-weight: bold;
+  color: var(--bs-primary);
+}
+
+li.sub_article {
+  padding-top: 8px;
+}
+
+li.sub_article ul {
+  padding-top: 0px;
+}
+
+li.sub_article ul li {
+  list-style: none;
+}
+
+
 </style>
     

@@ -1,7 +1,7 @@
 <template>
       <component :is="level==1 ? 'div' : 'li'" :class="['definition', 'level'+level]"  :ref="level != 9 ? 'def' + body.id : ''" :id="level != 9? 'def' + body.id : ''">
     <span v-if="level!=9"/>
-    <span class="explanations">
+    <span class="explanations" v-if="explanations.length">
       <DefElement :body="explanation" :dict="dict" :has_article_ref=has_article_ref(explanation) v-for="(explanation, index) in explanations" :key="index" v-on:link-click="link_click" :content_locale="content_locale"/>
     </span>
     <div v-if="examples.length">
@@ -10,7 +10,7 @@
         <Example :body="example" :dict="dict" v-for="(example, index) in examples" :key="index" v-on:link-click="link_click" :content_locale="content_locale"/>
       </ul>
     </div>
-    <ul class="compound_lists">
+    <ul class="compound_lists" v-if = "compound_lists.length">
       <CompoundList :dict="dict" v-for="(compound_list, index) in compound_lists" :body="compound_list" :key="index" v-on:link-click="link_click" :content_locale="content_locale"/>
     </ul>
     <component :is="level < 3 ? 'ol' : 'ul'" class="sub_definitions" v-if="subdefs.length">

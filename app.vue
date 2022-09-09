@@ -250,4 +250,13 @@ main a  {
   font-size: 1.25rem;
 }
 
+article h5 {
+  color: var(--bs-primary);
+  font-weight: 600;
+  font-size: 1rem;
+  padding-left: 12px;
+  padding-top: 6px;
+}
+
+
 </style>

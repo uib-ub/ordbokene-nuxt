@@ -14,30 +14,30 @@
             </div>
         </div>
         <div class="article_content pt-3" ref="article_content">
-            <div v-if="data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
+            <section v-if="data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
                 <h4>{{$t('article.headings.pronunciation', content_locale)}}</h4>
                 <ul>
                 <DefElement v-for="(element, index) in data.body.pronunciation" :dict="dict" :key="index" :body='element' v-on:rticle-click="link_click"/>
                 </ul>
-            </div>
-            <div v-if="data.body.etymology && data.body.etymology.length" class="etymology">
+            </section>
+            <section v-if="data.body.etymology && data.body.etymology.length" class="etymology">
                 <h4>{{$t('article.headings.etymology', content_locale)}}</h4>
                 <ul>
                 <DefElement v-for="(element, index) in data.body.etymology" :dict="dict" :key="index" :body='element' v-on:rticle-click="link_click"/>
                 </ul>
-            </div>
-            <div class="definitions" v-if="has_content">
+            </section>
+            <section class="definitions" v-if="has_content">
                 <h4>{{$t('article.headings.definitions', content_locale)}}</h4>
                 <ol>
                 <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:rticle-click="link_click"/>
                 </ol>
-            </div>
-            <div v-if="sub_articles.length" class="expressions">
+            </section>
+            <section v-if="sub_articles.length" class="expressions">
                 <h4>{{$t('article.headings.expressions', content_locale)}}</h4>
                 <ul>
                 <SubArticle :body="subart" v-for="(subart, index) in sub_articles" :dict="dict" :key="index" v-on:rticle-click="link_click"/>
                 </ul>
-            </div>
+            </section>
         </div>
     </div>
     </article>
@@ -165,6 +165,85 @@ article {
 
 .inflection-wrapper {
     overflow: hidden;
+}
+
+
+section {
+  padding-top: 10px;
+  padding-bottom: 10px
+}
+
+
+section.etymology > h4, section.pronunciation > h4 {
+  display: inline;
+}
+
+section.etymology ul, section.pronunciation ul, section.etymology li, section.pronunciation li {
+  display: inline;
+}
+
+section.etymology li:not(:first-child):not(:last-child):before, section.pronunciation li:not(:first-child):not(:last-child):before {
+  content: ", ";
+}
+
+section.etymology li:not(:first-child):last-child:before, section.pronunciation li:not(:first-child):last-child:before {
+  content: "; ";
+  font-size: smaller;
+}
+
+li {
+  padding-bottom: 4px;
+}
+
+li.level1.definition {
+  list-style: upper-alpha;
+}
+
+li.level2.definition {
+  list-style: decimal;
+}
+
+li.level3.definition {
+  /* Norsk ordbok skal ha "lower.alpha" her */
+  list-style: disc;
+}
+
+li.sub_article > ul {
+  padding-left: 0px;
+}
+
+::marker {
+  font-weight: bold;
+  color: var(--v-primary-base);
+}
+
+ol > li:only-child.level1, li:only-child.level2 {
+  /* level3 a.k.a. underdefinisjoner skal vises med bullet selv om de står alene */
+  list-style: none;
+}
+
+li:only-child.level1 > ol {
+  padding-left: 0px;
+}
+
+ul, ol {
+  padding-left: 12px !important;
+}
+
+ul li {
+  list-style:none;
+}
+
+ul li.definition {
+  list-style: disc;
+}
+
+h4 {
+  font-size: 1.5rem;
+  color: var(--bs-primary);
+  font-variant: all-small-caps;
+  font-weight: 600;
+
 }
 
 

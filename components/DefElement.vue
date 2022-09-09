@@ -31,7 +31,7 @@ const props = defineProps({
     body: Object,
     tag: {
       type: String,
-      default: 'li'
+      default: 'span'
     },
     dict: String,
     content_locale: String

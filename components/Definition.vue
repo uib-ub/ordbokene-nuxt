@@ -1,5 +1,5 @@
 <template>
-      <li :class="['definition', 'level'+level]"  :ref="level != 9 ? 'def' + body.id : ''" :id="level != 9? 'def' + body.id : ''">
+      <component :is="level==1 ? 'div':'li'" :class="['definition', 'level'+level]"  :ref="level != 9 ? 'def' + body.id : ''" :id="level != 9? 'def' + body.id : ''">
     <span v-if="level!=9"/>
     <ul class="explanations">
       <DefElement :body="explanation" :dict="dict" :has_article_ref=has_article_ref(explanation) v-for="(explanation, index) in explanations" :key="index" v-on:link-click="link_click" :content_locale="content_locale"/>
@@ -16,7 +16,7 @@
     <component :is="level < 3 ? 'ol' : 'ul'" class="sub_definitions" v-if="subdefs.length">
       <Definition :def_number='index+1' :level="level+1" :body="subdef" v-for="(subdef, index) in subdefs"  :dict="dict" :key="index" v-on:link-click="link_click" :content_locale="content_locale"/>
     </component>
-  </li>
+      </component>
     
 </template>
 

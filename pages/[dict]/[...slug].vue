@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NuxtLink v-if="store.view == 'article' && store.searchUrl" class="back-link" :to="store.searchUrl"> <strong><i class="bi bi-arrow-left primary-text" aria-hidden="true"/></strong> {{$t('notifications.back')}}</NuxtLink>
+    <div class="pb-1"><NuxtLink v-if="store.view == 'article' && store.searchUrl" class="back-link" :to="store.searchUrl"> <strong><i class="bi bi-arrow-left primary-text" aria-hidden="true"/></strong> {{$t('notifications.back')}}</NuxtLink></div>
 <main>
   <ArticleView v-if="store.view == 'article'"/>
   <WordView v-if="store.view == 'word'"/>

@@ -71,9 +71,10 @@ async function fetchAutocomplete(q) {
     }
 }
 
+const input = ref(null)
 
 const emit = defineEmits(['submit'])
-const dropdownSelect = (data) => {
+const submit = (data) => {
   store.autocompletePending = false
   //todo: plausible
   console.log("DATA", data)
@@ -81,14 +82,10 @@ const dropdownSelect = (data) => {
   input.value.$el.select()
 }
 
-const enter = (data) => {
-  store.autocompletePending = false
-  // TODO: plausible
-  console.log("DATA", data)
-  emit('submit')
+const dropdownSelect = () => {
+  console.log("SELECTED", input.value.$el)
   input.value.$el.select()
 }
-
 
 
 const clearText = () => {
@@ -96,9 +93,9 @@ const clearText = () => {
 }
 
 
-const input = ref(null)
 onMounted(() => {
   if (store.input) {
+    console.log("MOUNTED")
     input.value.$el.select()
 
   }  
@@ -108,7 +105,7 @@ onMounted(() => {
 
 <template>
   <div class="searchField">
-    <Combobox v-model="store.input" @change="enter" @update:modelValue="dropdownSelect">
+    <Combobox v-model="store.input" @update:modelValue="submit">
       <div>
         <div class="height d-flex align-items-center justify-content-between">
           <ComboboxInput
@@ -140,6 +137,7 @@ onMounted(() => {
               :key="idx"
               :value="item.q"
               v-slot="{ active }"
+              @click="dropdownSelect"
             >
               <li
                 class="list-group-item"

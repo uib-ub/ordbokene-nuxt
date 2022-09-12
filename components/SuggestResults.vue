@@ -47,6 +47,7 @@ const suggestions = computed(() => {
         })
     }
 
+    store.top_suggestion = assembled[0][0]
 
     return assembled  
 });

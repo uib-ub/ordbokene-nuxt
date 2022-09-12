@@ -27,7 +27,7 @@
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
 
-const { pending, data: articles } = useLazyFetch(`https://oda.uib.no/opal/dev/api/articles?&w=${store.q}&dict=bm,nn&scope=ei`, {key: store.searchUrl})
+const { pending, data: articles } = useLazyFetch(`https://oda.uib.no/opal/dev/api/articles?&w=${store.q}&dict=${store.dict}&scope=ei`, {key: store.searchUrl})
 
 </script>
 

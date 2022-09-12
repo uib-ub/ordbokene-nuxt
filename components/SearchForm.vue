@@ -38,10 +38,6 @@ function submitForm(item) {
   
 }
 
-const change_dict = function(event) {
-  
-}
-
 </script>
 
 <style scoped>

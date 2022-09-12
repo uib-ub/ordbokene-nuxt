@@ -17,25 +17,25 @@
             <section v-if="data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
                 <h4>{{$t('article.headings.pronunciation', content_locale)}}</h4>
 
-                <DefElement v-for="(element, index) in data.body.pronunciation" :dict="dict" :key="index" :body='element' v-on:rticle-click="link_click"/>
+                <DefElement v-for="(element, index) in data.body.pronunciation" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
             </section>
             <section v-if="data.body.etymology && data.body.etymology.length" class="etymology">
                 <h4>{{$t('article.headings.etymology', content_locale)}}</h4>
 
-                <DefElement v-for="(element, index) in data.body.etymology" :dict="dict" :key="index" :body='element' v-on:rticle-click="link_click"/>
+                <DefElement v-for="(element, index) in data.body.etymology" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
             </section>
             <section class="definitions" v-if="has_content">
                 <h4>{{$t('article.headings.definitions', content_locale)}}</h4>
 
-                <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:rticle-click="link_click"/>
+                <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click"/>
 
             </section>
             <section v-if="sub_articles.length" class="expressions">
                 <h4>{{$t('article.headings.expressions', content_locale)}}</h4>
                 <ul>
-                <SubArticle :body="subart" v-for="(subart, index) in sub_articles" :dict="dict" :key="index" v-on:rticle-click="link_click"/>
+                <SubArticle :body="subart" v-for="(subart, index) in sub_articles" :dict="dict" :key="index" v-on:link-click="link_click"/>
                 </ul>
             </section>
         </div>

@@ -3,7 +3,7 @@
     <h2>Mente du</h2>
     <ul class="nav nav-pills p-3">
         <li v-for="(item, idx) in suggestions" :key="idx+store.q">
-            <button @click="navigateTo(item[0])" class="btn btn-outline-primary me-3"><i class="bi bi-search"></i> {{item[0]}}</button>
+            <NuxtLink :to="item[0]" @click="store.loading = true" class="btn btn-outline-primary me-3"><i class="bi bi-search"></i> {{item[0]}}</NuxtLink>
         </li>
     </ul>
 </div>

@@ -3,7 +3,7 @@
     <h2>Mente du</h2>
     <ul class="nav nav-pills px-3">
         <li v-for="(item, idx) in suggestions" :key="idx+store.q">
-            <button class="btn btn-outline-primary me-3"><i class="bi bi-search"></i> {{item[0]}}</button>
+            <button @click="navigateTo(item[0])" class="btn btn-outline-primary me-3"><i class="bi bi-search"></i> {{item[0]}}</button>
         </li>
     </ul>
 </div>

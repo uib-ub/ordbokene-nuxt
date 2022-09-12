@@ -9,7 +9,7 @@
     <div v-if="!store.loading && store.articles.meta.bm" aria-live="assertive" class="visually-hidden">{{store.articles.meta.bm.total}} treff i Bokmålsordboka</div>
     <div v-if="!store.loading && store.articles.meta.nn" aria-live="assertive" class="visually-hidden">{{store.articles.meta.nn.total}} treff i Nynorskordboka</div>
 
-    <div class="row" v-if="!store.loading && $route.params.dict == 'bm,nn'" :key = "store.articles">
+    <div class="row" v-if="!store.loading && $route.params.dict == 'bm,nn'" :key = "store.searchUrl">
       <div class="col-lg-6">
         <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span aria-hidden="true" class="result-count">  | {{store.articles.meta.bm.total}} {{$t('notifications.results')}}</span></div>
       <Article v-for="(article_id, idx) in store.articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="row" v-if="!store.loading && store.articles.meta && $route.params.dict != 'bm,nn'" :key = "store.articles">
+    <div class="row" v-if="!store.loading && store.articles.meta && $route.params.dict != 'bm,nn'" :key = "store.searchUrl">
       <div v-if="$route.params.dict == 'bm'">
         <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span class="result-count">  | {{store.articles.meta.bm.total}} {{$t('notifications.results')}}</span></div>
       <Article v-for="(article_id, idx) in store.articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>

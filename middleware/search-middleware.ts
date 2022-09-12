@@ -1,11 +1,16 @@
 import { useStore } from '~/stores/searchStore'
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
+    console.log("MIDDLEWARE\nTO: ", to, "\nFROM: ", from)
     const store = useStore()
     //console.log("TO", to)
     //console.log("FROM", from)
+    
     if (to.params.slug) {
         if (to.params.slug[0] == 'submit') {
+            if (store.q == "") {
+                return to.params.dict
+            }
             // if advanced search
             if (to.query.scope) {
                 console.log("REDIRECT TO ADVANCED")

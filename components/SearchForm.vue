@@ -27,6 +27,7 @@ const route = useRoute()
 function submitForm(item) {
   console.log("SUBMITTED", item)
   store.autocomplete = [] 
+  store.loading = true
     let searchUrl = '/'+store.dict+'/submit?q='+store.input
     if (store.advanced) {
       searchUrl += "&scope=ei"

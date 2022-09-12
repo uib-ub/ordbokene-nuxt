@@ -1,5 +1,5 @@
 <template>
-<div v-if="store.suggest.a" class="row">
+<div v-if="!store.loading && store.suggest.a" class="row">
     <h2>Mente du</h2>
     <ul class="nav nav-pills px-3">
         <li v-for="(item, idx) in suggestions" :key="idx+store.q">

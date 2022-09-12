@@ -111,7 +111,6 @@ const assemble_text = computed(() => {
 })
 
 const no_preceeding_punctuation = computed(()=> {
-  console.log("FINAL", assemble_text.value)
   let assebled_text = assemble_text.value
   let final_text = assebled_text[assebled_text.length-1] ? assebled_text[assebled_text.length-1].link_text || assebled_text[assebled_text.length-1].html : "none"
   if (final_text.length) {

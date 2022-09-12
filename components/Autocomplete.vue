@@ -77,13 +77,11 @@ const emit = defineEmits(['submit'])
 const submit = (data) => {
   store.autocompletePending = false
   //todo: plausible
-  console.log("DATA", data)
   emit('submit')
   input.value.$el.select()
 }
 
 const dropdownSelect = () => {
-  console.log("SELECTED", input.value.$el)
   input.value.$el.select()
 }
 
@@ -95,7 +93,6 @@ const clearText = () => {
 
 onMounted(() => {
   if (store.input) {
-    console.log("MOUNTED")
     input.value.$el.select()
 
   }  

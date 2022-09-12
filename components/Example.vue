@@ -33,5 +33,7 @@ q {
     display: inline;
 }
 
+q:before,q:after{content:''}
+
 </style>
     

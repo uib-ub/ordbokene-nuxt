@@ -39,6 +39,7 @@
                 </ul>
             </section>
         </div>
+        <ArticleFooter :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" />
     </div>
     </article>
 </template>

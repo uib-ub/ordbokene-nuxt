@@ -1,9 +1,9 @@
 <template>
-<div v-if="store.suggest.a" class="row">
+<div v-if="store.suggest.a" class="row my-4">
     <h3>Mente du</h3>
-    <ul class="nav nav-pills px-3">
+    <ul class="nav nav-pills px-3 py-3">
         <li v-for="(item, idx) in suggestions" :key="idx+store.q">
-            <button class="btn btn-outline-primary me-3"><i class="bi bi-search"></i> {{item[0]}}</button>
+            <button class="btn btn-outline-primary rounded-pill me-3"><i class="bi bi-search"></i> {{item[0]}}</button>
         </li>
     </ul>
 </div>
@@ -52,7 +52,6 @@ const suggestions = computed(() => {
 
 <style scoped>
 .btn-outline-primary{
-    border-radius: 100px;
     letter-spacing: 0.1rem;
 }
 h3{

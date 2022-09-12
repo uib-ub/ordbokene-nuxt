@@ -25,13 +25,13 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
                         // kun hvis resultatet er et uttrykk eller har litt andre tegn?
                         console.log("EXACT", exact[0][0])
                         store.originalInput = to.query.q
-                        return "/bm,nn/" + exact[0][0]
+                        return `/${store.dict}/${exact[0][0]}`
                     }
                 }
                 if (inflect) {
                         console.log("INFLECT", inflect[0][0])
                         store.originalInput = to.query.q
-                        return "/bm,nn/" + inflect[0][0]
+                        return `/${store.dict}/${inflect[0][0]}`
                     
                 }
 

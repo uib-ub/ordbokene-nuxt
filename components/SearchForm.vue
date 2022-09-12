@@ -23,7 +23,9 @@ import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
 
-async function submitForm(item) {
+
+function submitForm(item) {
+  console.log("SUBMITTED", item)
   store.autocomplete = [] 
     let searchUrl = '/'+store.dict+'/submit?q='+store.input
     if (store.advanced) {
@@ -31,7 +33,7 @@ async function submitForm(item) {
 
     }
     store.q = store.input
-    await navigateTo(searchUrl)
+    navigateTo(searchUrl)
     
   
 }

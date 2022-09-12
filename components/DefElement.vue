@@ -72,7 +72,7 @@ const unparsed = computed(() => {
             else if (item.type_ == 'subscript') return {type: item.type_, html: item.text, tag: 'sub'}
             else if (item.type_ == 'quote_inset') return {type: item.type_, body: item, html: '', tag: 'DefElement', props: {body: item, tag: 'i', dict: props.dict}}
             else if (item.type_ == 'fraction') return fraction(item.numerator, item.denominator)
-            else if (item.id) return {type: item.type_, html:  ({"nn":store.concepts_nn, "bm":store.concepts_bm}[props.dict].data.concepts[item.id] || {})['expansion'] || item.id}
+            else if (item.id) return {type: item.type_, html:  ({"nn":store.concepts_nn, "bm":store.concepts_bm}[props.dict][item.id] || {})['expansion'] || item.id}
             else return {type: item.type_ || 'plain', html: item}
             }
         catch(error) {

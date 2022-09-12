@@ -54,14 +54,7 @@ const subdefs = computed(() => {
 
 
 const has_article_ref = (item) => {
-    if(item.items.length && item.items[0].type_ == "article_ref" && item.items[0].definition_id === undefined)
-        {
-          return "true";
-        }
-        else{
-          return "false";
-        }
-
+    return item.items.length && item.items[0].type_ == "article_ref" && item.items[0].definition_id === undefined ? true : false
 }
 
 

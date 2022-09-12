@@ -183,10 +183,7 @@ ul, ol {
   padding-left: 12px !important;
 }
 
-ul li {
-  /*list-style:none; */
-  color: red;
-}
+ul li
 
 ul li.definition {
   list-style: disc;

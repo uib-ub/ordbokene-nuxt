@@ -40,6 +40,10 @@ li.sub_article ul {
   padding-top: 0px;
 }
 
+ul li {
+  list-style:none;
+}
+
 
 </style>
     

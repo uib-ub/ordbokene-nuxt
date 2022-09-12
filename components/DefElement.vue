@@ -17,7 +17,7 @@
        --><span class="numerator" v-if="item.type == 'fraction'">{{item.num}}</span><!--
        -->{{item.type == 'fraction' ? '⁄' : ''}}<!--
        --><span class="denominator" v-if="item.type == 'fraction'">{{item.denom}}</span><!--
- --></component></component>
+ --></component></component><span v-if="semicolon && no_preceeding_punctuation">; </span>
 </template>
 
 
@@ -37,7 +37,10 @@ const props = defineProps({
       default: 'span'
     },
     dict: String,
-    content_locale: String
+    content_locale: String,
+    semicolon: Boolean,
+    has_article_ref: Boolean
+
 })
 
 
@@ -105,6 +108,16 @@ const assemble_text = computed(() => {
           console.log(error)
         return []
         }
+})
+
+const no_preceeding_punctuation = computed(()=> {
+  console.log("FINAL", assemble_text.value)
+  let assebled_text = assemble_text.value
+  let final_text = assebled_text[assebled_text.length-1] ? assebled_text[assebled_text.length-1].link_text || assebled_text[assebled_text.length-1].html : "none"
+  if (final_text.length) {
+    return !["?","!"].includes(final_text[final_text.length -1] )
+  }
+
 })
 
 

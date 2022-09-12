@@ -34,13 +34,16 @@ const suggestions = computed(() => {
             && (item[0].length <= store.q.length 
             || (item[0].slice(0, store.q.length) != store.q && item[0] != "å "+store.q))) {
                 assembled.push(item)
+                seen.add(item[0])
             }
         })
     }
 
     if (store.suggest.a.similar) {
         store.suggest.a.similar.forEach(item => {
+                if (!seen.has(item[0])) {
                 assembled.push(item)
+                }
         })
     }
 

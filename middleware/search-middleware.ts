@@ -49,7 +49,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
                 }
 
                 console.log("REDIRECT SUGGEST")
-                return "suggest?q="+to.query.q
+                return `/${store.dict}/suggest?q=${to.query.q}`
                 })
                 
                 

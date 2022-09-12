@@ -1,6 +1,7 @@
 <template>
     <article class="pt-lg-1">
         <h2 v-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
+        <h2 v-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div class="p-4">
         <ArticleHeader :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict"/>
         
@@ -196,6 +197,12 @@ h4 {
   font-weight: 600;
   padding-right: 1rem;
 
+}
+
+.article-dict-label {
+    font-size: 1.5rem !important;
+    padding-left: 0.25rem;
+    padding-bottom: 1rem;
 }
 
 </style>

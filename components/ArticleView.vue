@@ -1,6 +1,10 @@
 <template>
-    <div>
-        {{$route}}<br/><br/>
-    <Article :article_id="71671" dict_label="NYNORSKORDBOKA"/>
+    <div class ="py-2 article-view">
+        <Article :article_id="parseInt($route.params.slug[0])" :dict="$route.params.dict"/>
     </div>
 </template>
+
+<script setup>
+import { useStore } from '~/stores/searchStore'
+const store = useStore()
+</script>

@@ -9,7 +9,8 @@ const different = store.input!= store.q && store.input
 
 <template>
     <div>
-    <div class="callout" v-if="different"><i class="bi-info-circle-fill" aria-hidden="true"/> <strong>{{different}}</strong> er ikke et oppslagsord i {{store.dict}}. Viser ordet <strong>{{$route.params.slug[0]}}</strong></div>
+    <div class="callout" v-if="different"><i class="bi-info-circle-fill" aria-hidden="true"/> <strong>{{different}}</strong> er ikke et oppslagsord i {{store.dict}}. Viser ordet <strong>{{$route.params.slug[0]}}</strong>.
+    <span v-if="store.top_suggestion && store.top_suggestion != store.q"> Mente du <NuxtLink :to="store.top_suggestion">{{store.top_suggestion}}?</NuxtLink></span></div>
     <Results/>
     <SuggestResults :key="store.q"/>
     </div>

@@ -17,6 +17,7 @@ export const useStore = defineStore('store', {
       searchUrl: null,
       view: null,
       concepts_bm: [],
-      concepts_nn: []
+      concepts_nn: [],
+      top_suggestion: null
     })
   })

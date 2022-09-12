@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted } from 'vue';
 import { useStore } from '~/stores/searchStore'
 import {
   Combobox,
@@ -72,22 +73,42 @@ async function fetchAutocomplete(q) {
 
 
 const emit = defineEmits(['submit'])
-const submit = (item) => {
-  emit('submit', item)
-  store.autocomplete = []
+const dropdownSelect = (data) => {
   store.autocompletePending = false
+  //todo: plausible
+  console.log("DATA", data)
+  emit('submit')
+  input.value.$el.select()
 }
+
+const enter = (data) => {
+  store.autocompletePending = false
+  // TODO: plausible
+  console.log("DATA", data)
+  emit('submit')
+  input.value.$el.select()
+}
+
 
 
 const clearText = () => {
  store.input = ""
 }
 
+
+const input = ref(null)
+onMounted(() => {
+  if (store.input) {
+    input.value.$el.select()
+
+  }  
+})
+
 </script>
 
 <template>
   <div class="searchField">
-    <Combobox v-model="store.input" v-on:update:modelValue="submit" @submit.prevent="submit">
+    <Combobox v-model="store.input" @change="enter" @update:modelValue="dropdownSelect">
       <div>
         <div class="height d-flex align-items-center justify-content-between">
           <ComboboxInput

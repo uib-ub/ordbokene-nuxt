@@ -28,12 +28,12 @@ li {
     margin-bottom: 0rem;
 }
 
-q {
-    font-style: italic;
+em {
+    font-style: italic !important;
     display: inline;
 }
 
-q:before,q:after{content:''}
+
 
 </style>
     

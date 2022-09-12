@@ -3,7 +3,7 @@
 <form class="input-group active p-md-2" :class="{activeAutocomplete: store.autocomplete.length}" @submit.prevent="submitForm" ref="form">
   <div class="dropdown">
     <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{$t(`dicts.${store.dict}`)}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu" name="dict" @change.prevent="submitForm">
       <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button class="dropdown-item" @click="store.dict = item">{{$t(`dicts.${item}`)}}</button></li>
     </ul>
   </div>

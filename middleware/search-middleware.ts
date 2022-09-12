@@ -20,8 +20,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
             else {
             // Simple search - heller ha parametre som konverteres til riktig route - hvis search der scope er null omdirigeres søket til beste alternativ
                 console.log("AI SEARCH", to.query.q)
-                const suggest = ref('')
                 return $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${to.query.q}&dict=${to.params.dict}&n=20&dform=int&meta=n&include=eis`).then((response) => {
+
                     store.suggest = response
                     console.log("RESPONSE", response)
                     let { exact, inflect } = store.suggest.a

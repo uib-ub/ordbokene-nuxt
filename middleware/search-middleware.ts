@@ -31,7 +31,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
                         // kun hvis resultatet er et uttrykk eller har litt andre tegn?
                         console.log("EXACT", exact[0][0])
 
-                        if (from.params.slug[0] == exact[0][0]) {
+                        if (from.params.slug && from.params.slug[0] == exact[0][0]) {
                             store.loading = false
                         }
                         store.originalInput = to.query.q
@@ -40,7 +40,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
                 }
                 if (inflect) {
                         console.log("INFLECT", inflect[0][0])
-                        if (from.params.slug[0] == inflect[0][0]) {
+                        if (from.params.slug && from.params.slug[0] == inflect[0][0]) {
                             store.loading = false
                         }
                         store.originalInput = to.query.q

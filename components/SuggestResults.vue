@@ -1,7 +1,7 @@
 <template>
-<div v-if="!store.loading && store.suggest.a" class="row">
+<div v-if="!store.loading && store.suggest.a" class="row p-2 my-4">
     <h2>Mente du</h2>
-    <ul class="nav nav-pills px-3">
+    <ul class="nav nav-pills p-3">
         <li v-for="(item, idx) in suggestions" :key="idx+store.q">
             <button @click="navigateTo(item[0])" class="btn btn-outline-primary me-3"><i class="bi bi-search"></i> {{item[0]}}</button>
         </li>

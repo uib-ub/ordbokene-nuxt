@@ -88,6 +88,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     }
     else {
         console.log("WORD")
+        store.advanced = false
         if (store.originalInput) {
             store.input = store.originalInput
             store.originalInput = ""

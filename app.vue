@@ -70,7 +70,6 @@
     <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'contact' && 'page'" to="/contact"><i class="bi bi-envelope-fill"></i> {{$t('contact.title')}}</NuxtLink>
   </div>
   </div>
-<!--<div>{{store.$state}}</div>-->
 </footer>
   </div>
 </template>

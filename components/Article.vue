@@ -65,8 +65,11 @@ const content_locale = computed(() => {
     return i18n.locale == 'eng' ? 'eng' : {bm: 'nob', nn: 'nno'}[props.dict]
 })
 
+
+const { pending, data } = await useAsyncData('article_'+props.article_id, () => $fetch(`https://oda.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`))
+
 const has_content = () => {
-    for (const definition of props.body.definitions) {
+    for (const definition of data.value.body.definitions) {
         for (const element of definition.elements) {
           if (['explanation', 'example', 'compound_list', 'definition'].includes(element.type_)) {
             return true
@@ -75,10 +78,6 @@ const has_content = () => {
       }
       return false
 }
-
-
-
-const { pending, data } = await useAsyncData('article_'+props.article_id, () => $fetch(`https://oda.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`))
 
 const inflected = computed(() => {
     return data.value.lemmas.reduce((acc, lemma) => acc += lemma.paradigm_info.reduce((acc2, digm) => digm.inflection_group.includes("uninfl") ? 0 : acc2 += digm.inflection.length, 0), 0) > data.value.lemmas.length

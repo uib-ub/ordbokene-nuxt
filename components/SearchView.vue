@@ -1,4 +1,4 @@
 <template>
-    SEARCH VIEW
+    <Results/>
 
 </template>

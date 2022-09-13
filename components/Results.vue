@@ -41,7 +41,7 @@ import { useStore } from '~/stores/searchStore'
 const store = useStore()
 
 
-$fetch(`https://oda.uib.no/opal/dev/api/articles?&w=${store.q}&dict=${store.dict}&scope=${store.scope || 'e'}`, {key: store.searchUrl}).then(response => {
+$fetch(`https://oda.uib.no/opal/dev/api/articles?&w=${store.q}&dict=${store.dict}&scope=${store.advanced? store.scope : 'e'}`, {key: store.searchUrl}).then(response => {
   store.articles = response
   store.loading = false
 }).catch(error => {

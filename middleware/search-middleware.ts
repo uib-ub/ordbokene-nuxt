@@ -12,7 +12,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
                 return to.params.dict
             }
             // if advanced search
-            if (to.query.scope) {
+            if (store.advanced) {
                 console.log("REDIRECT TO ADVANCED")
                 return "search?q=" + to.query.q
             }

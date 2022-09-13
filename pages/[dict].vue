@@ -2,16 +2,20 @@
 <div class="dict-view">
     <ul class="nav px-2">
   <li class="nav-item">
-    <a class="nav-link py-0 active" aria-current="page" href="/">Søk i oppslagsord</a>
+    <NuxtLink class="nav-link py-0" 
+              v-bind:class="{'active': !store.advanced}" 
+              :aria-current="store.advanced ? 'false' : 'true'"
+              v-on:click="store.advanced = false" 
+              :to="simple_link">Søk i oppslagsord</NuxtLink>
   </li>
   <li class="nav-item">
-    <NuxtLink class="nav-link py-0" :to="$route.path+'/search'">Avansert søk</NuxtLink>
-  </li>
-  <li class="nav-item">
-    <NuxtLink class="nav-link py-0" :to="$route.path+'/search'">Lagrede ord</NuxtLink>
+    <NuxtLink class="nav-link py-0" 
+              v-bind:class="{'active': store.advanced}" 
+              :aria-current="store.advanced ? 'true' : 'false'" 
+              v-on:click="store.advanced = true"  
+              :to="advanced_link">Avansert søk</NuxtLink>
   </li>
 </ul>
-
     <SearchForm/>
     <NuxtChild/>
 </div>
@@ -22,6 +26,24 @@ import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
+
+const advanced_link = computed(() => {
+  let base = `/${store.dict}/search?`
+  if (store.q) {
+    base = base + 'q=' + store.q + "&"
+  }
+  return base + "scope="+store.scope
+  
+})
+
+const simple_link = computed(() => {
+  let base = `/${store.dict}/`
+  if (store.q) {
+    base = base + store.q
+  }
+  return base
+})
+
 
 
 </script>

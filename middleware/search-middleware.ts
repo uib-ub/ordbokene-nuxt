@@ -9,12 +9,19 @@ export default defineNuxtRouteMiddleware((to, from) => {
     if (to.params.slug) {
         if (to.params.slug[0] == 'submit') {
             if (store.q == "") {
-                return to.params.dict
+                if (from.params.slug[0] == 'search') {
+                    return to.params.dict + "/search?scope=" + store.scope
+                }
+                else {
+                    return to.params.dict 
+                }
+                
+
             }
             // if advanced search
-            if (store.advanced) {
+            if (store.advanced || specialSymbols(to.query.q)) {
                 console.log("REDIRECT TO ADVANCED")
-                return "search?q=" + to.query.q
+                return `/${store.dict}/search?q=${to.query.q}&scope=${store.scope}`
             }
             // simple search redirect
             else {
@@ -57,6 +64,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     }
     else if (to.params.slug[0] == 'search') {
         console.log("SEARCH")
+        store.advanced = true
         store.q = to.query.q
         store.input = to.query.q
         store.view = "search"

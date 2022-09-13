@@ -1,9 +1,9 @@
 <template>
 <div v-if="store.suggest.a" class="row my-4">
     <h3>Mente du</h3>
-    <ul class="nav nav-pills px-3 py-3">
-        <li class="mb-3" v-for="(item, idx) in suggestions" :key="idx+store.q">
-            <button class="btn btn-outline-primary rounded-pill me-3"><i class="bi bi-search"></i> {{item[0]}}</button>
+    <ul class="d-grid gap-2 d-md-block nav nav-pills px-3 py-3">
+        <li class="btn btn-outline-primary rounded-pill me-3 mb-3" v-for="(item, idx) in suggestions" :key="idx+store.q">
+          <i class="bi bi-search"></i> {{item[0]}}
         </li>
     </ul>
 </div>

@@ -1,9 +1,9 @@
 <template>
-<div v-if="store.suggest.a" class="row p-2 mb-4 mt-2">
+<div v-if="store.suggest.a" class="p-2 mb-4 mt-3">
     <h2>{{$t('notifications.similar')}}</h2>
-    <ul class="d-grid gap-2 d-md-block nav nav-pills px-3 py-3">
-        <li class="btn btn-outline-primary rounded-pill me-3 mb-3" v-for="(item, idx) in suggestions" :key="idx">
-            <NuxtLink :to="suggest_link(item[0])" class="btn btn-outline-primary me-3"><i class="bi bi-search"></i> {{item[0]}}</NuxtLink>
+    <ul class="nav nav-pills flex-column flex-md-row gap-3 pt-2">
+        <li class="nav-item" v-for="(item, idx) in suggestions" :key="idx+store.searchUrl">
+            <NuxtLink class="nav-link btn btn-outline-primary" :to="suggest_link(item[0])"><BootstrapIcon icon="bi-search"/> <span class="link-content">{{item[0]}}</span></NuxtLink>
         </li>
     </ul>
 </div>
@@ -69,8 +69,25 @@ const suggestions = computed(() => {
 
 </script>
 
-<style scoped>
-.btn-outline-primary{
-    letter-spacing: 0.1rem;
+<style scoped lang="scss">
+
+a {
+    font-size: 1.17rem;
+    letter-spacing: .1rem;
 }
+
+.nav-item {
+    border: solid 1px rgba(0,0,0,.5);
+    border-radius: 2rem;
+}
+
+.nav-link {
+  &:hover {
+      .link-content {
+        border-bottom: solid 1px var(--bs-link);
+      }
+
+  }
+}
+
 </style>

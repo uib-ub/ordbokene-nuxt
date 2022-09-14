@@ -5,8 +5,8 @@
     <NuxtLink class="nav-link py-0" 
               v-bind:class="{'active': !store.advanced, 'welcome': !$route.params.slug}" 
               :aria-current="store.advanced ? 'false' : 'true'"
-              v-on:click="store.advanced = false" 
-              :to="simple_link">Søk i oppslagsord</NuxtLink>
+              v-on:click="store.advanced = false; " 
+              :to="`/${store.dict}/`">Søk i oppslagsord</NuxtLink>
   </li>
   <li class="nav-item">
     <NuxtLink class="nav-link py-0" 
@@ -48,14 +48,6 @@ const advanced_link = computed(() => {
   }
   return base + "scope="+store.scope
   
-})
-
-const simple_link = computed(() => {
-  let base = `/${store.dict}/`
-  if (store.q && !specialSymbols(store.q)) {
-    base = base + store.q
-  }
-  return base
 })
 
 

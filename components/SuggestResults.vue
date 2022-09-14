@@ -1,8 +1,8 @@
 <template>
-<div v-if="store.suggest.a" class="p-2 mb-4 mt-3">
+<div v-if="store.suggest_from" class="p-2 mb-4 mt-3" :key="store.suggest_from">
     <h2>{{$t('notifications.similar')}}</h2>
-    <ul class="nav nav-pills flex-column flex-md-row gap-3 pt-2">
-        <li class="nav-item" v-for="(item, idx) in suggestions" :key="idx+store.searchUrl">
+    <ul class="nav nav-pills flex-column flex-md-row gap-3 pt-2" >
+        <li class="nav-item" v-for="(item, idx) in suggestions" :key="idx">
             <NuxtLink class="nav-link btn btn-outline-primary" :to="suggest_link(item[0])"><BootstrapIcon icon="bi-search"/> <span class="link-content">{{item[0]}}</span></NuxtLink>
         </li>
     </ul>
@@ -16,24 +16,25 @@ const store = useStore()
 
 const suggest_link = (suggestion) => {
     if (store.advanced) {
-        let url = `/${store.dict}/search?q=${suggestion}&scope=${store.scope}`
+        let url = `/${store.dict}/submit?q=${suggestion}&scope=${store.scope}`
         if (store.pos) {
             url = url + '&pos=' + store.pos
         }
-        return url
+        return url + "&suggestion=true"
     }
     else {
-        return suggestion
+        return "submit?q="+suggestion + "&suggestion=true"
     }
 }
 
 const suggestions = computed(() => {
+    console.log("FILTER SUGGESTIONS")
     let assembled = []
     let seen = new Set()
 
     if (store.suggest.a.inflect) {
         store.suggest.a.inflect.forEach(item => {
-            if (store.q != item[0]) {
+            if (store.suggest_from != item[0]) {
                 assembled.push(item)
                 seen.add(item[0])
             }
@@ -43,9 +44,9 @@ const suggestions = computed(() => {
     if (store.suggest.a.exact) {
         store.suggest.a.exact.forEach(item => {
             if (!seen.has(item[0])
-            && store.q != item[0]
-            && (item[0].length <= store.q.length
-            || (item[0].slice(0, store.q.length) != store.q && item[0] != "å "+store.q))) {
+            && store.suggest_from != item[0]
+            && (item[0].length <= store.suggest_from.length
+            || (item[0].slice(0, store.suggest_from.length) != store.suggest_from && item[0] != "å "+store.suggest_from))) {
                 assembled.push(item)
                 seen.add(item[0])
             }

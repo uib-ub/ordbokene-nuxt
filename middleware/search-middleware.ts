@@ -1,7 +1,7 @@
 import { useStore } from '~/stores/searchStore'
 
 export default defineNuxtRouteMiddleware((to, from) => {
-    console.log("MIDDLEWARE\nTO: ", to, "\nFROM: ", from)
+    console.log("MIDDLEWARE\nFROM: ", from, "\nTO: ", to)
     const store = useStore()
     //console.log("TO", to)
     //console.log("FROM", from)
@@ -26,32 +26,39 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
                 
             }
+            else if (to.query.suggestion) {
+                return navigateTo(`/${store.dict}/${to.query.q}`)
+            }
             // simple search redirect
             else {
             // Simple search - heller ha parametre som konverteres til riktig route - hvis search der scope er null omdirigeres søket til beste alternativ
                 console.log("INIT SIMPLE", to.query.q)
-                return $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${to.query.q}&dict=${to.params.dict}&n=20&dform=int&meta=n&include=eis`).then((response) => {
+                return fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${to.query.q}&dict=${to.params.dict}&n=20&dform=int&meta=n&include=eis`).then((response) => {
+                    return response.json().then((data)=> {
+                        console.log(data)
+                        store.suggest = data
+                        store.suggest_from = to.query.q
+                        let { exact, inflect } = store.suggest.a
+                        if (exact) {
+                            if (exact[0][0].length == store.q.length) {
+                                // kun hvis resultatet er et uttrykk eller har litt andre tegn?
+                                console.log("EXACT", exact[0][0])
+                                store.originalInput = to.query.q
+                                return navigateTo(`/${store.dict}/${exact[0][0]}`)
+                            }
+                        }
+                        if (inflect) {
+                                console.log("INFLECT", inflect[0][0])
+                                store.originalInput = to.query.q
+                                return navigateTo(`/${store.dict}/${inflect[0][0]}`)
+                            
+                        }
 
-                    store.suggest = response
-                    let { exact, inflect } = store.suggest.a
-        
-                if (exact) {
-                    if (exact[0][0].length == store.q.length) {
-                        // kun hvis resultatet er et uttrykk eller har litt andre tegn?
-                        console.log("EXACT", exact[0][0])
-                        store.originalInput = to.query.q
-                        return navigateTo(`/${store.dict}/${exact[0][0]}`)
-                    }
-                }
-                if (inflect) {
-                        console.log("INFLECT", inflect[0][0])
-                        store.originalInput = to.query.q
-                        return navigateTo(`/${store.dict}/${inflect[0][0]}`)
+                        console.log("REDIRECT SUGGEST")
+                        return navigateTo(`/${store.dict}/suggest?q=${to.query.q}`)
+                    })
+
                     
-                }
-
-                console.log("REDIRECT SUGGEST")
-                return navigateTo(`/${store.dict}/suggest?q=${to.query.q}`)
                 })
                 
                 
@@ -60,6 +67,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     else if (to.params.slug[0] && to.params.slug[0].slice(0,6) == 'search') {
         console.log("SEARCH")
         store.advanced = true
+        store.suggest_from = null
         store.q = to.query.q || ""
         store.input = to.query.q || ""
         store.view = "search"

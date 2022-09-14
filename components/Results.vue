@@ -60,23 +60,39 @@ const query = computed(() => {
 })
 
 watch(query, (oldParams, newParams) => {
-  console.log("PARAMS", oldParams, newParams)
+  console.log("QUERY", query)
   if (store.advanced) {
     refresh()
   }  
 })
 
+const fetch_suggest = () => {
+  console.log("FETCHING")
+  fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=eis`).then((response)=>{
+      response.json().then((data) => {
+        console.log("returned")
+        
+        store.suggest = data
+        store.suggest_from = store.q
+
+      })
+      
+    })
+}
+
 const get_suggest = (a) => {
   if(store.advanced) {
     if (a && a.value && a.value.meta.bm.total + a.value.meta.nn.total == 0) {
-    $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=eis`).then((response)=>{
-      store.suggest = response
-    })
+      fetch_suggest()
+    
 
   }
-  else {
+  else  {
     store.suggest = {}
   }
+  }
+  else if (store.q != store.suggest_from) {
+    fetch_suggest()
   }
   
 }

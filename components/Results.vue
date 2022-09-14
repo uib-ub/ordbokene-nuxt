@@ -5,7 +5,7 @@
   <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-    <div v-if="!pending && store.q" :key="store.searchUrl">
+    <div v-else>
 
     <div>
     <div aria-live="assertive" class="visually-hidden">{{articles.meta.bm.total}} treff i Bokmålsordboka</div>

@@ -4,7 +4,7 @@
       <nav role="navigation" class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand text-white" to="/">
-      <div class="small mx-2 my-1">
+      <div class="small mx-1 my-1 my-lg-3">
       <div v-show="false"><h1>ordbøkene.no</h1></div>
       <div><h1 class="brand-title">Ordbøkene</h1>
       <p class="d-none d-xl-block brand-subtitle">{{$t("sub_title")}}</p>

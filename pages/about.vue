@@ -41,7 +41,7 @@
       <h4>For iPhone / iOS</h4>
       <ul>
         <li>Open your browser and type ordbokene.no or ordbøkene.no.</li>
-        <li>From the front page, select the share icon <v-icon>ios_share</v-icon> at the bottom of the page.</li>
+        <li>From the front page, select the share icon <BootstrapIcon icon="bi-box-arrow-up"/> at the bottom of the page.</li>
         <li>From the double row of sub-options, select the icon "Add to Home Screen" <v-icon>add_box</v-icon>. You may need to drag the row from the right to get to the icon.</li>
       </ul>
       <p>The dictionaries icon <img class="ordbokene-icon" src="/favicon.ico" aria-hidden="true"/> is now on your home screen, and you can access the dictionary page directly by clicking on it.</p>

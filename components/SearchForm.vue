@@ -40,7 +40,7 @@ const pos_tags = [null, 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCO
 
 function submitForm(item) {
   store.autocomplete = [] 
-  store.loading = true
+
     let searchUrl = '/'+store.dict+'/submit?q='+store.input
     if (store.advanced) {
       searchUrl += "&scope="+store.scope

@@ -1,5 +1,19 @@
 <template>
+
     <article class="pt-lg-1">
+        <div v-if="pending" class="skeleton-container">
+            <div class="skeleton mt-4 skeleton-heading"/>
+        <div class="skeleton mt-2 mb-4 skeleton-subheading"/>
+        <div class="skeleton skeleton-content w-50 "/>
+        <div class="skeleton skeleton-content w-25 skeleton-indent"/>
+        <div class="skeleton skeleton-content w-75"/>
+        <div class="skeleton skeleton-content w-25 skeleton-indent"/>
+        <div class="skeleton skeleton-content w-50"/>
+        <div class="skeleton skeleton-content w-75 skeleton-indent"/>
+        <div class="skeleton skeleton-content w-25"/>
+        </div>
+
+        <div v-else>
         <h2 v-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div class="p-4">
@@ -11,9 +25,12 @@
 
         <div v-if="inflected" class="collapse py-2" :id="'inflection-'+article_id" ref="inflection_table">
             <div class="inflection-container card card-body">
+                <NuxtErrorBoundary @error="inflection_error">
                 <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
+                </NuxtErrorBoundary>
             </div>
         </div>
+        <NuxtErrorBoundary @error="body_error">
         <div class="article_content pt-3" ref="article_content">
             <section v-if="data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
                 <h4>{{$t('article.headings.pronunciation', content_locale)}}</h4>
@@ -40,33 +57,39 @@
                 </ul>
             </section>
         </div>
+    </NuxtErrorBoundary>
     </div>
+</div>
     </article>
 </template>
 
 <script setup>
 import { useStore } from '~/stores/searchStore'
 import { useI18n } from 'vue-i18n'
+import { computed } from 'vue'
 
 const i18n = useI18n()
 const store = useStore()
-
-
-const element_error = (event) => {
-    console.log("ERROR", event)
-}
 
 const props = defineProps({
     article_id: Number,
     dict: String
 })
 
+const { pending, data } = useAsyncData('article_'+props.article_id, () => $fetch(`https://oda.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`))
+
+const body_error = (error) => {
+    console.log("BODY_ERROR", error)
+}
+
+const inflection_error = (error) => {
+    console.log("INFLECTION_ERROR", error)
+}
+
 const content_locale = computed(() => {
     return i18n.locale == 'eng' ? 'eng' : {bm: 'nob', nn: 'nno'}[props.dict]
 })
 
-
-const { pending, data } = await useAsyncData('article_'+props.article_id, () => $fetch(`https://oda.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`))
 
 const has_content = () => {
     for (const definition of data.value.body.definitions) {
@@ -202,6 +225,35 @@ h4 {
     font-size: 1.5rem !important;
     padding-left: 0.25rem;
     padding-bottom: 1rem;
+}
+
+
+.skeleton {
+    background-color: rgba(0,0,0, .1);
+    border-radius: 1rem;
+    margin-left: 1rem;
+
+}
+.skeleton-heading {
+    height: 2rem;
+    width: 15rem;
+}
+
+.skeleton-subheading {
+    height: 1.25rem;
+    width: 10rem;
+}
+
+.skeleton-content {
+    height: 1rem;
+    margin: 1rem;
+}
+
+.skeleton-container {
+    height: 30rem;
+}
+.skeleton-indent {
+    margin-left: 2rem;
 }
 
 </style>

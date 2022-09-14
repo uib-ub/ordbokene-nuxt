@@ -10,63 +10,57 @@ export default defineNuxtRouteMiddleware((to, from) => {
         if (to.params.slug[0] == 'submit') {
             if (store.q == "") {
                 if (from.params.slug[0] == 'search') {
-                    return to.params.dict + "/search?scope=" + store.scope
+                    return navigateTo(to.params.dict + "/search?scope=" + store.scope)
                 }
                 else {
-                    return to.params.dict 
+                    return navigateTo(to.params.dict)
                 }
                 
 
             }
             // if advanced search
             if (store.advanced || specialSymbols(to.query.q)) {
-                console.log("REDIRECT TO ADVANCED")
-                return `/${store.dict}/search?q=${to.query.q}&scope=${store.scope}`
+                console.log("INIT ADVANCED")
+                return navigateTo(`/${store.dict}/search?q=${to.query.q}&scope=${store.scope}`)
+
+                
             }
             // simple search redirect
             else {
             // Simple search - heller ha parametre som konverteres til riktig route - hvis search der scope er null omdirigeres søket til beste alternativ
-                console.log("AI SEARCH", to.query.q)
+                console.log("INIT SIMPLE", to.query.q)
                 return $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${to.query.q}&dict=${to.params.dict}&n=20&dform=int&meta=n&include=eis`).then((response) => {
 
                     store.suggest = response
-                    console.log("RESPONSE", response)
                     let { exact, inflect } = store.suggest.a
         
                 if (exact) {
                     if (exact[0][0].length == store.q.length) {
                         // kun hvis resultatet er et uttrykk eller har litt andre tegn?
                         console.log("EXACT", exact[0][0])
-
-                        if (from.params.slug && from.params.slug[0] == exact[0][0]) {
-                            store.loading = false
-                        }
                         store.originalInput = to.query.q
-                        return `/${store.dict}/${exact[0][0]}`
+                        return navigateTo(`/${store.dict}/${exact[0][0]}`)
                     }
                 }
                 if (inflect) {
                         console.log("INFLECT", inflect[0][0])
-                        if (from.params.slug && from.params.slug[0] == inflect[0][0]) {
-                            store.loading = false
-                        }
                         store.originalInput = to.query.q
-                        return `/${store.dict}/${inflect[0][0]}`
+                        return navigateTo(`/${store.dict}/${inflect[0][0]}`)
                     
                 }
 
                 console.log("REDIRECT SUGGEST")
-                return `/${store.dict}/suggest?q=${to.query.q}`
+                return navigateTo(`/${store.dict}/suggest?q=${to.query.q}`)
                 })
                 
                 
         } 
     }
-    else if (to.params.slug[0] == 'search') {
+    else if (to.params.slug[0] && to.params.slug[0].slice(0,6) == 'search') {
         console.log("SEARCH")
         store.advanced = true
         store.q = to.query.q
-        store.input = to.query.q
+        store.input = to.query.q || ""
         store.view = "search"
         store.searchUrl = to.fullPath
         
@@ -75,7 +69,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     else if (to.params.slug[0] == 'suggest') {
         console.log("SUGGEST")
         store.q = to.query.q
-        store.input = to.query.q
+        store.input = to.query.q || ""
         store.view = "suggest"
         store.loading = false
         store.searchUrl = to.fullPath

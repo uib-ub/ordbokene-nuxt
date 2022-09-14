@@ -1,5 +1,5 @@
 <template>
-    <i aria-hidden="true" :class="'bi '+icon" v-bind:class="{'primary-icon': color=='primary'}"/>
+    <i aria-hidden="true" v-bind:class="['bi', icon, {'primary-icon': color=='primary'}]"/>
 </template>
 
 

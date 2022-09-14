@@ -18,6 +18,5 @@ export const useStore = defineStore('store', {
       concepts_bm: [],
       concepts_nn: [],
       top_suggestion: null,
-      loading: true,
     })
   })

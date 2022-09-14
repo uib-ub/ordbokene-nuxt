@@ -1,6 +1,6 @@
 <template>
 
-<div class="d-flex flex-column h-100">
+<div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && !$route.params.slug && $route.params.dict}" >
       <nav role="navigation" class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand text-white" to="/">
@@ -146,6 +146,9 @@ body {
   overflow-y: scroll;
 }
 
+#__nuxt>.welcome {
+  background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
+}
 
 .back-to-search {
   font-size: larger;

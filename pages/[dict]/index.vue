@@ -16,7 +16,7 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
 
 <template>
 
-  <main>
+  <main class="m-lg-5 p-lg-5">
     <div class="row" v-if="welcome_bm && welcome_nn">
       <div class="col-lg">
       <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm"/>

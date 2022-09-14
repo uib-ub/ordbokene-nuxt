@@ -13,6 +13,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
                     return navigateTo(to.params.dict + "/search?scope=" + store.scope)
                 }
                 else {
+                    store.advanced = false
                     return navigateTo(to.params.dict)
                 }
                 

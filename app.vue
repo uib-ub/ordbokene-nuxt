@@ -19,7 +19,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav navbar-secondary-pages ms-auto mb-2 mb-lg-0">
         <li class="nav-item" v-bind:class="{'active': $route.name == 'help'}">
           <NuxtLink class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
         </li>
@@ -160,46 +160,63 @@ h1 {
 
 }
 
-.navbar {
-  padding-top: 0.25rem;
-}
 
 
-.nav-link {
+.navbar .nav-item {
+
+  padding-bottom: 0.25rem;
   font-variant-caps: all-small-caps;
   font-size: 1.25rem;
   letter-spacing: .1rem;
   font-weight: 600;
 }
 
-.navbar-expand-lg .nav-item.active {
-  border-left: 0.25rem solid var(--bs-secondary);
+.navbar .nav-link:hover {
+  color: white;
 }
 
-.navbar-expand-lg .nav-item {
-  border-left: 0.25rem solid var(--bs-primary);
-  padding-left: 0.5rem;
+.navbar-secondary-pages .nav-item:hover {
+  border-bottom: solid 0.25rem rgba(255,255,255, .5);
+  background-color: rgba(255,255,255, .1);
+  padding-bottom: 0rem;
+}
+
+.navbar-secondary-pages .nav-item.active {
+  border-bottom: solid 0.25rem var(--bs-secondary);
+  padding-bottom: 0rem;
 }
 
 
-@media (min-width: 992px) {
-  .navbar-expand-lg .nav-item.active {
-  border-bottom: 0.25rem solid var(--bs-secondary);
-  border-left: 0.25rem solid var(--bs-primary);
-  padding-left: 0px;
+@media (max-width: 992px) {
+  .nav-item {
+    padding-left: 1.25rem;
+  }
+  .navbar-secondary-pages .nav-item {
+    font-variant-caps: all-small-caps;
+    border-bottom: 0px;
+    padding: 0rem;
+    padding-left: 1.25rem;
   }
 
-  .navbar-expand-lg .nav-item {
-  padding-left: 0px;
+
+  .navbar-secondary-pages .nav-item:hover {
+    border-left: solid 0.25rem rgba(255,255,255, .5);
+    background-color: rgba(255,255,255, .1);
+    padding-left: 1rem;
+    border-bottom: 0rem;
+    
+  }
+
+  .navbar-secondary-pages .nav-item.active {
+    border-left: solid 0.25rem var(--bs-secondary);
+    padding: 0rem;
+    padding-left: 1rem;
+    border-bottom: 0rem;
   }
 
 
 }
 
-
-.navbar-expand-lg .nav-item {
-  border-bottom: 0.25rem solid var(--bs-primary);
-}
 
 .navbar-brand  {
   border-bottom: 0.25rem solid var(--bs-primary);

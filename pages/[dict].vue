@@ -1,6 +1,6 @@
 <template>
 <div class="dict-view">
-    <ul class="nav px-2">
+    <ul class="mode-nav nav px-2">
   <li class="nav-item">
     <NuxtLink class="nav-link py-0" 
               v-bind:class="{'active': !store.advanced, 'welcome': !$route.params.slug}" 
@@ -65,7 +65,7 @@ const simple_link = computed(() => {
 </script>
 
 <style scoped>
-.nav-link {
+.mode-nav .nav-link {
     color: rgba(0,0,0,.8);
     letter-spacing: .1rem;
     font-variant-caps: all-small-caps;
@@ -73,20 +73,27 @@ const simple_link = computed(() => {
     font-weight: 600;
 }
 
-.nav-link.active {
+.mode-nav .nav-link.active {
     border-bottom: solid 2px var(--bs-secondary);
     background-color: rgba(0,0,0,.05);
     color: black;
 }
 
-.welcome .nav-link.active {
+.welcome .mode-nav .nav-link.active {
     border-bottom: solid 2px var(--bs-secondary);
     background-color: rgba(0,0,0,.2);
     color: white;
 }
 
-.welcome .nav-link {
+.welcome .mode-nav .nav-link {
   color: white;
+}
+
+
+
+.mode-nav .nav-link:hover {
+  border-bottom: solid 2px;
+  background-color: rgba(0,0,0,.1);
 }
 
     </style>

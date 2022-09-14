@@ -6,7 +6,7 @@
               v-bind:class="{'active': !store.advanced, 'welcome': !$route.params.slug}" 
               :aria-current="store.advanced ? 'false' : 'true'"
               v-on:click="store.advanced = false; " 
-              :to="`/${store.dict}/submit?q=${store.q}`">Søk i oppslagsord</NuxtLink>
+              :to="simple_link">Søk i oppslagsord</NuxtLink>
   </li>
   <li class="nav-item">
     <NuxtLink class="nav-link py-0" 
@@ -42,11 +42,21 @@ const content_error = (error) => {
 
 
 const advanced_link = computed(() => {
-  let base = `/${store.dict}/search?`
+  let url = `/${store.dict}/search?`
   if (store.q) {
-    base = base + 'q=' + store.q + "&"
+    url = url + 'q=' + store.q + "&"
   }
-  return base + "scope="+store.scope
+  return url + "scope="+store.scope
+  
+})
+
+const simple_link = computed(() => {
+
+  let url = `/${store.dict}/`
+  if (store.q) {
+    url = url + 'submit?q=' + store.q
+  }
+  return url
   
 })
 

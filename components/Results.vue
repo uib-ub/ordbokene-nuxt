@@ -5,7 +5,7 @@
   <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-    <div :key="store.searchUrl" v-else>
+    <div v-if="!pending && store.q" :key="store.searchUrl">
 
     <div>
     <div aria-live="assertive" class="visually-hidden">{{articles.meta.bm.total}} treff i Bokmålsordboka</div>
@@ -35,6 +35,8 @@
       <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
       </div>
     </div>
+    <SuggestResults v-if="store.view == 'search' && store.q"/>
+
   </div>
 
 
@@ -62,6 +64,29 @@ watch(query, (oldParams, newParams) => {
   if (store.advanced) {
     refresh()
   }  
+})
+
+const get_suggest = (a) => {
+  if(store.advanced) {
+    if (a && a.value && a.value.meta.bm.total + a.value.meta.nn.total == 0) {
+    $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=eis`).then((response)=>{
+      store.suggest = response
+    })
+
+  }
+  else {
+    store.suggest = {}
+  }
+  }
+  
+}
+
+watch(articles, (oldArticles, newArticles) => {
+    get_suggest(articles)  
+})
+
+onMounted(() => {
+  get_suggest(articles)
 })
 
 </script>

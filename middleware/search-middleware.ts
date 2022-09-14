@@ -60,7 +60,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
     else if (to.params.slug[0] && to.params.slug[0].slice(0,6) == 'search') {
         console.log("SEARCH")
         store.advanced = true
-        store.q = to.query.q
+        store.q = to.query.q || ""
         store.input = to.query.q || ""
         store.view = "search"
         store.searchUrl = to.fullPath

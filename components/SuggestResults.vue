@@ -2,8 +2,8 @@
 <div v-if="store.suggest.a" class="row p-2 mb-4 mt-2">
     <h2>{{$t('notifications.similar')}}</h2>
     <ul class="nav nav-pills p-3">
-        <li v-for="(item, idx) in suggestions" :key="idx+store.q">
-            <NuxtLink :to="item[0]" class="btn btn-outline-primary me-3"><i class="bi bi-search"></i> {{item[0]}}</NuxtLink>
+        <li v-for="(item, idx) in suggestions" :key="idx">
+            <NuxtLink :to="suggest_link(item[0])" class="btn btn-outline-primary me-3"><i class="bi bi-search"></i> {{item[0]}}</NuxtLink>
         </li>
     </ul>
 </div>
@@ -13,6 +13,19 @@
 
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
+
+const suggest_link = (suggestion) => {
+    if (store.advanced) {
+        let url = `/${store.dict}/search?q=${suggestion}&scope=${store.scope}`
+        if (store.pos) {
+            url = url + '&pos=' + store.pos
+        }
+        return url
+    }
+    else {
+        return suggestion
+    }
+}
 
 const suggestions = computed(() => {
     let assembled = []
@@ -51,6 +64,8 @@ const suggestions = computed(() => {
 
     return assembled  
 });
+
+
 
 </script>
 

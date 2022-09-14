@@ -11,7 +11,7 @@ export const useStore = defineStore('store', {
       dict: "bm,nn",
       autocompletePending: false,
       autocomplete: [],
-      suggest: {},
+      suggest: null,
       suggest_from: null,
       articles: {},
       searchUrl: null,

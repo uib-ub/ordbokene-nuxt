@@ -66,16 +66,13 @@ watch(query, (oldParams, newParams) => {
   }  
 })
 
-const fetch_suggest = () => {
+const fetch_suggest = async () => {
   console.log("FETCHING")
-  fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=eis`).then((response)=>{
-      response.json().then((data) => {
-        console.log("returned")
-        
-        store.suggest = data
+  const response = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=eis`).then((response)=>{
+
+        store.suggest = response
         store.suggest_from = store.q
 
-      })
       
     })
 }
@@ -88,7 +85,8 @@ const get_suggest = (a) => {
 
   }
   else  {
-    store.suggest = {}
+    store.suggest = null
+    store.suggest_from = null
   }
   }
   else if (store.q == store.input) {

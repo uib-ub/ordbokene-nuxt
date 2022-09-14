@@ -1,5 +1,5 @@
 <template>
-<div v-if="store.suggest_from" class="p-2 mb-4 mt-3" :key="store.suggest_from">
+<div v-if="store.suggest && suggestions.length" class="p-2 mb-4 mt-3" :key="store.suggest_from">
     <h2>{{$t('notifications.similar')}}</h2>
     <ul class="nav nav-pills flex-column flex-md-row gap-3 pt-2" >
         <li class="nav-item" v-for="(item, idx) in suggestions" :key="idx">
@@ -32,6 +32,11 @@ const suggestions = computed(() => {
     let assembled = []
     let seen = new Set()
 
+    if (!store.suggest) {
+        return null
+    }
+    
+
     if (store.suggest.a.inflect) {
         store.suggest.a.inflect.forEach(item => {
             if (store.suggest_from != item[0]) {
@@ -60,8 +65,6 @@ const suggestions = computed(() => {
                 }
         })
     }
-
-    store.top_suggestion = assembled[0][0]
 
     return assembled
 });

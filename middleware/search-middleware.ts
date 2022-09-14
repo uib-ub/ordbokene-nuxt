@@ -72,7 +72,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
         store.q = to.query.q
         store.input = to.query.q || ""
         store.view = "suggest"
-        store.loading = false
         store.searchUrl = to.fullPath
         
         

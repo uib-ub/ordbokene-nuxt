@@ -6,7 +6,7 @@
               v-bind:class="{'active': !store.advanced, 'welcome': !$route.params.slug}" 
               :aria-current="store.advanced ? 'false' : 'true'"
               v-on:click="store.advanced = false; " 
-              :to="`/${store.dict}/`">Søk i oppslagsord</NuxtLink>
+              :to="`/${store.dict}/submit?q=${store.q}`">Søk i oppslagsord</NuxtLink>
   </li>
   <li class="nav-item">
     <NuxtLink class="nav-link py-0" 

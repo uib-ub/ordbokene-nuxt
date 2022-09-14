@@ -91,7 +91,7 @@ const get_suggest = (a) => {
     store.suggest = {}
   }
   }
-  else if (store.q != store.suggest_from) {
+  else if (store.q == store.input) {
     fetch_suggest()
   }
   

@@ -30,7 +30,7 @@ const get_citation_info = () => {
 
 const create_citation = () => {
       const [lemma, dd, mm, yyyy, link, dict] = get_citation_info()
-      let citation = this.$t("article.citation", {lemma, link, dd, mm, yyyy, dict})
+      let citation = {lemma, link, dd, mm, yyyy, dict}
 
       return citation
     }
@@ -53,7 +53,7 @@ onMounted(() => {
     <div class="cite-container card card-body">
       <h4>{{$t('article.cite_title')}}</h4>
       <p>{{$t("article.cite_description[0]", content_locale)}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", content_locale)}}</p>
-      <div id="citation" v-html="create_citation()"/>
+      <div id="citation" v-html="$t('article.citation', create_citation())" />
     </div>
 </div>
 </client-only>

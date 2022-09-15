@@ -7,15 +7,10 @@ const props = defineProps({
     content_locale: String
 })
 
-const citation_dialog = ref(false);
 
- const create_link = () => {
+const create_link = () => {
       return `https://ordbokene.no/${props.dict}/${props.article_id}/${encodeURIComponent(props.lemmas[0].lemma)}`
     };
-
-const logLink = () => {
-    console.log(create_link())
-}
 
 const get_citation_info = () => {
       let date = new Date();
@@ -35,11 +30,19 @@ const create_citation = () => {
       return citation
     }
 
+const download_ris = () => {
+      const [lemma, dd, mm, yyyy, link] = get_citation_info()
+      const a = document.createElement("a")
+      a.style = "display: none"
+      a.setAttribute("download", `${lemma}_${props.dict}.ris`)
+      const dict = {"bm":"Bokmålsordboka", "nn": "Nynorskordboka"}[props.dict]
+      const text = `TY  - DICT\nTI  - ${lemma}\nT2  - ${dict}\nPB  - Språkrådet og Universitetet i Bergen\nUR  - ${link}\nY2  - ${yyyy}/${mm}/${dd}/\nER  - `
+      a.setAttribute('href', 'data:application/x-research-info-systems;charset=utf-8,' + encodeURIComponent(text));
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+    }
 
-
-onMounted(() => {
-    
-})
 </script>
 
 <template>
@@ -54,6 +57,10 @@ onMounted(() => {
       <h4>{{$t('article.cite_title')}}</h4>
       <p>{{$t("article.cite_description[0]", content_locale)}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", content_locale)}}</p>
       <div id="citation" v-html="$t('article.citation', create_citation())" />
+      <div class="pt-3">
+        <button class="btn rounded-pill"><i class="bi bi-clipboard pe-1"></i> {{$t("article.copy", content_locale)}}</button>
+        <button class="btn rounded-pill" @click="download_ris"><i class="bi bi-download pe-1"></i> {{$t("article.download")}}</button>
+      </div>
     </div>
 </div>
 </client-only>

@@ -1,10 +1,16 @@
 <template>
-<div>
+  <div>
+    <div class="pb-1">
+      <NuxtLink v-if="store.view == 'article' && store.searchUrl" class="back-link" :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink></div>
+<main>
+  
   <ArticleView v-if="store.view == 'article'"/>
   <WordView v-if="store.view == 'word'"/>
-  <SearchView v-if="store.view == 'search'"/>
-  <SuggestResults v-if="store.view == 'suggest'"/>
-</div>
+  <Results v-if="store.view == 'search' || store.view == 'word'"/>
+  <SuggestResults v-if="store.view == 'suggest' || store.view == 'word'"/>
+
+</main>
+  </div>
 </template>
 
 <script setup>

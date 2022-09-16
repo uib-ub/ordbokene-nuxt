@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted } from 'vue';
 import { useStore } from '~/stores/searchStore'
 import {
   Combobox,
@@ -70,12 +71,18 @@ async function fetchAutocomplete(q) {
     }
 }
 
+const input = ref(null)
 
 const emit = defineEmits(['submit'])
-const submit = (item) => {
-  emit('submit', item)
-  store.autocomplete = []
+const submit = (data) => {
   store.autocompletePending = false
+  //todo: plausible
+  emit('submit')
+  input.value.$el.select()
+}
+
+const dropdownSelect = () => {
+  input.value.$el.select()
 }
 
 
@@ -83,11 +90,19 @@ const clearText = () => {
  store.input = ""
 }
 
+
+onMounted(() => {
+  if (store.input) {
+    input.value.$el.select()
+
+  }  
+})
+
 </script>
 
 <template>
   <div class="searchField">
-    <Combobox v-model="store.input" v-on:update:modelValue="submit" @submit.prevent="submit">
+    <Combobox v-model="store.input" @update:modelValue="submit">
       <div>
         <div class="height d-flex align-items-center justify-content-between">
           <ComboboxInput
@@ -119,12 +134,13 @@ const clearText = () => {
               :key="idx"
               :value="item.q"
               v-slot="{ active }"
+              @click="dropdownSelect"
             >
               <li
                 class="list-group-item"
                 :class="{'active': active, '': !active,}">
 
-                <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced'" class="dict-parentheses">(Avansert søk <i class="bi bi-arrow-right"/>)</span>
+                <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <i class="bi bi-arrow-right"/></span>
               </li>
             </ComboboxOption>
           </ComboboxOptions>

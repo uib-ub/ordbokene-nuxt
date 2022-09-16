@@ -6,17 +6,17 @@ export const useStore = defineStore('store', {
       input: "",
       originalInput: "",
       selected: {},
-      scope: "e",
+      scope: "ei",
       advanced: false,
       dict: "bm,nn",
       autocompletePending: false,
       autocomplete: [],
       suggest: {},
-      results_nn: [],
-      results_bm: [],
+      articles: {},
       searchUrl: null,
       view: null,
       concepts_bm: [],
-      concepts_nn: []
+      concepts_nn: [],
+      top_suggestion: null,
     })
   })

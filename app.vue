@@ -1,10 +1,10 @@
 <template>
 
-<div class="d-flex flex-column h-100">
+<div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && !$route.params.slug && $route.params.dict}" >
       <nav role="navigation" class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand text-white" to="/">
-      <div class="small mx-2 my-1">
+      <div class="small mx-1 my-1 my-lg-3">
       <div v-show="false"><h1>ordbøkene.no</h1></div>
       <div><h1 class="brand-title">Ordbøkene</h1>
       <p class="d-none d-xl-block brand-subtitle">{{$t("sub_title")}}</p>
@@ -19,7 +19,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav navbar-secondary-pages ms-auto mb-2 mb-lg-0">
         <li class="nav-item" v-bind:class="{'active': $route.name == 'help'}">
           <NuxtLink class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
         </li>
@@ -50,8 +50,8 @@
     </div>
   </div>
 </nav>
-<div class="container p-2 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
-<NuxtLink :to="store.searchUrl"> <strong><i class="bi bi-arrow-left primary-text" aria-hidden="true"/></strong> {{$t('notifications.back')}}</NuxtLink>
+<div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
+<NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
     <NuxtPage class="page-container container p-3" />
 
@@ -70,7 +70,6 @@
     <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'contact' && 'page'" to="/contact"><i class="bi bi-envelope-fill"></i> {{$t('contact.title')}}</NuxtLink>
   </div>
   </div>
-<!--<div>{{store.$state}}</div>-->
 </footer>
   </div>
 </template>
@@ -98,6 +97,11 @@ useHead({
     lang: i18n.locale
   }
 
+})
+
+Promise.all([$fetch('https://oda.uib.no/opal/dev/bm/concepts.json'), $fetch('https://oda.uib.no/opal/dev/nn/concepts.json')]).then(response => {
+  store.concepts_bm = response[0].concepts
+  store.concepts_nn = response[1].concepts
 })
 
 
@@ -142,6 +146,9 @@ body {
   overflow-y: scroll;
 }
 
+#__nuxt>.welcome {
+  background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
+}
 
 .back-to-search {
   font-size: larger;
@@ -153,46 +160,63 @@ h1 {
 
 }
 
-.navbar {
-  padding-top: 0.25rem;
-}
 
 
-.nav-link {
+.navbar .nav-item {
+
+  padding-bottom: 0.25rem;
   font-variant-caps: all-small-caps;
   font-size: 1.25rem;
   letter-spacing: .1rem;
   font-weight: 600;
 }
 
-.navbar-expand-lg .nav-item.active {
-  border-left: 0.25rem solid var(--bs-secondary);
+.navbar .nav-link:hover {
+  color: white;
 }
 
-.navbar-expand-lg .nav-item {
-  border-left: 0.25rem solid var(--bs-primary);
-  padding-left: 0.5rem;
+.navbar-secondary-pages .nav-item:hover {
+  border-bottom: solid 0.25rem rgba(255,255,255, .5);
+  background-color: rgba(255,255,255, .1);
+  padding-bottom: 0rem;
+}
+
+.navbar-secondary-pages .nav-item.active {
+  border-bottom: solid 0.25rem var(--bs-secondary);
+  padding-bottom: 0rem;
 }
 
 
-@media (min-width: 992px) {
-  .navbar-expand-lg .nav-item.active {
-  border-bottom: 0.25rem solid var(--bs-secondary);
-  border-left: 0.25rem solid var(--bs-primary);
-  padding-left: 0px;
+@media (max-width: 992px) {
+  .nav-item {
+    padding-left: 1.25rem;
+  }
+  .navbar-secondary-pages .nav-item {
+    font-variant-caps: all-small-caps;
+    border-bottom: 0px;
+    padding: 0rem;
+    padding-left: 1.25rem;
   }
 
-  .navbar-expand-lg .nav-item {
-  padding-left: 0px;
+
+  .navbar-secondary-pages .nav-item:hover {
+    border-left: solid 0.25rem rgba(255,255,255, .5);
+    background-color: rgba(255,255,255, .1);
+    padding-left: 1rem;
+    border-bottom: 0rem;
+    
+  }
+
+  .navbar-secondary-pages .nav-item.active {
+    border-left: solid 0.25rem var(--bs-secondary);
+    padding: 0rem;
+    padding-left: 1rem;
+    border-bottom: 0rem;
   }
 
 
 }
 
-
-.navbar-expand-lg .nav-item {
-  border-bottom: 0.25rem solid var(--bs-primary);
-}
 
 .navbar-brand  {
   border-bottom: 0.25rem solid var(--bs-primary);
@@ -209,19 +233,29 @@ main a  {
   padding: 3rem !important;
 }
 
+
+
 .secondary-page h2 {
   font-family: Inria Serif;
   color: var(--bs-primary);
-  font-weight:600;
+  font-weight: bold;
+}
+
+.secondary-page h4 {
+  color: var(--bs-primary);
+  font-weight: 600;
+  font-size: 1rem;
 }
 
 
 
-.secondary-page h3 {
+.secondary-page h3, .dict-view h2 {
   color: var(--bs-primary);
-  font-weight:600;
+  font-weight: 600;
   font-variant: all-small-caps;
-  font-weight: bold;
+  font-size: 1.75rem;
+}
+.secondary-page summary::marker {
   font-size: 1.5rem;
 }
 
@@ -254,9 +288,88 @@ article h5 {
   color: var(--bs-primary);
   font-weight: 600;
   font-size: 1rem;
-  padding-left: 0.75rem;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
 }
 
+article .level1>ol {
+  padding-left: 1.25rem;
+}
+
+article li {
+  margin-bottom: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+article ul {
+  margin-bottom: 1rem;
+}
+
+article ol {
+  margin-bottom: 2rem;
+}
+
+
+section {
+  padding-top: 10px;
+  padding-bottom: 10px
+}
+
+
+article section.etymology > h4, section.pronunciation > h4 {
+  display: inline;
+}
+
+article section.etymology ul, section.pronunciation ul, section.etymology li, section.pronunciation li {
+  display: inline;
+}
+
+article section.etymology li:not(:first-child):not(:last-child):before, section.pronunciation li:not(:first-child):not(:last-child):before {
+  content: ", ";
+}
+
+article section.etymology li:not(:first-child):last-child:before, section.pronunciation li:not(:first-child):last-child:before {
+  content: "; ";
+  font-size: smaller;
+}
+
+
+
+li.level1.definition {
+  list-style: upper-alpha;
+}
+
+li.level2.definition {
+  list-style: decimal;
+}
+
+li.level3.definition {
+  /* Norsk ordbok skal ha "lower.alpha" her */
+  list-style: disc;
+}
+
+li.sub_article > ul {
+  padding-left: 0px;
+}
+
+article li::marker {
+  color: var(--bs-primary);
+  font-weight: bold;
+}
+
+li.level2>div {
+  padding-left: 0.5rem;
+}
+
+ol.sub_definitions {
+  padding-left: 1.25rem;
+}
+
+
+.article-view article, .secondary-page {
+    border-radius: 0rem;
+    border: solid 1px rgba(0,0,0, .3) !important;
+    box-shadow: 2px 2px 1px rgba(0,0,0, .3) !important;
+
+}
 
 </style>

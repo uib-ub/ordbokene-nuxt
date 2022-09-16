@@ -1,4 +1,0 @@
-<template>
-    SEARCH VIEW
-
-</template>

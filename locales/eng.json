@@ -50,7 +50,7 @@
     "pos": "Part of speech",
     "collapse": "Collapse articles"
   },
-"all_pos": "all parts of speech",
+"all_pos": "All parts of speech",
 "tags": {
   "NOUN": "noun",
   "VERB": "verb",
@@ -74,16 +74,16 @@
   "Uninfl": "uninflectable"
   },
 "pos_tags_plural": {
-  "NOUN": "nouns",
-  "PRON": "pronouns",
-  "DET": "determinatives",
-  "ADJ": "adjectives",
-  "CCONJ": "conjunctions",
-  "SCONJ": "subjunctions",
-  "ADV": "adverbs",
-  "ADP": "prepositions",
-  "VERB": "verbs",
-  "INTJ": "interjections"
+  "NOUN": "Nouns",
+  "PRON": "Pronouns",
+  "DET": "Determinatives",
+  "ADJ": "Adjectives",
+  "CCONJ": "Conjunctions",
+  "SCONJ": "Subjunctions",
+  "ADV": "Adverbs",
+  "ADP": "Prepositions",
+  "VERB": "Verbs",
+  "INTJ": "Interjections"
 },
 "split_inf": {
   "title": "split infinitive",

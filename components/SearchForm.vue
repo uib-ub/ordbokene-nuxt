@@ -1,17 +1,29 @@
 <template>
 <div class="my-3">
-<form class="input-group active p-md-2" :class="{activeAutocomplete: store.autocomplete.length}" @submit.prevent="submitForm" ref="form">
+<form  @submit.prevent="submitForm" ref="form">
+  <div class="input-group active p-md-2" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <div class="dropdown">
     <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{$t(`dicts.${store.dict}`)}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu" name="dict" @submit="submitForm">
       <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button class="dropdown-item" @click="store.dict = item">{{$t(`dicts.${item}`)}}</button></li>
     </ul>
   </div>
-<!--<select class="dropdown-toggle btn btn-outline-primary" @change="change_dict" v-model="store.$state.dict">
-  <option v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx" :value="item" name="dict">{{$t(`dicts.${item}`)}}</option>
-</select>-->
+
   <Autocomplete v-on:submit="submitForm"/>
   <button :aria-label="$t('search')" class="btn btn-outline-primary rounded-pill"> <i class="bi bi-search input-group-text" aria-hidden="true"/></button>
+  </div>
+
+
+  <div v-if="store.advanced" class="dropdown">
+    <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
+    <ul class="dropdown-menu" name="pos" @submit="submitForm">
+      <li v-for="(tag, idx) in  pos_tags" a
+          :key="idx"><button 
+          class="dropdown-item" 
+          @click="store.pos = tag">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</button></li>
+    </ul>
+  </div>
+
 </form>
 
 </div>
@@ -23,20 +35,20 @@ import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
 
-async function submitForm(item) {
+const pos_tags = [null, 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCONJ', 'SCONJ', 'INTJ']
+
+
+function submitForm(item) {
   store.autocomplete = [] 
+
     let searchUrl = '/'+store.dict+'/submit?q='+store.input
     if (store.advanced) {
-      searchUrl += "&scope=ei"
+      searchUrl += "&scope="+store.scope
 
     }
     store.q = store.input
-    await navigateTo(searchUrl)
+    navigateTo(searchUrl)
     
-  
-}
-
-const change_dict = function(event) {
   
 }
 

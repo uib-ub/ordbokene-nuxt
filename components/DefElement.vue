@@ -6,18 +6,18 @@
            v-bind="item.props"><!--
           -->{{item.html}}<!--
           
-       --><router-link class="article_ref" v-if="item.type == 'article_ref'" :to="item.ref" @click="link_click(item)" :key="index"><!--
+       --><NuxtLink class="article_ref" v-if="item.type == 'article_ref'" :to="item.ref" v-on:click="link_click" :key="index"><!--
        --><DefElement tag='span' v-if="item.link_text.type_" :dict="dict" :key="item.id+'_sub'" :body='item.link_text' :content_locale="content_locale"/><span v-else>{{item.link_text}}</span><!--
        --><span class="homograph" v-if="item.lemmas[0].hgno" :aria-label="`${dict=='bm'? 'Betydning': 'Tyding'} ${item.lemmas[0].hgno}`" :title="`${dict=='bm'? 'Betydning': 'Tyding'} ${item.lemmas[0].hgno}`" :key="index"><!--
         --> ({{roman_hgno(item.lemmas[0])}}{{item.definition_order ? '': ')'}}</span>
         <span class="def_order" v-if="item.definition_order" :aria-label="'definisjon '+item.definition_order">{{item.lemmas[0].hgno ? ', ': ' ('}}{{item.definition_order}})</span>
-       </router-link>
+      </NuxtLink>
 
        <!--
        --><span class="numerator" v-if="item.type == 'fraction'">{{item.num}}</span><!--
        -->{{item.type == 'fraction' ? '⁄' : ''}}<!--
        --><span class="denominator" v-if="item.type == 'fraction'">{{item.denom}}</span><!--
- --></component></component>
+ --></component><span v-if="semicolon && no_preceeding_punctuation">; </span></component>
 </template>
 
 
@@ -25,7 +25,10 @@
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
 
-const emit = defineEmits(['error'])
+const emit = defineEmits(['error', 'link-click'])
+const link_click = (event) => {
+    emit('link-click', event)
+}
 
 const props = defineProps({
     body: Object,
@@ -34,7 +37,10 @@ const props = defineProps({
       default: 'span'
     },
     dict: String,
-    content_locale: String
+    content_locale: String,
+    semicolon: Boolean,
+    has_article_ref: Boolean
+
 })
 
 
@@ -72,7 +78,7 @@ const unparsed = computed(() => {
             else if (item.type_ == 'subscript') return {type: item.type_, html: item.text, tag: 'sub'}
             else if (item.type_ == 'quote_inset') return {type: item.type_, body: item, html: '', tag: 'DefElement', props: {body: item, tag: 'i', dict: props.dict}}
             else if (item.type_ == 'fraction') return fraction(item.numerator, item.denominator)
-            else if (item.id) return {type: item.type_, html:  ({"nn":store.concepts_nn, "bm":store.concepts_bm}[props.dict].data.concepts[item.id] || {})['expansion'] || item.id}
+            else if (item.id) return {type: item.type_, html:  ({"nn":store.concepts_nn, "bm":store.concepts_bm}[props.dict][item.id] || {})['expansion'] || item.id}
             else return {type: item.type_ || 'plain', html: item}
             }
         catch(error) {
@@ -102,6 +108,15 @@ const assemble_text = computed(() => {
           console.log(error)
         return []
         }
+})
+
+const no_preceeding_punctuation = computed(()=> {
+  let assebled_text = assemble_text.value
+  let final_text = assebled_text[assebled_text.length-1] ? assebled_text[assebled_text.length-1].link_text || assebled_text[assebled_text.length-1].html : "none"
+  if (final_text.length) {
+    return !["?","!"].includes(final_text[final_text.length -1] )
+  }
+
 })
 
 

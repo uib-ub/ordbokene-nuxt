@@ -1,72 +1,99 @@
 <template>
+
     <article class="pt-lg-1">
+        <div v-if="pending" class="skeleton-container">
+            <div class="skeleton mt-4 skeleton-heading"/>
+        <div class="skeleton mt-2 mb-4 skeleton-subheading"/>
+        <div class="skeleton skeleton-content w-50 "/>
+        <div class="skeleton skeleton-content w-25 skeleton-indent"/>
+        <div class="skeleton skeleton-content w-75"/>
+        <div class="skeleton skeleton-content w-25 skeleton-indent"/>
+        <div class="skeleton skeleton-content w-50"/>
+        <div class="skeleton skeleton-content w-75 skeleton-indent"/>
+        <div class="skeleton skeleton-content w-25"/>
+        </div>
+
+        <div v-else>
         <h2 v-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
+        <h2 v-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div class="p-4">
         <ArticleHeader :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict"/>
-        
+
         <button v-if="inflected" class="inflection-button py-1 px-3 mx-2" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
             {{$t('article.show_inflection')}}
         </button>
 
         <div v-if="inflected" class="collapse py-2" :id="'inflection-'+article_id" ref="inflection_table">
             <div class="inflection-container card card-body">
+                <NuxtErrorBoundary @error="inflection_error">
                 <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
+                </NuxtErrorBoundary>
             </div>
         </div>
+        <NuxtErrorBoundary @error="body_error">
         <div class="article_content pt-3" ref="article_content">
             <section v-if="data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
                 <h4>{{$t('article.headings.pronunciation', content_locale)}}</h4>
-                <ul>
-                <DefElement v-for="(element, index) in data.body.pronunciation" :dict="dict" :key="index" :body='element' v-on:rticle-click="link_click"/>
-                </ul>
+
+                <DefElement v-for="(element, index) in data.body.pronunciation" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
+
             </section>
             <section v-if="data.body.etymology && data.body.etymology.length" class="etymology">
                 <h4>{{$t('article.headings.etymology', content_locale)}}</h4>
-                <ul>
-                <DefElement v-for="(element, index) in data.body.etymology" :dict="dict" :key="index" :body='element' v-on:rticle-click="link_click"/>
-                </ul>
+
+                <DefElement v-for="(element, index) in data.body.etymology" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
+
             </section>
             <section class="definitions" v-if="has_content">
                 <h4>{{$t('article.headings.definitions', content_locale)}}</h4>
-                <ol>
-                <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:rticle-click="link_click"/>
-                </ol>
+
+                <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click"/>
+
             </section>
             <section v-if="sub_articles.length" class="expressions">
                 <h4>{{$t('article.headings.expressions', content_locale)}}</h4>
                 <ul>
-                <SubArticle :body="subart" v-for="(subart, index) in sub_articles" :dict="dict" :key="index" v-on:rticle-click="link_click"/>
+                <SubArticle :body="subart" v-for="(subart, index) in sub_articles" :dict="dict" :key="index" v-on:link-click="link_click"/>
                 </ul>
             </section>
         </div>
         <ArticleFooter :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
+        </NuxtErrorBoundary>
     </div>
+</div>
     </article>
 </template>
 
 <script setup>
 import { useStore } from '~/stores/searchStore'
 import { useI18n } from 'vue-i18n'
+import { computed } from 'vue'
 
 const i18n = useI18n()
 const store = useStore()
-
-
-const element_error = (event) => {
-    console.log("ERROR", event)
-}
 
 const props = defineProps({
     article_id: Number,
     dict: String
 })
 
+const { pending, data } = useAsyncData('article_'+props.article_id, () => $fetch(`https://oda.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`))
+
+const body_error = (error) => {
+    console.log("BODY_ERROR", error)
+}
+
+const inflection_error = (error) => {
+    console.log("INFLECTION_ERROR", error)
+}
+
 const content_locale = computed(() => {
     return i18n.locale == 'eng' ? 'eng' : {bm: 'nob', nn: 'nno'}[props.dict]
 })
 
+
 const has_content = () => {
-    for (const definition of props.body.definitions) {
+    for (const definition of data.value.body.definitions) {
         for (const element of definition.elements) {
           if (['explanation', 'example', 'compound_list', 'definition'].includes(element.type_)) {
             return true
@@ -75,10 +102,6 @@ const has_content = () => {
       }
       return false
 }
-
-
-
-const { pending, data } = await useAsyncData('article_'+props.article_id, () => $fetch(`https://oda.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`))
 
 const inflected = computed(() => {
     return data.value.lemmas.reduce((acc, lemma) => acc += lemma.paradigm_info.reduce((acc2, digm) => digm.inflection_group.includes("uninfl") ? 0 : acc2 += digm.inflection.length, 0), 0) > data.value.lemmas.length
@@ -105,7 +128,7 @@ const find_sub_articles = (definition) => {
 
   }
   catch(error) {
-    console.log("find_sub_articles", this.article.article_id, this.dictionary,  '"'+error.message+'"')
+    console.log("find_sub_articles", props.article_id, props.dict,  '"'+error.message+'"')
 
     return []
   }
@@ -125,14 +148,14 @@ const link_click = (event) => {
 <style scoped>
 
  h2 {
-    color: rgba(0,0,0,.6);
+    color: rgba(0,0,0,.6) !important;
     margin-left: 1rem;
     margin-top: 0.5rem;
     margin-bottom: 0rem;
     letter-spacing: .1rem;
     font-variant-caps: all-small-caps;
     font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1.25rem !important;
 
 }
 
@@ -170,55 +193,6 @@ article {
 }
 
 
-section {
-  padding-top: 10px;
-  padding-bottom: 10px
-}
-
-
-section.etymology > h4, section.pronunciation > h4 {
-  display: inline;
-}
-
-section.etymology ul, section.pronunciation ul, section.etymology li, section.pronunciation li {
-  display: inline;
-}
-
-section.etymology li:not(:first-child):not(:last-child):before, section.pronunciation li:not(:first-child):not(:last-child):before {
-  content: ", ";
-}
-
-section.etymology li:not(:first-child):last-child:before, section.pronunciation li:not(:first-child):last-child:before {
-  content: "; ";
-  font-size: smaller;
-}
-
-li {
-  padding-bottom: 4px;
-}
-
-li.level1.definition {
-  list-style: upper-alpha;
-}
-
-li.level2.definition {
-  list-style: decimal;
-}
-
-li.level3.definition {
-  /* Norsk ordbok skal ha "lower.alpha" her */
-  list-style: disc;
-}
-
-li.sub_article > ul {
-  padding-left: 0px;
-}
-
-::marker {
-  font-weight: bold;
-  color: var(--v-primary-base);
-}
-
 ol > li:only-child.level1, li:only-child.level2 {
   /* level3 a.k.a. underdefinisjoner skal vises med bullet selv om de står alene */
   /* list-style: none;*/
@@ -233,10 +207,7 @@ ul, ol {
   padding-left: 12px !important;
 }
 
-ul li {
-  /*list-style:none; */
-  color: red;
-}
+ul li
 
 ul li.definition {
   list-style: disc;
@@ -247,7 +218,43 @@ h4 {
   color: var(--bs-primary);
   font-variant: all-small-caps;
   font-weight: 600;
+  padding-right: 1rem;
 
+}
+
+.article-dict-label {
+    font-size: 1.5rem !important;
+    padding-left: 0.25rem;
+    padding-bottom: 1rem;
+}
+
+
+.skeleton {
+    background-color: rgba(0,0,0, .1);
+    border-radius: 1rem;
+    margin-left: 1rem;
+
+}
+.skeleton-heading {
+    height: 2rem;
+    width: 15rem;
+}
+
+.skeleton-subheading {
+    height: 1.25rem;
+    width: 10rem;
+}
+
+.skeleton-content {
+    height: 1rem;
+    margin: 1rem;
+}
+
+.skeleton-container {
+    height: 30rem;
+}
+.skeleton-indent {
+    margin-left: 2rem;
 }
 
 </style>

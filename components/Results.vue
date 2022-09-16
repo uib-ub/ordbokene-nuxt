@@ -128,13 +128,19 @@ const filter_suggestions = (items) => {
     return assembled
 }
 
+
 const get_suggestions = () => {
-  let key = ((store.advanced && store.pos) || '') + 'suggest_'+ (store.suggestQuery || store.q)
-  useAsyncData(key, () => {
-                                $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.suggestQuery || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)
-                                  }).then(response => {
+  if (!store.advanced || !specialSymbols(store.q)) {
+    let key = ((store.advanced && store.pos) || '') + 'suggest_'+ (store.suggestQuery || store.q)
+  console.log("KEY", key)
+  useFetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.suggestQuery || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`, { key })
+                                  .then(response => {
+                                    console.log("SUGGESTIONS_RESPONSE", response.data)
                                     suggestions.value = filter_suggestions(response.data)
                                   })
+
+  }
+  
   
   
 }

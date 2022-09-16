@@ -1,14 +1,14 @@
 import { useStore } from '~/stores/searchStore'
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
-    console.log("MIDDLEWARE\nFROM: ", from, "\nTO: ", to, "\nREDIRECTED FROM:",to.redirectedFrom)
+    console.log("SUBMIT MIDDLEWARE\nTO: ", to, "\nFROM: ", from)
     const store = useStore()
     //console.log("TO", to)
     //console.log("FROM", from)
     
-    if (to.params.slug) {
-        if (to.params.slug[0] == 'submit') {
+
             store.originalInput = ""
+            store.suggestQuery = ""
             if (store.q == "") {
                 if (from.params.slug[0] == 'search') {
                     return navigateTo(to.params.dict + "/search?scope=" + store.scope)
@@ -40,12 +40,14 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
                         // kun hvis resultatet er et uttrykk eller har litt andre tegn?
                         console.log("EXACT", exact[0][0])
                         store.originalInput = to.query.q
+                        store.suggestQuery = to.query.q
                         return navigateTo(`/${store.dict}/${exact[0][0]}`)
                     }
                 }
                 if (inflect) {
                         console.log("INFLECT", inflect[0][0])
                         store.originalInput = to.query.q
+                        store.suggestQuery = to.query.q
                         return navigateTo(`/${store.dict}/${inflect[0][0]}`)
                     
                 }
@@ -56,51 +58,8 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
                 
                 
         } 
-    }
-    else if (to.params.slug[0] && to.params.slug[0].slice(0,6) == 'search') {
-        console.log("SEARCH")
-        store.advanced = true
-        store.q = to.query.q || ""
-        store.input = to.query.q || ""
-        store.originalInput = ""
-        store.view = "search"
-        store.searchUrl = to.fullPath
-        
-        
-    }
-    else if (/^[0-9]+$/.test(to.params.slug[0])) {
-        console.log("ARTICLE")
-        store.view = 'article'
-    }
-    else {
-        console.log("WORD")
-        store.advanced = false
-        if (store.originalInput && to.redirectedFrom && to.redirectedFrom.query.q != to.params.slug[0]) {
-            store.input = store.originalInput
-            store.originalInput = store.input
-        }
-        else {
-            store.input = to.params.slug[0]
-            store.originalInput = ""
-        }
-        store.q = to.params.slug[0]
-        store.view = 'word'
-        store.searchUrl = to.fullPath
-        
-    }    
-  }
-  else if (to.name =='dict-suggest') {
-        console.log("SUGGEST")
-        store.q = to.query.q
-        store.input = to.query.q || ""
-        store.originalInput = ""
-        store.searchUrl = to.fullPath
-        
-        
-  }
-  else {
     
-    store.q = ""
-    store.input = ""
-  }
+
+  
+
 })

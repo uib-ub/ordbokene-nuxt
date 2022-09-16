@@ -65,20 +65,14 @@ const get_articles = () => {
 
   
 }
-console.log("CURRENT QUERY", store.q)
-const { pending, error, refresh, data: articles } = useAsyncData(store.searchUrl, ()=> 
-      $fetch('https://oda.uib.no/opal/dev/api/articles?', {
+console.log("CURRENT QUERY", store.q) 
+console.log("SEARCH URL", store.searchUrl)
+const { pending, error, refresh, data: articles } = useAsyncData(route.fullPath, ()=> 
+      $fetch('https://odd.uib.no/opal/dev/api/articles?', {
           params: {
             w: store.q,
             dict: store.dict,
             scope: store.advanced ? store.scope : 'e'
-          },
-          onRequest({ request, options }) {
-            if (!store.q || store.view == "suggest") {
-              get_suggestions()
-              throw new Error("feil")
-            }
-            
           },
           onRequestError({ request, options, error}) {
             console.log("ERROR")
@@ -93,7 +87,7 @@ const { pending, error, refresh, data: articles } = useAsyncData(store.searchUrl
 
 
 watch(() => route.query, () => {
-  if (store.advanced || store.view == "suggest") {
+  if (store.advanced) {
     console.log("ROUTE WATCHER")
 
     refresh()
@@ -102,50 +96,18 @@ watch(() => route.query, () => {
 })
 
 
-const filter_suggestions = (items) => {
-  let assembled = []
-  let seen = new Set()
-  let q = store.suggestQuery || store.q
-  const { inflect, exact, similar} = items.value.a
-    if (inflect) {
-        inflect.forEach(item => {
-            if (q != item[0]) {
-                assembled.push(item)
-                seen.add(item[0])
-            }
-        })
-    }
-    if (exact) {
-        exact.forEach(item => {
-            if (!seen.has(item[0])
-            && q != item[0]
-            && (item[0].length <= q.length
-            || (item[0].slice(0, q.length) != q && item[0] != "å " + q))) {
-                assembled.push(item)
-                seen.add(item[0])
-            }
-        })
-    }
-    if (similar) {
-        similar.forEach(item => {
-                if (!seen.has(item[0])) {
-                assembled.push(item)
-                }
-        })
-    }
-    return assembled
-}
+
 
 
 const get_suggestions = () => {
   console.log("GETTING SUGGESTIONS")
   if (!(store.advanced && specialSymbols(store.q))) {
-    let key = ((store.advanced && store.pos) || '') + 'suggest_'+ (store.originalInput || store.q)
+  let key = ((store.advanced && store.pos) || '') + 'suggest_'+ (store.originalInput || store.q)
   console.log("KEY", key)
-  useFetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.originalInput || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`, { key })
+  useFetch(`https://odd.uib.no/opal/dev/api/suggest?&q=${store.originalInput || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`, { key })
                                   .then(response => {
                                     
-                                    suggestions.value = filter_suggestions(response.data)
+                                    suggestions.value = filterSuggestions(response.data, store.suggestQuery || store.q)
                                     console.log("SUGGESTIONS_RESPONSE", suggestions.value)
                                   })
 

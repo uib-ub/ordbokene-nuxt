@@ -76,7 +76,7 @@ const props = defineProps({
     dict: String
 })
 
-const { pending, data, error } = useAsyncData('article_'+props.article_id, () => $fetch(`https://oda.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`,
+const { pending, data, error } = useAsyncData('article_'+props.article_id, () => $fetch(`https://odd.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`,
                                                                                         {
                                                                                             async onResponseError({ request, response, options }) {
                                                                                                 // TODO: plausible logging, error message if article view

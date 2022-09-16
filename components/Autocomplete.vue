@@ -48,7 +48,7 @@ async function fetchAutocomplete(q) {
     if (blank != "advanced") {
     
       let response = ref([])
-      response.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
+      response.value = await $fetch(`https://odd.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
       
       // prevent suggestions after submit
       if (store.autocompletePending && q == store.input) {

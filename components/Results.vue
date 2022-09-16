@@ -130,7 +130,7 @@ const filter_suggestions = (items) => {
 
 
 const get_suggestions = () => {
-  if (!store.advanced || !specialSymbols(store.q)) {
+  if (!(store.advanced && specialSymbols(store.q))) {
     let key = ((store.advanced && store.pos) || '') + 'suggest_'+ (store.originalInput || store.q)
   console.log("KEY", key)
   useFetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.originalInput || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`, { key })

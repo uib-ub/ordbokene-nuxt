@@ -80,11 +80,13 @@ const { pending, error, refresh, data: articles } = useAsyncData(store.searchUrl
 
 
 
-
-
 watch(() => route.query, () => {
-  console.log("ROUTE GET SUGGESTIONS")
-  get_suggestions()
+  if (store.advanced) {
+    console.log("ROUTE WATCHER")
+
+    refresh()
+  }
+  
 })
 
 

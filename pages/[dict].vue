@@ -51,8 +51,10 @@ const advanced_link = computed(() => {
 })
 
 const simple_link = computed(() => {
-
   let url = `/${store.dict}/`
+  if (specialSymbols(store.q)) {
+    return  url
+  }
   if (store.q) {
     url = url + 'submit?q=' + store.q
   }

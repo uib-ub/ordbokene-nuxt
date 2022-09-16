@@ -38,7 +38,7 @@
     <SuggestResults :suggestions="suggestions"/>
 
   </div>
-  {{suggestions}}
+  {{store.dict}}
 
 
 </div>

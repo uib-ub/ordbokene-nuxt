@@ -4,8 +4,8 @@
   <div class="input-group active p-md-2" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <div class="dropdown">
     <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{$t(`dicts.${store.dict}`)}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
-    <ul class="dropdown-menu" name="dict" @submit="submitForm">
-      <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button class="dropdown-item" @click="store.dict = item">{{$t(`dicts.${item}`)}}</button></li>
+    <ul class="dropdown-menu">
+      <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button class="dropdown-item" name="dict" :value="item">{{$t(`dicts.${item}`)}}</button></li>
     </ul>
   </div>
 
@@ -17,7 +17,7 @@
   <div v-if="store.advanced" class="dropdown">
     <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
     <ul class="dropdown-menu" name="pos" @submit="submitForm">
-      <li v-for="(tag, idx) in  pos_tags" a
+      <li v-for="(tag, idx) in  pos_tags"
           :key="idx"><button 
           class="dropdown-item" 
           @click="store.pos = tag">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</button></li>
@@ -38,16 +38,30 @@ const route = useRoute()
 const pos_tags = [null, 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCONJ', 'SCONJ', 'INTJ']
 
 
-function submitForm(item) {
+const submitForm = async (item) => {
   store.autocomplete = [] 
+  let searchUrl = '/'
+  if (item && item.submitter && item.submitter.name == 'dict') {
+    
+    store.dict = item.submitter.value
+    console.log("YES", store.dict)
+    
 
-    let searchUrl = '/'+store.dict+'/submit?q='+store.input
+  }
+  searchUrl += store.dict
+  
+  if (store.input) {
+    searchUrl += '/submit?q='+store.input
     if (store.advanced) {
       searchUrl += "&scope="+store.scope
 
     }
     store.q = store.input
-    navigateTo(searchUrl)
+
+  }
+  
+    
+    return navigateTo(searchUrl)
     
   
 }

@@ -151,7 +151,11 @@ watch(articles, (newArticles) => {
 )
 
 onMounted(() => {
-  get_suggestions()
+  console.log("MOUNTED")
+  if (store.view == 'word') {
+    console.log("WORD GET SUGGESTIONS", store.q)
+    get_suggestions()
+  }
 })
 
 </script>

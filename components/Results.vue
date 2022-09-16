@@ -68,10 +68,11 @@ watch(() => route.query, () => {
 const filter_suggestions = (items) => {
   let assembled = []
   let seen = new Set()
+  let q = store.suggestQuery || store.q
   const { inflect, exact, similar} = items.value.a
     if (inflect) {
         inflect.forEach(item => {
-            if (store.q != item[0]) {
+            if (q != item[0]) {
                 assembled.push(item)
                 seen.add(item[0])
             }
@@ -81,9 +82,9 @@ const filter_suggestions = (items) => {
     if (exact) {
         exact.forEach(item => {
             if (!seen.has(item[0])
-            && store.q != item[0]
-            && (item[0].length <= store.q.length
-            || (item[0].slice(0, store.q.length) != store.q && item[0] != "å "+store.q))) {
+            && q != item[0]
+            && (item[0].length <= q.length
+            || (item[0].slice(0, q.length) != q && item[0] != "å " + q))) {
                 assembled.push(item)
                 seen.add(item[0])
             }

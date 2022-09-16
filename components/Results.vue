@@ -5,8 +5,7 @@
   <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-    <div v-if="!pending && (store.q || store.view == 'suggest')" :key="store.searchUrl">
-
+    <div v-if="store.view != 'suggest' && !pending && articles && articles.meta" :key="store.searchUrl">
     <div>
     <div aria-live="assertive" class="visually-hidden">{{articles.meta.bm.total}} treff i Bokmålsordboka</div>
     <div aria-live="assertive" class="visually-hidden">{{articles.meta.nn.total}} treff i Nynorskordboka</div>
@@ -35,10 +34,13 @@
       <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
       </div>
     </div>
-    <SuggestResults :suggestions="suggestions"/>
-
   </div>
-  {{store.dict}}
+  <div v-if="error_message">
+    {{error_message}}
+  </div>
+    
+
+  <SuggestResults v-if="!pending && suggestions" :suggestions="suggestions"/>
 
 
 </div>
@@ -54,9 +56,31 @@ const store = useStore()
 const route = useRoute()
 
 const suggestions = ref()
+const fetched_articles = ref()
+const error_message = ref()
 
-console.log("SETUP RESULTS")
-const { pending, error, refresh, data: articles } = useAsyncData(store.searchUrl, () => $fetch(`https://oda.uib.no/opal/dev/api/articles?&w=${store.q}&dict=${store.dict}&scope=${store.advanced? store.scope : 'e'}`))
+
+const get_articles = () => {
+  if(store.q && store.view != 'suggest') {
+    return $fetch('https://oda.uib.no/opal/dev/api/articles?', {
+                                                                params: {
+                                                                  w: store.q,
+                                                                  dict: store.dict,
+                                                                  scope: store.advanced ? store.scope : 'e'
+                                                                },
+                                                              })
+
+  }
+  else {
+    error_message.value = "Ingen treff"
+    return async () => null
+  }
+}
+
+const { pending, error, refresh, data: articles } = useAsyncData(store.searchUrl, get_articles)
+
+
+
 
 
 watch(() => route.query, () => {
@@ -108,9 +132,6 @@ const get_suggestions = () => {
   useAsyncData(key, () => {
                                 $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.suggestQuery || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)
                                   }).then(response => {
-                                    console.log("RECEIVED", response.data)
-                                    console.log("KEY", key)
-                                    console.log("PARAMS", `https://oda.uib.no/opal/dev/api/suggest?&q=${store.suggestQuery || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)
                                     suggestions.value = filter_suggestions(response.data)
                                   })
   
@@ -118,24 +139,14 @@ const get_suggestions = () => {
 }
 
 watch(articles, (newArticles) => {
-  
-  console.log("NEW", newArticles)
-  /*if (store.advanced) {
-    refresh()
-  }*/
-  console.log("NEW ARTICLES GET SUGGESTIONS", articles)
   get_suggestions()
-  
 }, {
   deep: true,
   immediate: true
 }
 )
 
-
-
 onMounted(() => {
-  console.log("MOUNTED GET SUGGESTIONS")
   get_suggestions()
 })
 

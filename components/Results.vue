@@ -38,9 +38,8 @@
   <div v-if="error_message">
     {{error_message}}
   </div>
-    
 
-  <SuggestResults v-if="!pending && suggestions" :suggestions="suggestions"/>
+  <SuggestResults v-if="!pending" :suggestions="suggestions"/>
 
 
 </div>
@@ -60,32 +59,41 @@ const error_message = ref()
 
 
 const get_articles = () => {
-  if(store.q && store.view != 'suggest') {
-    return $fetch('https://oda.uib.no/opal/dev/api/articles?', {
-                                                                params: {
-                                                                  w: store.q,
-                                                                  dict: store.dict,
-                                                                  scope: store.advanced ? store.scope : 'e'
-                                                                },
-                                                                onResponse({ request, options, response }) {
-                                                                  console.log("RESPONSE INTERCEPTED", response)
-                                                                }
-                                                              })
+    console.log("HERE", store.view)
+    return  
 
-  }
-  else {
-    error_message.value = "Ingen treff"
-    get_suggestions()
-    return async () => null
-  }
+
+  
 }
+console.log("CURRENT QUERY", store.q)
+const { pending, error, refresh, data: articles } = useAsyncData(store.searchUrl, ()=> 
+      $fetch('https://oda.uib.no/opal/dev/api/articles?', {
+          params: {
+            w: store.q,
+            dict: store.dict,
+            scope: store.advanced ? store.scope : 'e'
+          },
+          onRequest({ request, options }) {
+            if (!store.q || store.view == "suggest") {
+              get_suggestions()
+              throw new Error("feil")
+            }
+            
+          },
+          onRequestError({ request, options, error}) {
+            console.log("ERROR")
+          },
 
-const { pending, error, refresh, data: articles } = useAsyncData(store.searchUrl, get_articles)
+          onResponse({ request, options, response }) {
+            console.log("RESPONSE INTERCEPTED", response)
+            get_suggestions()
+          }
+        }))
 
 
 
 watch(() => route.query, () => {
-  if (store.advanced) {
+  if (store.advanced || store.view == "suggest") {
     console.log("ROUTE WATCHER")
 
     refresh()
@@ -130,13 +138,15 @@ const filter_suggestions = (items) => {
 
 
 const get_suggestions = () => {
+  console.log("GETTING SUGGESTIONS")
   if (!(store.advanced && specialSymbols(store.q))) {
     let key = ((store.advanced && store.pos) || '') + 'suggest_'+ (store.originalInput || store.q)
   console.log("KEY", key)
   useFetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.originalInput || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`, { key })
                                   .then(response => {
-                                    console.log("SUGGESTIONS_RESPONSE", response.data)
+                                    
                                     suggestions.value = filter_suggestions(response.data)
+                                    console.log("SUGGESTIONS_RESPONSE", suggestions.value)
                                   })
 
   }

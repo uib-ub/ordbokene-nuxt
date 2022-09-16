@@ -85,7 +85,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     else {
         console.log("WORD")
         store.advanced = false
-        if (to.redirectedFrom && to.redirectedFrom.query.q != to.params.slug[0]) {
+        if (store.originalInput && to.redirectedFrom && to.redirectedFrom.query.q != to.params.slug[0]) {
             store.input = store.originalInput
             store.originalInput = store.input
         }

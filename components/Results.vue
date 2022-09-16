@@ -67,6 +67,9 @@ const get_articles = () => {
                                                                   dict: store.dict,
                                                                   scope: store.advanced ? store.scope : 'e'
                                                                 },
+                                                                onResponse({ request, options, response }) {
+                                                                  console.log("RESPONSE INTERCEPTED", response)
+                                                                }
                                                               })
 
   }

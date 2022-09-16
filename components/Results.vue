@@ -139,7 +139,11 @@ const get_suggestions = () => {
 }
 
 watch(articles, (newArticles) => {
-  get_suggestions()
+  
+  if (store.advanced && newArticles) {
+    console.log("ARTICLES WATCHER", articles)
+    if (newArticles.meta.bm.total + newArticles.meta.nn.total == 0) get_suggestions()
+  }
 }, {
   deep: true,
   immediate: true

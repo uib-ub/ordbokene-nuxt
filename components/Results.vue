@@ -75,6 +75,7 @@ const get_articles = () => {
   }
   else {
     error_message.value = "Ingen treff"
+    get_suggestions()
     return async () => null
   }
 }

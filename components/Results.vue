@@ -5,7 +5,7 @@
   <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-    <div v-if="!pending && store.q" :key="store.searchUrl">
+    <div v-if="!pending && (store.q || store.view == 'suggest')" :key="store.searchUrl">
 
     <div>
     <div aria-live="assertive" class="visually-hidden">{{articles.meta.bm.total}} treff i Bokmålsordboka</div>
@@ -38,6 +38,7 @@
     <SuggestResults :suggestions="suggestions"/>
 
   </div>
+  {{suggestions}}
 
 
 </div>
@@ -55,19 +56,18 @@ const route = useRoute()
 const suggestions = ref()
 
 console.log("SETUP RESULTS")
-const { pending, error, refresh, data: articles } = useLazyAsyncData(store.searchUrl, () => $fetch(`https://oda.uib.no/opal/dev/api/articles?&w=${store.q}&dict=${store.dict}&scope=${store.advanced? store.scope : 'e'}`))
+const { pending, error, refresh, data: articles } = useAsyncData(store.searchUrl, () => $fetch(`https://oda.uib.no/opal/dev/api/articles?&w=${store.q}&dict=${store.dict}&scope=${store.advanced? store.scope : 'e'}`))
+
+
+watch(() => route.query, () => {
+  get_suggestions()
+})
 
 
 const filter_suggestions = (items) => {
   let assembled = []
   let seen = new Set()
-  console.log("unfiltered_suggestions", items.value.a.exact)
-
   const { inflect, exact, similar} = items.value.a
-  console.log("INFLECT", inflect)
-
-
-
     if (inflect) {
         inflect.forEach(item => {
             if (store.q != item[0]) {
@@ -102,9 +102,11 @@ const filter_suggestions = (items) => {
 }
 
 const get_suggestions = () => {
-  useAsyncData(((store.advanced && store.pos) || '') + 'suggest_'+store.q, () => {
+  console.log("GETTING SUGGESTIONS")
+  useAsyncData(((store.advanced && store.pos) || '') + 'suggest_'+ store.q, () => {
                                 $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)
                                   }).then(response => {
+                                    console.log("RECEIVED", response.data)
                                     suggestions.value = filter_suggestions(response.data)
                                   })
   

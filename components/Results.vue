@@ -106,7 +106,6 @@ const filter_suggestions = (items) => {
             }
         })
     }
-
     if (exact) {
         exact.forEach(item => {
             if (!seen.has(item[0])
@@ -118,7 +117,6 @@ const filter_suggestions = (items) => {
             }
         })
     }
-
     if (similar) {
         similar.forEach(item => {
                 if (!seen.has(item[0])) {
@@ -126,8 +124,6 @@ const filter_suggestions = (items) => {
                 }
         })
     }
-    
-
     return assembled
 }
 

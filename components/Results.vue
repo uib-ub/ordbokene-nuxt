@@ -6,6 +6,17 @@
         </div>
 
     </div>
+
+  <!--<div class="d-lg-none">
+    <div class="row" v-if="articles">
+      <div  class="col-lg" v-for="(article_id, idx) in articles.articles.bm.concat(articles.articles.nn)" :key="idx + both_hash"
+        :style="'order:'+(idx < articles.articles.bm.length ? 2*idx : ((idx-articles.articles.bm.length)*2) + 1)">
+        <Article :key="idx + both_hash" :article_id="article_id" dict="bm,nn" />
+      </div>
+    </div>
+  </div>-->
+
+  <div class="d-none d-lg-block">
     <div class="row" v-if="articles">
       <div class="col-lg-6">
         <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span class="result-count">  | {{articles.meta.bm.total}} treff</span></div>
@@ -17,6 +28,7 @@
       </div>
 
     </div>
+  </div>
 
 </div>
 
@@ -28,6 +40,11 @@ import { useStore } from '~/stores/searchStore'
 const store = useStore()
 
 const { pending, data: articles } = useLazyFetch(`https://oda.uib.no/opal/dev/api/articles?&w=${store.q}&dict=bm,nn&scope=ei`, {key: store.searchUrl})
+
+const both_hash = computed(() => {
+      return articles.articles.bm.concat(articles.articles.nn).reduce((hash, hit) => (hash + hit.article_id) % 10000, 0)
+    })
+
 
 </script>
 

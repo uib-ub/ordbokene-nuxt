@@ -18,10 +18,10 @@ const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = aw
   <div>
   <main>
     <div class="row" v-if="welcome_bm && welcome_nn">
-      <div class="col-lg">
+      <div class="col-lg-6">
       <Article :article_id="welcome_bm.front_article.value" dict="bm"/>
       </div>
-      <div class="col-lg">
+      <div class="col-lg-6">
       <Article :article_id="welcome_nn.front_article.value" dict="nn"/>
       </div>
     </div>

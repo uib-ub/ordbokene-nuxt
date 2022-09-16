@@ -60,6 +60,7 @@ const { pending, error, refresh, data: articles } = useAsyncData(store.searchUrl
 
 
 watch(() => route.query, () => {
+  console.log("ROUTE GET SUGGESTIONS")
   get_suggestions()
 })
 
@@ -102,11 +103,13 @@ const filter_suggestions = (items) => {
 }
 
 const get_suggestions = () => {
-  console.log("GETTING SUGGESTIONS")
-  useAsyncData(((store.advanced && store.pos) || '') + 'suggest_'+ store.q, () => {
-                                $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)
+  let key = ((store.advanced && store.pos) || '') + 'suggest_'+ (store.suggestQuery || store.q)
+  useAsyncData(key, () => {
+                                $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.suggestQuery || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)
                                   }).then(response => {
                                     console.log("RECEIVED", response.data)
+                                    console.log("KEY", key)
+                                    console.log("PARAMS", `https://oda.uib.no/opal/dev/api/suggest?&q=${store.suggestQuery || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)
                                     suggestions.value = filter_suggestions(response.data)
                                   })
   
@@ -114,11 +117,12 @@ const get_suggestions = () => {
 }
 
 watch(articles, (newArticles) => {
-  console.log("SUGGESTION WATCHER", articles)
+  
   console.log("NEW", newArticles)
   /*if (store.advanced) {
     refresh()
   }*/
+  console.log("NEW ARTICLES GET SUGGESTIONS", articles)
   get_suggestions()
   
 }, {
@@ -130,8 +134,8 @@ watch(articles, (newArticles) => {
 
 
 onMounted(() => {
-  console.log("mounted")
-  //get_suggest(articles)
+  console.log("MOUNTED GET SUGGESTIONS")
+  get_suggestions()
 })
 
 </script>

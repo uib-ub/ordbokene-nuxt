@@ -8,6 +8,8 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     
     if (to.params.slug) {
         if (to.params.slug[0] == 'submit') {
+            store.originalInput = ""
+            store.suggestQuery = ""
             if (store.q == "") {
                 if (from.params.slug[0] == 'search') {
                     return navigateTo(to.params.dict + "/search?scope=" + store.scope)
@@ -26,6 +28,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
 
                 
             }
+
             // simple search redirect
             else {
             // Simple search - heller ha parametre som konverteres til riktig route - hvis search der scope er null omdirigeres søket til beste alternativ
@@ -38,12 +41,14 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
                         // kun hvis resultatet er et uttrykk eller har litt andre tegn?
                         console.log("EXACT", exact[0][0])
                         store.originalInput = to.query.q
+                        store.suggestQuery = to.query.q
                         return navigateTo(`/${store.dict}/${exact[0][0]}`)
                     }
                 }
                 if (inflect) {
                         console.log("INFLECT", inflect[0][0])
                         store.originalInput = to.query.q
+                        store.suggestQuery = to.query.q
                         return navigateTo(`/${store.dict}/${inflect[0][0]}`)
                     
                 }
@@ -60,6 +65,8 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         store.advanced = true
         store.q = to.query.q || ""
         store.input = to.query.q || ""
+        store.originalInput = ""
+        store.suggestQuery = ""
         store.view = "search"
         store.searchUrl = to.fullPath
         
@@ -69,6 +76,8 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         console.log("SUGGEST")
         store.q = to.query.q
         store.input = to.query.q || ""
+        store.originalInput = ""
+        store.suggestQuery = ""
         store.view = "suggest"
         store.searchUrl = to.fullPath
         

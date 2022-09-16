@@ -56,7 +56,6 @@ const store = useStore()
 const route = useRoute()
 
 const suggestions = ref()
-const fetched_articles = ref()
 const error_message = ref()
 
 

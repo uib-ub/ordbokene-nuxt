@@ -1,6 +1,6 @@
 import { useStore } from '~/stores/searchStore'
 
-export default defineNuxtRouteMiddleware((to, from) => {
+export default defineNuxtRouteMiddleware(async (to, from) => {
     console.log("MIDDLEWARE\nTO: ", to, "\nFROM: ", from)
     const store = useStore()
     //console.log("TO", to)
@@ -30,10 +30,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
             else {
             // Simple search - heller ha parametre som konverteres til riktig route - hvis search der scope er null omdirigeres søket til beste alternativ
                 console.log("INIT SIMPLE", to.query.q)
-                return $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${to.query.q}&dict=${to.params.dict}&n=20&dform=int&meta=n&include=eis`).then((response) => {
-
-                    store.suggest = response
-                    let { exact, inflect } = store.suggest.a
+                const { pending, error, refresh, data: suggestions } = await useAsyncData('suggest_'+to.query.q, () => $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${to.query.q}&dict=${to.params.dict}&n=20&dform=int&meta=n&include=eis`))
+                let { exact, inflect } = suggestions.value.a
         
                 if (exact) {
                     if (exact[0][0].length == store.q.length) {
@@ -52,7 +50,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
                 console.log("REDIRECT SUGGEST")
                 return navigateTo(`/${store.dict}/suggest?q=${to.query.q}`)
-                })
+
                 
                 
         } 

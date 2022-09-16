@@ -35,7 +35,7 @@
       <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
       </div>
     </div>
-    <SuggestResults v-if="store.view == 'search' && store.q"/>
+    <SuggestResults :suggestions="suggestions"/>
 
   </div>
 
@@ -52,41 +52,84 @@ import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
 
+const suggestions = ref()
+
 console.log("SETUP RESULTS")
 const { pending, error, refresh, data: articles } = useLazyAsyncData(store.searchUrl, () => $fetch(`https://oda.uib.no/opal/dev/api/articles?&w=${store.q}&dict=${store.dict}&scope=${store.advanced? store.scope : 'e'}`))
 
-const query = computed(() => {
-  return route.query
-})
 
-watch(query, (oldParams, newParams) => {
-  console.log("PARAMS", oldParams, newParams)
-  if (store.advanced) {
-    refresh()
-  }  
-})
+const filter_suggestions = (items) => {
+  let assembled = []
+  let seen = new Set()
+  console.log("unfiltered_suggestions", items.value.a.exact)
 
-const get_suggest = (a) => {
-  if(store.advanced) {
-    if (a && a.value && a.value.meta.bm.total + a.value.meta.nn.total == 0) {
-    $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=eis`).then((response)=>{
-      store.suggest = response
-    })
+  const { inflect, exact, similar} = items.value.a
+  console.log("INFLECT", inflect)
 
-  }
-  else {
-    store.suggest = {}
-  }
-  }
+
+
+    if (inflect) {
+        inflect.forEach(item => {
+            if (store.q != item[0]) {
+                assembled.push(item)
+                seen.add(item[0])
+            }
+        })
+    }
+
+    if (exact) {
+        exact.forEach(item => {
+            if (!seen.has(item[0])
+            && store.q != item[0]
+            && (item[0].length <= store.q.length
+            || (item[0].slice(0, store.q.length) != store.q && item[0] != "å "+store.q))) {
+                assembled.push(item)
+                seen.add(item[0])
+            }
+        })
+    }
+
+    if (similar) {
+        similar.forEach(item => {
+                if (!seen.has(item[0])) {
+                assembled.push(item)
+                }
+        })
+    }
+    
+
+    return assembled
+}
+
+const get_suggestions = () => {
+  useAsyncData(((store.advanced && store.pos) || '') + 'suggest_'+store.q, () => {
+                                $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)
+                                  }).then(response => {
+                                    suggestions.value = filter_suggestions(response.data)
+                                  })
+  
   
 }
 
-watch(articles, (oldArticles, newArticles) => {
-    get_suggest(articles)  
-})
+watch(articles, (newArticles) => {
+  console.log("SUGGESTION WATCHER", articles)
+  console.log("NEW", newArticles)
+  /*if (store.advanced) {
+    refresh()
+  }*/
+  get_suggestions()
+  
+}, {
+  deep: true,
+  immediate: true
+}
+)
+
+
 
 onMounted(() => {
-  get_suggest(articles)
+  console.log("mounted")
+  //get_suggest(articles)
 })
 
 </script>

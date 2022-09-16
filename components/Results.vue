@@ -67,7 +67,7 @@ const get_articles = () => {
 }
 console.log("CURRENT QUERY", store.q) 
 console.log("SEARCH URL", store.searchUrl)
-const { pending, error, refresh, data: articles } = useAsyncData(route.fullPath, ()=> 
+const { pending, error, refresh, data: articles } = useAsyncData("articles_"+route.fullPath, ()=> 
       $fetch('https://odd.uib.no/opal/dev/api/articles?', {
           params: {
             w: store.q,

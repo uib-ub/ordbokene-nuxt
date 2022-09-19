@@ -5,15 +5,19 @@
   <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-
-
     <div v-if="!pending && store.q" :key="store.searchUrl">
 
     <div>
     <div aria-live="assertive" class="visually-hidden">{{articles.meta.bm.total}} treff i Bokmålsordboka</div>
     <div aria-live="assertive" class="visually-hidden">{{articles.meta.nn.total}} treff i Nynorskordboka</div>
     </div>
-    
+
+    <div class="row">
+      <div class="col-lg" v-for="(article_id, idx) in articles.articles.bm.concat(articles.articles.nn)" :key="idx" 
+      :style="'order:'+(idx < articles.articles.bm.lenght ? 2 * idx : ((idx - articles.articles.bm.length)*2) + 1)">
+        {{article_id}}
+      </div>
+    </div>
 
     <div class="row" v-if="$route.params.dict == 'bm,nn'">
       <div class="col-lg-6">
@@ -40,6 +44,7 @@
     <SuggestResults v-if="store.view == 'search' && store.q"/>
 
   </div>
+
 
 </div>
 
@@ -89,11 +94,6 @@ watch(articles, (oldArticles, newArticles) => {
 onMounted(() => {
   get_suggest(articles)
 })
-
-const both_hash = computed(() => {
-      return articles.articles.bm.concat(articles.articles.nn).reduce((hash, hit) => (hash + hit.article_id) % 10000, 0)
-    })
-
 
 </script>
 

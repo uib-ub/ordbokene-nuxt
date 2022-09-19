@@ -7,10 +7,39 @@ const props = defineProps({
     content_locale: String
 })
 
+let copy_popup = ref(false);
+let what_copied = ref(null);
+
 
 const create_link = () => {
       return `https://ordbokene.no/${props.dict}/${props.article_id}/${encodeURIComponent(props.lemmas[0].lemma)}`
     };
+
+const webShareApiSupported = computed(() => {
+  return navigator.share
+})
+
+const showLinkCopy = computed(() => {
+  return navigator.clipboard
+})
+
+const shareViaWebShare = () => {
+        navigator.share({
+        title: "Ordbøkene.no: " + props.lemmas[0].lemma,
+        text: "",
+        url: "/" + props.dict + '/' + props.article_id + '/' + encodeURIComponent(props.lemmas[0].lemma)
+      })
+      };
+
+const copy_link = () => {
+      let link = create_link()
+        navigator.clipboard.writeText(link).then(() => {
+           what_copied = "article.link_copied"
+           copy_popup = true
+         }).catch(err => {
+           console.log("ERROR COPYING:",err)
+         })
+    }
 
 const get_citation_info = () => {
       let date = new Date();
@@ -42,14 +71,14 @@ const download_ris = () => {
       a.click()
       document.body.removeChild(a)
     }
-
 </script>
 
 <template>
 <client-only>
+  <span v-if="copy_popup">{{$t(what_copied, content_locale)}}</span>
 <div class="d-flex justify-content-around">
-    <button class="btn rounded-pill" @click="logLink"><i class="bi bi-link pe-2"></i> {{$t("article.copy_link", content_locale)}}</button>
-    <button class="btn rounded-pill"><i class="bi bi-share-fill pe-2"></i> {{$t("article.share", content_locale)}}</button>
+    <button class="btn rounded-pill" v-if="showLinkCopy" @click="copy_link"><i class="bi bi-link pe-2"></i> {{$t("article.copy_link", content_locale)}}</button>
+    <button class="btn rounded-pill" v-if="webShareApiSupported" @click="shareViaWebShare"><i class="bi bi-share-fill pe-2"></i> {{$t("article.share", content_locale)}}</button>
     <button class="btn rounded-pill" type="button" data-bs-toggle="collapse" :data-bs-target="'#cite-'+article_id" aria-expanded="false" aria-controls="collapseExample"><i class="bi bi-quote pe-2"></i> {{$t("article.cite", content_locale)}}</button>
 </div>
 <div class="collapse py-2" :id="'cite-'+article_id">

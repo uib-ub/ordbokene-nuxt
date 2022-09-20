@@ -20,7 +20,7 @@
         <ArticleHeader :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict"/>
 
         <button v-if="inflected" class="inflection-button py-1 px-3 mx-2" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
-            {{$t('article.show_inflection')}}
+             {{$t('article.show_inflection')}} <Icon :icon="'bi-plus'" />
         </button>
 
         <div v-if="inflected" class="collapse py-2" :id="'inflection-'+article_id" ref="inflection_table">
@@ -68,6 +68,7 @@
 import { useStore } from '~/stores/searchStore'
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
+import Icon from './bootstrap/Icon.vue';
 
 const i18n = useI18n()
 const store = useStore()

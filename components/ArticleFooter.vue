@@ -8,7 +8,6 @@ const props = defineProps({
 })
 
 let copy_popup = ref(false);
-let what_copied = ref(null);
 
 
 const create_link = () => {
@@ -34,8 +33,8 @@ const shareViaWebShare = () => {
 const copy_link = () => {
       let link = create_link()
         navigator.clipboard.writeText(link).then(() => {
-           what_copied = "article.link_copied"
-           copy_popup = true
+          console.log("SUCCESS")
+          copy_popup = true;
          }).catch(err => {
            console.log("ERROR COPYING:",err)
          })
@@ -75,7 +74,15 @@ const download_ris = () => {
 
 <template>
 <client-only>
-  <span v-if="copy_popup">{{$t(what_copied, content_locale)}}</span>
+  <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">
+    <div class="d-flex">
+      <div class="toast-body">{{$t('article.link_copied', content_locale)}}</div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+  </div>
+  <div v-if="copy_popup">
+  <div class="position-absolute top-50 start-50 translate-middle"><span>{{$t('article.link_copied', content_locale)}}</span></div>
+  </div>
 <div class="d-flex justify-content-around">
     <button class="btn rounded-pill" v-if="showLinkCopy" @click="copy_link"><i class="bi bi-link pe-2"></i> {{$t("article.copy_link", content_locale)}}</button>
     <button class="btn rounded-pill" v-if="webShareApiSupported" @click="shareViaWebShare"><i class="bi bi-share-fill pe-2"></i> {{$t("article.share", content_locale)}}</button>

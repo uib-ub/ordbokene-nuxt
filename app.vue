@@ -63,11 +63,11 @@
     <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
   </div>
   <div><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}
-    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'dict' && 'page'" to="/"><i class="bi bi-house-door-fill"></i> {{$t('home')}}</NuxtLink>
-    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'about' && 'page'" to="/about"><i class="bi bi-info-circle-fill"></i> {{$t('about')}}</NuxtLink>
-    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'help' && 'page'" to="/help"><i class="bi bi-question-circle-fill"></i> {{$t('help')}}</NuxtLink>
-    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'settings' && 'page'" to="/settings"><i class="bi bi-gear-fill"></i> {{$t('settings.title')}}</NuxtLink>
-    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'contact' && 'page'" to="/contact"><i class="bi bi-envelope-fill"></i> {{$t('contact.title')}}</NuxtLink>
+    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'dict' && 'page'" to="/"><BootstrapIcon icon="bi-house-door-fill" /> {{$t('home')}}</NuxtLink>
+    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'about' && 'page'" to="/about"><BootstrapIcon icon="bi-info-circle-fill" /> {{$t('about')}}</NuxtLink>
+    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'help' && 'page'" to="/help"><BootstrapIcon icon="bi-question-circle-fill" /> {{$t('help')}}</NuxtLink>
+    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'settings' && 'page'" to="/settings"><BootstrapIcon icon="bi-gear-fill" /> {{$t('settings.title')}}</NuxtLink>
+    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'contact' && 'page'" to="/contact"><BootstrapIcon icon="bi-envelope-fill" /> {{$t('contact.title')}}</NuxtLink>
   </div>
   </div>
 </footer>

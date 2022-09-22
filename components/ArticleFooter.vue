@@ -10,6 +10,15 @@ const props = defineProps({
 let copy_popup = ref(false);
 
 
+const showToast = () => {
+  const toastElList = [].slice.call(document.querySelectorAll('.toast'))
+  const toastList = toastElList.map(function(toastEl) {
+          return new bootstrap.Toast(toastEl)
+        });
+        toastList.forEach(toast => toast.show());
+        console.log(toastList);
+}
+
 const create_link = () => {
       return `https://ordbokene.no/${props.dict}/${props.article_id}/${encodeURIComponent(props.lemmas[0].lemma)}`
     };
@@ -35,6 +44,7 @@ const copy_link = () => {
         navigator.clipboard.writeText(link).then(() => {
           console.log("SUCCESS")
           copy_popup = true;
+          showToast();
          }).catch(err => {
            console.log("ERROR COPYING:",err)
          })
@@ -56,6 +66,12 @@ const create_citation = () => {
       let citation = {lemma, link, dd, mm, yyyy, dict}
 
       return citation
+    }
+
+const copy_citation = () => {
+      let citation = document.getElementById("citation").textContent;
+      navigator.clipboard.writeText(citation)
+      copy_popup = true
     }
 
 const download_ris = () => {
@@ -94,7 +110,7 @@ const download_ris = () => {
       <p>{{$t("article.cite_description[0]", content_locale)}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", content_locale)}}</p>
       <div id="citation" v-html="$t('article.citation', create_citation())" />
       <div class="pt-3">
-        <button class="btn rounded-pill"><BootstrapIcon icon="bi-clipboard" class="pe-1" /> {{$t("article.copy", content_locale)}}</button>
+        <button class="btn rounded-pill" @click="copy_citation"><BootstrapIcon icon="bi-clipboard" class="pe-1" /> {{$t("article.copy", content_locale)}}</button>
         <button class="btn rounded-pill" @click="download_ris"><BootstrapIcon icon="bi-download" class="pe-1" /> {{$t("article.download")}}</button>
       </div>
     </div>

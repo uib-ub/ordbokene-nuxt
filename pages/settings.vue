@@ -35,7 +35,7 @@ const resetSettings = (settings) => {
     </label>
   </div>
   <button class="btn btn-outline-primary" @click="resetSettings(settings)">
-    <i class="bi bi-trash-fill"></i> <span>{{$t('settings.reset')}}</span>
+    <BootstrapIcon icon="bi-trash-fill" /> <span>{{$t('settings.reset')}}</span>
   </button>
 </main>
 </template>

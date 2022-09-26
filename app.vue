@@ -37,7 +37,7 @@
       <div class="navbar-nav ml-auto">
         <div class="nav-item dropdown">
           <NuxtLink class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             <i :aria-label="$t('settings.locale.title')" class="bi bi-globe"/> {{$t('name')}}
+             <i :aria-label="$t('settings.locale.title')" aria-hidden="true" class="bi bi-globe"/> {{$t('name')}}
           </NuxtLink>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><button class="dropdown-item" @click="update_locale('eng')">English</button></li>

@@ -89,14 +89,66 @@ const locale = useCookie("locale")
 locale.value = locale.value || (new Date().getDate() % 2 ? 'nno' : 'nob')
 i18n.locale.value = locale.value
 
-
+const title = ref('Ordbøkene.no - Bokmålsordboka og Nynorskordboka')
 
 
 useHead({
-  htmlAttrs: {
-    lang: i18n.locale
-  }
-
+    charset: 'utf-8',
+    viewport: 'width=device-width,initial-scale=1.0',
+    meta: [
+      {
+        name: 'og:title',
+        content: 'Ordbøkene.no - Bokmålsordboka og Nynorskordboka'
+      },
+      {
+        name: 'twitter:title',
+        content: 'Ordbøkene.no - Bokmålsordboka og Nynorskordboka'
+      },
+      {
+        name: 'og:type',
+        content: 'website'
+      },
+      {
+        name: 'og:url',
+        content: 'ordbokene.no'
+      },
+      {
+        name: 'og:description',
+        content: 'Bokmålsordboka og Nynorskordboka viser skrivemåte og bøying i tråd med norsk rettskriving. Språkrådet og Universitetet i Bergen står bak ordbøkene.'
+      },
+      {
+        name: 'twitter:description',
+        content: 'Bokmålsordboka og Nynorskordboka viser skrivemåte og bøying i tråd med norsk rettskriving. Språkrådet og Universitetet i Bergen står bak ordbøkene.'
+      },
+      {
+        name: 'og:image',
+        content: '<%= BASE_URL %>logo.png'
+      },
+      {
+        name: 'og:image:width',
+        content: '256px'
+      },
+      {
+        name: 'og:image:height',
+        content: '256px'
+      },
+      {
+        name: 'twitter:image',
+        content: '<%= BASE_URL %>logo.png'
+      },
+      {
+        name: 'description',
+        content: 'Bokmålsordboka og Nynorskordboka viser skrivemåte og bøying i tråd med norsk rettskriving. Språkrådet og Universitetet i Bergen står bak ordbøkene.'
+      },
+      {
+        'http-equiv': 'X-UA-Compatible',
+        content: 'IE=edge'
+      }
+    ],
+    title,
+    htmlAttrs: {
+      lang: i18n.locale
+    }
 })
 
 Promise.all([$fetch('https://oda.uib.no/opal/dev/bm/concepts.json'), $fetch('https://oda.uib.no/opal/dev/nn/concepts.json')]).then(response => {
@@ -261,9 +313,11 @@ main a  {
 
 .srlogo{
   height: 20px;
+  width: fit-content;
 }
 .uiblogo{
   height: 60px;
+   width: fit-content;
 }
 
 .callout {

@@ -44,7 +44,7 @@
         <li>From the front page, select the share icon <BootstrapIcon icon="bi-box-arrow-up"/> at the bottom of the page.</li>
         <li>From the double row of sub-options, select the icon "Add to Home Screen" <BootstrapIcon icon="bi-plus-square-fill" />. You may need to drag the row from the right to get to the icon.</li>
       </ul>
-      <p>The dictionaries icon <img class="ordbokene-icon" src="/favicon.ico" aria-hidden="true"/> is now on your home screen, and you can access the dictionary page directly by clicking on it.</p>
+      <p>The dictionaries icon <img class="ordbokene-icon" src="/favicon.ico" alt="ordbokene icon" aria-hidden="true"/> is now on your home screen, and you can access the dictionary page directly by clicking on it.</p>
       <h4>For Android</h4>
       <ul>
         <li>Open the browser and type ordbokene.no or ordbøkene.no.</li>
@@ -206,7 +206,7 @@
           <li>Når du er inne på forsida, vel du ikonet nedst på sida for å dele:  <BootstrapIcon icon="bi-box-arrow-up"/>.</li>
           <li>Det kjem opp delealternativ i to rader. I den nedste rada vel du «Legg til på Heim-skjerm» med ikonet <BootstrapIcon icon="bi-plus-square-fill" /> Det kan hende du må drage rada frå høgre for å kome til ikonet.</li>
         </ul>
-        <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico"  aria-hidden="true"/> ligg no på heim-skjermen din, og du kjem direkte inn på ordboksida ved å klikke på det.</p>
+        <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico" alt="ordbokene icon"  aria-hidden="true"/> ligg no på heim-skjermen din, og du kjem direkte inn på ordboksida ved å klikke på det.</p>
         <h4>For Android</h4>
         <ul>
           <li>Opne nettlesaren og skriv inn enten ordbokene.no eller ordbøkene.no.</li>
@@ -214,7 +214,7 @@
           <li>Det kjem då fram ei liste med valalternativ, og du vel «Legg til på startsida», eit stykke nede på lista.</li>
           <li>Det dukkar opp eit vindauge som føreslår at du legg til Ordbøkene på startsida. Klikk på valet «Legg til».</li>
         </ul>
-        <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico"/> ligg no på startsida di, og du kjem direkte inn på ordboksida ved å klikke på det. NB! I somme modellar frå Samsung ligg valet «Legg til side i» i ein meny nedst på sida. Derfrå vel du startsida.</p>
+        <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico" alt="ordbokene icon" aria-hidden="true"/> ligg no på startsida di, og du kjem direkte inn på ordboksida ved å klikke på det. NB! I somme modellar frå Samsung ligg valet «Legg til side i» i ein meny nedst på sida. Derfrå vel du startsida.</p>
       </div>
     </details>
     <details>
@@ -771,7 +771,7 @@
           <li>Når du er inne på forsiden, velger du ikonet nederst på siden for å dele:  <BootstrapIcon icon="bi-box-arrow-up" />.</li>
           <li>Det kommer opp delealternativer i to rader. I den nederste raden velger du «Legg til på Hjem-skjerm» med ikonet <BootstrapIcon icon="bi-plus-square-fill" /> . Det kan hende du må dra raden fra høyre for å komme til ikonet.</li>
         </ul>
-        <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico"  aria-hidden="true"/> ligger nå på hjem-skjermen din, og du kommer direkte inn på ordboksiden ved å klikke på det.</p>
+        <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico" alt="ordbokene icon"  aria-hidden="true"/> ligger nå på hjem-skjermen din, og du kommer direkte inn på ordboksiden ved å klikke på det.</p>
         <h4>For Android:</h4>
         <ul>
           <li>Åpne nettleseren og skriv inn enten ordbokene.no eller ordbøkene.no.</li>
@@ -779,7 +779,7 @@
           <li>Det kommer da opp en liste med valgalternativer, og du velger «Legg til på startsiden», et stykke nede på listen.</li>
           <li>Det dukker opp et vindu som foreslår at du legger til ordbøkene.no på startsiden. Klikk på valget «Legg til».</li>
         </ul>
-        <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico"  aria-hidden="true"/> ligger nå på startsiden din, og du kommer direkte inn på ordboksiden ved å klikke på det. NB! I noen modeller fra Samsung ligger valget «Legg til side i» i en meny nederst på siden. Derfra velger du startsiden.</p>
+        <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico" alt="ordbokene icon"  aria-hidden="true"/> ligger nå på startsiden din, og du kommer direkte inn på ordboksiden ved å klikke på det. NB! I noen modeller fra Samsung ligger valget «Legg til side i» i en meny nederst på siden. Derfra velger du startsiden.</p>
       </div>
     </details>
     <details>

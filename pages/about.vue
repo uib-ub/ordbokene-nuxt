@@ -1291,5 +1291,6 @@ summary {
 
 .ordbokene-icon {
   width: 1.25rem;
+  height: fit-content;
 }
 </style>

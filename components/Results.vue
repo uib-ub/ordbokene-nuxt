@@ -79,6 +79,9 @@ const get_suggestions = async () => {
   suggestions.value = filterSuggestions(response, store.suggestQuery || store.q)
   console.log("SUGGESTIONS_RESPONSE", suggestions.value)
   }
+  else {
+    suggestions.value = null
+  }
   
   
   
@@ -110,6 +113,10 @@ watch(() => store.searchUrl, () => {
     console.log("ROUTE WATCHER REFRESHING")
     refresh()
   }
+})
+
+onMounted(() => {
+    get_suggestions()
 })
 
 

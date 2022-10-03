@@ -16,7 +16,11 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
             store.advanced = false
             store.searchUrl = to.fullPath
             store.q = to.params.slug[0]
-            store.input = to.params.slug[0]
+            if (!to.redirectedFrom) {
+                store.input = to.params.slug[0]
+                store.originalInput = ""
+            }
+            
 
         }
     }
@@ -25,6 +29,12 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         if (to.query.scope) {
             console.log("ADVANCED SEARCH")
             store.advanced = true
+            store.searchUrl = to.fullPath
+            store.q = to.query.q
+            if (!to.redirectedFrom) {
+                store.input = to.query.q
+                store.originalInput = ""
+            }
         }
         else { // Simple search
             // Redirect to advanced

@@ -2,12 +2,12 @@ export const specialSymbols = (q) => {
     return /[?_*%|]/.test(q)
   }
 
-  
+
 
 export const filterSuggestions = (items, q) => {
     let assembled = []
     let seen = new Set()
-    const { inflect, exact, similar} = items.value.a
+    const { inflect, exact, similar} = items.a
       if (inflect) {
           inflect.forEach(item => {
               if (q != item[0]) {

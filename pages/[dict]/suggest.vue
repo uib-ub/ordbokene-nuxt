@@ -29,7 +29,7 @@ const { data: raw_suggest, refresh } = await useAsyncData(
 
 console.log(`https://odd.uib.no/opal/dev/api/suggest?q=${store.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=eis`)
 console.log("DATAVALUE", raw_suggest.value)
-suggestions.value = filterSuggestions(raw_suggest, store.q)
+suggestions.value = filterSuggestions(raw_suggest.value, store.q)
 
 watch(() => route.query, () =>  {
     console.log("RUNNING NEW SUGGEST")
@@ -39,7 +39,8 @@ watch(() => route.query, () =>  {
 
 watch(raw_suggest, (new_raw_suggest) => {
     console.log("NEW SUGGEST", new_raw_suggest)
-    suggestions.value = filterSuggestions(raw_suggest, store.q)
+    console.log("RAW", raw_suggest)
+    suggestions.value = filterSuggestions(raw_suggest.value, store.q)
 })
 
   </script>

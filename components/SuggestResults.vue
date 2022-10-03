@@ -31,18 +31,6 @@ const suggest_link = (suggestion) => {
     }
 }
 
-const filtered_suggestions = computed(() => {
-    let assembled = []
-    let seen = new Set()
-    console.log("SUGGESTION PROPS",props.suggestions.value)
-    if (props.suggestions && props.suggestions.value) {
-    
-    
-}
-return
-});
-
-
 
 </script>
 

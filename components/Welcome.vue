@@ -11,7 +11,7 @@
     </script>
     
     <template>
-      <main class="m-lg-5 p-lg-5">
+      <main class="m-lg-5 px-lg-5 py-lg-2">
         <div class="row" v-if="welcome_bm && welcome_nn">
           <div class="col-lg">
           <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm"/>

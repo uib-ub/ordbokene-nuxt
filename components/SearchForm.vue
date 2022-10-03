@@ -51,8 +51,9 @@ const submitForm = async (item) => {
   searchUrl += store.dict
   
   if (store.input) {
-    searchUrl += '/submit?q='+store.input
+    searchUrl += '/search?q='+store.input
     if (store.advanced) {
+      console.log("ADVANCED")
       searchUrl += "&scope="+store.scope
 
     }

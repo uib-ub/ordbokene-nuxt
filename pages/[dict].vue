@@ -48,7 +48,10 @@ const advanced_link = computed(() => {
   else {
     let url = route.fullPath
     if (route.name == 'dict') {
-      return `/${store.dict}?${store.q? store.q + '&' : ''}scope=${store.scope}`
+      return `/${store.dict}?scope=${store.scope}`
+    }
+    else if (route.name == "dict-slug") {
+      return  `/${store.dict}/search?q=${store.q}&scope=${store.scope}`
     }
     else if (!route.query.scope) {
       return url + "&scope=" + store.scope

@@ -15,6 +15,8 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
             console.log("WORD")
             store.advanced = false
             store.searchUrl = to.fullPath
+            store.q = to.params.slug[0]
+            store.input = to.params.slug[0]
 
         }
     }

@@ -76,7 +76,7 @@ const get_suggestions = async () => {
   console.log("SUGGEST KEY", key)
   console.log("SUGGEST QUERY", `https://odd.uib.no/opal/dev/api/suggest?&q=${store.originalInput || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)
   const response = await $fetch(`https://odd.uib.no/opal/dev/api/suggest?&q=${store.originalInput || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)                                
-  suggestions.value = filterSuggestions(response, store.suggestQuery || store.q)
+  suggestions.value = filterSuggestions(response, store.originalInput || store.q)
   console.log("SUGGESTIONS_RESPONSE", suggestions.value)
   }
   else {

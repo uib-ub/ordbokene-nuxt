@@ -67,7 +67,8 @@ const get_articles = () => {
 }
 console.log("CURRENT QUERY", store.q) 
 console.log("SEARCH URL", store.searchUrl)
-const { pending, error, refresh, data: articles } = useAsyncData("articles_"+(store.advanced ? store.searchUrl : store.q), ()=> 
+console.log("KEY", "articles_"+(store.advanced ? store.searchUrl : store.q))
+const { pending, error, refresh, data: articles } = useAsyncData("articles_"+ (store.advanced ? store.searchUrl : store.q), ()=> 
       $fetch('https://odd.uib.no/opal/dev/api/articles?', {
           params: {
             w: store.q,

@@ -1,7 +1,8 @@
 <template>
 <div class="my-3">
 <form  @submit.prevent="submitForm" ref="form">
-  <div v-if="store.advanced" class="mb-3 mx-1 p-2 search-toolbar form-group row align-items-center">
+  <div v-if="store.advanced" class="mb-3 mx-1 p-2 search-toolbar container">
+  <div class="row form-group align-items-center">
 
     <div class="dropdown col-sm-2">
     <button class="btn rounded-pill dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{$t(`dicts.${store.dict}`)}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
@@ -33,10 +34,23 @@
     {{$t('options.fulltext')}}
   </label>
 </div>
+  </div>
+<div class="row p-md-3 g-3">
+<div class="advanced-search active col-7 flex-md-fill" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
+  <Autocomplete v-on:submit="submitForm"/>
+  
+ 
+  </div>
+
+  <button :aria-label="$t('search')" class="btn btn-primary rounded-pill p-2 px-3 col-1 mx-2" type="submit"> <BootstrapIcon icon="bi-search"/> Søk </button>
+
+
+</div>
+  
 </div>
 
 
-  <div class="input-group active p-md-1" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
+  <div v-if="!store.advanced" class="input-group p-md-1" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete v-on:submit="submitForm"/>
   <button :aria-label="$t('search')" class="btn btn-outline-primary rounded-pill"> <BootstrapIcon icon="bi-search" class="input-group-text"/></button>
   </div>
@@ -109,6 +123,10 @@ const submitForm = async (item) => {
 
 <style scoped>
 
+.advanced-search {
+  outline: solid 1px var(--bs-primary);
+  border-radius: 2rem;
+}
 .input-group{
   outline: solid 1px var(--bs-primary);
   border-radius: 2rem;
@@ -133,6 +151,10 @@ const submitForm = async (item) => {
   border-radius: 2rem 0 0 2rem;
 }
 
+.btn-primary {
+  white-space: nowrap;
+}
+
 .btn:hover,.btn:focus{
   background-color: white;
   color: var(--bs-primary);
@@ -154,5 +176,6 @@ const submitForm = async (item) => {
   background-color: white;
   box-shadow: 2px 2px 1px rgb(0 0 0 / 30%);
   border: solid 1px rgb(0 0 0 / 30%);
+  border-radius: 1rem;
 }
 </style>

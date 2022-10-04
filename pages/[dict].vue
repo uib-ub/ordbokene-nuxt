@@ -142,7 +142,7 @@ const dict_link = ((dict) => {
 
 
 .mode-nav .nav-link:hover {
-  border-bottom: solid 2px;
+  border-bottom: solid 2px var(--bs-primary);;
   background-color: rgba(0,0,0,.1);
 }
 

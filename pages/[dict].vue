@@ -112,8 +112,10 @@ const dict_link = ((dict) => {
 </script>
 
 <style scoped>
+
+
 .mode-nav .nav-link {
-    color: rgba(0,0,0,.8);
+    color: rgba(0,0,0,.9);
     letter-spacing: .1rem;
     font-variant-caps: all-small-caps;
     font-size: 1.25rem;
@@ -134,6 +136,7 @@ const dict_link = ((dict) => {
 
 .welcome .mode-nav .nav-link {
   color: white;
+  text-shadow: 1px 1px 1px black;
 }
 
 
@@ -141,6 +144,11 @@ const dict_link = ((dict) => {
 .mode-nav .nav-link:hover {
   border-bottom: solid 2px;
   background-color: rgba(0,0,0,.1);
+}
+
+.welcome .mode-nav .nav-link:hover {
+  border-bottom: solid 2px;
+  background-color: rgba(0,0,0,.5);
 }
 
     </style>

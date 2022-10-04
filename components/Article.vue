@@ -56,7 +56,7 @@
                 </ul>
             </section>
         </div>
-        <ArticleFooter :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" />
+        <ArticleFooter :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
         </NuxtErrorBoundary>
     </div>
 </div>

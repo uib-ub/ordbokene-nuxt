@@ -5,7 +5,7 @@
     <NuxtLink class="nav-link py-0" 
               v-bind:class="{'active': !store.advanced, 'welcome': !$route.params.slug}" 
               :aria-current="store.advanced ? 'false' : 'true'"
-              @click="store.advanced = false"
+              @click="clickSimple"
               :to="simple_link">Søk i oppslagsord</NuxtLink>
   </li>
   <li class="nav-item">
@@ -38,6 +38,13 @@ const form_error = (error) => {
 }
 const content_error = (error) => {
   console.log("CONTENT ERROR", error)
+}
+
+const clickSimple = () => {
+  store.advanced = false
+  if (store.q != store.input) {
+    store.input = store.q
+  }
 }
 
 

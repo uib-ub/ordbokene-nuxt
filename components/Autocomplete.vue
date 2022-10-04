@@ -50,13 +50,24 @@ async function fetchAutocomplete(q) {
     if (blank != "advanced") {
     
       let response = ref([])
-      response.value = await $fetch(`https://odd.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
+      let url = `https://odd.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=${store.advanced ? store.scope + (store.pos ? '&wc='+store.pos : '') : 'e'}`
+      console.log("URL", url)
+      response.value = await $fetch(url)
       
       // prevent suggestions after submit
       if (store.autocompletePending && q == store.input) {
         let autocomplete_suggestions = []
         if (store.input.trim() == q && response.value.a.exact) {
-          autocomplete_suggestions = response.value.a.exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "word"}))
+          let { exact, inflect, freetext } = response.value.a
+          autocomplete_suggestions = exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "word"}))
+          if (inflect) {
+            let inflection_suggestions = response.value.a.inflect.map(item => ({q: item[0], time: time, dict: [item[1]], type: "inflect"}))
+            autocomplete_suggestions = autocomplete_suggestions.concat(inflection_suggestions)
+          }
+          if (freetext) {
+            console.log("FREETEXT")
+
+          }
         }
 
         if (autocomplete_suggestions.length) {

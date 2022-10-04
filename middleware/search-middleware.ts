@@ -40,6 +40,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
             // Redirect to advanced
             if (specialSymbols(to.query.q)) {
                 console.log("REDIRECT TO ADVANCED")
+                store.scope = "e"
                 return navigateTo(`/${store.dict}/search?q=${to.query.q}&scope=${store.scope}`)
             }
             else {

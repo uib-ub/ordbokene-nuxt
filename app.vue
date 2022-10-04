@@ -1,7 +1,7 @@
 <template>
 
 <div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && !$route.params.slug && $route.params.dict}" >
-      <nav role="navigation" class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand text-white" to="/">
       <div class="small mx-1 my-1 my-lg-3">
@@ -46,6 +46,7 @@
         </ul>
         </div>
       </div>
+
 
     </div>
   </div>

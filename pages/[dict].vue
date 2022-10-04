@@ -1,12 +1,34 @@
 <template>
 <div class="dict-view">
+  <nav aria-label="Dictionary navigation">
     <ul class="mode-nav nav px-2">
-  <li class="nav-item">
+  <li class="nav-item" v-if="!store.advanced">
     <NuxtLink class="nav-link py-0" 
-              v-bind:class="{'active': !store.advanced, 'welcome': !$route.params.slug}" 
+              v-bind:class="{'active': !store.advanced && store.dict =='bm,nn', 'welcome': !$route.params.slug}" 
               :aria-current="store.advanced ? 'false' : 'true'"
-              @click="clickSimple"
-              :to="simple_link">Søk i oppslagsord</NuxtLink>
+              @click="dict_click('bm,nn')"
+              :to="dict_link('bm,nn')">Begge ordbøkene</NuxtLink>
+  </li>
+  <li class="nav-item" v-if="!store.advanced">
+    <NuxtLink class="nav-link py-0" 
+              v-bind:class="{'active': !store.advanced  && store.dict =='bm', 'welcome': !$route.params.slug}" 
+              :aria-current="store.advanced ? 'false' : 'true'"
+              @click="dict_click('bm')"
+              :to="dict_link('bm')">Bokmålsordboka</NuxtLink>
+  </li>
+  <li class="nav-item" v-if="!store.advanced">
+    <NuxtLink class="nav-link py-0" 
+              v-bind:class="{'active': !store.advanced  && store.dict =='nn', 'welcome': !$route.params.slug}" 
+              :aria-current="store.advanced ? 'false' : 'true'"
+              @click="dict_click('nn')"
+              :to="dict_link('nn')">Nynorskordboka</NuxtLink>
+  </li>
+  <li class="nav-item" v-if="store.advanced">
+    <NuxtLink class="nav-link py-0" 
+              v-bind:class="{'active': !store.advanced  && store.dict =='nn', 'welcome': !$route.params.slug}" 
+              :aria-current="store.advanced ? 'false' : 'true'"
+              @click="dict_click(store.dict)"
+              :to="dict_link(store.dict)">Søk i oppslagsord</NuxtLink>
   </li>
   <li class="nav-item">
     <NuxtLink class="nav-link py-0" 
@@ -16,6 +38,7 @@
               :to="advanced_link">Avansert søk</NuxtLink>
   </li>
 </ul>
+</nav>
     <NuxtErrorBoundary @error="form_error">
     <SearchForm/>
     
@@ -40,8 +63,9 @@ const content_error = (error) => {
   console.log("CONTENT ERROR", error)
 }
 
-const clickSimple = () => {
+const dict_click = (dict) => {
   store.advanced = false
+  store.dict = dict
   if (store.q != store.input) {
     store.input = store.q
   }
@@ -71,8 +95,8 @@ const advanced_link = computed(() => {
   
 })
 
-const simple_link = computed(() => {
-  let url = `/${store.dict}/`
+const dict_link = ((dict) => {
+  let url = `/${dict}/`
   if (specialSymbols(store.q)) {
     return  url
   }

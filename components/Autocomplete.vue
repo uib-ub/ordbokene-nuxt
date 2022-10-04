@@ -124,7 +124,7 @@ onMounted(() => {
       <div>
         <div class="height d-flex align-items-center justify-content-between">
           <ComboboxInput
-            class="form-control"
+            class="form-control mx-3"
             name="q"
             :value="store.input"
             autofocus="true"

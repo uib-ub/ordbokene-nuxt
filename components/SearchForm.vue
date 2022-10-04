@@ -3,7 +3,12 @@
 <form  @submit.prevent="submitForm" ref="form">
   <div v-if="store.advanced" class="mb-3 mx-1 p-2 search-toolbar form-group row align-items-center">
 
-    
+    <div class="dropdown col-sm-2">
+    <button class="btn rounded-pill dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{$t(`dicts.${store.dict}`)}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
+    <ul class="dropdown-menu">
+      <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button class="dropdown-item" name="dict" :value="item">{{$t(`dicts.${item}`)}}</button></li>
+    </ul>
+  </div>
   
 <div class="dropdown col-sm-2 ">
   <button class="btn rounded-pill dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span>{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span></button>
@@ -31,14 +36,7 @@
 </div>
 
 
-  <div class="input-group active p-md-2" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
-  <div class="dropdown">
-    <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center dict-button" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{$t(`dicts.${store.dict}`)}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
-    <ul class="dropdown-menu">
-      <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button class="dropdown-item" name="dict" :value="item">{{$t(`dicts.${item}`)}}</button></li>
-    </ul>
-  </div>
-
+  <div class="input-group active p-md-1" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete v-on:submit="submitForm"/>
   <button :aria-label="$t('search')" class="btn btn-outline-primary rounded-pill"> <BootstrapIcon icon="bi-search" class="input-group-text"/></button>
   </div>

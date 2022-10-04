@@ -704,7 +704,7 @@
       <p>Når skulane stengjer ein del nettsider på prøver og eksamen, må eit utval andre sider vere opne for at ordbøkene.no skal fungere. Her er domena som ordboksida brukar:</p>
       <ul>
         <li><a href="https://ordbokene.no/">https://ordbokene.no/</a></li>
-        <li><a href="https://oda.uib.no/">https://oda.uib.no/</a></li>
+        <li><a href="https://odd.uib.no/">https://odd.uib.no/</a></li>
         <li><a href="https://odd.uib.no/">https://odd.uib.no/</a></li>
         <li><a href="https://plausible.io/">https://plausible.io/</a></li>
       </ul>
@@ -1257,7 +1257,7 @@
       <p>Når skolene stenger en del nettsider på prøver og eksamen, må et utvalg andre sider være åpne for at ordbøkene.no skal fungere. Her er domenene som ordboksida bruker:</p>
       <ul>
         <li><a href="https://ordbokene.no/">https://ordbokene.no/</a></li>
-        <li><a href="https://oda.uib.no/">https://oda.uib.no/</a></li>
+        <li><a href="https://odd.uib.no/">https://odd.uib.no/</a></li>
         <li><a href="https://odd.uib.no/">https://odd.uib.no/</a></li>
         <li><a href="https://plausible.io/">https://plausible.io/</a></li>
       </ul>

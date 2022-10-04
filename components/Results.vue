@@ -5,8 +5,7 @@
   <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-    <div v-if="!pending && store.q" :key="store.searchUrl">
-
+    <div v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta">
     <div>
     <div aria-live="assertive" class="visually-hidden">{{articles.meta.bm.total}} treff i Bokmålsordboka</div>
     <div aria-live="assertive" class="visually-hidden">{{articles.meta.nn.total}} treff i Nynorskordboka</div>
@@ -35,9 +34,15 @@
       <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
       </div>
     </div>
-    <SuggestResults v-if="store.view == 'search' && store.q"/>
-
   </div>
+  <div v-if="error_message">
+    {{error_message}}
+  </div>
+  <div v-if="error">
+    ERROR: {{error}}
+  </div>
+
+  <SuggestResults v-if="!pending" :suggestions="suggestions"/>
 
 
 </div>
@@ -52,42 +57,95 @@ import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
 
-console.log("SETUP RESULTS")
-const { pending, error, refresh, data: articles } = useLazyAsyncData(store.searchUrl, () => $fetch(`https://oda.uib.no/opal/dev/api/articles?&w=${store.q}&dict=${store.dict}&scope=${store.advanced? store.scope : 'e'}`))
+const suggestions = ref()
+const error_message = ref()
 
-const query = computed(() => {
-  return route.query
-})
 
-watch(query, (oldParams, newParams) => {
-  console.log("PARAMS", oldParams, newParams)
-  if (store.advanced) {
-    refresh()
-  }  
-})
+console.log("CURRENT QUERY", store.q) 
+console.log("SEARCH URL", store.searchUrl)
+console.log("DICT", store.dict)
+console.log("KEY", "articles_"+(store.advanced ? store.searchUrl : store.q))
+console.log("PARAMS", {w: store.q,
+            dict: store.dict,
+            scope: store.advanced ? store.scope : 'e'})
 
-const get_suggest = (a) => {
-  if(store.advanced) {
-    if (a && a.value && a.value.meta.bm.total + a.value.meta.nn.total == 0) {
-    $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${store.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=eis`).then((response)=>{
-      store.suggest = response
-    })
-
+const get_suggestions = async () => {
+  console.log("GETTING SUGGESTIONS")
+  if (!(store.advanced && specialSymbols(store.q))) {
+  let key = ((store.advanced && store.pos) || '') + 'suggest_'+ (store.originalInput || store.q)
+  console.log("SUGGEST KEY", key)
+  console.log("SUGGEST QUERY", `https://odd.uib.no/opal/dev/api/suggest?&q=${store.originalInput || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)
+  const response = await $fetch(`https://odd.uib.no/opal/dev/api/suggest?&q=${store.originalInput || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)                                
+  suggestions.value = filterSuggestions(response, store.originalInput || store.q)
+  console.log("SUGGESTIONS_RESPONSE", suggestions.value)
   }
   else {
-    store.suggest = {}
-  }
+    suggestions.value = null
   }
   
+  
+  
 }
+const { pending, error, refresh, data: articles } = await useAsyncData("articles_"+ (store.advanced ? store.searchUrl : store.q), ()=> 
+      $fetch('https://odd.uib.no/opal/dev/api/articles?', {
+          params: {
+            w: store.q,
+            dict: store.dict,
+            scope: store.advanced ? store.scope : 'e'
+          },
+          onRequest({ request, options }) {
+            console.log("SENDING REQUEST")
+          },
+          onRequestError({ request, options, error}) {
+            console.log("ERROR")
+          },
 
-watch(articles, (oldArticles, newArticles) => {
-    get_suggest(articles)  
+          onResponse({ request, options, response }) {
+            console.log("RESPONSE INTERCEPTED", response)
+            get_suggestions()
+          }
+        }))
+
+
+
+watch(() => store.searchUrl, () => {
+  if (store.advanced) {
+    console.log("ROUTE WATCHER REFRESHING")
+    refresh()
+  }
 })
 
 onMounted(() => {
-  get_suggest(articles)
+    get_suggestions()
 })
+
+
+
+
+
+
+
+watch(articles, (newArticles) => {
+  
+  if (store.advanced && newArticles) {
+    console.log("ARTICLES WATCHER", articles)
+    if (newArticles.meta.bm.total + newArticles.meta.nn.total == 0) get_suggestions()
+  }
+}, {
+  deep: true,
+  immediate: true
+}
+)
+
+/*
+onMounted(() => {
+  console.log("MOUNTED")
+  if (store.view == 'word') {
+    console.log("WORD GET SUGGESTIONS", store.q)
+    get_suggestions()
+  }
+})
+*/
 
 </script>
 

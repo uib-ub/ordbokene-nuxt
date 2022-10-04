@@ -12,11 +12,11 @@ export const useStore = defineStore('store', {
       autocompletePending: false,
       autocomplete: [],
       suggest: {},
+      suggestQuery: "",
       articles: {},
       searchUrl: null,
       view: null,
       concepts_bm: [],
       concepts_nn: [],
-      top_suggestion: null,
     })
   })

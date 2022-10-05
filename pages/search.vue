@@ -1,0 +1,44 @@
+<template>
+    <div class="dict-view">
+      <SearchNav advanced/>
+        <NuxtErrorBoundary @error="form_error">
+        <AdvancedSearchForm/>
+      </NuxtErrorBoundary>
+      <NuxtErrorBoundary @error="content_error">
+        <main>
+    
+    <Results v-if="store.q"/>
+    <Welcome v-else/>
+  
+  </main>
+        
+      </NuxtErrorBoundary>
+        
+    </div>
+    </template>
+    
+<script setup>
+import { useStore } from '~/stores/searchStore'
+import { useRoute } from 'vue-router'
+const store = useStore()
+const route = useRoute()
+
+definePageMeta({
+    middleware: 'search-middleware'
+  })
+
+const form_error = (error) => {
+    console.log("FORM ERROR",error)
+}
+const content_error = (error) => {
+    console.log("CONTENT ERROR", error)
+}    
+
+
+</script>
+
+<style scoped>
+
+
+
+</style>

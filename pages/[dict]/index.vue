@@ -1,6 +1,6 @@
 <script setup>
 definePageMeta({
-  middleware: 'search-middleware'
+  middleware: 'dict-middleware'
 })
 </script>
 

@@ -92,9 +92,9 @@ const submitForm = async (item) => {
   store.q = store.input
 
 
-  let searchUrl = `/search?q=${store.input}&dict=${store.dict}&scope=${store.scope}`
-  if (store.pos) searchurl += "&pos=" + store.pos
-  return navigateTo(searchUrl)
+  let url = `/search?q=${store.input}&dict=${store.dict}&scope=${store.scope}`
+  if (store.pos) url += "&pos=" + store.pos
+  return navigateTo(url)
 }
 
 </script>

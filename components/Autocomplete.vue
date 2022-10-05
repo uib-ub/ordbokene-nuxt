@@ -131,6 +131,7 @@ onMounted(() => {
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
+            maxlength="200"
             ref="input"
             @input="store.input = $event.target.value; fetchAutocomplete($event.target.value)" 
             :placeholder="$t('search_placeholder')"

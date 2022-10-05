@@ -91,7 +91,8 @@ const { pending, error, refresh, data: articles } = await useAsyncData("articles
           params: {
             w: store.q,
             dict: store.dict,
-            scope: store.advanced ? store.scope : 'e'
+            scope: store.advanced ? store.scope : 'e',
+            wc: store.advanced ? store.pos : ''
           },
           onRequest({ request, options }) {
             console.log("SENDING REQUEST")

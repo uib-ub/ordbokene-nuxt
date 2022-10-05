@@ -12,7 +12,7 @@
     </div>
     
 
-    <div class="row" v-if="store.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
+    <div class="row" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
       <div class="col-lg-6">
         <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span  aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t('notifications.results')}}</span></div>
         <Article v-for="(article_id, idx) in articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>

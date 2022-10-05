@@ -18,17 +18,11 @@ const route = useRoute()
 const submitForm = async (item) => {
   store.autocomplete = [] 
   let searchUrl = '/'
-  if (item && item.submitter && item.submitter.name == 'dict') {
-    
-    store.dict = item.submitter.value
-    console.log("YES", store.dict)
-  }
   searchUrl += store.dict
   
   if (store.input) {
     searchUrl += '/search?q='+store.input
     store.q = store.input
-
   }
   return navigateTo(searchUrl)
 }

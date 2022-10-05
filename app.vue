@@ -65,7 +65,7 @@
     </div>
     <div><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
   </div>
-  <nav class="navbar">
+  <nav class="navbar" aria-label="search pages navigation">
     <ul class="navbar-nav navbar-secondary-pages">
       <p class="footer-nav-item">Søkesider:</p>
       <li class="footer-nav-item">
@@ -86,7 +86,7 @@
       </li>
     </ul>
   </nav>
-  <nav class="navbar">
+  <nav class="navbar" aria-label="footer menu">
     <ul class="navbar-nav navbar-secondary-pages">
       <p class="footer-nav-item">{{$t('menu.title')}}:</p>
       <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'about'}">

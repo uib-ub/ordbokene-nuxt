@@ -36,7 +36,7 @@
   </div>
 <div class="row p-md-3 g-3">
 <div class="advanced-search active col-7 flex-md-fill" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
-  <Autocomplete @submit="test"/>
+  <Autocomplete  v-on:submit="submitForm"/>
   
  
   </div>

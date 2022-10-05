@@ -90,8 +90,9 @@ const emit = defineEmits(['submit'])
 const submit = (data) => {
   store.autocompletePending = false
   //todo: plausible
-  emit('submit')
   input.value.$el.select()
+  emit('submit')
+
   console.log("SELECTING3")
 }
 
@@ -103,7 +104,7 @@ watch(() => route.fullPath, () => {
 })
 
 const dropdownSelect = () => {
-  if (!store.advanced)
+
   console.log("SELECTING")
   input.value.$el.select()
 }

@@ -35,7 +35,7 @@ const submitForm = async (item) => {
   background-color: white;
   flex-wrap: unset;
 }
-.active:focus-within{
+.input-group:focus-within{
   box-shadow: 2px 2px 1px var(--bs-primary);
 } 
 .activeAutocomplete{

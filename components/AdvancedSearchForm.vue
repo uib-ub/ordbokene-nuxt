@@ -118,8 +118,8 @@ const submitForm = async (item) => {
   background-color: white;
   flex-wrap: unset;
 }
-.active:focus-within{
-  box-shadow: 2px 2px 1px var(--bs-primary);
+.advanced-search:focus-within{
+  box-shadow: 1px 2px 1px var(--bs-primary);
 } 
 .activeAutocomplete{
   border-radius: 1rem 1rem 0 0;

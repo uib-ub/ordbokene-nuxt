@@ -64,8 +64,8 @@ async function fetchAutocomplete(q) {
             autocomplete_suggestions = autocomplete_suggestions.concat(inflection_suggestions)
           }
           if (freetext) {
-            console.log("FREETEXT")
-
+            let inflection_suggestions = response.value.a.freetext.map(item => ({q: item[0], time: time, dict: [item[1]], type: "freetext"}))
+            autocomplete_suggestions = autocomplete_suggestions.concat(inflection_suggestions)
           }
         }
 

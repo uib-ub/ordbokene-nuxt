@@ -92,14 +92,19 @@ const submit = (data) => {
   //todo: plausible
   emit('submit')
   input.value.$el.select()
+  console.log("SELECTING3")
 }
 
 watch(() => route.fullPath, () => {
+  console.log("SELECTING2")
+
     input.value.$el.select()
   
 })
 
 const dropdownSelect = () => {
+  if (!store.advanced)
+  console.log("SELECTING")
   input.value.$el.select()
 }
 

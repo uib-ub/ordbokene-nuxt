@@ -14,7 +14,7 @@
   
 <div class="dropdown col-sm-2 ">
   <button class="btn rounded-pill dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span>{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span></button>
-  <ul class="dropdown-menu" name="pos" @submit="submitForm">
+  <ul class="dropdown-menu" name="pos">
     <li v-for="(tag, idx) in  pos_tags"
         :key="idx"><button type = "button" class="dropdown-item" name="pos" @click="store.pos = tag">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</button></li>
   </ul>
@@ -88,8 +88,11 @@ const test = (event) => {
 
 const submitForm = async (item) => {
   console.log("SUBMITTED ADVANCED", item)
-  store.autocomplete = [] 
-  let searchUrl = `/search?q=${store.q}&dict=${store.dict}&scope=${store.scope}`
+  store.autocomplete = []
+  store.q = store.input
+
+
+  let searchUrl = `/search?q=${store.input}&dict=${store.dict}&scope=${store.scope}`
   if (store.pos) searchurl += "&pos=" + store.pos
   return navigateTo(searchUrl)
 }
@@ -151,6 +154,6 @@ const submitForm = async (item) => {
   background-color: white;
   box-shadow: 2px 2px 1px rgb(0 0 0 / 30%);
   border: solid 1px rgb(0 0 0 / 30%);
-  border-radius: 1rem;
+  border-radius: 2rem;
 }
 </style>

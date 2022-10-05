@@ -141,7 +141,7 @@ onMounted(() => {
             @input="store.input = $event.target.value; fetchAutocomplete($event.target.value)" 
             :placeholder="$t('search_placeholder')"
           />
-          <div v-if="store.input.length > 0">
+          <div v-if="store.input.length > 0 && !store.advanced">
             <button type="button" class="btn-close" aria-label="Clear" v-on:click="clearText"></button>
           </div>
         </div>

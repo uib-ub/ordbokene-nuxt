@@ -40,7 +40,7 @@
   
  
   </div>
-
+  <button :aria-label="$t('search')" class="btn btn-secondary rounded-pill p-2 px-3 col-1 mx-2" type="reset" @click="reset"> <BootstrapIcon icon="bi-cancel"/> Nullstill </button>
   <button :aria-label="$t('search')" class="btn btn-primary rounded-pill p-2 px-3 col-1 mx-2" type="submit"> <BootstrapIcon icon="bi-search"/> Søk </button>
 
 </div>
@@ -60,6 +60,13 @@ const pos_tags = [null, 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCO
 
 const fulltext_enabled = ref(store.scope.includes('f'))
 const inflection_enabled = ref(store.scope.includes('i'))
+
+const reset = () => {
+  store.input = ""
+  store.pos = null
+  store.dict = "bm,nn"
+  store.input = ""
+}
 
 watch(fulltext_enabled, () => {
   if (fulltext_enabled.value) {

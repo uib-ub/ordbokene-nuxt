@@ -10,10 +10,10 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         store.q = to.query.q
         store.pos = to.query.pos || store.pos
         store.scope = to.query.scope || store.scope
-        store.dict = to.query.dict
+        store.dict = to.query.dict || store.dict
         
         if (!to.redirectedFrom) {
-            store.input = to.query.q
+            store.input = to.query.q || ""
             store.originalInput = ""
         }
 

@@ -51,7 +51,6 @@ async function fetchAutocomplete(q) {
     
       let response = ref([])
       let url = `https://odd.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=${store.advanced ? store.scope + (store.pos ? '&wc='+store.pos : '') : 'e'}`
-      console.log("URL", url)
       response.value = await $fetch(url)
       
       // prevent suggestions after submit

@@ -60,24 +60,12 @@ const route = useRoute()
 const suggestions = ref()
 const error_message = ref()
 
-
-console.log("CURRENT QUERY", store.q) 
-console.log("SEARCH URL", store.searchUrl)
-console.log("DICT", store.dict)
-console.log("KEY", "articles_"+(store.advanced ? store.searchUrl : store.q))
-console.log("PARAMS", {w: store.q,
-            dict: store.dict,
-            scope: store.advanced ? store.scope : 'e'})
-
 const get_suggestions = async () => {
-  console.log("GETTING SUGGESTIONS")
   if (!(store.advanced && specialSymbols(store.q))) {
   let key = ((store.advanced && store.pos) || '') + 'suggest_'+ (store.originalInput || store.q)
-  console.log("SUGGEST KEY", key)
-  console.log("SUGGEST QUERY", `https://odd.uib.no/opal/dev/api/suggest?&q=${store.originalInput || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)
+
   const response = await $fetch(`https://odd.uib.no/opal/dev/api/suggest?&q=${store.originalInput || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)                                
   suggestions.value = filterSuggestions(response, store.originalInput || store.q)
-  console.log("SUGGESTIONS_RESPONSE", suggestions.value)
   }
   else {
     suggestions.value = null
@@ -94,15 +82,11 @@ const { pending, error, refresh, data: articles } = await useAsyncData("articles
             scope: store.advanced ? store.scope : 'e',
             wc: store.advanced ? store.pos : ''
           },
-          onRequest({ request, options }) {
-            console.log("SENDING REQUEST")
-          },
           onRequestError({ request, options, error}) {
             console.log("ERROR")
           },
 
           onResponse({ request, options, response }) {
-            console.log("RESPONSE INTERCEPTED", response)
             get_suggestions()
           }
         }))
@@ -111,7 +95,6 @@ const { pending, error, refresh, data: articles } = await useAsyncData("articles
 
 watch(() => store.searchUrl, () => {
   if (store.advanced) {
-    console.log("ROUTE WATCHER REFRESHING")
     refresh()
   }
 })
@@ -127,9 +110,7 @@ onMounted(() => {
 
 
 watch(articles, (newArticles) => {
-  
   if (store.advanced && newArticles) {
-    console.log("ARTICLES WATCHER", articles)
     let total_bm = newArticles.meta.bm ? newArticles.meta.bm.total : 0
     let total_nn = newArticles.meta.nn ? newArticles.meta.nn.total : 0
     
@@ -140,16 +121,6 @@ watch(articles, (newArticles) => {
   immediate: true
 }
 )
-
-/*
-onMounted(() => {
-  console.log("MOUNTED")
-  if (store.view == 'word') {
-    console.log("WORD GET SUGGESTIONS", store.q)
-    get_suggestions()
-  }
-})
-*/
 
 </script>
 

@@ -75,7 +75,6 @@ watch(fulltext_enabled, () => {
   else {
     store.scope = store.scope.replace('f', '')
   }
-  console.log("WATCHED", fulltext_enabled)
 })
 
 watch(inflection_enabled, () => {
@@ -85,16 +84,10 @@ watch(inflection_enabled, () => {
   else {
     store.scope = store.scope.replace('i', '')
   }
-  console.log("WATCHED", fulltext_enabled)
 })
 
-const test = (event) => {
-  console.log("EVENT", event)
-
-}
 
 const submitForm = async (item) => {
-  console.log("SUBMITTED ADVANCED", item)
   store.autocomplete = []
   store.q = store.input
 
@@ -128,24 +121,6 @@ const submitForm = async (item) => {
 .dropdown-menu{
   border: solid 1px var(--bs-primary);
   box-shadow: 1.5px 1.5px 1px var(--bs-primary);
-}
-.dict-button {
-  border: none;
-  border-right: solid 1px var(--bs-primary);
-  height: 100%;
-  border-radius: 2rem 0 0 2rem;
-}
-
-.btn-primary {
-  white-space: nowrap;
-}
-
-.btn:hover,.btn:focus{
-  background-color: white;
-  color: var(--bs-primary);
-}
-.rounded-pill{
-  border: none;
 }
 
 .input-group-text{

@@ -95,12 +95,7 @@ const submit = (data) => {
   console.log("SELECTING3")
 }
 
-watch(() => route.fullPath, () => {
-  console.log("SELECTING2")
 
-    input.value.$el.select()
-  
-})
 
 const dropdownSelect = () => {
 

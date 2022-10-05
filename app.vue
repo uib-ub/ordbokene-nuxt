@@ -57,18 +57,48 @@
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
-  <div class="container d-flex justify-content-around">
-  <div class="pe-5 d-flex align-items-center">
-    <img class="pe-3 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
-    <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
+  <div class="container d-flex justify-content-around flex-column flex-md-row">
+  <div class="w-50">
+    <div class="mb-4 d-flex align-items-center">
+      <img class="pe-5 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
+      <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
+    </div>
+    <div><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
   </div>
-  <div><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}
-    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'dict' && 'page'" to="/"><BootstrapIcon icon="bi-house-door-fill" /> {{$t('home')}}</NuxtLink>
-    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'about' && 'page'" to="/about"><BootstrapIcon icon="bi-info-circle-fill" /> {{$t('about')}}</NuxtLink>
-    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'help' && 'page'" to="/help"><BootstrapIcon icon="bi-question-circle-fill" /> {{$t('help')}}</NuxtLink>
-    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'settings' && 'page'" to="/settings"><BootstrapIcon icon="bi-gear-fill" /> {{$t('settings.title')}}</NuxtLink>
-    <NuxtLink class="btn btn-outline-tertiary" :aria-current="$route.name == 'contact' && 'page'" to="/contact"><BootstrapIcon icon="bi-envelope-fill" /> {{$t('contact.title')}}</NuxtLink>
-  </div>
+  <nav class="navbar">
+    <ul class="navbar-nav navbar-secondary-pages">
+      <p class="footer-nav-item">Søkesider:</p>
+      <li class="footer-nav-item">
+        <NuxtLink class="nav-link py-1" v-bind:class="{'active': !store.advanced && store.dict =='bm,nn', 'welcome': !$route.params.slug}" 
+        :aria-current="store.advanced ? 'false' : 'true'" @click="dict_click('bm,nn')" :to="dict_link('bm,nn')">Begge ordbøkene</NuxtLink>
+      </li>
+      <li class="footer-nav-item">
+        <NuxtLink class="nav-link py-1" v-bind:class="{'active': !store.advanced && store.dict =='bm', 'welcome': !$route.params.slug}" 
+        :aria-current="store.advanced ? 'false' : 'true'" @click="dict_click('bm')" :to="dict_link('bm')">Bokmålsordboka</NuxtLink>
+      </li>
+      <li class="footer-nav-item">
+        <NuxtLink class="nav-link py-1" v-bind:class="{'active': !store.advanced && store.dict =='nn', 'welcome': !$route.params.slug}" 
+        :aria-current="store.advanced ? 'false' : 'true'" @click="dict_click('nn')" :to="dict_link('nn')">Nynorskordboka</NuxtLink>
+      </li>
+      <li class="footer-nav-item">
+        <NuxtLink class="nav-link py-1" v-bind:class="{'active': store.advanced}" :aria-current="store.advanced ? 'true' : 'false'" 
+        @click="store.advanced = true" :to="advanced_link">Avansert søk</NuxtLink>
+      </li>
+    </ul>
+  </nav>
+  <nav class="navbar">
+    <ul class="navbar-nav navbar-secondary-pages">
+      <p class="footer-nav-item">{{$t('menu.title')}}:</p>
+      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'about'}">
+        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
+      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'help'}">
+        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink></li>
+      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'settings'}">
+        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink></li>
+      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'contact'}">
+        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink></li>
+    </ul>
+  </nav>
   </div>
 </footer>
   </div>
@@ -89,63 +119,8 @@ const locale = useCookie("locale")
 locale.value = locale.value || (new Date().getDate() % 2 ? 'nno' : 'nob')
 i18n.locale.value = locale.value
 
-const title = ref('Ordbøkene.no - Bokmålsordboka og Nynorskordboka')
-
 
 useHead({
-    charset: 'utf-8',
-    viewport: 'width=device-width,initial-scale=1.0',
-    meta: [
-      {
-        name: 'og:title',
-        content: 'Ordbøkene.no - Bokmålsordboka og Nynorskordboka'
-      },
-      {
-        name: 'twitter:title',
-        content: 'Ordbøkene.no - Bokmålsordboka og Nynorskordboka'
-      },
-      {
-        name: 'og:type',
-        content: 'website'
-      },
-      {
-        name: 'og:url',
-        content: 'ordbokene.no'
-      },
-      {
-        name: 'og:description',
-        content: 'Bokmålsordboka og Nynorskordboka viser skrivemåte og bøying i tråd med norsk rettskriving. Språkrådet og Universitetet i Bergen står bak ordbøkene.'
-      },
-      {
-        name: 'twitter:description',
-        content: 'Bokmålsordboka og Nynorskordboka viser skrivemåte og bøying i tråd med norsk rettskriving. Språkrådet og Universitetet i Bergen står bak ordbøkene.'
-      },
-      {
-        name: 'og:image',
-        content: '<%= BASE_URL %>logo.png'
-      },
-      {
-        name: 'og:image:width',
-        content: '256px'
-      },
-      {
-        name: 'og:image:height',
-        content: '256px'
-      },
-      {
-        name: 'twitter:image',
-        content: '<%= BASE_URL %>logo.png'
-      },
-      {
-        name: 'description',
-        content: 'Bokmålsordboka og Nynorskordboka viser skrivemåte og bøying i tråd med norsk rettskriving. Språkrådet og Universitetet i Bergen står bak ordbøkene.'
-      },
-      {
-        'http-equiv': 'X-UA-Compatible',
-        content: 'IE=edge'
-      }
-    ],
-    title,
     htmlAttrs: {
       lang: i18n.locale
     }
@@ -162,9 +137,23 @@ const update_locale = (newLocale) => {
   locale.value = newLocale
 }
 
-
-
-
+const dict_click = (dict) => {
+  store.advanced = false
+  store.dict = dict
+  if (store.q != store.input) {
+    store.input = store.q
+  }
+}
+const dict_link = ((dict) => {
+  let url = `/${dict}/`
+  if (specialSymbols(store.q)) {
+    return  url
+  }
+  if (store.q) {
+    url = url + 'search?q=' + store.q
+  }
+  return url
+})
 
 
 </script>
@@ -212,28 +201,38 @@ h1 {
 
 }
 
-
+.navbar .footer-nav-item {
+  padding-bottom: 0.25rem;
+  font-variant-caps: all-small-caps;
+  font-size: 1rem;
+  letter-spacing: .1rem;
+  font-weight: 600;
+  list-style-type: none;
+}
 
 .navbar .nav-item {
-
   padding-bottom: 0.25rem;
   font-variant-caps: all-small-caps;
   font-size: 1.25rem;
   letter-spacing: .1rem;
   font-weight: 600;
+  list-style-type: none;
 }
 
+.navbar .nav-link{
+  color: white;
+}
 .navbar .nav-link:hover {
   color: white;
 }
 
-.navbar-secondary-pages .nav-item:hover {
+.navbar-secondary-pages .nav-item:hover,.navbar-secondary-pages .footer-nav-item:hover {
   border-bottom: solid 0.25rem rgba(255,255,255, .5);
   background-color: rgba(255,255,255, .1);
   padding-bottom: 0rem;
 }
 
-.navbar-secondary-pages .nav-item.active {
+.navbar-secondary-pages .nav-item.active,.navbar-secondary-pages .footer-nav-item.active {
   border-bottom: solid 0.25rem var(--bs-secondary);
   padding-bottom: 0rem;
 }

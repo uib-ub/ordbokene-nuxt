@@ -24,7 +24,7 @@ const store = useStore()
 const route = useRoute()
 
 definePageMeta({
-    middleware: 'search-middleware'
+    middleware: 'advanced-search-middleware'
   })
 
 const form_error = (error) => {

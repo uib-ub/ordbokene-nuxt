@@ -1,6 +1,7 @@
 <template>
-      <nav aria-label="Dictionary navigation">
-    <ul class="mode-nav nav px-2">
+    <nav aria-label="Dictionary navigation">
+    <div class="contrast-gradient"/>
+    <ul class="mode-nav nav px-2 pt-3">
   <li class="nav-item" v-if="!advanced">
     <NuxtLink class="nav-link py-0" 
               v-bind:class="{'active': !advanced && route.params.dict =='bm,nn', 'welcome': !$route.params.slug}" 
@@ -92,45 +93,3 @@ const dict_click = (dict) => {
     })
 
 </script>
-
-
-<style scoped>
-
-.mode-nav .nav-link {
-        color: rgba(0,0,0,.9);
-        letter-spacing: .1rem;
-        font-variant-caps: all-small-caps;
-        font-size: 1.25rem;
-        font-weight: 600;
-    }
-    
-    .mode-nav .nav-link.active {
-        border-bottom: solid 2px var(--bs-secondary);
-        background-color: rgba(0,0,0,.05);
-        color: black;
-    }
-    
-    .welcome .mode-nav .nav-link.active {
-        border-bottom: solid 2px var(--bs-secondary);
-        background-color: rgba(0,0,0,.2);
-        color: white;
-    }
-    
-    .welcome .mode-nav .nav-link {
-      color: white;
-      text-shadow: 1px 1px 1px black;
-    }
-    
-    
-    
-    .mode-nav .nav-link:hover {
-      border-bottom: solid 2px var(--bs-primary);;
-      background-color: rgba(0,0,0,.1);
-    }
-    
-    .welcome .mode-nav .nav-link:hover {
-      border-bottom: solid 2px;
-      background-color: rgba(0,0,0,.5);
-    }
-
-</style>

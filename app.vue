@@ -54,7 +54,7 @@
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
-    <NuxtPage class="page-container container p-3" />
+    <NuxtPage class="page-container container px-3 pb-3" />
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
@@ -147,11 +147,8 @@ body {
   overflow-y: scroll;
 }
 
-#__nuxt>.welcome {
-  background-image: 
-  linear-gradient(to bottom, rgba(0,0,0,.5), rgba(21,0,9,.25), rgba(253,244,245,0), rgba(253,244,245,0)),
-  url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
-}
+
+
 
 
 

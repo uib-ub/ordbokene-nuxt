@@ -111,3 +111,60 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
 
 
 @import 'bootstrap/scss/bootstrap';
+
+
+.mode-nav .nav-link {
+  color: rgba(0,0,0,.9);
+  letter-spacing: .1rem;
+  font-variant-caps: all-small-caps;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.mode-nav .nav-link.active {
+  border-bottom: solid 2px var(--bs-secondary);
+  background-color: rgba(0,0,0,.05);
+  color: black;
+}
+
+.mode-nav .nav-link:hover {
+  border-bottom: solid 2px var(--bs-primary);;
+  background-color: rgba(0,0,0,.1);
+}
+
+
+@include media-breakpoint-up(lg) {
+  #__nuxt>.welcome {
+    background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
+  }
+
+  .welcome .mode-nav .nav-link.active {
+    border-bottom: solid 2px var(--bs-secondary);
+    background-color: rgba(0,0,0,.2);
+    color: white;
+}
+
+  .welcome .mode-nav .nav-link {
+    color: white;
+    text-shadow: 1px 1px 1px black;
+  }
+
+  .welcome .mode-nav .nav-link:hover {
+    border-bottom: solid 2px;
+    background-color: rgba(0,0,0,.5);
+}
+
+.welcome .contrast-gradient {
+  position: absolute;
+  left: 0;
+  background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,0));
+  height: 8rem;
+  width: 100%;
+  z-index: 0;
+}
+
+.welcome .mode-nav .nav-item {
+  z-index: 1;
+}
+
+}

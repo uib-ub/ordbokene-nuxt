@@ -1,6 +1,6 @@
 <template>
 
-    <article class="pt-lg-1">
+    <article class="pt-lg-1" v-if="!error">
         <div v-if="pending" class="skeleton-container">
             <div class="skeleton mt-4 skeleton-heading"/>
         <div class="skeleton mt-2 mb-4 skeleton-subheading"/>
@@ -12,7 +12,6 @@
         <div class="skeleton skeleton-content w-75 skeleton-indent"/>
         <div class="skeleton skeleton-content w-25"/>
         </div>
-
         <div v-else>
         <h2 v-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
@@ -79,7 +78,17 @@ const props = defineProps({
     dict: String
 })
 
-const { pending, data } = useAsyncData('article_'+props.article_id, () => $fetch(`https://oda.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`))
+const { pending, data, error } = useAsyncData('article_'+props.article_id, () => $fetch(`https://odd.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`,
+                                                                                        {
+                                                                                            async onResponseError({ request, response, options }) {
+                                                                                                // TODO: plausible logging, error message if article view
+                                                                                                console.log("RESPONSE ERROR", response.status)
+                                                                                            },
+                                                                                            async onRequestError({ request, response, error }) {
+                                                                                                // TODO: plausible logging, error message if article view
+                                                                                                console.log("REQUEST ERROR", error)
+                                                                                            }
+                                                                                        }))
 
 const body_error = (error) => {
     console.log("BODY_ERROR", error)

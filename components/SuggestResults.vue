@@ -1,8 +1,8 @@
 <template>
-<div v-if="store.suggest.a" class="p-2 mb-4 mt-3">
+<div v-if="suggestions" class="p-2 mb-4 mt-3">
     <h2>{{$t('notifications.similar')}}</h2>
     <ul class="nav nav-pills flex-column flex-md-row gap-3 pt-2">
-        <li class="nav-item" v-for="(item, idx) in suggestions" :key="idx+store.searchUrl">
+        <li class="nav-item" v-for="(item, idx) in suggestions" :key="idx">
             <NuxtLink class="nav-link btn btn-outline-primary" :to="suggest_link(item[0])"><BootstrapIcon icon="bi-search"/> <span class="link-content">{{item[0]}}</span></NuxtLink>
         </li>
     </ul>
@@ -13,6 +13,10 @@
 
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
+
+const props = defineProps({
+    suggestions: Object
+})
 
 const suggest_link = (suggestion) => {
     if (store.advanced) {
@@ -26,45 +30,6 @@ const suggest_link = (suggestion) => {
         return suggestion
     }
 }
-
-const suggestions = computed(() => {
-    let assembled = []
-    let seen = new Set()
-
-    if (store.suggest.a.inflect) {
-        store.suggest.a.inflect.forEach(item => {
-            if (store.q != item[0]) {
-                assembled.push(item)
-                seen.add(item[0])
-            }
-        })
-    }
-
-    if (store.suggest.a.exact) {
-        store.suggest.a.exact.forEach(item => {
-            if (!seen.has(item[0])
-            && store.q != item[0]
-            && (item[0].length <= store.q.length
-            || (item[0].slice(0, store.q.length) != store.q && item[0] != "å "+store.q))) {
-                assembled.push(item)
-                seen.add(item[0])
-            }
-        })
-    }
-
-    if (store.suggest.a.similar) {
-        store.suggest.a.similar.forEach(item => {
-                if (!seen.has(item[0])) {
-                assembled.push(item)
-                }
-        })
-    }
-
-    store.top_suggestion = assembled[0][0]
-
-    return assembled
-});
-
 
 
 </script>

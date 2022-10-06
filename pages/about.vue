@@ -1434,6 +1434,7 @@
           </table>
         </div>
       </div>
+<<<<<<< HEAD
     </div>
     <div class="accordion-item">
       <h3 class="accordion-header" id="flush-headingNi">
@@ -1508,6 +1509,26 @@
       </div>
     </div>
     </div>
+=======
+    </details>
+    <details>
+      <summary><h3>Bruk av ordbøkene.no i skolen</h3></summary>
+      <p>Blant norskspråklige ordbøker og ordlister er det bare de som er godkjent av Språkrådet, som kan brukes i undervisning og på prøver og eksamen. <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> er blant disse, og de andre finner du på <a href ="https://www.sprakradet.no/sprakhjelp/Skriverad/Ordlister/Ordlister-til-skulebruk/"> Språkrådets oversikt over godkjente ressurser</a>.</p>
+      <p>Når skolene stenger en del nettsider på prøver og eksamen, må et utvalg andre sider være åpne for at ordbøkene.no skal fungere. Her er domenene som ordboksida bruker:</p>
+      <ul>
+        <li><a href="https://ordbokene.no/">https://ordbokene.no/</a></li>
+        <li><a href="https://odd.uib.no/">https://odd.uib.no/</a></li>
+        <li><a href="https://odd.uib.no/">https://odd.uib.no/</a></li>
+        <li><a href="https://plausible.io/">https://plausible.io/</a></li>
+      </ul>
+      <p>Nynorsksenteret har skrevet to saker om bruk av ordbøkene.no i skolen:</p>
+      <ul>
+        <li><a href="https://nynorsksenteret.no/vidaregaande/grammatikk/gode-tips-til-bruk-av-nettordboka">Gode tips til bruk av nettordboka</a></li>
+        <li><a href="https://nynorsksenteret.no/blogg/ta-i-bruk-dei-nye-ordbokene">Ta i bruk dei nye ordbøkene</a></li>
+      </ul>
+      <p>Nynorsksenteret har dessuten et opplegg for ungdomsskolen om <a href="https://nynorsksenteret.no/ungdomsskule/skriving/kreativ-skriving/hiphop-ordboka-som-kreativt-verktoy">hiphop og bruk av ordbøkene som kreative verktøy</a></p>
+    </details>
+>>>>>>> 576af6327c29d4075f640d7ddea4c56e25e3577f
   </div>
 </main>
 </template>

@@ -6,8 +6,7 @@
   
   <ArticleView v-if="store.view == 'article'"/>
   <WordView v-if="store.view == 'word'"/>
-  <Results v-if="store.view == 'search' || store.view == 'word'"/>
-  <SuggestResults v-if="store.view == 'suggest' || store.view == 'word'"/>
+  <Results v-if="store.view != 'article'"/>
 
 </main>
   </div>

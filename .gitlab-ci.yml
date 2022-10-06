@@ -3,6 +3,16 @@ stages:
   - deploy
 
 
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS && $CI_COMMIT_TAG == null'
+      when: never
+    - if: '$CI_COMMIT_BRANCH'
+    - if: $CI_COMMIT_TAG != null
+
+
+
 build-dev:
   image: node:16
   tags:
@@ -28,7 +38,7 @@ deploy-dev:
   - if: $CI_COMMIT_TAG != null
     when: never
   - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_PIPELINE_SOURCE == 'merge_request_event'
-    when: on_success
+    when: never #on_success
   - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE != 'merge_request_event'
     when: manual
   script:

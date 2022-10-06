@@ -5,14 +5,14 @@
     <NuxtLink class="nav-link py-0" 
               v-bind:class="{'active': !store.advanced, 'welcome': !$route.params.slug}" 
               :aria-current="store.advanced ? 'false' : 'true'"
-              v-on:click="store.advanced = false; " 
+              @click="store.advanced = false"
               :to="simple_link">Søk i oppslagsord</NuxtLink>
   </li>
   <li class="nav-item">
     <NuxtLink class="nav-link py-0" 
               v-bind:class="{'active': store.advanced}" 
               :aria-current="store.advanced ? 'true' : 'false'" 
-              v-on:click="store.advanced = true"  
+              @click="store.advanced = true"
               :to="advanced_link">Avansert søk</NuxtLink>
   </li>
 </ul>
@@ -42,19 +42,35 @@ const content_error = (error) => {
 
 
 const advanced_link = computed(() => {
-  let url = `/${store.dict}/search?`
-  if (store.q) {
-    url = url + 'q=' + store.q + "&"
+  if (store.advanced) {
+    return route.fullPath
   }
-  return url + "scope="+store.scope
+  else {
+    let url = route.fullPath
+    if (route.name == 'dict') {
+      return `/${store.dict}?scope=${store.scope}`
+    }
+    else if (route.name == "dict-slug") {
+      return  `/${store.dict}/search?q=${store.q}&scope=${store.scope}`
+    }
+    else if (!route.query.scope) {
+      return url + "&scope=" + store.scope
+
+    }
+    else {
+      return url
+    }
+  }
   
 })
 
 const simple_link = computed(() => {
-
   let url = `/${store.dict}/`
+  if (specialSymbols(store.q)) {
+    return  url
+  }
   if (store.q) {
-    url = url + 'submit?q=' + store.q
+    url = url + 'search?q=' + store.q
   }
   return url
   

@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useStore } from '~/stores/searchStore'
+import { useRoute } from 'vue-router'
 import {
   Combobox,
   ComboboxInput,
@@ -11,6 +12,7 @@ import {
 } from '@headlessui/vue'
 
 const store = useStore()
+const route = useRoute()
 
 
 
@@ -48,7 +50,7 @@ async function fetchAutocomplete(q) {
     if (blank != "advanced") {
     
       let response = ref([])
-      response.value = await $fetch(`https://oda.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
+      response.value = await $fetch(`https://odd.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
       
       // prevent suggestions after submit
       if (store.autocompletePending && q == store.input) {
@@ -80,6 +82,11 @@ const submit = (data) => {
   emit('submit')
   input.value.$el.select()
 }
+
+watch(() => route.fullPath, () => {
+    input.value.$el.select()
+  
+})
 
 const dropdownSelect = () => {
   input.value.$el.select()

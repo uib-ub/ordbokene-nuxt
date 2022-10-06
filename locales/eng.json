@@ -41,7 +41,8 @@
     "bm,nn": "Both"
   },
   "menu": {
-    "title": "Menu"
+    "title": "Menu",
+    "search_pages": "Search pages"
   },
   "options": {
     "title": "Search options",

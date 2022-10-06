@@ -1513,8 +1513,21 @@
 </template>
 
 <style scoped>
-h3 button {
+.accordion-button {
   color: var(--bs-primary);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.accordion-button.collapsed{
+  color: var(--bs-primary);
+}
+
+.accordion-button:after {
+    order: -1;
+    margin-left: 0; 
+    margin-right:0.5em;
+    color: var(--bs-primary);
 }
 
 

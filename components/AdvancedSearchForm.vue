@@ -6,14 +6,14 @@
   <div class="row form-group align-items-center">
 
   <div class="dropdown col-sm-2">
-    <button class="btn rounded-pill dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{$t(`dicts.${store.dict}`)}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
+    <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{$t(`dicts.${store.dict}`)}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
     <ul class="dropdown-menu">
       <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button type='button' @click="store.dict = item" class="dropdown-item" name="dict" :value="item">{{$t(`dicts.${item}`)}}</button></li>
     </ul>
   </div>
   
 <div class="dropdown col-sm-2 ">
-  <button class="btn rounded-pill dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span>{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span></button>
+  <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span>{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span></button>
   <ul class="dropdown-menu" name="pos">
     <li v-for="(tag, idx) in  pos_tags"
         :key="idx"><button type = "button" class="dropdown-item" name="pos" @click="store.pos = tag">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</button></li>
@@ -40,8 +40,8 @@
   
  
   </div>
-  <button :aria-label="$t('search')" class="btn btn-secondary rounded-pill p-2 px-3 col-1 mx-2" type="reset" @click="reset"> <BootstrapIcon icon="bi-cancel"/> Nullstill </button>
-  <button :aria-label="$t('search')" class="btn btn-primary rounded-pill p-2 px-3 col-1 mx-2" type="submit"> <BootstrapIcon icon="bi-search"/> Søk </button>
+  <button :aria-label="$t('search')" class="btn btn-secondary rounded-pill col-1 mx-2" type="reset" @click="reset"> <BootstrapIcon icon="bi-cancel"/> Nullstill </button>
+  <button :aria-label="$t('search')" class="btn btn-primary rounded-pill col-1 mx-2" type="submit"> <BootstrapIcon icon="bi-search"/> Søk </button>
 
 </div>
 </div>

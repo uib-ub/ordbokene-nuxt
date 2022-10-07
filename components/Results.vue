@@ -10,7 +10,13 @@
     <div aria-live="assertive" class="visually-hidden" v-if="articles.meta.bm">{{articles.meta.bm.total}} treff i Bokmålsordboka</div>
     <div aria-live="assertive" class="visually-hidden" v-if="articles.meta.nn">{{articles.meta.nn.total}} treff i Nynorskordboka</div>
     </div>
-    
+
+    <div class="row">
+      <div class="col-lg" v-for="(article_id, idx) in articles.articles.bm.concat(articles.articles.nn)" :key="idx" 
+      :style="'order:'+(idx < articles.articles.bm.lenght ? 2 * idx : ((idx - articles.articles.bm.length)*2) + 1)">
+        {{article_id}}
+      </div>
+    </div>
 
     <div class="row" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
       <div class="col-lg-6">

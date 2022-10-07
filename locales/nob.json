@@ -43,6 +43,7 @@
   },
   "menu": {
       "title": "Meny",
+      "search_pages": "Søkesider",
       "help": "Hjelp til søk",
       "about": "Om ordbøkene"
       },

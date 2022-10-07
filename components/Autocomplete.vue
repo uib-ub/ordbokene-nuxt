@@ -48,11 +48,11 @@ async function fetchAutocomplete(q) {
     }
 
     if (blank != "advanced") {
-    
+
       let response = ref([])
       let url = `https://odd.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=${store.advanced ? store.scope + (store.pos ? '&wc='+store.pos : '') : 'e'}`
       response.value = await $fetch(url)
-      
+
       // prevent suggestions after submit
       if (store.autocompletePending && q == store.input) {
         let autocomplete_suggestions = []
@@ -113,7 +113,7 @@ onMounted(() => {
   if (store.input) {
     input.value.$el.select()
 
-  }  
+  }
 })
 
 </script>
@@ -133,11 +133,12 @@ onMounted(() => {
             autocapitalize="off"
             maxlength="200"
             ref="input"
-            @input="store.input = $event.target.value; fetchAutocomplete($event.target.value)" 
+            @input="store.input = $event.target.value; fetchAutocomplete($event.target.value)"
             :placeholder="$t('search_placeholder')"
+            :aria-label="$t('search_placeholder')"
           />
           <div v-if="store.input.length > 0 && !store.advanced">
-            <button type="button" class="btn-close" aria-label="Clear" v-on:click="clearText"></button>
+            <button type="button" class="btn-close me-2 ms-2" aria-label="Clear" v-on:click="clearText"></button>
           </div>
         </div>
         <TransitionRoot
@@ -230,10 +231,10 @@ onMounted(() => {
   border-radius: 0 0 1rem 0;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(189, 189, 189); 
+  background: rgb(189, 189, 189);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(141, 141, 141); 
+  background: rgb(141, 141, 141);
 }
 </style>

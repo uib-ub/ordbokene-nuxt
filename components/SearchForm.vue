@@ -60,6 +60,9 @@ const submitForm = async (item) => {
 .rounded-pill{
   border: none;
 }
+button{
+  padding-left: 0;
+}
 
 .input-group-text{
   color: var(--bs-primary);

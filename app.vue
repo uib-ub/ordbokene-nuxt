@@ -71,19 +71,19 @@
       <p class="footer-nav">{{$t('menu.search_pages')}}:</p>
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" v-bind:class="{'active': !store.advanced && store.dict =='bm,nn', 'welcome': !$route.params.slug}" 
-        :aria-current="store.advanced ? 'false' : 'true'" @click="dict_click('bm,nn')" :to="dict_link('bm,nn')">{{$t('dicts.bm,nn')}}</NuxtLink>
+        :aria-current="store.advanced ? 'false' : 'true'" to="/bm,nn">{{$t('dicts.bm,nn')}}</NuxtLink>
       </li>
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" v-bind:class="{'active': !store.advanced && store.dict =='bm', 'welcome': !$route.params.slug}" 
-        :aria-current="store.advanced ? 'false' : 'true'" @click="dict_click('bm')" :to="dict_link('bm')">{{$t('dicts.bm')}}</NuxtLink>
+        :aria-current="store.advanced ? 'false' : 'true'" to="/bm">{{$t('dicts.bm')}}</NuxtLink>
       </li>
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" v-bind:class="{'active': !store.advanced && store.dict =='nn', 'welcome': !$route.params.slug}" 
-        :aria-current="store.advanced ? 'false' : 'true'" @click="dict_click('nn')" :to="dict_link('nn')">{{$t('dicts.nn')}}</NuxtLink>
+        :aria-current="store.advanced ? 'false' : 'true'" to="/nn">{{$t('dicts.nn')}}</NuxtLink>
       </li>
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" v-bind:class="{'active': store.advanced}" :aria-current="store.advanced ? 'true' : 'false'" 
-        @click="store.advanced = true" :to="advanced_link">{{$t('advanced')}}</NuxtLink>
+        @click="store.advanced = true" to="/search">{{$t('advanced')}}</NuxtLink>
       </li>
     </ul>
   </nav>
@@ -137,25 +137,6 @@ const update_locale = (newLocale) => {
   i18n.locale.value = newLocale
   locale.value = newLocale
 }
-
-const dict_click = (dict) => {
-  store.advanced = false
-  store.dict = dict
-  if (store.q != store.input) {
-    store.input = store.q
-  }
-}
-const dict_link = ((dict) => {
-  let url = `/${dict}/`
-  if (specialSymbols(store.q)) {
-    return  url
-  }
-  if (store.q) {
-    url = url + 'search?q=' + store.q
-  }
-  return url
-})
-
 
 </script>
 

@@ -137,7 +137,7 @@ onMounted(() => {
             :placeholder="$t('search_placeholder')"
             :aria-label="$t('search_placeholder')"
           />
-          <div v-if="store.input.length > 0 && !store.advanced">
+          <div v-if="store.input.length > 0">
             <button type="button" class="btn-close me-2 ms-2" aria-label="Clear" v-on:click="clearText"></button>
           </div>
         </div>

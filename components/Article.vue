@@ -1,6 +1,6 @@
 <template>
     <div v-if="settings.listView && store.advanced == true && $route.name == 'search' && store.q">
-        <span v-if="pending" class="list-group-item">Laster...</span>
+        <span v-if="pending" class="list-group-item"><div class="skeleton skeleton-content w-25"/><div class="skeleton skeleton-content w-50"/></span>
         <NuxtLink v-else class="list-group-item result-list-item" :to="link_to_self()">     
         
     <div v-for="(lemma_group, i) in lemma_groups" :key="i">

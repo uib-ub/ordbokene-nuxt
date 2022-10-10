@@ -153,6 +153,8 @@ const listView = computed(() => {
     border: solid 1px rgba(0,0,0, .3);
     background-color: white;
     box-shadow: 2px 2px 1px rgba(0,0,0, .3);
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
 }
 
 .list .article-column {

@@ -403,26 +403,24 @@ article {
     margin-bottom: 1rem;
 }
 
-.result-list-item {
-    padding-left: 0.5rem;
-    padding-right: 2rem;
+
+
+a.result-list-item {
+    padding: 0.75rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-
-.article-column a {
     border-bottom: none;
-}
-
-.article-column a {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  border-top: solid 1px rgba(0,0,0, .25)
+    border-top: solid 1px rgba(0,0,0, .25)
 }
 
 
-.article-column a:first-child {
+a.result-list-item:hover {
+    background-color: rgba(0,0,0, .1);
+}
+
+
+div a.result-list-item:first-child {
   border-top: none;
 }
 

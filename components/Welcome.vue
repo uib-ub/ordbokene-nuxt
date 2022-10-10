@@ -40,7 +40,7 @@
 .monthly-title h2 {
   background-color: var(--bs-primary);
 
-  border-radius: 2rem 2rem 0 0;
+  border-radius: 2rem;
 	text-align: center;
   letter-spacing: .1rem;
   font-size: 1.25rem;

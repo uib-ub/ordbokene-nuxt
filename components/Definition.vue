@@ -1,19 +1,19 @@
 <template>
       <component :is="level==1 ? 'div' : 'li'" :class="['definition', 'level'+level]"  :ref="level != 9 ? 'def' + body.id : ''" :id="level != 9? 'def' + body.id : ''"><component :is="level <= 2 ? 'div' : 'span'">
     <span class="explanations" v-if="explanations.length">
-      <DefElement :body="explanation" :dict="dict" :has_article_ref=has_article_ref(explanation) v-for="(explanation, index) in explanations" :semicolon="might_need_semicolon(explanations, index)" :key="index" v-on:link-click="link_click" :content_locale="content_locale"/>
+      <DefElement :body="explanation" :dict="dict" :has_article_ref=has_article_ref(explanation) v-for="(explanation, index) in explanations" :semicolon="might_need_semicolon(explanations, index)" :key="index" v-on:link-click="link_click" :content_locale="content_locale" :welcome="welcome"/>
     </span>
-    <div v-if="examples.length">
+    <div v-if="examples.length && !welcome">
       <h5 v-if="level <3">{{$t('article.headings.examples', content_locale)}}</h5>
       <ul class="examples">
         <Example :body="example" :dict="dict" v-for="(example, index) in examples" :key="index" v-on:link-click="link_click" :content_locale="content_locale" :semicolon="might_need_semicolon(examples, index)"/>
       </ul>
     </div>
     <ul class="compound_lists" v-if = "compound_lists.length">
-      <CompoundList :dict="dict" v-for="(compound_list, index) in compound_lists" :body="compound_list" :key="index" v-on:link-click="link_click" :content_locale="content_locale"/>
+      <CompoundList :dict="dict" v-for="(compound_list, index) in compound_lists" :body="compound_list" :key="index" v-on:link-click="link_click" :content_locale="content_locale" :welcome="welcome"/>
     </ul>
     <component :is="level < 3 ? 'ol' : 'ul'" class="sub_definitions" v-if="subdefs.length">
-      <Definition :def_number='index+1' :level="level+1" :body="subdef" v-for="(subdef, index) in subdefs"  :dict="dict" :semicolon="might_need_semicolon(subdefs, index)" :key="index" v-on:link-click="link_click" :content_locale="content_locale"/>
+      <Definition :def_number='index+1' :level="level+1" :body="subdef" v-for="(subdef, index) in subdefs"  :dict="dict" :semicolon="might_need_semicolon(subdefs, index)" :key="index" v-on:link-click="link_click" :content_locale="content_locale" :welcome="welcome"/>
     </component>
       </component>
       </component>
@@ -28,7 +28,8 @@ const props = defineProps({
     level: Number,
     dict: String,
     def_number: Number,
-    content_locale: String
+    content_locale: String,
+    welcome: Boolean
 })
 
 const emit = defineEmits(['link-click'])

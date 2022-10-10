@@ -32,22 +32,22 @@
         </div>
         <NuxtErrorBoundary @error="body_error">
         <div class="article_content pt-3" ref="article_content">
-            <section v-if="data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
+            <section v-if="!welcome && data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
                 <h4>{{$t('article.headings.pronunciation', content_locale)}}</h4>
 
                 <DefElement v-for="(element, index) in data.body.pronunciation" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
             </section>
-            <section v-if="data.body.etymology && data.body.etymology.length" class="etymology">
+            <section v-if="!welcome && data.body.etymology && data.body.etymology.length" class="etymology">
                 <h4>{{$t('article.headings.etymology', content_locale)}}</h4>
 
                 <DefElement v-for="(element, index) in data.body.etymology" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
             </section>
             <section class="definitions" v-if="has_content">
-                <h4>{{$t('article.headings.definitions', content_locale)}}</h4>
+                <h4 v-if="!welcome">{{$t('article.headings.definitions', content_locale)}}</h4>
 
-                <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click"/>
+                <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click" :welcome="welcome"/>
 
             </section>
             <section v-if="sub_articles.length && !welcome" class="expressions">
@@ -58,7 +58,7 @@
             </section>
         </div>
         <ArticleFooter v-if="!welcome" :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
-        <div v-else class="d-flex justify-content-center"><button class="btn">Åpne artikkel</button></div>
+        <div v-else class="d-flex justify-content-end"><NuxtLink :to="link_to_self()">{{$t('article.show')}} <i class="bi-arrow-right"/></NuxtLink></div>
 
         </NuxtErrorBoundary>
     </div>
@@ -157,6 +157,13 @@ const sub_articles = computed(() => {
 const link_click = (event) => {
     console.log("ARTICLE CLICKED", event)
 }
+
+const link_to_self = () => {
+    let url = '/' + props.dict + '/' + props.article_id + '/'
+
+      return  url
+    }
+
 
 </script>
 

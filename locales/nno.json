@@ -151,7 +151,7 @@
     },
     "article": {
         "definition": "Definisjon",
-        "show": "Vis artikkel",
+        "show": "Opne artikkel",
         "show_inflection": "Vis bøying",
         "hide_inflection": "Skjul bøying",
         "share": "Del ordet",

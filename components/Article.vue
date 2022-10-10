@@ -1,6 +1,6 @@
 <template>
 
-    <article class="pt-lg-1" v-if="!error">
+    <article class="pt-lg-1" v-bind:class="{welcome: welcome}" v-if="!error">
         <div v-if="pending" class="skeleton-container">
             <div class="skeleton mt-4 skeleton-heading"/>
         <div class="skeleton mt-2 mb-4 skeleton-subheading"/>
@@ -19,7 +19,7 @@
         <div class="p-4">
         <ArticleHeader :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict"/>
 
-        <button v-if="inflected" class="inflection-button py-1 px-3 mx-2" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
+        <button v-if="inflected && !welcome" class="inflection-button py-1 px-3 mx-2" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
              {{$t('article.show_inflection')}} <span v-if="!toggle"><Icon :icon="'bi-plus'" /></span><span v-if="toggle"><Icon :icon="'bi-dash'" /></span>
         </button>
 
@@ -57,7 +57,9 @@
                 </ul>
             </section>
         </div>
-        <ArticleFooter :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
+        <ArticleFooter v-if="!welcome" :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
+        <div v-else class="d-flex justify-content-center"><button class="btn">Åpne artikkel</button></div>
+
         </NuxtErrorBoundary>
     </div>
 </div>
@@ -180,12 +182,22 @@ article {
     margin-bottom: 1rem;
 }
 
+article.welcome {
+    border-radius: 0rem;
+    padding: 1rem !important;
+    padding-bottom: 0rem !important;
+    margin: 2rem;
+    background-color: var(--bs-tertiary);
+    box-shadow: none;
+    border: none;
+
+}
+
 .inflection-button {
     border: solid 1px var(--bs-primary);
     color: var(--bs-primary);
     background-color: white;
     border-radius: 2rem;
-
 }
 
 .inflection-button:focus {

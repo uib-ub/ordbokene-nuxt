@@ -13,6 +13,7 @@
     <template>
       <main class="m-lg-5 px-lg-5 py-lg-2">
         <div class="row" v-if="welcome_bm && welcome_nn">
+          <div class="monthly-title monthly-title mb-4"><h2 class="px-5 pb-2 pt-1 mb-0"><span class="px-md-5">{{$t('monthly')}}</span></h2></div>
           <div class="col-lg">
           <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm"/>
           </div>
@@ -26,4 +27,27 @@
         </div>
       </main> 
     </template>
+
+<style scoped>
+
+
+.monthly-title {
+  font-size: 1.17em;
+  display: flex;
+  justify-content: center;
+}
+
+.monthly-title h2 {
+  background-color: var(--bs-primary);
+
+  border-radius: 2rem 2rem 0 0;
+	text-align: center;
+  letter-spacing: .1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+
+
+</style>
     

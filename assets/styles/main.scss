@@ -147,7 +147,7 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
     border-bottom: solid 2px var(--bs-secondary);
 
     color: white;
-}
+  }
 
   .welcome .mode-nav .nav-link {
     color: white;
@@ -157,11 +157,9 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
   .welcome .mode-nav .nav-link:hover {
     border-bottom: solid 2px;
     background-color: rgba(0,0,0,.5);
-}
+  }
 
-.welcome .mode-nav .nav-item {
-  background-color: rgba(0,0,0,.25);
-}
-
-
+  .welcome .mode-nav .nav-item {
+    background-color: rgba(0,0,0,.25);
+  }
 }

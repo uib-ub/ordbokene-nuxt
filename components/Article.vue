@@ -1,6 +1,6 @@
 <template>
 
-    <article class="pt-lg-1" v-bind:class="{welcome: welcome}" v-if="!error">
+    <article class="pt-lg-1" v-if="!error">
         <div v-if="pending" class="skeleton-container">
             <div class="skeleton mt-4 skeleton-heading"/>
         <div class="skeleton mt-2 mb-4 skeleton-subheading"/>
@@ -50,7 +50,7 @@
                 <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click"/>
 
             </section>
-            <section v-if="sub_articles.length" class="expressions">
+            <section v-if="sub_articles.length && !welcome" class="expressions">
                 <h4>{{$t('article.headings.expressions', content_locale)}}</h4>
                 <ul>
                 <SubArticle :body="subart" v-for="(subart, index) in sub_articles" :dict="dict" :key="index" v-on:link-click="link_click"/>
@@ -180,17 +180,6 @@ article {
     background-color: white;
     box-shadow: 2px 2px 1px rgba(0,0,0, .3);
     margin-bottom: 1rem;
-}
-
-article.welcome {
-    border-radius: 0rem;
-    padding: 1rem !important;
-    padding-bottom: 0rem !important;
-    margin: 2rem;
-    background-color: var(--bs-tertiary);
-    box-shadow: none;
-    border: none;
-
 }
 
 .inflection-button {

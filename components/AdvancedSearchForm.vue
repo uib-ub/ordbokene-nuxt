@@ -46,13 +46,24 @@
 </div>
 </div>
 </form>
+<div v-if="store.q" class="d-flex justify-content-end">
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button @click="settings.listView = false" class="btn btn-light" v-bind:class="{active: !settings.listView}"><i class="bi-file-text"/> Artikler</button>
+  <button @click="settings.listView = true" class="btn btn-light" v-bind:class="{active: settings.listView}"><i class="bi-list"/> Liste</button>
 
+
+
+</div>
+</div>
 </div>
 </template>
 
 <script setup>
+  
 import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
+import {useSettingsStore } from '~/stores/settingsStore'
+const settings = useSettingsStore()
 const store = useStore()
 const route = useRoute()
 
@@ -138,4 +149,9 @@ const submitForm = async (item) => {
   border: solid 1px rgb(0 0 0 / 30%);
   border-radius: 2rem;
 }
+.btn-group {
+  border: solid 1px rgba(0,0,0, .3);
+  box-shadow: 2px 2px 1px rgba(0,0,0, .3);
+}
+
 </style>

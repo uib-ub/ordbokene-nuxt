@@ -1,6 +1,35 @@
 <template>
+    <div v-if="settings.listView && store.advanced == true && $route.name == 'search' && store.q">
+        <span v-if="pending" class="list-group-item">Laster...</span>
+        <NuxtLink v-else class="list-group-item result-list-item" :to="link_to_self()">     
+        
+    <span v-for="(lemma_group, i) in lemma_groups" :key="i">
+    <span class="lemma-group">
+                
+    <span v-for="(lemma, index) in lemma_group.lemmas"
+          :key="index"><span class="lemma"><DefElement v-if="lemma.annotated_lemma" :body="lemma.annotated_lemma" tag="span" :content_locale="content_locale"/><span v-else>{{lemma.lemma}}</span></span>
+          <span v-if="lemma.hgno"
+                   :aria-label="$t('accessibility.homograph') + parseInt(lemma.hgno)"
+                   :title="$t('accessibility.homograph')+parseInt(lemma.hgno)"
+                   class="hgno">{{" "+roman_hgno(lemma)}}</span>
+                    <span
+                   class="title_comma"
+                   v-if="lemma_group.lemmas[1] && index < lemma_group.lemmas.length-1">{{", "}}
+                  </span>
+    </span>
+</span>
+<span v-if="secondary_header_text" class="lemma">{{secondary_header_text}}</span>  
+    <em v-if="lemma_group.description" class="subheader">
+    <span class="header_group_list">{{lemma_group.description}}</span>
+          {{lemma_group.genus}}
+    <span v-if="settings.inflectionNo" class="inflection_classes">{{lemma_group.inflection_classes}}</span>
 
-    <article class="pt-lg-1" v-if="!error">
+    </em>
+    </span><Snippet :dict="dict" :definitions="data.body.definitions"/>
+
+    </NuxtLink>
+</div>
+    <article class="pt-lg-1" v-else-if="!error">
         <div v-if="pending" class="skeleton-container">
             <div class="skeleton mt-4 skeleton-heading"/>
         <div class="skeleton mt-2 mb-4 skeleton-subheading"/>
@@ -17,7 +46,7 @@
         <h2 v-else-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-else-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div class="p-4">
-        <ArticleHeader :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict"/>
+        <ArticleHeader :lemma_groups="lemma_groups" :secondary_header_text="secondary_header_text" :content_locale="content_locale" :dict="dict"/>
 
         <button v-if="inflected && !welcome" class="inflection-button py-1 px-3 mx-2" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
              {{$t('article.show_inflection')}} <span v-if="!toggle"><Icon :icon="'bi-plus'" /></span><span v-if="toggle"><Icon :icon="'bi-dash'" /></span>
@@ -71,10 +100,13 @@ import { useStore } from '~/stores/searchStore'
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
 import Icon from './bootstrap/Icon.vue';
+import {useSettingsStore } from '~/stores/settingsStore'
 
+const { t } = useI18n()
 const i18n = useI18n()
 const store = useStore()
 const toggle = ref(false)
+const settings = useSettingsStore()
 
 const props = defineProps({
     article_id: Number,
@@ -162,6 +194,87 @@ const link_to_self = () => {
     return `/${props.dict}/${props.article_id}/${encodeURIComponent(data.value.lemmas[0].lemma)}`
     }
 
+
+const inflection_classes = (lemmas) => {
+    let inf_classes = new Set()
+    let ureg = false
+    lemmas.forEach((lemma, i) => {
+    if (lemma.inflection_class) inf_classes.add(lemma.inflection_class)
+    else ureg = true
+    })
+    if (inf_classes.size){
+
+    let class_array = Array.from(inf_classes).sort()
+    if (ureg) class_array.push("ureg.")
+    let class_list
+    if (class_array.length < 3) {
+    class_list = class_array.join(" og ")
+    }
+    else {
+    class_list = class_array.slice(0, -1).join(", ") + " og " + class_array[class_array.length -1]
+    }
+    return " ("+ class_list +")"
+    }
+}
+
+const lemma_groups = computed(() => {
+    let groups = [{lemmas: data.value.lemmas}]
+      try {
+        if (data.value.lemmas[0].paradigm_info[0] && data.value.lemmas[0].paradigm_info[0].tags[0] != 'NOUN' && data.value.lemmas[0].paradigm_info[0].tags[0] != 'EXPR') {
+          groups = [{description:  t('tags.'+data.value.lemmas[0].paradigm_info[0].tags[0], content_locale), lemmas: data.value.lemmas}]
+        }
+        else if (data.value.lemmas[0].paradigm_info[0].tags[0] == 'NOUN') {
+            let genus_map  = {}
+            data.value.lemmas.forEach(lemma =>{
+              let genera = new Set()
+              lemma.paradigm_info.forEach(paradigm => {
+                genera.add(paradigm.tags[1])
+              })
+              let genus_description = ""
+              if (genera.size == 3) {
+                genus_description +=  t('tags.Masc') + ', ' +  t('tags.Fem', content_locale) +  t('or') +  t('tags.Neuter', content_locale)
+              } else {
+                genus_description += Array.from(genera).map(code =>  t('tags.'+code, content_locale)).sort().join(t('or'))
+              }
+              if (genus_map[genus_description]) {
+                genus_map[genus_description].push(lemma)
+              }
+              else {
+                genus_map[genus_description] = [lemma]
+              }
+            })
+            groups = Object.keys(genus_map).map(key => {
+              return {description:  t('tags.NOUN', content_locale), genus: key, lemmas: genus_map[key], }
+            })
+
+        
+        }
+        
+        groups.forEach((lemma_group, index) => {
+              groups[index]['inflection_classes'] = inflection_classes(lemma_group.lemmas)
+            })
+    } catch(error) {
+      console.log("lemma_groups",props.article_id, props.dict, '"'+error.message+'"')
+    }
+      return groups
+
+
+})
+
+const secondary_header_text = computed(() => {
+    let a_forms = []
+      data.value.lemmas.forEach((lemma, i) => {
+        if (lemma.paradigm_info[0] && lemma.paradigm_info[0].inflection[1] && lemma.paradigm_info[0].inflection[1].tags[0] == 'Inf') {
+          let inf2 = lemma.paradigm_info[0].inflection[1].word_form
+          if (inf2 && inf2.length) {
+            a_forms.push(inf2)
+          }
+        }
+      });
+      return a_forms.join(', ')
+})
+
+
 </script>
 
 <style scoped>
@@ -176,14 +289,6 @@ const link_to_self = () => {
     font-weight: 600;
     font-size: 1.25rem !important;
 
-}
-
-article {
-    border-radius: 2rem;
-    border: solid 1px rgba(0,0,0, .3);
-    background-color: white;
-    box-shadow: 2px 2px 1px rgba(0,0,0, .3);
-    margin-bottom: 1rem;
 }
 
 .inflection-button {
@@ -279,6 +384,46 @@ h4 {
 }
 .skeleton-indent {
     margin-left: 2rem;
+}
+
+span.lemma {
+    color: var(--bs-primary);
+}
+
+span.lemma-group {
+    font-weight: 600;
+}
+
+
+article {
+    border-radius: 2rem;
+    border: solid 1px rgba(0,0,0, .3);
+    background-color: white;
+    box-shadow: 2px 2px 1px rgba(0,0,0, .3);
+    margin-bottom: 1rem;
+}
+
+.result-list-item {
+    padding-left: 0.5rem;
+    padding-right: 2rem;
+
+    
+    
+}
+
+.result-list-item a {
+    border-bottom: none;
+}
+
+.result-list-item a {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-top: solid 1px rgba(0,0,0, .25)
+}
+
+
+.result-list-item a:first-child {
+  border-top: none;
 }
 
 </style>

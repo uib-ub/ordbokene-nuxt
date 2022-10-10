@@ -18,6 +18,6 @@ import { useStore } from '~/stores/searchStore'
 const store = useStore()
 
 definePageMeta({
-  middleware: 'search-middleware'
+  middleware: 'dict-middleware'
 })
 </script>

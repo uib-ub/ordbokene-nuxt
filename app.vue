@@ -1,7 +1,7 @@
 <template>
 
-<div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && !$route.params.slug && $route.params.dict}" >
-      <nav role="navigation" class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
+<div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}" >
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand text-white" to="/">
       <div class="small mx-1 my-1 my-lg-3">
@@ -47,13 +47,14 @@
         </div>
       </div>
 
+
     </div>
   </div>
 </nav>
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
-    <NuxtPage class="page-container container p-3" />
+    <NuxtPage class="page-container container px-3 pb-3" />
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
@@ -70,19 +71,19 @@
       <p class="footer-nav">{{$t('menu.search_pages')}}:</p>
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" v-bind:class="{'active': !store.advanced && store.dict =='bm,nn', 'welcome': !$route.params.slug}" 
-        :aria-current="store.advanced ? 'false' : 'true'" @click="dict_click('bm,nn')" :to="dict_link('bm,nn')">{{$t('dicts.bm,nn')}}</NuxtLink>
+        :aria-current="store.advanced ? 'false' : 'true'" to="/bm,nn">{{$t('dicts.bm,nn')}}</NuxtLink>
       </li>
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" v-bind:class="{'active': !store.advanced && store.dict =='bm', 'welcome': !$route.params.slug}" 
-        :aria-current="store.advanced ? 'false' : 'true'" @click="dict_click('bm')" :to="dict_link('bm')">{{$t('dicts.bm')}}</NuxtLink>
+        :aria-current="store.advanced ? 'false' : 'true'" to="/bm">{{$t('dicts.bm')}}</NuxtLink>
       </li>
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" v-bind:class="{'active': !store.advanced && store.dict =='nn', 'welcome': !$route.params.slug}" 
-        :aria-current="store.advanced ? 'false' : 'true'" @click="dict_click('nn')" :to="dict_link('nn')">{{$t('dicts.nn')}}</NuxtLink>
+        :aria-current="store.advanced ? 'false' : 'true'" to="/nn">{{$t('dicts.nn')}}</NuxtLink>
       </li>
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" v-bind:class="{'active': store.advanced}" :aria-current="store.advanced ? 'true' : 'false'" 
-        @click="store.advanced = true" :to="advanced_link">{{$t('advanced')}}</NuxtLink>
+        @click="store.advanced = true" to="/search">{{$t('advanced')}}</NuxtLink>
       </li>
     </ul>
   </nav>
@@ -137,25 +138,6 @@ const update_locale = (newLocale) => {
   locale.value = newLocale
 }
 
-const dict_click = (dict) => {
-  store.advanced = false
-  store.dict = dict
-  if (store.q != store.input) {
-    store.input = store.q
-  }
-}
-const dict_link = ((dict) => {
-  let url = `/${dict}/`
-  if (specialSymbols(store.q)) {
-    return  url
-  }
-  if (store.q) {
-    url = url + 'search?q=' + store.q
-  }
-  return url
-})
-
-
 </script>
 
 
@@ -187,9 +169,10 @@ body {
   overflow-y: scroll;
 }
 
-#__nuxt>.welcome {
-  background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
-}
+
+
+
+
 
 .back-to-search {
   font-size: larger;

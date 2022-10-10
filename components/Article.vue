@@ -159,11 +159,8 @@ const link_click = (event) => {
 }
 
 const link_to_self = () => {
-    let url = '/' + props.dict + '/' + props.article_id + '/'
-
-      return  url
+    return `/${props.dict}/${props.article_id}/${encodeURIComponent(data.value.lemmas[0].lemma)}`
     }
-
 
 </script>
 

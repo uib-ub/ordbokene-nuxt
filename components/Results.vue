@@ -150,17 +150,11 @@ const listView = computed(() => {
 }
 
 .list .article-column  {
+    border-radius: 2rem;
     border: solid 1px rgba(0,0,0, .3);
     background-color: white;
     box-shadow: 2px 2px 1px rgba(0,0,0, .3);
-    padding-bottom: 0.5rem;
-    padding-top: 0.5rem;
-}
-
-.list .article-column {
-  border-radius: 0rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+    padding: 0.5rem;
 }
 
 </style>

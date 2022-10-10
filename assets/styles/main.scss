@@ -138,6 +138,7 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
 }
 
 
+
 @include media-breakpoint-up(lg) {
   #__nuxt>.welcome {
     background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
@@ -165,12 +166,18 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
 
   .welcome article {
     border-radius: 0rem !important;
-    padding: 1rem !important;
-    padding-bottom: 0rem !important;
-    margin: 2rem !important;
     background-color: var(--bs-tertiary) !important;
     box-shadow: none !important;
     border: none !important;
-
+  }
 }
+
+
+@include media-breakpoint-up(xl) {
+  .welcome article {
+    padding: 1rem !important;
+    padding-bottom: 0rem !important;
+    margin: 2rem !important;
+  }
+
 }

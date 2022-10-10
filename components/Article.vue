@@ -13,8 +13,9 @@
         <div class="skeleton skeleton-content w-25"/>
         </div>
         <div v-else>
-        <h2 v-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
-        <h2 v-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
+        <h2 v-if="welcome" class="dict-label">{{$t('monthly') + {"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>    
+        <h2 v-else-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
+        <h2 v-else-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div class="p-4">
         <ArticleHeader :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict"/>
 
@@ -75,7 +76,8 @@ const toggle = ref(false)
 
 const props = defineProps({
     article_id: Number,
-    dict: String
+    dict: String,
+    welcome: Boolean
 })
 
 const { pending, data, error } = useAsyncData('article_'+props.article_id, () => $fetch(`https://odd.uib.no/opal/dev/${props.dict}/article/${props.article_id}.json`,
@@ -235,8 +237,14 @@ h4 {
 
 .article-dict-label {
     font-size: 1.5rem !important;
-    padding-left: 0.25rem;
+    padding-left: 0.5rem;
     padding-bottom: 1rem;
+    
+}
+
+.dict-label {
+    padding-left: 0.25rem;
+    margin-top: 0;
 }
 
 

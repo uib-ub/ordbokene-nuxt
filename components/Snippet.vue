@@ -51,11 +51,10 @@ const parse_subitems =  (explanation, text) => {
     }
 
 
-const parse_definitions = () => {
+const parse_definitions = (node) => {
     let definitionTexts = []
       try {
-        console.log(props.definitions)
-      props.definitions.forEach((definition) => {
+      node.forEach((definition) => {
         if (definition.elements) {
         if (definition.elements[0].content) {
           let new_string = parse_subitems(definition.elements[0], definition.elements[0].content)
@@ -82,7 +81,7 @@ const parse_definitions = () => {
 
 
 const snippet = computed(() => {
-    return parse_definitions()
+    return parse_definitions(props.definitions)
     })
 
 </script>

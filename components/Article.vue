@@ -3,7 +3,7 @@
         <span v-if="pending" class="list-group-item">Laster...</span>
         <NuxtLink v-else class="list-group-item result-list-item" :to="link_to_self()">     
         
-    <span v-for="(lemma_group, i) in lemma_groups" :key="i">
+    <div v-for="(lemma_group, i) in lemma_groups" :key="i">
     <span class="lemma-group">
                 
     <span v-for="(lemma, index) in lemma_group.lemmas"
@@ -18,14 +18,14 @@
                   </span>
     </span>
 </span>
-<span v-if="secondary_header_text" class="lemma">{{secondary_header_text}}</span>  
-    <em v-if="lemma_group.description" class="subheader">
+<span v-if="secondary_header_text">,&nbsp;<span class="lemma-group lemma">{{secondary_header_text}}</span></span>  
+    &nbsp;<em v-if="lemma_group.description" class="subheader">
     <span class="header_group_list">{{lemma_group.description}}</span>
           {{lemma_group.genus}}
     <span v-if="settings.inflectionNo" class="inflection_classes">{{lemma_group.inflection_classes}}</span>
 
     </em>
-    </span><Snippet :dict="dict" :definitions="data.body.definitions"/>
+</div><Snippet :dict="dict" :definitions="data.body.definitions"/>
 
     </NuxtLink>
 </div>
@@ -409,22 +409,20 @@ article {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    
-    
 }
 
-.result-list-item a {
+.article-column a {
     border-bottom: none;
 }
 
-.result-list-item a {
+.article-column a {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   border-top: solid 1px rgba(0,0,0, .25)
 }
 
 
-.result-list-item a:first-child {
+.article-column a:first-child {
   border-top: none;
 }
 

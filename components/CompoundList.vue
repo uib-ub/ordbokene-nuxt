@@ -8,7 +8,7 @@
           >{{' '}}<NuxtLink v-if="!welcome"
             :to="'/' + dict + '/' + item.article_id + (item.definition_id ? '#def'+item.definition_id : '')"
             @click="link_click(item)"
-            >{{item.lemmas[0].lemma}}</NuxtLink>
+            >{{item.lemmas[0].lemma}}</NuxtLink><span v-else>{{item.lemmas[0].lemma}}</span>
         </li>
       </ul>
     </li>

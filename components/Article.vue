@@ -406,7 +406,9 @@ article {
 .result-list-item {
     padding-left: 0.5rem;
     padding-right: 2rem;
-
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     
     
 }

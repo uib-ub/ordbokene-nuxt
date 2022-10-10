@@ -2,7 +2,11 @@
 {{snippet}}
 </template>
 
+
+
 <script setup>
+import { useStore } from '~/stores/searchStore'
+const store = useStore()
 const props = defineProps({
     definitions: Object,
     dict: String
@@ -26,7 +30,7 @@ const parse_subitems =  (explanation, text) => {
               }
 
               else if (subitem.id) {
-                new_string += entities[props.dict][explanation.items[linkIndex].id].expansion
+                new_string += store['concepts_'+props.dict][explanation.items[linkIndex].id].expansion
 
               }
               else if (subitem.text) {

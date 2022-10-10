@@ -17,48 +17,51 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
             store.advanced = false
             store.searchUrl = to.fullPath
             store.q = to.params.slug[0]
-            if (!to.redirectedFrom) {
-                store.input = to.params.slug[0]
+            if (to.redirectedFrom && to.redirectedFrom.query.q != store.q) {
+                console.log("SETTING ORIGINAL INPUT")
+                store.originalInput = to.redirectedFrom.query.q
+            } else  {
                 store.originalInput = ""
+                store.input = store.q
             }
+            
+
         }
     }
     else if (to.name == 'dict-search') {
-        // Advanced search
+        // Redirect old links to advanced search
         if (to.query.scope) {
-            console.log("ADVANCED SEARCH")
-            store.view = 'search'
-            store.advanced = true
-            store.searchUrl = to.fullPath
-            store.q = to.query.q
-            if (!to.redirectedFrom) {
-                store.input = to.query.q
-                store.originalInput = ""
+            let url = `/search?q=${to.query.q}&dict=${to.params.dict}&scope=${to.query.scope}`
+            if (to.query.pos) {
+                url += "&pos=" + to.query.pos
             }
+
+            return navigateTo(url)
         }
         else { // Simple search
             // Redirect to advanced
             if (specialSymbols(to.query.q)) {
                 console.log("REDIRECT TO ADVANCED")
+                store.scope = "e"
                 return navigateTo(`/${store.dict}/search?q=${to.query.q}&scope=${store.scope}`)
             }
             else {
                 console.log("SIMPLE SEARCH")
                 store.advanced = false
-                const { pending, error, refresh, data: suggestions } = await useAsyncData('suggest_'+to.query.q, () => $fetch(`https://odd.uib.no/opal/dev/api/suggest?&q=${to.query.q}&dict=${to.params.dict}&n=20&dform=int&meta=n&include=eis`))
+                const { pending, error, refresh, data: suggestions } = await useAsyncData(`suggest_${to.query.q}_${to.params.dict}`, () => $fetch(`https://odd.uib.no/opal/dev/api/suggest?&q=${to.query.q}&dict=${to.params.dict}&n=20&dform=int&meta=n&include=eis`))
                 let { exact, inflect } = suggestions.value.a
         
                 if (exact) {
                     if (exact[0][0].length == store.q.length) {
                         // kun hvis resultatet er et uttrykk eller har litt andre tegn?
                         console.log("EXACT", exact[0][0])
-                        store.originalInput = to.query.q
+
                         return navigateTo(`/${store.dict}/${exact[0][0]}`)
                     }
                 }
                 if (inflect) {
                         console.log("INFLECT", inflect[0][0])
-                        store.originalInput = to.query.q
+
                         return navigateTo(`/${store.dict}/${inflect[0][0]}`)
                     
                 }

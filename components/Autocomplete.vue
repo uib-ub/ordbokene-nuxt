@@ -48,15 +48,25 @@ async function fetchAutocomplete(q) {
     }
 
     if (blank != "advanced") {
-    
+
       let response = ref([])
-      response.value = await $fetch(`https://odd.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=e`)
-      
+      let url = `https://odd.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=${store.advanced ? store.scope + (store.pos ? '&wc='+store.pos : '') : 'e'}`
+      response.value = await $fetch(url)
+
       // prevent suggestions after submit
       if (store.autocompletePending && q == store.input) {
         let autocomplete_suggestions = []
         if (store.input.trim() == q && response.value.a.exact) {
-          autocomplete_suggestions = response.value.a.exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "word"}))
+          let { exact, inflect, freetext } = response.value.a
+          autocomplete_suggestions = exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "word"}))
+          if (inflect) {
+            let inflection_suggestions = response.value.a.inflect.map(item => ({q: item[0], time: time, dict: [item[1]], type: "inflect"}))
+            autocomplete_suggestions = autocomplete_suggestions.concat(inflection_suggestions)
+          }
+          if (freetext) {
+            let inflection_suggestions = response.value.a.freetext.map(item => ({q: item[0], time: time, dict: [item[1]], type: "freetext"}))
+            autocomplete_suggestions = autocomplete_suggestions.concat(inflection_suggestions)
+          }
         }
 
         if (autocomplete_suggestions.length) {
@@ -79,16 +89,17 @@ const emit = defineEmits(['submit'])
 const submit = (data) => {
   store.autocompletePending = false
   //todo: plausible
-  emit('submit')
   input.value.$el.select()
+  emit('submit')
+
+  console.log("SELECTING3")
 }
 
-watch(() => route.fullPath, () => {
-    input.value.$el.select()
-  
-})
+
 
 const dropdownSelect = () => {
+
+  console.log("SELECTING")
   input.value.$el.select()
 }
 
@@ -102,7 +113,7 @@ onMounted(() => {
   if (store.input) {
     input.value.$el.select()
 
-  }  
+  }
 })
 
 </script>
@@ -113,15 +124,16 @@ onMounted(() => {
       <div>
         <div class="height d-flex align-items-center justify-content-between">
           <ComboboxInput
-            class="form-control"
+            class="form-control mx-3"
             name="q"
             :value="store.input"
             autofocus="true"
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
+            maxlength="200"
             ref="input"
-            @input="store.input = $event.target.value; fetchAutocomplete($event.target.value)" 
+            @input="store.input = $event.target.value; fetchAutocomplete($event.target.value)"
             :placeholder="$t('search_placeholder')"
             :aria-label="$t('search_placeholder')"
           />
@@ -219,10 +231,10 @@ onMounted(() => {
   border-radius: 0 0 1rem 0;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(189, 189, 189); 
+  background: rgb(189, 189, 189);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(141, 141, 141); 
+  background: rgb(141, 141, 141);
 }
 </style>

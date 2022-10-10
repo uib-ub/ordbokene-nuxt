@@ -4,7 +4,7 @@
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
 
-const different = store.input!= store.q && store.input
+const different = store.originalInput
 </script>
 
 <template>

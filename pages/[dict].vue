@@ -1,24 +1,9 @@
 <template>
 <div class="dict-view">
-    <ul class="mode-nav nav px-2">
-  <li class="nav-item">
-    <NuxtLink class="nav-link py-0" 
-              v-bind:class="{'active': !store.advanced, 'welcome': !$route.params.slug}" 
-              :aria-current="store.advanced ? 'false' : 'true'"
-              @click="store.advanced = false"
-              :to="simple_link">Søk i oppslagsord</NuxtLink>
-  </li>
-  <li class="nav-item">
-    <NuxtLink class="nav-link py-0" 
-              v-bind:class="{'active': store.advanced}" 
-              :aria-current="store.advanced ? 'true' : 'false'" 
-              @click="store.advanced = true"
-              :to="advanced_link">Avansert søk</NuxtLink>
-  </li>
-</ul>
+  <SearchNav/>
+
     <NuxtErrorBoundary @error="form_error">
     <SearchForm/>
-    
   </NuxtErrorBoundary>
   <NuxtErrorBoundary @error="content_error">
     <NuxtChild/>
@@ -38,6 +23,14 @@ const form_error = (error) => {
 }
 const content_error = (error) => {
   console.log("CONTENT ERROR", error)
+}
+
+const dict_click = (dict) => {
+  store.advanced = false
+  store.dict = dict
+  if (store.q != store.input) {
+    store.input = store.q
+  }
 }
 
 
@@ -64,8 +57,8 @@ const advanced_link = computed(() => {
   
 })
 
-const simple_link = computed(() => {
-  let url = `/${store.dict}/`
+const dict_link = ((dict) => {
+  let url = `/${dict}/`
   if (specialSymbols(store.q)) {
     return  url
   }
@@ -79,37 +72,3 @@ const simple_link = computed(() => {
 
 
 </script>
-
-<style scoped>
-.mode-nav .nav-link {
-    color: rgba(0,0,0,.8);
-    letter-spacing: .1rem;
-    font-variant-caps: all-small-caps;
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-
-.mode-nav .nav-link.active {
-    border-bottom: solid 2px var(--bs-secondary);
-    background-color: rgba(0,0,0,.05);
-    color: black;
-}
-
-.welcome .mode-nav .nav-link.active {
-    border-bottom: solid 2px var(--bs-secondary);
-    background-color: rgba(0,0,0,.2);
-    color: white;
-}
-
-.welcome .mode-nav .nav-link {
-  color: white;
-}
-
-
-
-.mode-nav .nav-link:hover {
-  border-bottom: solid 2px;
-  background-color: rgba(0,0,0,.1);
-}
-
-    </style>

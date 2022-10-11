@@ -47,4 +47,10 @@
 .accordion{
   background-color: white;
 }
+.accordion-button:after {
+    order: -1;
+    margin-left: 0; 
+    margin-right:0.5em;
+    color: var(--bs-primary);
+}
 </style>

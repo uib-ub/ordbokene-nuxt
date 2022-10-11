@@ -1,11 +1,11 @@
 <template>
     <div v-if="settings.listView && store.advanced == true && $route.name == 'search' && store.q">
         <span v-if="pending" class="list-group-item"><div class="skeleton skeleton-content w-25"/><div class="skeleton skeleton-content w-50"/></span>
-        <NuxtLink v-else class="list-group-item result-list-item" :to="link_to_self()">     
-        
+        <NuxtLink v-else class="list-group-item result-list-item" :to="link_to_self()">
+
     <div v-for="(lemma_group, i) in lemma_groups" :key="i">
     <span class="lemma-group">
-                
+
     <span v-for="(lemma, index) in lemma_group.lemmas"
           :key="index"><span class="lemma"><DefElement v-if="lemma.annotated_lemma" :body="lemma.annotated_lemma" tag="span" :content_locale="content_locale"/><span v-else>{{lemma.lemma}}</span></span>
           <span v-if="lemma.hgno"
@@ -18,7 +18,7 @@
                   </span>
     </span>
 </span>
-<span v-if="secondary_header_text">,&nbsp;<span class="lemma-group lemma">{{secondary_header_text}}</span></span>  
+<span v-if="secondary_header_text">,&nbsp;<span class="lemma-group lemma">{{secondary_header_text}}</span></span>
     &nbsp;<em v-if="lemma_group.description" class="subheader">
     <span class="header_group_list">{{lemma_group.description}}</span>
           {{lemma_group.genus}}
@@ -42,13 +42,13 @@
         <div class="skeleton skeleton-content w-25"/>
         </div>
         <div v-else>
-        <h2 v-if="welcome" class="dict-label">{{$t('monthly', 1, { locale: content_locale}) + {"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>    
+        <h2 v-if="welcome" class="dict-label">{{$t('monthly', 1, { locale: content_locale}) + {"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-else-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-else-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div :class="welcome? 'p-4' : 'px-4 pt-4 pb-2'">
         <ArticleHeader :lemma_groups="lemma_groups" :secondary_header_text="secondary_header_text" :content_locale="content_locale" :dict="dict"/>
 
-        <button v-if="inflected && !welcome" class="inflection-button py-1 px-3 mx-2" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
+        <button v-if="inflected && !welcome" class="inflection-button btn rounded-pill py-1 px-3 mx-2" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
              {{$t('article.show_inflection')}} <span v-if="!toggle"><Icon :icon="'bi-plus'" /></span><span v-if="toggle"><Icon :icon="'bi-dash'" /></span>
         </button>
 
@@ -247,9 +247,9 @@ const lemma_groups = computed(() => {
               return {description:  t('tags.NOUN', 1, { locale: content_locale}), genus: key, lemmas: genus_map[key], }
             })
 
-        
+
         }
-        
+
         groups.forEach((lemma_group, index) => {
               groups[index]['inflection_classes'] = inflection_classes(lemma_group.lemmas)
             })
@@ -301,6 +301,10 @@ const secondary_header_text = computed(() => {
 .inflection-button:focus {
     box-shadow: 1px 1px 1px var(--bs-primary);
 }
+.inflection-button:hover {
+    box-shadow: 1px 1px 1px var(--bs-primary);
+}
+
 
 
 .inflection-container {
@@ -349,7 +353,7 @@ h4 {
     font-size: 1.5rem !important;
     padding-left: 0.5rem;
     padding-bottom: 1rem;
-    
+
 }
 
 .dict-label {

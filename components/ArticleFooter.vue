@@ -99,7 +99,7 @@ const download_ris = () => {
   <div v-if="copy_popup">
   <div class="position-absolute top-50 start-50 translate-middle"><span>{{$t('article.link_copied', 1, { locale: content_locale})}}</span></div>
   </div>
-<div class="d-flex justify-content-around">
+<div class="d-flex justify-content-around mt-3">
     <button class="btn rounded-pill" v-if="showLinkCopy" @click="copy_link"><BootstrapIcon icon="bi-link" class="pe-2" /> {{$t("article.copy_link", 1, { locale: content_locale})}}</button>
     <button class="btn rounded-pill" v-if="webShareApiSupported" @click="shareViaWebShare"><BootstrapIcon icon="bi-share-fill" class="pe-2" /> {{$t("article.share", 1, { locale: content_locale})}}</button>
     <button class="btn rounded-pill" type="button" data-bs-toggle="collapse" :data-bs-target="'#cite-'+article_id" aria-expanded="false" aria-controls="collapseExample"><BootstrapIcon icon="bi-quote" class="pe-2" /> {{$t("article.cite", 1, { locale: content_locale})}}</button>

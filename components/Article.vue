@@ -45,7 +45,7 @@
         <h2 v-if="welcome" class="dict-label">{{$t('monthly', 1, { locale: content_locale}) + {"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>    
         <h2 v-else-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-else-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
-        <div class="p-4">
+        <div :class="welcome? 'p-4' : 'px-4 pt-4 pb-2'">
         <ArticleHeader :lemma_groups="lemma_groups" :secondary_header_text="secondary_header_text" :content_locale="content_locale" :dict="dict"/>
 
         <button v-if="inflected && !welcome" class="inflection-button py-1 px-3 mx-2" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">

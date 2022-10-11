@@ -1,5 +1,5 @@
 <template>
-    <div>     
+    <div v-bind:class="{'list': listView}">     
     <div v-if="pending" class="d-flex align-items-center justify-content-center py-5 my-5">
         <div class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
@@ -15,23 +15,31 @@
     <div class="row" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
       <div class="col-lg-6">
         <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span  aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t('notifications.results')}}</span></div>
-        <Article v-for="(article_id, idx) in articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>
+        <div class="article-column">
+          <Article v-for="(article_id, idx) in articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>
+        </div>
     </div>
       <div class="col-lg-6">
         <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Nynorskordboka</h2><span aria-hidden="true" class="result-count"> | {{articles.meta.nn.total}} treff</span></div>
-        <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
+        <div class="article-column">
+          <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
+        </div>
     </div>
-    </div>
+  </div>
 
     
     <div class="row" v-if="route.params.dict != 'bm,nn' && route.query.dict != 'bm,nn' " >
       <div v-if="(route.params.dict == 'bm' || route.query.dict == 'bm') && articles.meta.bm">
         <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span class="result-count">  | {{articles.meta.bm.total}} {{$t('notifications.results')}}</span></div>
-      <Article v-for="(article_id, idx) in articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>
+        <div class="article-column">
+          <Article v-for="(article_id, idx) in articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>
+        </div>
       </div>
       <div v-if="(route.params.dict == 'nn' || route.query.dict == 'nn' )  && articles.meta.nn">
         <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Nynorskordboka</h2><span class="result-count"> | {{articles.meta.nn.total}} treff</span></div>
-      <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
+        <div class="article-column">
+          <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
+        </div>
       </div>
     </div>
   </div>
@@ -54,6 +62,9 @@
 
 import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
+import {useSettingsStore } from '~/stores/settingsStore'
+
+const settings = useSettingsStore()
 const store = useStore()
 const route = useRoute()
 
@@ -122,6 +133,10 @@ watch(articles, (newArticles) => {
 }
 )
 
+const listView = computed(() => {
+  return settings.listView && store.advanced == true && route.name == 'search' && store.q
+})
+
 </script>
 
 <style scoped>
@@ -133,4 +148,13 @@ watch(articles, (newArticles) => {
 .result-count {
     font-size: 1rem;
 }
+
+.list .article-column  {
+    border-radius: 2rem;
+    border: solid 1px rgba(0,0,0, .3);
+    background-color: white;
+    box-shadow: 2px 2px 1px rgba(0,0,0, .3);
+    padding: 0.5rem;
+}
+
 </style>

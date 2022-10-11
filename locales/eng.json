@@ -4,7 +4,7 @@
   "help": "Help",
   "advanced": "Advanced search",
   "about": "About",
-  "monthly": "Titbits from the dictionaries",
+  "monthly": "Titbit from ",
   "photo": "Photo by Clay Banks on unsplash.com",
   "close": "Close",
   "cancel": "Cancel",
@@ -152,7 +152,7 @@
 },
 "article": {
     "definition": "Definition",
-    "show": "Show article",
+    "show": "Open article",
     "show_inflection": "Inflection",
     "hide_inflection": "Inflection",
     "share": "Share the word",

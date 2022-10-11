@@ -77,6 +77,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         store.q = to.query.q
         store.input = to.query.q || ""
         store.originalInput = ""
+        store.view = 'suggest'
         
         
     }

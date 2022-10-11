@@ -11,19 +11,43 @@
     </script>
     
     <template>
-      <main class="m-lg-5 px-lg-5 py-lg-2">
-        <div class="row" v-if="welcome_bm && welcome_nn">
+      <main class="m-lg-5 px-lg-5 py-lg-2" v-if="welcome_bm && welcome_nn">
+        <div class="row">
           <div class="col-lg">
-          <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm"/>
+          <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm" welcome/>
           </div>
           <div class="col-lg">
-          <Article :article_id="parseInt(welcome_nn.front_article.value)" dict="nn"/>
+          <Article :article_id="parseInt(welcome_nn.front_article.value)" dict="nn" welcome/>
           </div>
+        </div>            
+      </main> 
+      <main v-else class="m-lg-5 px-lg-5 py-lg-2">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
-            <div v-else>
-        <h1>WAITING</h1>
-      
-        </div>
+
       </main> 
     </template>
+
+<style scoped>
+
+
+.monthly-title {
+  font-size: 1.17em;
+  display: flex;
+  justify-content: center;
+}
+
+.monthly-title h2 {
+  background-color: var(--bs-primary);
+
+  border-radius: 2rem;
+	text-align: center;
+  letter-spacing: .1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+}
+
+</style>
     

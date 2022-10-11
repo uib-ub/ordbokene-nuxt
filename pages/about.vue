@@ -447,35 +447,32 @@
 		          <td> dronningane</td>
 	          </tr>
 	          <tr>
-		          <td>m1</td>
+		          <td rowspan="3">m1</td>
 		          <td> båt</td>
 		          <td> båten</td>
 		          <td> båtar</td>
 		          <td> båtane</td>
 	          </tr>
 	          <tr>
-		          <td>&nbsp;</td>
 		          <td>hage</td>
 		          <td>hagen</td>
 		          <td>hagar</td>
 		          <td>hagane</td>
 	          </tr>
 	          <tr>
-		          <td>&nbsp;</td>
 		          <td> lærar</td>
 		          <td> læraren</td>
 		          <td> lærarar</td>
 		          <td> lærarane</td>
 	          </tr>
 	          <tr>
-		          <td>n1</td>
+		          <td rowspan="2">n1</td>
 		          <td> hus</td>
 		          <td> huset</td>
 		          <td> hus</td>
 		          <td> husa</td>
 	          </tr>
 	          <tr>
-		          <td>&nbsp;</td>
 		          <td> rike</td>
 		          <td> riket</td>
 		          <td> rike</td>
@@ -537,28 +534,26 @@
 		          <th>Perfektum partisipp (Supinum)</th>
 	          </tr>
 	          <tr>
-		          <td>v1</td>
+		          <td rowspan="2">v1</td>
 		          <td> kasta el. kaste</td>
 		          <td> kastar</td>
 		          <td> kasta</td>
 		          <td> kasta</td>
 	          </tr>
 	          <tr>
-		          <td></td>
 		          <td> ropa el. rope</td>
 		          <td> ropar</td>
 		          <td> ropa</td>
 		          <td> ropa</td>
 	          </tr>
 	          <tr>
-		          <td>v2</td>
+		          <td rowspan="2">v2</td>
 		          <td> kvila el. kvile</td>
 		          <td> kviler</td>
 		          <td> kvilte</td>
 		          <td> kvilt</td>
 	          </tr>
 	          <tr>
-		          <td></td>
 		          <td>ropa el. rope</td>
 			        <td> roper</td>
 			        <td> ropte</td>
@@ -583,63 +578,58 @@
 	              <th>Bestemt form flertall</th>
 	            </tr>
               <tr>
-	              <td>f1</td>
+	              <td rowspan="2">f1</td>
 	              <td>bru</td>
 	              <td>brua</td>
 	              <td>bruer</td>
 	              <td>bruene</td>
 	            </tr>
               <tr>
-                <td>&nbsp;</td>
 	              <td>pumpe</td>
 	              <td>pumpa</td>
 	              <td>pumper</td>
 	              <td>pumpene</td>
               </tr>
               <tr>
-                <td>m1</td>
+                <td rowspan="3">m1</td>
 	              <td>stol</td>
 	              <td>stolen</td>
 	              <td>stoler</td>
 	              <td>stolene</td>
               </tr>
               <tr>
-	              <td>&nbsp;</td>
 	              <td>bakke</td>
 	              <td>bakken</td>
 	              <td>bakker</td>
 	              <td>bakkene</td>
 	            </tr>
               <tr>
-	              <td>&nbsp;</td>
 	              <td>pumpe</td>
 	              <td>pumpen</td>
 	              <td>pumper</td>
 	              <td>pumpene</td>
 	            </tr>
               <tr>
-                <td>m2</td>
+                <td rowspan="2">m2</td>
                 <td>lærer</td>
 	              <td>læreren</td>
 	              <td>lærere</td>
 	              <td>lærerne</td>
 	            </tr>
               <tr>
- 		            <td>&nbsp;</td>
 		            <td>dommer</td>
 		            <td>dommeren</td>
 		            <td>dommere</td>
 		            <td>dommerne</td>
               </tr>
               <tr>
-	              <td>m3</td>
+	              <td rowspan="2">m3</td>
 	              <td>bever</td>
 	              <td>beveren</td>
 	              <td>bevere, bevrer el. bevre</td>
 	              <td>beverne el. bevrene</td>
               </tr>
               <tr>
- 		            <td>&nbsp;</td>
 		            <td>sommer</td>
 		            <td>sommeren</td>
 		            <td>sommere, somrer el. somre</td>
@@ -653,28 +643,26 @@
 	              <td>slotta el. slottene</td>
               </tr>
               <tr>
-	              <td>n2</td>
+	              <td rowspan="2">n2</td>
 		            <td>salt</td>
 		            <td>saltet</td>
     		        <td>salter</td>
 		            <td>salta el. saltene</td>
               </tr>
               <tr>
-    		        <td>&nbsp;</td>
 		            <td>eple</td>
 		            <td>eplet</td>
 		            <td>epler</td>
     		        <td>epla el. eplene</td>
               </tr>
               <tr>
-		            <td>n3</td>
+		            <td rowspan="2">n3</td>
     		        <td>kontor</td>
 		            <td>kontoret</td>
 		            <td>kontor el. kontorer</td>
 		            <td>kontora el. kontorene</td>
               </tr>
               <tr>
-			          <td>&nbsp;</td>
 			          <td>høve</td>
     			      <td>høvet</td>
 		    	      <td>høve el. høver</td>
@@ -707,14 +695,13 @@
                 <td>norske</td>
               </tr>
               <tr>
-                <td>a3</td>
+                <td rowspan="2">a3</td>
                 <td>ekte</td>
                 <td>ekte</td>
                 <td>ekte</td>
                 <td>ekte</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
                 <td>oppskjørta</td>
                 <td>oppskjørta</td>
                 <td>oppskjørta</td>
@@ -728,14 +715,13 @@
                 <td>oppskjørtede el. oppskjørtete</td>
               </tr>
               <tr>
-                <td>a5</td>
+                <td rowspan="2">a5</td>
                 <td>makaber</td>
                 <td>makabert</td>
                 <td>makabre</td>
                 <td>makabre</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
                 <td>lunken</td>
                 <td>lunkent</td>
                 <td>lunkne</td>
@@ -754,28 +740,26 @@
                 <th>Perfektum partisipp (Supinum)</th>
               </tr>
               <tr>
-                <td>v1</td>
+                <td rowspan="2">v1</td>
                 <td>kaste</td>
                 <td>kaster</td>
                 <td>kasta el. kastet</td>
                 <td>kasta el. kastet</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
                 <td>bie</td>
                 <td>bier</td>
                 <td>bia el. biet</td>
                 <td>bia el. biet</td>
               </tr>
               <tr>
-                <td>v2</td>
+                <td rowspan="2">v2</td>
                 <td>lyse</td>
                 <td>lyser</td>
                 <td>lyste</td>
                 <td>lyst</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
                 <td>lesse</td>
                 <td>lesser</td>
                 <td>lesste</td>
@@ -789,14 +773,13 @@
                 <td>levd</td>
               </tr>
               <tr>
-                <td>v4</td>
+                <td rowspan="2">v4</td>
 		            <td>nå</td>
     		        <td>når</td>
 		            <td>nådde</td>
 		            <td>nådd</td>
 	            </tr>
     	        <tr>
-		            <td>&nbsp;</td>
 		            <td>bie</td>
 		            <td>bier</td>
     		        <td>bidde</td>
@@ -1055,63 +1038,58 @@
                 <th>Bestemt form flertall</th>
               </tr>
               <tr>
-                <td>f1</td>
+                <td rowspan="2">f1</td>
                 <td>bru</td>
                 <td>brua</td>
                 <td>bruer</td>
                 <td>bruene</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
 	              <td>pumpe</td>
 	              <td>pumpa</td>
 	              <td>pumper</td>
 	              <td>pumpene</td>
               </tr>
               <tr>
-                <td>m1</td>
+                <td rowspan="3">m1</td>
 	              <td>stol</td>
 	              <td>stolen</td>
 	              <td>stoler</td>
 	              <td>stolene</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
                 <td>bakke</td>
                 <td>bakken</td>
                 <td>bakker</td>
                 <td>bakkene</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
                 <td>pumpe</td>
                 <td>pumpen</td>
                 <td>pumper</td>
                 <td>pumpene</td>
               </tr>
               <tr>
-                <td>m2</td>
+                <td rowspan="2">m2</td>
                 <td>lærer</td>
                 <td>læreren</td>
                 <td>lærere</td>
                 <td>lærerne</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
                 <td>dommer</td>
                 <td>dommeren</td>
                 <td>dommere</td>
                 <td>dommerne</td>
               </tr>
               <tr>
-                <td>m3</td>
+                <td rowspan="2">m3</td>
                 <td>bever</td>
                 <td>beveren</td>
                 <td>bevere, bevrer el. bevre</td>
                 <td>beverne el. bevrene</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
                 <td>sommer</td>
                 <td>sommeren</td>
                 <td>sommere, somrer el. somre</td>
@@ -1125,28 +1103,26 @@
                 <td>slotta el. slottene</td>
               </tr>
               <tr>
-                <td>n2</td>
+                <td rowspan="2">n2</td>
                 <td>salt</td>
                 <td>saltet</td>
                 <td>salter</td>
                 <td>salta el. saltene</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
                 <td>eple</td>
                 <td>eplet</td>
                 <td>epler</td>
                 <td>epla el. eplene</td>
               </tr>
               <tr>
-                <td>n3</td>
+                <td rowspan="2">n3</td>
                 <td>kontor</td>
                 <td>kontoret</td>
                 <td>kontor el. kontorer</td>
                 <td>kontora el. kontorene</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
                 <td>høve</td>
                 <td>høvet</td>
                 <td>høve el. høver</td>
@@ -1179,14 +1155,13 @@
                 <td>norske</td>
               </tr>
               <tr>
-                <td>a3</td>
+                <td rowspan="2">a3</td>
                 <td>ekte</td>
                 <td>ekte</td>
                 <td>ekte</td>
                 <td>ekte</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
                 <td>oppskjørta</td>
                 <td>oppskjørta</td>
                 <td>oppskjørta</td>
@@ -1200,14 +1175,13 @@
                 <td>oppskjørtede el. oppskjørtete</td>
               </tr>
               <tr>
-                <td>a5</td>
+                <td rowspan="2">a5</td>
                 <td>makaber</td>
                 <td>makabert</td>
                 <td>makabre</td>
                 <td>makabre</td>
               </tr>
               <tr>
-                <td>&nbsp;</td>
 		            <td>lunken</td>
 		            <td>lunkent</td>
   		          <td>lunkne</td>
@@ -1226,28 +1200,26 @@
                 <th>Perfektum partisipp (Supinum)</th>
               </tr>
               <tr>
-                <td>v1</td>
+                <td rowspan="2">v1</td>
 		            <td>kaste</td>
   		          <td>kaster</td>
 	  	          <td>kasta el. kastet</td>
     		        <td>kasta el. kastet</td>
 	            </tr>
               <tr>
-                <td>&nbsp;</td>
     	  	      <td>bie</td>
 		            <td>bier</td>
 		            <td>bia el. biet</td>
 		            <td>bia el. biet</td>
       	      </tr>
   	          <tr>
-	  	          <td>v2</td>
+	  	          <td rowspan="2">v2</td>
 		            <td>lyse</td>
 		            <td>lyser</td>
 		            <td>lyste</td>
 		            <td>lyst</td>
   	          </tr>
 	            <tr>
-		            <td>&nbsp;</td>
     		        <td>lesse</td>
 		            <td>lesser</td>
 		            <td>lesste</td> 
@@ -1261,14 +1233,13 @@
   		          <td>levd</td>
   	          </tr>
 	            <tr>
-     		        <td>v4</td>
+     		        <td rowspan="2">v4</td>
 	            	<td>nå</td>
 		            <td>når</td>
   	            <td>nådde</td>
     	  	      <td>nådd</td>
   	          </tr>
             	<tr>
-		            <td>&nbsp;</td>
 		            <td>bie</td>
     		        <td>bier</td>
 		            <td>bidde</td>
@@ -1307,35 +1278,32 @@
 		          <td> dronningane</td>
   	        </tr>
       	    <tr>
-  	    	    <td>m1</td>
+  	    	    <td rowspan="3">m1</td>
 	  	        <td> båt</td>
     		      <td> båten</td>
 	          	<td> båtar</td>
 		          <td> båtane</td>
       	    </tr>
 	          <tr>
-  		        <td>&nbsp;</td>
 	  	        <td>hage</td>
     		      <td>hagen</td>
 		          <td>hagar</td>
 		          <td>hagane</td>
       	    </tr>
 	          <tr>
-  		        <td>&nbsp;</td>
     	  	    <td> lærar</td>
 		          <td> læraren</td>
 		          <td> lærarar</td>
 		          <td> lærarane</td>
   	        </tr>
 	          <tr>
-  		        <td>n1</td>
+  		        <td rowspan="2">n1</td>
     	  	    <td> hus</td>
 	          	<td> huset</td>
 		          <td> hus</td>
 		          <td> husa</td>
   	        </tr>
     	      <tr>
-		          <td>&nbsp;</td>
 		          <td> rike</td>
 		          <td> riket</td>
       		    <td> rike</td>
@@ -1397,28 +1365,26 @@
     		      <th>Perfektum partisipp (Supinum)</th>
 	          </tr>
 	          <tr>
-    		      <td>v1</td>
+    		      <td rowspan="2">v1</td>
 		          <td> kasta el. kaste</td>
 		          <td> kastar</td>
     		      <td> kasta</td>
 		          <td> kasta</td>
 	          </tr>
         	  <tr>
-		          <td></td>
 		          <td> ropa el. rope</td>
 		          <td> ropar</td>
     		      <td> ropa</td>
 		          <td> ropa</td>
 	          </tr>
     	      <tr>
-		          <td>v2</td>
+		          <td rowspan="2">v2</td>
 		          <td> kvila el. kvile</td>
     		      <td> kviler</td>
 		          <td> kvilte</td>
 		          <td> kvilt</td>
 	          </tr>
 	          <tr>
-    	    	  <td></td>
 	         	  <td>ropa el. rope</td>
 	  		      <td> roper</td>
     		   	  <td> ropte</td>

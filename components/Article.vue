@@ -42,7 +42,7 @@
         <div class="skeleton skeleton-content w-25"/>
         </div>
         <div v-else>
-        <h2 v-if="welcome" class="dict-label">{{$t('monthly') + {"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>    
+        <h2 v-if="welcome" class="dict-label">{{$t('monthly', 1, { locale: content_locale}) + {"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>    
         <h2 v-else-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-else-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div class="p-4">
@@ -62,25 +62,25 @@
         <NuxtErrorBoundary @error="body_error">
         <div class="article_content pt-3" ref="article_content">
             <section v-if="!welcome && data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
-                <h4>{{$t('article.headings.pronunciation', content_locale)}}</h4>
+                <h4>{{$t('article.headings.pronunciation', 1, { locale: content_locale})}}</h4>
 
                 <DefElement v-for="(element, index) in data.body.pronunciation" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
             </section>
             <section v-if="!welcome && data.body.etymology && data.body.etymology.length" class="etymology">
-                <h4>{{$t('article.headings.etymology', content_locale)}}</h4>
+                <h4>{{$t('article.headings.etymology', 1, { locale: content_locale})}}</h4>
 
                 <DefElement v-for="(element, index) in data.body.etymology" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
             </section>
             <section class="definitions" v-if="has_content">
-                <h4 v-if="!welcome">{{$t('article.headings.definitions', content_locale)}}</h4>
+                <h4 v-if="!welcome">{{$t('article.headings.definitions', 1, { locale: content_locale})}}</h4>
 
                 <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click" :welcome="welcome"/>
 
             </section>
             <section v-if="sub_articles.length && !welcome" class="expressions">
-                <h4>{{$t('article.headings.expressions', content_locale)}}</h4>
+                <h4>{{$t('article.headings.expressions', 1, { locale: content_locale})}}</h4>
                 <ul>
                 <SubArticle :body="subart" v-for="(subart, index) in sub_articles" :dict="dict" :key="index" v-on:link-click="link_click"/>
                 </ul>
@@ -221,7 +221,7 @@ const lemma_groups = computed(() => {
     let groups = [{lemmas: data.value.lemmas}]
       try {
         if (data.value.lemmas[0].paradigm_info[0] && data.value.lemmas[0].paradigm_info[0].tags[0] != 'NOUN' && data.value.lemmas[0].paradigm_info[0].tags[0] != 'EXPR') {
-          groups = [{description:  t('tags.'+data.value.lemmas[0].paradigm_info[0].tags[0], content_locale), lemmas: data.value.lemmas}]
+          groups = [{description:  t('tags.'+data.value.lemmas[0].paradigm_info[0].tags[0], 1, { locale: content_locale}), lemmas: data.value.lemmas}]
         }
         else if (data.value.lemmas[0].paradigm_info[0].tags[0] == 'NOUN') {
             let genus_map  = {}
@@ -232,9 +232,9 @@ const lemma_groups = computed(() => {
               })
               let genus_description = ""
               if (genera.size == 3) {
-                genus_description +=  t('tags.Masc') + ', ' +  t('tags.Fem', content_locale) +  t('or') +  t('tags.Neuter', content_locale)
+                genus_description +=  t('tags.Masc') + ', ' +  t('tags.Fem', 1, { locale: content_locale}) +  t('or') +  t('tags.Neuter', 1, { locale: content_locale})
               } else {
-                genus_description += Array.from(genera).map(code =>  t('tags.'+code, content_locale)).sort().join(t('or'))
+                genus_description += Array.from(genera).map(code =>  t('tags.'+code, 1, { locale: content_locale})).sort().join(t('or'))
               }
               if (genus_map[genus_description]) {
                 genus_map[genus_description].push(lemma)
@@ -244,7 +244,7 @@ const lemma_groups = computed(() => {
               }
             })
             groups = Object.keys(genus_map).map(key => {
-              return {description:  t('tags.NOUN', content_locale), genus: key, lemmas: genus_map[key], }
+              return {description:  t('tags.NOUN', 1, { locale: content_locale}), genus: key, lemmas: genus_map[key], }
             })
 
         

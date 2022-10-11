@@ -139,6 +139,11 @@ const update_locale = (newLocale) => {
 
 
 <style>
+:focus{
+  border: solid black 1px;
+  outline: solid white 1px;
+  border-radius: 5px;
+}
 
 .brand-title {
   margin-bottom: 0.125rem;

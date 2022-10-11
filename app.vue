@@ -59,7 +59,7 @@
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
   <div class="container d-flex justify-content-around flex-column flex-md-row">
-  <div class="w-50">
+  <div class="text-width">
     <div class="mb-4 d-flex align-items-center">
       <img class="pe-5 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
@@ -69,27 +69,24 @@
   <nav class="navbar" aria-label="search pages navigation">
     <ul class="navbar-nav navbar-secondary-pages">
       <p class="footer-nav">{{$t('menu.search_pages')}}:</p>
-      <li class="footer-nav-item">
-        <NuxtLink class="nav-link py-1" v-bind:class="{'active': !store.advanced && store.dict =='bm,nn', 'welcome': !$route.params.slug}" 
-        :aria-current="store.advanced ? 'false' : 'true'" to="/bm,nn">{{$t('dicts.bm,nn')}}</NuxtLink>
+      <li class="footer-nav-item" v-bind:class="{'active': route.params.dict =='bm,nn'}">
+        <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'false' : 'true'" to="/bm,nn">{{$t('dicts.bm,nn')}}</NuxtLink>
       </li>
-      <li class="footer-nav-item">
-        <NuxtLink class="nav-link py-1" v-bind:class="{'active': !store.advanced && store.dict =='bm', 'welcome': !$route.params.slug}" 
-        :aria-current="store.advanced ? 'false' : 'true'" to="/bm">{{$t('dicts.bm')}}</NuxtLink>
+      <li class="footer-nav-item" v-bind:class="{'active': route.params.dict =='bm'}">
+        <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'false' : 'true'" to="/bm">{{$t('dicts.bm')}}</NuxtLink>
       </li>
-      <li class="footer-nav-item">
-        <NuxtLink class="nav-link py-1" v-bind:class="{'active': !store.advanced && store.dict =='nn', 'welcome': !$route.params.slug}" 
-        :aria-current="store.advanced ? 'false' : 'true'" to="/nn">{{$t('dicts.nn')}}</NuxtLink>
+      <li class="footer-nav-item" v-bind:class="{'active': route.params.dict =='nn'}">
+        <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'false' : 'true'" to="/nn">{{$t('dicts.nn')}}</NuxtLink>
       </li>
-      <li class="footer-nav-item">
-        <NuxtLink class="nav-link py-1" v-bind:class="{'active': store.advanced}" :aria-current="store.advanced ? 'true' : 'false'" 
+      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'search'}">
+        <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'true' : 'false'" 
         @click="store.advanced = true" to="/search">{{$t('advanced')}}</NuxtLink>
       </li>
     </ul>
   </nav>
   <nav class="navbar" aria-label="footer menu">
     <ul class="navbar-nav navbar-secondary-pages">
-      <p class="footer-nav">{{$t('menu.title')}}:</p>
+      <p class="footer-nav menu-title">{{$t('menu.title')}}:</p>
       <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'about'}">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
       <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'help'}">
@@ -127,7 +124,7 @@ useHead({
     }
 })
 
-Promise.all([$fetch('https://odd.uib.no/opal/dev/bm/concepts.json'), $fetch('https://odd.uib.no/opal/dev/nn/concepts.json')]).then(response => {
+await Promise.all([$fetch('https://odd.uib.no/opal/dev/bm/concepts.json'), $fetch('https://odd.uib.no/opal/dev/nn/concepts.json')]).then(response => {
   store.concepts_bm = response[0].concepts
   store.concepts_nn = response[1].concepts
 })
@@ -142,6 +139,11 @@ const update_locale = (newLocale) => {
 
 
 <style>
+:focus{
+  border: solid black 1px;
+  outline: solid white 1px;
+  border-radius: 5px;
+}
 
 .brand-title {
   margin-bottom: 0.125rem;
@@ -184,6 +186,9 @@ h1 {
 
 }
 
+.text-width{
+  width: 50%;
+}
 .footer-nav{
   font-variant-caps: all-small-caps;
   letter-spacing: .1rem;
@@ -224,6 +229,16 @@ h1 {
 .navbar-secondary-pages .nav-item.active,.navbar-secondary-pages .footer-nav-item.active {
   border-bottom: solid 0.25rem var(--bs-secondary);
   padding-bottom: 0rem;
+}
+
+
+@media(max-width: 768px) {
+.text-width{
+  width: 100%;
+}
+.menu-title{
+  margin-top: 1rem;
+}
 }
 
 

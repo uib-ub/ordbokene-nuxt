@@ -58,15 +58,15 @@
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
-  <div class="container d-flex justify-content-around flex-column flex-md-row">
-  <div class="text-width">
+  <div class="container d-flex justify-content-between flex-column flex-md-row">
+  <div class="d-flex justify-content-between flex-column flex-lg-row footer-cont">
     <div class="mb-4 d-flex align-items-center">
       <img class="pe-5 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
     </div>
-    <div><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
+    <div class="text-width"><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
   </div>
-  <nav class="navbar footer-navbar" :aria-label="$t('label.search_pages')">
+  <!--<nav class="navbar footer-navbar" :aria-label="$t('label.search_pages')">
     <p class="footer-nav">{{$t('menu.search_pages')}}:</p>
     <ul class="navbar-nav navbar-secondary-pages">
       <li class="footer-nav-item" v-bind:class="{'active': route.params.dict =='bm,nn'}">
@@ -83,8 +83,8 @@
         @click="store.advanced = true" to="/search">{{$t('advanced')}}</NuxtLink>
       </li>
     </ul>
-  </nav>
-  <nav class="navbar footer-navbar" :aria-label="$t('label.footer_nav')">
+  </nav>-->
+  <nav class="d-lg-none navbar footer-navbar" :aria-label="$t('label.footer_nav')">
     <p class="footer-nav menu-title">{{$t('menu.title')}}:</p>
     <ul class="navbar-nav navbar-secondary-pages">
       <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'about'}">
@@ -188,8 +188,9 @@ h1 {
 
 }
 
+
 .text-width{
-  width: 50%;
+  width: 60%;
 }
 .footer-navbar{
   display: flex;
@@ -239,15 +240,6 @@ h1 {
 }
 
 
-@media(max-width: 768px) {
-.text-width{
-  width: 100%;
-}
-.menu-title{
-  margin-top: 1rem;
-}
-}
-
 
 @media (max-width: 992px) {
   .nav-item {
@@ -276,7 +268,22 @@ h1 {
     border-bottom: 0rem;
   }
 
+.footer-cont{
+  width: 80%;
+}
 
+}
+
+@media(max-width: 768px) {
+.footer-cont{
+  width: 100%;
+}
+.text-width{
+  width: 100%;
+}
+.menu-title{
+  margin-top: 1rem;
+}
 }
 
 

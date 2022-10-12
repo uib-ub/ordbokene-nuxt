@@ -200,6 +200,7 @@
       "label": {
         "nav": "Hovudmeny",
         "footer_nav": "Botnlinjemeny",
-        "search_pages": "Søkjesider meny"
+        "search_pages": "Søkjesider meny",
+        "dict_nav": "Ordboknavigasjon"
       }
   }

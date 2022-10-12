@@ -212,6 +212,7 @@
     "label": {
         "nav": "Hovedmeny",
         "footer_nav": "Bunnlinjemeny",
-        "search_pages": "Søkesider meny"
+        "search_pages": "Søkesider meny",
+        "dict_nav": "Ordboknavigasjon"
       }
 }

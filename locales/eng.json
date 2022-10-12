@@ -201,6 +201,7 @@
 "label": {
   "nav": "Main menu",
   "footer_nav": "Footer menu",
-  "search_pages": "Search pages menu"
+  "search_pages": "Search pages menu",
+  "dict_nav": "Dictionary navigation"
 }
 }

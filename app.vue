@@ -35,11 +35,11 @@
         </li>
       </ul>
       <div class="navbar-nav ml-auto">
-        <div class="nav-item dropdown">
+        <div class="nav-item dropdown-center">
           <NuxtLink class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
              <i :aria-label="$t('settings.locale.title')" aria-hidden="true" class="bi bi-globe"/> {{$t('name')}}
           </NuxtLink>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu navbar-dropdown-menu" aria-labelledby="navbarDropdown">
             <li><button class="dropdown-item" @click="update_locale('eng')">English</button></li>
             <li><button class="dropdown-item" @click="update_locale('nob')">Bokmål</button></li>
             <li><button class="dropdown-item" @click="update_locale('nno')">Nynorsk</button></li>
@@ -174,7 +174,9 @@ body {
 
 
 
-
+.navbar-dropdown-menu{
+  min-width: 8rem !important;
+}
 
 .back-to-search {
   font-size: larger;

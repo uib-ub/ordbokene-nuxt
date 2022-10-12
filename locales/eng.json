@@ -197,5 +197,10 @@
           "title": "Error",
           "description": "Something went wrong ..."
       }
-  }
+  },
+"label": {
+  "nav": "Main menu",
+  "footer_nav": "Footer menu",
+  "search_pages": "Search pages menu"
+}
 }

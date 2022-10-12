@@ -1,7 +1,7 @@
 <template>
 
 <div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}" >
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand text-white" to="/">
       <div class="small mx-1 my-1 my-lg-3">
@@ -66,7 +66,7 @@
     </div>
     <div><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
   </div>
-  <nav class="navbar footer-navbar" aria-label="search pages navigation">
+  <nav class="navbar footer-navbar" :aria-label="$t('label.search_pages')">
     <p class="footer-nav">{{$t('menu.search_pages')}}:</p>
     <ul class="navbar-nav navbar-secondary-pages">
       <li class="footer-nav-item" v-bind:class="{'active': route.params.dict =='bm,nn'}">
@@ -84,7 +84,7 @@
       </li>
     </ul>
   </nav>
-  <nav class="navbar footer-navbar" aria-label="footer menu">
+  <nav class="navbar footer-navbar" :aria-label="$t('label.footer_nav')">
     <p class="footer-nav menu-title">{{$t('menu.title')}}:</p>
     <ul class="navbar-nav navbar-secondary-pages">
       <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'about'}">

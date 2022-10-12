@@ -196,5 +196,10 @@
               "title": "Feil",
               "description":"Noko gjekk gale..."
           }
+      },
+      "label": {
+        "nav": "Hovudmeny",
+        "footer_nav": "Botnlinjemeny",
+        "search_pages": "Søkjesider meny"
       }
   }

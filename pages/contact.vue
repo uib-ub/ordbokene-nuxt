@@ -43,6 +43,12 @@
 </main>
 </template>
 
+<script setup>
+useHead({
+  title: "contact us"
+  })
+</script>
+
 <style scoped>
 .accordion{
   background-color: white;

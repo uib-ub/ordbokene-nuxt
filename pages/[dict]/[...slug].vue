@@ -17,6 +17,10 @@
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
 
+useHead({
+  title: store.q
+  })
+
 definePageMeta({
   middleware: 'dict-middleware'
 })

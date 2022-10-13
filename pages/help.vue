@@ -80,3 +80,9 @@ Døme:
 
   </main>
 </template>
+
+<script setup>
+useHead({
+  title: "help"
+  })
+</script>

@@ -10,6 +10,10 @@ const resetSettings = (settings) => {
     })
 };
 
+useHead({
+title: "settings"
+})
+
 </script>
 
 <template>

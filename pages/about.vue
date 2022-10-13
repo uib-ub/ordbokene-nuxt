@@ -1478,6 +1478,12 @@
 </main>
 </template>
 
+<script setup>
+useHead({
+  title: "about us"
+  })
+</script>
+
 <style scoped>
 .accordion-button {
   color: var(--bs-primary);

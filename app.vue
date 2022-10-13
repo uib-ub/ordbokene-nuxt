@@ -123,6 +123,9 @@ i18n.locale.value = locale.value
 useHead({
     htmlAttrs: {
       lang: i18n.locale
+    },
+    titleTemplate: (titleChunk) => {
+      return titleChunk ? `${titleChunk} - ordbøkene.no` : 'ordbøkene.no';
     }
 })
 

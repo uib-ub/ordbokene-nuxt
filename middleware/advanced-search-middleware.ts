@@ -12,6 +12,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         store.scope = to.query.scope || store.scope
         store.dict = to.query.dict || store.dict
         store.input = to.query.q || ""
+        store.view = 'advanced'
         
 
 

@@ -6,7 +6,7 @@
     "about": "Om ordbøkene",
     "photo": "Foto: Clay Banks (unsplash.com)",
     "background": "Bakgrunnsbilde",
-    "monthly": "Smakebitar frå ordbøkene",
+    "monthly": "Smakebit frå ",
     "close": "Lukk",
     "cancel": "Avbryt",
     "to_top": "Til toppen",
@@ -151,7 +151,7 @@
     },
     "article": {
         "definition": "Definisjon",
-        "show": "Vis artikkel",
+        "show": "Opne artikkel",
         "show_inflection": "Vis bøying",
         "hide_inflection": "Skjul bøying",
         "share": "Del ordet",
@@ -196,5 +196,11 @@
               "title": "Feil",
               "description":"Noko gjekk gale..."
           }
+      },
+      "label": {
+        "nav": "Hovudmeny",
+        "footer_nav": "Botnlinjemeny",
+        "search_pages": "Søkjesider meny",
+        "dict_nav": "Ordboknavigasjon"
       }
   }

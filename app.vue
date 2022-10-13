@@ -1,7 +1,8 @@
 <template>
 
 <div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}" >
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
+  <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="container-fluid">
     <NuxtLink class="navbar-brand text-white" to="/">
       <div class="small mx-1 my-1 my-lg-3">
@@ -35,11 +36,11 @@
         </li>
       </ul>
       <div class="navbar-nav ml-auto">
-        <div class="nav-item dropdown">
+        <div class="nav-item dropdown-center">
           <NuxtLink class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
              <i :aria-label="$t('settings.locale.title')" aria-hidden="true" class="bi bi-globe"/> {{$t('name')}}
           </NuxtLink>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu navbar-dropdown-menu" aria-labelledby="navbarDropdown">
             <li><button class="dropdown-item" @click="update_locale('eng')">English</button></li>
             <li><button class="dropdown-item" @click="update_locale('nob')">Bokmål</button></li>
             <li><button class="dropdown-item" @click="update_locale('nno')">Nynorsk</button></li>
@@ -51,6 +52,7 @@
     </div>
   </div>
 </nav>
+  </header>
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
@@ -58,17 +60,17 @@
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
-  <div class="container d-flex justify-content-around flex-column flex-md-row">
-  <div class="text-width">
+  <div class="container d-flex justify-content-between flex-column flex-md-row">
+  <div class="d-flex justify-content-between flex-column flex-lg-row footer-cont">
     <div class="mb-4 d-flex align-items-center">
       <img class="pe-5 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
     </div>
-    <div><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
+    <div class="text-width"><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
   </div>
-  <nav class="navbar" aria-label="search pages navigation">
+  <!--<nav class="navbar footer-navbar" :aria-label="$t('label.search_pages')">
+    <p class="footer-nav">{{$t('menu.search_pages')}}:</p>
     <ul class="navbar-nav navbar-secondary-pages">
-      <p class="footer-nav">{{$t('menu.search_pages')}}:</p>
       <li class="footer-nav-item" v-bind:class="{'active': route.params.dict =='bm,nn'}">
         <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'false' : 'true'" to="/bm,nn">{{$t('dicts.bm,nn')}}</NuxtLink>
       </li>
@@ -83,10 +85,10 @@
         @click="store.advanced = true" to="/search">{{$t('advanced')}}</NuxtLink>
       </li>
     </ul>
-  </nav>
-  <nav class="navbar" aria-label="footer menu">
+  </nav>-->
+  <nav class="d-lg-none navbar footer-navbar" :aria-label="$t('label.footer_nav')">
+    <p class="footer-nav menu-title">{{$t('menu.title')}}:</p>
     <ul class="navbar-nav navbar-secondary-pages">
-      <p class="footer-nav menu-title">{{$t('menu.title')}}:</p>
       <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'about'}">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
       <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'help'}">
@@ -124,7 +126,7 @@ useHead({
     }
 })
 
-Promise.all([$fetch('https://odd.uib.no/opal/dev/bm/concepts.json'), $fetch('https://odd.uib.no/opal/dev/nn/concepts.json')]).then(response => {
+await Promise.all([$fetch('https://odd.uib.no/opal/dev/bm/concepts.json'), $fetch('https://odd.uib.no/opal/dev/nn/concepts.json')]).then(response => {
   store.concepts_bm = response[0].concepts
   store.concepts_nn = response[1].concepts
 })
@@ -139,9 +141,9 @@ const update_locale = (newLocale) => {
 
 
 <style>
-:focus{
-  border: solid black 1px;
+*:focus{
   outline: solid white 1px;
+  box-shadow: 0px 0px 1px 2px black;
   border-radius: 5px;
 }
 
@@ -174,7 +176,9 @@ body {
 
 
 
-
+.navbar-dropdown-menu{
+  min-width: 8rem !important;
+}
 
 .back-to-search {
   font-size: larger;
@@ -186,8 +190,14 @@ h1 {
 
 }
 
+
 .text-width{
-  width: 50%;
+  width: 60%;
+}
+.footer-navbar{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .footer-nav{
   font-variant-caps: all-small-caps;
@@ -232,15 +242,6 @@ h1 {
 }
 
 
-@media(max-width: 768px) {
-.text-width{
-  width: 100%;
-}
-.menu-title{
-  margin-top: 1rem;
-}
-}
-
 
 @media (max-width: 992px) {
   .nav-item {
@@ -269,7 +270,22 @@ h1 {
     border-bottom: 0rem;
   }
 
+.footer-cont{
+  width: 80%;
+}
 
+}
+
+@media(max-width: 768px) {
+.footer-cont{
+  width: 100%;
+}
+.text-width{
+  width: 100%;
+}
+.menu-title{
+  margin-top: 1rem;
+}
 }
 
 

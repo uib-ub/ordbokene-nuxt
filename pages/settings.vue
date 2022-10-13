@@ -1,5 +1,8 @@
 <script setup>
 import {useSettingsStore } from '~/stores/settingsStore'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 const settings = useSettingsStore()
 
 const resetSettings = (settings) => {
@@ -11,7 +14,7 @@ const resetSettings = (settings) => {
 };
 
 useHead({
-title: "settings"
+title: t('settings.title')
 })
 
 </script>

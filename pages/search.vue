@@ -20,8 +20,15 @@
 <script setup>
 import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 const store = useStore()
 const route = useRoute()
+
+useHead({
+  title: t('advanced')
+})
 
 definePageMeta({
     middleware: 'advanced-search-middleware'

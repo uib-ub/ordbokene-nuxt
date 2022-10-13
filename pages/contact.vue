@@ -43,6 +43,16 @@
 </main>
 </template>
 
+<script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+useHead({
+  title: t('contact.title')
+  })
+</script>
+
 <style scoped>
 .accordion{
   background-color: white;

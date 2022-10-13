@@ -1,5 +1,8 @@
 <script setup>
 import {useSettingsStore } from '~/stores/settingsStore'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 const settings = useSettingsStore()
 
 const resetSettings = (settings) => {
@@ -9,6 +12,10 @@ const resetSettings = (settings) => {
       inflectionTableContext: false, 
     })
 };
+
+useHead({
+title: t('settings.title')
+})
 
 </script>
 

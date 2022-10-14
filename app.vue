@@ -61,41 +61,23 @@
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
   <div class="container d-flex justify-content-between flex-column flex-md-row">
-  <div class="d-flex justify-content-between flex-column flex-lg-row footer-cont">
+  <div class="text-width">
     <div class="mb-4 d-flex align-items-center">
       <img class="pe-5 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
     </div>
-    <div class="text-width"><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
+    <div class=""><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
   </div>
-  <!--<nav class="navbar footer-navbar" :aria-label="$t('label.search_pages')">
-    <p class="footer-nav">{{$t('menu.search_pages')}}:</p>
-    <ul class="navbar-nav navbar-secondary-pages">
-      <li class="footer-nav-item" v-bind:class="{'active': route.params.dict =='bm,nn'}">
-        <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'false' : 'true'" to="/bm,nn">{{$t('dicts.bm,nn')}}</NuxtLink>
-      </li>
-      <li class="footer-nav-item" v-bind:class="{'active': route.params.dict =='bm'}">
-        <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'false' : 'true'" to="/bm">{{$t('dicts.bm')}}</NuxtLink>
-      </li>
-      <li class="footer-nav-item" v-bind:class="{'active': route.params.dict =='nn'}">
-        <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'false' : 'true'" to="/nn">{{$t('dicts.nn')}}</NuxtLink>
-      </li>
-      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'search'}">
-        <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'true' : 'false'" 
-        @click="store.advanced = true" to="/search">{{$t('advanced')}}</NuxtLink>
-      </li>
-    </ul>
-  </nav>-->
-  <nav class="d-lg-none navbar footer-navbar" :aria-label="$t('label.footer_nav')">
+  <nav class="navbar footer-navbar" :aria-label="$t('label.footer_nav')">
     <p class="footer-nav menu-title">{{$t('menu.title')}}:</p>
     <ul class="navbar-nav navbar-secondary-pages">
-      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'about'}">
+      <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
-      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'help'}">
+      <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink></li>
-      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'settings'}">
+      <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink></li>
-      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'contact'}">
+      <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink></li>
     </ul>
   </nav>
@@ -210,10 +192,7 @@ h1 {
 
 .navbar .footer-nav-item {
   padding-bottom: 0.25rem;
-  font-variant-caps: all-small-caps;
-  font-size: 1rem;
-  letter-spacing: .1rem;
-  font-weight: 600;
+  font-size: .85rem;
   list-style-type: none;
 }
 
@@ -273,16 +252,9 @@ h1 {
     border-bottom: 0rem;
   }
 
-.footer-cont{
-  width: 80%;
-}
-
 }
 
 @media(max-width: 768px) {
-.footer-cont{
-  width: 100%;
-}
 .text-width{
   width: 100%;
 }

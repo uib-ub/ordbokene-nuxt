@@ -90,15 +90,7 @@ const download_ris = () => {
 
 <template>
 <client-only>
-  <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">
-    <div class="d-flex">
-      <div class="toast-body">{{$t('article.link_copied', 1, { locale: content_locale})}}</div>
-      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-  </div>
-  <div v-if="copy_popup">
-  <div class="position-absolute top-50 start-50 translate-middle"><span>{{$t('article.link_copied', 1, { locale: content_locale})}}</span></div>
-  </div>
+<div class="bubble">{{$t('article.link_copied', 1, { locale: content_locale})}}</div>
 <div class="d-flex justify-content-around mt-3">
     <button class="btn rounded-pill" v-if="showLinkCopy" @click="copy_link"><BootstrapIcon icon="bi-link" class="pe-2" /> {{$t("article.copy_link", 1, { locale: content_locale})}}</button>
     <button class="btn rounded-pill" v-if="webShareApiSupported" @click="shareViaWebShare"><BootstrapIcon icon="bi-share-fill" class="pe-2" /> {{$t("article.share", 1, { locale: content_locale})}}</button>
@@ -119,6 +111,32 @@ const download_ris = () => {
 </template>
 
 <style scoped>
+.bubble {
+    position: relative;
+    background: var(--bs-primary);
+    color: #FFFFFF;
+    font-family: Arial;
+    font-size: .90rem;
+    line-height: 35px;
+    text-align: center;
+    width: 240px;
+    height: 35px;
+    border-radius: 10px;
+    padding: 0px;
+}
+.bubble:after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 0;
+    z-index: 1;
+    border-style: solid;
+    border-color: var(--bs-primary) transparent;
+    border-width: 10px 10px 0;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -10px;
+}
 .btn {
     color: var(--bs-primary);
     text-transform: uppercase;

@@ -59,4 +59,10 @@ title: t('settings.title')
   background-color: white;
   color: black;
 }
+input:focus{
+  border: solid 1px var(--bs-primary);
+}
+.btn:focus{
+  outline: solid 1px var(--bs-primary);
+}
 </style>

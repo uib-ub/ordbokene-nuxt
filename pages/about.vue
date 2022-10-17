@@ -1505,6 +1505,9 @@ useHead({
     margin-right:0.5em;
     color: var(--bs-primary);
 }
+.accordion-button:focus{
+  outline: solid 1px var(--bs-primary);
+}
 
 
 .no-bullet{

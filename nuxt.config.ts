@@ -5,6 +5,12 @@ import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+  nitro: {
+    preset: 'aws-lambda'
+  },
+  app: {
+    cndUrl: 'https://beta.ordbok-dev.aws.uib.no'
+  },
     css: ['~/assets/styles/main.scss',
   "bootstrap-icons/font/bootstrap-icons.scss"],
     buildModules: [

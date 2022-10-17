@@ -410,12 +410,10 @@ article {
 
 
 a.result-list-item {
-    padding: 0.75rem;
+    padding: 0.5rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    border-bottom: none;
-    border-top: solid 1px rgba(0,0,0, .25)
 }
 
 
@@ -423,9 +421,18 @@ a.result-list-item:hover {
     background-color: rgba(0,0,0, .1);
 }
 
+.article-column>div {
+  border-bottom: solid 1px rgba(0,0,0, .25);
+}
 
-div a.result-list-item:first-child {
-  border-top: none;
+
+.article-column>div:first-child {
+  border-radius: 2rem 2rem 0 0 ;
+}
+
+.article-column>div:last-child {
+  border-bottom: none;
+  border-radius: 0 0 2rem 2rem;
 }
 
 </style>

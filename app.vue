@@ -185,9 +185,10 @@ h1 {
   align-items: flex-start;
 }
 .footer-nav{
-  font-variant-caps: all-small-caps;
+  text-transform: uppercase;
   letter-spacing: .1rem;
   font-weight: 600;
+  font-size: .90rem;
 }
 
 .navbar .footer-nav-item {

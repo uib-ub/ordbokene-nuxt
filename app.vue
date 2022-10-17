@@ -101,10 +101,19 @@ const locale = useCookie("locale")
 locale.value = locale.value || (new Date().getDate() % 2 ? 'nno' : 'nob')
 i18n.locale.value = locale.value
 
+const lang_tag = () => {
+  if (i18n.locale === 'eng') {
+    return ('en')
+  } else if(i18n.locale === 'nno'){
+    return ('nn')
+  } else if (i18n.locale === 'nob'){
+    return ('nb')
+  }
+}
 
 useHead({
     htmlAttrs: {
-      lang: i18n.locale
+      lang: lang_tag()
     },
     titleTemplate: (titleChunk) => {
       return titleChunk ? `${titleChunk} - ordbøkene.no` : 'ordbøkene.no';

@@ -44,7 +44,7 @@ const copy_link = () => {
         navigator.clipboard.writeText(link).then(() => {
           console.log("SUCCESS")
           copy_popup = true;
-          showToast();
+          console.log(copy_popup)
          }).catch(err => {
            console.log("ERROR COPYING:",err)
          })
@@ -90,9 +90,9 @@ const download_ris = () => {
 
 <template>
 <client-only>
-<div class="bubble">{{$t('article.link_copied', 1, { locale: content_locale})}}</div>
+<div class="bubble" v-bind:class="[copy_popup ? 'd-block' : 'd-none']">{{$t('article.link_copied', 1, { locale: content_locale})}}</div>
 <div class="d-flex justify-content-around mt-3">
-    <button class="btn rounded-pill" v-if="showLinkCopy" @click="copy_link"><BootstrapIcon icon="bi-link" class="pe-2" /> {{$t("article.copy_link", 1, { locale: content_locale})}}</button>
+    <button class="btn rounded-pill" v-if="showLinkCopy" @click="copy_link" @blur="copy_popup = false"><BootstrapIcon icon="bi-link" class="pe-2" /> {{$t("article.copy_link", 1, { locale: content_locale})}}</button>
     <button class="btn rounded-pill" v-if="webShareApiSupported" @click="shareViaWebShare"><BootstrapIcon icon="bi-share-fill" class="pe-2" /> {{$t("article.share", 1, { locale: content_locale})}}</button>
     <button class="btn rounded-pill" type="button" data-bs-toggle="collapse" :data-bs-target="'#cite-'+article_id" aria-expanded="false" aria-controls="collapseExample"><BootstrapIcon icon="bi-quote" class="pe-2" /> {{$t("article.cite", 1, { locale: content_locale})}}</button>
 </div>

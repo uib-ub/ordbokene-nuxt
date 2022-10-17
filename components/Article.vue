@@ -427,12 +427,12 @@ a.result-list-item:hover {
 
 
 .article-column>div:first-child {
-  border-radius: 2rem 2rem 0 0 ;
+  border-radius: 1.5rem 1.5rem 0 0 ;
 }
 
 .article-column>div:last-child {
   border-bottom: none;
-  border-radius: 0 0 2rem 2rem;
+  border-radius: 0 0 1.5rem 1.5rem;
 }
 
 </style>

@@ -303,7 +303,7 @@ h1 {
 
 
 
-section a  {
+section a, .secondary-page a  {
   border-bottom: 2px solid var(--bs-link);
 }
 

@@ -342,7 +342,7 @@ main a  {
 }
 
 .srlogo{
-  height: 1.5rem;
+  height: 1.75rem;
   width: fit-content;
 }
 .uiblogo{

@@ -60,16 +60,16 @@
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
-  <div class="container d-flex justify-content-between flex-column flex-md-row">
+  <div class="container d-flex flex-column flex-md-row">
   <div class="text-width">
-    <div class="mb-4 d-flex align-items-center">
+    <div class="d-flex align-items-center">
       <img class="pe-5 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
     </div>
-    <div class=""><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
+    <div><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</div>
   </div>
-  <nav class="navbar footer-navbar" aria-labeledby="footer-nav-label">
-    <span id="footer-nav-label" class="footer-nav menu-title">{{$t('menu.title')}}:</span>
+  <nav class="navbar footer-navbar" :aria-label="$t('menu.title')">
+    <span aria-hidden="true" class="footer-nav menu-title d-lg-none">{{$t('menu.title')}}:</span>
     <ul class="navbar-nav navbar-secondary-pages">
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
@@ -229,6 +229,41 @@ h1 {
 
 #footer-nav-label {
   padding-bottom: 0.5rem;
+}
+
+@media (min-width: 992px) {
+  .text-width {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    width: 80%;
+  }
+
+  #footer-nab-label {
+    display: none;
+  }
+
+  footer .flex-md-row {
+    flex-direction: column !important;
+  }
+
+  .footer-navbar {
+    flex-direction: row !important;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  footer ul {
+    flex-direction: row !important;
+    gap: 2rem;
+    
+    
+  }
+  footer li {
+    font-variant: all-small-caps;
+    font-size: 1.25rem !important;
+  }
 }
 
 @media (max-width: 992px) {

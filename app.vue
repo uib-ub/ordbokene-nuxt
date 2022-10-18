@@ -68,8 +68,8 @@
     </div>
     <div class=""><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
   </div>
-  <nav class="navbar footer-navbar" :aria-label="$t('label.footer_nav')">
-    <p class="footer-nav menu-title">{{$t('menu.title')}}:</p>
+  <nav class="navbar footer-navbar" aria-labeledby="footer-nav-label">
+    <span id="footer-nav-label" class="footer-nav menu-title">{{$t('menu.title')}}:</span>
     <ul class="navbar-nav navbar-secondary-pages">
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
@@ -185,6 +185,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
 }
 .footer-nav{
   text-transform: uppercase;
@@ -226,7 +227,9 @@ h1 {
   padding-bottom: 0rem;
 }
 
-
+#footer-nav-label {
+  padding-bottom: 0.5rem;
+}
 
 @media (max-width: 992px) {
   .nav-item {

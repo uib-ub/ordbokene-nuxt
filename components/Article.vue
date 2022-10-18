@@ -296,6 +296,7 @@ const secondary_header_text = computed(() => {
     color: var(--bs-primary);
     background-color: white;
     border-radius: 2rem;
+    padding-right: 0.5rem !important;
 }
 
 .inflection-button:focus {

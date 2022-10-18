@@ -133,12 +133,14 @@ const update_locale = (newLocale) => {
 }
 
 .brand-title {
+  font-size: 2rem;
   margin-bottom: 0.125rem;
 }
 
 .brand-subtitle {
   margin-left: 0.125rem;
   margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 .btn-outline-tertiary{

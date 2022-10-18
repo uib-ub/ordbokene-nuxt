@@ -72,9 +72,9 @@
     <span aria-hidden="true" class="footer-nav menu-title d-lg-none">{{$t('menu.title')}}:</span>
     <ul class="navbar-nav navbar-secondary-pages">
       <li class="footer-nav-item">
-        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
-      <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink></li>
+      <li class="footer-nav-item">
+        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink></li>
       <li class="footer-nav-item">

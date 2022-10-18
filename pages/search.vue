@@ -47,9 +47,3 @@ const content_error = (error) => {
 
 
 </script>
-
-<style scoped>
-
-
-
-</style>

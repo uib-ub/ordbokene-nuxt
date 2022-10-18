@@ -5,7 +5,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="container-fluid mx-lg-2">
     <NuxtLink class="navbar-brand text-white" to="/">
-      <div class="small mx-1 my-1 my-lg-3">
+      <div class="small mx-1 my-1 my-lg-2">
       <div><h1 class="brand-title">Ordbøkene</h1>
       <p class="d-none d-xl-block brand-subtitle">{{$t("sub_title")}}</p>
       </div>

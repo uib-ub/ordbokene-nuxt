@@ -41,20 +41,27 @@
  
   </div>
   <button :aria-label="$t('search')" class="btn btn-secondary rounded-pill col-1 mx-2" type="reset" @click="reset"> <BootstrapIcon icon="bi-cancel"/> Nullstill </button>
-  <button :aria-label="$t('search')" class="btn btn-primary rounded-pill col-1 mx-2" type="submit"> <BootstrapIcon icon="bi-search"/> Søk </button>
+  <button :aria-label="$t('search')" class="btn btn-primary rounded-pill col-1 mx-2" type="submit"> <BootstrapIcon icon="bi-search" left/>Søk </button>
 
 </div>
 </div>
 </form>
-<div v-if="store.q" class="d-flex justify-content-end">
+<div v-if="store.q" class="d-flex mb-2">
+  <button class="btn btn-light btn-light-single me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left/>{{$t('help')}}</button>
+    
 <div class="btn-group" role="group" aria-label="Basic example">
-  <button @click="settings.listView = false" class="btn btn-light" v-bind:class="{active: !settings.listView}"><i class="bi-file-text"/> Artikler</button>
-  <button @click="settings.listView = true" class="btn btn-light" v-bind:class="{active: settings.listView}"><i class="bi-list"/> Liste</button>
+  <button @click="settings.listView = false" class="btn btn-light" v-bind:class="{active: !settings.listView}"><BootstrapIcon icon="bi-file-text" left/>Artikler</button>
+  <button @click="settings.listView = true" class="btn btn-light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-list" left/>Liste</button>
 
 
 
 </div>
 </div>
+<div v-if="!store.q || mini_help" class="secondary-page container">
+      <h2><BootstrapIcon icon="bi-question-circle-fill" :left="true"/> Avansert søk</h2>
+      
+
+    </div>
 </div>
 </template>
 
@@ -71,6 +78,8 @@ const pos_tags = [null, 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCO
 
 const fulltext_enabled = ref(store.scope.includes('f'))
 const inflection_enabled = ref(store.scope.includes('i'))
+
+const mini_help = ref(true)
 
 const reset = () => {
   store.input = ""
@@ -116,12 +125,26 @@ const submitForm = async (item) => {
   outline: solid 1px var(--bs-primary);
   border-radius: 2rem;
 }
-.input-group{
+.input-group {
   outline: solid 1px var(--bs-primary);
   border-radius: 2rem;
   background-color: white;
   flex-wrap: unset;
 }
+
+
+.btn-light-single:focus {
+  border-radius: 2rem;
+}
+.btn-group > .btn:not(:last-child):focus {
+  border-radius: 2rem 0 0 2rem;
+}
+
+.btn-group > .btn:not(:first-child):focus {
+  border-radius: 0 2rem 2rem 0;
+}
+
+
 .advanced-search:focus-within{
   box-shadow: 1px 2px 1px var(--bs-primary);
 } 
@@ -149,7 +172,7 @@ const submitForm = async (item) => {
   border: solid 1px rgb(0 0 0 / 30%);
   border-radius: 2rem;
 }
-.btn-group {
+.btn-group, .btn-light-single {
   border: solid 1px rgba(0,0,0, .3);
   box-shadow: 2px 2px 1px rgba(0,0,0, .3);
 }

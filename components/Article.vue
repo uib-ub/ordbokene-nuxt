@@ -1,5 +1,5 @@
 <template>
-    <div v-if="settings.listView && store.advanced == true && $route.name == 'search' && store.q">
+    <div class="list-view-item" v-if="settings.listView && store.advanced == true && $route.name == 'search' && store.q">
         <span v-if="pending" class="list-group-item"><div class="skeleton skeleton-content w-25"/><div class="skeleton skeleton-content w-50"/></span>
         <NuxtLink v-else class="list-group-item result-list-item" :to="link_to_self()">
 
@@ -29,7 +29,7 @@
 
     </NuxtLink>
 </div>
-    <article class="pt-lg-1" v-else-if="!error">
+    <div class="article pt-lg-1" v-else-if="!error">
         <div v-if="pending" class="skeleton-container">
             <div class="skeleton mt-4 skeleton-heading"/>
         <div class="skeleton mt-2 mb-4 skeleton-subheading"/>
@@ -92,7 +92,7 @@
         </NuxtErrorBoundary>
     </div>
 </div>
-    </article>
+</div>
 </template>
 
 <script setup>
@@ -399,7 +399,7 @@ span.lemma-group {
 }
 
 
-article {
+.article {
     border-radius: 2rem;
     border: solid 1px rgba(0,0,0, .3);
     background-color: white;
@@ -421,16 +421,16 @@ a.result-list-item:hover {
     background-color: rgba(0,0,0, .1);
 }
 
-.article-column>div {
+.article-column>.list-view-item {
   border-bottom: solid 1px rgba(0,0,0, .25);
 }
 
 
-.article-column>div:first-child {
+.article-column>.list-view-item:first-child {
   border-radius: 1.5rem 1.5rem 0 0 ;
 }
 
-.article-column>div:last-child {
+.article-column>.list-view-item:last-child {
   border-bottom: none;
   border-radius: 0 0 1.5rem 1.5rem;
 }

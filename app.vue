@@ -56,7 +56,7 @@
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
-    <NuxtPage class="page-container container px-3 pb-3" />
+    <NuxtPage class="page-container  px-3 pb-3" />
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
@@ -333,27 +333,27 @@ main a  {
   font-size: 1.25rem;
 }
 
-article h5 {
+.article h5 {
   color: var(--bs-primary);
   font-weight: 600;
   font-size: 1rem;
   padding-top: 1rem;
 }
 
-article .level1>ol {
+.article .level1>ol {
   padding-left: 1.25rem;
 }
 
-article li {
+.article li {
   margin-bottom: 0.5rem;
   margin-top: 0.25rem;
 }
 
-article ul {
+.article ul {
   margin-bottom: 1rem;
 }
 
-article ol {
+.article ol {
   margin-bottom: 2rem;
 }
 

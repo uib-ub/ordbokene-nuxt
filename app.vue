@@ -303,7 +303,7 @@ h1 {
 
 
 
-main a  {
+section a  {
   border-bottom: 2px solid var(--bs-link);
 }
 
@@ -396,19 +396,19 @@ section {
 }
 
 
-article section.etymology > h4, section.pronunciation > h4 {
+.article section.etymology > h4, section.pronunciation > h4 {
   display: inline;
 }
 
-article section.etymology ul, section.pronunciation ul, section.etymology li, section.pronunciation li {
+.article section.etymology ul, section.pronunciation ul, section.etymology li, section.pronunciation li {
   display: inline;
 }
 
-article section.etymology li:not(:first-child):not(:last-child):before, section.pronunciation li:not(:first-child):not(:last-child):before {
+.article section.etymology li:not(:first-child):not(:last-child):before, section.pronunciation li:not(:first-child):not(:last-child):before {
   content: ", ";
 }
 
-article section.etymology li:not(:first-child):last-child:before, section.pronunciation li:not(:first-child):last-child:before {
+.article section.etymology li:not(:first-child):last-child:before, section.pronunciation li:not(:first-child):last-child:before {
   content: "; ";
   font-size: smaller;
 }
@@ -432,7 +432,7 @@ li.sub_article > ul {
   padding-left: 0px;
 }
 
-article li::marker {
+.article li::marker {
   color: var(--bs-primary);
   font-weight: bold;
 }
@@ -446,7 +446,7 @@ ol.sub_definitions {
 }
 
 
-.article-view article, .secondary-page {
+.article-view .article, .secondary-page {
     border-radius: 0rem;
     border: solid 1px rgba(0,0,0, .3) !important;
     box-shadow: 2px 2px 1px rgba(0,0,0, .3) !important;

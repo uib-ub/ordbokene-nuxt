@@ -57,8 +57,11 @@
 
 </div>
 </div>
-<div v-if="!store.q || mini_help" class="secondary-page container">
+<div v-if="!store.q || mini_help" class="secondary-page container advanced-info">
       <h2><BootstrapIcon icon="bi-question-circle-fill" :left="true"/> Avansert søk</h2>
+      <p>Bla bla bla</p>
+
+      <AdvancedHelp/>
       
 
     </div>

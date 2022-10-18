@@ -334,6 +334,14 @@ section a  {
   font-variant: all-small-caps;
   font-size: 1.75rem;
 }
+
+.advanced-info h2 {
+  font-family: Inria Serif;
+  font-variant: normal;
+  color: var(--bs-primary);
+  font-weight: bold;
+}
+
 .secondary-page summary::marker {
   font-size: 1.5rem;
 }

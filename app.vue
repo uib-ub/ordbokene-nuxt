@@ -61,7 +61,7 @@
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
   <div class="container d-flex flex-column flex-md-row">
-  <div class="text-width">
+  <div class="text-width mb-3 mb-xl-2">
     <div class="d-flex align-items-center">
       <img class="pe-5 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
@@ -194,12 +194,10 @@ h1 {
   text-transform: uppercase;
   letter-spacing: .1rem;
   font-weight: 600;
-  font-size: .90rem;
 }
 
 .navbar .footer-nav-item {
   padding-bottom: 0.25rem;
-  font-size: .85rem;
   list-style-type: none;
 }
 

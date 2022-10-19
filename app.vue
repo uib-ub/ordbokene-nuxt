@@ -3,10 +3,9 @@
 <div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}" >
   <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
-  <div class="container-fluid">
+  <div class="container-fluid mx-lg-2">
     <NuxtLink class="navbar-brand text-white" to="/">
       <div class="small mx-1 my-1 my-lg-3">
-      <div v-show="false"><h1>ordbøkene.no</h1></div>
       <div><h1 class="brand-title">Ordbøkene</h1>
       <p class="d-none d-xl-block brand-subtitle">{{$t("sub_title")}}</p>
       </div>
@@ -56,25 +55,28 @@
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
-    <NuxtPage class="page-container container px-3 pb-3" />
+    <NuxtPage class="page-container  px-3 pb-3" />
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
-  <div class="container d-flex justify-content-between flex-column flex-md-row">
-  <div class="text-width">
-    <div class="mb-4 d-flex align-items-center">
+  <div class="container d-flex flex-column flex-md-row">
+  <div class="text-width mb-3 mb-xl-2">
+    <div class="d-flex align-items-center">
       <img class="pe-5 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
     </div>
-    <div class=""><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
+    <div class="pt-4 pt-md-0"><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</div>
   </div>
-  <nav class="navbar footer-navbar" :aria-label="$t('label.footer_nav')">
-    <p class="footer-nav menu-title">{{$t('menu.title')}}:</p>
+  <nav class="navbar footer-navbar" :aria-label="$t('menu.title')">
+    <span aria-hidden="true" class="footer-nav menu-title d-md-none pb-2 mt-4">{{$t('menu.title')}}:</span>
     <ul class="navbar-nav navbar-secondary-pages">
       <li class="footer-nav-item">
-        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
+        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'dict' && 'page'" to="/">{{$t('home')}}</NuxtLink>
+      </li>
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink></li>
+      <li class="footer-nav-item">
+        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
       <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink></li>
       <li class="footer-nav-item">
@@ -133,12 +135,14 @@ const update_locale = (newLocale) => {
 }
 
 .brand-title {
+  font-size: 2rem;
   margin-bottom: 0.125rem;
 }
 
 .brand-subtitle {
   margin-left: 0.125rem;
   margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 .btn-outline-tertiary{
@@ -183,17 +187,16 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: center;
 }
 .footer-nav{
   text-transform: uppercase;
   letter-spacing: .1rem;
   font-weight: 600;
-  font-size: .90rem;
 }
 
 .navbar .footer-nav-item {
   padding-bottom: 0.25rem;
-  font-size: .85rem;
   list-style-type: none;
 }
 
@@ -224,7 +227,36 @@ h1 {
   padding-bottom: 0rem;
 }
 
+@media (min-width: 768px) {
+  .text-width {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+  }
 
+  footer .flex-md-row {
+    flex-direction: column !important;
+  }
+
+  .footer-navbar {
+    flex-direction: row !important;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  footer ul {
+    flex-direction: row !important;
+    gap: 2rem;
+    
+    
+  }
+  footer li {
+    font-variant: all-small-caps;
+    font-size: 1.25rem !important;
+  }
+}
 
 @media (max-width: 992px) {
   .nav-item {
@@ -307,11 +339,11 @@ main a  {
 }
 
 .srlogo{
-  height: 20px;
+  height: 1.75rem;
   width: fit-content;
 }
 .uiblogo{
-  height: 60px;
+  height: 5rem;
    width: fit-content;
 }
 
@@ -333,27 +365,27 @@ main a  {
   font-size: 1.25rem;
 }
 
-article h5 {
+.article h5 {
   color: var(--bs-primary);
   font-weight: 600;
   font-size: 1rem;
   padding-top: 1rem;
 }
 
-article .level1>ol {
+.article .level1>ol {
   padding-left: 1.25rem;
 }
 
-article li {
+.article li {
   margin-bottom: 0.5rem;
   margin-top: 0.25rem;
 }
 
-article ul {
+.article ul {
   margin-bottom: 1rem;
 }
 
-article ol {
+.article ol {
   margin-bottom: 2rem;
 }
 

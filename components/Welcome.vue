@@ -11,22 +11,22 @@
     </script>
     
     <template>
-      <main class="m-lg-5 px-lg-5 py-lg-2" v-if="welcome_bm && welcome_nn">
+      <div class="m-lg-2 px-lg-5 py-lg-2" v-if="welcome_bm && welcome_nn">
         <div class="row">
-          <div class="col-lg">
+          <section class="col-lg">
           <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm" welcome/>
-          </div>
-          <div class="col-lg">
+          </section>
+          <section class="col-lg">
           <Article :article_id="parseInt(welcome_nn.front_article.value)" dict="nn" welcome/>
-          </div>
+          </section>
         </div>            
-      </main> 
-      <main v-else class="m-lg-5 px-lg-5 py-lg-2">
+      </div> 
+      <div v-else class="m-lg-2 px-lg-5 py-lg-2">
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
 
-      </main> 
+      </div> 
     </template>
 
 <style scoped>

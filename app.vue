@@ -90,30 +90,36 @@
 import { useI18n } from 'vue-i18n'
 import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
+
 const store = useStore()
 const route = useRoute()
 const i18n = useI18n()
+const { t } = useI18n()
 
-
-const locale = useCookie("locale")
+const locale = useCookie("locale");
+const lang = ref('en');
 
 // Default to bokmål on odd days
 locale.value = locale.value || (new Date().getDate() % 2 ? 'nno' : 'nob')
 i18n.locale.value = locale.value
 
-const lang_tag = () => {
-  if (i18n.locale === 'eng') {
-    return ('en')
-  } else if(i18n.locale === 'nno'){
-    return ('nn')
-  } else if (i18n.locale === 'nob'){
-    return ('nb')
+watch(locale.value, (newLang) => {
+  console.log(newLang)
+  if (newLang === 'nno') {
+    console.log('nn')
+    lang.value = 'nn'
+  } else if (newLang === 'nob'){
+    console.log('no')
+    lang.value = 'no'
+  } else if (newLang === 'eng'){
+    console.log('en')
+    lang.value = 'en'
   }
-}
+}) 
 
 useHead({
     htmlAttrs: {
-      lang: lang_tag()
+      lang: lang
     },
     titleTemplate: (titleChunk) => {
       return titleChunk ? `${titleChunk} - ordbøkene.no` : 'ordbøkene.no';

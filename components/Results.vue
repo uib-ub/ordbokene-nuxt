@@ -14,13 +14,13 @@
 
     <div class="row" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
       <div class="col-lg-6">
-        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span  aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t('notifications.results')}}</span></div>
+        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block" lang="no">Bokmålsordboka</h2><span  aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t('notifications.results')}}</span></div>
         <div class="article-column">
           <Article v-for="(article_id, idx) in articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>
         </div>
     </div>
       <div class="col-lg-6">
-        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Nynorskordboka</h2><span aria-hidden="true" class="result-count"> | {{articles.meta.nn.total}} treff</span></div>
+        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block" lang="no">Nynorskordboka</h2><span aria-hidden="true" class="result-count"> | {{articles.meta.nn.total}} {{$t('notifications.results')}}</span></div>
         <div class="article-column">
           <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
         </div>

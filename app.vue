@@ -106,7 +106,7 @@ i18n.locale.value = locale.value
 
 useHead({
     htmlAttrs: {
-      lang: i18n.locale
+      lang: {nob: 'nb', nno: 'nn', eng: 'en'}[i18n.locale.value]
     },
     titleTemplate: (titleChunk) => {
       return titleChunk ? `${titleChunk} - ordbøkene.no` : 'ordbøkene.no';
@@ -122,6 +122,11 @@ await Promise.all([$fetch('https://odd.uib.no/opal/dev/bm/concepts.json'), $fetc
 const update_locale = (newLocale) => {
   i18n.locale.value = newLocale
   locale.value = newLocale
+  useHead({
+    htmlAttrs: {
+      lang: {nob: 'nb', nno: 'nn', eng: 'en'}[i18n.locale.value]
+    }
+})
 }
 
 </script>

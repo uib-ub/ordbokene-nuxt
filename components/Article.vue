@@ -523,12 +523,14 @@ a.result-list-item:hover {
 
 
 .article-column>.list-view-item:first-child {
-  border-radius: 1.5rem 1.5rem 0 0 ;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
 }
 
 .article-column>.list-view-item:last-child {
   border-bottom: none;
-  border-radius: 0 0 1.5rem 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
 }
 
 </style>

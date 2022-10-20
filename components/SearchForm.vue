@@ -42,7 +42,7 @@ const submitForm = async (item) => {
   outline: solid 1px var(--bs-primary);
 }
 .activeAutocomplete{
-  border-radius: 1rem 1rem 0 0;
+  border-radius: 1.75rem 1.75rem 0 0;
 }
 
 .dropdown-menu{

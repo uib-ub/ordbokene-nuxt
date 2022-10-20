@@ -1,5 +1,5 @@
 <template>
-<main class="secondary-page">
+<main class="secondary-page container">
   <h2>{{$t('contact.title')}}</h2>
   <div>
     <h3>{{$t('contact.content[0]')}}</h3>
@@ -43,6 +43,16 @@
 </main>
 </template>
 
+<script setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
+useHead({
+  title: t('contact.title')
+  })
+</script>
+
 <style scoped>
 .accordion{
   background-color: white;
@@ -52,5 +62,8 @@
     margin-left: 0; 
     margin-right:0.5em;
     color: var(--bs-primary);
+}
+.accordion-button:focus{
+  outline: solid 1px var(--bs-primary);
 }
 </style>

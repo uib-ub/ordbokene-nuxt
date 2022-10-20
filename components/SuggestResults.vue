@@ -35,6 +35,9 @@ const suggest_link = (suggestion) => {
 </script>
 
 <style scoped lang="scss">
+.btn:focus{
+  outline: solid 1px var(--bs-primary);
+}
 
 a {
     font-size: 1.17rem;

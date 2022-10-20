@@ -171,6 +171,9 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.btn-close:focus{
+  outline: solid 1px var(--bs-primary);
+}
 .searchField{
     width: 100%;
 }

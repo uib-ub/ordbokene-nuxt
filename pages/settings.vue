@@ -1,5 +1,8 @@
 <script setup>
 import {useSettingsStore } from '~/stores/settingsStore'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 const settings = useSettingsStore()
 
 const resetSettings = (settings) => {
@@ -10,10 +13,14 @@ const resetSettings = (settings) => {
     })
 };
 
+useHead({
+title: t('settings.title')
+})
+
 </script>
 
 <template>
-<main class="secondary-page">
+<main class="secondary-page container">
   <h2>{{$t('settings.title')}}</h2>
 
   <div class="form-check">
@@ -51,5 +58,11 @@ const resetSettings = (settings) => {
 .btn-outline-primary:hover,.btn-outline-primary:focus{
   background-color: white;
   color: black;
+}
+input:focus{
+  border: solid 1px var(--bs-primary);
+}
+.btn:focus{
+  outline: solid 1px var(--bs-primary);
 }
 </style>

@@ -208,5 +208,11 @@
             "title": "Feil",
             "description":"Noe gikk galt..."
         }
-    }
+    },
+    "label": {
+        "nav": "Hovedmeny",
+        "footer_nav": "Bunnlinjemeny",
+        "search_pages": "Søkesider meny",
+        "dict_nav": "Ordboknavigasjon"
+      }
 }

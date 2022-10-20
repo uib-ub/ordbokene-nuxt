@@ -1,18 +1,22 @@
 <template>
     <div class="dict-view">
+      <div class="container">
       <SearchNav advanced/>
+      <main>
         <NuxtErrorBoundary @error="form_error">
         <AdvancedSearchForm/>
       </NuxtErrorBoundary>
       <NuxtErrorBoundary @error="content_error">
-        <main>
+        
     
     <Results v-if="store.q"/>
     <Welcome v-else/>
   
-  </main>
+ 
         
       </NuxtErrorBoundary>
+    </main>
+    </div>
         
     </div>
     </template>
@@ -20,8 +24,15 @@
 <script setup>
 import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 const store = useStore()
 const route = useRoute()
+
+useHead({
+  title: t('advanced')
+})
 
 definePageMeta({
     middleware: 'advanced-search-middleware'
@@ -36,9 +47,3 @@ const content_error = (error) => {
 
 
 </script>
-
-<style scoped>
-
-
-
-</style>

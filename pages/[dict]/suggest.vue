@@ -1,11 +1,11 @@
 <template>
       <div class="pb-1">
         
-  <main>
+  
     <div class="callout"><i class="bi-info-circle-fill" aria-hidden="true"/> <strong>{{store.q}}</strong> er ikke et oppslagsord i {{store.dict}}.</div>
     <SuggestResults v-if="suggestions" :suggestions="suggestions" :key="store.q"/>
   
-  </main>
+
     </div>
   </template>
   

@@ -1,11 +1,11 @@
 <template>
 
 <div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}" >
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main">
-  <div class="container-fluid">
+  <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
+  <div class="container-fluid mx-lg-2">
     <NuxtLink class="navbar-brand text-white" to="/">
       <div class="small mx-1 my-1 my-lg-3">
-      <div v-show="false"><h1>ordbøkene.no</h1></div>
       <div><h1 class="brand-title">Ordbøkene</h1>
       <p class="d-none d-xl-block brand-subtitle">{{$t("sub_title")}}</p>
       </div>
@@ -35,11 +35,11 @@
         </li>
       </ul>
       <div class="navbar-nav ml-auto">
-        <div class="nav-item dropdown">
+        <div class="nav-item dropdown-center">
           <NuxtLink class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
              <i :aria-label="$t('settings.locale.title')" aria-hidden="true" class="bi bi-globe"/> {{$t('name')}}
           </NuxtLink>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu navbar-dropdown-menu" aria-labelledby="navbarDropdown">
             <li><button class="dropdown-item" @click="update_locale('eng')">English</button></li>
             <li><button class="dropdown-item" @click="update_locale('nob')">Bokmål</button></li>
             <li><button class="dropdown-item" @click="update_locale('nno')">Nynorsk</button></li>
@@ -51,49 +51,35 @@
     </div>
   </div>
 </nav>
+  </header>
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
-    <NuxtPage class="page-container container px-3 pb-3" />
+    <NuxtPage class="page-container  px-3 pb-3" />
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
-  <div class="container d-flex justify-content-around flex-column flex-md-row">
-  <div class="text-width">
-    <div class="mb-4 d-flex align-items-center">
+  <div class="container d-flex flex-column flex-md-row">
+  <div class="text-width mb-3 mb-xl-2">
+    <div class="d-flex align-items-center">
       <img class="pe-5 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
     </div>
-    <div><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</p></div>
+    <div class="pt-4 pt-md-0"><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</div>
   </div>
-  <nav class="navbar" aria-label="search pages navigation">
+  <nav class="navbar footer-navbar" :aria-label="$t('menu.title')">
+    <span aria-hidden="true" class="footer-nav menu-title d-md-none pb-2 mt-4">{{$t('menu.title')}}:</span>
     <ul class="navbar-nav navbar-secondary-pages">
-      <p class="footer-nav">{{$t('menu.search_pages')}}:</p>
-      <li class="footer-nav-item" v-bind:class="{'active': route.params.dict =='bm,nn'}">
-        <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'false' : 'true'" to="/bm,nn">{{$t('dicts.bm,nn')}}</NuxtLink>
+      <li class="footer-nav-item">
+        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'dict' && 'page'" to="/">{{$t('home')}}</NuxtLink>
       </li>
-      <li class="footer-nav-item" v-bind:class="{'active': route.params.dict =='bm'}">
-        <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'false' : 'true'" to="/bm">{{$t('dicts.bm')}}</NuxtLink>
-      </li>
-      <li class="footer-nav-item" v-bind:class="{'active': route.params.dict =='nn'}">
-        <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'false' : 'true'" to="/nn">{{$t('dicts.nn')}}</NuxtLink>
-      </li>
-      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'search'}">
-        <NuxtLink class="nav-link py-1" :aria-current="store.advanced ? 'true' : 'false'" 
-        @click="store.advanced = true" to="/search">{{$t('advanced')}}</NuxtLink>
-      </li>
-    </ul>
-  </nav>
-  <nav class="navbar" aria-label="footer menu">
-    <ul class="navbar-nav navbar-secondary-pages">
-      <p class="footer-nav menu-title">{{$t('menu.title')}}:</p>
-      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'about'}">
-        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
-      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'help'}">
+      <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink></li>
-      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'settings'}">
+      <li class="footer-nav-item">
+        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
+      <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink></li>
-      <li class="footer-nav-item" v-bind:class="{'active': $route.name == 'contact'}">
+      <li class="footer-nav-item">
         <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink></li>
     </ul>
   </nav>
@@ -120,7 +106,10 @@ i18n.locale.value = locale.value
 
 useHead({
     htmlAttrs: {
-      lang: i18n.locale
+      lang: {nob: 'nb', nno: 'nn', eng: 'en'}[i18n.locale.value]
+    },
+    titleTemplate: (titleChunk) => {
+      return titleChunk ? `${titleChunk} - ordbøkene.no` : 'ordbøkene.no';
     }
 })
 
@@ -133,25 +122,32 @@ await Promise.all([$fetch('https://odd.uib.no/opal/dev/bm/concepts.json'), $fetc
 const update_locale = (newLocale) => {
   i18n.locale.value = newLocale
   locale.value = newLocale
+  useHead({
+    htmlAttrs: {
+      lang: {nob: 'nb', nno: 'nn', eng: 'en'}[i18n.locale.value]
+    }
+})
 }
 
 </script>
 
 
 <style>
-:focus{
-  border: solid black 1px;
+*:focus{
   outline: solid white 1px;
+  box-shadow: 0px 0px 1px 2px black;
   border-radius: 5px;
 }
 
 .brand-title {
+  font-size: 2rem;
   margin-bottom: 0.125rem;
 }
 
 .brand-subtitle {
   margin-left: 0.125rem;
   margin-bottom: 0.5rem;
+  font-size: 1rem;
 }
 
 .btn-outline-tertiary{
@@ -174,7 +170,9 @@ body {
 
 
 
-
+.navbar-dropdown-menu{
+  min-width: 8rem !important;
+}
 
 .back-to-search {
   font-size: larger;
@@ -186,21 +184,24 @@ h1 {
 
 }
 
+
 .text-width{
-  width: 50%;
+  width: 60%;
+}
+.footer-navbar{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 .footer-nav{
-  font-variant-caps: all-small-caps;
+  text-transform: uppercase;
   letter-spacing: .1rem;
   font-weight: 600;
 }
 
 .navbar .footer-nav-item {
   padding-bottom: 0.25rem;
-  font-variant-caps: all-small-caps;
-  font-size: 1rem;
-  letter-spacing: .1rem;
-  font-weight: 600;
   list-style-type: none;
 }
 
@@ -231,16 +232,36 @@ h1 {
   padding-bottom: 0rem;
 }
 
+@media (min-width: 768px) {
+  .text-width {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+  }
 
-@media(max-width: 768px) {
-.text-width{
-  width: 100%;
-}
-.menu-title{
-  margin-top: 1rem;
-}
-}
+  footer .flex-md-row {
+    flex-direction: column !important;
+  }
 
+  .footer-navbar {
+    flex-direction: row !important;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  footer ul {
+    flex-direction: row !important;
+    gap: 2rem;
+    
+    
+  }
+  footer li {
+    font-variant: all-small-caps;
+    font-size: 1.25rem !important;
+  }
+}
 
 @media (max-width: 992px) {
   .nav-item {
@@ -269,7 +290,15 @@ h1 {
     border-bottom: 0rem;
   }
 
+}
 
+@media(max-width: 768px) {
+.text-width{
+  width: 100%;
+}
+.menu-title{
+  margin-top: 1rem;
+}
 }
 
 
@@ -315,11 +344,11 @@ main a  {
 }
 
 .srlogo{
-  height: 20px;
+  height: 1.75rem;
   width: fit-content;
 }
 .uiblogo{
-  height: 60px;
+  height: 5rem;
    width: fit-content;
 }
 
@@ -341,27 +370,27 @@ main a  {
   font-size: 1.25rem;
 }
 
-article h5 {
+.article h5 {
   color: var(--bs-primary);
   font-weight: 600;
   font-size: 1rem;
   padding-top: 1rem;
 }
 
-article .level1>ol {
+.article .level1>ol {
   padding-left: 1.25rem;
 }
 
-article li {
+.article li {
   margin-bottom: 0.5rem;
   margin-top: 0.25rem;
 }
 
-article ul {
+.article ul {
   margin-bottom: 1rem;
 }
 
-article ol {
+.article ol {
   margin-bottom: 2rem;
 }
 

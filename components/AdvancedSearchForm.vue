@@ -47,11 +47,11 @@
 </div>
 </form>
 <div v-if="store.q" class="d-flex mb-2">
-  <button class="btn btn-light btn-light-single me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left primary/>{{$t('advanced_help')}}</button>
+  <button class="btn btn-light btn-light-single me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle-fill" left primary/>{{$t('advanced_help')}}</button>
     
 <div class="btn-group" role="group" aria-label="Basic example">
-  <button @click="settings.listView = false" class="btn btn-light" v-bind:class="{active: !settings.listView}"><BootstrapIcon icon="bi-file-text" left primary/>Artikler</button>
-  <button @click="settings.listView = true" class="btn btn-light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-list" left primary/>Liste</button>
+  <button @click="settings.listView = false" class="btn btn-light" v-bind:class="{active: !settings.listView}"><BootstrapIcon icon="bi-file-text-fill" left primary/>Artikler</button>
+  <button @click="settings.listView = true" class="btn btn-light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-file-ruled-fill" left primary/>Liste</button>
 
 
 
@@ -178,6 +178,10 @@ const submitForm = async (item) => {
 .btn-group, .btn-light-single {
   border: solid 1px rgba(0,0,0, .5);
   box-shadow: 2px 2px 1px rgba(0,0,0, .25);
+}
+
+.btn-light {
+  font-weight: 600;;
 }
 
 </style>

@@ -51,7 +51,7 @@
     
 <div class="btn-group" role="group" aria-label="Basic example">
   <button @click="settings.listView = false" class="btn btn-light" v-bind:class="{active: !settings.listView}"><BootstrapIcon icon="bi-file-text" left/>Artikler</button>
-  <button @click="settings.listView = true" class="btn btn-light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-file-ruled" left/>Liste</button>
+  <button @click="settings.listView = true" class="btn btn-light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-list" left/>Liste</button>
 
 
 

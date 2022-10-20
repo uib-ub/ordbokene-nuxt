@@ -113,6 +113,7 @@ watch(inflection_enabled, () => {
 const submitForm = async (item) => {
   store.autocomplete = []
   store.q = store.input
+  mini_help.value = false
 
 
   let url = `/search?q=${store.input}&dict=${store.dict}&scope=${store.scope}`

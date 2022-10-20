@@ -49,7 +49,7 @@
         <ArticleHeader :lemma_groups="lemma_groups" :secondary_header_text="secondary_header_text" :content_locale="content_locale" :dict="dict"/>
 
         <button v-if="inflected && !welcome" class="inflection-button btn rounded-pill py-1 px-3 mx-2" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
-             {{$t('article.show_inflection')}}<span v-if="!toggle"><BootstrapIcon icon="bi-plus" right/></span><span v-if="toggle"><BootstrapIcon icon="bi-dash" right/></span>
+             {{$t('article.show_inflection')}}<span v-if="!toggle"><BootstrapIcon icon="bi-plus-lg" right primary/></span><span v-if="toggle"><BootstrapIcon icon="bi-dash-lg" right primary/></span>
         </button>
 
         <div v-if="inflected" class="collapse py-2" :id="'inflection-'+article_id" ref="inflection_table">
@@ -385,7 +385,7 @@ if (store.view == 'article') {
 
 .inflection-button {
     border: solid 1px var(--bs-primary);
-    color: var(--bs-primary);
+    font-weight: 600;
     background-color: white;
     border-radius: 2rem;
     padding-right: 0.5rem !important;

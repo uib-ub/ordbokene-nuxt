@@ -362,14 +362,14 @@ section a, .secondary-page a  {
 
 .callout {
   border-left: solid 4px var(--bs-primary);
-   border-top: solid 1px rgba(0,0,0, .1);
-   border-bottom: solid 1px rgba(0,0,0, .1);
-   border-right: solid 1px rgba(0,0,0, .1);
+   border-top: solid 1px rgba(0,0,0, .5);
+   border-bottom: solid 1px rgba(0,0,0, .5);
+   border-right: solid 1px rgba(0,0,0, .5);
    margin-top: 1rem;
    margin-bottom: 1rem;
    padding: 1rem;
    background-color: rgba(255,255,255, .5);
-   box-shadow: 2px 2px 1px rgba(0,0,0, .1);
+   box-shadow: 2px 2px 1px rgba(0,0,0, .25);
 }
 
 .callout i {
@@ -461,8 +461,8 @@ ol.sub_definitions {
 
 .article-view .article, .secondary-page {
     border-radius: 0rem;
-    border: solid 1px rgba(0,0,0, .3) !important;
-    box-shadow: 2px 2px 1px rgba(0,0,0, .3) !important;
+    border: solid 1px rgba(0,0,0, .5) !important;
+    box-shadow: 2px 2px 1px rgba(0,0,0, .25) !important;
 
 }
 

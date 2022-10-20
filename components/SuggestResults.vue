@@ -45,7 +45,7 @@ a {
 }
 
 .nav-item {
-    border: solid 1px rgba(0,0,0,.5);
+    border: solid 1px rgba(0,0,0,.75);
     border-radius: 2rem;
 }
 

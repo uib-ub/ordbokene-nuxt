@@ -171,13 +171,13 @@ const submitForm = async (item) => {
 
 .search-toolbar {
   background-color: white;
-  box-shadow: 2px 2px 1px rgb(0 0 0 / 30%);
-  border: solid 1px rgb(0 0 0 / 30%);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, .25);
+  border: solid 1px rgba(0, 0, 0, .5);
   border-radius: 2rem;
 }
 .btn-group, .btn-light-single {
-  border: solid 1px rgba(0,0,0, .3);
-  box-shadow: 2px 2px 1px rgba(0,0,0, .3);
+  border: solid 1px rgba(0,0,0, .5);
+  box-shadow: 2px 2px 1px rgba(0,0,0, .25);
 }
 
 </style>

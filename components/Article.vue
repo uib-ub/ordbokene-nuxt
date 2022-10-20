@@ -494,16 +494,16 @@ span.lemma-group {
 
 .article {
     border-radius: 2rem;
-    border: solid 1px rgba(0,0,0, .3);
+    border: solid 1px rgba(0,0,0, .5);
     background-color: white;
-    box-shadow: 2px 2px 1px rgba(0,0,0, .3);
+    box-shadow: 2px 2px 1px rgba(0,0,0, .25);
     margin-bottom: 1rem;
 }
 
 
 
 a.result-list-item {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.6rem;
     padding-top: 0.5rem;
     padding-left: 1rem;
     padding-right: 1rem;

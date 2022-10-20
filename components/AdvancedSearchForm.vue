@@ -46,7 +46,7 @@
 </div>
 </div>
 </form>
-<div v-if="store.q" class="d-flex mb-2">
+<div v-if="store.q" class="d-flex mb-2 flex-wrap">
   <button class="btn btn-light btn-light-single me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle-fill" left primary/>{{$t('advanced_help')}}</button>
     
 <div class="btn-group" role="group" aria-label="Basic example">

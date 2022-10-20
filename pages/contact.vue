@@ -16,7 +16,7 @@
       </button>
     </h3>
     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body"><p><em lang="no">Bokmålsordboka</em>{{$t('and')}}<em lang="no">Nynorskordboka</em>{{$t('contact.faq.items[0].text[0]')}}<router-link to="/om" @click="$emit('close')">{{$t('contact.faq.items[0].text[1]')}}</router-link></p></div>
+      <div class="accordion-body"><p><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('contact.faq.items[0].text[0]')}}<router-link to="/om" @click="$emit('close')">{{$t('contact.faq.items[0].text[1]')}}</router-link></p></div>
     </div>
   </div>
   <div class="accordion-item">

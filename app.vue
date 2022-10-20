@@ -65,7 +65,7 @@
       <img class="pe-5 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
     </div>
-    <div class="pt-4 pt-md-0"><em lang="no">Bokmålsordboka</em>{{$t('and')}}<em lang="no">Nynorskordboka</em>{{$t('footer_description')}}</div>
+    <div class="pt-4 pt-md-0"><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</div>
   </div>
   <nav class="navbar footer-navbar" :aria-label="$t('menu.title')">
     <span aria-hidden="true" class="footer-nav menu-title d-md-none pb-2 mt-4">{{$t('menu.title')}}:</span>

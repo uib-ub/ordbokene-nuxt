@@ -2,7 +2,7 @@
 <div v-if="suggestions" class="p-2 mb-4 mt-3">
     <h2>{{$t('notifications.similar')}}</h2>
     <ul class="nav nav-pills flex-column flex-md-row gap-3 pt-2">
-        <li class="nav-item" v-for="(item, idx) in suggestions" :key="idx" lang="no">
+        <li class="nav-item" v-for="(item, idx) in suggestions" :key="idx">
             <NuxtLink class="nav-link btn btn-outline-primary" :to="suggest_link(item[0])"><BootstrapIcon icon="bi-search"/> <span class="link-content">{{item[0]}}</span></NuxtLink>
         </li>
     </ul>

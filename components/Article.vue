@@ -42,7 +42,7 @@
         <div class="skeleton skeleton-content w-25"/>
         </div>
         <div v-else>
-        <h2 v-if="welcome" class="dict-label">{{$t('monthly', 1, { locale: content_locale}) + {"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
+        <h2 v-if="welcome" class="dict-label">{{$t('monthly') + {"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-else-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-else-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div :class="welcome? 'p-4' : 'px-4 pt-4 pb-2'">

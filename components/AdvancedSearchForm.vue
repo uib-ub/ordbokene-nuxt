@@ -47,7 +47,7 @@
 </div>
 </form>
 <div v-if="store.q" class="d-flex mb-2">
-  <button class="btn btn-light btn-light-single me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left/>{{$t('help')}}</button>
+  <button class="btn btn-light btn-light-single me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
     
 <div class="btn-group" role="group" aria-label="Basic example">
   <button @click="settings.listView = false" class="btn btn-light" v-bind:class="{active: !settings.listView}"><BootstrapIcon icon="bi-file-text" left/>Artikler</button>

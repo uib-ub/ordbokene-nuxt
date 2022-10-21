@@ -1,7 +1,8 @@
 <template>
 
 <div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}" >
-  <header>
+  <header class="position-relative">
+    <div class="d-flex justify-content-center w-100 position-absolute top-0 start-0"><a class="w-100 skip-link text-decoration-underline">{{$t('accessibility.main_content')}}</a></div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="container-fluid mx-lg-2">
     <NuxtLink class="navbar-brand text-white" to="/">
@@ -168,6 +169,13 @@ body {
 }
 
 
+.skip-link{
+  background-color: var(--bs-secondary);
+  color: white;
+  border-radius: 0 0 5px 5px;
+  text-align: center;
+  z-index: 100;
+}
 
 
 .navbar-dropdown-menu{

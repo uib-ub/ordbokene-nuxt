@@ -2,7 +2,7 @@
 
 <div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}" >
   <header class="position-relative">
-    <div class="d-flex justify-content-center w-100 position-absolute top-0 start-0"><NuxtLink class="w-100 skip-link text-decoration-underline" to="#main" @click="focus_main">{{$t('accessibility.main_content')}}</NuxtLink></div>
+    <div class="d-flex justify-content-center w-100 position-absolute top-0 start-0"><NuxtLink class="skip-link text-decoration-underline" to="#main" @click.prevent="focus_main">{{$t('accessibility.main_content')}}</NuxtLink></div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="container-fluid mx-lg-2">
     <NuxtLink class="navbar-brand text-white" to="/">
@@ -130,13 +130,11 @@ const update_locale = (newLocale) => {
 })
 }
 
-onMounted(() => {
-const focus_main = () => {
-  this.$refs.main.focus()
-}
-return {focus_main};
-})
+const main = ref(null)
 
+const focus_main = () => {
+  main.value.focus()
+}
 
 </script>
 
@@ -183,6 +181,13 @@ body {
   border-radius: 0 0 5px 5px;
   text-align: center;
   z-index: 100;
+  padding: 8px;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+}
+.skip-link:focus {
+  transform: translateY(0%);
 }
 
 

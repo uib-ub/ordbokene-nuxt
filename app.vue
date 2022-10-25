@@ -5,7 +5,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="container-fluid mx-lg-2">
     <NuxtLink class="navbar-brand text-white" to="/">
-      <div class="small mx-1 my-1 my-lg-3">
+      <div class="small mx-1 my-1 my-lg-2">
       <div><h1 class="brand-title">Ordbøkene</h1>
       <p class="d-none d-xl-block brand-subtitle">{{$t("sub_title")}}</p>
       </div>
@@ -307,7 +307,7 @@ h1 {
 
 
 
-main a  {
+section a, .secondary-page a  {
   border-bottom: 2px solid var(--bs-link);
 }
 
@@ -338,6 +338,14 @@ main a  {
   font-variant: all-small-caps;
   font-size: 1.75rem;
 }
+
+.advanced-info h2 {
+  font-family: Inria Serif;
+  font-variant: normal;
+  color: var(--bs-primary);
+  font-weight: bold;
+}
+
 .secondary-page summary::marker {
   font-size: 1.5rem;
 }
@@ -353,14 +361,14 @@ main a  {
 
 .callout {
   border-left: solid 4px var(--bs-primary);
-   border-top: solid 1px rgba(0,0,0, .1);
-   border-bottom: solid 1px rgba(0,0,0, .1);
-   border-right: solid 1px rgba(0,0,0, .1);
+   border-top: solid 1px rgba(0,0,0, .5);
+   border-bottom: solid 1px rgba(0,0,0, .5);
+   border-right: solid 1px rgba(0,0,0, .5);
    margin-top: 1rem;
    margin-bottom: 1rem;
    padding: 1rem;
    background-color: rgba(255,255,255, .5);
-   box-shadow: 2px 2px 1px rgba(0,0,0, .1);
+   box-shadow: 2px 2px 1px rgba(0,0,0, .25);
 }
 
 .callout i {
@@ -400,19 +408,19 @@ section {
 }
 
 
-article section.etymology > h4, section.pronunciation > h4 {
+.article section.etymology > h4, section.pronunciation > h4 {
   display: inline;
 }
 
-article section.etymology ul, section.pronunciation ul, section.etymology li, section.pronunciation li {
+.article section.etymology ul, section.pronunciation ul, section.etymology li, section.pronunciation li {
   display: inline;
 }
 
-article section.etymology li:not(:first-child):not(:last-child):before, section.pronunciation li:not(:first-child):not(:last-child):before {
+.article section.etymology li:not(:first-child):not(:last-child):before, section.pronunciation li:not(:first-child):not(:last-child):before {
   content: ", ";
 }
 
-article section.etymology li:not(:first-child):last-child:before, section.pronunciation li:not(:first-child):last-child:before {
+.article section.etymology li:not(:first-child):last-child:before, section.pronunciation li:not(:first-child):last-child:before {
   content: "; ";
   font-size: smaller;
 }
@@ -436,7 +444,7 @@ li.sub_article > ul {
   padding-left: 0px;
 }
 
-article li::marker {
+.article li::marker {
   color: var(--bs-primary);
   font-weight: bold;
 }
@@ -450,10 +458,10 @@ ol.sub_definitions {
 }
 
 
-.article-view article, .secondary-page {
+.article-view .article, .secondary-page {
     border-radius: 0rem;
-    border: solid 1px rgba(0,0,0, .3) !important;
-    box-shadow: 2px 2px 1px rgba(0,0,0, .3) !important;
+    border: solid 1px rgba(0,0,0, .5) !important;
+    box-shadow: 2px 2px 1px rgba(0,0,0, .25) !important;
 
 }
 

@@ -82,7 +82,7 @@ const pos_tags = [null, 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCO
 const fulltext_enabled = ref(store.scope.includes('f'))
 const inflection_enabled = ref(store.scope.includes('i'))
 
-const mini_help = ref(true)
+const mini_help = ref(store.q == "")
 
 const reset = () => {
   store.input = ""

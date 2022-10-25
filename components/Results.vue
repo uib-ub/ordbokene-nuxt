@@ -153,7 +153,7 @@ const listView = computed(() => {
     border-radius: 2rem;
     border: solid 1px rgba(0,0,0, .5);
     background-color: white;
-    box-shadow: 2px 2px 1px rgba(0,0,0, .25);
+    box-shadow: 2px 2px 1px rgba(0,0,0, .5);
     padding: 0.5rem;
 }
 

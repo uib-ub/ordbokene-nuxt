@@ -1,6 +1,7 @@
 <template>
   <component :is="tag" :class="body.type_"><!--
  --><component :is="item.tag || 'span'" v-for="(item, index) in assemble_text"
+          :lang="{bm: 'nob', nn: 'nno'}[props.dict]"
           :class="item.type"
           :key="index"
            v-bind="item.props"><!--

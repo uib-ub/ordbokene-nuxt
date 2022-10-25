@@ -153,7 +153,7 @@ const submitForm = async (item) => {
   box-shadow: 1px 2px 1px var(--bs-primary);
 } 
 .activeAutocomplete{
-  border-radius: 1.75rem 1.75rem 0 0;
+  border-radius: 1.5rem 1.5rem 0 0;
 }
 
 .dropdown-menu{

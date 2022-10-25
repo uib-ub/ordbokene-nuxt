@@ -368,7 +368,7 @@ section a, .secondary-page a  {
    margin-bottom: 1rem;
    padding: 1rem;
    background-color: rgba(255,255,255, .5);
-   box-shadow: 2px 2px 1px rgba(0,0,0, .25);
+   box-shadow: 2px 2px 1px rgba(0,0,0, .5);
 }
 
 .callout i {
@@ -461,7 +461,7 @@ ol.sub_definitions {
 .article-view .article, .secondary-page {
     border-radius: 0rem;
     border: solid 1px rgba(0,0,0, .5) !important;
-    box-shadow: 2px 2px 1px rgba(0,0,0, .25) !important;
+    box-shadow: 2px 2px 1px rgba(0,0,0, .5) !important;
 
 }
 

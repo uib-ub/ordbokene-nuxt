@@ -153,7 +153,7 @@ const submitForm = async (item) => {
   box-shadow: 1px 2px 1px var(--bs-primary);
 } 
 .activeAutocomplete{
-  border-radius: 1rem 1rem 0 0;
+  border-radius: 1.75rem 1.75rem 0 0;
 }
 
 .dropdown-menu{
@@ -172,13 +172,13 @@ const submitForm = async (item) => {
 
 .search-toolbar {
   background-color: white;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, .25);
+  box-shadow: 2px 2px 1px rgba(0, 0, 0, .5);
   border: solid 1px rgba(0, 0, 0, .5);
   border-radius: 2rem;
 }
 .btn-group, .btn-light-single {
   border: solid 1px rgba(0,0,0, .5);
-  box-shadow: 2px 2px 1px rgba(0,0,0, .25);
+  box-shadow: 2px 2px 1px rgba(0,0,0, .5);
 }
 
 

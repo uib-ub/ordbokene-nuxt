@@ -6,14 +6,8 @@
         <NuxtErrorBoundary @error="form_error">
         <AdvancedSearchForm/>
       </NuxtErrorBoundary>
-      <NuxtErrorBoundary @error="content_error">
-        
-    
+      <NuxtErrorBoundary @error="content_error">  
     <Results v-if="store.q"/>
-    <Welcome v-else/>
-  
- 
-        
       </NuxtErrorBoundary>
     </main>
     </div>

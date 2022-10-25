@@ -25,7 +25,7 @@
     <span v-if="settings.inflectionNo" class="inflection_classes">{{lemma_group.inflection_classes}}</span>
 
     </em>
-</div><Snippet :dict="dict" :definitions="data.body.definitions"/>
+</div>{{snippet}}
 
     </NuxtLink>
 </div>
@@ -48,8 +48,8 @@
         <div :class="welcome? 'p-4' : 'px-4 pt-4 pb-2'">
         <ArticleHeader :lemma_groups="lemma_groups" :secondary_header_text="secondary_header_text" :content_locale="content_locale" :dict="dict"/>
 
-        <button v-if="inflected && !welcome" class="inflection-button btn rounded-pill py-1 px-3 mx-2" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
-             {{$t('article.show_inflection')}} <span v-if="!toggle"><Icon :icon="'bi-plus'" /></span><span v-if="toggle"><Icon :icon="'bi-dash'" /></span>
+        <button v-if="inflected && !welcome" class="inflection-button btn rounded-pill mx-2" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
+             {{$t('article.show_inflection')}}<span v-if="!toggle"><BootstrapIcon icon="bi-plus-lg" right primary/></span><span v-if="toggle"><BootstrapIcon icon="bi-dash-lg" right primary/></span>
         </button>
 
         <div v-if="inflected" class="collapse py-2" :id="'inflection-'+article_id" ref="inflection_table">
@@ -274,6 +274,98 @@ const secondary_header_text = computed(() => {
       return a_forms.join(', ')
 })
 
+const parse_subitems =  (explanation, text) => {
+          let new_string = ""
+          let old_parts = text.split(/(\$)/)
+          let linkIndex = 0
+
+          old_parts.forEach((item) => {
+            if (item == '$') {
+              let subitem = explanation.items[linkIndex]
+              if (/^\d$/.test(subitem.text)) {
+                if (subitem.type_ == "superscript") {
+                new_string += "⁰¹²³⁴⁵⁶⁷⁸⁹"[parseInt(subitem.text)]
+                }
+                else if (subitem.type_ == "subscript") {
+                  new_string += "₀₁₂₃₄₅₆₇₈₉"[parseInt(subitem.text)]
+                }
+              }
+
+              else if (subitem.id) {
+                let expandable = store['concepts_'+props.dict][explanation.items[linkIndex].id]
+                if (!expandable) {
+                    console.log(subitem)
+                    console.log(store.concepts_bm)
+                }
+                new_string += expandable ? expandable.expansion : " [...] "
+
+              }
+              else if (subitem.text) {
+                 if (subitem.text.includes('$')) {
+                   new_string += parse_subitems(subitem, subitem.text)
+                 }
+                 else new_string += subitem.text
+              }
+              else  {
+                if (explanation.items[linkIndex].lemmas) {
+                new_string +=  explanation.items[linkIndex].word_form || explanation.items[linkIndex].lemmas[0].lemma
+                }
+              }
+              linkIndex += 1
+            }
+            else {
+              new_string += item
+            }
+          })
+          return new_string
+
+    }
+
+
+const parse_definitions = (node) => {
+    let definitionTexts = []
+      try {
+      node.forEach((definition) => {
+        if (definition.elements) {
+        if (definition.elements[0].content) {
+          let new_string = parse_subitems(definition.elements[0], definition.elements[0].content)
+          if (new_string.substring(new_string.length, new_string.length - 1) == ":") {
+            new_string = new_string.slice(0, -1)
+          }
+          definitionTexts.push(new_string)
+
+        }
+        else if (definition.elements[0].elements) {
+          definitionTexts.push(parse_definitions(definition.elements))
+        }
+      }
+      })
+      } catch(error) {
+        console.log("snippet", error.message)
+        definitionTexts = []
+      }
+
+      let snippet = definitionTexts.join("\u00A0•\u00A0")
+      return snippet
+    
+}
+
+const snippet = computed(() => {
+  return parse_definitions(data.value.body.definitions)
+})
+
+if (store.view == 'article') {
+  useHead({
+    meta: [
+      {
+        name: 'description',
+        content: snippet,
+      },
+    ],
+  });
+}
+
+
 
 </script>
 
@@ -293,7 +385,7 @@ const secondary_header_text = computed(() => {
 
 .inflection-button {
     border: solid 1px var(--bs-primary);
-    color: var(--bs-primary);
+    font-weight: 600;
     background-color: white;
     border-radius: 2rem;
     padding-right: 0.5rem !important;
@@ -402,16 +494,16 @@ span.lemma-group {
 
 .article {
     border-radius: 2rem;
-    border: solid 1px rgba(0,0,0, .3);
+    border: solid 1px rgba(0,0,0, .5);
     background-color: white;
-    box-shadow: 2px 2px 1px rgba(0,0,0, .3);
+    box-shadow: 2px 2px 1px rgba(0,0,0, .25);
     margin-bottom: 1rem;
 }
 
 
 
 a.result-list-item {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.6rem;
     padding-top: 0.5rem;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -431,12 +523,14 @@ a.result-list-item:hover {
 
 
 .article-column>.list-view-item:first-child {
-  border-radius: 1.5rem 1.5rem 0 0 ;
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
 }
 
 .article-column>.list-view-item:last-child {
   border-bottom: none;
-  border-radius: 0 0 1.5rem 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
 }
 
 </style>

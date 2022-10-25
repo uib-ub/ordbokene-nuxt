@@ -60,20 +60,20 @@
             </div>
         </div>
         <NuxtErrorBoundary @error="body_error">
-        <div class="article_content pt-3" ref="article_content" :lang="{nob: 'nb', nno: 'nn', eng: 'en'}[content_locale]">
+        <div class="article_content pt-3" ref="article_content">
             <section v-if="!welcome && data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
                 <h4>{{$t('article.headings.pronunciation', 1, { locale: content_locale})}}</h4>
 
                 <DefElement v-for="(element, index) in data.body.pronunciation" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
             </section>
-            <section v-if="!welcome && data.body.etymology && data.body.etymology.length" class="etymology" :lang="{nob: 'nb', nno: 'nn', eng: 'en'}[content_locale]">
+            <section v-if="!welcome && data.body.etymology && data.body.etymology.length" class="etymology">
                 <h4>{{$t('article.headings.etymology', 1, { locale: content_locale})}}</h4>
 
                 <DefElement v-for="(element, index) in data.body.etymology" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
             </section>
-            <section class="definitions" v-if="has_content" :lang="{nob: 'nb', nno: 'nn', eng: 'en'}[content_locale]">
+            <section class="definitions" v-if="has_content">
                 <h4 v-if="!welcome">{{$t('article.headings.definitions', 1, { locale: content_locale})}}</h4>
 
                 <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click" :welcome="welcome"/>
@@ -135,7 +135,7 @@ const inflection_error = (error) => {
 }
 
 const content_locale = computed(() => {
-    return i18n.locale == 'eng' ? 'eng' : {bm: 'nob', nn: 'nno'}[props.dict]
+    return i18n.locale.value === 'eng' ? 'eng' : {bm: 'nob', nn: 'nno'}[props.dict]
 })
 
 

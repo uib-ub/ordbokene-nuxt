@@ -107,7 +107,7 @@ const download_ris = () => {
 <div class="collapse py-2" :id="'cite-'+article_id">
     <div class="cite-container card card-body">
       <h4>{{$t('article.cite_title')}}</h4>
-      <p :lang="{nob: 'nb', nno: 'nn', eng: 'en'}[content_locale]">{{$t("article.cite_description[0]", 1, { locale: content_locale})}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", 1, { locale: content_locale})}}</p>
+      <p>{{$t("article.cite_description[0]", 1, { locale: content_locale})}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", 1, { locale: content_locale})}}</p>
       <div id="citation" v-html="$t('article.citation', create_citation())" />
       <div class="pt-3">
         <button class="btn rounded-pill" @click="copy_citation"><BootstrapIcon icon="bi-clipboard" left primary/> {{$t("article.copy", 1, { locale: content_locale})}}</button>

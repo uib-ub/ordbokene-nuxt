@@ -10,12 +10,10 @@
 </p>
 
 <AdvancedHelp/>
-
-  </div>
+</div>
 
 <div  v-if="$i18n.locale === 'nob'">
-  <p>Du søker ved å skrive inn ordet og trykke på returtasten (<kbd>enter</kbd>) eller velge et søkeforslag i nedtrekksmenyen. Tast <kbd>Shift</kbd>+<kbd>7</kbd> hvis du vil hoppe tilbake til søkefeltet etter å ha søkt.
-  Overskriften i toppen av hvert søketreff er en lenke til en ny artikkelside for det aktuelle ordet. Hvis du ikke får mer enn ett treff i hver ordbok, vises hele artikkelen i resultatlisten, og du trenger ikke trykke på lenken. Er det flere treff, kan du også vise artikkelinnholdet i resultatlisten ved å trykke på "Vis artikkel" i bunnen av søketreffet. Se innstillingene nedenfor hvis du ønsker at resultatlisten alltid skal vise fullstendige artikler.</p>
+  <p>Du søker ved å skrive inn ordet og trykke på returtasten (<kbd>enter</kbd>) eller velge et søkeforslag i nedtrekksmenyen. Tast <kbd>Shift</kbd>+<kbd>7</kbd> hvis du vil hoppe tilbake til søkefeltet etter å ha søkt. Overskriften i toppen av hvert søketreff er en lenke til en ny artikkelside for det aktuelle ordet. Hvis du ikke får mer enn ett treff i hver ordbok, vises hele artikkelen i resultatlisten, og du trenger ikke trykke på lenken. Er det flere treff, kan du også vise artikkelinnholdet i resultatlisten ved å trykke på "Vis artikkel" i bunnen av søketreffet. Se innstillingene nedenfor hvis du ønsker at resultatlisten alltid skal vise fullstendige artikler.</p>
   <p>Hvilken ordbok du får treff i, avhenger av hvilken ordbok du har valgt å søke i, og om ordet blir brukt i begge skriftspråkene. Det ligger per i dag ikke inne koblinger mellom ordbøkene, men vi har utviklet en mente-du-funksjon, som vi håper blir til hjelp for å finne de riktige ordene både i bokmål og nynorsk.</p>
   <p>Du kan søke direkte på faste uttrykk, f.eks. <em>gi katten i</em>. Alternativt finner du uttrykkene samlet til slutt i artikkelen eller artiklene de er knyttet til. Når du skriver inn et enkelt ord i søkefeltet, viser nedtrekksmenyen også de faste uttrykkene som ordet inngår i.</p>
   

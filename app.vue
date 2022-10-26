@@ -93,17 +93,16 @@
 import { useI18n } from 'vue-i18n'
 import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
+
 const store = useStore()
 const route = useRoute()
 const i18n = useI18n()
 
-
-const locale = useCookie("locale")
+const locale = useCookie("locale");
 
 // Default to bokmål on odd days
 locale.value = locale.value || (new Date().getDate() % 2 ? 'nno' : 'nob')
-i18n.locale.value = locale.value
-
+i18n.locale.value = locale.value 
 
 useHead({
     htmlAttrs: {
@@ -390,7 +389,7 @@ section a, .secondary-page a  {
    margin-bottom: 1rem;
    padding: 1rem;
    background-color: rgba(255,255,255, .5);
-   box-shadow: 2px 2px 1px rgba(0,0,0, .25);
+   box-shadow: 2px 2px 1px rgba(0,0,0, .5);
 }
 
 .callout i {
@@ -483,7 +482,7 @@ ol.sub_definitions {
 .article-view .article, .secondary-page {
     border-radius: 0rem;
     border: solid 1px rgba(0,0,0, .5) !important;
-    box-shadow: 2px 2px 1px rgba(0,0,0, .25) !important;
+    box-shadow: 2px 2px 1px rgba(0,0,0, .5) !important;
 
 }
 

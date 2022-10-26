@@ -105,7 +105,7 @@ const download_ris = () => {
     <button class="btn rounded-pill" type="button" data-bs-toggle="collapse" :data-bs-target="'#cite-'+article_id" aria-expanded="false" aria-controls="collapseExample"><BootstrapIcon icon="bi-quote" left primary/> {{$t("article.cite", 1, { locale: content_locale})}}</button>
 </div>
 <div class="collapse py-2" :id="'cite-'+article_id">
-    <div class="cite-container card card-body">
+    <div class="cite-container card card-body mb-1 pb-2">
       <h4>{{$t('article.cite_title')}}</h4>
       <p>{{$t("article.cite_description[0]", 1, { locale: content_locale})}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", 1, { locale: content_locale})}}</p>
       <div id="citation" v-html="$t('article.citation', create_citation())" />

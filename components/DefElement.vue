@@ -1,6 +1,7 @@
 <template>
   <component :is="tag" :class="body.type_"><!--
  --><component :is="item.tag || 'span'" v-for="(item, index) in assemble_text"
+          :lang="i18n.locale.value == 'eng' ? {bm: 'nb', nn: 'nn'}[props.dict] : {nob: 'nb', nno: 'nn'}[i18n.locale.value]"
           :class="item.type"
           :key="index"
            v-bind="item.props"><!--
@@ -20,8 +21,10 @@
 
 
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
+const i18n = useI18n()
 
 const emit = defineEmits(['error', 'link-click'])
 const link_click = (event) => {

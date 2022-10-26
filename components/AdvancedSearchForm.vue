@@ -127,7 +127,7 @@ const submitForm = async (item) => {
 
 .advanced-search {
   outline: solid 1px var(--bs-primary);
-  border-radius: 2rem;
+  border-radius: 1.5rem;
 }
 .input-group {
   outline: solid 1px var(--bs-primary);
@@ -153,7 +153,7 @@ const submitForm = async (item) => {
   box-shadow: 1px 2px 1px var(--bs-primary);
 } 
 .activeAutocomplete{
-  border-radius: 1.75rem 1.75rem 0 0;
+  border-radius: 1.25rem 1.25em 0 0;
 }
 
 .dropdown-menu{

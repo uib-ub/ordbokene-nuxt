@@ -1,5 +1,6 @@
 <template>
-    <span v-for="(lemma_group, i) in lemma_groups" :key="i">
+  <div class="d-inline">
+    <div class="article-title" v-for="(lemma_group, i) in lemma_groups" :key="i">
     <h3>
                 <!--
     --><span v-for="(lemma, index) in lemma_group.lemmas"
@@ -21,7 +22,8 @@
     <span v-if="settings.inflectionNo" class="inflection_classes">{{lemma_group.inflection_classes}}</span>
 
     </span>
-    </span>
+  </div>
+  </div>
 </template>
 
 
@@ -45,6 +47,7 @@ h3 {
     font-family: Inria Serif;
   color: var(--bs-primary);
   font-weight:600;
+  margin-bottom: 0;
 
 }
 
@@ -56,12 +59,17 @@ h3 {
 
 .subheader {
   font-size: 1.17rem;
+
 }
 
 .hgno {
   color: rgba(0,0,0,.6) !important;
   font-family: unset;
   font-size: 1rem;
+}
+
+div>.article-title:not(:first-child) {
+  margin-top: 1rem;
 }
 
 </style>

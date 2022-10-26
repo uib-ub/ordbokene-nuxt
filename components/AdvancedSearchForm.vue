@@ -11,7 +11,7 @@
       <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button type='button' @click="store.dict = item" class="dropdown-item" name="dict" :value="item">{{$t(`dicts.${item}`)}}</button></li>
     </ul>
   </div>
-  
+
 <div class="dropdown col-sm-2 ">
   <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span>{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span></button>
   <ul class="dropdown-menu" name="pos">
@@ -37,8 +37,8 @@
 <div class="row p-md-3 g-3">
 <div class="advanced-search active col-7 flex-md-fill" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete  v-on:submit="submitForm"/>
-  
- 
+
+
   </div>
   <button :aria-label="$t('search')" class="btn btn-secondary rounded-pill col-1 mx-2" type="reset" @click="reset"> <BootstrapIcon icon="bi-cancel"/> Nullstill </button>
   <button :aria-label="$t('search')" class="btn btn-primary rounded-pill col-1 mx-2" type="submit"> <BootstrapIcon icon="bi-search" left/>Søk </button>
@@ -48,7 +48,7 @@
 </form>
 <div v-if="store.q" class="d-flex mb-2 flex-wrap">
   <button class="btn btn-light btn-light-single me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
-    
+
 <div class="btn-group" role="group" aria-label="Basic example">
   <button @click="settings.listView = false" class="btn btn-light" v-bind:class="{active: !settings.listView}"><BootstrapIcon icon="bi-file-text" left/>Artikler</button>
   <button @click="settings.listView = true" class="btn btn-light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-list" left/>Liste</button>
@@ -62,14 +62,14 @@
       <p>Bla bla bla</p>
 
       <AdvancedHelp/>
-      
+
 
     </div>
 </div>
 </template>
 
 <script setup>
-  
+
 import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
 import {useSettingsStore } from '~/stores/settingsStore'
@@ -151,7 +151,7 @@ const submitForm = async (item) => {
 
 .advanced-search:focus-within{
   box-shadow: 1px 2px 1px var(--bs-primary);
-} 
+}
 .activeAutocomplete{
   border-radius: 1.25rem 1.25em 0 0;
 }

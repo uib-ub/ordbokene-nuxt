@@ -47,7 +47,7 @@ h3 {
     font-family: Inria Serif;
   color: var(--bs-primary);
   font-weight:600;
-  margin-bottom: 0;
+  margin-bottom: 0rem;
 
 }
 
@@ -70,6 +70,14 @@ h3 {
 
 div>.article-title:not(:first-child) {
   margin-top: 1rem;
+}
+
+div>.article-title:not(:only-child) h3 {
+  margin-bottom: 0rem;
+}
+
+.article-title>h3:not(:only-child) {
+  margin-bottom: 0.5rem;
 }
 
 </style>

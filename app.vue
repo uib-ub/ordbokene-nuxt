@@ -432,9 +432,6 @@ li.level1.definition {
   list-style: upper-alpha;
 }
 
-li.level2.definition {
-  list-style: decimal;
-}
 
 li.level3.definition {
   /* Norsk ordbok skal ha "lower.alpha" her */

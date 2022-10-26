@@ -2,7 +2,7 @@
     <div class="dict-view">
       <div class="container">
       <SearchNav advanced/>
-      <main id="main" ref="main">
+      <main id="main">
         <NuxtErrorBoundary @error="form_error">
         <AdvancedSearchForm/>
       </NuxtErrorBoundary>

@@ -3,7 +3,7 @@
   <div class="container">
     
   <SearchNav/>
-  <main id="main" ref="main">
+  <main id="main">
 
     <NuxtErrorBoundary @error="form_error">
     <SearchForm/>

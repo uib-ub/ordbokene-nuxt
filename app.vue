@@ -2,7 +2,7 @@
 
 <div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}" >
   <header class="position-relative">
-    <div class="d-flex justify-content-center w-100 position-absolute top-0 start-0"><NuxtLink class="skip-link text-decoration-underline" to="#main" @click.prevent="focus_main">{{$t('accessibility.main_content')}}</NuxtLink></div>
+    <div class="d-flex justify-content-center w-100 position-absolute top-0 start-0"><NuxtLink class="skip-link text-decoration-underline" to="#main" @click="focus_main">{{$t('accessibility.main_content')}}</NuxtLink></div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="container-fluid mx-lg-2">
     <NuxtLink class="navbar-brand text-white" to="/">
@@ -35,7 +35,7 @@
           <NuxtLink class="nav-link" :aria-current="$route.name == 'contacthelp' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
       </ul>
-      <div class="navbar-nav ml-auto">
+      <div class="navbar-nav ml-auto" ref="main" >
         <div class="nav-item dropdown-center">
           <NuxtLink class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
              <i :aria-label="$t('settings.locale.title')" aria-hidden="true" class="bi bi-globe"/> {{$t('name')}}
@@ -56,7 +56,7 @@
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
-    <NuxtPage class="page-container  px-3 pb-3" />
+    <NuxtPage class="page-container poop px-3 pb-3" />
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
@@ -132,7 +132,8 @@ const update_locale = (newLocale) => {
 const main = ref(null)
 
 const focus_main = () => {
-  main.value.focus()
+  main.focus()
+  console.log('hei')
 }
 
 </script>

@@ -1,6 +1,6 @@
 <template>
     <span v-for="(lemma_group, i) in lemma_groups" :key="i">
-    <h3 :lang="i18n.locale.value == 'eng' ? {bm: 'nb', nn: 'nn'}[props.dict] : ''">
+    <h3 :lang="i18n.locale.value == 'eng' ? {bm: 'nb', nn: 'nn'}[props.dict] : {nob: 'nb', nno: 'nn'}[i18n.locale.value]">
                 <!--
     --><span v-for="(lemma, index) in lemma_group.lemmas"
           :key="index"><DefElement v-if="lemma.annotated_lemma" :body="lemma.annotated_lemma" tag="span" :content_locale="content_locale"/><span v-else>{{lemma.lemma}}</span><!--

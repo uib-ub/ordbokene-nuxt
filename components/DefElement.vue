@@ -1,7 +1,7 @@
 <template>
   <component :is="tag" :class="body.type_"><!--
  --><component :is="item.tag || 'span'" v-for="(item, index) in assemble_text"
-          :lang="i18n.locale.value == 'eng' ? {bm: 'nb', nn: 'nn'}[props.dict] : ''"
+          :lang="i18n.locale.value == 'eng' ? {bm: 'nb', nn: 'nn'}[props.dict] : {nob: 'nb', nno: 'nn'}[i18n.locale.value]"
           :class="item.type"
           :key="index"
            v-bind="item.props"><!--

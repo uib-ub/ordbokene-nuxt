@@ -13,7 +13,7 @@
     <template>
 
       <div class="row px-lg-5 py-lg-2 align-items-center h-75" v-if="welcome_bm && welcome_nn">
-        <div class="row align-items-center">
+        <div class="row align-items-top">
           <section class="col-lg">
           <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm" welcome/>
           </section>

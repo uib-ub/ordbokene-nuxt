@@ -1,9 +1,8 @@
 <template>
-<div class="dict-view">
-  <div class="container">
+<div class="container dict-view" >
     
   <SearchNav/>
-  <main>
+
 
     <NuxtErrorBoundary @error="form_error">
     <SearchForm/>
@@ -11,8 +10,7 @@
   <NuxtErrorBoundary @error="content_error">
     <NuxtPage/>
   </NuxtErrorBoundary>
-</main>
-</div>
+
 </div>
 </template>
 

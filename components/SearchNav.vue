@@ -1,5 +1,5 @@
 <template>
-    <nav :aria-label="$t('label.dict_nav')">
+    <nav class="row" :aria-label="$t('label.dict_nav')">
     <div class="contrast-gradient"/>
     <ul class="mode-nav nav px-2 pt-3">
   <li class="nav-item" v-if="!advanced">

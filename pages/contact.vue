@@ -1,5 +1,5 @@
 <template>
-<main class="secondary-page container">
+<div class="secondary-page container h-100">
   <h2>{{$t('contact.title')}}</h2>
   <div>
     <h3>{{$t('contact.content[0]')}}</h3>
@@ -40,7 +40,7 @@
     </div>
   </div>
 </div>
-</main>
+</div>
 </template>
 
 <script setup>

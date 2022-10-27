@@ -1,6 +1,4 @@
 <template>
-
-<div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}" >
   <header>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="container-fluid mx-lg-2">
@@ -55,10 +53,12 @@
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
+<main v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}">
     <NuxtPage class="page-container  px-3 pb-3" />
 
+</main>
 
-<footer class="footer mt-auto p-3 bg-primary text-white">
+<footer class="p-3 bg-primary text-white">
   <div class="container d-flex flex-column flex-md-row">
   <div class="text-width mb-3 mb-xl-2">
     <div class="d-flex align-items-center">
@@ -85,7 +85,6 @@
   </nav>
   </div>
 </footer>
-  </div>
 </template>
 
 <script setup>
@@ -317,6 +316,11 @@ section a, .secondary-page a  {
   padding: 3rem !important;
 }
 
+.container.secondary-page {
+  border-bottom: none !important;
+  border-top: none !important;
+}
+
 
 
 .secondary-page h2 {
@@ -462,5 +466,27 @@ ol.sub_definitions {
     box-shadow: 2px 2px 1px rgba(0,0,0, .5) !important;
 
 }
+
+.spinner-border {
+        width: 12em;
+        height: 12rem;
+    }
+
+
+#__nuxt {
+  display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+}
+
+
+main {
+  flex: 1;
+}
+
+.dict-view {
+  height: 100%;
+}
+
 
 </style>

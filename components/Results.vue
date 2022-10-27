@@ -140,11 +140,6 @@ const listView = computed(() => {
 </script>
 
 <style scoped>
-    .spinner-border {
-        width: 18rem;
-        height: 18rem;
-    }
-
 .result-count {
     font-size: 1rem;
 }

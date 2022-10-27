@@ -11,8 +11,9 @@
     </script>
     
     <template>
-      <div class="m-lg-2 px-lg-5 py-lg-2" v-if="welcome_bm && welcome_nn">
-        <div class="row">
+
+      <div class="row px-lg-5 py-lg-2 align-items-center h-75" v-if="welcome_bm && welcome_nn">
+        <div class="row align-items-center">
           <section class="col-lg">
           <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm" welcome/>
           </section>
@@ -21,7 +22,7 @@
           </section>
         </div>            
       </div> 
-      <div v-else class="m-lg-2 px-lg-5 py-lg-2">
+      <div v-else class="row justify-content-center">
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>

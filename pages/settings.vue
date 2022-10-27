@@ -20,7 +20,7 @@ title: t('settings.title')
 </script>
 
 <template>
-<main class="secondary-page container">
+<div class="secondary-page container h-100">
   <h2>{{$t('settings.title')}}</h2>
 
   <div class="form-check">
@@ -44,7 +44,7 @@ title: t('settings.title')
   <button class="btn btn-outline-primary" @click="resetSettings(settings)">
     <BootstrapIcon icon="bi-trash-fill" /> <span>{{$t('settings.reset')}}</span>
   </button>
-</main>
+</div>
 </template>
 
 <style scoped>

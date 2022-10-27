@@ -18,7 +18,7 @@ const store = useStore()
 const route = useRoute()
 
 definePageMeta({
-    middleware: 'dict-middleware'
+  middleware: ['endpoint-middleware', 'dict-middleware']
   })
 
 const suggestions = ref()  

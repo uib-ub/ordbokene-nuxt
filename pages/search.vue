@@ -29,7 +29,7 @@ useHead({
 })
 
 definePageMeta({
-    middleware: 'advanced-search-middleware'
+    middleware: ['endpoint-middleware', 'advanced-search-middleware']
   })
 
 const form_error = (error) => {

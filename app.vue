@@ -372,7 +372,7 @@ section a, .secondary-page a  {
    margin-top: 1rem;
    margin-bottom: 1rem;
    padding: 1rem;
-   background-color: rgba(255,255,255, .5);
+   background-color: white;
    box-shadow: 2px 2px 1px rgba(0,0,0, .5);
 }
 

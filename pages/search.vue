@@ -2,7 +2,7 @@
     <div class="dict-view">
       <div class="container">
       <SearchNav advanced/>
-      <main id="main">
+      <main id="main" ref="mainRef">
         <NuxtErrorBoundary @error="form_error">
         <AdvancedSearchForm/>
       </NuxtErrorBoundary>
@@ -23,6 +23,11 @@ import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
 const store = useStore()
 const route = useRoute()
+const mainRef = ref(0)
+
+defineExpose({
+        mainRef
+    })
 
 useHead({
   title: t('advanced')

@@ -2,7 +2,7 @@
   <div>
     <div class="pb-1">
       <NuxtLink v-if="store.view == 'article' && store.searchUrl" class="back-link" :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink></div>
-<main id="main">
+<main id="main" ref="mainRef">
   
   <ArticleView v-if="store.view == 'article'"/>
   <WordView v-if="store.view == 'word'"/>
@@ -16,6 +16,11 @@
 // pick main component: word, article or search
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
+const mainRef = ref(0)
+
+defineExpose({
+        mainRef
+    })
 
 useHead({
   title: store.q

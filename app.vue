@@ -35,7 +35,7 @@
           <NuxtLink class="nav-link" :aria-current="$route.name == 'contacthelp' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
       </ul>
-      <div class="navbar-nav ml-auto" ref="main" >
+      <div class="navbar-nav ml-auto">
         <div class="nav-item dropdown-center">
           <NuxtLink class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
              <i :aria-label="$t('settings.locale.title')" aria-hidden="true" class="bi bi-globe"/> {{$t('name')}}
@@ -56,7 +56,7 @@
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
-    <NuxtPage class="page-container poop px-3 pb-3" />
+    <NuxtPage class="page-container poop px-3 pb-3" ref="nuxt_page" />
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
@@ -129,10 +129,10 @@ const update_locale = (newLocale) => {
 })
 }
 
-const main = ref(null)
+const nuxt_page = ref()
 
 const focus_main = () => {
-  main.value.focus()
+  nuxt_page.value.mainRef.value.focus()
   console.log('hei')
 }
 

@@ -50,7 +50,7 @@ async function fetchAutocomplete(q) {
     if (blank != "advanced") {
 
       let response = ref([])
-      let url = `https://odd.uib.no/opal/dev/api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=${store.advanced ? store.scope + (store.pos ? '&wc='+store.pos : '') : 'e'}`
+      let url = `${store.endpoint}api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=${store.advanced ? store.scope + (store.pos ? '&wc='+store.pos : '') : 'e'}`
       response.value = await $fetch(url)
 
       // prevent suggestions after submit
@@ -92,7 +92,7 @@ const submit = (data) => {
   input.value.$el.select()
   emit('submit')
 
-  console.log("SELECTING3")
+  //console.log("SELECTING3")
 }
 
 

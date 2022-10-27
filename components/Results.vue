@@ -75,7 +75,7 @@ const get_suggestions = async () => {
   if (!(store.advanced && specialSymbols(store.q))) {
   let key = ((store.advanced && store.pos) || '') + 'suggest_'+ (store.originalInput || store.q)
 
-  const response = await $fetch(`https://odd.uib.no/opal/dev/api/suggest?&q=${store.originalInput || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)                                
+  const response = await $fetch(`${store.endpoint}api/suggest?&q=${store.originalInput || store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)                                
   suggestions.value = filterSuggestions(response, store.originalInput || store.q)
   }
   else {

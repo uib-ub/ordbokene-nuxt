@@ -1,8 +1,37 @@
 import { useStore } from '~/stores/searchStore'
 
+
 export default defineNuxtRouteMiddleware(async (to, from) => {
     //console.log("MIDDLEWARE\nFROM: ", from, "\nTO: ", to, "\nREDIRECTED FROM:",to.redirectedFrom)
     const store = useStore()
+    
+    if (!store.endpoint) {
+        const get_concepts = async (server, env) => {
+
+            await Promise.all([fetch(`https://${server}.uib.no/opal/${env}/bm/concepts.json`).then(r => r.json()), fetch(`https://${server}.uib.no/opal/${env}/nn/concepts.json`).then(r => r.json())]).then(response => {
+             //await Promise.all([fetch(server == 'oda'? 'https://httpstat.us/404': `https://${server}.uib.no/opal/${env}/bm/concepts.json`).then(r => check_status(r)), fetch(`https://${server}.uib.no/opal/${env}/nn/concepts.json`).then(r => check_status(r))]).then(response => {
+                console.log("RESPONSE", response)
+            store.concepts_bm = response[0].concepts
+            store.concepts_nn = response[1].concepts
+            store.endpoint = `https://${server}.uib.no/opal/${env}/`
+            console.log("ENDPOINT:", store.endpoint)
+          
+          }).catch(async err => {
+            if (server == 'oda') {
+              console.log("Fallback to odd.uib.no")
+              await get_concepts('odd', env)
+              }
+              else {
+                console.log("Uncaught")
+          
+              }
+            })
+          }
+
+        const config = useRuntimeConfig()
+        await get_concepts('oda', config.public.endpointEnv || 'dev')
+    }
+
 
     if (to.params.slug) {
         // Articles
@@ -47,7 +76,8 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
             else {
                 //console.log("SIMPLE SEARCH")
                 store.advanced = false
-                const { pending, error, refresh, data: suggestions } = await useAsyncData(`suggest_${to.query.q}_${to.params.dict}`, () => $fetch(`https://odd.uib.no/opal/dev/api/suggest?&q=${to.query.q}&dict=${to.params.dict}&n=20&dform=int&meta=n&include=eis`))
+                console.log("FETCHING SUGGESTIONS FROM ", `${store.endpoint}api/suggest?&q=${to.query.q}&dict=${to.params.dict}&n=20&dform=int&meta=n&include=eis`)
+                const { pending, error, refresh, data: suggestions } = await useAsyncData(`suggest_${to.query.q}_${to.params.dict}`, () => $fetch(`${store.endpoint}api/suggest?&q=${to.query.q}&dict=${to.params.dict}&n=20&dform=int&meta=n&include=eis`))
                 let { exact, inflect } = suggestions.value.a
         
                 if (exact) {

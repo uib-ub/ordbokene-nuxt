@@ -14,6 +14,6 @@ definePageMeta({
 </script>
 
 <template>
+  <Welcome v-if="store.concepts_bm && store.concepts_nn"/>
 
-  <Welcome/>
 </template>

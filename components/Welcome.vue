@@ -4,14 +4,14 @@
     
     
     const [{ bm_pending, data: welcome_bm },  { nn_pending, data: welcome_nn }] = await Promise.all([
-        useLazyAsyncData('welcome_bm', () => $fetch('https://odd.uib.no/opal/dev/bm/parameters.json')),
-        useLazyAsyncData('welcome_nn', () => $fetch('https://odd.uib.no/opal/dev/nn/parameters.json'))
+        useLazyAsyncData('welcome_bm', () => $fetch(store.endpoint + 'bm/parameters.json')),
+        useLazyAsyncData('welcome_nn', () => $fetch(store.endpoint + '/nn/parameters.json'))
       ])
     
     </script>
     
     <template>
-
+      
       <div class="row px-lg-5 py-lg-2 align-items-center h-75" v-if="welcome_bm && welcome_nn">
         <div class="row align-items-top">
           <section class="col-lg">
@@ -26,6 +26,7 @@
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
+
 
       </div> 
     </template>

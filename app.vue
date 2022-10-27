@@ -112,12 +112,6 @@ useHead({
     }
 })
 
-await Promise.all([$fetch('https://odd.uib.no/opal/dev/bm/concepts.json'), $fetch('https://odd.uib.no/opal/dev/nn/concepts.json')]).then(response => {
-  store.concepts_bm = response[0].concepts
-  store.concepts_nn = response[1].concepts
-})
-
-
 const update_locale = (newLocale) => {
   i18n.locale.value = newLocale
   locale.value = newLocale

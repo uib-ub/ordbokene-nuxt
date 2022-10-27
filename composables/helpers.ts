@@ -155,7 +155,7 @@ export const filterSuggestions = (items, q) => {
   
     }
   
-export const roman_hgno = function(lemma) {
+export const roman_hgno = (lemma) => {
   let hgint = parseInt(lemma.hgno)
   if (hgint > 0) {
     return ["I","II","III","IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI"][hgint-1]

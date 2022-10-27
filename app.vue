@@ -102,7 +102,6 @@ const locale = useCookie("locale")
 locale.value = locale.value || (new Date().getDate() % 2 ? 'nno' : 'nob')
 i18n.locale.value = locale.value
 
-
 useHead({
     htmlAttrs: {
       lang: {nob: 'nb', nno: 'nn', eng: 'en'}[i18n.locale.value]
@@ -121,6 +120,7 @@ const update_locale = (newLocale) => {
     }
 })
 }
+
 
 </script>
 

@@ -310,11 +310,6 @@ section a, .secondary-page a  {
   padding: 3rem !important;
 }
 
-.container.secondary-page {
-  border-bottom: none !important;
-  border-top: none !important;
-}
-
 
 
 .secondary-page h2 {

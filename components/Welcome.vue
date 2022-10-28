@@ -13,11 +13,11 @@
     <template>
       
       <div class="row px-lg-5 py-lg-2 align-items-center h-75" v-if="welcome_bm && welcome_nn">
-        <div class="row align-items-top">
-          <section class="col-lg">
+        <div class="row m-0 align-items-top">
+          <section class="col-lg px-0 p-lg-3">
           <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm" welcome/>
           </section>
-          <section class="col-lg">
+          <section class="col-lg px-0 p-lg-3">
           <Article :article_id="parseInt(welcome_nn.front_article.value)" dict="nn" welcome/>
           </section>
         </div>            

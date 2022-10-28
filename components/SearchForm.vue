@@ -1,7 +1,7 @@
 <template>
 <div class="row my-3">
 <form  @submit.prevent="submitForm" ref="form">
-  <div class="input-group p-md-1" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
+  <div class="input-group p-sm-1 p-lg-2" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete v-on:submit="submitForm"/>
   </div>
 </form>

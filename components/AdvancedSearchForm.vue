@@ -2,49 +2,65 @@
 <div class="my-3">
 <form  @submit.prevent="submitForm" ref="form">
 
-  <div class="mb-3 mx-1 p-2 search-toolbar container">
-  <div class="row form-group align-items-center">
+  <div class="mb-3 mx-1 p-3 search-toolbar container">
+  <div class="row g-3">
 
-  <div class="dropdown col-sm-2">
-    <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{$t(`dicts.${store.dict}`)}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
-    <ul class="dropdown-menu">
-      <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button type='button' @click="store.dict = item" class="dropdown-item" name="dict" :value="item">{{$t(`dicts.${item}`)}}</button></li>
-    </ul>
-  </div>
-
-<div class="dropdown col-sm-2 ">
-  <button class="btn btn-outline-primary dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span>{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span></button>
-  <ul class="dropdown-menu" name="pos">
-    <li v-for="(tag, idx) in  pos_tags"
-        :key="idx"><button type = "button" class="dropdown-item" name="pos" @click="store.pos = tag">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</button></li>
-  </ul>
-</div>
-
-<div class="form-check col-sm-2">
+<div class="col-auto pb-3">
+<div class="form-check">
   <input class="form-check-input" type="checkbox" id="inflectionCheckbox" v-model="inflection_enabled">
   <label class="form-check-label" for="inflectionCheckbox">
     {{$t('options.inflected')}}
   </label>
 </div>
-
-<div class="form-check col-sm-2">
+</div>
+<div class="col-auto">
+<div class="form-check">
   <input class="form-check-input" type="checkbox" id="fulltextCheckbox" v-model="fulltext_enabled">
   <label class="form-check-label" for="fulltextCheckbox">
     {{$t('options.fulltext')}}
   </label>
 </div>
+</div>
+
+<div class="col-auto">
+  <div class="dropdown">
+    <button class="dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{$t(`dicts.${store.dict}`)}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
+    <ul class="dropdown-menu">
+      <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button type='button' @click="store.dict = item" class="dropdown-item" name="dict" :value="item">{{$t(`dicts.${item}`)}}</button></li>
+    </ul>
   </div>
-<div class="row p-md-3 g-3">
-<div class="advanced-search active col-7 flex-md-fill" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
+  </div>
+  <div class="col-auto">
+
+<div class="dropdown">
+  <button class="dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span>{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span></button>
+  <ul class="dropdown-menu" name="pos">
+    <li v-for="(tag, idx) in  pos_tags"
+        :key="idx"><button type = "button" class="dropdown-item" name="pos" @click="store.pos = tag">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</button></li>
+  </ul>
+</div>
+  </div>
+
+
+</div>
+<div class="row">
+
+
+
+<div class="col">
+<div class="advanced-search active" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete  v-on:submit="submitForm"/>
+</div>
+  
 
+</div>
+<div class="col-auto">
+  <button :aria-label="$t('search')" class="btn" type="reset" @click="reset"> <BootstrapIcon icon="bi-x-lg"/> Nullstill </button>
+  <button :aria-label="$t('search')" class="btn" type="submit"> <BootstrapIcon icon="bi-search" left/>Søk </button>
 
+</div>
+</div>
   </div>
-  <button :aria-label="$t('search')" class="btn btn-secondary rounded-pill col-1 mx-2" type="reset" @click="reset"> <BootstrapIcon icon="bi-cancel"/> Nullstill </button>
-  <button :aria-label="$t('search')" class="btn btn-primary rounded-pill col-1 mx-2" type="submit"> <BootstrapIcon icon="bi-search" left/>Søk </button>
-
-</div>
-</div>
 </form>
 <div v-if="store.q" class="d-flex mb-2 flex-wrap">
   <button class="btn btn-light btn-light-single me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
@@ -125,6 +141,10 @@ const submitForm = async (item) => {
 
 <style scoped>
 
+.btn {
+  padding: 0.5rem;
+}
+
 .advanced-search {
   outline: solid 1px var(--bs-primary);
   border-radius: 1.5rem;
@@ -156,7 +176,7 @@ const submitForm = async (item) => {
   border-radius: 1.25rem 1.25em 0 0;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   border: solid 1px var(--bs-primary);
   box-shadow: 1.5px 1.5px 1px var(--bs-primary);
 }
@@ -172,13 +192,22 @@ const submitForm = async (item) => {
 
 .search-toolbar {
   background-color: white;
-  box-shadow: 2px 2px 1px rgba(0, 0, 0, .5);
+
   border: solid 1px rgba(0, 0, 0, .5);
-  border-radius: 2rem;
+  border-radius: 0;
 }
 .btn-group, .btn-light-single {
   border: solid 1px rgba(0,0,0, .5);
-  box-shadow: 2px 2px 1px rgba(0,0,0, .5);
+}
+
+.dropdown-toggle {
+  border: none;
+  background: none;
+
+}
+
+.dropdown-toggle:after {
+  color: var(--bs-primary)
 }
 
 

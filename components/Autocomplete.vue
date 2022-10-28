@@ -119,7 +119,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="searchField">
+  <div class="search-container">
     <Combobox v-model="store.input" @update:modelValue="submit">
       <div>
         <div class="height d-flex align-items-center justify-content-between">
@@ -137,9 +137,8 @@ onMounted(() => {
             :placeholder="$t('search_placeholder')"
             :aria-label="$t('search_placeholder')"
           />
-          <div v-if="store.input.length > 0">
-            <button type="button" class="btn-close mx-1 mt-1" aria-label="Clear" v-on:click="clearText"></button>
-          </div>
+          <button class="btn-input" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
+          <button class="btn-input" type="submit" v-if="!store.advanced" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
         </div>
         
         <TransitionRoot
@@ -147,8 +146,8 @@ onMounted(() => {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
           @after-leave="store.autocomplete=[]">
-          <div class="options-container" v-show="store.autocomplete[0]">
-          <ComboboxOptions class="list-group list-group-flush autocomplete overflow-auto">
+
+          <ComboboxOptions class="list-group list-group-flush autocomplete overflow-auto" v-show="store.autocomplete[0]">
 
             <ComboboxOption
               v-for="(item, idx) in store.autocomplete"
@@ -166,7 +165,6 @@ onMounted(() => {
               </li>
             </ComboboxOption>
           </ComboboxOptions>
-        </div>
         </TransitionRoot>
       </div>
     </Combobox>
@@ -177,7 +175,7 @@ onMounted(() => {
 .btn-close:focus{
   outline: solid 1px var(--bs-primary);
 }
-.searchField{
+.search-container {
     width: 100%;
 }
 .height{
@@ -199,18 +197,18 @@ onMounted(() => {
 .form-control:focus::placeholder{
     opacity: 0.5;
 }
-.options-container {
+.searchField .ul {
   outline: solid 1px var(--bs-primary);
   box-shadow: 2px 2px 1px var(--bs-primary);
   border-radius: 0 0 1.75rem 1.75rem;
   background-color: white;
   width: 100%;
-  position: absolute;
-  z-index: 100;
-  left: 0;
+  position: relative;
   padding-bottom: 1.5rem;
-  box-sizing: border-box;
+
 }
+
+
 .list-group{
   max-height: 50vh;
 }
@@ -245,4 +243,30 @@ onMounted(() => {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(141, 141, 141);
 }
+
+.btn-input {
+  font-size: 1.5rem;
+  color: var(--bs-primary);
+  border: none;
+  border-radius: 2rem;
+  padding-right: .5rem;
+  padding-left: .5rem;
+  margin-right: .25rem;
+  background: white;
+
+
+}
+
+.search-toolbar .btn-input  {
+  font-size: 1.25rem;
+}
+
+.btn-input:focus {
+  border: solid 1px var(--bs-primary)
+  
+}
+
+
+
+
 </style>

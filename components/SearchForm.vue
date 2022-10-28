@@ -3,7 +3,6 @@
 <form  @submit.prevent="submitForm" ref="form">
   <div class="input-group p-md-1" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete v-on:submit="submitForm"/>
-  <button :aria-label="$t('search')" class="btn btn-outline-primary rounded-pill"> <BootstrapIcon icon="bi-search" class="input-group-text"/></button>
   </div>
 </form>
 </div>

@@ -1,9 +1,9 @@
 <template>
 <div class="row my-3">
 <form  @submit.prevent="submitForm" ref="form">
-  <div class="input-group p-sm-1 p-lg-2" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
+
   <Autocomplete v-on:submit="submitForm"/>
-  </div>
+
 </form>
 </div>
 </template>
@@ -26,52 +26,3 @@ const submitForm = async (item) => {
 }
 
 </script>
-
-<style scoped>
-.input-group{
-  outline: solid 1px var(--bs-primary);
-  border-radius: 2rem;
-  background-color: white;
-  flex-wrap: unset;
-}
-.input-group:focus-within{
-  box-shadow: 2px 2px 1px var(--bs-primary);
-} 
-.btn:focus{
-  outline: solid 1px var(--bs-primary);
-}
-.activeAutocomplete{
-  border-radius: 1.75rem 1.75rem 0 0;
-}
-
-.dropdown-menu{
-  border: solid 1px var(--bs-primary);
-  box-shadow: 1.5px 1.5px 1px var(--bs-primary);
-}
-.dict-button {
-  border: none;
-  border-right: solid 1px var(--bs-primary);
-  height: 100%;
-  border-radius: 2rem 0 0 2rem;
-}
-
-.btn:hover,.btn:focus{
-  background-color: white;
-  color: var(--bs-primary);
-}
-.rounded-pill{
-  border: none;
-}
-button{
-  padding-left: 0;
-}
-
-.input-group-text{
-  color: var(--bs-primary);
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0.3rem 0 0.3rem 0.5rem;
-  font-size: 1.3rem;
-}
-</style>

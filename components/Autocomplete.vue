@@ -119,10 +119,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="search-container">
-    <Combobox v-model="store.input" @update:modelValue="submit">
+    <Combobox v-model="store.input" @update:modelValue="submit" class="search-container" v-bind:class="{active: store.autocomplete && store.autocomplete.length}">
       <div>
-        <div class="height d-flex align-items-center justify-content-between">
+        <div class="input-wrapper p-1 p-lg-2 d-flex align-items-center justify-content-between">
           <ComboboxInput
             class="form-control mx-3"
             name="q"
@@ -142,12 +141,14 @@ onMounted(() => {
         </div>
         
         <TransitionRoot
+          v-show="store.autocomplete[0]"
+          class="autocomplete-dropdown"
           leave="transition ease-in duration-100"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
           @after-leave="store.autocomplete=[]">
 
-          <ComboboxOptions class="list-group list-group-flush autocomplete overflow-auto" v-show="store.autocomplete[0]">
+          <ComboboxOptions class="list-group list-group-flush autocomplete overflow-auto">
 
             <ComboboxOption
               v-for="(item, idx) in store.autocomplete"
@@ -168,44 +169,58 @@ onMounted(() => {
         </TransitionRoot>
       </div>
     </Combobox>
-  </div>
+
 </template>
 
 <style scoped>
-.btn-close:focus{
-  outline: solid 1px var(--bs-primary);
-}
+
 .search-container {
+  position: relative !important;
+}
+.input-wrapper {
     width: 100%;
+    border-radius: 2rem;
+    border: 1px solid var(--bs-primary);
+    background-color: white;
 }
-.height{
-    height: 42.391px;
+
+
+
+.autocomplete-dropdown {
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  left: 0;
+  border-radius: 0 0 2rem 2rem ;
+  border: solid 1px var(--bs-primary);
+  background-color: white;
+  padding-bottom: 1.75rem;
+  padding-left: .5rem;
+  border-top: unset;
 }
+
+.search-container:focus-within .input-wrapper, .search-container:focus-within .autocomplete-dropdown {
+  box-shadow: 2px 2px 1px var(--bs-primary);
+} 
+
+.active .input-wrapper {
+  border-radius: 1.75rem 1.75rem 0 0;
+  border-bottom: 0px;
+}
+
 .form-control{
   border: none;
-  background-color: white;
-  position: relative;
-  width: 95%;
+  background-color: unset;
 }
 .form-control:focus{
     box-shadow: none;
 }
 .form-control::placeholder{
-    color: var(--bs-primary);
+    color: black;
     font-style: italic;
 }
 .form-control:focus::placeholder{
-    opacity: 0.5;
-}
-.searchField .ul {
-  outline: solid 1px var(--bs-primary);
-  box-shadow: 2px 2px 1px var(--bs-primary);
-  border-radius: 0 0 1.75rem 1.75rem;
-  background-color: white;
-  width: 100%;
-  position: relative;
-  padding-bottom: 1.5rem;
-
+    opacity: 0.75;
 }
 
 
@@ -229,7 +244,7 @@ onMounted(() => {
 
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 1rem;
   border-radius: 0 0 1rem 0;
 }
 ::-webkit-scrollbar-track {

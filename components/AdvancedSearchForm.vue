@@ -57,7 +57,7 @@
 
 
 <div class="col">
-<div class="advanced-search active" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
+<div class="advanced-search" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete  v-on:submit="submitForm"/>
 </div>
   
@@ -150,22 +150,6 @@ const submitForm = async (item) => {
 
 <style scoped>
 
-.btn {
-  padding: 0.5rem;
-}
-
-.advanced-search {
-  outline: solid 1px var(--bs-primary);
-  border-radius: 1.5rem;
-}
-.input-group {
-  outline: solid 1px var(--bs-primary);
-  border-radius: 2rem;
-  background-color: white;
-  flex-wrap: unset;
-}
-
-
 .btn-light-single:focus {
   border-radius: 2rem;
 }
@@ -177,13 +161,6 @@ const submitForm = async (item) => {
   border-radius: 0 2rem 2rem 0;
 }
 
-
-.advanced-search:focus-within{
-  box-shadow: 1px 2px 1px var(--bs-primary);
-}
-.activeAutocomplete{
-  border-radius: 1.25rem 1.25em 0 0;
-}
 
 .dropdown-menu {
   border: solid 1px var(--bs-primary);
@@ -200,11 +177,12 @@ const submitForm = async (item) => {
 }
 
 .search-toolbar {
-  background-color: white;
-
   border: solid 1px rgba(0, 0, 0, .5);
-  border-radius: 0;
+  background: white;
+
 }
+
+
 .btn-group, .btn-light-single {
   border: solid 1px rgba(0,0,0, .5);
 }

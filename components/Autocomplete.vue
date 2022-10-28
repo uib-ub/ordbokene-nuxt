@@ -205,7 +205,7 @@ onMounted(() => {
 
 .active .input-wrapper {
   border-radius: 1.75rem 1.75rem 0 0;
-  border-bottom: 0px;
+  border-bottom: solid 1px white;
 }
 
 .form-control{

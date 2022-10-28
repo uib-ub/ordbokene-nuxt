@@ -2,7 +2,7 @@
 <div class="my-3">
 <form  @submit.prevent="submitForm" ref="form">
 
-  <div class="mb-3 mx-1 p-3 search-toolbar container">
+  <div class="mb-3 p-3 search-toolbar container">
   <div class="row g-3 mb-3">
 
 <div class="col-auto mt-3">

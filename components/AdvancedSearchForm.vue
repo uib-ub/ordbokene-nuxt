@@ -3,9 +3,11 @@
 <form  @submit.prevent="submitForm" ref="form">
 
   <div class="mb-3 mx-1 p-3 search-toolbar container">
-  <div class="row g-3">
+  <div class="row g-3 mb-3">
 
-<div class="col-auto pb-3">
+<div class="col-auto mt-3">
+  <div class="row g-3">
+    <div class="col-auto">
 <div class="form-check">
   <input class="form-check-input" type="checkbox" id="inflectionCheckbox" v-model="inflection_enabled">
   <label class="form-check-label" for="inflectionCheckbox">
@@ -21,25 +23,32 @@
   </label>
 </div>
 </div>
+</div>
+</div>
 
-<div class="col-auto">
+<div class="col-auto mt-3">
+  <div class="row g-3">
+    <div class="col-auto">
   <div class="dropdown">
     <button class="dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-lg-block">{{$t(`dicts.${store.dict}`)}}</span><span class="d-lg-none">{{$t(`dicts_short.${store.dict}`)}}</span></button>
     <ul class="dropdown-menu">
       <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button type='button' @click="store.dict = item" class="dropdown-item" name="dict" :value="item">{{$t(`dicts.${item}`)}}</button></li>
     </ul>
   </div>
-  </div>
-  <div class="col-auto">
+    </div>
 
-<div class="dropdown">
-  <button class="dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span>{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span></button>
-  <ul class="dropdown-menu" name="pos">
-    <li v-for="(tag, idx) in  pos_tags"
-        :key="idx"><button type = "button" class="dropdown-item" name="pos" @click="store.pos = tag">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</button></li>
-  </ul>
-</div>
+
+    <div class=" col-auto">
+      <div class="dropdown">
+      <button class="dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span>{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span></button>
+      <ul class="dropdown-menu" name="pos">
+        <li v-for="(tag, idx) in  pos_tags"
+            :key="idx"><button type = "button" class="dropdown-item" name="pos" @click="store.pos = tag">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</button></li>
+      </ul>
+    </div>
+    </div>
   </div>
+</div>
 
 
 </div>

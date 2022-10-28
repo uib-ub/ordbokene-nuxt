@@ -257,21 +257,20 @@ h1 {
 }
 
 @media (max-width: 992px) {
-  .nav-item {
+  .nav-item a {
     padding-left: 1.25rem;
   }
-  .navbar-secondary-pages .nav-item {
+  .navbar-secondary-pages .nav-item{
     font-variant-caps: all-small-caps;
     border-bottom: 0px;
     padding: 0rem;
-    padding-left: 1.25rem;
+
   }
 
 
   .navbar-secondary-pages .nav-item:hover {
     border-left: solid 0.25rem rgba(255,255,255, .5);
     background-color: rgba(255,255,255, .1);
-    padding-left: 1rem;
     border-bottom: 0rem;
     
   }
@@ -279,8 +278,14 @@ h1 {
   .navbar-secondary-pages .nav-item.active {
     border-left: solid 0.25rem var(--bs-secondary);
     padding: 0rem;
-    padding-left: 1rem;
     border-bottom: 0rem;
+
+  }
+  .navbar-secondary-pages .nav-item.active a, .navbar-secondary-pages .nav-item:hover a {
+
+    padding-left: 1rem;
+
+
   }
 
 }

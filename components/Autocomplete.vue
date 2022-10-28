@@ -251,7 +251,7 @@ onMounted(() => {
   border-radius: 2rem;
   padding-right: .5rem;
   padding-left: .5rem;
-  margin-right: .25rem;
+  margin-right: .17rem;
   background: white;
 
 
@@ -259,10 +259,11 @@ onMounted(() => {
 
 .search-toolbar .btn-input  {
   font-size: 1.25rem;
+  margin-right: .34rem;
 }
 
-.btn-input:focus {
-  border: solid 1px var(--bs-primary)
+.btn-input:hover {
+  background-color: rgba(0,0,0,.25);
   
 }
 

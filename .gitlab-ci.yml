@@ -27,7 +27,7 @@ build-dev:
   artifacts:
     expire_in: 1 week
     paths:
-      - dist
+      - .output
 
 deploy-dev:
   image: uibit/awscli:latest
@@ -60,7 +60,7 @@ deploy-dev:
                               --no-fail-on-empty-changeset
                               --capabilities CAPABILITY_IAM
   - aws s3 rm "s3://${STACK_NAME}.aws.uib.no" --recursive
-  - aws s3 sync dist/ "s3://${STACK_NAME}.aws.uib.no" --delete
+  - aws s3 sync .output/ "s3://${STACK_NAME}.aws.uib.no" --delete
   - aws s3 sync api_static/ "s3://${STACK_NAME}.aws.uib.no"
   - DISTRO_ID=$(aws cloudformation describe-stack-resource
                                    --stack-name ${STACK_NAME}

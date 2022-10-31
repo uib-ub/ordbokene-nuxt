@@ -120,7 +120,7 @@ Resources:
         Enabled: true
         HttpVersion: http2
         PriceClass: !Ref PriceClass
-        DefaultRootObject: index.html
+        DefaultRootObject: .output/server/index.mjs
         Origins:
         - DomainName: !Sub "${WebBucket}.s3-${AWS::Region}.amazonaws.com"
           Id: s3ProductionBucket

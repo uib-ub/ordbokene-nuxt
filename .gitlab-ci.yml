@@ -23,7 +23,7 @@ build-dev:
   script:
     - npm install --progress=false
     - npm run build -- --mode dev_server
-    - 'echo -e "\nDisallow: /" >> dist/robots.txt'
+    - 'echo -e "\nDisallow: /" >> .output/public/robots.txt'
   artifacts:
     expire_in: 1 week
     paths:

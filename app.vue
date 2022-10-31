@@ -1,7 +1,8 @@
 <template>
 
 <div class="d-flex flex-column h-100" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}" >
-  <header>
+  <header class="position-relative">
+    <div class="d-flex justify-content-center w-100 position-absolute top-0 start-0"><a class="skip-link text-decoration-underline" href="#main">{{$t('accessibility.main_content')}}</a></div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="container-fluid mx-lg-2">
     <NuxtLink class="navbar-brand text-white" to="/">
@@ -55,7 +56,7 @@
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
-    <NuxtPage class="page-container  px-3 pb-3" />
+    <NuxtPage class="page-container px-3 pb-3" />
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">
@@ -127,7 +128,6 @@ const update_locale = (newLocale) => {
     }
 })
 }
-
 </script>
 
 
@@ -167,6 +167,22 @@ body {
 }
 
 
+.skip-link{
+  background-color: var(--bs-secondary);
+  color: white;
+  border-radius: 0 0 5px 5px;
+  text-align: center;
+  width: 75%;
+  max-width: 20rem;
+  z-index: 100;
+  padding: 8px;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+}
+.skip-link:focus {
+  transform: translateY(0%);
+}
 
 
 .navbar-dropdown-menu{

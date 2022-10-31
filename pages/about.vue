@@ -1,5 +1,5 @@
 <template>
-<main class="secondary-page container">
+<main class="secondary-page container" id="main" tabindex="-1">
   <h2>{{$t('about')}}</h2>
   <div v-if="$i18n.locale === 'eng'">
     <p>This is the new website for the two Norwegian standard dictionaries <em>Bokmålsordboka</em> and <em>Nynorskordboka</em>. The website is still under development, so some features may not yet be in place. The content of the dictionaries is undergoing revision, and the editorial staff continuously publishes new word-articles, or articles which have been revised and quality checked.</p>

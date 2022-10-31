@@ -3,13 +3,13 @@
   <div class="container">
     
   <SearchNav/>
-  <main>
+  <main id="main" tabindex="-1">
 
     <NuxtErrorBoundary @error="form_error">
     <SearchForm/>
   </NuxtErrorBoundary>
   <NuxtErrorBoundary @error="content_error">
-    <NuxtChild/>
+    <NuxtPage/>
   </NuxtErrorBoundary>
 </main>
 </div>

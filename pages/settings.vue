@@ -20,7 +20,7 @@ title: t('settings.title')
 </script>
 
 <template>
-<main class="secondary-page container">
+<main class="secondary-page container" id="main" tabindex="-1">
   <h2>{{$t('settings.title')}}</h2>
 
   <div class="form-check">

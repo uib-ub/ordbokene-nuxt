@@ -1,6 +1,6 @@
 <template>
   <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary inverted-focus" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="container-fluid mx-lg-2">
     <NuxtLink class="navbar-brand text-white" to="/">
       <div class="small mx-1 my-1 my-lg-2">
@@ -58,7 +58,7 @@
 
 </main>
 
-<footer class="p-3 bg-primary text-white">
+<footer class="p-3 bg-primary text-white inverted-focus">
   <div class="container d-flex flex-column flex-md-row">
   <div class="text-width mb-3 mb-xl-2">
     <div class="d-flex align-items-center">

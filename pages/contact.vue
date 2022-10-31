@@ -1,5 +1,5 @@
 <template>
-<main class="secondary-page container" id="main" ref="mainRef">
+<main class="secondary-page container" id="main" tabindex="-1">
   <h2>{{$t('contact.title')}}</h2>
   <div>
     <h3>{{$t('contact.content[0]')}}</h3>
@@ -47,11 +47,6 @@
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
-const mainRef = ref(0)
-
-defineExpose({
-        mainRef
-    })
 
 useHead({
   title: t('contact.title')

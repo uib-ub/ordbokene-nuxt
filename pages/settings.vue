@@ -4,11 +4,6 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 const settings = useSettingsStore()
-const mainRef = ref(0)
-
-defineExpose({
-        mainRef
-    })
 
 const resetSettings = (settings) => {
     settings.$patch({
@@ -25,7 +20,7 @@ title: t('settings.title')
 </script>
 
 <template>
-<main class="secondary-page container" id="main" ref="mainRef">
+<main class="secondary-page container" id="main" tabindex="-1">
   <h2>{{$t('settings.title')}}</h2>
 
   <div class="form-check">

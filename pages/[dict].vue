@@ -3,7 +3,7 @@
   <div class="container">
     
   <SearchNav/>
-  <main id="main" ref="mainRef">
+  <main id="main" tabindex="-1">
 
     <NuxtErrorBoundary @error="form_error">
     <SearchForm/>
@@ -21,11 +21,6 @@ import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
-const mainRef = ref(0)
-
-defineExpose({
-        mainRef
-    })
 
 const form_error = (error) => {
   console.log("FORM ERROR",error)

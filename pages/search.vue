@@ -1,18 +1,16 @@
 <template>
     <div class="dict-view">
+      <div class="container">
       <SearchNav advanced/>
+      <main>
         <NuxtErrorBoundary @error="form_error">
         <AdvancedSearchForm/>
       </NuxtErrorBoundary>
-      <NuxtErrorBoundary @error="content_error">
-        <main>
-    
+      <NuxtErrorBoundary @error="content_error">  
     <Results v-if="store.q"/>
-    <Welcome v-else/>
-  
-  </main>
-        
       </NuxtErrorBoundary>
+    </main>
+    </div>
         
     </div>
     </template>
@@ -43,9 +41,3 @@ const content_error = (error) => {
 
 
 </script>
-
-<style scoped>
-
-
-
-</style>

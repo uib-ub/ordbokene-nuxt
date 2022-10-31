@@ -141,12 +141,14 @@ onMounted(() => {
             <button type="button" class="btn-close me-2 ms-2" aria-label="Clear" v-on:click="clearText"></button>
           </div>
         </div>
+        
         <TransitionRoot
           leave="transition ease-in duration-100"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
           @after-leave="store.autocomplete=[]">
-          <ComboboxOptions class="list-group list-group-flush autocomplete overflow-auto" v-show="store.autocomplete[0]">
+          <div class="options-container" v-show="store.autocomplete[0]">
+          <ComboboxOptions class="list-group list-group-flush autocomplete overflow-auto">
 
             <ComboboxOption
               v-for="(item, idx) in store.autocomplete"
@@ -164,6 +166,7 @@ onMounted(() => {
               </li>
             </ComboboxOption>
           </ComboboxOptions>
+        </div>
         </TransitionRoot>
       </div>
     </Combobox>
@@ -171,6 +174,9 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.btn-close:focus{
+  outline: solid 1px var(--bs-primary);
+}
 .searchField{
     width: 100%;
 }
@@ -193,15 +199,17 @@ onMounted(() => {
 .form-control:focus::placeholder{
     opacity: 0.5;
 }
-.autocomplete {
+.options-container {
   outline: solid 1px var(--bs-primary);
   box-shadow: 2px 2px 1px var(--bs-primary);
-  border-radius: 0 0 1rem 1rem;
+  border-radius: 0 0 1.75rem 1.75rem;
   background-color: white;
   width: 100%;
   position: absolute;
   z-index: 100;
   left: 0;
+  padding-bottom: 1.5rem;
+  box-sizing: border-box;
 }
 .list-group{
   max-height: 50vh;

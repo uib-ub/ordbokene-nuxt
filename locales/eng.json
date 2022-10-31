@@ -2,8 +2,10 @@
   "name": "English",
   "sub_title": "Bokmålsordboka and Nynorskordboka",
   "help": "Help",
+  "advanced_help": "About advanced search",
   "advanced": "Advanced search",
   "about": "About",
+  "simple": "Simple search",
   "monthly": "Titbit from ",
   "photo": "Photo by Clay Banks on unsplash.com",
   "close": "Close",
@@ -20,9 +22,6 @@
   "footer_description": " show spelling and inflection in line with official Norwegian spelling. The Language Council and the University of Bergen are behind the dictionaries.",
   "accessibility": {
     "menu": "Open top menu",
-    "main_content": "Skip to main content",
-    "bm": "Skip to results in the Bokmål dictionary",
-    "nn": "Skip to results in the Nynorsk dictionary",
     "homograph": "Meaning "
   },
   "dicts": {

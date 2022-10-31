@@ -1,5 +1,5 @@
 <template>
-<main class="secondary-page">
+<main class="secondary-page container">
   <h2>{{$t('about')}}</h2>
   <div v-if="$i18n.locale === 'eng'">
     <p>This is the new website for the two Norwegian standard dictionaries <em>Bokmålsordboka</em> and <em>Nynorskordboka</em>. The website is still under development, so some features may not yet be in place. The content of the dictionaries is undergoing revision, and the editorial staff continuously publishes new word-articles, or articles which have been revised and quality checked.</p>
@@ -1504,6 +1504,9 @@ useHead({
     margin-left: 0; 
     margin-right:0.5em;
     color: var(--bs-primary);
+}
+.accordion-button:focus{
+  outline: solid 1px var(--bs-primary);
 }
 
 

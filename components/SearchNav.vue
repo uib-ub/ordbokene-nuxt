@@ -7,35 +7,35 @@
               v-bind:class="{'active': !advanced && route.params.dict =='bm,nn', 'welcome': !$route.params.slug}" 
               :aria-current="advanced ? 'false' : 'true'"
               @click="dict_click('bm,nn')"
-              :to="dict_link('bm,nn')">Begge ordbøkene</NuxtLink>
+              :to="dict_link('bm,nn')">{{$t('dicts.bm,nn')}}</NuxtLink>
   </li>
   <li class="nav-item" v-if="!advanced">
     <NuxtLink class="nav-link py-0" 
               v-bind:class="{'active': !advanced  && route.params.dict =='bm', 'welcome': !$route.params.slug}" 
               :aria-current="advanced ? 'false' : 'true'"
               @click="dict_click('bm')"
-              :to="dict_link('bm')">Bokmålsordboka</NuxtLink>
+              :to="dict_link('bm')">{{$t('dicts.bm')}}</NuxtLink>
   </li>
   <li class="nav-item" v-if="!advanced">
     <NuxtLink class="nav-link py-0" 
               v-bind:class="{'active': !advanced  && route.params.dict =='nn', 'welcome': !$route.params.slug}" 
               :aria-current="advanced ? 'false' : 'true'"
               @click="dict_click('nn')"
-              :to="dict_link('nn')">Nynorskordboka</NuxtLink>
+              :to="dict_link('nn')">{{$t('dicts.nn')}}</NuxtLink>
   </li>
   <li class="nav-item" v-if="advanced">
     <NuxtLink class="nav-link py-0" 
               v-bind:class="{'welcome': !$route.params.slug}" 
               :aria-current="advanced ? 'false' : 'true'"
               @click="dict_click(store.dict)"
-              :to="dict_link(store.dict)">Enkelt søk</NuxtLink>
+              :to="dict_link(store.dict)">{{$t('simple')}}</NuxtLink>
   </li>
   <li class="nav-item">
     <NuxtLink class="nav-link py-0" 
               v-bind:class="{'active': advanced}" 
               :aria-current="advanced ? 'true' : 'false'" 
               @click="store.advanced = true"
-              :to="advanced_link">Avansert søk</NuxtLink>
+              :to="advanced_link">{{$t('advanced')}}</NuxtLink>
   </li>
 </ul>
 </nav>

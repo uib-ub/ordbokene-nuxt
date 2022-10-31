@@ -177,14 +177,14 @@ const submitForm = async (item) => {
 }
 
 .search-toolbar {
-  border: solid 1px rgba(0, 0, 0, .5);
+  border: solid 1px var(--bs-primary);
   background: white;
 
 }
 
 
 .btn-group, .btn-light-single {
-  border: solid 1px rgba(0,0,0, .5);
+  border: solid 1px var(--bs-primary);
 }
 
 .dropdown-toggle {

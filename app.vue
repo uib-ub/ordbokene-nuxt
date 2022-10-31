@@ -56,7 +56,7 @@
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
-    <NuxtPage class="page-container poop px-3 pb-3" />
+    <NuxtPage class="page-container px-3 pb-3" />
 
 
 <footer class="footer mt-auto p-3 bg-primary text-white">

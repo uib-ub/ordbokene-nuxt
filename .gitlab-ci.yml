@@ -54,7 +54,6 @@ deploy-dev:
                                                     "AltDomainName=dev.ordbok.uib.no"
                                                     "DomainName=beta.ordbok-dev.aws.uib.no"
                                                     "ZoneDomainName=ordbok-dev.aws.uib.no"
-                                                    "PathRewriteLambdaARN=arn:aws:lambda:us-east-1:${AWS_DEV_ACCOUNT}:function:rewrite_request:6"
                                                     "OrdbokCacheOriginDomain=8mwl23g34a.execute-api.eu-west-1.amazonaws.com"
                                                     "OrdbokCacheStage=DEV"
                               --no-fail-on-empty-changeset

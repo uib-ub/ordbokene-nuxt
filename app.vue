@@ -126,10 +126,13 @@ const update_locale = (newLocale) => {
 
 
 <style>
-*:focus{
-  outline: solid white 1px;
-  box-shadow: 0px 0px 1px 2px black;
-  border-radius: 5px;
+.inverted-focus *:focus{
+  outline: solid 2px white;
+}
+
+ *:focus {
+  outline: solid 2px var(--bs-primary);
+
 }
 
 .brand-title {

@@ -14,7 +14,7 @@ workflow:
 
 
 build-dev:
-  image: node:16
+  image: node:18
   tags:
     - spraaksamlingene_01
   stage: build

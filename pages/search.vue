@@ -2,14 +2,14 @@
     <div class="dict-view">
       <div class="container">
       <SearchNav advanced/>
-      <main>
+
         <NuxtErrorBoundary @error="form_error">
         <AdvancedSearchForm/>
       </NuxtErrorBoundary>
       <NuxtErrorBoundary @error="content_error">  
     <Results v-if="store.q"/>
       </NuxtErrorBoundary>
-    </main>
+
     </div>
         
     </div>

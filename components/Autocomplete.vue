@@ -136,8 +136,8 @@ onMounted(() => {
             :placeholder="$t('search_placeholder')"
             :aria-label="$t('search_placeholder')"
           />
-          <button class="btn-appended" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
-          <button class="btn-appended" type="submit" v-if="!store.advanced" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
+          <button data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('clear')" class="appended-button px-2 py-1" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
+          <button class="appended-button px-2 py-1" type="submit" v-if="!store.advanced" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
         </div>
         
         <TransitionRoot
@@ -253,40 +253,32 @@ onMounted(() => {
   border-radius: 0 0 1rem 0;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgb(189, 189, 189);
+  background: var(--bs-gray-500);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(141, 141, 141);
+  background: var(--bs-gray-600);
 }
 
-.btn-appended {
+.appended-button {
   font-size: 1.25rem;
   color: var(--bs-primary);
   border: none;
-  border-radius: 2rem;
-  padding-top: 0.1rem;
-  padding-bottom: 0.1rem;
-  
-  background: var(--bs-white);
-
+  border-radius: 2rem; 
+  background: unset;
   &:hover {
     background-color: rgba(0,0,0,.25);
   }
-
   &:focus {
     outline: solid 2px var(--bs-primary);
     box-shadow: none;
   }
-
   &:active {
     background-color: rgba(0,0,0,.5);
-
   }
-
 }
 
-.search-toolbar .btn-appended  {
+.search-toolbar .appended-button  {
   font-size: 1.25rem;
   margin-right: .34rem;
 }

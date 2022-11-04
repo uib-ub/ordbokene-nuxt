@@ -271,32 +271,15 @@ button {
   color: var(--bs-white);
 }
 
-html, body, #__nuxt {
-  height: 100% !important;
-}
 
-body {
-  overflow-y: scroll;
-}
 
 
 .navbar-dropdown-menu{
   min-width: 8rem !important;
 }
 
-.back-to-search {
-  font-size: larger;
-}
 
-h1 {
-  font-family: Inria Serif;
-  font-weight: bold;
 
-}
-
-.text-width{
-  width: 60%;
-}
 .footer-navbar{
   display: flex;
   flex-direction: column;

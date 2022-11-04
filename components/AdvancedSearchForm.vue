@@ -64,8 +64,8 @@
 
 </div>
 <div class="col-auto">
-  <button :aria-label="$t('search')" class="secondary" type="reset" @click="reset"> <BootstrapIcon icon="bi-x-lg" left/> Nullstill </button>
-  <button :aria-label="$t('search')" type="submit"> <BootstrapIcon icon="bi-search" left/>Søk </button>
+  <button :aria-label="$t('search')" class="secondary" type="reset" @click="reset"> <BootstrapIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
+  <button :aria-label="$t('search')" type="submit"> <BootstrapIcon icon="bi-search" left/>{{$t('search')}}</button>
 
 </div>
 </div>

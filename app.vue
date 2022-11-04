@@ -127,8 +127,45 @@ const update_locale = (newLocale) => {
 
 <style lang="scss">
 
+#__nuxt {
+  display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+}
+
+
+main {
+  flex: 1;
+}
+
+.dict-view {
+  height: 100%;
+}
+
+
+html, body, #__nuxt {
+  height: 100% !important;
+}
+
+body {
+  overflow-y: scroll;
+}
+
+
+.back-to-search {
+  font-size: larger;
+}
+
+h1 {
+  font-family: Inria Serif;
+  font-weight: bold;
+
+}
+
+
+
 .inverted-focus *:focus{
-  outline: solid 2px white;
+  outline: solid 2px var(--bs-white);
 }
 
  *:focus {
@@ -544,20 +581,7 @@ ol.sub_definitions {
     }
 
 
-#__nuxt {
-  display: flex;
-   min-height: 100vh;
-   flex-direction: column;
-}
 
-
-main {
-  flex: 1;
-}
-
-.dict-view {
-  height: 100%;
-}
 
 
 </style>

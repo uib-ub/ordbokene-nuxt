@@ -8,7 +8,7 @@
     <SearchForm/>
   </NuxtErrorBoundary>
   <NuxtErrorBoundary @error="content_error">
-    <NuxtPage/>
+    <NuxtPage class="my-2"/>
   </NuxtErrorBoundary>
 
 </div>

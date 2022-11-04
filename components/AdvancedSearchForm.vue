@@ -1,5 +1,5 @@
 <template>
-<div class="my-3">
+<div class="mt-2">
 <form  @submit.prevent="submitForm" ref="form">
 
   <div class="mb-3 p-3 search-toolbar container">

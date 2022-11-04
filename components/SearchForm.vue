@@ -1,5 +1,5 @@
 <template>
-<div class="row my-3">
+<div class="row my-2">
 <form  @submit.prevent="submitForm" ref="form">
 
   <Autocomplete v-on:submit="submitForm"/>

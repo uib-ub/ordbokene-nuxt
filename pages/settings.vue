@@ -22,7 +22,7 @@ title: t('settings.title')
 <template>
 <div class="secondary-page container h-100">
   <h2>{{$t('settings.title')}}</h2>
-
+<div class="mb-3">
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="" id="checkOne" v-model="settings.$state.inflectionExpanded">
     <label class="form-check-label" for="checkOne">
@@ -41,6 +41,7 @@ title: t('settings.title')
       {{$t('settings.inflection_table_context')}}
     </label>
   </div>
+</div>
   <button class="primary" @click="resetSettings(settings)">
     <BootstrapIcon icon="bi-trash-fill" left/><span>{{$t('settings.reset')}}</span>
   </button>

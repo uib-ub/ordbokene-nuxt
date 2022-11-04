@@ -228,9 +228,6 @@ button {
   font-size: 1rem;
 }
 
-.btn-outline-tertiary{
-  border: none;
-}
 
 ::selection {
   background-color: var(--bs-secondary);
@@ -246,8 +243,6 @@ body {
 }
 
 
-
-
 .navbar-dropdown-menu{
   min-width: 8rem !important;
 }
@@ -261,7 +256,6 @@ h1 {
   font-weight: bold;
 
 }
-
 
 .text-width{
   width: 60%;
@@ -385,9 +379,7 @@ h1 {
 }
 
 
-.navbar-brand  {
-  border-bottom: 0.25rem solid var(--bs-primary);
-}
+
 
 
 

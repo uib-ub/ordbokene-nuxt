@@ -6,30 +6,26 @@
     </button>
     <div class="collapse navbar-collapse" id="collapsableSearchNav">
       <ul class="mode-nav nav">
-  <li class="nav-item center">
+  <li class="nav-item">
     <NuxtLink class="nav-link py-0" 
-              v-bind:class="{'active': !advanced && route.params.dict =='bm,nn', 'welcome': !$route.params.slug}" 
-              :aria-current="advanced ? 'false' : 'true'"
+              :aria-current="!advanced  && route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="search_nav_toggle = false; dict_click('bm,nn')"
               :to="dict_link('bm,nn')">{{$t('dicts.bm,nn')}}</NuxtLink>
   </li>
   <li class="nav-item">
     <NuxtLink class="nav-link py-0" 
-              v-bind:class="{'active': !advanced  && route.params.dict =='bm', 'welcome': !$route.params.slug}" 
-              :aria-current="advanced ? 'false' : 'true'"
+              :aria-current="!advanced  && route.params.dict =='bm' ? 'true' : 'false'"
               @click="search_nav_toggle = false; dict_click('bm')"
               :to="dict_link('bm')">{{$t('dicts.bm')}}</NuxtLink>
   </li>
   <li class="nav-item">
     <NuxtLink class="nav-link py-0" 
-              v-bind:class="{'active': !advanced  && route.params.dict =='nn', 'welcome': !$route.params.slug}" 
-              :aria-current="advanced ? 'false' : 'true'"
+              :aria-current="!advanced  && route.params.dict =='nn' ? 'true' : 'false'"
               @click="search_nav_toggle = false; dict_click('nn')"
               :to="dict_link('nn')">{{$t('dicts.nn')}}</NuxtLink>
   </li>
   <li class="nav-item">
     <NuxtLink class="nav-link py-0" 
-              v-bind:class="{'active': advanced}" 
               :aria-current="advanced ? 'true' : 'false'" 
               @click="search_nav_toggle = false; store.advanced = true"
               :to="advanced_link">{{$t('advanced')}}</NuxtLink>
@@ -42,35 +38,30 @@
     <ul class="d-none d-md-flex mode-nav nav px-2 pt-3">
   <li class="nav-item" v-if="!advanced">
     <NuxtLink class="nav-link py-0" 
-              v-bind:class="{'active': !advanced && route.params.dict =='bm,nn', 'welcome': !$route.params.slug}" 
-              :aria-current="advanced ? 'false' : 'true'"
+              :aria-current="!advanced  && route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"
               :to="dict_link('bm,nn')">{{$t('dicts.bm,nn')}}</NuxtLink>
   </li>
   <li class="nav-item" v-if="!advanced">
     <NuxtLink class="nav-link py-0" 
-              v-bind:class="{'active': !advanced  && route.params.dict =='bm', 'welcome': !$route.params.slug}" 
-              :aria-current="advanced ? 'false' : 'true'"
+              :aria-current="!advanced  && route.params.dict =='bm' ? 'true' : 'false'"
               @click="dict_click('bm')"
               :to="dict_link('bm')">{{$t('dicts.bm')}}</NuxtLink>
   </li>
   <li class="nav-item" v-if="!advanced">
     <NuxtLink class="nav-link py-0" 
-              v-bind:class="{'active': !advanced  && route.params.dict =='nn', 'welcome': !$route.params.slug}" 
-              :aria-current="advanced ? 'false' : 'true'"
+              :aria-current="!advanced  && route.params.dict =='nn' ? 'true' : 'false'"
               @click="dict_click('nn')"
               :to="dict_link('nn')">{{$t('dicts.nn')}}</NuxtLink>
   </li>
   <li class="nav-item" v-if="advanced">
     <NuxtLink class="nav-link py-0" 
-              v-bind:class="{'welcome': !$route.params.slug}" 
               :aria-current="advanced ? 'false' : 'true'"
               @click="dict_click(store.dict)"
               :to="dict_link(store.dict)"><BootstrapIcon v-if="advanced" icon="bi-arrow-left small" left/>{{$t('simple')}}</NuxtLink>
   </li>
   <li class="nav-item">
     <NuxtLink class="nav-link py-0" 
-              v-bind:class="{'active': advanced}" 
               :aria-current="advanced ? 'true' : 'false'" 
               @click="store.advanced = true"
               :to="advanced_link">{{$t('advanced')}}<BootstrapIcon v-if="!advanced" icon="bi-arrow-right small" right/></NuxtLink>

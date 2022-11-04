@@ -1,6 +1,5 @@
 $primary: #560027;
 $secondary: #BC477B;
-$link: #880E4F;
 $link-color: black;
 $link-decoration: none;
 
@@ -16,6 +15,10 @@ $list-group-active-bg: rgb(225, 225, 225);
 $list-group-active-color: black;
 
 $form-select-indicator-color: rgb(225, 225, 225);
+
+:root {
+  --link-decoration: #880E4F;
+} 
 
 /* inria-serif-700 - latin */
 @font-face {

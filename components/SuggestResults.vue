@@ -52,7 +52,7 @@ a {
 .nav-link {
   &:hover {
       .link-content {
-        border-bottom: solid 1px var(--bs-link);
+        border-bottom: solid 2px var(--link-decoration);
       }
 
   }

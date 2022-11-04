@@ -124,3 +124,49 @@ const dict_click = (dict) => {
 
 </script>
 
+
+<style lang="scss" scoped>
+.nav-link {
+  border-bottom: solid 2px transparent;
+  letter-spacing: .1rem;
+  font-variant-caps: all-small-caps;
+  font-size: 1rem;
+  font-weight: 600;
+  -webkit-transition: background-color 200ms linear;
+  -ms-transition: background-color 200ms linear;
+  transition: background-color 200ms linear;
+  -webkit-transition: color 100ms linear;
+  -ms-transition: color 100ms linear;
+  transition: color 100ms linear;
+}
+
+
+.nav-link[aria-current=true] {
+  border-bottom: solid 2px var(--bs-secondary);
+  
+
+}
+
+.nav-link[aria-current=false]:hover {
+  border-bottom: solid 2px var(--bs-primary);
+}
+
+.nav-link:focus{
+  background-color: var(--bs-primary);
+  outline: none;
+  color: white;
+  
+  &[aria-current=true] {
+    background-color: var(--bs-secondary)
+  }
+}
+
+
+
+.nav-link:active {
+  outline: none !important;
+}
+
+
+
+</style>

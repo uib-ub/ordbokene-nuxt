@@ -1,27 +1,10 @@
-$theme-colors: (
-  'primary': #560027,
-  'secondary': #BC477B,
-  'tertiary': #FDF4F5,
-  'error': #FDF4F5,
-  'success': #1ce1ac,
-  'info': #ff7d50,
-  'warning': #ffbe0b,
-  'danger': #ff007f,
-  'light': white,
-  'dark': #001738,
-  'link': #880E4F
-);
-
 $primary: #560027;
 $secondary: #BC477B;
-$light: white;
-$dark: #001738;
 $link: #880E4F;
-
 $link-color: black;
 $link-decoration: none;
 
-$body-bg: #fdf4f5;
+$body-bg: #FDF4F5;
 
 $navbar-dark-color: white;
 $navbar-padding-y: 0px;
@@ -33,16 +16,6 @@ $list-group-active-bg: rgb(225, 225, 225);
 $list-group-active-color: black;
 
 $form-select-indicator-color: rgb(225, 225, 225);
-
-$btn-border-radius: 2rem;
-$btn-padding-x: 1rem;
-$btn-padding-y: 0.5rem;
-
-.btn-light {
-  border: solid 1px rgba(0,0,0, .3);
-}
-
-
 
 /* inria-serif-700 - latin */
 @font-face {
@@ -134,7 +107,7 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
 .mode-nav .nav-link.active {
   border-bottom: solid 2px var(--bs-secondary);
   background-color: rgba(0,0,0,.05);
-  color: black;
+  color: var(--bs-black);
 }
 
 .mode-nav .nav-link:hover {
@@ -151,18 +124,18 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
   }
 
   .welcome .text-primary {
-    color: white !important;
+    color: var(--bs-white) !important;
   }
   
 
   .welcome .mode-nav .nav-link.active {
     border-bottom: solid 2px var(--bs-secondary);
 
-    color: white;
+    color: var(--bs-white);
   }
 
   .welcome .mode-nav .nav-link {
-    color: white;
+    color: var(--bs-white);
     text-shadow: 1px 1px 1px black;
   }
 
@@ -172,7 +145,7 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
   }
 
   .welcome .mode-nav .nav-link:focus {
-    outline: solid 2px white;
+    outline: solid 2px var(--bs-white);
     
   }
 
@@ -182,7 +155,7 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
 
   .welcome .article {
     border-radius: 0rem !important;
-    background-color: var(--bs-tertiary) !important;
+    background-color: var(--bs-body-bg) !important;
     box-shadow: none !important;
     border: none !important;
   }

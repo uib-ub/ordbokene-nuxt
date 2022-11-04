@@ -136,8 +136,8 @@ onMounted(() => {
             :placeholder="$t('search_placeholder')"
             :aria-label="$t('search_placeholder')"
           />
-          <button class="btn-input" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
-          <button class="btn-input" type="submit" v-if="!store.advanced" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
+          <button class="btn-appended" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
+          <button class="btn-appended" type="submit" v-if="!store.advanced" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
         </div>
         
         <TransitionRoot
@@ -172,7 +172,7 @@ onMounted(() => {
 
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .search-container {
   position: relative !important;
@@ -181,7 +181,7 @@ onMounted(() => {
     width: 100%;
     border-radius: 2rem;
     border: 1px solid var(--bs-primary);
-    background-color: white;
+    background-color: var(--bs-white);
 }
 
 
@@ -193,7 +193,7 @@ onMounted(() => {
   left: 0;
   border-radius: 0 0 2rem 2rem ;
   border: solid 1px var(--bs-primary);
-  background-color: white;
+  background-color: var(--bs-white);
   padding-bottom: 1.75rem;
   padding-left: .5rem;
   border-top: unset;
@@ -211,12 +211,13 @@ onMounted(() => {
 .form-control{
   border: none;
   background-color: unset;
+  color: var(--bs-black)
 }
 .form-control:focus{
     box-shadow: none;
 }
 .form-control::placeholder{
-    color: black;
+    color: var(--bs-black);
     font-style: italic;
 }
 .form-control:focus::placeholder{
@@ -259,29 +260,36 @@ onMounted(() => {
   background: rgb(141, 141, 141);
 }
 
-.btn-input {
-  font-size: 1.5rem;
+.btn-appended {
+  font-size: 1.25rem;
   color: var(--bs-primary);
   border: none;
   border-radius: 2rem;
-  padding-right: .5rem;
-  padding-left: .5rem;
-  margin-right: .17rem;
-  background: white;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  
+  background: var(--bs-white);
 
+  &:hover {
+    background-color: rgba(0,0,0,.25);
+  }
+
+  &:focus {
+    outline: solid 2px var(--bs-primary);
+    box-shadow: none;
+  }
+
+  &:active {
+    background-color: rgba(0,0,0,.5);
+
+  }
 
 }
 
-.search-toolbar .btn-input  {
+.search-toolbar .btn-appended  {
   font-size: 1.25rem;
   margin-right: .34rem;
 }
-
-.btn-input:hover {
-  background-color: rgba(0,0,0,.25);
-  
-}
-
 
 
 

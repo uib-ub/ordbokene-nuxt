@@ -41,28 +41,13 @@ title: t('settings.title')
       {{$t('settings.inflection_table_context')}}
     </label>
   </div>
-  <button class="btn btn-outline-primary" @click="resetSettings(settings)">
-    <BootstrapIcon icon="bi-trash-fill" /> <span>{{$t('settings.reset')}}</span>
+  <button class="primary" @click="resetSettings(settings)">
+    <BootstrapIcon icon="bi-trash-fill" left/><span>{{$t('settings.reset')}}</span>
   </button>
 </div>
 </template>
 
 <style scoped>
-.bi{
-  color: rgba(0,0,0,.54);
-}
-.btn-outline-primary{
-  border: none;
-  color: black;
-}
-.btn-outline-primary:hover,.btn-outline-primary:focus{
-  background-color: white;
-  color: black;
-}
-input:focus{
-  border: solid 1px var(--bs-primary);
-}
-.btn:focus{
-  outline: solid 1px var(--bs-primary);
-}
+
+
 </style>

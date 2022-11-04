@@ -64,8 +64,8 @@
 
 </div>
 <div class="col-auto">
-  <button :aria-label="$t('search')" class="btn" type="reset" @click="reset"> <BootstrapIcon icon="bi-x-lg"/> Nullstill </button>
-  <button :aria-label="$t('search')" class="btn" type="submit"> <BootstrapIcon icon="bi-search" left/>Søk </button>
+  <button :aria-label="$t('search')" class="secondary" type="reset" @click="reset"> <BootstrapIcon icon="bi-x-lg" left/> Nullstill </button>
+  <button :aria-label="$t('search')" type="submit"> <BootstrapIcon icon="bi-search" left/>Søk </button>
 
 </div>
 </div>
@@ -178,7 +178,8 @@ const submitForm = async (item) => {
 
 .search-toolbar {
   border: solid 1px var(--bs-primary);
-  background: white;
+  background: var(--bs-white);
+  border-radius: 2rem;
 
 }
 
@@ -196,6 +197,33 @@ const submitForm = async (item) => {
 .dropdown-toggle:after {
   color: var(--bs-primary)
 }
+
+.clear-button {
+  border: solid 2px var(--bs-secondary);
+}
+
+.submit-button {
+  border: solid 2px var(--bs-primary);
+
+}
+
+.clear-button:focus {
+  box-shadow: 2px 2px 1px var(--bs-secondary);
+}
+
+.submit-button:focus {
+  box-shadow: 2px 2px 1px var(--bs-primary);
+}
+
+
+
+.form-button {
+  min-width: 100px;
+}
+
+
+
+
 
 
 

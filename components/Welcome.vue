@@ -48,7 +48,7 @@
   letter-spacing: .1rem;
   font-size: 1.25rem;
   font-weight: 600;
-  color: white;
+  color: var(--bs-white);
 }
 
 </style>

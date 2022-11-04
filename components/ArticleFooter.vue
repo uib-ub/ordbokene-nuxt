@@ -100,9 +100,9 @@ const download_ris = () => {
   <div class="position-absolute top-50 start-50 translate-middle"><span>{{$t('article.link_copied', 1, { locale: content_locale})}}</span></div>
   </div>
 <div class="d-flex justify-content-around mt-3 flex-wrap">
-    <button class="btn rounded-pill" v-if="showLinkCopy" @click="copy_link"><BootstrapIcon icon="bi-link" left primary /> {{$t("article.copy_link", 1, { locale: content_locale})}}</button>
-    <button class="btn rounded-pill" v-if="webShareApiSupported" @click="shareViaWebShare"><BootstrapIcon icon="bi-share-fill" left primary/> {{$t("article.share", 1, { locale: content_locale})}}</button>
-    <button class="btn rounded-pill" type="button" data-bs-toggle="collapse" :data-bs-target="'#cite-'+article_id" aria-expanded="false" aria-controls="collapseExample"><BootstrapIcon icon="bi-quote" left primary/> {{$t("article.cite", 1, { locale: content_locale})}}</button>
+    <button class="borderless" v-if="showLinkCopy" @click="copy_link"><BootstrapIcon icon="bi-link" left/> {{$t("article.copy_link", 1, { locale: content_locale})}}</button>
+    <button class="borderless" v-if="webShareApiSupported" @click="shareViaWebShare"><BootstrapIcon icon="bi-share-fill" left/> {{$t("article.share", 1, { locale: content_locale})}}</button>
+    <button class="borderless" type="button" data-bs-toggle="collapse" :data-bs-target="'#cite-'+article_id" aria-expanded="false" aria-controls="collapseExample"><BootstrapIcon icon="bi-quote" left/> {{$t("article.cite", 1, { locale: content_locale})}}</button>
 </div>
 <div class="collapse py-2" :id="'cite-'+article_id">
     <div class="cite-container card card-body mb-1 pb-2">

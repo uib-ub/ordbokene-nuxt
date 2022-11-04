@@ -48,8 +48,8 @@
         <div :class="welcome? 'p-4' : 'px-4 pt-4 pb-2'">
         <ArticleHeader :lemma_groups="lemma_groups" :secondary_header_text="secondary_header_text" :content_locale="content_locale" :dict="dict"/>
 
-        <button v-if="inflected && !welcome" class="inflection-button btn rounded-pill mx-sm-2 mt-3 mt-sm-0" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
-             {{$t('article.show_inflection')}}<span v-if="!toggle"><BootstrapIcon icon="bi-plus-lg" right primary/></span><span v-if="toggle"><BootstrapIcon icon="bi-dash-lg" right primary/></span>
+        <button v-if="inflected && !welcome" class="mx-sm-2 mt-3 mt-sm-0" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
+             {{$t('article.show_inflection')}}<span v-if="!toggle"><BootstrapIcon icon="bi-plus-lg" right/></span><span v-if="toggle"><BootstrapIcon icon="bi-dash-lg" right/></span>
         </button>
 
         <div v-if="inflected" class="collapse py-2" :id="'inflection-'+article_id" ref="inflection_table">
@@ -385,20 +385,6 @@ if (store.view == 'article') {
 
 }
 
-.inflection-button {
-    border: solid 1px var(--bs-primary);
-    font-weight: 600;
-    background-color: white;
-    border-radius: 2rem;
-    padding-right: 0.5rem !important;
-}
-
-.inflection-button:focus {
-    box-shadow: 1px 1px 1px var(--bs-primary);
-}
-.inflection-button:hover {
-    box-shadow: 1px 1px 1px var(--bs-primary);
-}
 
 
 
@@ -497,7 +483,7 @@ span.lemma-group {
 .article {
     border-radius: 2rem;
     border: solid 1px rgba(0,0,0, .5);
-    background-color: white;
+    background-color: var(--bs-white);
     box-shadow: 1px 2px 1px rgba(0,0,0, .40);
     margin-bottom: 1rem;
 }

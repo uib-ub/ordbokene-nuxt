@@ -51,7 +51,7 @@
 </nav>
   </header>
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
-<NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" color="primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
+<NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
 <main v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}">
     <NuxtPage class="page-container  px-3 pb-3" />
@@ -125,7 +125,8 @@ const update_locale = (newLocale) => {
 </script>
 
 
-<style>
+<style lang="scss">
+
 .inverted-focus *:focus{
   outline: solid 2px white;
 }
@@ -135,6 +136,87 @@ const update_locale = (newLocale) => {
 
 }
 
+
+button {
+    border-radius: 2rem;
+    border-width: 2px;
+    padding: .5rem 1rem .5rem 1rem;
+    font-weight: 600;
+    background-color: var(--bs-white);
+    border: solid 2px var(--bs-primary);
+    
+
+    i {
+        color: var(--bs-primary)
+      }
+
+    &:focus {
+      box-shadow: 2px 2px 1px var(--bs-primary);
+      border-color: var(--bs-primary) !important;
+      outline: none;
+    }
+
+    &.secondary {
+      border-color: var(--bs-secondary) !important;
+      &:focus {
+        box-shadow: 2px 2px 1px var(--bs-secondary);
+      }
+
+      i {
+        color: var(--bs-secondary)
+      }
+    }
+
+    &.borderless {
+      border-color: var(--bs-white);
+
+    }
+
+    &.borderless:hover {
+      border-color: var(--bs-primary);
+    }
+
+    &:hover {
+      background-color: rgba(0,0,0,.25);
+    }
+
+    &:active {
+      background-color: rgba(0,0,0,.5);
+    }
+
+    &[aria-expanded=true] {
+      border: solid 2px rgba(0,0,0,.25);
+      background-color: var(--bs-primary);
+      outline: none;
+      color: var(--bs-white);
+      &:focus {
+        border-color: var(--bs-primary);
+      }
+
+      &.secondary {
+        background-color: var(--bs-secondary);
+        border: solid 2px rgba(0,0,0,.25) !important;
+      }
+
+      
+      
+      box-shadow: 2px 2px 1px rgba(0,0,0,.5);;
+      i {
+        color: var(--bs-white) !important;
+      }
+      
+    }
+
+
+
+
+    
+    
+    
+  
+
+  
+}
 .brand-title {
   font-size: 2rem;
   margin-bottom: 0.125rem;
@@ -152,7 +234,7 @@ const update_locale = (newLocale) => {
 
 ::selection {
   background-color: var(--bs-secondary);
-  color: white;
+  color: var(--bs-white);
 }
 
 html, body, #__nuxt {
@@ -211,10 +293,10 @@ h1 {
 }
 
 .navbar .nav-link{
-  color: white;
+  color: var(--bs-white);
 }
 .navbar .nav-link:hover {
-  color: white;
+  color: var(--bs-white);
 }
 
 .navbar-secondary-pages .nav-item:hover,.navbar-secondary-pages .footer-nav-item:hover {
@@ -314,7 +396,7 @@ section a, .secondary-page a  {
 }
 
 .secondary-page {
-  background-color: white;
+  background-color: var(--bs-white);
   padding: 3rem !important;
 }
 
@@ -369,7 +451,7 @@ section a, .secondary-page a  {
    margin-top: 1rem;
    margin-bottom: 1rem;
    padding: 1rem;
-   background-color: white;
+   background-color: var(--bs-white);
    box-shadow: 2px 2px 1px rgba(0,0,0, .5);
 }
 

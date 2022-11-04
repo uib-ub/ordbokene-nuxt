@@ -1,5 +1,5 @@
 <template>
-    <i aria-hidden="true" v-bind:class="['bi', icon, {'primary-icon': color=='primary' || primary, 'left-icon': left, 'right-icon': right}]"/>
+    <i aria-hidden="true" v-bind:class="['bi', icon, {'primary-icon': color=='primary' || primary, 'secondary-icon': color=='prsecondary' || secondary, 'left-icon': left, 'right-icon': right}]"/>
 </template>
 
 
@@ -19,6 +19,10 @@ const props = defineProps({
     primary: {
       type: Boolean,
       default: false
+    },
+    secondary: {
+      type: Boolean,
+      default: false
     }
 })
 
@@ -29,6 +33,11 @@ const props = defineProps({
 .primary-icon {
   color: var(--bs-primary) !important;
 }
+
+.secondary-icon {
+  color: var(--bs-secondary) !important;
+}
+
 
 .left-icon {
   padding-right: 0.5em;

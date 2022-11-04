@@ -1,5 +1,5 @@
 <template>
-    <nav class=" align-items-start" :aria-label="$t('label.dict_nav')">
+    <nav class=" align-items-start pb-1" :aria-label="$t('label.dict_nav')">
       <div class="d-inline-block d-md-none w-100 mt-2">
           <button @click="search_nav_toggle = ! search_nav_toggle" class="secondary w-100 p-2 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapsableSearchNav" aria-controls="collapsableSearchNav" aria-expanded="false" aria-label="Toggle search navigation">
             {{$t(advanced ? 'advanced' : 'dicts.'+ store.dict)}}<BootstrapIcon icon="bi-caret-down-fill" right/>

@@ -148,16 +148,27 @@ const submitForm = async (item) => {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .btn-light-single:focus {
   border-radius: 2rem;
 }
-.btn-group > .btn:not(:last-child):focus {
+
+.button-group {
+  button {
+    &:not(:last-child) {
+      border-radius: 2rem 0 0 2rem;
+    }
+    &:not(:first-child) {
+      border-radius: 0 2rem 2rem 0;
+    }
+  }
+}
+.button-group > button:not(:last-child):focus {
   border-radius: 2rem 0 0 2rem;
 }
 
-.btn-group > .btn:not(:first-child):focus {
+.button-group > button:not(:first-child):focus {
   border-radius: 0 2rem 2rem 0;
 }
 
@@ -189,13 +200,22 @@ const submitForm = async (item) => {
 }
 
 .dropdown-toggle {
-  border: none;
+  border: solid 1px var(--bs-white);
   background: none;
-
+  font-weight: normal;
 }
 
 .dropdown-toggle:after {
   color: var(--bs-primary)
+}
+
+.dropdown-toggle[aria-expanded=true] {
+  color: var(--bs-white);
+  background-color: var(--bs-primary);
+  border: solid 1px var(--bs-primary);
+  &:after {
+    color: var(--bs-white)M
+  }
 }
 
 .clear-button {

@@ -29,7 +29,7 @@
           <NuxtLink class="nav-link"  :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink>
         </li>
                 <li class="nav-item" v-bind:class="{'active': $route.name == 'contact'}">
-          <NuxtLink class="nav-link" :aria-current="$route.name == 'contacthelp' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
+          <NuxtLink class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
       </ul>
       <div class="navbar-nav ml-auto">

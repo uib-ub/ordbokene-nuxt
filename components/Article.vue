@@ -60,7 +60,7 @@
             </div>
         </div>
         <NuxtErrorBoundary @error="body_error">
-        <div class="article_content pt-3" ref="article_content">
+        <div class="article_content pt-1" ref="article_content">
             <section v-if="!welcome && data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
                 <h4>{{$t('article.headings.pronunciation', 1, { locale: content_locale})}}</h4>
 

@@ -34,7 +34,6 @@
       
     </div>
   </div>
-    <div class="contrast-gradient"/>
     <ul class="d-none d-md-flex mode-nav nav px-2 pt-3">
   <li class="nav-item" v-if="!advanced">
     <NuxtLink class="nav-link py-0" 

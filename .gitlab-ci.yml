@@ -11,4 +11,5 @@ deploy-dev:
   when: manual
   script:
   - echo "hello"
-  - ssh fedora@158.37.63.144
+  - ssh -o StrictHostKeyChecking=no node@158.37.63.144
+    sudo /usr/bin/systemctl stop nuxt-dev.service

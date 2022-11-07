@@ -4,11 +4,23 @@ stages:
 
 image: node:16
 
+build-dev:
+  tags:
+    - spraaksamlingene_01
+  stage: build
+  script:
+  - npm install
+  - npm run build
+  artifacts:
+    expire_in: "30 days"
+    paths:
+    - .output
+
+
 deploy-dev:
   tags:
     - spraaksamlingene_01
   stage: deploy
-  when: manual
   before_script:
   - eval $(ssh-agent -s)
   - echo "$NUXT_DEV_UBBE" | base64 --decode | ssh-add -
@@ -16,4 +28,9 @@ deploy-dev:
   script:
   - echo "hello"
   - ssh -o StrictHostKeyChecking=no node@158.37.63.144
-    sudo /usr/bin/systemctl stop nuxt-dev.service
+    sudo /usr/bin/systemctl stop nuxt-dev.service &&
+    rm -r /node/.output &&
+    scp -R .output /node/.output
+    sudo /usr/bin/systemctl start nuxt-dev.service
+
+    

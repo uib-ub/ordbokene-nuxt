@@ -26,11 +26,11 @@ deploy-dev:
   - echo "$NUXT_DEV_UBBE" | base64 --decode | ssh-add -
 
   script:
-  - echo "hello"
   - ssh -o StrictHostKeyChecking=no node@158.37.63.144
     sudo /usr/bin/systemctl stop nuxt-dev.service &&
-    rm -r /node/.output &&
-    scp -R .output /node/.output
+    rm -r /node/.output
+  - scp -R .output node@158.37.63.144:/node/.output
+  - ssh -o StrictHostKeyChecking=no node@158.37.63.144
     sudo /usr/bin/systemctl start nuxt-dev.service
 
     

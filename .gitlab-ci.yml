@@ -9,6 +9,10 @@ deploy-dev:
     - spraaksamlingene_01
   stage: deploy
   when: manual
+  before_script:
+  - eval $(ssh-agent -s)
+  - echo "$NUXT_DEV_UBBE" | base64 --decode | ssh-add -
+
   script:
   - echo "hello"
   - ssh -o StrictHostKeyChecking=no node@158.37.63.144

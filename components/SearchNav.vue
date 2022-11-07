@@ -4,28 +4,28 @@
           <button @click="search_nav_toggle = ! search_nav_toggle" class="secondary w-100 p-2 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapsableSearchNav" aria-controls="collapsableSearchNav" aria-expanded="false" aria-label="Toggle search navigation">
             {{$t(advanced ? 'advanced' : 'dicts.'+ store.dict)}}<BootstrapIcon icon="bi-caret-down-fill" right/>
     </button>
-    <div class="collapse navbar-collapse" id="collapsableSearchNav">
-      <ul class="mode-nav nav">
+    <div class="collapse navbar-collapse m-2" id="collapsableSearchNav">
+      <ul class="collapsed-mode-nav nav d-block mx-2">
   <li class="nav-item">
-    <NuxtLink class="nav-link py-0" 
+    <NuxtLink class="nav-link py-1 pb-2" 
               :aria-current="!advanced  && route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="search_nav_toggle = false; dict_click('bm,nn')"
               :to="dict_link('bm,nn')">{{$t('dicts.bm,nn')}}</NuxtLink>
   </li>
   <li class="nav-item">
-    <NuxtLink class="nav-link py-0" 
+    <NuxtLink class="nav-link py-1 pb-2" 
               :aria-current="!advanced  && route.params.dict =='bm' ? 'true' : 'false'"
               @click="search_nav_toggle = false; dict_click('bm')"
               :to="dict_link('bm')">{{$t('dicts.bm')}}</NuxtLink>
   </li>
   <li class="nav-item">
-    <NuxtLink class="nav-link py-0" 
+    <NuxtLink class="nav-link py-1 pb-2" 
               :aria-current="!advanced  && route.params.dict =='nn' ? 'true' : 'false'"
               @click="search_nav_toggle = false; dict_click('nn')"
               :to="dict_link('nn')">{{$t('dicts.nn')}}</NuxtLink>
   </li>
   <li class="nav-item">
-    <NuxtLink class="nav-link py-0" 
+    <NuxtLink class="nav-link py-1 pb-2" 
               :aria-current="advanced ? 'true' : 'false'" 
               @click="search_nav_toggle = false; store.advanced = true"
               :to="advanced_link">{{$t('advanced')}}</NuxtLink>
@@ -125,12 +125,11 @@ const dict_click = (dict) => {
 </script>
 
 
-<style lang="scss" scoped>
+<style scoped lang="scss" >
 .nav-link {
   border-bottom: solid 2px transparent;
   letter-spacing: .1rem;
   font-variant-caps: all-small-caps;
-  font-size: 1rem;
   font-weight: 600;
   -webkit-transition: background-color 200ms linear;
   -ms-transition: background-color 200ms linear;
@@ -143,12 +142,14 @@ const dict_click = (dict) => {
 
 .nav-link[aria-current=true] {
   border-bottom: solid 2px var(--bs-secondary);
+  background-color: rgba(var(--bs-secondary-rgb), .1);
   
 
 }
 
 .nav-link[aria-current=false]:hover {
   border-bottom: solid 2px var(--bs-primary);
+  background-color: rgba(var(--bs-primary-rgb), .1);
 }
 
 .nav-link:focus{
@@ -165,8 +166,39 @@ const dict_click = (dict) => {
 
 .nav-link:active {
   outline: none !important;
+  background-color: rgba(var(--bs-primary-rgb), .5);
+  color: var(--bs-black);
+  &[aria-current=true] {
+    background-color: rgba(var(--bs-secondary-rgb), .5);
+  }
 }
 
+.collapsed-mode-nav {
+  li a {
+    font-size: 150%;
+  }
+  .nav-link {
+    border-left: solid .25rem transparent;
+    border-bottom: none;
+    &[aria-current=true] {
+      border: none;
+      border-left: solid .25rem var(--bs-secondary);
+      background-color: rgba(var(--bs-secondary-rgb), .1);
+      &:focus {
+        color: var(--bs-white);
+        background-color: var(--bs-secondary)
+      }
+    }
+    &[aria-current=false]:hover {
+      border: none;
+      border-left: solid .25rem var(--bs-primary);
+      background-color: rgba(var(--bs-primary-rgb), .25);
+    }
+  }
+}
+  
+
+  
 
 
 </style>

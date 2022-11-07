@@ -85,24 +85,8 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
 @import 'bootstrap/scss/bootstrap';
 
 
-.mode-nav .nav-link {
-  color: rgba(0,0,0,.9);
-  letter-spacing: .1rem;
-  font-variant-caps: all-small-caps;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
 
-.mode-nav .nav-link[aria-current=true] {
-  border-bottom: solid 2px var(--bs-secondary);
-  background-color: rgba(0,0,0,.05);
-  color: var(--bs-black);
-}
 
-.mode-nav .nav-link:hover {
-  border-bottom: solid 2px var(--bs-primary);;
-  background-color: rgba(0,0,0,.1);
-}
 
 
 
@@ -130,16 +114,12 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
 
   .welcome .mode-nav .nav-link:hover {
     border-bottom: solid 2px;
-    background-color: rgba(0,0,0,.5);
+    background-color: var(--bs-black);
   }
 
-  .welcome .mode-nav .nav-link:focus {
-    outline: solid 2px var(--bs-white);
-    
-  }
 
   .welcome .mode-nav .nav-item {
-    background-color: rgba(0,0,0,.25);
+    background-color: rgba(0,0,0,.75);
   }
 
   .welcome .article {

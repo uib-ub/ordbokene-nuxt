@@ -29,7 +29,7 @@ deploy-dev:
   - ssh -o StrictHostKeyChecking=no node@158.37.63.144
     "sudo /usr/bin/systemctl stop nuxt-dev.service &&
     whoami &&
-    rm -r /node/.output"
+    rm -rf /node/.output"
   - scp .output node@158.37.63.144:/node/.output
   - ssh -o StrictHostKeyChecking=no node@158.37.63.144
     sudo /usr/bin/systemctl start nuxt-dev.service

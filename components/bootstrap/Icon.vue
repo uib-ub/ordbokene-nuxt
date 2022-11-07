@@ -40,11 +40,11 @@ const props = defineProps({
 
 
 .left-icon {
-  padding-right: 0.5em;
+  padding-right: 0.75em;
 }
 
 .right-icon {
-  padding-left: 0.25em;
+  padding-left: 0.75em;
 }
 
 h2 i {

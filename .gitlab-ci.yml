@@ -23,15 +23,15 @@ deploy-dev:
   stage: deploy
   before_script:
   - eval $(ssh-agent -s)
-  - echo "$NUXT_DEV_UBBE" | base64 --decode | ssh-add -
+  - echo "$NREC_DEV_KEY" | base64 --decode | ssh-add -
 
   script:
-  - ssh -o StrictHostKeyChecking=no node@158.37.63.144
+  - ssh -o StrictHostKeyChecking=no node@$NREC_DEV_IP
     "sudo /usr/bin/systemctl stop nuxt-dev.service &&
     whoami &&
     rm -rf /node/.output"
-  - scp -r .output node@158.37.63.144:/node/.output
-  - ssh -o StrictHostKeyChecking=no node@158.37.63.144
+  - scp -r .output node@$NREC_DEV_IP:/node/.output
+  - ssh -o StrictHostKeyChecking=no node@$NREC_DEV_IP
     sudo /usr/bin/systemctl start nuxt-dev.service
 
     

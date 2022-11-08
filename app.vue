@@ -276,13 +276,6 @@ button {
     }
 
 
-
-
-    
-    
-    
-  
-
   
 }
 .brand-title {
@@ -301,14 +294,6 @@ button {
   background-color: var(--bs-secondary);
   color: var(--bs-white);
 }
-
-
-
-
-.navbar-dropdown-menu{
-  min-width: 8rem !important;
-}
-
 
 
 .footer-navbar{

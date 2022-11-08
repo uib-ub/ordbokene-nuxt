@@ -17,24 +17,24 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav navbar-secondary-pages ms-auto mb-2 mb-lg-0">
-        <li class="nav-item" v-bind:class="{'active': $route.name == 'help'}">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
           <NuxtLink class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
         </li>
 
-        <li class="nav-item" v-bind:class="{'active': $route.name == 'about'}">
+        <li class="nav-item">
           <NuxtLink class="nav-link" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink>
         </li>
-                <li class="nav-item" v-bind:class="{'active': $route.name == 'settings'}">
+                <li class="nav-item">
           <NuxtLink class="nav-link"  :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink>
         </li>
-                <li class="nav-item" v-bind:class="{'active': $route.name == 'contact'}">
+                <li class="nav-item">
           <NuxtLink class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
       </ul>
       <div class="navbar-nav ml-auto">
         <div class="nav-item dropdown-center">
-          <NuxtLink class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <NuxtLink class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-current="true">
              <i :aria-label="$t('settings.locale.title')" aria-hidden="true" class="bi bi-globe"/> {{$t('name')}}
           </NuxtLink>
           <ul class="dropdown-menu navbar-dropdown-menu" aria-labelledby="navbarDropdown">
@@ -65,22 +65,21 @@
       <img class="srlogo m-1" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo mx-4 my-4 my-lg-0" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
     </div>
-    <div class="pt-4 pt-md-0"><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</div>
+    <div class="pt-4 pt-md-0 text-center text-sm-start"><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</div>
   </div>
-  <nav class="navbar footer-navbar" :aria-label="$t('menu.title')">
-    <span aria-hidden="true" class="footer-nav menu-title d-md-none pb-2 mt-4">{{$t('menu.title')}}:</span>
-    <ul class="navbar-nav navbar-secondary-pages">
-      <li class="footer-nav-item">
-        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'dict' && 'page'" to="/">{{$t('home')}}</NuxtLink>
+  <nav class="navbar" :aria-label="$t('menu.title')">
+    <ul class="navbar-nav flex-md-row gap-3 mt-5 pt-2 pt-md-0 mt-md-2 mt-lg-4 mt-xl-0 text-center">
+      <li class="nav-item">
+        <NuxtLink class="nav-link p-1" :aria-current="$route.name == 'dict' && 'page'" to="/">{{$t('home')}}</NuxtLink>
       </li>
-      <li class="footer-nav-item">
-        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink></li>
-      <li class="footer-nav-item">
-        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
-      <li class="footer-nav-item">
-        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink></li>
-      <li class="footer-nav-item">
-        <NuxtLink class="nav-link py-1" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink></li>
+      <li class="nav-item">
+        <NuxtLink class="nav-link p-1" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink></li>
+      <li class="nav-item">
+        <NuxtLink class="nav-link p-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
+      <li class="nav-item">
+        <NuxtLink class="nav-link p-1" :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink></li>
+      <li class="nav-item">
+        <NuxtLink class="nav-link p-1" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink></li>
     </ul>
   </nav>
   </div>
@@ -167,16 +166,40 @@ h1 {
 
 
 .inverted-focus *:focus{
-  outline: solid 2px var(--bs-white);
+  outline: solid 1px var(--bs-white);
+  box-shadow: 2px 2px 1px var(--bs-white);
+  outline-offset: -1px;
+
+  
 }
 
  *:focus {
-  outline: solid 2px var(--bs-primary);
+  outline: solid 1px var(--bs-primary);
+  outline-offset: -1px;
+  box-shadow: 2px 2px 1px var(--bs-primary);
+
 
 }
 
+.brand-title {
+  font-size: 2rem;
+  margin-bottom: 0.125rem;
+}
 
-button {
+.brand-subtitle {
+  margin-left: 0.125rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+
+::selection {
+  background-color: var(--bs-secondary);
+  color: var(--bs-white);
+}
+
+
+.ordbok-btn {
     border-radius: 2rem;
     padding: .25rem 1rem .25rem 1rem;
     font-weight: 600;
@@ -255,8 +278,8 @@ button {
       outline: none;
       color: var(--bs-white);
       &:focus {
-        border: solid 1px var(--bs-gray-600) !important;
-        box-shadow: 2px 2px 1px var(--bs-gray-600);
+        border: solid 1px var(--bs-secondary) !important;
+        box-shadow: 2px 2px 1px var(--bs-secondary);
       
       }
 
@@ -264,8 +287,8 @@ button {
         background-color: var(--bs-secondary);
         
         &:focus {
-          box-shadow: 2px 2px 1px var(--bs-black);
-          border: solid 1px var(--bs-black) !important;
+          box-shadow: 2px 2px 1px var(--bs-primary);
+          border: solid 1px var(--bs-primary) !important;
         }
       }
       
@@ -274,149 +297,70 @@ button {
       }
       
     }
-
-
-  
-}
-.brand-title {
-  font-size: 2rem;
-  margin-bottom: 0.125rem;
-}
-
-.brand-subtitle {
-  margin-left: 0.125rem;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
 }
 
 
-::selection {
-  background-color: var(--bs-secondary);
-  color: var(--bs-white);
-}
-
-
-.footer-navbar{
+footer nav {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
-}
-.footer-nav{
-  text-transform: uppercase;
-  letter-spacing: .1rem;
+  font-variant: all-small-caps;
   font-weight: 600;
-}
 
-.navbar .footer-nav-item {
-  padding-bottom: 0.25rem;
-  list-style-type: none;
-}
-
-.navbar .nav-item {
-  padding-bottom: 0.25rem;
-  font-variant-caps: all-small-caps;
-  font-size: 1.25rem;
-  letter-spacing: .1rem;
-  font-weight: 600;
-  list-style-type: none;
-}
-
-.navbar .nav-link{
-  color: var(--bs-white);
-}
-.navbar .nav-link:hover {
-  color: var(--bs-white);
-}
-
-.navbar-secondary-pages .nav-item:hover,.navbar-secondary-pages .footer-nav-item:hover {
-  border-bottom: solid 0.25rem rgba(255,255,255, .5);
-  background-color: rgba(255,255,255, .1);
-  padding-bottom: 0rem;
-}
-
-.navbar-secondary-pages .nav-item[aria-current=true],.navbar-secondary-pages .footer-nav-item[aria-current=true] {
-  border-bottom: solid 0.25rem var(--bs-secondary);
-  padding-bottom: 0rem;
-}
-
-@media (min-width: 768px) {
-  .text-width {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 3rem;
-    width: 100%;
+  .nav-item {
+    padding-bottom: 0.25rem;
+    list-style-type: none;
+    a {
+      color: var(--bs-white) !important;
+    }
   }
-
-  footer .flex-md-row {
-    flex-direction: column !important;
-  }
-
-  .footer-navbar {
-    flex-direction: row !important;
-    justify-content: center;
-    margin-top: 0.5rem;
-  }
-
-  footer ul {
-    flex-direction: row !important;
-    gap: 2rem;
-    
-    
-  }
-  footer li {
-    font-variant: all-small-caps;
-    font-size: 1.25rem !important;
-  }
+  
 }
 
-@media (max-width: 992px) {
-  .nav-item a {
-    padding-left: 1.25rem;
-  }
-  .navbar-secondary-pages .nav-item{
+
+header nav {
+  .nav-link {
     font-variant-caps: all-small-caps;
-    border-bottom: 0px;
-    padding: 0rem;
+    font-size: 1.25rem;
+    letter-spacing: .1rem;
+    font-weight: 600;
+    list-style-type: none;
+    color: var(--bs-white);
+    padding-top: .5rem;
+    padding-bottom: .75rem;
 
+    &:hover {
+      background-color: rgba(255,255,255, .1);
+      border-bottom: solid 0.25rem rgba(255,255,255, .1) !important;
+      color: var(--bs-white);
+      padding-bottom: .5rem;
+    }
+    &[aria-current=page] {
+      border-bottom: solid 0.25rem var(--bs-secondary) !important;
+      padding-bottom: .5rem;
+    }
   }
 
+  @media (max-width: 992px) {
+    .nav-link {
+      padding-left: 1.25rem;
+      border-bottom: none !important;
+      &:hover {
+        border-left: solid 0.25rem rgba(255,255,255, .5);
+        background-color: rgba(255,255,255, .1);
+        border-bottom: none !important;
+        padding-left: 1rem !important;
+      }
 
-  .navbar-secondary-pages .nav-item:hover {
-    border-left: solid 0.25rem rgba(255,255,255, .5);
-    background-color: rgba(255,255,255, .1);
-    border-bottom: 0rem;
-    
+      &[aria-current=page] {
+        border-left: solid 0.25rem var(--bs-secondary);
+        padding: 0rem;
+        border-bottom: none !important;
+        padding-left: 1rem !important;
+      }
+    }
   }
-
-  .navbar-secondary-pages .nav-item.active {
-    border-left: solid 0.25rem var(--bs-secondary);
-    padding: 0rem;
-    border-bottom: 0rem;
-
-  }
-  .navbar-secondary-pages .nav-item.active a, .navbar-secondary-pages .nav-item:hover a {
-
-    padding-left: 1rem;
-
-
-  }
-
 }
-
-@media(max-width: 768px) {
-.text-width{
-  width: 100%;
-}
-.menu-title{
-  margin-top: 1rem;
-}
-}
-
-
-
-
 
 
 section a, .secondary-page a  {
@@ -426,30 +370,34 @@ section a, .secondary-page a  {
 .secondary-page {
   background-color: var(--bs-white);
   padding: 3rem !important;
+
+  h2 {
+    font-family: Inria Serif;
+    color: var(--bs-primary);
+    font-weight: bold;
+  }
+
+  h4 {
+    color: var(--bs-primary);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  
+
+  summary::marker {
+    font-size: 1.5rem;
+  }
+
 }
-
-
-
-.secondary-page h2 {
-  font-family: Inria Serif;
-  color: var(--bs-primary);
-  font-weight: bold;
-}
-
-.secondary-page h4 {
-  color: var(--bs-primary);
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-
 
 .secondary-page h3, .dict-view h2 {
-  color: var(--bs-primary);
-  font-weight: 600;
-  font-variant: all-small-caps;
-  font-size: 1.75rem;
-}
+    color: var(--bs-primary);
+    font-weight: 600;
+    font-variant: all-small-caps;
+    font-size: 1.75rem;
+  }
+
 
 .advanced-info h2 {
   font-family: Inria Serif;
@@ -458,9 +406,6 @@ section a, .secondary-page a  {
   font-weight: bold;
 }
 
-.secondary-page summary::marker {
-  font-size: 1.5rem;
-}
 
 .srlogo{
   height: 1.75rem;

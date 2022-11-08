@@ -30,7 +30,7 @@
   <div class="row g-3">
     <div class="col-auto">
   <div class="dropdown">
-    <button class="borderless dropdown-toggle d-flex align-items-center p-1 px-3 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-block">{{$t(`dicts.${store.dict}`)}}</span></button>
+    <button class="ordbok-btn borderless dropdown-toggle d-flex align-items-center p-1 px-3 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-block">{{$t(`dicts.${store.dict}`)}}</span></button>
     <ul class="dropdown-menu">
       <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button type='button' @click="store.dict = item" class="dropdown-item" name="dict" :value="item">{{$t(`dicts.${item}`)}}</button></li>
     </ul>
@@ -40,7 +40,7 @@
 
     <div class=" col-auto">
       <div class="dropdown">
-      <button class="dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span>{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span></button>
+      <button class="ordbok-btn borderless dropdown-toggle d-flex align-items-center p-1 px-3 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span>{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span></button>
       <ul class="dropdown-menu" name="pos">
         <li v-for="(tag, idx) in  pos_tags"
             :key="idx"><button type = "button" class="dropdown-item" name="pos" @click="store.pos = tag">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</button></li>
@@ -64,19 +64,19 @@
 
 </div>
 <div class="col-auto">
-  <button :aria-label="$t('search')" class="secondary" type="reset" @click="reset"> <BootstrapIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
-  <button :aria-label="$t('search')" type="submit"> <BootstrapIcon icon="bi-search" left/>{{$t('search')}}</button>
+  <button :aria-label="$t('search')" class="ordbok-btn secondary" type="reset" @click="reset"> <BootstrapIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
+  <button :aria-label="$t('search')" class="ordbok-btn" type="submit"> <BootstrapIcon icon="bi-search" left/>{{$t('search')}}</button>
 
 </div>
 </div>
   </div>
 </form>
 <div v-if="store.q" class="d-flex mb-2 flex-wrap">
-  <button class="btn btn-light btn-light-single me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
+  <button class="ordbok-btn light me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
 
-<div class="btn-group" role="group" aria-label="Basic example">
-  <button @click="settings.listView = false" class="btn btn-light" v-bind:class="{active: !settings.listView}"><BootstrapIcon icon="bi-file-text" left/>Artikler</button>
-  <button @click="settings.listView = true" class="btn btn-light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-list" left/>Liste</button>
+<div class="button-group" role="group" aria-label="Basic example">
+  <button @click="settings.listView = false" class="ordbok-btn light" v-bind:class="{active: !settings.listView}"><BootstrapIcon icon="bi-file-text" left/>Artikler</button>
+  <button @click="settings.listView = true" class="ordbok-btn light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-list" left/>Liste</button>
 
 
 

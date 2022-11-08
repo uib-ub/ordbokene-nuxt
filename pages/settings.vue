@@ -42,7 +42,7 @@ title: t('settings.title')
     </label>
   </div>
 </div>
-  <button class="primary" @click="resetSettings(settings)">
+  <button class="ordbok-btn primary" @click="resetSettings(settings)">
     <BootstrapIcon icon="bi-trash-fill" left/><span>{{$t('settings.reset')}}</span>
   </button>
 </div>

@@ -1,7 +1,7 @@
 <template>
     <nav class=" align-items-start pb-1" :aria-label="$t('label.dict_nav')">
       <div class="d-inline-block d-md-none w-100 mt-2">
-          <button @click="search_nav_toggle = ! search_nav_toggle" class="secondary w-100 p-2 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapsableSearchNav" aria-controls="collapsableSearchNav" aria-expanded="false" aria-label="Toggle search navigation">
+          <button @click="search_nav_toggle = ! search_nav_toggle" class="ordbok-btn secondary w-100 p-2 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapsableSearchNav" aria-controls="collapsableSearchNav" aria-expanded="false" aria-label="Toggle search navigation">
             {{$t(advanced ? 'advanced' : 'dicts.'+ store.dict)}}<BootstrapIcon icon="bi-caret-down-fill" right/>
     </button>
     <div class="collapse navbar-collapse m-2" id="collapsableSearchNav">
@@ -36,31 +36,31 @@
   </div>
     <ul class="d-none d-md-flex mode-nav nav px-2 pt-3">
   <li class="nav-item" v-if="!advanced">
-    <NuxtLink class="nav-link py-0" 
+    <NuxtLink class="nav-link" 
               :aria-current="!advanced  && route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"
               :to="dict_link('bm,nn')">{{$t('dicts.bm,nn')}}</NuxtLink>
   </li>
   <li class="nav-item" v-if="!advanced">
-    <NuxtLink class="nav-link py-0" 
+    <NuxtLink class="nav-link" 
               :aria-current="!advanced  && route.params.dict =='bm' ? 'true' : 'false'"
               @click="dict_click('bm')"
               :to="dict_link('bm')">{{$t('dicts.bm')}}</NuxtLink>
   </li>
   <li class="nav-item" v-if="!advanced">
-    <NuxtLink class="nav-link py-0" 
+    <NuxtLink class="nav-link" 
               :aria-current="!advanced  && route.params.dict =='nn' ? 'true' : 'false'"
               @click="dict_click('nn')"
               :to="dict_link('nn')">{{$t('dicts.nn')}}</NuxtLink>
   </li>
   <li class="nav-item" v-if="advanced">
-    <NuxtLink class="nav-link py-0" 
+    <NuxtLink class="nav-link" 
               :aria-current="advanced ? 'false' : 'true'"
               @click="dict_click(store.dict)"
               :to="dict_link(store.dict)"><BootstrapIcon v-if="advanced" icon="bi-arrow-left small" left/>{{$t('simple')}}</NuxtLink>
   </li>
   <li class="nav-item">
-    <NuxtLink class="nav-link py-0" 
+    <NuxtLink class="nav-link" 
               :aria-current="advanced ? 'true' : 'false'" 
               @click="store.advanced = true"
               :to="advanced_link">{{$t('advanced')}}<BootstrapIcon v-if="!advanced" icon="bi-arrow-right small" right/></NuxtLink>
@@ -123,10 +123,10 @@ const dict_click = (dict) => {
 
 </script>
 
-
 <style scoped lang="scss" >
 .nav-link {
-  border-bottom: solid 2px transparent;
+  padding-bottom: 0.125rem !important;
+  padding-top: 0;
   letter-spacing: .1rem;
   font-variant-caps: all-small-caps;
   font-weight: 600;
@@ -136,39 +136,46 @@ const dict_click = (dict) => {
   -webkit-transition: color 100ms linear;
   -ms-transition: color 100ms linear;
   transition: color 100ms linear;
-}
 
-
-.nav-link[aria-current=true] {
-  border-bottom: solid 2px var(--bs-secondary);
-  background-color: rgba(var(--bs-secondary-rgb), .1);
-  
-
-}
-
-.nav-link[aria-current=false]:hover {
-  border-bottom: solid 2px var(--bs-primary);
-  background-color: rgba(var(--bs-primary-rgb), .1);
-}
-
-.nav-link:focus{
-  background-color: var(--bs-primary);
-  outline: none;
-  color: white;
-  
   &[aria-current=true] {
-    background-color: var(--bs-secondary)
+    border-bottom: solid 0.125rem var(--bs-secondary);
+    padding-bottom: 0 !important;
+    background-color: rgba(var(--bs-secondary-rgb), .1);
   }
-}
 
+  &[aria-current=false]:hover {
+    padding-bottom: 0 !important;
+    border-bottom: solid 0.125rem var(--bs-primary);
+    background-color: rgba(var(--bs-primary-rgb), .1);
+  }
 
+  &:focus{
+    background-color: var(--bs-primary);
+    outline: none !important;
+    padding-bottom: 0.125rem !important;
+    box-shadow: none;
+    color: var(--bs-white);
 
-.nav-link:active {
-  outline: none !important;
-  background-color: rgba(var(--bs-primary-rgb), .5);
-  color: var(--bs-black);
-  &[aria-current=true] {
-    background-color: rgba(var(--bs-secondary-rgb), .5);
+    &:hover {
+      color: var(--bs-black);
+      
+    }
+    
+    &[aria-current=true] {
+      
+      padding-bottom: 0 !important;
+    }
+  }
+
+  &:active {
+    background-color: rgba(var(--bs-primary-rgb), .5);
+    padding-bottom: 0px !important;
+    color: var(--bs-black);
+    outline: none !important;
+    box-shadow: none !important;
+    &[aria-current=true] {
+      background-color: rgba(var(--bs-secondary-rgb), .5);
+    }
   }
 }
 
@@ -179,8 +186,11 @@ const dict_click = (dict) => {
   .nav-link {
     border-left: solid .25rem transparent;
     border-bottom: none;
+    padding-bottom: .5rem !important;
+
     &[aria-current=true] {
       border: none;
+      padding-bottom: .5rem !important;
       border-left: solid .25rem var(--bs-secondary);
       background-color: rgba(var(--bs-secondary-rgb), .1);
       &:focus {
@@ -193,11 +203,10 @@ const dict_click = (dict) => {
       border-left: solid .25rem var(--bs-primary);
       background-color: rgba(var(--bs-primary-rgb), .25);
     }
+    &:active, &:hover {
+      padding-bottom: .5rem !important;
+    }
   }
 }
   
-
-  
-
-
 </style>

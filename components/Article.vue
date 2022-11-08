@@ -42,13 +42,18 @@
         <div class="skeleton skeleton-content w-25"/>
         </div>
         <div v-else>
+          
         <h2 v-if="welcome" class="dict-label">{{$t('monthly', 1, { locale: content_locale}) + {"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-else-if="store.view != 'article'" class="dict-label d-lg-none d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-else-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <div :class="welcome? 'p-4' : 'px-4 pt-4 pb-2'">
+
         <ArticleHeader :lemma_groups="lemma_groups" :secondary_header_text="secondary_header_text" :content_locale="content_locale" :dict="dict"/>
 
-        <button v-if="inflected && !welcome" class="mx-sm-2 mt-3 mt-sm-0" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
+        
+
+      
+      <button v-if="inflected && !welcome" class="ordbok-btn my-1" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
              {{$t('article.show_inflection')}}<span v-if="!toggle"><BootstrapIcon icon="bi-plus-lg" right/></span><span v-if="toggle"><BootstrapIcon icon="bi-dash-lg" right/></span>
         </button>
 
@@ -434,8 +439,8 @@ h4 {
 }
 
 .dict-label {
-    padding-left: 0.25rem;
-    margin-top: 0;
+    padding-left: .25rem;
+    margin-top: .5rem;
 }
 
 

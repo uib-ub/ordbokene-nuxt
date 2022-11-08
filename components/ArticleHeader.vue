@@ -1,5 +1,5 @@
 <template>
-  <div class="d-inline">
+  <div class="mb-2">
     <div class="article-title" v-for="(lemma_group, i) in lemma_groups" :key="i">
     <h3>
                 <!--

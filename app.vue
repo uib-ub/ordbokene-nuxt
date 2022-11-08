@@ -59,11 +59,11 @@
 </main>
 
 <footer class="p-3 bg-primary text-white inverted-focus">
-  <div class="container d-flex flex-column flex-md-row">
-  <div class="text-width mb-3 mb-xl-2">
-    <div class="d-flex align-items-center">
-      <img class="pe-5 srlogo" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
-      <img class="uiblogo" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
+  <div class="container d-grid pt-4 pt-md-0">
+  <div class="d-inline-flex flex-column flex-sm-row align-items-center">
+    <div class="d-inline-flex flex-column flex-sm-row m-1 align-items-center">
+      <img class="srlogo m-1" src="./assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
+      <img class="uiblogo mx-4 my-4 my-lg-0" src="./assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
     </div>
     <div class="pt-4 pt-md-0"><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</div>
   </div>

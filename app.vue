@@ -181,7 +181,7 @@ button {
     padding: .25rem 1rem .25rem 1rem;
     font-weight: 600;
     background-color: var(--bs-white);
-    border: solid 0.1rem var(--bs-primary);
+    border: solid 1px var(--bs-primary);
     -webkit-transition: background-color 100ms linear;
     -ms-transition: background-color 100ms linear;
     transition: background-color 100ms linear;
@@ -200,7 +200,7 @@ button {
     }
 
     &.secondary {
-      border: solid 0.1rem var(--bs-secondary);
+      border: solid 1px var(--bs-secondary);
       &:focus {
         box-shadow: 2px 2px 1px var(--bs-secondary);
       }
@@ -214,7 +214,7 @@ button {
     }
 
     &.light {
-      border: solid 0.1rem var(--bs-gray-600);
+      border: solid 1px var(--bs-gray-600);
       &:focus {
         box-shadow: 2px 2px 1px var(--bs-gray-600);
       }
@@ -255,7 +255,7 @@ button {
       outline: none;
       color: var(--bs-white);
       &:focus {
-        border: solid .1rem var(--bs-gray-600) !important;
+        border: solid 1px var(--bs-gray-600) !important;
         box-shadow: 2px 2px 1px var(--bs-gray-600);
       
       }
@@ -265,7 +265,7 @@ button {
         
         &:focus {
           box-shadow: 2px 2px 1px var(--bs-black);
-          outline: solid .1rem var(--bs-black) !important;
+          border: solid 1px var(--bs-black) !important;
         }
       }
       

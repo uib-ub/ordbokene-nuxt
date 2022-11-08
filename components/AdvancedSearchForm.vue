@@ -83,7 +83,7 @@
 </div>
 </div>
 <div v-if="!store.q || mini_help" class="secondary-page container advanced-info">
-      <h2>Avansert søk</h2>
+      <h2>{{$t('advanced_help')}}</h2>
       <p>Bla bla bla</p>
 
       <AdvancedHelp/>

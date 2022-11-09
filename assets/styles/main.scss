@@ -41,8 +41,7 @@ $form-select-indicator-color: rgb(225, 225, 225);
   src: local(''),
        url('../fonts/noto-sans-v27-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
        url('../fonts/noto-sans-v27-latin-regular.woff') format('woff'), /* Modern Browsers */
-       url('../fonts/noto-sans-v27-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-       url('../fonts/noto-sans-v27-latin-regular.svg#NotoSans') format('svg'); /* Legacy iOS */
+       url('../fonts/noto-sans-v27-latin-regular.ttf') format('truetype'); /* Safari, Android, iOS */
   font-display: swap;
 }
 /* noto-sans-italic - latin */

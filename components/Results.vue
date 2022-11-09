@@ -7,14 +7,14 @@
     </div>
     <div v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta">
     <div>
-    <div aria-live="assertive" class="visually-hidden" v-if="articles.meta.bm">{{articles.meta.bm.total}} treff i Bokmålsordboka</div>
-    <div aria-live="assertive" class="visually-hidden" v-if="articles.meta.nn">{{articles.meta.nn.total}} treff i Nynorskordboka</div>
+    <div aria-live="assertive" class="visually-hidden" v-if="articles.meta.bm">{{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.result')+$t("in")+$t('dicts_inline.bm')}}</div>
+    <div aria-live="assertive" class="visually-hidden" v-if="articles.meta.nn">{{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.result')+$t("in")+$t('dicts_inline.nn')}}</div>
     </div>
 
 
     <div class="row gap-3 gap-lg-0" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
       <div class="col-lg-6">
-        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span  aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t('notifications.results')}}</span></div>
+        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span  aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <div class="article-column">
           <div v-for="(article_id, idx) in articles.articles.bm" :key="idx">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
@@ -24,7 +24,7 @@
         </div>
     </div>
       <div class="col-lg-6">
-        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Nynorskordboka</h2><span aria-hidden="true" class="result-count"> | {{articles.meta.nn.total}} {{$t('notifications.results')}}</span></div>
+        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Nynorskordboka</h2><span aria-hidden="true" class="result-count"> | {{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <div class="article-column">
           <div v-for="(article_id, idx) in articles.articles.nn" :key="idx">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">
@@ -38,7 +38,7 @@
     
     <div class="row" v-if="route.params.dict != 'bm,nn' && route.query.dict != 'bm,nn' " >
       <div v-if="(route.params.dict == 'bm' || route.query.dict == 'bm') && articles.meta.bm">
-        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span class="result-count">  | {{articles.meta.bm.total}} {{$t('notifications.results')}}</span></div>
+        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <div class="article-column">
           <div v-for="(article_id, idx) in articles.articles.bm" :key="idx">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
@@ -48,7 +48,7 @@
         </div>
       </div>
       <div v-if="(route.params.dict == 'nn' || route.query.dict == 'nn' )  && articles.meta.nn">
-        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Nynorskordboka</h2><span class="result-count"> | {{articles.meta.nn.total}} {{$t('notifications.results')}}</span></div>
+        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Nynorskordboka</h2><span class="result-count"> | {{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <div class="article-column">
           <div v-for="(article_id, idx) in articles.articles.nn" :key="idx">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">

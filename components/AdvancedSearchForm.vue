@@ -77,7 +77,7 @@
 
 
   <button v-if="settings.listView" @click="settings.listView = false" class="ordbok-btn light" v-bind:class="{active: !settings.listView}"><BootstrapIcon icon="bi-file-text" left/>{{$t('show_articles')}}</button>
-  <button v-else @click="settings.listView = true" class="ordbok-btn light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-list" left/>{{$t('show_list')}}</button>
+  <button v-else @click="settings.listView = true" class="ordbok-btn light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-list" left/>{{$t(store.dict=='bm,nn'? 'show_lists' : 'show_list')}}</button>
 
 
 

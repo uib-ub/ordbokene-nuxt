@@ -319,7 +319,7 @@ onMounted(() => {
   }
 }
 
-.search-toolbar .appended-button  {
+.advanced-search .appended-button  {
   font-size: 1.25rem;
   margin-right: .34rem;
 }

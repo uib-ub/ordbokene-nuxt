@@ -2,7 +2,7 @@
 <div class="mt-2">
 <form  @submit.prevent="submitForm" ref="form">
 
-  <div class="mb-3 p-3 search-toolbar container">
+  <div class="mb-3 p-3 advanced-search container">
   <div class="row g-3 mb-3">
 
 <div class="col-auto mt-3">
@@ -63,7 +63,7 @@
   
 
 
-<div class="d-flex gap-2 ms-auto mt-auto">
+<div class="d-flex gap-2 ms-auto mt-auto justify-content-between justify-content-md-end">
   <button :aria-label="$t('search')" class="ordbok-btn secondary" type="reset" @click="reset"> <BootstrapIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
   <button :aria-label="$t('search')" class="ordbok-btn" type="submit"> <BootstrapIcon icon="bi-search" left/>{{$t('search')}}</button>
 
@@ -164,11 +164,7 @@ const submitForm = async (item) => {
   font-size: 1.3rem;
 }
 
-.search-toolbar {
-  border: solid 1px var(--bs-primary);
-  background: var(--bs-white);
-  border-radius: 2rem;
-}
+
 
 
 

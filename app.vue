@@ -477,7 +477,7 @@ ol.sub_definitions {
 
 
 .article-view .article, .secondary-page {
-    border-radius: 0rem;
+    border-radius: .25rem;
     border: solid 1px rgba(0,0,0, .5) !important;
     box-shadow: 2px 2px 1px rgba(0,0,0, .5) !important;
 

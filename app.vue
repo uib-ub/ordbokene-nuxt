@@ -1,6 +1,6 @@
 <template>
   <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary inverted-focus" id="navbar-main" :aria-label="$t('label.nav')">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="container-fluid mx-lg-2">
     <NuxtLink class="navbar-brand text-white" to="/">
       <div class="small mx-1 my-1 my-lg-2">

@@ -197,17 +197,17 @@ h1 {
     }
 
     &.light {
-      border: solid 1px var(--bs-gray-600);
+      border: solid 1px rgba(0,0,0, .5);
       &:focus {
-        box-shadow: 2px 2px 1px var(--bs-gray-600);
+        box-shadow: 2px 2px 1px rgba(0,0,0, .75);
       }
 
       i {
-        color: var(--bs-gray-700)
+        color: rgba(0,0,0, .75);
       }
 
       &[aria-current] {
-        box-shadow: 2px 2px 1px var(--bs-gray-600);
+        box-shadow: 2px 2px 1px rgba(0,0,0, .75);
       }
 
       

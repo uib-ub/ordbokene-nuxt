@@ -269,10 +269,6 @@ onMounted(() => {
   &:hover {
     background-color: rgba(0,0,0,.25);
   }
-  &:focus {
-    outline: solid 2px var(--bs-primary);
-    box-shadow: none;
-  }
   &:active {
     background-color: rgba(0,0,0,.5);
   }

@@ -320,12 +320,12 @@ header nav {
 
     &:hover {
       background-color: rgba(255,255,255, .1);
-      border-bottom: solid 0.25rem var(--bs-white) !important;
+      border-bottom: solid 0.125rem var(--bs-white) !important;
       color: var(--bs-white);
       padding-bottom: .5rem;
     }
     &[aria-current=page] {
-      border-bottom: solid 0.25rem var(--bs-secondary) !important;
+      border-bottom: solid 0.125rem var(--bs-secondary) !important;
       padding-bottom: .5rem;
     }
   }
@@ -335,7 +335,7 @@ header nav {
       padding-left: 1.25rem;
       border-bottom: none !important;
       &:hover {
-        border-left: solid 0.25rem rgba(255,255,255, .5);
+        border-left: solid 0.125rem rgba(255,255,255, .5);
         background-color: rgba(255,255,255, .1);
         border-bottom: none !important;
         padding-left: 1rem !important;

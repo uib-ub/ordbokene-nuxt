@@ -260,22 +260,7 @@ h1 {
 }
 
 
-footer nav {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-variant: all-small-caps;
-  font-weight: 600;
 
-  .nav-item {
-    padding-bottom: 0.25rem;
-    list-style-type: none;
-    a {
-      color: var(--bs-white) !important;
-    }
-  }
-  
-}
 
 
 header nav {

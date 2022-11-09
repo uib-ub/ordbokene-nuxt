@@ -168,7 +168,7 @@ const article_error = (error, article, dict) => {
 .list .article-column  {
     border-radius: 2rem;
     border: solid 1px rgba(0,0,0, .5);
-    background-color: var(--bs-white);
+    @apply bg-white);
     box-shadow: 2px 2px 1px rgba(0,0,0, .5);
     padding: 0.5rem;
 }

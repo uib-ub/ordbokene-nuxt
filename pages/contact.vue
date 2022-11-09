@@ -55,13 +55,13 @@ useHead({
 
 <style scoped>
 .accordion{
-  background-color: var(--bs-white);
+  @apply bg-white);
 }
 .accordion-button:after {
     order: -1;
     margin-left: 0; 
     margin-right:0.5em;
-    color: var(--bs-primary);
+    @apply text-primary;
 }
 .accordion-button:focus{
   outline: solid 1px var(--bs-primary);

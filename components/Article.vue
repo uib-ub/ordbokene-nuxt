@@ -424,7 +424,7 @@ ul li.definition {
 
 h4 {
   font-size: 1.5rem;
-  color: var(--bs-primary);
+  @apply text-primary;
   font-variant: all-small-caps;
   font-weight: 600;
   padding-right: 1rem;
@@ -473,7 +473,7 @@ h4 {
 }
 
 span.lemma {
-    color: var(--bs-primary);
+    @apply text-primary;
 }
 
 span.lemma-group {
@@ -484,7 +484,7 @@ span.lemma-group {
 .article {
     border-radius: 2rem;
     border: solid 1px rgba(0,0,0, .5);
-    background-color: var(--bs-white);
+    background-color: white;
     box-shadow: 1px 2px 1px rgba(0,0,0, .40);
     margin-bottom: 1rem;
 }

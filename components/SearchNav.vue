@@ -150,14 +150,14 @@ const dict_click = (dict) => {
   }
 
   &:focus{
-    background-color: var(--bs-primary);
+    @apply bg-primary);
     outline: none !important;
     padding-bottom: 0.125rem !important;
     box-shadow: none;
-    color: var(--bs-white);
+    @apply text-white);
 
     &:hover {
-      color: var(--bs-black);
+      @apply text-black);
       
     }
     
@@ -170,7 +170,7 @@ const dict_click = (dict) => {
   &:active {
     background-color: rgba(var(--bs-primary-rgb), .5);
     padding-bottom: 0px !important;
-    color: var(--bs-black);
+    @apply text-black);
     outline: none !important;
     box-shadow: none !important;
     &[aria-current=true] {
@@ -194,8 +194,8 @@ const dict_click = (dict) => {
       border-left: solid .25rem var(--bs-secondary);
       background-color: rgba(var(--bs-secondary-rgb), .1);
       &:focus {
-        color: var(--bs-white);
-        background-color: var(--bs-secondary)
+        @apply text-white);
+        @apply bg-secondary)
       }
     }
     &[aria-current=false]:hover {

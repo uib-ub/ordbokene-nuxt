@@ -129,7 +129,7 @@ const download_ris = () => {
 }
 h4 {
   font-size: 1.5rem;
-  color: var(--bs-primary);
+  @apply text-primary;
   font-variant: all-small-caps;
   font-weight: 600;
 

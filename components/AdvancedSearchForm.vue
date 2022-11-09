@@ -162,7 +162,7 @@ const submitForm = async (item) => {
 }
 
 .input-group-text{
-  color: var(--bs-primary);
+  @apply text-primary;
   background-color: transparent;
   border: none;
   border-radius: 0;
@@ -181,15 +181,15 @@ const submitForm = async (item) => {
 }
 
 .dropdown-toggle:after {
-  color: var(--bs-primary)
+  @apply text-primary
 }
 
 .dropdown-toggle[aria-expanded=true] {
-  color: var(--bs-white);
-  background-color: var(--bs-primary);
+  @apply text-white);
+  @apply bg-primary);
   border: solid 1px var(--bs-primary);
   &:after {
-    color: var(--bs-white)
+    @apply text-white)
   }
 }
 

@@ -45,7 +45,7 @@ const props = defineProps({
 <style scoped>
 h3 {
     font-family: Inria Serif;
-  color: var(--bs-primary);
+  @apply text-primary;
   font-weight:600;
   margin-bottom: 0rem;
 

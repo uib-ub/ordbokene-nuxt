@@ -29,7 +29,7 @@ const link_click = (event) => {
 
 .sub_article_header {
   font-weight: bold;
-  color: var(--bs-primary);
+  @apply text-primary;
 }
 
 li.sub_article {

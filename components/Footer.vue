@@ -45,7 +45,7 @@ list-style-type: none;
 }
 
 a {
-    color: var(--bs-white) !important;
+    @apply text-white) !important;
 }
 
 

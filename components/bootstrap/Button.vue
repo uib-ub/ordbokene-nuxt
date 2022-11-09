@@ -1,5 +1,7 @@
 <template>
+    <button>
     <i aria-hidden="true" v-bind:class="['bi', icon, {'primary-icon': color=='primary' || primary, 'secondary-icon': color=='prsecondary' || secondary, 'left-icon': left, 'right-icon': right}]"/>
+    </button>
 </template>
 
 
@@ -40,11 +42,11 @@ const props = defineProps({
 
 
 .left-icon {
-  padding-right: 0.75em;
+  padding-right: 0.5em;
 }
 
 .right-icon {
-  padding-left: 0.75em;
+  padding-left: 0.25em;
 }
 
 h2 i {

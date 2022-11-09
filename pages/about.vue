@@ -1490,20 +1490,20 @@ useHead({
 
 <style scoped>
 .accordion-button {
-  color: var(--bs-primary);
+  @apply text-primary;
   text-transform: uppercase;
   font-weight: 600;
 }
 
 .accordion-button.collapsed{
-  color: var(--bs-primary);
+  @apply text-primary;
 }
 
 .accordion-button:after {
     order: -1;
     margin-left: 0; 
     margin-right:0.5em;
-    color: var(--bs-primary);
+    @apply text-primary;
 }
 .accordion-button:focus{
   outline: solid 1px var(--bs-primary);

@@ -120,9 +120,9 @@ onMounted(() => {
 
 <template>
       <Combobox v-model="store.input" @update:modelValue="submit" as="div" class="combobox" style="position:relative" v-bind:class="{'has-input': store.input}">
-        <div class="input-wrapper p-1 p-lg-2 d-flex align-items-center justify-content-between">
+        <div class="input-wrapper rounded-4xl border-1 border-primary bg-white p-1 p-lg-2 d-flex align-items-center justify-content-between">
     <ComboboxInput
-      class="form-control mx-3"
+      class="form-control mx-3 w-100"
       @change="store.input = $event.target.value; fetchAutocomplete($event.target.value)"
       ref="input"
       :placeholder="$t('search_placeholder')"
@@ -136,14 +136,14 @@ onMounted(() => {
 
 
     <div class="autocomplete-dropdown">
-    <ComboboxOptions class="list-group list-group-flush autocomplete overflow-auto">
+    <ComboboxOptions class="autocomplete overflow-auto">
       <ComboboxOption
         v-for="(item, idx) in store.autocomplete"
         :key="idx"
         :value="item.q"
         class="list-group-item"
       >
-      <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span>
+      <span class="" :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span>
       </ComboboxOption>
     </ComboboxOptions>
   </div>
@@ -211,9 +211,10 @@ onMounted(() => {
 .input-wrapper {
     width: 100%;
     border-radius: 2rem;
-    border: 1px solid var(--bs-primary) !important;
-    background-color: var(--bs-white) !important;
+
+
 }
+
 
 
 
@@ -224,8 +225,8 @@ onMounted(() => {
     z-index: 1000;
     left: 0;
     border-radius: 0 0 2rem 2rem ;
-    border: solid 1px var(--bs-primary);
-    background-color: var(--bs-white);
+    border: solid 1px inherti;
+    @apply bg-white border-primary;
     padding-bottom: 1.75rem;
     padding-left: .5rem;
     border-top: unset;    
@@ -246,13 +247,13 @@ onMounted(() => {
 .form-control{
   border: none;
   background-color: unset;
-  color: var(--bs-black)
+  @apply text-black;
 }
 .form-control:focus{
     box-shadow: none;
 }
 .form-control::placeholder{
-    color: var(--bs-black);
+    @apply text-black;
     font-style: italic;
 }
 .form-control:focus::placeholder{
@@ -269,14 +270,12 @@ onMounted(() => {
 }
 
 .list-group-item[data-headlessui-state=active], .list-group-item[data-headlessui-state="active selected"] {
-    background-color: var(--bs-list-group-active-bg);
-    border-color: var(--bs-list-group-active-border-color);
-    color: var(--bs-list-group-active-color);
+    @apply bg-gray-200 border-gray-700;
     z-index: 2;
 }
 
 .list-group-item .word {
-    color: var(--bs-primary);
+    @apply text-primary;
     font-weight: bolder;
 }
 .dict-parentheses {
@@ -307,7 +306,7 @@ onMounted(() => {
 
 .appended-button {
   font-size: 1.25rem;
-  color: var(--bs-primary);
+  @apply text-primary;
   border: none;
   border-radius: 2rem; 
   background: unset;

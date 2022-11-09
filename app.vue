@@ -1,9 +1,10 @@
 <template>
   <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="navbar-main" :aria-label="$t('label.nav')">
-  <div class="container-fluid mx-lg-2">
+      <nav class="bg-primary px-2 sm:px-5 py-2.5
+      text-white" id="navbar-main" :aria-label="$t('label.nav')">
+  <div class="flex flex-wrap justify-between items-center mx-auto">
     <NuxtLink class="navbar-brand text-white" to="/">
-      <div class="small mx-1 my-1 my-lg-2">
+      <div class="small mx-1 my-1 lg:my-2">
       <div><h1 class="brand-title">Ordbøkene</h1>
       <p class="d-none d-xl-block brand-subtitle">{{$t("sub_title")}}</p>
       </div>
@@ -16,8 +17,8 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    <div class="flex flex-row  space-x-8 " id="navbarSupportedContent">
+      <ul class="flex flex-row space-x-8 ">
         <li class="nav-item">
           <NuxtLink class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
         </li>
@@ -37,7 +38,7 @@
           <NuxtLink class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-current="true">
              <i :aria-label="$t('settings.locale.title')" aria-hidden="true" class="bi bi-globe"/> {{$t('name')}}
           </NuxtLink>
-          <ul class="dropdown-menu navbar-dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="hidden dropdown-menu navbar-dropdown-menu" aria-labelledby="navbarDropdown">
             <li><button class="dropdown-item" @click="update_locale('eng')">English</button></li>
             <li><button class="dropdown-item" @click="update_locale('nob')">Bokmål</button></li>
             <li><button class="dropdown-item" @click="update_locale('nno')">Nynorsk</button></li>
@@ -53,10 +54,9 @@
 <div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
-<main v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}">
-    <NuxtPage class="page-container  px-lg-3 pb-3" />
 
-</main>
+    <NuxtPage class="page-container mx-auto  px-lg-3 pb-3" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
+
 
 <Footer/>
 </template>
@@ -103,21 +103,14 @@ const update_locale = (newLocale) => {
 
 #__nuxt {
   display: flex;
-   min-height: 100vh;
-   flex-direction: column;
-}
+  min-height: 100vh;
+  flex-direction: column;
 
-
-
-
-main {
-  flex: 1;
 }
 
 .dict-view {
   height: 100%;
 }
-
 
 html, body, #__nuxt {
   height: 100% !important;
@@ -125,6 +118,7 @@ html, body, #__nuxt {
 
 body {
   overflow-y: scroll;
+  @apply bg-tertiary;
 }
 
 
@@ -154,8 +148,7 @@ h1 {
 
 
 ::selection {
-  background-color: var(--bs-secondary);
-  color: var(--bs-white);
+  @apply bg-secondary text-white;
 }
 
 
@@ -163,8 +156,7 @@ h1 {
     border-radius: 2rem;
     padding: .25rem 1rem .25rem 1rem;
     font-weight: 600;
-    background-color: var(--bs-white);
-    border: solid 1px var(--bs-primary);
+    @apply bg-white border-1 border-primary;
     -webkit-transition: background-color 100ms linear;
     -ms-transition: background-color 100ms linear;
     transition: background-color 100ms linear;
@@ -173,26 +165,27 @@ h1 {
     transition: color 100ms linear;
 
     i {
-        color: var(--bs-primary)
+        @apply text-primary
       }
 
     &:focus {
-      box-shadow: 2px 2px 1px var(--bs-primary);
-      border-color: var(--bs-primary);
+      box-shadow: 2px 2px 1px;
+      @apply border-primary shadow-primary;
       outline: none;
     }
 
     &.secondary {
-      border: solid 1px var(--bs-secondary);
+      @apply border-1 border-secondary;
       &:focus {
-        box-shadow: 2px 2px 1px var(--bs-secondary);
+        box-shadow: 2px 2px 1px;
+        @apply shadow-secondary;
       }
       &:hover {
-        background-color: rgba(var(--bs-secondary-rgb), .25);
+        @apply bg-secondary;
       }
 
       i {
-        color: var(--bs-secondary)
+        @apply text-secondary;
       }
     }
 
@@ -219,14 +212,14 @@ h1 {
       background: unset;
       
       &:hover, &:focus {
-      border-color: var(--bs-primary);
+      @apply border-primary;
     }
     }
 
     
 
     &:hover {
-      background-color: rgba(var(--bs-primary-rgb), .25);
+      @apply bg-primary text-white;
     }
 
     &:active {
@@ -234,26 +227,25 @@ h1 {
     }
 
     &[aria-expanded=true] {
-      background-color: var(--bs-primary);
+      @apply bg-primary text-white;
       outline: none;
-      color: var(--bs-white);
       &:focus {
-        border: solid 1px var(--bs-secondary) !important;
-        box-shadow: 2px 2px 1px var(--bs-secondary);
+        @apply border-1 border-secondary shadow-secondary;
+        box-shadow: 2px 2px 1px;
       
       }
 
       &.secondary {
-        background-color: var(--bs-secondary);
+        @apply bg-secondary);
         
         &:focus {
-          box-shadow: 2px 2px 1px var(--bs-primary);
-          border: solid 1px var(--bs-primary) !important;
+          @apply border-1 border-primary shadow-primary;
+          box-shadow: 2px 2px 1px;
         }
       }
       
       i {
-        color: var(--bs-white) !important;
+        @apply !text-white;
       }
       
     }
@@ -270,18 +262,18 @@ header nav {
     letter-spacing: .1rem;
     font-weight: 600;
     list-style-type: none;
-    color: var(--bs-white);
+    @apply text-white);
     padding-top: .5rem;
     padding-bottom: .75rem;
 
     &:focus {
-      color: var(--bs-white)
+      @apply text-white)
     }
 
     &:hover {
-      background-color: rgba(255,255,255, .1);
+      
       border-bottom: solid 0.125rem var(--bs-white) !important;
-      color: var(--bs-white);
+      @apply text-white);
       padding-bottom: .5rem;
     }
     &[aria-current=page] {
@@ -317,17 +309,17 @@ section a, .secondary-page a  {
 }
 
 .secondary-page {
-  background-color: var(--bs-white);
+  @apply bg-white);
   padding: 3rem !important;
 
   h2 {
     font-family: Inria Serif;
-    color: var(--bs-primary);
+    @apply text-primary;
     font-weight: bold;
   }
 
   h4 {
-    color: var(--bs-primary);
+    @apply text-primary;
     font-weight: 600;
     font-size: 1rem;
   }
@@ -341,7 +333,7 @@ section a, .secondary-page a  {
 }
 
 .secondary-page h3, .dict-view h2 {
-    color: var(--bs-primary);
+    @apply text-primary;
     font-weight: 600;
     font-variant: all-small-caps;
     font-size: 1.75rem;
@@ -351,7 +343,7 @@ section a, .secondary-page a  {
 .advanced-info h2 {
   font-family: Inria Serif;
   font-variant: normal;
-  color: var(--bs-primary);
+  @apply text-primary;
   font-weight: bold;
 }
 
@@ -373,18 +365,18 @@ section a, .secondary-page a  {
    margin-top: 1rem;
    margin-bottom: 1rem;
    padding: 1rem;
-   background-color: var(--bs-white);
+   @apply bg-white);
    box-shadow: 2px 2px 1px rgba(0,0,0, .5);
 }
 
 .callout i {
-  color: var(--bs-primary);
+  @apply text-primary;
   padding-right: 0.5rem;
   font-size: 1.25rem;
 }
 
 .article h5 {
-  color: var(--bs-primary);
+  @apply text-primary;
   font-weight: 600;
   font-size: 1rem;
   padding-top: 1rem;
@@ -448,7 +440,7 @@ li.sub_article > ul {
 }
 
 .article li::marker {
-  color: var(--bs-primary);
+  @apply text-primary;
   font-weight: bold;
 }
 

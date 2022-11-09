@@ -41,14 +41,14 @@
 }
 
 .monthly-title h2 {
-  background-color: var(--bs-primary);
+  @apply bg-primary);
 
   border-radius: 2rem;
 	text-align: center;
   letter-spacing: .1rem;
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--bs-white);
+  @apply text-white);
 }
 
 </style>

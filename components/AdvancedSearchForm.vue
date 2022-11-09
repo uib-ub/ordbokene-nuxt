@@ -57,7 +57,7 @@
 
 
 <div class="d-flex justify-content-between flex-wrap gap-3 gap-md-4">
-<div class="advanced-search flex-grow-1" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
+<div class="flex-grow-1" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete  v-on:submit="submitForm"/>
 </div>
   
@@ -150,6 +150,12 @@ const submitForm = async (item) => {
 
 <style lang="scss" scoped>
 
+.advanced-search, .suggestions {
+  background-color: rgba(var(--bs-white-rgb), .75) !important;
+  border: solid 1px rgba(0,0,0,.75);
+  border-radius: .25rem;
+}
+
 .dropdown-menu {
   border: solid 1px var(--bs-primary);
   box-shadow: 1.5px 1.5px 1px var(--bs-primary);
@@ -183,7 +189,7 @@ const submitForm = async (item) => {
   background-color: var(--bs-primary);
   border: solid 1px var(--bs-primary);
   &:after {
-    color: var(--bs-white)M
+    color: var(--bs-white)
   }
 }
 

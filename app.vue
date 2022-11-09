@@ -165,21 +165,6 @@ h1 {
 
 
 
-.inverted-focus *:focus{
-  outline: solid 1px var(--bs-white);
-  box-shadow: 2px 2px 1px var(--bs-white);
-  outline-offset: -1px;
-
-  
-}
-
- *:focus {
-  outline: solid 1px var(--bs-primary);
-  outline-offset: -1px;
-  box-shadow: 2px 2px 1px var(--bs-primary);
-
-
-}
 
 .brand-title {
   font-size: 2rem;
@@ -329,9 +314,13 @@ header nav {
     padding-top: .5rem;
     padding-bottom: .75rem;
 
+    &:focus {
+      color: var(--bs-white)
+    }
+
     &:hover {
       background-color: rgba(255,255,255, .1);
-      border-bottom: solid 0.25rem rgba(255,255,255, .1) !important;
+      border-bottom: solid 0.25rem var(--bs-white) !important;
       color: var(--bs-white);
       padding-bottom: .5rem;
     }

@@ -12,17 +12,25 @@
     </div>
 
 
-    <div class="row" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
+    <div class="row gap-3 gap-lg-0" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
       <div class="col-lg-6">
         <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span  aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t('notifications.results')}}</span></div>
         <div class="article-column">
-          <Article v-for="(article_id, idx) in articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>
+          <div v-for="(article_id, idx) in articles.articles.bm" :key="idx">
+            <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
+              <Article :article_id="article_id" dict="bm"/>
+            </NuxtErrorBoundary>
+          </div>
         </div>
     </div>
       <div class="col-lg-6">
         <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Nynorskordboka</h2><span aria-hidden="true" class="result-count"> | {{articles.meta.nn.total}} {{$t('notifications.results')}}</span></div>
         <div class="article-column">
-          <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
+          <div v-for="(article_id, idx) in articles.articles.nn" :key="idx">
+            <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">
+              <Article :article_id="article_id" dict="nn"/>
+            </NuxtErrorBoundary>
+          </div>
         </div>
     </div>
   </div>
@@ -32,13 +40,21 @@
       <div v-if="(route.params.dict == 'bm' || route.query.dict == 'bm') && articles.meta.bm">
         <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span class="result-count">  | {{articles.meta.bm.total}} {{$t('notifications.results')}}</span></div>
         <div class="article-column">
-          <Article v-for="(article_id, idx) in articles.articles.bm" :key="idx" :article_id="article_id" dict="bm"/>
+          <div v-for="(article_id, idx) in articles.articles.bm" :key="idx">
+            <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
+              <Article :article_id="article_id" dict="bm"/>
+            </NuxtErrorBoundary>
+          </div>
         </div>
       </div>
       <div v-if="(route.params.dict == 'nn' || route.query.dict == 'nn' )  && articles.meta.nn">
         <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Nynorskordboka</h2><span class="result-count"> | {{articles.meta.nn.total}} {{$t('notifications.results')}}</span></div>
         <div class="article-column">
-          <Article v-for="(article_id, idx) in articles.articles.nn" :key="idx" :article_id="article_id" dict="nn"/>
+          <div v-for="(article_id, idx) in articles.articles.nn" :key="idx">
+            <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">
+              <Article :article_id="article_id" dict="nn"/>
+            </NuxtErrorBoundary>
+          </div>
         </div>
       </div>
     </div>
@@ -137,9 +153,14 @@ const listView = computed(() => {
   return settings.listView && store.advanced == true && route.name == 'search' && store.q
 })
 
+const article_error = (error, article, dict) => {
+  console.log("ARTICLE_ERROR", article, dict)
+  console.log(error)
+}
+
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .result-count {
     font-size: 1rem;
 }
@@ -150,6 +171,22 @@ const listView = computed(() => {
     background-color: var(--bs-white);
     box-shadow: 2px 2px 1px rgba(0,0,0, .5);
     padding: 0.5rem;
+}
+
+.article-column>div>.list-view-item {
+  border-bottom: solid 1px rgba(0,0,0, .25);
+}
+
+
+.article-column>div:first-child .list-view-item {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+
+.article-column>div:last-child .list-view-item {
+  border-bottom: none;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
 }
 
 </style>

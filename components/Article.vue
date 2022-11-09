@@ -490,7 +490,6 @@ span.lemma-group {
 }
 
 
-
 a.result-list-item {
     padding-bottom: 0.6rem;
     padding-top: 0.5rem;
@@ -501,25 +500,9 @@ a.result-list-item {
     text-overflow: ellipsis;
 }
 
-
 a.result-list-item:hover {
     background-color: rgba(0,0,0, .1);
 }
 
-.article-column>.list-view-item {
-  border-bottom: solid 1px rgba(0,0,0, .25);
-}
-
-
-.article-column>.list-view-item:first-child {
-  border-top-left-radius: 1.5rem;
-  border-top-right-radius: 1.5rem;
-}
-
-.article-column>.list-view-item:last-child {
-  border-bottom: none;
-  border-bottom-left-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
-}
 
 </style>

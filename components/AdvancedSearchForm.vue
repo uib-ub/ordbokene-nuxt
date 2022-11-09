@@ -150,29 +150,6 @@ const submitForm = async (item) => {
 
 <style lang="scss" scoped>
 
-.btn-light-single:focus {
-  border-radius: 2rem;
-}
-
-.button-group {
-  button {
-    &:not(:last-child) {
-      border-radius: 2rem 0 0 2rem;
-    }
-    &:not(:first-child) {
-      border-radius: 0 2rem 2rem 0;
-    }
-  }
-}
-.button-group > button:not(:last-child):focus {
-  border-radius: 2rem 0 0 2rem;
-}
-
-.button-group > button:not(:first-child):focus {
-  border-radius: 0 2rem 2rem 0;
-}
-
-
 .dropdown-menu {
   border: solid 1px var(--bs-primary);
   box-shadow: 1.5px 1.5px 1px var(--bs-primary);
@@ -191,13 +168,9 @@ const submitForm = async (item) => {
   border: solid 1px var(--bs-primary);
   background: var(--bs-white);
   border-radius: 2rem;
-
 }
 
 
-.btn-group, .btn-light-single {
-  border: solid 1px var(--bs-primary);
-}
 
 .dropdown-toggle {
   border: solid 1px var(--bs-white);
@@ -217,34 +190,5 @@ const submitForm = async (item) => {
     color: var(--bs-white)M
   }
 }
-
-.clear-button {
-  border: solid 2px var(--bs-secondary);
-}
-
-.submit-button {
-  border: solid 2px var(--bs-primary);
-
-}
-
-.clear-button:focus {
-  box-shadow: 2px 2px 1px var(--bs-secondary);
-}
-
-.submit-button:focus {
-  box-shadow: 2px 2px 1px var(--bs-primary);
-}
-
-
-
-.form-button {
-  min-width: 100px;
-}
-
-
-
-
-
-
 
 </style>

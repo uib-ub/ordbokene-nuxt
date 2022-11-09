@@ -56,31 +56,31 @@
 
 
 
-<div class="col">
-<div class="advanced-search" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
+<div class="d-flex justify-content-between flex-wrap gap-3 gap-md-4">
+<div class="advanced-search flex-grow-1" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete  v-on:submit="submitForm"/>
 </div>
   
 
-</div>
-<div class="col-auto">
+
+<div class="d-flex gap-2 ms-auto mt-auto">
   <button :aria-label="$t('search')" class="ordbok-btn secondary" type="reset" @click="reset"> <BootstrapIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
   <button :aria-label="$t('search')" class="ordbok-btn" type="submit"> <BootstrapIcon icon="bi-search" left/>{{$t('search')}}</button>
 
 </div>
 </div>
+</div>
   </div>
 </form>
-<div v-if="store.q" class="d-flex mb-2 flex-wrap">
+<div v-if="store.q" class="d-flex mb-2 flex-wrap gap-2">
   <button class="ordbok-btn light me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
 
-<div class="button-group" role="group" aria-label="Basic example">
-  <button @click="settings.listView = false" class="ordbok-btn light" v-bind:class="{active: !settings.listView}"><BootstrapIcon icon="bi-file-text" left/>Artikler</button>
-  <button @click="settings.listView = true" class="ordbok-btn light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-list" left/>Liste</button>
+
+  <button v-if="settings.listView" @click="settings.listView = false" class="ordbok-btn light" v-bind:class="{active: !settings.listView}"><BootstrapIcon icon="bi-file-text" left/>{{$t('show_articles')}}</button>
+  <button v-else @click="settings.listView = true" class="ordbok-btn light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-list" left/>{{$t('show_list')}}</button>
 
 
 
-</div>
 </div>
 <div v-if="!store.q || mini_help" class="secondary-page container advanced-info">
       <h2>{{$t('advanced_help')}}</h2>

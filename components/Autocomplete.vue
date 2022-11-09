@@ -119,6 +119,37 @@ onMounted(() => {
 </script>
 
 <template>
+      <Combobox v-model="store.input" @update:modelValue="submit" as="div" class="combobox" style="position:relative" v-bind:class="{'has-input': store.input}">
+        <div class="input-wrapper p-1 p-lg-2 d-flex align-items-center justify-content-between">
+    <ComboboxInput
+      class="form-control mx-3"
+      @change="store.input = $event.target.value; fetchAutocomplete($event.target.value)"
+      ref="input"
+      :placeholder="$t('search_placeholder')"
+      :aria-label="$t('search_placeholder')"
+      name="q"
+      autocomplete="off"
+    />
+    <button data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('clear')" class="appended-button px-2 py-0" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
+    <button class="appended-button px-2 py-1" type="submit" v-if="!store.advanced" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
+        </div>
+
+
+    <div class="autocomplete-dropdown">
+    <ComboboxOptions class="list-group list-group-flush autocomplete overflow-auto">
+      <ComboboxOption
+        v-for="(item, idx) in store.autocomplete"
+        :key="idx"
+        :value="item.q"
+        class="list-group-item"
+      >
+      <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span>
+      </ComboboxOption>
+    </ComboboxOptions>
+  </div>
+  </Combobox>
+<!--
+      
     <Combobox v-model="store.input" @update:modelValue="submit" class="search-container" v-bind:class="{active: store.autocomplete && store.autocomplete.length}">
       <div>
         <div class="input-wrapper p-1 p-lg-2 d-flex align-items-center justify-content-between">
@@ -170,43 +201,47 @@ onMounted(() => {
       </div>
     </Combobox>
 
+  -->
+
 </template>
+
 
 <style lang="scss" scoped>
 
-.search-container {
-  position: relative !important;
-}
 .input-wrapper {
     width: 100%;
     border-radius: 2rem;
-    border: 1px solid var(--bs-primary);
+    border: 1px solid var(--bs-primary) !important;
+    background-color: var(--bs-white) !important;
+}
+
+
+
+.combobox[data-headlessui-state=open].has-input .autocomplete-dropdown {
+
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+    left: 0;
+    border-radius: 0 0 2rem 2rem ;
+    border: solid 1px var(--bs-primary);
     background-color: var(--bs-white);
-}
+    padding-bottom: 1.75rem;
+    padding-left: .5rem;
+    border-top: unset;    
+  }    
 
 
-
-.autocomplete-dropdown {
-  position: absolute;
-  width: 100%;
-  z-index: 1000;
-  left: 0;
-  border-radius: 0 0 2rem 2rem ;
-  border: solid 1px var(--bs-primary);
-  background-color: var(--bs-white);
-  padding-bottom: 1.75rem;
-  padding-left: .5rem;
-  border-top: unset;
-}
-
-.search-container:focus-within .input-wrapper, .search-container:focus-within .autocomplete-dropdown {
-  box-shadow: 2px 2px 1px var(--bs-primary);
-} 
-
-.active .input-wrapper {
+.combobox[data-headlessui-state=open].has-input .input-wrapper {
   border-radius: 1.75rem 1.75rem 0 0;
-  border-bottom: solid 1px white;
+  border-bottom: solid 1px white !important;
 }
+
+
+.combobox:focus-within .input-wrapper, .combobox:focus-within .autocomplete-dropdown {
+  box-shadow: 2px 2px 1px var(--bs-primary);
+}  
+
 
 .form-control{
   border: none;
@@ -231,6 +266,13 @@ onMounted(() => {
 
 .list-group-item  {
   cursor: pointer;
+}
+
+.list-group-item[data-headlessui-state=active], .list-group-item[data-headlessui-state="active selected"] {
+    background-color: var(--bs-list-group-active-bg);
+    border-color: var(--bs-list-group-active-border-color);
+    color: var(--bs-list-group-active-color);
+    z-index: 2;
 }
 
 .list-group-item .word {
@@ -259,6 +301,9 @@ onMounted(() => {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--bs-gray-600);
 }
+
+
+
 
 .appended-button {
   font-size: 1.25rem;

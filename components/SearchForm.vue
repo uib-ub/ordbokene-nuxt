@@ -1,8 +1,9 @@
 <template>
 <div class="row my-2">
 <form  @submit.prevent="submitForm" ref="form">
-
+<NuxtErrorBoundary @error="autocomplete_error">
   <Autocomplete v-on:submit="submitForm"/>
+</NuxtErrorBoundary>
 
 </form>
 </div>
@@ -23,6 +24,10 @@ const submitForm = async (item) => {
     store.q = store.input
   }
   return navigateTo(url)
+}
+
+const autocomplete_error = (error) => {
+  console.log(error)
 }
 
 </script>

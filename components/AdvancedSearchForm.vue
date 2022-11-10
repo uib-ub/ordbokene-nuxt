@@ -56,14 +56,14 @@
 
 
 
-<div class="d-flex justify-content-between flex-wrap gap-3 gap-md-4">
+<div class="d-flex justify-between flex-wrap gap-3 md:gap-4">
 <div class="flex-grow-1" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete  v-on:submit="submitForm"/>
 </div>
   
 
 
-<div class="d-flex gap-2 ms-auto mt-auto justify-content-between justify-content-md-end">
+<div class="d-flex gap-2 ms-auto mt-auto justify-between md:justify-end">
   <button :aria-label="$t('search')" class="ordbok-btn secondary" type="reset" @click="reset"> <BootstrapIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
   <button :aria-label="$t('search')" class="ordbok-btn" type="submit"> <BootstrapIcon icon="bi-search" left/>{{$t('search')}}</button>
 

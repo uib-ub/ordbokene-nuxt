@@ -55,7 +55,7 @@
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
 
-    <NuxtPage class="page-container mx-auto  px-lg-3 pb-3" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
+    <NuxtPage class="page-container mx-auto  lg:px-3 pb-3" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
 
 
 <Footer/>

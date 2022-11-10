@@ -12,17 +12,18 @@
     
     <template>
       
-      <div class="row px-lg-5 py-lg-2 align-items-center h-75 pb-5" v-if="welcome_bm && welcome_nn">
-        <div class="row m-0 align-items-top">
-          <section class="col-lg px-0 p-lg-3">
+      <div class="inline-grid grid-cols-2 lg:px-5 lg:py-2 align-center h-75 pb-5" v-if="welcome_bm && welcome_nn">
+        
+        
+          <section class="lg:col-auto px-0lg:p-3">
           <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm" welcome/>
           </section>
-          <section class="col-lg px-0 p-lg-3">
+          <section class="lg:col-auto px-0lg:p-3">
           <Article :article_id="parseInt(welcome_nn.front_article.value)" dict="nn" welcome/>
           </section>
-        </div>            
+                  
       </div> 
-      <div v-else class="row justify-content-center  align-items-center h-50">
+      <div v-else class="row justifycenter  align-items-center h-50">
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>

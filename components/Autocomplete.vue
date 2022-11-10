@@ -120,7 +120,7 @@ onMounted(() => {
 
 <template>
       <Combobox v-model="store.input" @update:modelValue="submit" as="div" class="combobox" style="position:relative" v-bind:class="{'has-input': store.input}">
-        <div class="input-wrapper rounded-4xl border-1 border-primary bg-white p-1 p-lg-2 d-flex align-items-center justify-content-between">
+        <div class="input-wrapper rounded-4xl border-1 border-primary bg-white p-1lg:p-2 d-flex align-items-center justify-between">
     <ComboboxInput
       class="form-control mx-3 w-100"
       @change="store.input = $event.target.value; fetchAutocomplete($event.target.value)"
@@ -152,7 +152,7 @@ onMounted(() => {
       
     <Combobox v-model="store.input" @update:modelValue="submit" class="search-container" v-bind:class="{active: store.autocomplete && store.autocomplete.length}">
       <div>
-        <div class="input-wrapper p-1 p-lg-2 d-flex align-items-center justify-content-between">
+        <div class="input-wrapper p-1lg:p-2 d-flex align-items-center justify-between">
           <ComboboxInput
             class="form-control mx-3"
             name="q"

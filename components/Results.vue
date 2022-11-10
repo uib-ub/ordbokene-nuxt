@@ -1,6 +1,6 @@
 <template>
     <div v-bind:class="{'list': listView}">     
-    <div v-if="pending" class="d-flex align-items-center justify-content-center py-5 my-5">
+    <div v-if="pending" class="d-flex align-items-center justifycenter py-5 my-5">
         <div class="spinner-border text-primary" role="status">
   <span class="visually-hidden">Loading...</span>
         </div>
@@ -12,9 +12,9 @@
     </div>
 
 
-    <div class="row gap-3 gap-lg-0" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
-      <div class="col-lg-6">
-        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span  aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
+    <div class="row gap-3 lg:gap-0" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
+      <div class="lg:grid-cols-6">
+        <div class="hidden lg:inline-block p-2"><h2 class="lg:inline-block">Bokmålsordboka</h2><span  aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <div class="article-column">
           <div v-for="(article_id, idx) in articles.articles.bm" :key="idx">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
@@ -23,8 +23,8 @@
           </div>
         </div>
     </div>
-      <div class="col-lg-6">
-        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Nynorskordboka</h2><span aria-hidden="true" class="result-count"> | {{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
+      <div class="lg:grid-cols-6">
+        <div class="hidden lg:inline-block p-2"><h2 class="lg:inline-block">Nynorskordboka</h2><span aria-hidden="true" class="result-count"> | {{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <div class="article-column">
           <div v-for="(article_id, idx) in articles.articles.nn" :key="idx">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">
@@ -38,7 +38,7 @@
     
     <div class="row" v-if="route.params.dict != 'bm,nn' && route.query.dict != 'bm,nn' " >
       <div v-if="(route.params.dict == 'bm' || route.query.dict == 'bm') && articles.meta.bm">
-        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Bokmålsordboka</h2><span class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
+        <div class="hidden lg:inline-block p-2"><h2 class="lg:inline-block">Bokmålsordboka</h2><span class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <div class="article-column">
           <div v-for="(article_id, idx) in articles.articles.bm" :key="idx">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
@@ -48,7 +48,7 @@
         </div>
       </div>
       <div v-if="(route.params.dict == 'nn' || route.query.dict == 'nn' )  && articles.meta.nn">
-        <div class="d-none d-lg-inline-block p-2"><h2 class="d-lg-inline-block">Nynorskordboka</h2><span class="result-count"> | {{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
+        <div class="hidden lg:inline-block p-2"><h2 class="lg:inline-block">Nynorskordboka</h2><span class="result-count"> | {{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <div class="article-column">
           <div v-for="(article_id, idx) in articles.articles.nn" :key="idx">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">

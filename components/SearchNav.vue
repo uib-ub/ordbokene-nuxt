@@ -1,6 +1,6 @@
 <template>
-    <nav class=" align-items-start pb-1" :aria-label="$t('label.dict_nav')">
-      <div class="d-inline-block d-md-none w-100 mt-2">
+    <nav class="pb-1" :aria-label="$t('label.dict_nav')">
+      <div class="inline-block md:hidden w-100 mt-2">
           <button @click="search_nav_toggle = ! search_nav_toggle" class="ordbok-btn primary w-100 p-2 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapsableSearchNav" aria-controls="collapsableSearchNav" aria-expanded="false" aria-label="Toggle search navigation">
             {{$t(advanced ? 'advanced' : 'dicts.'+ store.dict)}}<BootstrapIcon icon="bi-caret-down-fill" right/>
     </button>
@@ -34,7 +34,7 @@
       
     </div>
   </div>
-    <ul class="d-none d-md-flex mode-nav nav px-2 pt-3">
+    <ul class="hidden md:flex mode-nav nav px-2 pt-3">
   <li class="nav-item" v-if="!advanced">
     <NuxtLink class="nav-link" 
               :aria-current="!advanced  && route.params.dict =='bm,nn' ? 'true' : 'false'"
@@ -124,7 +124,9 @@ const dict_click = (dict) => {
 </script>
 
 <style scoped lang="scss" >
+
 .nav-link {
+  @apply px-3;
   padding-bottom: 0.125rem !important;
   padding-top: 0;
   letter-spacing: .1rem;
@@ -138,9 +140,9 @@ const dict_click = (dict) => {
   transition: color 100ms linear;
 
   &[aria-current=true] {
-    border-bottom: solid 0.125rem var(--bs-secondary);
+    border-bottom: solid 2px;
+    @apply border-secondary bg-secondary bg-opacity-25;
     padding-bottom: 0 !important;
-    background-color: rgba(var(--bs-secondary-rgb), .1);
   }
 
   &[aria-current=false]:hover {

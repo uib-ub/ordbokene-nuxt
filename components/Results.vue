@@ -7,8 +7,8 @@
     </div>
     <div v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta">
     <div>
-    <div aria-live="assertive" class="visually-hidden" v-if="articles.meta.bm">{{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.result')+$t("in")+$t('dicts_inline.bm')}}</div>
-    <div aria-live="assertive" class="visually-hidden" v-if="articles.meta.nn">{{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.result')+$t("in")+$t('dicts_inline.nn')}}</div>
+    <div aria-live="assertive" class="visually-hidden" v-if="articles.meta.bm">{{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.bm')}}</div>
+    <div aria-live="assertive" class="visually-hidden" v-if="articles.meta.nn">{{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.nn')}}</div>
     </div>
 
 
@@ -102,7 +102,7 @@ const get_suggestions = async () => {
   
 }
 const { pending, error, refresh, data: articles } = await useAsyncData("articles_"+ store.searchUrl, ()=> 
-      $fetch('https://odd.uib.no/opal/dev/api/articles?', {
+      $fetch(store.endpoint + 'api/articles?', {
           params: {
             w: store.q,
             dict: store.dict,
@@ -168,7 +168,7 @@ const article_error = (error, article, dict) => {
 .list .article-column  {
     border-radius: 2rem;
     border: solid 1px rgba(0,0,0, .5);
-    @apply bg-white);
+    @apply bg-white;
     box-shadow: 2px 2px 1px rgba(0,0,0, .5);
     padding: 0.5rem;
 }

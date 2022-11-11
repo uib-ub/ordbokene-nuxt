@@ -55,7 +55,7 @@ useHead({
 
 <style scoped>
 .accordion{
-  @apply bg-white);
+  @apply bg-white;
 }
 .accordion-button:after {
     order: -1;

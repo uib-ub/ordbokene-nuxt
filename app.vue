@@ -309,7 +309,7 @@ section a, .secondary-page a  {
 }
 
 .secondary-page {
-  @apply bg-white);
+  @apply bg-white;
   padding: 3rem !important;
 
   h2 {
@@ -365,7 +365,7 @@ section a, .secondary-page a  {
    margin-top: 1rem;
    margin-bottom: 1rem;
    padding: 1rem;
-   @apply bg-white);
+   @apply bg-white;
    box-shadow: 2px 2px 1px rgba(0,0,0, .5);
 }
 

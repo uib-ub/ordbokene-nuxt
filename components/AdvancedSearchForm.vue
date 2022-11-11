@@ -58,7 +58,7 @@
 
 <div class="d-flex justify-between flex-wrap gap-3 md:gap-4">
 <div class="flex-grow-1" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
-  <Autocomplete  v-on:submit="submitForm"/>
+  <Autocomplete  v-on:dropdown-submit="submitForm"/>
 </div>
   
 

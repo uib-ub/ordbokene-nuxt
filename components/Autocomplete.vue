@@ -1,23 +1,15 @@
 <script setup>
-import { onMounted } from 'vue';
 import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxButton,
-  ComboboxOptions,
-  ComboboxOption,
-  TransitionRoot,
-} from '@headlessui/vue'
 
 const store = useStore()
 const route = useRoute()
 
-
+const input_element = ref('')
+const selected_option = ref(-1)
 
 async function fetchAutocomplete(q) {
-  store.autocompletePending = true
+
   q = q.trim()
     if (q.length == 0) {
       store.autocomplete = [];
@@ -54,7 +46,7 @@ async function fetchAutocomplete(q) {
       response.value = await $fetch(url)
 
       // prevent suggestions after submit
-      if (store.autocompletePending && q == store.input) {
+      if (q == store.input) {
         let autocomplete_suggestions = []
         if (store.input.trim() == q && response.value.a.exact) {
           let { exact, inflect, freetext } = response.value.a
@@ -69,144 +61,210 @@ async function fetchAutocomplete(q) {
           }
         }
 
-        if (autocomplete_suggestions.length) {
-          if (autocomplete_suggestions[0].q.toLowerCase() != q.toLowerCase()) {
-            autocomplete_suggestions.unshift({q, time, type: "empty"})
-          }
+        if (autocomplete_suggestions.length && store.input.trim() == q && response.value.a.exact) {
+
           store.autocomplete = autocomplete_suggestions
         }
         else {
-          store.autocomplete = [{q, time, type: "empty"}]
+          store.autocomplete = []
         }
+
 
       }
     }
 }
 
-const input = ref(null)
 
-const emit = defineEmits(['submit'])
-const submit = (data) => {
-  store.autocompletePending = false
-  //todo: plausible
-  input.value.$el.select()
-  emit('submit')
-
-  //console.log("SELECTING3")
-}
-
-
-
-const dropdownSelect = () => {
-
-  console.log("SELECTING")
-  input.value.$el.select()
-}
+const emit = defineEmits(['dropdown-submit'])
 
 
 const clearText = () => {
- store.input = ""
+  console.log("CLEARING")
+  store.input = ""
 }
 
 
-onMounted(() => {
-  if (store.input) {
-    input.value.$el.select()
+onBeforeMount(() => {    
+    nextTick(function () {
+    input_element.value.select()
+  })
+})
+
+
+
+const keys = (event) => {
+  
+  if (store.autocomplete.length > 0) {
+    if (event.key == "ArrowDown") {
+    
+    if (selected_option.value <  store.autocomplete.length -1) {
+      selected_option.value += 1;
+    }
+    else {
+      selected_option.value = 0;      
+    }
+    console.log("COMPARISON", selected_option.value, store.autocomplete.length)
+    
+    store.input = store.autocomplete[selected_option.value].q
+
+    //event.stopPropagation()
+    event.preventDefault()
+  }
+  else if (event.key == "ArrowUp") {
+    console.log(event, selected_option)
+    if (selected_option.value > -1) {
+    
+    selected_option.value -= 1;
+
+    if (selected_option.value > -1) {
+    store.input = store.autocomplete[selected_option.value].q
+    
+    }
+    
+    }
+    //event.stopPropagation()
+    event.preventDefault()
+  }
+  else if (event.key == "Escape") {
+    selected_option.value = -1
+    store.autocomplete = []
+  }
+  else if (event.key == "Home" && selected_option.value > -1) {
+    selected_option.value = 0
+    event.preventDefault()
 
   }
-})
+  else if (event.key == "End" && selected_option.value > -1) {
+    selected_option.value = store.autocomplete.length - 1
+    event.preventDefault()
+
+  }
+  else {
+    console.log("KEYUP", event)
+    selected_option.value = -1
+    
+    }
+  }
+
+}
+
+const input_sync = (event) => {
+  console.log("INOPUT_SUBMIT", event)
+  console.log(event.target.value)
+  console.log("INPUT SYNC: input from", store.input, "to", event.target.value)
+  store.input = event.target.value
+  fetchAutocomplete(store.input)
+  if (event.target.value) {
+    input_element.value.setAttribute('value', event.target.value)
+  }
+  else {
+    input_element.value.removeAttribute('value')
+  }
+}
+
+const dropdown_select = (event, q) => {
+  console.log("DROPDOWN: Input from", store.input, "to", q)
+  store.input= q
+  store.autocomplete = []
+  emit('dropdown-submit')
+  console.log("NEXT")
+  input_element.value.select()
+  console.log("AFTER")
+}
+
+
+const exit_input = event => {
+  console.log("BLURRED", event.relatedTarget)
+  if (!(event.relatedTarget && event.relatedTarget.hasAttribute('data-dropdown-item'))) {
+    console.log("PASSED"), event.relatedTarget
+    store.autocomplete = []
+
+  }
+
+}
+
 
 </script>
 
 <template>
-      <Combobox v-model="store.input" @update:modelValue="submit" as="div" class="combobox" style="position:relative" v-bind:class="{'has-input': store.input}">
-        <div class="input-wrapper rounded-4xl border-1 border-primary bg-white p-1lg:p-2 d-flex align-items-center justify-between">
-    <ComboboxInput
-      class="form-control mx-3 w-100"
-      @change="store.input = $event.target.value; fetchAutocomplete($event.target.value)"
-      ref="input"
-      :placeholder="$t('search_placeholder')"
-      :aria-label="$t('search_placeholder')"
-      name="q"
-      autocomplete="off"
-    />
-    <button data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('clear')" class="appended-button px-2 py-0" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
-    <button class="appended-button px-2 py-1" type="submit" v-if="!store.advanced" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
-        </div>
-
-
-    <div class="autocomplete-dropdown">
-    <ComboboxOptions class="autocomplete overflow-auto">
-      <ComboboxOption
-        v-for="(item, idx) in store.autocomplete"
-        :key="idx"
-        :value="item.q"
-        class="list-group-item"
-      >
-      <span class="" :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span>
-      </ComboboxOption>
-    </ComboboxOptions>
+  <div class="search-container">
+  <div class="input-wrapper border-1 border-primary flex content-center justify-between" v-bind="{'data-dropdown-open': store.autocomplete.length > 0}" aria-label="Søkefelt">
+   <input class="input-element p-3 lg:p-4 px-5"
+          :value="store.input"
+          ref="input_element" 
+          @input="input_sync"
+          role="combobox" 
+          :aria-activedescendant="selected_option >= 0 ? 'autocomplete-item-'+selected_option : null"
+          aria-autocomplete="list"
+          aria-haspopup="listbox"
+          placeholder="Search here"
+          autocomplete="off"
+          autocapitalize="off"
+          @blur="exit_input"
+          @keydown="keys"
+          :aria-expanded="store.autocomplete.length > 0" 
+          :aria-controls="store.autocomplete.length > 0 ? 'autocomplete-dropdown' : null"/>
+          <button type="submit">Submit</button>
   </div>
-  </Combobox>
-<!--
-      
-    <Combobox v-model="store.input" @update:modelValue="submit" class="search-container" v-bind:class="{active: store.autocomplete && store.autocomplete.length}">
-      <div>
-        <div class="input-wrapper p-1lg:p-2 d-flex align-items-center justify-between">
-          <ComboboxInput
-            class="form-control mx-3"
-            name="q"
-            :value="store.input"
-            autofocus="true"
-            autocomplete="off"
-            autocorrect="off"
-            autocapitalize="off"
-            maxlength="200"
-            ref="input"
-            @input="store.input = $event.target.value; fetchAutocomplete($event.target.value)"
-            :placeholder="$t('search_placeholder')"
-            :aria-label="$t('search_placeholder')"
-          />
-          <button data-bs-toggle="tooltip" data-bs-placement="left" :title="$t('clear')" class="appended-button px-2 py-1" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
-          <button class="appended-button px-2 py-1" type="submit" v-if="!store.advanced" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
-        </div>
-        
-        <TransitionRoot
-          v-show="store.autocomplete[0]"
-          class="autocomplete-dropdown"
-          leave="transition ease-in duration-100"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-          @after-leave="store.autocomplete=[]">
+   <ul id="autocomplete-dropdown" role="listbox">
+    <li v-for="(item, idx) in store.autocomplete" 
+        :key="idx" 
+        :aria-selected="idx == selected_option"
+        role="option"
+        tabindex="-1"
+        :id="'autocomplete-item-'+idx"
+        >
+        <!-- button hidden from screen readers? -->
+        <button data-dropdown-item tabindex="-1" @click="dropdown_select($event, item.q)"><span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span></button>
+   </li>
+  </ul>
+  </div>
 
-          <ComboboxOptions class="list-group list-group-flush autocomplete overflow-auto">
-
-            <ComboboxOption
-              v-for="(item, idx) in store.autocomplete"
-              as="template"
-              :key="idx"
-              :value="item.q"
-              v-slot="{ active }"
-              @click="dropdownSelect"
-            >
-              <li
-                class="list-group-item"
-                :class="{'active': active, '': !active,}">
-
-                <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span>
-              </li>
-            </ComboboxOption>
-          </ComboboxOptions>
-        </TransitionRoot>
-      </div>
-    </Combobox>
-
-  -->
 
 </template>
 
 
 <style lang="scss" scoped>
+
+.search-container {
+  position: relative;
+
+}
+
+#autocomplete-dropdown {
+  z-index: 1000;
+  width: 100%;
+  background-color: white;
+  position: absolute !important;
+  left: 0;
+}
+
+.input-wrapper {
+
+    width: 100%;
+    border-radius: 2rem;
+
+}
+
+.input-wrapper:focus-within {
+  box-shadow: 2px 2px 1px;
+  @apply shadow-primary shadow;
+}
+
+
+
+.input-element {
+  border-radius: 2rem 0 0 2rem;
+  background: none;
+  outline: none;
+  width: 100%;
+
+}
+
+
+
+
+
 
 .input-wrapper {
     width: 100%;
@@ -216,6 +274,11 @@ onMounted(() => {
 }
 
 
+
+.input-wrapper[data-dropdown-open=true] {
+  border-radius: 1.75rem 1.75rem 0 0;
+  border-bottom: solid 1px white !important;
+}
 
 
 .combobox[data-headlessui-state=open].has-input .autocomplete-dropdown {

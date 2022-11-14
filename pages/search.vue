@@ -1,18 +1,18 @@
 <template>
-    <div class="dict-view">
-      <div class="container">
-      <SearchNav advanced/>
+    <main class="dict-view">
+      <div class="bg-tertiary bg-opacity-85">
+      <SearchNav class="ord-container" advanced/>
 
         <NuxtErrorBoundary @error="form_error">
-        <AdvancedSearchForm/>
+        <AdvancedSearchForm class="ord-container"/>
       </NuxtErrorBoundary>
+      </div>
       <NuxtErrorBoundary @error="content_error">  
     <Results v-if="store.q"/>
       </NuxtErrorBoundary>
 
-    </div>
         
-    </div>
+    </main>
     </template>
     
 <script setup>

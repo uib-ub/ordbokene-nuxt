@@ -1,5 +1,4 @@
 <template>
-  {{welcome}}
     <div class="list-view-item" v-if="settings.listView && store.advanced == true && $route.name == 'search' && store.q">
         <span v-if="pending" class="list-group-item"><div class="skeleton skeleton-content w-25"/><div class="skeleton skeleton-content w-50"/></span>
         <NuxtLink v-else class="list-group-item result-list-item" :to="link_to_self()">
@@ -491,8 +490,25 @@ span.lemma-group {
 
 }
 
+@screen md {
+  .welcome .article {
+    @apply bg-body-bg!;
+    box-shadow: none !important;
+    border: none !important;
+  }
+}
+
+@screen lg {
+  .welcome .article {
+    padding: 1rem !important;
+    padding-bottom: 0rem !important;
+    margin: 2rem !important;
+  }
+}
+
+
 .welcome .article {
-  @apply md:bg-tertiary md:rounded-none md:shadow-none md:border-none;
+  @apply md:bg-tertiary md:rounded-0.25rem md:shadow-none md:border-none;
 
 }
 

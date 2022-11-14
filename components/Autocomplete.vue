@@ -188,7 +188,7 @@ const exit_input = event => {
 
 <template>
   <div class="search-container">
-  <div class="input-wrapper border-1 border-primary flex content-center justify-between" v-bind="{'data-dropdown-open': store.autocomplete.length > 0}" aria-label="Søkefelt">
+  <div class="input-wrapper border-1 bg-canvas border-primary flex content-center justify-between" v-bind="{'data-dropdown-open': store.autocomplete.length > 0}" aria-label="Søkefelt">
    <input class="input-element p-3 lg:p-4 px-5"
           :value="store.input"
           ref="input_element" 

@@ -1,5 +1,5 @@
 <template>
-<div class="secondary-page container">
+<main class="secondary-page">
   <Accordion  is="h4" header="Hallo">Test</Accordion>
   <h2>{{$t('contact.title')}}</h2>
   <div>
@@ -18,7 +18,7 @@
   <Accordion id='faq-3' is="h4" :header="$t('contact.faq.items[2].title')">
     {{$t('contact.faq.items[2].text')}}
   </Accordion>
-</div>
+</main>
 </template>
 
 <script setup>

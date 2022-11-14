@@ -18,7 +18,7 @@ build-dev:
 
 
 deploy-dev:
-  when: never
+  when: manual
   tags:
     - spraaksamlingene_01
   stage: deploy

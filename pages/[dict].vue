@@ -1,5 +1,5 @@
 <template>
-<main class="container dict-view">    
+<main class="dict-view">    
   <SearchNav/>
     <NuxtErrorBoundary @error="form_error">
     <SearchForm/>

@@ -1,4 +1,5 @@
 <template>
+  {{welcome}}
     <div class="list-view-item" v-if="settings.listView && store.advanced == true && $route.name == 'search' && store.q">
         <span v-if="pending" class="list-group-item"><div class="skeleton skeleton-content w-25"/><div class="skeleton skeleton-content w-50"/></span>
         <NuxtLink v-else class="list-group-item result-list-item" :to="link_to_self()">
@@ -399,7 +400,7 @@ if (store.view == 'article') {
     border-radius: 1.5rem;
     display: inline-flex;
     width: 100%;
-    @apply shadow-primary border-primary overflow-scroll;
+    @apply primary-shadow border-primary overflow-auto;
 }
 
 ol > li:only-child.level1, li:only-child.level2 {

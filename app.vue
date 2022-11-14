@@ -55,7 +55,7 @@
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
 
-    <NuxtPage class="page-container mx-auto  lg:px-3 pb-3" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
+    <NuxtPage class="container mx-auto  lg:px-3 pb-3" v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
 
 
 <Footer/>
@@ -108,17 +108,18 @@ const update_locale = (newLocale) => {
 
 }
 
-.dict-view {
-  height: 100%;
-}
 
-html, body, #__nuxt {
+html, body, main, .dict-view {
   height: 100% !important;
 }
 
 body {
   overflow-y: scroll;
   @apply bg-tertiary;
+}
+
+main {
+  @apply md:bg-[url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80')];
 }
 
 

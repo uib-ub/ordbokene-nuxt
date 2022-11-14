@@ -8,7 +8,7 @@ export default defineConfig({
       serif: ['Inria Serif', 'serif'],
     },
 
-    extend: {
+
       colors:{
         primary: {
           DEFAULT: "#560027",
@@ -25,11 +25,13 @@ export default defineConfig({
           darken: "#e0d8d9"
         },
         text: "black",
+        black: "black",
         canvas: "white",
+        white: "white",
         anchor: "#880E4F"
       }
 
-    }
+    
     
   }
 });

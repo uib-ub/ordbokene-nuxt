@@ -2,13 +2,13 @@
     <div v-bind:class="{'list': listView}">     
     <div v-if="pending" class="d-flex align-items-center justifycenter py-5 my-5">
         <div class="spinner-border text-primary" role="status">
-  <span class="visually-hidden">Loading...</span>
+  <span class="sr-only">Loading</span>
         </div>
     </div>
     <div v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta">
     <div>
-    <div aria-live="assertive" class="visually-hidden" v-if="articles.meta.bm">{{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.bm')}}</div>
-    <div aria-live="assertive" class="visually-hidden" v-if="articles.meta.nn">{{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.nn')}}</div>
+    <div aria-live="assertive" class="md:sr-only" v-if="articles.meta.bm">{{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.bm')}}</div>
+    <div aria-live="assertive" class="md:sr-only" v-if="articles.meta.nn">{{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.nn')}}</div>
     </div>
 
 

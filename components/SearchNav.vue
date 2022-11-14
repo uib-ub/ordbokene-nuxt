@@ -1,36 +1,12 @@
 <template>
-    <nav class="inline-block" :aria-label="$t('label.dict_nav')">
+    <nav :aria-label="$t('label.dict_nav')">
       <div class="h-full md:hidden w-full">
-          <button @click="search_nav_toggle = ! search_nav_toggle" class="ordbok-btn primary w-full p-2 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapsableSearchNav" aria-controls="collapsableSearchNav" aria-expanded="false" aria-label="Toggle search navigation">
-            {{$t(advanced ? 'advanced' : 'dicts.'+ store.dict)}}<BootstrapIcon icon="bi-caret-down-fill" right/>
+          <button @click="search_nav_expanded = ! search_nav_expanded" class="w-full p-2 px-4 bg-tertiary-darken" type="button" data-bs-toggle="collapse" aria-controls="searchNavContent" :aria-expanded="search_nav_expanded" aria-label="Toggle search navigation">
+            <BootstrapIcon :icon="search_nav_expanded ? 'bi-chevron-down' : 'bi-chevron-up'" left primary/>{{$t(advanced ? 'advanced' : 'dicts.'+ store.dict)}}
     </button>
-    <div class="collapse navbar-collapse m-2" id="collapsableSearchNav">
-      <ul class="inline">
-  <li class="nav-item">
-    <NuxtLink :aria-current="!advanced  && route.params.dict =='bm,nn' ? 'true' : 'false'"
-              @click="search_nav_toggle = false; dict_click('bm,nn')"
-              :to="dict_link('bm,nn')">{{$t('dicts.bm,nn')}}</NuxtLink>
-  </li>
-  <li class="nav-item">
-    <NuxtLink :aria-current="!advanced  && route.params.dict =='bm' ? 'true' : 'false'"
-              @click="search_nav_toggle = false; dict_click('bm')"
-              :to="dict_link('bm')">{{$t('dicts.bm')}}</NuxtLink>
-  </li>
-  <li class="nav-item">
-    <NuxtLink :aria-current="!advanced  && route.params.dict =='nn' ? 'true' : 'false'"
-              @click="search_nav_toggle = false; dict_click('nn')"
-              :to="dict_link('nn')">{{$t('dicts.nn')}}</NuxtLink>
-  </li>
-  <li class="nav-item">
-    <NuxtLink :aria-current="advanced ? 'true' : 'false'" 
-              @click="search_nav_toggle = false; store.advanced = true"
-              :to="advanced_link">{{$t('advanced')}}</NuxtLink>
-  </li>
-</ul>
-      
-    </div>
-  </div>
-    <ul class="hidden md:flex">
+      </div>
+
+  <ul id="searchNavContent" class="md:flex bg-secodary" v-bind:class="{expanded: search_nav_expanded}">
   <li class="nav-item" v-if="!advanced">
     <NuxtLink :aria-current="!advanced  && route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"
@@ -57,6 +33,7 @@
               :to="advanced_link">{{$t('advanced')}}<BootstrapIcon v-if="!advanced" icon="bi-arrow-right small" right/></NuxtLink>
   </li>
 </ul>
+
 </nav>
 </template>
 
@@ -66,7 +43,7 @@ import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
-const search_nav_toggle = ref(false)
+const search_nav_expanded = ref(false)
 
 const props = defineProps({
     advanced: Boolean
@@ -118,18 +95,56 @@ const dict_click = (dict) => {
 
 nav {
   padding: 0;
-  height: 100% !important;
 }
 
+
 a {
-  @apply bg-tertiary bg-opacity-75;
+  display: block;
+  font-variant: all-small-caps;
+  font-weight: 600;
+  letter-spacing: .1rem;
+}
+
+.expanded {
+  display: none;
+  
+}
+
+button {
+  font-weight: 600;
+}
+
+#searchNavContent {
+  transition: height 10000ms !important;
+  overflow: hidden;
 }
 
 
 @screen md {
+
   a {
-    @apply px-3 py-2;
+    @apply px-4 pt-2 pb-3;
+  }
+
+  .welcome a {
+    @apply bg-tertiary bg-opacity-75;
+  }
+
+  a[aria-current=page] {
+    border-bottom: 3px;
+    @apply border-secondary;
+  }
+
+  .expanded {
+    display: unset;
   }
 }
+
+
+
+
+
+
+
   
 </style>

@@ -25,7 +25,7 @@
       </div> 
       <div v-else class="row justifycenter  align-items-center h-50">
         <div class="spinner-border text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
+          <span class="sr-only">Loading...</span>
         </div>
 
 

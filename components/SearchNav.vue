@@ -1,7 +1,7 @@
 <template>
     <nav class="pb-1" :aria-label="$t('label.dict_nav')">
-      <div class="inline-block md:hidden w-100 mt-2">
-          <button @click="search_nav_toggle = ! search_nav_toggle" class="ordbok-btn primary w-100 p-2 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapsableSearchNav" aria-controls="collapsableSearchNav" aria-expanded="false" aria-label="Toggle search navigation">
+      <div class="inline-block md:hidden w-full mt-2">
+          <button @click="search_nav_toggle = ! search_nav_toggle" class="ordbok-btn primary w-full p-2 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapsableSearchNav" aria-controls="collapsableSearchNav" aria-expanded="false" aria-label="Toggle search navigation">
             {{$t(advanced ? 'advanced' : 'dicts.'+ store.dict)}}<BootstrapIcon icon="bi-caret-down-fill" right/>
     </button>
     <div class="collapse navbar-collapse m-2" id="collapsableSearchNav">

@@ -58,7 +58,7 @@
         </button>
 
         <div v-if="inflected" class="collapse py-2" :id="'inflection-'+article_id" ref="inflection_table">
-            <div class="inflection-container card card-body">
+            <div class="inflection-container">
                 <NuxtErrorBoundary @error="inflection_error">
                 <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
                 </NuxtErrorBoundary>
@@ -394,13 +394,13 @@ if (store.view == 'article') {
 
 
 .inflection-container {
-    box-shadow: 1px 1px 1px var(--bs-primary);
-    border: solid 1px var(--bs-primary);
+    box-shadow: 1px 1px 1px;
+    border: solid 1px;
     border-radius: 1.5rem;
     display: inline-flex;
     width: 100%;
+    @apply shadow-primary border-primary overflow-scroll;
 }
-
 
 ol > li:only-child.level1, li:only-child.level2 {
   /* level3 a.k.a. underdefinisjoner skal vises med bullet selv om de står alene */
@@ -487,8 +487,13 @@ span.lemma-group {
     background-color: white;
     box-shadow: 1px 2px 1px rgba(0,0,0, .40);
     margin-bottom: 1rem;
+
 }
 
+.welcome .article {
+  @apply md:bg-tertiary md:rounded-none md:shadow-none md:border-none;
+
+}
 
 a.result-list-item {
     padding-bottom: 0.6rem;

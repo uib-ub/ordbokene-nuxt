@@ -11,16 +11,16 @@
   <nav class="navbar" :aria-label="$t('menu.title')">
     <ul class="navbar-nav md:flex-row gap-3 mt-5 pt-2 md:pt-0 md:mt-2 lg:mt-4 mt-xl-0 text-center">
       <li class="nav-item">
-        <NuxtLink class="nav-link p-1" :aria-current="$route.name == 'dict' && 'page'" to="/">{{$t('home')}}</NuxtLink>
+        <NuxtLink :aria-current="$route.name == 'dict' && 'page'" to="/">{{$t('home')}}</NuxtLink>
       </li>
       <li class="nav-item">
-        <NuxtLink class="nav-link p-1" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink></li>
+        <NuxtLink :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink></li>
       <li class="nav-item">
-        <NuxtLink class="nav-link p-1" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
+        <NuxtLink :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink></li>
       <li class="nav-item">
-        <NuxtLink class="nav-link p-1" :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink></li>
+        <NuxtLink :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink></li>
       <li class="nav-item">
-        <NuxtLink class="nav-link p-1" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink></li>
+        <NuxtLink :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink></li>
     </ul>
   </nav>
   </div>
@@ -39,9 +39,12 @@ nav {
 }
 
 .nav-item {
-padding-bottom: 0.25rem;
+ @apply pb-0.25rem ;
 list-style-type: none;
+ a {
+  @apply p-1;
 
+ }
 }
 
 a {

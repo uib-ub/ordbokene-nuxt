@@ -10,15 +10,26 @@ export default defineConfig({
 
     extend: {
       colors:{
-        primary: "#560027",
-        secondary: "#BC477B",
-        tertiary: "#FDF4F5",
-        anchor: "#880E4F",
+        primary: {
+          DEFAULT: "#560027",
+          lighten: "#711f3d",
+          darken: "#3c0012"
+        },
+        secondary: {
+          DEFAULT: "#BC477B",
+          lighten: "#d96295",
+          darken: "#9f2b62"
+        },
+        tertiary: {
+          DEFAULT: "#FDF4F5",
+          darken: "#e0d8d9"
+        },
+        text: "black",
+        canvas: "white",
+        anchor: "#880E4F"
       }
 
     }
-
-    
     
   }
 });

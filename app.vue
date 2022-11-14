@@ -1,12 +1,12 @@
 <template>
   <header>
-      <nav class="bg-primary px-2 sm:px-5 py-2.5
+      <nav class="bg-primary px-2 py-2.5
       text-white" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="flex flex-wrap justify-between items-center mx-auto">
     <NuxtLink class="navbar-brand text-white" to="/">
-      <div class="small mx-1 my-1 lg:my-2">
+      <div class="mx-1 my-1 lg:my-2">
       <div><h1 class="brand-title">Ordbøkene</h1>
-      <p class="d-none d-xl-block brand-subtitle">{{$t("sub_title")}}</p>
+      <p class="hidden xl:block brand-subtitle">{{$t("sub_title")}}</p>
       </div>
     </div>
       </NuxtLink>
@@ -17,8 +17,8 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="flex flex-row  space-x-8 " id="navbarSupportedContent">
-      <ul class="flex flex-row space-x-8 ">
+    <div class="flex flex-col md:flex-row space-x-8 " id="navbarSupportedContent">
+      <ul class="flex flex-col md:flex-row space-x-8 ">
         <li class="nav-item">
           <NuxtLink class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
         </li>
@@ -262,23 +262,24 @@ header nav {
     letter-spacing: .1rem;
     font-weight: 600;
     list-style-type: none;
-    @apply text-white);
+    @apply text-white;
     padding-top: .5rem;
     padding-bottom: .75rem;
 
     &:focus {
-      @apply text-white)
+      @apply text-white;
     }
 
     &:hover {
       
-      border-bottom: solid 0.125rem var(--bs-white) !important;
-      @apply text-white);
+      border-bottom: solid 0.125rem !important;
+      @apply text-white border-white;
       padding-bottom: .5rem;
     }
     &[aria-current=page] {
-      border-bottom: solid 0.125rem var(--bs-secondary) !important;
+      border-bottom: solid 0.125rem !important;
       padding-bottom: .5rem;
+      @apply border-secondary !important;
     }
   }
 
@@ -294,10 +295,11 @@ header nav {
       }
 
       &[aria-current=page] {
-        border-left: solid 0.25rem var(--bs-secondary);
+        border-left: solid 0.25rem;
         padding: 0rem;
         border-bottom: none !important;
         padding-left: 1rem !important;
+        @apply border-secodnary;
       }
     }
   }
@@ -305,7 +307,9 @@ header nav {
 
 
 section a, .secondary-page a  {
-  border-bottom: 2px solid var(--link-decoration);
+
+  border-bottom: 2px solid;
+  @apply border-anchor;
 }
 
 .secondary-page {
@@ -337,6 +341,12 @@ section a, .secondary-page a  {
     font-weight: 600;
     font-variant: all-small-caps;
     font-size: 1.75rem;
+  }
+
+
+  .dict-view h3 {
+    font-size: calc(1.3rem + .6vw);
+
   }
 
 

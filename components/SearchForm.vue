@@ -1,5 +1,5 @@
 <template>
-<div class="simple-search my-2">
+<div class="simple-search my-2 md:my-3 lg:my-5">
 <form  @submit.prevent="submitForm" ref="form">
 <NuxtErrorBoundary @error="autocomplete_error">
   <Autocomplete v-on:dropdown-submit="submitForm"/>

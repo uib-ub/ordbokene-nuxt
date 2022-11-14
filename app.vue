@@ -2,7 +2,7 @@
   <header>
     <nav class="bg-primary pl-3 pr-0 lg:px-5 py-1 md:flex
       text-white" :aria-label="$t('label.nav')">
-      <div class="flex content-center o mr-1">
+      <div class="flex content-center w-full lg:w-auto">
       <NuxtLink class="navbar-brand text-white" to="/" :aria-current="$route.name == 'dict' && 'page'">
       <div class="mx-1 md:my-1 lg:my-2">
       <div><h1 class="brand-title">Ordbøkene</h1>
@@ -10,16 +10,15 @@
       </div>
     </div>
       </NuxtLink>
+      <button class="lg:hidden text-lg my-auto ml-auto  p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" @click="menu_expanded = !menu_expanded">
       
-      <button class="md:hidden text-lg my-auto ml-auto p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" @click="menu_expanded = !menu_expanded">
-      
-        <div class="hidden sm:inline">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl md:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/></button>
+      <div class="hidden sm:inline">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/></button>
       </div>
 
-      <div class="nav-buttons flex-wrap md:flex-row content-center md:ml-auto  mr-1" v-bind:class="{hidden: !menu_expanded}">
+      <div class="nav-buttons flex-wrap lg:flex-row content-center lg:ml-auto  mr-1" v-bind:class="{hidden: !menu_expanded}">
       
 
-        <ul class="flex flex-col md:flex-row md:space-x-3 lg:space-x-8 content-center" >
+        <ul class="flex flex-col lg:flex-row lg:space-x-3 xl:space-x-8 content-center" >
         <li class="nav-item">
           <NuxtLink class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
         </li>
@@ -137,6 +136,8 @@ main {
     @apply bg-tertiary-darken bg-opacity-80;
 
   }
+
+
   
 }
 
@@ -221,7 +222,7 @@ h1 {
 }
 
 
-@screen md {
+@screen lg {
   .nav-buttons.hidden {
     display: flex;
 }
@@ -462,7 +463,6 @@ ol.sub_definitions {
   @apply bg-canvas text-text border-primary border-1;
 
 }
-
 
 
 

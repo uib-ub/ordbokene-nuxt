@@ -1,6 +1,60 @@
 <template>
   <header>
-      <nav class="bg-primary px-2 py-2.5
+    <nav class="bg-primary pl-3 pr-0 lg:px-5 py-1 md:flex
+      text-white" :aria-label="$t('label.nav')">
+      <div class="flex content-center o mr-1">
+      <NuxtLink class="navbar-brand text-white" to="/" :aria-current="$route.name == 'dict' && 'page'">
+      <div class="mx-1 md:my-1 lg:my-2">
+      <div><h1 class="brand-title">Ordbøkene</h1>
+      <p class="hidden xl:block brand-subtitle">{{$t("sub_title")}}</p>
+      </div>
+    </div>
+      </NuxtLink>
+      
+      <button class="md:hidden text-lg my-auto ml-auto p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" @click="menu_expanded = !menu_expanded">
+      
+        <div class="hidden md:inline">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl md:pl-2" icon="bi-list"/></button>
+      </div>
+
+      <div class="nav-buttons flex-wrap md:flex-row content-center md:ml-auto  mr-1">
+      
+
+        <ul class="flex flex-col md:flex-row md:space-x-4 lg:space-x-8 content-center" v-bind:class="{hidden: !menu_expanded}">
+        <li class="nav-item">
+          <NuxtLink class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
+        </li>
+
+        <li class="nav-item">
+          <NuxtLink class="nav-link" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink>
+        </li>
+                <li class="nav-item">
+          <NuxtLink class="nav-link"  :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink>
+        </li>
+                <li class="nav-item">
+          <NuxtLink class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
+        </li>
+        <li>
+          <button class="nav-link" :aria-controls="locale_expanded ? 'locale-dropdown' : null" :aria-expanded="locale_expanded">
+             <BootstrapIcon :aria-label="$t('settings.locale.title')" icon="bi bi-globe" left/>{{$t('name')}}<BootstrapIcon :aria-label="$t('settings.locale.title')" :icon="locale_expanded? 'bi-chevron-up' : 'bi-chevron-down'" right/>
+          </button>
+          <ul id="locale-dropdown" v-if="locale_expanded" class="hidden dropdown-menu navbar-dropdown-menu" >
+            <li><button class="dropdown-item" @click="update_locale('eng')">English</button></li>
+            <li><button class="dropdown-item" @click="update_locale('nob')">Bokmål</button></li>
+            <li><button class="dropdown-item" @click="update_locale('nno')">Nynorsk</button></li>
+        </ul>
+
+        </li>
+      </ul>
+      
+ 
+      </div>
+
+    </nav>
+
+
+
+
+      <nav v-if="false" class="bg-primary px-2 py-2.5
       text-white" id="navbar-main" :aria-label="$t('label.nav')">
   <div class="flex flex-wrap justify-between items-center mx-auto">
     <NuxtLink class="navbar-brand text-white" to="/">
@@ -35,18 +89,9 @@
       </ul>
       <div class="navbar-nav ml-auto">
         <div class="nav-item dropdown-center">
-          <NuxtLink class="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-current="true">
-             <i :aria-label="$t('settings.locale.title')" aria-hidden="true" class="bi bi-globe"/> {{$t('name')}}
-          </NuxtLink>
-          <ul class="hidden dropdown-menu navbar-dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><button class="dropdown-item" @click="update_locale('eng')">English</button></li>
-            <li><button class="dropdown-item" @click="update_locale('nob')">Bokmål</button></li>
-            <li><button class="dropdown-item" @click="update_locale('nno')">Nynorsk</button></li>
-        </ul>
+          
         </div>
       </div>
-
-
     </div>
   </div>
 </nav>
@@ -70,6 +115,9 @@ const i18n = useI18n()
 
 
 const locale = useCookie("locale")
+
+const locale_expanded = ref(false)
+const menu_expanded = ref(false)
 
 // Default to bokmål on odd days
 locale.value = locale.value || (new Date().getDate() % 2 ? 'nno' : 'nob')
@@ -126,15 +174,17 @@ main {
   }
 
   .welcome .search-nav-wrapper {
-    @apply bg-tertiary-darken bg-opacity-50;
+    @apply bg-tertiary-darken bg-opacity-80;
 
   }
   
 }
 
 
+
+
 .ord-container, .secondary-page {
-  @apply container mx-auto px-2 md:px-0;
+  @apply container mx-auto px-2;
 }
 
 
@@ -257,7 +307,7 @@ header nav {
         padding: 0rem;
         border-bottom: none !important;
         padding-left: 1rem !important;
-        @apply border-secodnary;
+        @apply border-secondary;
       }
     }
   }

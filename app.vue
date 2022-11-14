@@ -13,13 +13,13 @@
       
       <button class="md:hidden text-lg my-auto ml-auto p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" @click="menu_expanded = !menu_expanded">
       
-        <div class="hidden md:inline">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl md:pl-2" icon="bi-list"/></button>
+        <div class="hidden sm:inline">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl md:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/></button>
       </div>
 
-      <div class="nav-buttons flex-wrap md:flex-row content-center md:ml-auto  mr-1">
+      <div class="nav-buttons flex-wrap md:flex-row content-center md:ml-auto  mr-1" v-bind:class="{hidden: !menu_expanded}">
       
 
-        <ul class="flex flex-col md:flex-row md:space-x-4 lg:space-x-8 content-center" v-bind:class="{hidden: !menu_expanded}">
+        <ul class="flex flex-col md:flex-row md:space-x-3 lg:space-x-8 content-center" >
         <li class="nav-item">
           <NuxtLink class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
         </li>
@@ -34,10 +34,10 @@
           <NuxtLink class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
         <li>
-          <button class="nav-link" :aria-controls="locale_expanded ? 'locale-dropdown' : null" :aria-expanded="locale_expanded">
+          <button class="nav-link" @click="locale_expanded=!locale_expanded" :aria-controls="locale_expanded ? 'locale-dropdown' : null" :aria-expanded="locale_expanded">
              <BootstrapIcon :aria-label="$t('settings.locale.title')" icon="bi bi-globe" left/>{{$t('name')}}<BootstrapIcon :aria-label="$t('settings.locale.title')" :icon="locale_expanded? 'bi-chevron-up' : 'bi-chevron-down'" right/>
           </button>
-          <ul id="locale-dropdown" v-if="locale_expanded" class="hidden dropdown-menu navbar-dropdown-menu" >
+          <ul id="locale-dropdown" class="text-base bg-canvas" v-if="locale_expanded">
             <li><button class="dropdown-item" @click="update_locale('eng')">English</button></li>
             <li><button class="dropdown-item" @click="update_locale('nob')">Bokmål</button></li>
             <li><button class="dropdown-item" @click="update_locale('nno')">Nynorsk</button></li>
@@ -152,6 +152,9 @@ const update_locale = (newLocale) => {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+}
+
+body {
   overflow-y: scroll;
 }
 
@@ -260,6 +263,13 @@ h1 {
 
 }
 
+
+@screen md {
+  .nav-buttons.hidden {
+    display: flex;
+}
+
+}
 
 
 
@@ -483,6 +493,7 @@ ol.sub_definitions {
         width: 12em;
         height: 12rem;
     }
+
 
 
 

@@ -35,7 +35,7 @@ const props = defineProps({
 }
 
 .secondary-icon {
-  @apply text-secondary) !important;
+  @apply text-secondary !important;
 }
 
 

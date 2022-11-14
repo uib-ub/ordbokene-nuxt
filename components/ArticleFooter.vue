@@ -100,9 +100,9 @@ const download_ris = () => {
   <div class="position-absolute top-50 start-50 translate-middle"><span>{{$t('article.link_copied', 1, { locale: content_locale})}}</span></div>
   </div>
 <div class="d-flex justifyaround gap-3 mt-3 flex-wrap">
-    <button class="ordbok-btn borderless" v-if="showLinkCopy" @click="copy_link"><BootstrapIcon icon="bi-link" left/> {{$t("article.copy_link", 1, { locale: content_locale})}}</button>
-    <button class="ordbok-btn borderless" v-if="webShareApiSupported" @click="shareViaWebShare"><BootstrapIcon icon="bi-share-fill" left/> {{$t("article.share", 1, { locale: content_locale})}}</button>
-    <button class="ordbok-btn borderless" type="button" data-bs-toggle="collapse" :data-bs-target="'#cite-'+article_id" aria-expanded="false" aria-controls="collapseExample"><BootstrapIcon icon="bi-quote" left/> {{$t("article.cite", 1, { locale: content_locale})}}</button>
+    <button class="btn-borderless" v-if="showLinkCopy" @click="copy_link"><BootstrapIcon icon="bi-link" left/> {{$t("article.copy_link", 1, { locale: content_locale})}}</button>
+    <button class="btn-borderless" v-if="webShareApiSupported" @click="shareViaWebShare"><BootstrapIcon icon="bi-share-fill" left/> {{$t("article.share", 1, { locale: content_locale})}}</button>
+    <button class="btn-borderless" type="button" data-bs-toggle="collapse" :data-bs-target="'#cite-'+article_id" aria-expanded="false" aria-controls="collapseExample"><BootstrapIcon icon="bi-quote" left/> {{$t("article.cite", 1, { locale: content_locale})}}</button>
 </div>
 <div class="collapse py-2" :id="'cite-'+article_id">
     <div class="cite-container card card-body mb-1 pb-2">
@@ -110,8 +110,8 @@ const download_ris = () => {
       <p>{{$t("article.cite_description[0]", 1, { locale: content_locale})}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", 1, { locale: content_locale})}}</p>
       <div id="citation" v-html="$t('article.citation', create_citation())" />
       <div class="d-flex justifystart mt-4 mb-2 flex-wrap gap-3">
-       <button class="ordbok-btn" @click="copy_citation"><BootstrapIcon icon="bi-clipboard" left primary/> {{$t("article.copy", 1, { locale: content_locale})}}</button>
-       <button class="ordbok-btn" @click="download_ris"><BootstrapIcon icon="bi-download" left primary /> {{$t("article.download")}}</button>
+       <button class="btn-primary" @click="copy_citation"><BootstrapIcon icon="bi-clipboard" left primary/> {{$t("article.copy", 1, { locale: content_locale})}}</button>
+       <button class="btn-primary" @click="download_ris"><BootstrapIcon icon="bi-download" left primary /> {{$t("article.download")}}</button>
       </div>
     </div>
 </div>

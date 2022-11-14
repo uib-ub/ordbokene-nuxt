@@ -1,12 +1,14 @@
 <template>
 <main class="dict-view">
-  <div class="bg-tertiary-darken bg-opacity-50">    
+  <div class="search-nav-wrapper">    
   <SearchNav class="ord-container"/>
 </div>
+
 
     <NuxtErrorBoundary @error="form_error">
     <SearchForm class="ord-container"/>
   </NuxtErrorBoundary>
+
   
   <section class="dict-content">
     <div class="ord-container">

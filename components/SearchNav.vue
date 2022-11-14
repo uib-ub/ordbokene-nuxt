@@ -103,6 +103,14 @@ a {
   font-variant: all-small-caps;
   font-weight: 600;
   letter-spacing: .1rem;
+  @apply px-4 pt-1 pb-0.5rem border-transparent;
+
+  
+
+  &[aria-current=true] {
+    border-left: solid .17rem;
+      @apply border-secondary bg-secondary bg-opacity-10;
+  }
 }
 
 .expanded {
@@ -114,25 +122,28 @@ button {
   font-weight: 600;
 }
 
-#searchNavContent {
-  transition: height 10000ms !important;
-  overflow: hidden;
+ul {
+
+  @apply text-xl;
+  
 }
 
 
 @screen md {
-
   a {
-    @apply px-4 pt-2 pb-3;
+    
+    @apply px-4 pt-1 pb-0.5rem border-transparent text-base;
+    
   }
 
   .welcome a {
     @apply bg-tertiary bg-opacity-75;
   }
 
-  a[aria-current=page] {
-    border-bottom: 3px;
-    @apply border-secondary;
+  a[aria-current=true] {
+    border-bottom: solid .17rem;
+    border-left: none;
+    @apply border-secondary pb-0.33rem;
   }
 
   .expanded {

@@ -53,11 +53,11 @@
         
 
       
-      <button v-if="inflected && !welcome" class="ordbok-btn my-1" @click="toggle = !toggle" type="button" data-bs-toggle="collapse" :data-bs-target="'#inflection-'+article_id" aria-expanded="false" aria-controls="collapseExample">
-             {{$t('article.show_inflection')}}<span v-if="!toggle"><BootstrapIcon icon="bi-plus-lg" right/></span><span v-if="toggle"><BootstrapIcon icon="bi-dash-lg" right/></span>
+      <button v-if="inflected && !welcome" class="btn-primary my-1" @click="inflection_expanded = !inflection_expanded" type="button" :aria-expanded="inflection_expanded" :aria-controls="inflection_expanded ? 'inflection-'+article_id : null">
+             {{$t('article.show_inflection')}}<span v-if="!inflection_expanded"><BootstrapIcon icon="bi-plus-lg" right/></span><span v-if="inflection_expanded"><BootstrapIcon icon="bi-dash-lg" right/></span>
         </button>
 
-        <div v-if="inflected" class="collapse py-2" :id="'inflection-'+article_id" ref="inflection_table">
+        <div v-show="inflected && inflection_expanded" class="collapse py-2 transition-height duration-1000 ease-in-out" :id="'inflection-'+article_id" ref="inflection_table">
             <div class="inflection-container">
                 <NuxtErrorBoundary @error="inflection_error">
                 <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
@@ -110,7 +110,7 @@ import {useSettingsStore } from '~/stores/settingsStore'
 const { t } = useI18n()
 const i18n = useI18n()
 const store = useStore()
-const toggle = ref(false)
+const inflection_expanded = ref(false)
 const settings = useSettingsStore()
 
 const props = defineProps({
@@ -398,7 +398,9 @@ if (store.view == 'article') {
     border: solid 1px;
     border-radius: 1.5rem;
     display: inline-flex;
-    width: 100%;
+
+    
+
     @apply primary-shadow border-primary overflow-auto;
 }
 
@@ -487,6 +489,7 @@ span.lemma-group {
     background-color: white;
     box-shadow: 1px 2px 1px rgba(0,0,0, .40);
     margin-bottom: 1rem;
+    @apply p-1 md:p-2 lg:p-3;
 
 }
 
@@ -525,6 +528,7 @@ a.result-list-item {
 a.result-list-item:hover {
     background-color: rgba(0,0,0, .1);
 }
+
 
 
 </style>

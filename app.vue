@@ -51,7 +51,7 @@
   </div>
 </nav>
   </header>
-<div class="container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
+<div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
     <NuxtPage v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
@@ -123,22 +123,21 @@ main {
 @screen md {
   main.welcome {
   background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
+  }
 
-  .welcome .search-nav-wrapper {
+  .welcome .search-nav-wrapper, {
     @apply bg-tertiary-darken bg-opacity-50;
+
   }
   
 }
-}
-
-.ord-container {
-  @apply container mx-auto;
-}
 
 
-.back-to-search {
-  font-size: larger;
+.ord-container, .secondary-page {
+  @apply container mx-auto px-2 md:px-0;
 }
+
+
 
 h1 {
   font-family: Inria Serif;
@@ -164,105 +163,52 @@ h1 {
 }
 
 
-.ordbok-btn {
+.btn-primary, .btn-secondary, .btn-borderless {
     border-radius: 2rem;
     padding: .25rem 1rem .25rem 1rem;
     font-weight: 600;
-    @apply bg-white border-1 border-primary;
+    
     -webkit-transition: background-color 100ms linear;
     -ms-transition: background-color 100ms linear;
     transition: background-color 100ms linear;
     -webkit-transition: color 100ms linear;
     -ms-transition: color 100ms linear;
     transition: color 100ms linear;
-
-    i {
-        @apply text-primary
-      }
-
-    &:focus {
-      box-shadow: 2px 2px 1px;
-      @apply border-primary shadow-primary;
-      outline: none;
-    }
-
-    &.secondary {
-      @apply border-1 border-secondary;
-      &:focus {
-        box-shadow: 2px 2px 1px;
-        @apply shadow-secondary;
-      }
-      &:hover {
-        @apply bg-secondary;
-      }
-
-      i {
-        @apply text-secondary;
-      }
-    }
-
-    &.light {
-      border: solid 1px rgba(0,0,0, .5);
-      &:focus {
-        box-shadow: 2px 2px 1px rgba(0,0,0, .75);
-      }
-
-      i {
-        color: rgba(0,0,0, .75);
-      }
-
-      &[aria-current] {
-        box-shadow: 2px 2px 1px rgba(0,0,0, .75);
-      }
-
-      
-
-    }
-
-    &.borderless {
-      border-color: transparent;
-      background: unset;
-      
-      &:hover, &:focus {
-      @apply border-primary;
-    }
-    }
-
-    
-
-    &:hover {
-      @apply bg-primary text-white;
-    }
-
-    &:active {
-      background-color: rgba(0,0,0,.5);
-    }
-
-    &[aria-expanded=true] {
-      @apply bg-primary text-white;
-      outline: none;
-      &:focus {
-        @apply border-1 border-secondary shadow-secondary;
-        box-shadow: 2px 2px 1px;
-      
-      }
-
-      &.secondary {
-        @apply bg-secondary);
-        
-        &:focus {
-          @apply border-1 border-primary shadow-primary;
-          box-shadow: 2px 2px 1px;
-        }
-      }
-      
-      i {
-        @apply !text-white;
-      }
-      
-    }
 }
 
+.btn-primary {
+  @apply bg-white border-1 border-primary;
+  i {
+    @apply primary;
+  }
+}
+
+.btn-primary:focus, .btn-borderless:focus, .btn-primary:active, .btn-borderless:active {
+  @apply bg-primary bg-opacity-25;
+}
+
+.btn-secondary {
+  @apply bg-white border-1 border-secondary;
+
+  &:focus, &:active {
+    @apply bg-secondary bg-opacity-25;
+
+  }
+}
+
+.btn-light {
+  @apply bg-white border-1 border-secondary;
+}
+
+
+
+
+
+.ordbok-btn[aria-expanded=true] {
+
+    @apply bg-primary text-white border-1 border-primary;
+
+}
 
 
 

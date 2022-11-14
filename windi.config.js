@@ -28,7 +28,7 @@ export default defineConfig({
         black: "black",
         canvas: "white",
         white: "white",
-        anchor: "#880E4F"
+        anchor: "#880E4F",
       }
 
     

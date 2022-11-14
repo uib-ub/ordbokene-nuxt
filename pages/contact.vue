@@ -1,6 +1,5 @@
 <template>
 <main class="secondary-page">
-  <Accordion  is="h4" header="Hallo">Test</Accordion>
   <h2>{{$t('contact.title')}}</h2>
   <div>
     <h3>{{$t('contact.content[0]')}}</h3>

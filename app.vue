@@ -33,14 +33,15 @@
                 <li class="nav-item">
           <NuxtLink class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
-        <li>
+        <li class="relative">
+          
           <button class="nav-link" @click="locale_expanded=!locale_expanded" :aria-controls="locale_expanded ? 'locale-dropdown' : null" :aria-expanded="locale_expanded">
-             <BootstrapIcon :aria-label="$t('settings.locale.title')" icon="bi bi-globe" left/>{{$t('name')}}<BootstrapIcon :aria-label="$t('settings.locale.title')" :icon="locale_expanded? 'bi-chevron-up' : 'bi-chevron-down'" right/>
+             <BootstrapIcon :aria-label="$t('settings.locale.title')" icon="bi bi-globe" left/>{{$t('name')}}
           </button>
-          <ul id="locale-dropdown" class="text-base bg-canvas" v-if="locale_expanded">
-            <li><button class="dropdown-item" @click="update_locale('eng')">English</button></li>
-            <li><button class="dropdown-item" @click="update_locale('nob')">Bokmål</button></li>
-            <li><button class="dropdown-item" @click="update_locale('nno')">Nynorsk</button></li>
+          <ul id="locale-dropdown" class="dropdown-list" v-if="locale_expanded">
+            <li><button :aria-current="i18n.locale.value == 'eng'" @click="update_locale('eng')">English</button></li>
+            <li><button :aria-current="i18n.locale.value == 'nob'" @click="update_locale('nob')">Bokmål</button></li>
+            <li><button :aria-current="i18n.locale.value == 'nno'" @click="update_locale('nno')">Nynorsk</button></li>
         </ul>
 
         </li>
@@ -50,51 +51,6 @@
       </div>
 
     </nav>
-
-
-
-
-      <nav v-if="false" class="bg-primary px-2 py-2.5
-      text-white" id="navbar-main" :aria-label="$t('label.nav')">
-  <div class="flex flex-wrap justify-between items-center mx-auto">
-    <NuxtLink class="navbar-brand text-white" to="/">
-      <div class="mx-1 my-1 lg:my-2">
-      <div><h1 class="brand-title">Ordbøkene</h1>
-      <p class="hidden xl:block brand-subtitle">{{$t("sub_title")}}</p>
-      </div>
-    </div>
-      </NuxtLink>
-        <div class="mx-auto">
-
-
-    </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="flex flex-col md:flex-row space-x-8 " id="navbarSupportedContent">
-      <ul class="flex flex-col md:flex-row space-x-8 ">
-        <li class="nav-item">
-          <NuxtLink class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
-        </li>
-
-        <li class="nav-item">
-          <NuxtLink class="nav-link" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink>
-        </li>
-                <li class="nav-item">
-          <NuxtLink class="nav-link"  :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink>
-        </li>
-                <li class="nav-item">
-          <NuxtLink class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
-        </li>
-      </ul>
-      <div class="navbar-nav ml-auto">
-        <div class="nav-item dropdown-center">
-          
-        </div>
-      </div>
-    </div>
-  </div>
-</nav>
   </header>
 <div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
@@ -135,6 +91,7 @@ useHead({
 const update_locale = (newLocale) => {
   i18n.locale.value = newLocale
   locale.value = newLocale
+  locale_expanded.value = false
   useHead({
     htmlAttrs: {
       lang: {nob: 'nb', nno: 'nn', eng: 'en'}[i18n.locale.value]
@@ -493,6 +450,18 @@ ol.sub_definitions {
         width: 12em;
         height: 12rem;
     }
+
+
+
+
+.dropdown-list {
+  border-radius: 1rem;
+  padding: .5rem;
+  width: 100%;
+  position: absolute;
+  @apply bg-canvas text-text border-primary border-1;
+
+}
 
 
 

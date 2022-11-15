@@ -10,7 +10,7 @@
       </div>
     </div>
       </NuxtLink>
-      <button class="lg:hidden text-lg my-auto ml-auto  p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" @click="menu_expanded = !menu_expanded">
+      <button class="lg:hidden text-lg ml-auto  p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" @click="menu_expanded = !menu_expanded">
       
       <div class="hidden sm:inline">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/></button>
       </div>
@@ -34,7 +34,7 @@
         </li>
         <li class="relative">
           
-          <button class="nav-link" @click="locale_expanded=!locale_expanded" :aria-controls="locale_expanded ? 'locale-dropdown' : null" :aria-expanded="locale_expanded">
+          <button @click="locale_expanded=!locale_expanded" :aria-controls="locale_expanded ? 'locale-dropdown' : null" :aria-expanded="locale_expanded">
              <BootstrapIcon :aria-label="$t('settings.locale.title')" icon="bi bi-globe" left/>{{$t('name')}}
           </button>
           <ul id="locale-dropdown" class="dropdown-list" v-if="locale_expanded">

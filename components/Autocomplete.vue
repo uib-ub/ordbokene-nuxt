@@ -7,6 +7,8 @@ const route = useRoute()
 
 const input_element = ref('')
 const selected_option = ref(-1)
+const autocomplete_dropdown = ref()
+const autocomplete_item_1 = ref()
 
 async function fetchAutocomplete(q) {
 
@@ -95,7 +97,7 @@ onBeforeMount(() => {
 const keys = (event) => {
   
   if (store.autocomplete.length > 0) {
-    if (event.key == "ArrowDown") {
+    if (event.key == "ArrowDown" || event.key == "Down") {
     
     if (selected_option.value <  store.autocomplete.length -1) {
       selected_option.value += 1;
@@ -110,7 +112,7 @@ const keys = (event) => {
     //event.stopPropagation()
     event.preventDefault()
   }
-  else if (event.key == "ArrowUp") {
+  else if (event.key == "ArrowUp" || event.key == "Up") {
     console.log(event, selected_option)
     if (selected_option.value > -1) {
     
@@ -125,7 +127,7 @@ const keys = (event) => {
     //event.stopPropagation()
     event.preventDefault()
   }
-  else if (event.key == "Escape") {
+  else if (event.key == "Escape" || event.key == "Esc") {
     selected_option.value = -1
     store.autocomplete = []
   }
@@ -144,6 +146,12 @@ const keys = (event) => {
     selected_option.value = -1
     
     }
+
+    // Scroll if necessary
+    if (process.client && selected_option.value > -1) {
+        console.log("CLIENT")
+        document.getElementById('autocomplete-item-'+selected_option.value).scrollIntoView({block: 'nearest'})
+      }
   }
 
 }
@@ -208,7 +216,7 @@ const exit_input = event => {
           <button class="appended-button px-2 py-1" type="submit" v-if="!store.advanced" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
 
   </div>
-   <ul id="autocomplete-dropdown" role="listbox">
+   <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown">
     <li v-for="(item, idx) in store.autocomplete" 
         :key="idx" 
         :aria-selected="idx == selected_option"
@@ -230,7 +238,6 @@ const exit_input = event => {
 
 .search-container {
   position: relative;
-
 }
 
 #autocomplete-dropdown {
@@ -239,13 +246,38 @@ const exit_input = event => {
   background-color: white;
   position: absolute !important;
   left: 0;
+  max-height: 50vh;
+  overflow-y: scroll;
+}
+
+
+
+
+#autocomplete-dropdown button {
+  width: 100%;
+  text-align: left;
+  padding: .5rem;
+
+  .word {
+    @apply text-primary;
+    font-weight: bolder;
+}
+}
+
+#autocomplete-dropdown li[aria-selected=true] button, #autocomplete-dropdown button:hover  {
+    @apply bg-tertiary-darken;
+}
+
+.list-group-item 
+.dict-parentheses {
+    color: rgba(0,0,0,.6);
+    font-size: 85%;
+    font-weight: 400;
 }
 
 .input-wrapper {
-
     width: 100%;
     border-radius: 2rem;
-
 }
 
 .input-wrapper:focus-within {
@@ -253,8 +285,6 @@ const exit_input = event => {
   box-shadow: 2px 2px 1px;
   
 }
-
-
 
 .input-element {
   border-radius: 2rem 0 0 2rem;
@@ -264,19 +294,10 @@ const exit_input = event => {
 
 }
 
-
-
-
-
-
 .input-wrapper {
     width: 100%;
     border-radius: 2rem;
-
-
 }
-
-
 
 .input-wrapper[data-dropdown-open=true] {
   border-radius: 1.75rem 1.75rem 0 0;
@@ -308,48 +329,6 @@ const exit_input = event => {
 .combobox:focus-within .input-wrapper, .combobox:focus-within .autocomplete-dropdown {
   box-shadow: 2px 2px 1px var(--bs-primary);
 }  
-
-
-.form-control{
-  border: none;
-  background-color: unset;
-  @apply text-black;
-}
-.form-control:focus{
-    box-shadow: none;
-}
-.form-control::placeholder{
-    @apply text-black;
-    font-style: italic;
-}
-.form-control:focus::placeholder{
-    opacity: 0.75;
-}
-
-
-.list-group{
-  max-height: 50vh;
-}
-
-.list-group-item  {
-  cursor: pointer;
-}
-
-.list-group-item[data-headlessui-state=active], .list-group-item[data-headlessui-state="active selected"] {
-    @apply bg-gray-200 border-gray-700;
-    z-index: 2;
-}
-
-.list-group-item .word {
-    @apply text-primary;
-    font-weight: bolder;
-}
-.dict-parentheses {
-    color: rgba(0,0,0,.6);
-    font-size: 85%;
-    font-weight: 400;
-}
-
 
 ::-webkit-scrollbar {
   width: 1rem;

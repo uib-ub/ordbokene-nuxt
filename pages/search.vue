@@ -1,6 +1,6 @@
 <template>
     <main class="dict-view">
-      <div class="bg-tertiary bg-opacity-85">
+      <div class="bg-tertiary">
       <SearchNav class="ord-container" advanced/>
 
         <NuxtErrorBoundary @error="form_error">

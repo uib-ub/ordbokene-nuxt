@@ -1,7 +1,7 @@
 <template>
     <nav :aria-label="$t('label.dict_nav')">
       <div class="h-full md:hidden w-full">
-          <button @click="search_nav_expanded = ! search_nav_expanded" class="w-full p-2 px-4 bg-tertiary-darken" type="button" data-bs-toggle="collapse" aria-controls="searchNavContent" :aria-expanded="search_nav_expanded" aria-label="Toggle search navigation">
+          <button @click="search_nav_expanded = ! search_nav_expanded" class="w-full p-2 px-4 bg-tertiary-darken1" type="button" data-bs-toggle="collapse" aria-controls="searchNavContent" :aria-expanded="search_nav_expanded" aria-label="Toggle search navigation">
             <BootstrapIcon :icon="search_nav_expanded ? 'bi-chevron-down' : 'bi-chevron-up'" left primary/>{{$t(advanced ? 'advanced' : 'dicts.'+ store.dict)}}
     </button>
       </div>
@@ -108,8 +108,12 @@ a {
   
 
   &[aria-current=true] {
-    border-left: solid .17rem;
-      @apply border-secondary bg-secondary bg-opacity-10;
+    border-left: solid .25rem;
+    
+      @apply border-secondary;
+  }
+  &[aria-current=false] {
+    padding-left: 1.25rem;
   }
 }
 
@@ -137,13 +141,20 @@ ul {
   }
 
   .welcome a {
-    @apply bg-tertiary bg-opacity-75;
+    @apply bg-tertiary;
   }
 
   a[aria-current=true] {
     border-bottom: solid .17rem;
     border-left: none;
-    @apply border-secondary pb-0.33rem;
+    padding-left: 1.25rem;
+    @apply border-secondary pb-0.33rem bg-tertiary-darken1;
+  }
+
+  a[aria-current=false] {
+    padding-left: 1.25rem;
+    @apply border-secondary pb-0.5rem;
+
   }
 
   .expanded {

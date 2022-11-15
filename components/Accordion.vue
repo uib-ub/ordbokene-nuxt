@@ -35,11 +35,11 @@ button {
 }
 
 button:active, button:focus {
-    @apply bg-tertiary-darken
+    @apply bg-tertiary-darken1
 }
 
 button[aria-expanded=true] {
-    @apply bg-tertiary-darken;
+    @apply bg-tertiary-darken2;
 
 }
 

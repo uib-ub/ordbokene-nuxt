@@ -3,7 +3,7 @@
     <nav class="bg-primary pl-3 pr-0 lg:px-5 py-1 md:flex
       text-white" :aria-label="$t('label.nav')">
       <div class="flex content-center w-full lg:w-auto">
-      <NuxtLink class="navbar-brand text-white" to="/" :aria-current="$route.name == 'dict' && 'page'">
+      <NuxtLink class="navbar-brand" to="/" :aria-current="$route.name == 'dict' && 'page'">
       <div class="mx-1 md:my-1 lg:my-2">
       <div><h1 class="brand-title">Ordbøkene</h1>
       <p class="hidden xl:block brand-subtitle">{{$t("sub_title")}}</p>
@@ -133,7 +133,7 @@ main {
   }
 
   .welcome .search-nav-wrapper {
-    @apply bg-tertiary-darken bg-opacity-80;
+    @apply bg-tertiary-darken2;
 
   }
 
@@ -345,7 +345,7 @@ section a, .secondary-page a  {
 }
 
 .callout {
-  border-left: solid 4px var(--bs-primary);
+  border-left: solid 4px theme("colors.primary.DEFAULT");
    border-top: solid 1px rgba(0,0,0, .5);
    border-bottom: solid 1px rgba(0,0,0, .5);
    border-right: solid 1px rgba(0,0,0, .5);

@@ -22,13 +22,35 @@ export default defineConfig({
         },
         tertiary: {
           DEFAULT: "#FDF4F5",
-          darken: "#e0d8d9"
+          darken1: "#e0d8d9",
+          darken2: "#c4bcbd",
+          darken3: "#a9a1a2"
         },
-        text: "black",
+        text: {
+          DEFAULT: "black",
+          lighten: "#2D2D2D"
+        },
+        canvas:  {
+          DEFAULT: "white",
+          darken: "#F1F1F1"
+        },
         black: "black",
-        canvas: "white",
+        
         white: "white",
         anchor: "#880E4F",
+        gray: {
+          DEFAULT: '#757070',
+          '50': '#B9B6B6',
+          '100': '#B2AEAE',
+          '200': '#A39F9F',
+          '300': '#948F8F',
+          '400': '#858080',
+          '500': '#757070',
+          '600': '#656161',
+          '700': '#565252',
+          '800': '#464343',
+          '900': '#373434'
+        },
       }
 
     

@@ -216,6 +216,7 @@ const exit_input = event => {
           <button class="appended-button px-2 py-1" type="submit" v-if="!store.advanced" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
 
   </div>
+  <div class="dropdown-wrapper" v-show="store.autocomplete.length">
    <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown">
     <li v-for="(item, idx) in store.autocomplete" 
         :key="idx" 
@@ -229,6 +230,7 @@ const exit_input = event => {
    </li>
   </ul>
   </div>
+  </div>
 
 
 </template>
@@ -240,23 +242,37 @@ const exit_input = event => {
   position: relative;
 }
 
-#autocomplete-dropdown {
-  z-index: 1000;
+.dropdown-wrapper {
+  position: absolute;
   width: 100%;
-  background-color: white;
-  position: absolute !important;
+  z-index: 1000;
   left: 0;
-  max-height: 50vh;
-  overflow-y: scroll;
+  border-radius: 0 0 2rem 2rem ;
+  padding-bottom: 1.75rem;
+  padding-left: .5rem;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-bottom: 1px solid;   
+  box-shadow: 2px 2px 1px theme("colors.primary.DEFAULT");
+
+  @apply border-primary bg-canvas block;
 }
 
 
+#autocomplete-dropdown {
+  overflow: auto;
+  max-height: 50vh;
+  @apply px-0 mx-0 flex flex-col;
+}
 
+#autocomplete-dropdown li {
+  position: relative;
+}
 
 #autocomplete-dropdown button {
-  width: 100%;
   text-align: left;
-  padding: .5rem;
+  border-bottom: solid 1px;
+  @apply border-gray-300 p-2 mx-2;
 
   .word {
     @apply text-primary;
@@ -264,13 +280,17 @@ const exit_input = event => {
 }
 }
 
-#autocomplete-dropdown li[aria-selected=true] button, #autocomplete-dropdown button:hover  {
-    @apply bg-tertiary-darken;
+#autocomplete-dropdown li[aria-selected=true] button {
+  @apply bg-gray-50;
 }
 
-.list-group-item 
+#autocomplete-dropdown button:hover  {
+    @apply bg-gray-100;
+}
+
+
 .dict-parentheses {
-    color: rgba(0,0,0,.6);
+    @apply text-gray-900
     font-size: 85%;
     font-weight: 400;
 }
@@ -281,8 +301,7 @@ const exit_input = event => {
 }
 
 .input-wrapper:focus-within {
-  @apply shadow shadow-primary ;
-  box-shadow: 2px 2px 1px;
+  box-shadow: 2px 2px 1px theme("colors.primary.DEFAULT");
   
 }
 
@@ -339,11 +358,11 @@ const exit_input = event => {
   border-radius: 0 0 1rem 0;
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--bs-gray-500);
+  @apply bg-gray-300;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--bs-gray-600);
+  @apply bg-gray-400;
 }
 
 

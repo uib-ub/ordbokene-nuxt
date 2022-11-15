@@ -121,8 +121,8 @@ const download_ris = () => {
 <style scoped>
 
 .cite-container {
-    box-shadow: 1px 1px 1px var(--bs-primary);
-    border: solid 1px var(--bs-primary);
+    box-shadow: 1px 1px 1px theme("colors.primary.DEFAULT");
+    border: solid 1px theme("colors.primary.DEFAULT");
     border-radius: 1.5rem;
     display: inline-flex;
     width: 100%;

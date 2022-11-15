@@ -376,10 +376,10 @@ if (store.view == 'article') {
 
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 
  h2 {
-    color: rgba(0,0,0,.6) !important;
+    color: theme("colors.gray.700") !important;
     margin-left: 1rem;
     margin-top: 0.5rem;
     margin-bottom: 0rem;
@@ -394,7 +394,7 @@ if (store.view == 'article') {
 
 
 .inflection-container {
-    box-shadow: 1px 1px 1px;
+    box-shadow: 1px 1px 1px theme("colors.primary.DEFAULT");
     border: solid 1px;
     border-radius: 1.5rem;
     display: inline-flex;
@@ -485,11 +485,11 @@ span.lemma-group {
 
 .article {
     border-radius: 2rem;
-    border: solid 1px rgba(0,0,0, .5);
-    background-color: white;
-    box-shadow: 1px 2px 1px rgba(0,0,0, .40);
+    border: solid 1px;
+    box-shadow: 2px 2px 1px theme("colors.gray.600");
     margin-bottom: 1rem;
-    @apply p-1 md:p-2 lg:p-3;
+    @apply p-1 md:p-2 lg:p-3 bg-canvas border-gray-600;
+
 
 }
 

@@ -12,7 +12,7 @@
     
     <template>
       
-      <div class="inline-grid grid-cols-2 lg:px-5 lg:py-2 align-center h-3/5 pb-5" v-if="welcome_bm && welcome_nn">
+      <div class="grid lg:grid-cols-2 lg:px-5 lg:py-2 align-center h-3/5 pb-5" v-if="welcome_bm && welcome_nn">
         
         
           <section class="lg:col-auto px-0lg:p-3">

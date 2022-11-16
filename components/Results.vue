@@ -12,7 +12,7 @@
     </div>
 
 
-    <div class="gap-3 lg:gap-0 grid-cols-2" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
+    <div class="gap-3 lg:gap-8 grid lg:grid-cols-2" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
       <section class="lg:grid-cols-6" :aria-label="$t('dicts.bm')">
         <div class="hidden lg:inline-block p-2"><h2 class="lg:inline-block">Bokmålsordboka</h2><span  aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <div class="article-column">

@@ -1,36 +1,30 @@
 <template>
     <nav :aria-label="$t('label.dict_nav')">
       <div class="h-full md:hidden w-full">
-          <button @click="search_nav_expanded = ! search_nav_expanded" class="w-full p-2 px-4 bg-tertiary" type="button" data-bs-toggle="collapse" aria-controls="searchNavContent" :aria-expanded="search_nav_expanded" aria-label="Toggle search navigation">
-            <BootstrapIcon :icon="search_nav_expanded ? 'bi-chevron-down' : 'bi-chevron-up'" left primary/>{{$t(advanced ? 'advanced' : 'dicts.'+ store.dict)}}
+          <button @click="search_nav_expanded = ! search_nav_expanded" class="w-full p-2 px-4 bg-primary-lighten content-left text-white" type="button" :aria-controls="search_nav_expanded ? 'searchNavContent' : null" :aria-expanded="search_nav_expanded">
+            <BootstrapIcon :icon="search_nav_expanded ? 'bi-chevron-down' : 'bi-chevron-up'" left/>{{$t(advanced ? 'advanced' : `dicts.${store.dict}`)}}
     </button>
       </div>
-
-  <ul id="searchNavContent" class="md:flex bg-secodary" v-bind:class="{expanded: search_nav_expanded}">
-  <li class="nav-item" v-if="!advanced">
-    <NuxtLink :aria-current="!advanced  && route.params.dict =='bm,nn' ? 'true' : 'false'"
+  <ul id="searchNavContent" class="md:flex" v-bind:class="{expanded: search_nav_expanded}">
+  <li class="nav-item">
+    <NuxtLink :aria-current="route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"
               :to="dict_link('bm,nn')">{{$t('dicts.bm,nn')}}</NuxtLink>
   </li>
-  <li class="nav-item" v-if="!advanced">
-    <NuxtLink :aria-current="!advanced  && route.params.dict =='bm' ? 'true' : 'false'"
+  <li class="nav-item">
+    <NuxtLink :aria-current="route.params.dict =='bm' ? 'true' : 'false'"
               @click="dict_click('bm')"
               :to="dict_link('bm')">{{$t('dicts.bm')}}</NuxtLink>
   </li>
-  <li class="nav-item" v-if="!advanced">
-    <NuxtLink :aria-current="!advanced  && route.params.dict =='nn' ? 'true' : 'false'"
+  <li class="nav-item">
+    <NuxtLink :aria-current="route.params.dict =='nn' ? 'true' : 'false'"
               @click="dict_click('nn')"
               :to="dict_link('nn')">{{$t('dicts.nn')}}</NuxtLink>
   </li>
-  <li class="nav-item" v-if="advanced">
-    <NuxtLink :aria-current="advanced ? 'false' : 'true'"
-              @click="dict_click(store.dict)"
-              :to="dict_link(store.dict)"><BootstrapIcon v-if="advanced" icon="bi-arrow-left small" left/>{{$t('simple')}}</NuxtLink>
-  </li>
   <li class="nav-item">
-    <NuxtLink :aria-current="advanced ? 'true' : 'false'" 
-              @click="store.advanced = true"
-              :to="advanced_link">{{$t('advanced')}}<BootstrapIcon v-if="!advanced" icon="bi-arrow-right small" right/></NuxtLink>
+    <NuxtLink :aria-current="advanced ? 'true' : 'false'"
+              @click="search_nav_expanded = false; store.advanced = true"
+              :to="advanced_link">{{$t('advanced')}}</NuxtLink>
   </li>
 </ul>
 
@@ -51,6 +45,7 @@ const props = defineProps({
 
 const dict_click = (dict) => {
       store.advanced = false
+      search_nav_expanded.value = false;
       store.dict = dict
       if (store.q != store.input) {
         store.input = store.q
@@ -100,10 +95,8 @@ nav {
 
 a {
   display: block;
-  font-variant: all-small-caps;
-  font-weight: 600;
   letter-spacing: .1rem;
-  @apply px-4 pt-1 pb-0.5rem border-transparent;
+  @apply px-4 pt-1 pb-0.5rem border-transparent bg-tertiary text-text;
 
   
 
@@ -128,7 +121,7 @@ button {
 
 ul {
 
-  @apply text-xl;
+  @apply text-lg;
   
 }
 
@@ -136,20 +129,20 @@ ul {
 @screen md {
   a {
     
-    @apply px-4 pt-0.25 pb-0.25rem border-transparent text-base;
+    @apply px-4 pt-1 pb-0.25rem border-transparent text-sm text-white bg-primary-lighten;
     height: 2rem;
     
   }
 
   .welcome a {
-    @apply bg-tertiary;
+    @apply bg-primary-lighten-1 text-white;
   }
 
   a[aria-current=true] {
-    border-bottom: solid .17rem;
     border-left: none;
     padding-left: 1.25rem;
-    @apply border-secondary pb-0.17rem bg-tertiary-darken1;
+    border-radius: .25rem .25rem 0 0;
+    @apply border-secondary bg-tertiary text-primary;
   }
 
   a[aria-current=false] {

@@ -4,7 +4,7 @@
       text-white" :aria-label="$t('label.nav')">
       <div class="flex content-center w-full lg:w-auto">
       <NuxtLink class="navbar-brand" to="/" :aria-current="$route.name == 'dict' && 'page'">
-      <div class="mx-1 md:my-1 lg:my-2">
+      <div class="mx-1 md:my-1 lg:my-3 xl:my-4">
       <div><h1 class="brand-title">Ordbøkene</h1>
       <p class="hidden xl:block brand-subtitle">{{$t("sub_title")}}</p>
       </div>
@@ -133,9 +133,6 @@ main {
   @apply flex-col content-between;
   }
 
-  .welcome .search-nav-wrapper {
-    @apply bg-tertiary;
-  }
 
 
   
@@ -460,6 +457,7 @@ ol.sub_definitions {
   padding: .5rem;
   width: 100%;
   position: absolute;
+  z-index: 1000;
   @apply bg-canvas text-text border-primary border-1;
 
 }

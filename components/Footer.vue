@@ -1,15 +1,15 @@
 <template>
 <footer class="p-3 bg-primary text-white">
-  <div class="container d-grid pt-4 md:pt-0">
-  <div class="inline-flex flex-column sm:flex-row items-center">
-    <div class="inline-flex flex-column sm:flex-row m-1 items-center">
+  <div class="container grid grid-col-2 pt-4 md:pt-0">
+  <div class="inline-flex  flex-col sm:flex-row items-center">
+    <div class="inline-flex  flex-col sm:flex-row m-1 items-center">
       <img class="srlogo m-1" src="../assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo mx-4 my-4 lg:my-0" src="../assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
     </div>
     <div class="pt-4 md:pt-0 text-center sm:text-start"><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</div>
   </div>
-  <nav class="navbar" :aria-label="$t('menu.title')">
-    <ul class="navbar-nav md:flex-row gap-3 mt-5 pt-2 md:pt-0 md:mt-2 lg:mt-4 mt-xl-0 text-center">
+  <nav class="navbar" :aria-label="$t('navigation.site')">
+    <ul class="navbar-nav flex-row md:flex-col gap-3 mt-5 pt-2 md:pt-0 md:mt-2 lg:mt-4 mt-xl-0 content-center">
       <li class="nav-item">
         <NuxtLink :aria-current="$route.name == 'dict' && 'page'" to="/">{{$t('home')}}</NuxtLink>
       </li>
@@ -47,9 +47,6 @@ list-style-type: none;
  }
 }
 
-a {
-    @apply text-white) !important;
-}
 
 
 </style>

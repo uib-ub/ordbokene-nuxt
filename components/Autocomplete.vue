@@ -196,8 +196,8 @@ const exit_input = event => {
 
 <template>
   <div class="search-container">
-  <div class="input-wrapper border-1 bg-canvas border-primary flex content-center justify-between" v-bind="{'data-dropdown-open': store.autocomplete.length > 0}" aria-label="Søkefelt">
-   <input class="input-element p-3 lg:p-4 lg:px-2rem"
+  <div class="input-wrapper border-1 bg-canvas border-primary flex content-center justify-between  pr-2 lg:pr-4" v-bind="{'data-dropdown-open': store.autocomplete.length > 0}" aria-label="Søkefelt">
+   <input class="input-element p-3 pl-6 lg:p-4 lg:px-8"
           :value="store.input"
           ref="input_element" 
           @input="input_sync"
@@ -217,7 +217,7 @@ const exit_input = event => {
 
   </div>
   <div class="dropdown-wrapper" v-show="store.autocomplete.length">
-   <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown">
+   <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown" class="w-full">
     <li v-for="(item, idx) in store.autocomplete" 
         :key="idx" 
         :aria-selected="idx == selected_option"
@@ -226,7 +226,7 @@ const exit_input = event => {
         :id="'autocomplete-item-'+idx"
         >
         <!-- button hidden from screen readers? -->
-        <button data-dropdown-item tabindex="-1" @click="dropdown_select($event, item.q)"><span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span></button>
+        <button class="w-full" data-dropdown-item tabindex="-1" @click="dropdown_select($event, item.q)"><span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span></button>
    </li>
   </ul>
   </div>
@@ -240,6 +240,8 @@ const exit_input = event => {
 
 .search-container {
   position: relative;
+  left: 50%;
+transform: translateX(-50%);
 }
 
 .dropdown-wrapper {

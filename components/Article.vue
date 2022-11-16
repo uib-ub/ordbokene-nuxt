@@ -49,9 +49,6 @@
         <div :class="welcome? 'p-4' : 'px-4 pt-4 pb-2'">
 
         <ArticleHeader :lemma_groups="lemma_groups" :secondary_header_text="secondary_header_text" :content_locale="content_locale" :dict="dict"/>
-
-        
-
       
       <button v-if="inflected && !welcome" class="btn-primary my-1" @click="inflection_expanded = !inflection_expanded" type="button" :aria-expanded="inflection_expanded" :aria-controls="inflection_expanded ? 'inflection-'+article_id : null">
              {{$t('article.show_inflection')}}<span v-if="!inflection_expanded"><BootstrapIcon icon="bi-plus-lg" right/></span><span v-if="inflection_expanded"><BootstrapIcon icon="bi-dash-lg" right/></span>
@@ -60,7 +57,7 @@
         <div v-show="inflected && inflection_expanded" class="collapse py-2 transition-height duration-1000 ease-in-out" :id="'inflection-'+article_id" ref="inflection_table">
             <div class="inflection-container">
                 <NuxtErrorBoundary @error="inflection_error">
-                <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'sm'" :context="true" :key="$i18n.locale"/>
+                <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :mq="'xs'" :context="true" :key="$i18n.locale"/>
                 </NuxtErrorBoundary>
             </div>
         </div>
@@ -357,8 +354,14 @@ const parse_definitions = (node) => {
     
 }
 
-const snippet = computed(() => {
-  return parse_definitions(data.value.body.definitions)
+const snippet = computed(async () => {
+  if (data.value) {
+    return data.parse_definitions(data.value.body.definitions)
+  }
+  else {
+    console.log('No article body')
+  }
+  
 })
 
 if (store.view == 'article') {
@@ -486,18 +489,31 @@ span.lemma-group {
 .article {
     border-radius: 2rem;
     border: solid 1px;
-    box-shadow: 2px 2px 1px theme("colors.gray.600");
+    box-shadow: 2px 2px 1px theme("colors.gray.400");
     margin-bottom: 1rem;
-    @apply p-1 md:p-2 lg:p-3 bg-canvas border-gray-600;
+    @apply p-1 md:p-2 lg:p-3 bg-canvas border-gray-400;
+
+    .dict_label {
+    @apply text-text
+    }
 
 
 }
 
+.welcome .article {
+  box-shadow: none !important;
+  border-radius: 0;
+  border: none;
+  @apply bg-tertiary-darken1;
+
+  
+}
+
 @screen md {
   .welcome .article {
-    @apply bg-body-bg!;
-    box-shadow: none !important;
     border: none !important;
+    @apply bg-tertiary;
+    
   }
 }
 

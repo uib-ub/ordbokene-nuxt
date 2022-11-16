@@ -130,11 +130,11 @@ main {
 @screen md {
   main.welcome {
   background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
+  @apply flex-col content-between;
   }
 
   .welcome .search-nav-wrapper {
-    @apply bg-tertiary-darken2;
-
+    @apply bg-tertiary;
   }
 
 
@@ -387,9 +387,9 @@ section a, .secondary-page a  {
 }
 
 
-section {
-  padding-top: 10px;
-  padding-bottom: 10px
+.article section {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
 }
 
 
@@ -463,9 +463,6 @@ ol.sub_definitions {
   @apply bg-canvas text-text border-primary border-1;
 
 }
-
-
-
 
 
 </style>

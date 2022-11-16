@@ -1,6 +1,6 @@
 <template>
     <div v-bind:class="{'list': listView}">     
-    <div v-if="pending" class="d-flex align-items-center justifycenter py-5 my-5">
+    <div v-if="pending" class="flex align-items-center justifycenter py-5 my-5">
         <div class="spinner-border text-primary" role="status">
   <span class="sr-only">Loading</span>
         </div>
@@ -12,8 +12,8 @@
     </div>
 
 
-    <div class="row gap-3 lg:gap-0" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
-      <div class="lg:grid-cols-6">
+    <div class="gap-3 lg:gap-0 grid-cols-2" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
+      <section class="lg:grid-cols-6" :aria-label="$t('dicts.bm')">
         <div class="hidden lg:inline-block p-2"><h2 class="lg:inline-block">Bokmålsordboka</h2><span  aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <div class="article-column">
           <div v-for="(article_id, idx) in articles.articles.bm" :key="idx">
@@ -22,8 +22,8 @@
             </NuxtErrorBoundary>
           </div>
         </div>
-    </div>
-      <div class="lg:grid-cols-6">
+    </section>
+      <section class="lg:grid-cols-6" :aria-label="$t('dicts.bm')">
         <div class="hidden lg:inline-block p-2"><h2 class="lg:inline-block">Nynorskordboka</h2><span aria-hidden="true" class="result-count"> | {{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <div class="article-column">
           <div v-for="(article_id, idx) in articles.articles.nn" :key="idx">
@@ -32,7 +32,7 @@
             </NuxtErrorBoundary>
           </div>
         </div>
-    </div>
+    </section>
   </div>
 
     

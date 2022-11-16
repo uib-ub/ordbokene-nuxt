@@ -3,67 +3,50 @@
 <form  @submit.prevent="submitForm" ref="form">
 
   <div class="mb-3 p-3 advanced-search container">
-  <div class="row g-3 mb-3">
+
 
 <div class="col-auto mt-3">
-  <div class="row g-3">
-    <div class="col-auto p-1 px-3">
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" id="inflectionCheckbox" v-model="inflection_enabled">
+
+
+<div>
+  <input type="checkbox" id="inflectionCheckbox" v-model="inflection_enabled">
   <label class="form-check-label" for="inflectionCheckbox">
     {{$t('options.inflected')}}
   </label>
 </div>
-</div>
-<div class="col-auto p-1 px-3">
-<div class="form-check">
+
+<div>
   <input class="form-check-input" type="checkbox" id="fulltextCheckbox" v-model="fulltext_enabled">
   <label class="form-check-label" for="fulltextCheckbox">
     {{$t('options.fulltext')}}
   </label>
 </div>
 </div>
-</div>
-</div>
 
-<div class="col-auto mt-3">
-  <div class="row g-3">
-    <div class="col-auto">
-  <div class="dropdown">
-    <button class="btn-borderless dropdown-toggle d-flex align-items-center p-1 px-3 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-block">{{$t(`dicts.${store.dict}`)}}</span></button>
-    <ul class="dropdown-menu">
-      <li v-for="(item, idx) in  ['bm,nn', 'bm', 'nn']" :key="idx"><button type='button' @click="store.dict = item" class="dropdown-item" name="dict" :value="item">{{$t(`dicts.${item}`)}}</button></li>
-    </ul>
-  </div>
+  <fieldset>
+    <legend>Ordbok</legend>
+    <div class="flex flex-row" v-for="(item, idx) in dicts" :key="idx">
+      <input type="radio" :id="'dixt-radio-'+idx" :value="item" name="dict" v-model="store.dict"/>
+      <label :for="'dixt-radio-'+idx">{{$t(`dicts.${item}`)}}</label>
     </div>
+  </fieldset>
 
 
-    <div class=" col-auto">
-      <div class="dropdown">
-      <button class="btn-borderless dropdown-toggle d-flex align-items-center p-1 px-3 m-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span>{{store.pos ? $t("pos_tags_plural." + store.pos) : $t("all_pos")}}</span></button>
-      <ul class="dropdown-menu" name="pos">
-        <li v-for="(tag, idx) in  pos_tags"
-            :key="idx"><button type = "button" class="dropdown-item" name="pos" @click="store.pos = tag">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</button></li>
-      </ul>
-    </div>
-    </div>
-  </div>
-</div>
-
-
-</div>
-<div class="row">
+  <select name="pos" v-model="store.pos">
+    <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="item">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</option>
+  </select>
 
 
 
-<div class="d-flex justify-between flex-wrap gap-3 md:gap-4">
+<div>
+<div class="flex justify-between flex-wrap gap-3 md:gap-4">
 <div class="flex-grow-1" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete  v-on:dropdown-submit="submitForm"/>
 </div>
   
 
 
-<div class="d-flex gap-2 ms-auto mt-auto justify-between md:justify-end">
+<div class="flex gap-2 ms-auto mt-auto justify-between md:justify-end">
   <button :aria-label="$t('search')" class="btn-secondary" type="reset" @click="reset"> <BootstrapIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
   <button :aria-label="$t('search')" class="btn-primary" type="submit"> <BootstrapIcon icon="bi-search" left/>{{$t('search')}}</button>
 
@@ -72,7 +55,7 @@
 </div>
   </div>
 </form>
-<div v-if="store.q" class="d-flex mb-2 flex-wrap gap-2">
+<div v-if="store.q" class="flex mb-2 flex-wrap gap-2">
   <button class="btn-light me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
 
 
@@ -101,6 +84,8 @@ import {useSettingsStore } from '~/stores/settingsStore'
 const settings = useSettingsStore()
 const store = useStore()
 const route = useRoute()
+
+const dicts = ['bm,nn', 'bm', 'nn']
 
 const pos_tags = [null, 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCONJ', 'SCONJ', 'INTJ']
 
@@ -150,47 +135,37 @@ const submitForm = async (item) => {
 
 <style lang="scss" scoped>
 
-.advanced-search, .suggestions {
-  background-color: rgba(var(--bs-white-rgb), .75) !important;
+.advanced-search {
+  @apply bg-canvas;
   border: solid 1px rgba(0,0,0,.75);
   border-radius: .25rem;
 }
 
-.dropdown-menu {
-  border: solid 1px var(--bs-primary);
-  box-shadow: 1.5px 1.5px 1px var(--bs-primary);
+
+select[type=checkbox] {
+  -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fdf4f5;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid rgba(0,0,0,.25);
+    height: 1em;
+    margin-top: 0.25em;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    vertical-align: top;
+    width: 1em;
 }
 
-.input-group-text{
-  @apply text-primary;
-  background-color: transparent;
-  border: none;
-  border-radius: 0;
-  padding: 0.3rem 0 0.3rem 0.5rem;
-  font-size: 1.3rem;
-}
-
-
-
-
-
-.dropdown-toggle {
-  border: solid 1px var(--bs-white);
-  background: none;
-  font-weight: normal;
-}
-
-.dropdown-toggle:after {
-  @apply text-primary
-}
-
-.dropdown-toggle[aria-expanded=true] {
-  @apply text-white);
-  @apply bg-primary);
-  border: solid 1px var(--bs-primary);
-  &:after {
-    @apply text-white)
+select[type=checkbox]:checked {
+    background-color:red;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3E%3C/svg%3E");
   }
-}
+
+
+
+
 
 </style>

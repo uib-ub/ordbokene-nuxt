@@ -92,7 +92,7 @@
             </section>
         </div>
         <ArticleFooter v-if="!welcome" :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
-        <div v-else class="d-flex justifyend"><NuxtLink :to="link_to_self()">{{$t('article.show')}} <i class="bi-arrow-right"/></NuxtLink></div>
+        <div v-else class="flex justify end"><NuxtLink :to="link_to_self()">{{$t('article.show')}} <i class="bi-arrow-right"/></NuxtLink></div>
 
         </NuxtErrorBoundary>
     </div>

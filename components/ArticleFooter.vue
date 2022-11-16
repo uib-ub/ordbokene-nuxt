@@ -8,6 +8,7 @@ const props = defineProps({
 })
 
 let copy_popup = ref(false);
+const cite_expanded = ref(false)
 
 
 const showToast = () => {
@@ -91,7 +92,7 @@ const download_ris = () => {
 <template>
 <client-only>
   <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">
-    <div class="d-flex">
+    <div class="flex">
       <div class="toast-body">{{$t('article.link_copied', 1, { locale: content_locale})}}</div>
       <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
@@ -99,21 +100,21 @@ const download_ris = () => {
   <div v-if="copy_popup">
   <div class="position-absolute top-50 start-50 translate-middle"><span>{{$t('article.link_copied', 1, { locale: content_locale})}}</span></div>
   </div>
-<div class="d-flex justifyaround gap-3 mt-3 flex-wrap">
+<div class="flex justify-around gap-3 mt-3 flex-wrap">
     <button class="btn-borderless" v-if="showLinkCopy" @click="copy_link"><BootstrapIcon icon="bi-link" left/> {{$t("article.copy_link", 1, { locale: content_locale})}}</button>
     <button class="btn-borderless" v-if="webShareApiSupported" @click="shareViaWebShare"><BootstrapIcon icon="bi-share-fill" left/> {{$t("article.share", 1, { locale: content_locale})}}</button>
-    <button class="btn-borderless" type="button" data-bs-toggle="collapse" :data-bs-target="'#cite-'+article_id" aria-expanded="false" aria-controls="collapseExample"><BootstrapIcon icon="bi-quote" left/> {{$t("article.cite", 1, { locale: content_locale})}}</button>
+    <button class="btn-borderless" type="button" :aria-expanded="cite_expanded" :aria-controls="cite_expanded?  'cite-'+article_id : null" @click="cite_expanded = !cite_expanded">
+    <BootstrapIcon icon="bi-quote" left/> {{$t("article.cite", 1, { locale: content_locale})}}</button>
 </div>
-<div class="collapse py-2" :id="'cite-'+article_id">
-    <div class="cite-container card card-body mb-1 pb-2">
+<div class="cite-container p-4 pb-1 pt-2 mt-2" v-if="cite_expanded" :id="'cite-'+article_id">
       <h4>{{$t('article.cite_title')}}</h4>
       <p>{{$t("article.cite_description[0]", 1, { locale: content_locale})}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", 1, { locale: content_locale})}}</p>
       <div id="citation" v-html="$t('article.citation', create_citation())" />
-      <div class="d-flex justifystart mt-4 mb-2 flex-wrap gap-3">
+      <div class="flex justify start mt-4 mb-2 flex-wrap gap-3">
        <button class="btn-primary" @click="copy_citation"><BootstrapIcon icon="bi-clipboard" left primary/> {{$t("article.copy", 1, { locale: content_locale})}}</button>
        <button class="btn-primary" @click="download_ris"><BootstrapIcon icon="bi-download" left primary /> {{$t("article.download")}}</button>
       </div>
-    </div>
+
 </div>
 </client-only>
 </template>
@@ -124,9 +125,8 @@ const download_ris = () => {
     box-shadow: 1px 1px 1px theme("colors.primary.DEFAULT");
     border: solid 1px theme("colors.primary.DEFAULT");
     border-radius: 1.5rem;
-    display: inline-flex;
-    width: 100%;
 }
+
 h4 {
   font-size: 1.5rem;
   @apply text-primary;

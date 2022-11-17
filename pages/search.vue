@@ -10,7 +10,7 @@
       </NuxtErrorBoundary>
       </div>
       <NuxtErrorBoundary @error="content_error">  
-    <Results v-if="store.q"/>
+    <Results v-if="store.q" class="ord-container"/>
       </NuxtErrorBoundary>
 
         

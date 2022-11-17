@@ -225,6 +225,7 @@ header nav {
     letter-spacing: .1rem;
     font-weight: 600;
     font-size: 1.25rem;
+    cursor: pointer;
 
   }
   .nav-link {

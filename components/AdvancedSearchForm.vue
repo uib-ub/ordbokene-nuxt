@@ -1,11 +1,20 @@
 <template>
 <div class="mt-2">
-<form  @submit.prevent="submitForm" ref="form">
+<form  @submit.prevent="submitForm" ref="form" class="flex gap-10 flex-wrap">
 
-  <div class="mb-3 p-3 advanced-search container">
+  <div class="mb-3 p-3 advanced-search w-full flex gap-4 flex-wrap" >
+    <div class="md:p-2 flex gap-4 md:gap-6 lg:gap-10 flex-wrap">
+
+    <fieldset class="flex flex-row gap-3 flex-wrap">
+    <legend class="sr-only">Ordbok</legend>
+    <div v-for="(item, idx) in dicts" :key="idx">
+      <input type="radio" :id="'dixt-radio-'+idx" :value="item" name="dict" v-model="store.dict"/>
+      <label :for="'dixt-radio-'+idx">{{$t(`dicts.${item}`)}}</label>
+    </div>
+  </fieldset>
 
 
-<div class="col-auto mt-3">
+<div class="flex gap-3 flex-wrap">
 
 
 <div>
@@ -23,24 +32,16 @@
 </div>
 </div>
 
-  <fieldset>
-    <legend>Ordbok</legend>
-    <div class="flex flex-row" v-for="(item, idx) in dicts" :key="idx">
-      <input type="radio" :id="'dixt-radio-'+idx" :value="item" name="dict" v-model="store.dict"/>
-      <label :for="'dixt-radio-'+idx">{{$t(`dicts.${item}`)}}</label>
-    </div>
-  </fieldset>
-
-
+   
   <select name="pos" v-model="store.pos">
     <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="item">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</option>
   </select>
 
+</div>
 
 
-<div>
-<div class="flex justify-between flex-wrap gap-3 md:gap-4">
-<div class="flex-grow-1" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
+<div class="flex justify-between flex-wrap gap-4 md:gap-12 xl:gap-24 w-full">
+<div class="flex-auto" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete  v-on:dropdown-submit="submitForm"/>
 </div>
   
@@ -52,10 +53,9 @@
 
 </div>
 </div>
-</div>
   </div>
 </form>
-<div v-if="store.q" class="flex mb-2 flex-wrap gap-2">
+<div v-if="store.q" class="flex mb-2 flex-wrap gap-2 md:mx-10">
   <button class="btn-light me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
 
 
@@ -174,6 +174,12 @@ select[type=checkbox]:checked {
 option:active, option:focus, option::before {
   color: red;
 }
+
+label {
+  @apply p-2;
+}
+
+
 
 
 

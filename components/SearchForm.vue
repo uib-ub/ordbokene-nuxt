@@ -1,5 +1,5 @@
 <template>
-<div class="my-1rem md:my-3">
+<div class="my-2 md:my-6">
 <form  @submit.prevent="submitForm" ref="form">
 <NuxtErrorBoundary @error="autocomplete_error">
   <Autocomplete v-on:dropdown-submit="submitForm"/>
@@ -31,3 +31,13 @@ const autocomplete_error = (error) => {
 }
 
 </script>
+
+<style lang="scss">
+
+@screen md {
+  form {
+    @apply mx-10
+  }
+}
+
+</style>

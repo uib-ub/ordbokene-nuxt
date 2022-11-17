@@ -10,17 +10,18 @@
       </div>
     </div>
       </NuxtLink>
-      <button class="lg:hidden text-lg ml-auto  p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" @click="menu_expanded = !menu_expanded">
+      <button class="lg:hidden text-lg ml-auto  p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" 
+              @keydown="exit_menu" 
+              @click="menu_expanded = !menu_expanded">
       
-      <div class="hidden sm:inline">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/></button>
+      <div @keydown="exit_menu" class="hidden sm:inline">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/></button>
       </div>
 
       <div class="nav-buttons flex-wrap lg:flex-row content-center lg:ml-auto  mr-1" v-bind:class="{hidden: !menu_expanded}">
       
-
         <ul class="flex flex-col lg:flex-row lg:space-x-3 xl:space-x-8 content-center" >
         <li class="nav-item">
-          <NuxtLink class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
+          <NuxtLink @click="exit_menu" class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
         </li>
 
         <li class="nav-item">
@@ -33,7 +34,6 @@
           <NuxtLink class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
         <li class="relative nav-item">
-          {{i18n.locale.value}}
           <BootstrapIcon icon="bi bi-globe" left/>
           <label for="locale-select" class="sr-only">{{$t('settings.locale.title')}}</label>
           <select id="locale-select" class="bg-primary text-white" v-model="i18n.locale.value" @change="update_locale">
@@ -52,7 +52,8 @@
 <div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
-    <NuxtPage v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
+    <NuxtPage @click="menu_expanded=false" 
+              v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
 
 
 <Footer/>
@@ -69,6 +70,13 @@ const i18n = useI18n()
 const locale_expanded = ref(false)
 const menu_expanded = ref(false)
 const locale = useCookie('currentLocale')
+
+const exit_menu = (event) => {
+  console.log(event.key)
+  if (event.key == "Escape" || event.key == "Esc") {
+    menu_expanded.value = false
+  }
+}
 
 useHead({
     htmlAttrs: {

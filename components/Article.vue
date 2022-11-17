@@ -1,7 +1,7 @@
 <template>
     <div class="list-view-item" v-if="settings.listView && store.advanced == true && $route.name == 'search' && store.q">
-        <span v-if="pending" class="list-group-item"><div class="skeleton skeleton-content w-25"/><div class="skeleton skeleton-content w-50"/></span>
-        <NuxtLink v-else class="list-group-item result-list-item" :to="link_to_self()">
+        <span v-if="pending" class="list-view-item"><div class="skeleton skeleton-content w-25"/><div class="skeleton skeleton-content w-50"/></span>
+        <NuxtLink v-else class="result-list-item" :to="link_to_self()">
 
     <div v-for="(lemma_group, i) in lemma_groups" :key="i">
     <span class="lemma-group">
@@ -28,7 +28,7 @@
 </div>{{snippet}}
 
     </NuxtLink>
-</div>
+  </div>
     <div class="article lg:pt-1" v-else-if="!error">
         <div v-if="pending" class="skeleton-container">
             <div class="skeleton mt-4 skeleton-heading"/>
@@ -354,9 +354,9 @@ const parse_definitions = (node) => {
     
 }
 
-const snippet = computed(async () => {
+const snippet = computed(() => {
   if (data.value) {
-    return data.parse_definitions(data.value.body.definitions)
+    return parse_definitions(data.value.body.definitions)
   }
   else {
     console.log('No article body')
@@ -532,14 +532,16 @@ span.lemma-group {
 }
 
 a.result-list-item {
-    padding-bottom: 0.6rem;
-    padding-top: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    margin-bottom: 0.6rem;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    border: none !important;
 }
+
 
 a.result-list-item:hover {
     background-color: rgba(0,0,0, .1);

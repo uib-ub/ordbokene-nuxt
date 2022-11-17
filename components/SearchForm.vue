@@ -32,7 +32,7 @@ const autocomplete_error = (error) => {
 
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 
 @screen md {
   form {

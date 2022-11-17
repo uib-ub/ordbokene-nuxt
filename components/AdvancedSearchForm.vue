@@ -55,7 +55,7 @@
 </div>
   </div>
 </form>
-<div v-if="store.q" class="flex mb-2 flex-wrap gap-2 md:mx-10">
+<div v-if="store.q" class="flex mb-2 flex-wrap gap-2">
   <button class="btn-light me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
 
 
@@ -65,7 +65,7 @@
 
 
 </div>
-<div v-if="!store.q || mini_help" class="secondary-page container advanced-info">
+<div v-if="!store.q || mini_help" class="secondary-page container advanced-info !bg-tertiary-darken1 !shadow-none !border-none">
       <h2>{{$t('advanced_help')}}</h2>
       <p>Bla bla bla</p>
 

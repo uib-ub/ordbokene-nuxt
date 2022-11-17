@@ -12,7 +12,7 @@
     </div>
 
 
-    <div class="gap-3 lg:gap-8 grid lg:grid-cols-2 mx-1 md:mx-10" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
+    <div class="gap-3 lg:gap-8 grid lg:grid-cols-2 mx-1" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
       <section class="lg:grid-cols-6" :aria-label="$t('dicts.bm')">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Bokmålsordboka</h2><span  aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <component :is="store.advanced && listView ? 'ol' : 'div'" class="article-column">
@@ -36,7 +36,7 @@
   </div>
 
     
-    <div v-if="route.params.dict != 'bm,nn' && route.query.dict != 'bm,nn' " class="md:mx-10">
+    <div v-if="route.params.dict != 'bm,nn' && route.query.dict != 'bm,nn' ">
       <div v-if="(route.params.dict == 'bm' || route.query.dict == 'bm') && articles.meta.bm">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Bokmålsordboka</h2><span class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span></div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">

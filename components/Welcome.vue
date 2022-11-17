@@ -12,7 +12,7 @@
     
     <template>
       
-      <div class="grid lg:grid-cols-2 lg:px-5 lg:py-2 align-center h-3/5 py-5" v-if="welcome_bm && welcome_nn">
+      <div class="grid lg:grid-cols-2 lg:px-5 lg:py-2 bg-primary h-full py-5" v-if="welcome_bm && welcome_nn">
         
         
           <section class="lg:col-auto px-0lg:p-3">
@@ -23,7 +23,7 @@
           </section>
                   
       </div> 
-      <div v-else class="row justifycenter  align-items-center h-50">
+      <div v-else class="row justify-center  items-center h-50">
         <div class="spinner-border text-primary" role="status">
           <span class="sr-only">Loading</span>
         </div>

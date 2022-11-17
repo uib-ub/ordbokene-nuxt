@@ -1,5 +1,5 @@
 <template>
-<div class="mt-2">
+<div class="my-2 md:mt-6">
 <form  @submit.prevent="submitForm" ref="form" class="flex gap-10 flex-wrap">
 
   <div class="mb-3 p-3 advanced-search w-full flex gap-4 flex-wrap" >

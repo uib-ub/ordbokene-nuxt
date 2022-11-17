@@ -1,5 +1,5 @@
 <template>
-<div class="my-2 md:my-6">
+<div class="my-2 md:mt-6">
 <form  @submit.prevent="submitForm" ref="form">
 <NuxtErrorBoundary @error="autocomplete_error">
   <Autocomplete v-on:dropdown-submit="submitForm"/>

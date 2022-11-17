@@ -46,7 +46,7 @@
         <h2 v-if="welcome" class="dict-label">{{$t('monthly', 1, { locale: content_locale}) + {"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-else-if="store.view != 'article'" class="dict-label lg:hidden d-block">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
         <h2 v-else-if="store.view == 'article'" class="article-dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
-        <div :class="welcome? 'p-4' : 'px-4 pt-4 pb-2'">
+        <div :class="welcome? 'px-4 pb-6 pt-4' : 'px-4 pt-4 pb-2'">
 
         <ArticleHeader :lemma_groups="lemma_groups" :secondary_header_text="secondary_header_text" :content_locale="content_locale" :dict="dict"/>
       
@@ -89,7 +89,7 @@
             </section>
         </div>
         <ArticleFooter v-if="!welcome" :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
-        <div v-else class="flex justify end"><NuxtLink :to="link_to_self()">{{$t('article.show')}} <i class="bi-arrow-right"/></NuxtLink></div>
+        <div v-else class="flex justify-end pt-8"><NuxtLink :to="link_to_self()">{{$t('article.show')}} <i class="bi-arrow-right"/></NuxtLink></div>
 
         </NuxtErrorBoundary>
     </div>

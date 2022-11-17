@@ -11,30 +11,30 @@
     </div>
       </NuxtLink>
       <button class="lg:hidden text-lg ml-auto  p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" 
-              @keydown="exit_menu" 
+              @keydown="escape_menu" 
               @click="menu_expanded = !menu_expanded">
       
-      <div @keydown="exit_menu" class="hidden sm:inline">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/></button>
+      <div @keydown="escapeHtmlComment" class="hidden sm:inline">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/></button>
       </div>
 
       <div class="nav-buttons flex-wrap lg:flex-row content-center lg:ml-auto  mr-1" v-bind:class="{hidden: !menu_expanded}">
       
         <ul class="flex flex-col lg:flex-row lg:space-x-3 xl:space-x-8 content-center" >
         <li class="nav-item">
-          <NuxtLink @click="exit_menu" class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
+          <NuxtLink @click="menu_expanded=false" class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
         </li>
 
         <li class="nav-item">
-          <NuxtLink class="nav-link" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink>
+          <NuxtLink @click="menu_expanded=false" class="nav-link" :aria-current="$route.name == 'about' && 'page'" to="/about">{{$t('about')}}</NuxtLink>
         </li>
                 <li class="nav-item">
-          <NuxtLink class="nav-link"  :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink>
+          <NuxtLink @click="menu_expanded=false" class="nav-link"  :aria-current="$route.name == 'settings' && 'page'" to="/settings">{{$t('settings.title')}}</NuxtLink>
         </li>
                 <li class="nav-item">
-          <NuxtLink class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
+          <NuxtLink @click="menu_expanded=false" class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
         <li class="relative nav-item">
-          <BootstrapIcon icon="bi bi-globe" left/>
+          <BootstrapIcon icon="bi bi-globe pr-2"/>
           <label for="locale-select" class="sr-only">{{$t('settings.locale.title')}}</label>
           <select id="locale-select" class="bg-primary text-white" v-model="i18n.locale.value" @change="update_locale">
             <option class="text-text bg-canvas" value="eng" :selected="i18n.locale.value=='eng' || null">English</option>
@@ -71,7 +71,7 @@ const locale_expanded = ref(false)
 const menu_expanded = ref(false)
 const locale = useCookie('currentLocale')
 
-const exit_menu = (event) => {
+const escape_menu = (event) => {
   console.log(event.key)
   if (event.key == "Escape" || event.key == "Esc") {
     menu_expanded.value = false

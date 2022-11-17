@@ -1,5 +1,5 @@
 <template>
-<main class="secondary-page">
+<main id="main" class="secondary-page">
   <h2>{{$t('help')}}</h2>
 <div v-if="$i18n.locale === 'eng'">
   <p>Search the website by entering a word, press <kbd>return</kbd> or pick a search suggestion in the drop-down menu. Press <kbd>/</kbd> whenever you want to jump back to the search box.

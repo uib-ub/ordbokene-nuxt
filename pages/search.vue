@@ -1,6 +1,6 @@
 <template>
     <main id="main" class="dict-view">
-      <div class="bg-tertiary">
+      <div>
         <div class="search-nav-wrapper md:bg-primary-lighten">
           <SearchNav class="ord-container" advanced/>
         </div>

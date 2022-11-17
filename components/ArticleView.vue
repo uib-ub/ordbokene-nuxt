@@ -8,3 +8,12 @@
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
 </script>
+
+
+<style scoped lang="scss">
+
+.article {
+    border-radius: .25rem;
+}
+
+</style>

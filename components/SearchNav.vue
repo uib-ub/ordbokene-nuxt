@@ -59,7 +59,7 @@ const dict_click = (dict) => {
       }
       else {
         let url = route.fullPath
-        if (route.name == 'dict') {
+        if (route.name == 'dict' || route.name == 'dict-suggest') {
           return `/search`
         }
         else if (route.name == "dict-slug") {

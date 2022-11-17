@@ -343,14 +343,12 @@ section a, .secondary-page a  {
 
 .callout {
   border-left: solid 4px theme("colors.primary.DEFAULT");
-   border-top: solid 1px rgba(0,0,0, .5);
-   border-bottom: solid 1px rgba(0,0,0, .5);
-   border-right: solid 1px rgba(0,0,0, .5);
+
    margin-top: 1rem;
    margin-bottom: 1rem;
    padding: 1rem;
-   @apply bg-white;
-   box-shadow: 2px 2px 1px rgba(0,0,0, .5);
+   @apply bg-tertiary-darken1;
+
 }
 
 .callout i {

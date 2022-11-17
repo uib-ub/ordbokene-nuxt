@@ -1,5 +1,5 @@
 <template>
-      <div class="pb-1">
+      <div class="pb-1 md:mx-10">
         
   
     <div class="callout"><BootstrapIcon icon="bi-info-circle-fill" left/> <strong>{{store.q}}</strong> er ikke et oppslagsord i {{store.dict}}.</div>

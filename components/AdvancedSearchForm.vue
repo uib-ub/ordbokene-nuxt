@@ -1,8 +1,8 @@
 <template>
-<div class="my-2 md:mt-6">
+<div class="my-2 md:mt-0">
 <form  @submit.prevent="submitForm" ref="form" class="flex gap-10 flex-wrap">
 
-  <div class="mb-3 p-3 advanced-search w-full flex gap-4 flex-wrap" >
+  <div class="mb-3 p-3 md:pb-5 px-4 md:px-5 advanced-search w-full flex gap-4 flex-wrap" >
     <div class="md:p-2 flex gap-4 md:gap-6 lg:gap-10 flex-wrap">
 
     <fieldset class="flex flex-row gap-3 flex-wrap">
@@ -65,7 +65,7 @@
 
 
 </div>
-<div v-if="!store.q || mini_help" class="secondary-page container advanced-info !bg-tertiary-darken1 !shadow-none !border-none">
+<div v-if="!store.q || mini_help" class="secondary-page container advanced-info">
       <h2>{{$t('advanced_help')}}</h2>
       <p>Bla bla bla</p>
 
@@ -136,9 +136,23 @@ const submitForm = async (item) => {
 <style lang="scss" scoped>
 
 .advanced-search {
-  @apply bg-canvas;
-  border: solid 1px rgba(0,0,0,.75);
+  @apply bg-tertiary border-gray-500 border-1 md:pt-4;
   border-radius: .25rem;
+  
+  
+
+}
+
+@screen md {
+  .advanced-search {
+    border-top: none;
+    border-radius: 0 0 .25rem .25rem;
+  }
+  
+}
+
+.welcome .advanced-search {
+  @apply bg-tertiary border-primary;
 }
 
 

@@ -1,15 +1,15 @@
 <template>
 <footer class="p-3 bg-primary text-white">
   <div class="ord-container pt-4 md:pt-0">
-  <div class="inline-flex  flex-col sm:flex-row items-center">
-    <div class="inline-flex  flex-col sm:flex-row m-1 items-center">
+  <div class="flex  flex-col xl:flex-row items-center">
+    <div class="flex  flex-col md:flex-row m-1 items-center">
       <img class="srlogo m-1" src="../assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo mx-4 my-4 lg:my-0" src="../assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
     </div>
-    <div class="p-4 md:px-10 text-center sm:text-left"><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</div>
+    <div class="p-4 md:px-10 text-center xl:text-left"><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</div>
   </div>
-  <nav :aria-label="$t('navigation.site')" class="flex justify center">
-    <ul class="flex flex-col md:flex-row gap-3 mt-5 pt-2 md:pt-0 md:mt-2 lg:mt-4 mt-xl-0 text-center justify-center md:text-lg justify-center">
+  <nav :aria-label="$t('navigation.site')" class="flex justify-center items-center">
+    <ul class="flex flex-col md:flex-row gap-3 mt-5 pt-2 md:pt-0 md:mt-2 lg:mt-0 justify-center  md:text-lg text-center">
       <li>
         <NuxtLink :aria-current="$route.name == 'dict' && 'page'" to="/">{{$t('home')}}</NuxtLink>
       </li>
@@ -30,9 +30,6 @@
 <style scoped lang="scss">
 
 nav {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   font-variant: all-small-caps;
   font-weight: 600;
 

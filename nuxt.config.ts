@@ -16,9 +16,6 @@ export default defineNuxtConfig({
         '@pinia/nuxt',
         'nuxt-windicss'
       ],
-      build: {
-        transpile: ['@headlessui/vue'],
-    },
     vite: {
       resolve: {
         alias: {

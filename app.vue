@@ -1,6 +1,6 @@
 <template>
   <header>
-    <nav class="bg-primary pl-3 pr-0 lg:px-5 py-1 md:flex
+    <nav class="bg-primary pl-3 pr-0 lg:px-5 py-1 lg:flex content-center
       text-white" :aria-label="$t('label.nav')">
       <div class="flex content-center w-full lg:w-auto">
       <NuxtLink class="navbar-brand" to="/" :aria-current="$route.name == 'dict' && 'page'">
@@ -32,17 +32,14 @@
                 <li class="nav-item">
           <NuxtLink class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
-        <li class="relative">
-          
-          <button @click="locale_expanded=!locale_expanded" :aria-controls="locale_expanded ? 'locale-dropdown' : null" :aria-expanded="locale_expanded">
-             <BootstrapIcon :aria-label="$t('settings.locale.title')" icon="bi bi-globe" left/>{{$t('name')}}
-          </button>
-          <ul id="locale-dropdown" class="dropdown-list" v-if="locale_expanded">
-            <li><button :aria-current="i18n.locale.value == 'eng'" @click="update_locale('eng')">English</button></li>
-            <li><button :aria-current="i18n.locale.value == 'nob'" @click="update_locale('nob')">Bokmål</button></li>
-            <li><button :aria-current="i18n.locale.value == 'nno'" @click="update_locale('nno')">Nynorsk</button></li>
-        </ul>
-
+        <li class="relative nav-item">
+          <BootstrapIcon icon="bi bi-globe" left/>
+          <label for="locale-select" class="sr-only">{{$t('settings.locale')}}</label>
+          <select id="locale-select" class="bg-primary text-white" v-model="i18n.locale.value">
+            <option class="text-text bg-canvas" value="eng" :selected="i18n.locale.value=='eng' || null">English</option>
+            <option class="text-text bg-canvas" value="nob" :selected="i18n.locale.value=='nob' || null">Bokmål</option>
+            <option class="text-text bg-canvas" value="nno" :selected="i18n.locale.value=='nno' || null">Nynorsk</option>
+          </select> 
         </li>
       </ul>
       
@@ -69,14 +66,18 @@ const route = useRoute()
 const i18n = useI18n()
 
 
-const locale = useCookie("locale")
+
+//const locale = ref(detect_locale())
+
 
 const locale_expanded = ref(false)
 const menu_expanded = ref(false)
 
 // Default to bokmål on odd days
-locale.value = locale.value || (new Date().getDate() % 2 ? 'nno' : 'nob')
-i18n.locale.value = locale.value
+//locale.value = locale.value || (new Date().getDate() % 2 ? 'nno' : 'nob')
+
+
+//i18n.locale.value = locale.value
 
 useHead({
     htmlAttrs: {
@@ -103,6 +104,12 @@ const update_locale = (newLocale) => {
 
 
 <style lang="scss">
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 #__nuxt {
   display: flex;
@@ -132,19 +139,12 @@ main {
   background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
   @apply flex-col content-between;
   }
-
-
-
-  
 }
-
-
 
 
 .ord-container, .secondary-page {
   @apply container mx-auto px-2;
 }
-
 
 
 h1 {
@@ -175,13 +175,6 @@ h1 {
     border-radius: 2rem;
     padding: .25rem 1rem .25rem 1rem;
     font-weight: 600;
-    
-    -webkit-transition: background-color 100ms linear;
-    -ms-transition: background-color 100ms linear;
-    transition: background-color 100ms linear;
-    -webkit-transition: color 100ms linear;
-    -ms-transition: color 100ms linear;
-    transition: color 100ms linear;
 }
 
 .btn-primary {
@@ -229,13 +222,21 @@ h1 {
 
 
 header nav {
+  #locale-select {
+    font-variant-caps: all-small-caps;
+    letter-spacing: .1rem;
+    font-weight: 600;
+    font-size: 1.25rem;
+
+  }
   .nav-link {
+    
     font-variant-caps: all-small-caps;
     font-size: 1.25rem;
     letter-spacing: .1rem;
     font-weight: 600;
     list-style-type: none;
-    @apply text-white;
+
     padding-top: .5rem;
     padding-bottom: .75rem;
 

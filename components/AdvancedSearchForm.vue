@@ -166,6 +166,15 @@ select[type=checkbox]:checked {
 
 
 
+  option {
+
+    @apply text-text bg-canvas p-2;
+  }
+
+option:active, option:focus, option::before {
+  color: red;
+}
+
 
 
 </style>

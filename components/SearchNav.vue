@@ -141,9 +141,9 @@ ul {
   a[aria-current=true] {
     border-left: none;
     padding-left: 1.25rem;
-    border-radius: .25rem .25rem 0 0;
     @apply border-secondary bg-tertiary text-primary;
   }
+
 
   a[aria-current=false] {
     padding-left: 1.25rem;

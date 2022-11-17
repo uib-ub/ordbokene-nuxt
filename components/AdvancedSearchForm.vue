@@ -33,7 +33,7 @@
 </div>
 
    
-  <select name="pos" v-model="store.pos">
+  <select name="pos" v-model="store.pos" class="bg-tertiary">
     <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="item">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</option>
   </select>
 
@@ -152,7 +152,7 @@ const submitForm = async (item) => {
 }
 
 .welcome .advanced-search {
-  @apply bg-tertiary border-primary;
+  @apply bg-tertiary border-primary-lighten;
 }
 
 
@@ -173,27 +173,133 @@ select[type=checkbox] {
     width: 1em;
 }
 
-select[type=checkbox]:checked {
-    background-color:red;
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='m6 10 3 3 6-6'/%3E%3C/svg%3E");
-  }
 
 
 
   option {
-
     @apply text-text bg-canvas p-2;
   }
 
-option:active, option:focus, option::before {
-  color: red;
-}
 
 label {
   @apply p-2;
 }
 
 
+input[type='checkbox'] {
+  position: absolute;
+}
+
+input[type='checkbox'] + label {
+  display: block;
+  position: relative;
+  padding: 0 1.5rem;
+}
+
+input[type='checkbox'] + label::before {
+  content: '';
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  width: 1rem;
+  height: 1rem;
+  border: solid 1px theme('colors.gray.500');
+  background: white;
+  border-radius: .25rem;
+}
+
+
+input[type='checkbox']:checked + label::before {
+  background: theme('colors.primary.DEFAULT');
+}
+
+input[type='checkbox']:checked + label::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 27px;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  height: 6px;
+  width: 13px;
+  transform: rotate(-45deg);
+}
+
+input[type='checkbox']:focus + label::before {
+  outline: theme('colors.secondary.DEFAULT') solid 1px;
+  box-shadow: 2px 2px 1px theme('colors.secondary.DEFAULT');
+}
+
+input[type='checkbox'] {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+
+input[type='radio'] {
+  position: absolute;
+}
+
+input[type='radio'] + label {
+  display: block;
+  position: relative;
+  padding: 0 1.5rem;
+}
+
+input[type='radio'] + label::before {
+  content: '';
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  width: 1rem;
+  height: 1rem;
+  border: solid 1px theme('colors.gray.500');
+  background: white;
+  border-radius: 1rem;
+}
+
+input[type='radio']:checked + label::before {
+  border-color: theme('colors.primary.DEFAULT');
+  border-width: 2px;
+}
+
+
+
+input[type='radio']:checked + label::after {
+  content: '';
+  position: absolute;
+  position: absolute;
+  top: 6px;
+  left: 28px;
+
+  height: 6px;
+  width: 13px;
+
+  right: 0;
+  width: .5rem;
+  height: .5rem;
+  background: theme('colors.primary.DEFAULT');
+  border-radius: 1rem;
+
+}
+
+input[type='radio']:focus + label::before {
+  outline: theme('colors.secondary.DEFAULT') solid 1px;
+  box-shadow: 2px 2px 1px theme('colors.secondary.DEFAULT');
+}
+
+input[type='radio'] {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
+}
 
 
 

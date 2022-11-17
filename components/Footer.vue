@@ -9,7 +9,7 @@
     <div class="p-4 md:px-10 text-center xl:text-left"><em>Bokmålsordboka</em>{{$t('and')}}<em>Nynorskordboka</em>{{$t('footer_description')}}</div>
   </div>
   <nav :aria-label="$t('navigation.site')" class="flex justify-center items-center">
-    <ul class="flex flex-col md:flex-row gap-3 mt-5 pt-2 md:pt-0 md:mt-2 lg:mt-0 justify-center  md:text-lg text-center">
+    <ul class="flex flex-col md:flex-row gap-3 mt-5 pt-2 md:pt-0 md:mt-2 lg:mt-0 justify-center  md:text-lg text-center md:gap-10">
       <li>
         <NuxtLink :aria-current="$route.name == 'dict' && 'page'" to="/">{{$t('home')}}</NuxtLink>
       </li>

@@ -33,9 +33,10 @@
           <NuxtLink class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
         <li class="relative nav-item">
+          {{i18n.locale.value}}
           <BootstrapIcon icon="bi bi-globe" left/>
-          <label for="locale-select" class="sr-only">{{$t('settings.locale')}}</label>
-          <select id="locale-select" class="bg-primary text-white" v-model="i18n.locale.value">
+          <label for="locale-select" class="sr-only">{{$t('settings.locale.title')}}</label>
+          <select id="locale-select" class="bg-primary text-white" v-model="i18n.locale.value" @change="update_locale">
             <option class="text-text bg-canvas" value="eng" :selected="i18n.locale.value=='eng' || null">English</option>
             <option class="text-text bg-canvas" value="nob" :selected="i18n.locale.value=='nob' || null">Bokmål</option>
             <option class="text-text bg-canvas" value="nno" :selected="i18n.locale.value=='nno' || null">Nynorsk</option>
@@ -65,19 +66,9 @@ const store = useStore()
 const route = useRoute()
 const i18n = useI18n()
 
-
-
-//const locale = ref(detect_locale())
-
-
 const locale_expanded = ref(false)
 const menu_expanded = ref(false)
-
-// Default to bokmål on odd days
-//locale.value = locale.value || (new Date().getDate() % 2 ? 'nno' : 'nob')
-
-
-//i18n.locale.value = locale.value
+const locale = useCookie('currentLocale')
 
 useHead({
     htmlAttrs: {
@@ -88,10 +79,9 @@ useHead({
     }
 })
 
-const update_locale = (newLocale) => {
-  i18n.locale.value = newLocale
-  locale.value = newLocale
+const update_locale = () => {
   locale_expanded.value = false
+  locale.value = i18n.locale.value
   useHead({
     htmlAttrs: {
       lang: {nob: 'nb', nno: 'nn', eng: 'en'}[i18n.locale.value]

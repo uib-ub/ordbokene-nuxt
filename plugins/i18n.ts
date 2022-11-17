@@ -6,16 +6,12 @@ import nob from '../locales/nob.json'
 
 export default defineNuxtPlugin(({ vueApp }) => {
   let current_locale = ""
-
-    if (process.client) {
-      current_locale = localStorage.getItem('currentLocale') || (new Date().getDate() % 2 ? 'nno' : 'nob')
-      localStorage.setItem('currentLocale', current_locale)
-    }
-    else {
-      current_locale =  (new Date().getDate() % 2 ? 'nno' : 'nob')
-    }
-  
-  
+  try {
+    current_locale = useCookie("currentLocale", {default: () => new Date().getDate() % 2 ? 'nno' : 'nob'}).value
+  } catch (error) {
+    console.log(error)
+    current_locale = (new Date().getDate() % 2 ? 'nno' : 'nob')
+  }
 
   const i18n = createI18n({
     legacy: false,

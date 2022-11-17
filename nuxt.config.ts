@@ -28,7 +28,15 @@ export default defineNuxtConfig({
           resolve(dirname(fileURLToPath(import.meta.url)), './locales/*.json')
         ]
       })
-    ]
+    ],
+    i18n: {
+      // ...
+      detectBrowserLanguage: {
+        useCookie: true,
+        cookieKey: 'i18n_redirected',
+        redirectOn: 'root',  // recommended
+      }
+    }
     }
 
 })

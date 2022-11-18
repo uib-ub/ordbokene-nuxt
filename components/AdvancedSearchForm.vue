@@ -5,7 +5,7 @@
   <div class="mb-3 p-3 md:pb-5 px-4 md:px-5 advanced-search w-full flex gap-4 flex-wrap" >
     <div class="md:p-2 flex gap-4 md:gap-6 lg:gap-10 flex-wrap">
 
-    <fieldset class="flex flex-row gap-3 flex-wrap">
+    <fieldset v-if="false" class="flex flex-row gap-3 flex-wrap">
     <legend class="sr-only">Ordbok</legend>
     <div v-for="(item, idx) in dicts" :key="idx">
       <input type="radio" :id="'dixt-radio-'+idx" :value="item" name="dict" v-model="store.dict"/>
@@ -14,27 +14,26 @@
   </fieldset>
 
 
+  <fieldset class="flex flex-row gap-3 flex-wrap">
+  <legend class="sr-only">Ordbok</legend>
+    <FormRadio v-for="(item, idx) in dicts" :key="idx" v-model="store.dict" :value="item" name="dict" :labelId="'dict-radio-'+idx">
+      {{$t(`dicts.${item}`)}}
+    </FormRadio>
+  </fieldset>
+
+
 <div class="flex gap-3 flex-wrap">
-
-
-<div>
-  <input type="checkbox" id="inflectionCheckbox" v-model="inflection_enabled">
-  <label class="form-check-label" for="inflectionCheckbox">
+<FormCheckbox labelId="inflectedCheckbox" :checked="inflection_enabled" v-model="inflection_enabled">
     {{$t('options.inflected')}}
-  </label>
-</div>
-
-<div>
-  <input class="form-check-input" type="checkbox" id="fulltextCheckbox" v-model="fulltext_enabled">
-  <label class="form-check-label" for="fulltextCheckbox">
+</FormCheckbox>
+<FormCheckbox labelId="fulltextCheckbox" :checked="fulltext_enabled" v-model="fulltext_enabled">
     {{$t('options.fulltext')}}
-  </label>
-</div>
+</FormCheckbox>
 </div>
 
    
   <select name="pos" v-model="store.pos" class="bg-tertiary">
-    <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="item">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</option>
+    <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="tag">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</option>
   </select>
 
 </div>
@@ -156,150 +155,9 @@ const submitForm = async (item) => {
 }
 
 
-select[type=checkbox] {
-  -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-color: #fdf4f5;
-    background-position: 50%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    border: 1px solid rgba(0,0,0,.25);
-    height: 1em;
-    margin-top: 0.25em;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-    vertical-align: top;
-    width: 1em;
-}
-
-
-
-
   option {
     @apply text-text bg-canvas p-2;
   }
-
-
-label {
-  @apply p-2;
-}
-
-
-input[type='checkbox'] {
-  position: absolute;
-}
-
-input[type='checkbox'] + label {
-  display: block;
-  position: relative;
-  padding: 0 1.5rem;
-}
-
-input[type='checkbox'] + label::before {
-  content: '';
-  position: relative;
-  display: inline-block;
-  margin-right: 10px;
-  width: 1rem;
-  height: 1rem;
-  border: solid 1px theme('colors.gray.500');
-  background: white;
-  border-radius: .25rem;
-}
-
-
-input[type='checkbox']:checked + label::before {
-  background: theme('colors.primary.DEFAULT');
-}
-
-input[type='checkbox']:checked + label::after {
-  content: '';
-  position: absolute;
-  top: 3px;
-  left: 27px;
-  border-left: 2px solid white;
-  border-bottom: 2px solid white;
-  height: 6px;
-  width: 13px;
-  transform: rotate(-45deg);
-}
-
-input[type='checkbox']:focus + label::before {
-  outline: theme('colors.secondary.DEFAULT') solid 1px;
-  box-shadow: 2px 2px 1px theme('colors.secondary.DEFAULT');
-}
-
-input[type='checkbox'] {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-  clip: rect(1px, 1px, 1px, 1px);
-}
-
-
-input[type='radio'] {
-  position: absolute;
-}
-
-input[type='radio'] + label {
-  display: block;
-  position: relative;
-  padding: 0 1.5rem;
-}
-
-input[type='radio'] + label::before {
-  content: '';
-  position: relative;
-  display: inline-block;
-  margin-right: 10px;
-  width: 1rem;
-  height: 1rem;
-  border: solid 1px theme('colors.gray.500');
-  background: white;
-  border-radius: 1rem;
-}
-
-input[type='radio']:checked + label::before {
-  border-color: theme('colors.primary.DEFAULT');
-  border-width: 2px;
-}
-
-
-
-input[type='radio']:checked + label::after {
-  content: '';
-  position: absolute;
-  position: absolute;
-  top: 6px;
-  left: 28px;
-
-  height: 6px;
-  width: 13px;
-
-  right: 0;
-  width: .5rem;
-  height: .5rem;
-  background: theme('colors.primary.DEFAULT');
-  border-radius: 1rem;
-
-}
-
-input[type='radio']:focus + label::before {
-  outline: theme('colors.secondary.DEFAULT') solid 1px;
-  box-shadow: 2px 2px 1px theme('colors.secondary.DEFAULT');
-}
-
-input[type='radio'] {
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-  clip: rect(1px, 1px, 1px, 1px);
-}
 
 
 

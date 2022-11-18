@@ -2,10 +2,10 @@
     <nav :aria-label="$t('label.dict_nav')">
       <div class="h-full md:hidden w-full">
           <button @click="search_nav_expanded = ! search_nav_expanded" class="w-full p-2 px-4 bg-primary-lighten content-left text-white" type="button" :aria-controls="search_nav_expanded ? 'searchNavContent' : null" :aria-expanded="search_nav_expanded">
-            <BootstrapIcon :icon="search_nav_expanded ? 'bi-chevron-down' : 'bi-chevron-up'" left/>{{$t(advanced ? 'advanced' : `dicts.${store.dict}`)}}
+            <BootstrapIcon :icon="search_nav_expanded ? 'bi-chevron-up' : 'bi-chevron-down'" left/>{{$t(advanced ? 'advanced' : `dicts.${store.dict}`)}}
     </button>
       </div>
-  <ul id="searchNavContent" class="md:flex" v-bind:class="{expanded: search_nav_expanded}">
+  <ul id="searchNavContent" class="md:flex" v-bind:class="{hidden: !search_nav_expanded}">
   <li class="nav-item">
     <NuxtLink :aria-current="route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"
@@ -110,10 +110,7 @@ a {
   }
 }
 
-.expanded {
-  display: none;
-  
-}
+
 
 button {
   font-weight: 600;
@@ -151,12 +148,8 @@ ul {
 
   }
 
-  .expanded {
-    display: unset;
-  }
+
 }
-
-
 
 
 

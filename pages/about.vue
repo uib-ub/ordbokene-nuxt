@@ -9,15 +9,8 @@
 		  <li>{{$t('contact.content[2]')}}<a href="mailto:ordbok@uib.no">ordbok@uib.no</a></li>
 		  <li>{{$t('contact.content[3]')}}<a href="mailto:ordbok-teknisk@uib.no">ordbok-teknisk@uib.no</a></li>
 	  </ul>
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingOne">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-          What if I cannot find a word in the dictionary?
-        </button>
-      </h3>
-      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body">
+
+    <Accordion is="h3" header="What if I cannot find a word in the dictionary?">
         <p><em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are medium-sized online dictionaries. The original dictionary in Bokmål contained around 65,000 articles and the Nynorsk dictionary freatured almost 90,000. After the <a href="https://www.uib.no/lle/revisjonsprosjektet">current dictionary revision</a>, it is estimated that both dictionaries will contain around 100,000 articles. The dictionaries document the central vocabulary in Norwegian – basically the most commonly occurring words in the written languages Bokmål and Nynorsk in the last 50 years that have been included. Specialised terms and terminology are only included if also used outside the field in which they have arisen.</p>
         <p>The most common way to make new words in Norwegian is to compound existing words in new ways – and there are countless combination possibilities. Therefore, many compounds will not have their own articles in Bokmålsordboka and Nynorskordboka. Thus, if you do not find the Norwegian term for ‘bicycle seat’ (<em>sykkelsete</em>) as an entry in the dictionaries, it does not mean that the word does not exist or is not allowed to use. Compound words are generally only included based on the following considerations:</p>
         <ul>
@@ -29,46 +22,27 @@
         <p>The <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are not to be regarded as lists of words permitted to use in Norwegian. There are many words – old as well as new – that are not in the dictionaries. But you can use anyway. New words do not need official approval before they can be used. It is the language users who jointly decide which words are commonly used in Norwegian. Normally, new words do not enter the dictionaries until they have been in use for some time and are well-established in the language. The dictionary editors decide which words are to be included based on surveys of large text corpora, and the Norwegian Language Council decides how the words are to be spelled and inflected.</p>
         <p><a href="https://www.sprakradet.no/Vi-og-vart/Publikasjoner/Spraaknytt/spraknytt-2014/Spraknytt-12014/Ord-som-finst-og-ikkje-finst/">Read more about the word selection</a> in e.g. <em>Bokmålsordboka</em> and <em>Nynorskordboka</em>.</p>
         <p>If you do not find the word you are looking for, you can check the larger documentation dictionaries <a href="https://alfa.norsk-ordbok.no">Norsk Ordbok (for Nynorsk and dialect words)</a> and <a href="https://naob.no/">NAOB (for Bokmål)</a>.</p>
-      </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingTwo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-          Quality-Assured Content
-        </button>
-      </h3>
-      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+    </Accordion>
+
+<Accordion is="h3" header="Quality-Assured Content">
+
           <p><em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are two independent, monolingual dictionaries for Bokmål and Nynorsk, respectively. The dictionaries are jointly owned by the Language Council and the University of Bergen.</p>
           <p><a href ="https://www.sprakradet.no/">The Norwegian Language Council</a> decides how words are spelled and inflected in Bokmål and Nynorsk. <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are continuously being updated in line with spelling decisions in the Language Council and is the right place for information on what is current and correct spelling in Bokmål and Nynorsk.</p>
           <p>Since 2016, the editorial work with the standard dictionaries <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> has been carried out at the University of Bergen, with several departments involved. <a href ="https://www.uib.no/ub/101277/norsk-kulturarv-i-skrift-og-tale">The Norwegian Language Collections</a> manage the dictionaries and the source material on which they are based. The dictionary editors are employed at the <a href="https://www.uib.no/lle">Department of Linguistic, Literary and Aesthetic Studies (LLE)</a>, and the computer technical work takes place at the <a href="https://www.uib.no/it">IT department</a> and the Norwegian Language Collections at the University Library. The content of the dictionaries is quality assured by the Language Council.</p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingThree">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-          Citing the dictionaries
-        </button>
-      </h3>
-      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-          <p>The contents of <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are protected by copyright, cf. the Norwegian copyright act: Lov om opphavsrett til åndsverk. Should you wish to quote an article in Bokmålsordboka or Nynorskordboka, we recommend stating when the article was retrieved (read) when quoting, such as e.g.:</p>
-          <p>"Hvordan". In: <em>Bokmålsordboka</em>. The Norwegian Language Council and the University of Bergen. &lt;http: //ordbøkene.no&gt; (retrieved 25.1.2022).</p>
-          <p>Both owners of the dictionary, the Norwegian Language Council and the University of Bergen, must be mentioned in the reference</p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingFour">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-          Adding a shortcut on your smartphone
-        </button>
-      </h3>
-      <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-          <p>The website, ordbøkene.no, has a responsive design. This means that the dictionary content adapts to screens of all sizes. If you wish to have a shortcut to Bokmålsordboka and Nynorskordboka on your smartphone, search for ordbøkene.no in the browser and place it as an icon on the screen. The icon looks like an app, and you can click right into the website without opening your browser.</p>
+
+
+</Accordion>
+
+<Accordion is="h3" header="Citing the dictionaries">
+  <p>The contents of <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are protected by copyright, cf. the Norwegian copyright act: Lov om opphavsrett til åndsverk. Should you wish to quote an article in Bokmålsordboka or Nynorskordboka, we recommend stating when the article was retrieved (read) when quoting, such as e.g.:</p>
+  <p>"Hvordan". In: <em>Bokmålsordboka</em>. The Norwegian Language Council and the University of Bergen. &lt;http: //ordbøkene.no&gt; (retrieved 25.1.2022).</p>
+  <p>Both owners of the dictionary, the Norwegian Language Council and the University of Bergen, must be mentioned in the reference</p>
+
+
+</Accordion>
+
+<Accordion is="h3" header="Adding a shortcut on your smartphone">
+  <p>The website, ordbøkene.no, has a responsive design. This means that the dictionary content adapts to screens of all sizes. If you wish to have a shortcut to Bokmålsordboka and Nynorskordboka on your smartphone, search for ordbøkene.no in the browser and place it as an icon on the screen. The icon looks like an app, and you can click right into the website without opening your browser.</p>
           <h4>For iPhone / iOS</h4>
           <ul>
             <li>Open your browser and type ordbokene.no or ordbøkene.no.</li>
@@ -84,44 +58,23 @@
             <li>A new window appears asking you to add ordbøkene.no to your home screen. Click "Add".</li>
           </ul>
           <p>The dictionaries icon is now on your home screen, and you can access the dictionary page directly by clicking on it.NB! On some models from Samsung, the option "Add page in" is found in a menu at the bottom of the page. From there, select the home screen.</p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingFive">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-          Open Data
-        </button>
-      </h3>
-      <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-          <p>The contents of <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are openly available for download, and can be used for any purpose, including commercial, in accordance with the conditions given. <a href="https://www.uib.no/ub/fagressurser/spesialsamlingene/142334/lisens-bokm%C3%A5lsordboka-og-nynorskordboka">Read more about the open license here</a>.</p>
-          <p>Inflection information in Bokmålsordboka and Nynorskordboka is sourced from from Norsk ordbank (Norwegian Word Database). Ordbanken is a lexical database for Bokmål and Nynorsk providing information on word class and standard inflection for far more words than those found in the standard dictionaries. Norsk ordbank is available for download at Språkbanken at the National Library under a CC-BY license.</p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingSix">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-          History
-        </button>
-      </h3>
-      <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+</Accordion>
+
+<Accordion is="h3" header="Open Data">
+      <p>The contents of <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are openly available for download, and can be used for any purpose, including commercial, in accordance with the conditions given. <a href="https://www.uib.no/ub/fagressurser/spesialsamlingene/142334/lisens-bokm%C3%A5lsordboka-og-nynorskordboka">Read more about the open license here</a>.</p>
+      <p>Inflection information in Bokmålsordboka and Nynorskordboka is sourced from from Norsk ordbank (Norwegian Word Database). Ordbanken is a lexical database for Bokmål and Nynorsk providing information on word class and standard inflection for far more words than those found in the standard dictionaries. Norsk ordbank is available for download at Språkbanken at the National Library under a CC-BY license.</p>
+
+</Accordion>
+
+<Accordion is="h3" header="History">
           <p>The standard dictionaries <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> were first published in 1986 as a collaborative project between the University of Oslo and the Norwegian Language Council and have since been issued in several editions. In printed form, <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are large single-volume dictionaries. Spelling and inflection are always in line with current standards. Furthermore, the dictionaries state meanings, examples of usage and give short etymologies. </p>
           <p><a href="https://www.uib.no/sites/w3.uib.no/files/attachments/om_ordbokene_0.pdf">Here you will find the preface to the printed editions (in Norwegian)</a> and more information about previous dictionary editors and the earlier work carried out at the University of Oslo. </p>
           <p>The University of Bergen and the Language Council will no longer be issuing printed editions of the standard dictionaries. </p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingSeven">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
-          Dictionary revision
-        </button>
-      </h3>
-      <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+
+
+</Accordion>
+
+<Accordion is="h3" header="Dictionary revision">
           <p>The Bokmålsordboka and Nynorskordboka are currently undergoing an extensive content update. During the period 2018–2023, an editorial group is revising both dictionaries from a to å. The most important tasks are to bring in new words and update meanings, and make sure that the content is in line with current language use. Making the selection of words more similar in the two dictionaries is also a priority. More information can be found on the Dictionary Revision Project’s website (in Norwegian). </p>
           <p>Current editorial staff of <em>Bokmålsordboka</em> and <em>Nynorskordboka</em>:</p>
           <ul class="no-bullet">
@@ -148,59 +101,50 @@
             <li>Henrik Askjer, head engineer, Norwegian Language Collections</li>
             <li>Eirik T. Gullaksen, head engineer, IT department</li>
             <li>Paul Meurer, senior engineer, Norwegian Language Collections</li>
+            <li>Silje Scholl, staff engineer, IT department 2022</li>
             <li>Nils Øverås, head engineer, IT department</li>
             <li>Ole Voldsæter, head engineer, IT department 2019–2021</li>
           </ul>
           <p><a href="https://www.netlife.com/">Netlife</a> has conducted user surveys and prepared design sketches for ordbøkene.no.</p>  
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingEight">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
-          Useful Links to Language Resources
-        </button>
-      </h3>
-      <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-          <p>Should you have questions about clear, good and correct Norwegian language use, please contact the <a href="mailto:sporsmal@sprakradet.no">Language Council's response service.</a></p>
-          <h4>Online language resources</h4>
-          <p>The Norwegian Language Collections at the University of Bergen Library have a number of language resources, including:</p>
-          <ul>
-            <li><a href="https://ord.uib.no/">ord.uib.no:</a> word lists and API-description for Ordbøkene.no (Norwegian. <a href="https://ordbokene.no/api/swagger-ui.html">Interactive documentation in english</a>).</li>
-            <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=72&tabid=1106">Norsk ordbank, bokmål</a>: Search full declension form lists for Norwegian Bokmål </li>
-            <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=73&tabid=1116">Norsk ordbank, nynorsk</a>: Search full declension form lists for Norwegian Nynorsk </li>
-            <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=7&tabid=571">Metaordboka</a>: A documentation database of all registered words sorted by standard Nynorsk headwords </li>
-            <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=118&tabid=1777">Ordbokhotellet</a>: An electronic index of word forms from a number of dictionaries and local dialect collections sorted under their standardised headword </li>
-          </ul>
-          <p><a href="http://www.sprakradet.no/">The Language Council</a> has several language resources under the menu “Language Help”, go to <a href="http://www.sprakradet.no/sprakhjelp/Skriveregler/">spelling rules</a>, <a href="http://www.sprakradet.no/sprakhjelp/Praktisk-grammatikk/">practical grammar</a> or <a href="http://www.sprakradet.no/sprakhjelp/Skriverad/">writing advice</a>.</p>
-          <p>Norsk ordbank (Norwegian Word Database) is also available for download at <a href="https://www.nb.no/sprakbanken/ressurskatalog/?_search=ordbank">Språkbanken at the National Library</a> under a CC-BY license. The dictionary contains word lists for Bokmål and Nynorsk with information on word class and standard inflection.</p>
-          <h4>Other quality-assured and freely available dictionaries</h4>
-          <ul>
-            <li><a href="https://alfa.norsk-ordbok.noperl/ordbok/no2014.cgi">Norsk Ordbok</a>: The dictionary of the Norwegian vernacular and written Nynorsk  </li>
-            <li><a href="https://naob.no/">NAOB</a>: The Norwegian Academy's Dictionary: Bokmål and Riksmål from the early 1800s until today </li>
-            <li><a href="http://lexin.udir.no/">LEXIN</a>: dictionaries for minority language students in primary, secondary and adult education </li>
-            <li><a href="http://www.islex.no/">Islex</a>: A dictionary in Icelandic-Norwegian (Bokmål and Nynorsk), Icelandic-Swedish, Icelandic-Danish, Icelandic-Faroese and Icelandic-Finnish  </li>
-            <li><a href="http://ordnet.dk/">ordnet.dk</a>: A joint website for several Danish dictionaries and word corpora </li>
-            <li><a href="https://svenska.se/">svenska.se</a>: A joint website for several Swedish dictionaries </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingNine">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
-          Privacy
-        </button>
-      </h3>
-      <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
-          <p>Ordbøkene.no does not use cookies, but saves user preferences using local storage in the browser, without sending this information to our server at UiB. Searches are logged on the server, but we do not use this information for other purposes than search statistics. 
+</Accordion>
+
+<Accordion is="h3" header="Useful Links to Language Resources">
+
+  <p>Should you have questions about clear, good and correct Norwegian language use, please contact the <a href="mailto:sporsmal@sprakradet.no">Language Council's response service.</a></p>
+  <h4>Online language resources</h4>
+  <p>The Norwegian Language Collections at the University of Bergen Library have a number of language resources, including:</p>
+  <ul>
+    <li><a href="https://ord.uib.no/">ord.uib.no:</a> word lists and API-description for Ordbøkene.no (Norwegian. <a href="https://ordbokene.no/api/swagger-ui.html">Interactive documentation in english</a>).</li>
+    <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=72&tabid=1106">Norsk ordbank, bokmål</a>: Search full declension form lists for Norwegian Bokmål </li>
+    <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=73&tabid=1116">Norsk ordbank, nynorsk</a>: Search full declension form lists for Norwegian Nynorsk </li>
+    <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=7&tabid=571">Metaordboka</a>: A documentation database of all registered words sorted by standard Nynorsk headwords </li>
+    <li><a href="http://inger.uib.no/perl/search/search.cgi?appid=118&tabid=1777">Ordbokhotellet</a>: An electronic index of word forms from a number of dictionaries and local dialect collections sorted under their standardised headword </li>
+  </ul>
+  <p><a href="http://www.sprakradet.no/">The Language Council</a> has several language resources under the menu “Language Help”, go to <a href="http://www.sprakradet.no/sprakhjelp/Skriveregler/">spelling rules</a>, <a href="http://www.sprakradet.no/sprakhjelp/Praktisk-grammatikk/">practical grammar</a> or <a href="http://www.sprakradet.no/sprakhjelp/Skriverad/">writing advice</a>.</p>
+  <p>Norsk ordbank (Norwegian Word Database) is also available for download at <a href="https://www.nb.no/sprakbanken/ressurskatalog/?_search=ordbank">Språkbanken at the National Library</a> under a CC-BY license. The dictionary contains word lists for Bokmål and Nynorsk with information on word class and standard inflection.</p>
+  <h4>Other quality-assured and freely available dictionaries</h4>
+  <ul>
+    <li><a href="https://alfa.norsk-ordbok.noperl/ordbok/no2014.cgi">Norsk Ordbok</a>: The dictionary of the Norwegian vernacular and written Nynorsk  </li>
+    <li><a href="https://naob.no/">NAOB</a>: The Norwegian Academy's Dictionary: Bokmål and Riksmål from the early 1800s until today </li>
+    <li><a href="http://lexin.udir.no/">LEXIN</a>: dictionaries for minority language students in primary, secondary and adult education </li>
+    <li><a href="http://www.islex.no/">Islex</a>: A dictionary in Icelandic-Norwegian (Bokmål and Nynorsk), Icelandic-Swedish, Icelandic-Danish, Icelandic-Faroese and Icelandic-Finnish  </li>
+    <li><a href="http://ordnet.dk/">ordnet.dk</a>: A joint website for several Danish dictionaries and word corpora </li>
+    <li><a href="https://svenska.se/">svenska.se</a>: A joint website for several Swedish dictionaries </li>
+  </ul>
+
+
+</Accordion>
+
+<Accordion is="h3" header="Privacy">
+  <p>Ordbøkene.no does not use cookies, but saves user preferences using local storage in the browser, without sending this information to our server at UiB. Searches are logged on the server, but we do not use this information for other purposes than search statistics. 
             We use a Nginx-webserver that continuously overwrites the logs, so that we never store IP-addresses permanently. We also log the usage of certain features on the website using plausible.io, a service that does not store IP-addresses or other information that can connect the usage statistics to individual users.</p>
-        </div>
-      </div>
-    </div>
-    </div>
+
+</Accordion>
+
+
+
+
+
   </div>
   
   <div v-if="$i18n.locale === 'nno'">
@@ -220,6 +164,13 @@
 		  <li>{{$t('contact.content[2]')}}<a href="mailto:ordbok@uib.no">ordbok@uib.no</a></li>
 		  <li>{{$t('contact.content[3]')}}<a href="mailto:ordbok-teknisk@uib.no">ordbok-teknisk@uib.no</a></li>
 	  </ul>
+
+    <Accordion is="h3" header="">
+
+
+
+</Accordion>
+
     <div class="accordion accordion-flush" id="accordionFlushExample">
     <div class="accordion-item">
       <h3 class="accordion-header" id="flush-heading1">
@@ -400,6 +351,7 @@
             <li>Henrik Askjer, overingeniør, Språksamlingane</li>
             <li>Eirik T. Gullaksen, overingeniør, IT-avdelinga</li>
             <li>Paul Meurer, senioringeniør, Språksamlingane</lI>
+             <li>Silje Scholl, avdelingsingeniør, IT-avdelinga 2022</li>
             <li>Nils Øverås, overingeniør, IT-avdelinga</li>
             <li>Ole Voldsæter, overingeniør, IT-avdelinga 2019–2021</li>
           </ul>
@@ -1011,6 +963,7 @@
             <li>Henrik Askjer, overingeniør, Språksamlingane</li>
             <li>Eirik T. Gullaksen, overingeniør, IT-avdelingen</li>
             <li>Paul Meurer, senioringeniør, Språksamlingane</li>
+            <li>Silje Scholl, avdelingsingeniør, IT-avdelingen 2022</li>
             <li>Nils Øverås, overingeniør, IT-avdelingen</li>
             <li>Ole Voldsæter, overingeniør, IT-avdelingen 2019–2021</li>
           </ul>

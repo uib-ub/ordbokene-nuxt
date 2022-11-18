@@ -4,7 +4,7 @@
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
 </div>
     <NuxtPage @click="menu_expanded=false" 
-              v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
+              v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict'), 'without_back_button': !store.searchUrl}"/>
 
 
 <Footer/>
@@ -32,11 +32,6 @@ useHead({
 
 <style lang="scss">
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
 
 #__nuxt {
   display: flex;
@@ -148,13 +143,24 @@ h1 {
 
 
 section a, .secondary-page a  {
-
   border-bottom: 2px solid;
   @apply border-anchor;
 }
 
 .secondary-page {
-  @apply bg-white my-4 p-4 py-8 md:p-12;
+  @apply bg-white mb-4 p-4 py-8 md:p-12 md:pt-10;
+  
+  &.without_back_button {
+    margin-top: 1rem;
+  }
+
+  ul {
+    list-style: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+  }
+
 
   h2 {
     font-family: Inria Serif;
@@ -166,7 +172,8 @@ section a, .secondary-page a  {
   h4 {
     @apply text-primary;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.125rem;
+    padding-top: 1rem;
   }
 }
 

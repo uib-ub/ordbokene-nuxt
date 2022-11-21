@@ -104,7 +104,6 @@ const keys = (event) => {
     else {
       selected_option.value = 0;      
     }
-    console.log("COMPARISON", selected_option.value, store.autocomplete.length)
     
     store.input = store.autocomplete[selected_option.value].q
 
@@ -112,7 +111,6 @@ const keys = (event) => {
     event.preventDefault()
   }
   else if (event.key == "ArrowUp" || event.key == "Up") {
-    console.log(event, selected_option)
     if (selected_option.value > -1) {
     
     selected_option.value -= 1;
@@ -141,14 +139,12 @@ const keys = (event) => {
 
   }
   else {
-    console.log("KEYUP", event)
     selected_option.value = -1
     
     }
 
     // Scroll if necessary
     if (process.client && selected_option.value > -1) {
-        console.log("CLIENT")
         document.getElementById('autocomplete-item-'+selected_option.value).scrollIntoView({block: 'nearest'})
       }
   }
@@ -156,9 +152,6 @@ const keys = (event) => {
 }
 
 const input_sync = (event) => {
-  console.log("INOPUT_SUBMIT", event)
-  console.log(event.target.value)
-  console.log("INPUT SYNC: input from", store.input, "to", event.target.value)
   store.input = event.target.value
   fetchAutocomplete(store.input)
   if (event.target.value) {
@@ -181,13 +174,9 @@ const dropdown_select = (event, q) => {
 
 
 const exit_input = event => {
-  console.log("BLURRED", event.relatedTarget)
   if (!(event.relatedTarget && event.relatedTarget.hasAttribute('data-dropdown-item'))) {
-    console.log("PASSED"), event.relatedTarget
     store.autocomplete = []
-
   }
-
 }
 
 

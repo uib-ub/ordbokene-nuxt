@@ -169,7 +169,6 @@ const dropdown_select = (q) => {
   store.show_autocomplete = false
   emit('dropdown-submit')
   console.log("NEXT")
-  input_element.value.select()
   console.log("AFTER")
 }
 
@@ -180,10 +179,19 @@ const exit_input = event => {
   }
 }
 
-const test = (event) => {
-  console.log("BUTTON CLICKED")
-  console.log(event)
-}
+
+watch(() => store.q, () => {
+  // 
+  if (!navigator || navigator.userAgentData? navigator.userAgentData.mobile : !window.matchMedia('(pointer: fine)').matches) {
+    input_element.value.select()
+
+  }
+  else {
+    input_element.value.blur()
+  }
+  
+})
+
 
 
 </script>

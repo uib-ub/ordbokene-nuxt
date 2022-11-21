@@ -54,7 +54,7 @@
              {{$t('article.show_inflection')}}<span v-if="!inflection_expanded"><BootstrapIcon icon="bi-plus-lg" right/></span><span v-if="inflection_expanded"><BootstrapIcon icon="bi-dash-lg" right/></span>
         </button>
 
-        <div v-show="inflected && !welcome && (inflection_expanded || settings.inflectionExpanded)" class="collapse py-2 transition-height duration-1000 ease-in-out" :id="'inflection-'+article_id" ref="inflection_table">
+        <div v-show="inflected && !welcome && (inflection_expanded || settings.inflectionExpanded)" class="collapse py-2 transition-all duration-300 ease-in-out" :id="'inflection-'+article_id" ref="inflection_table">
             <div class="inflection-container p-2">
                 <NuxtErrorBoundary @error="inflection_error">
                 <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" mq="xs" :context="true" :key="$i18n.locale"/>

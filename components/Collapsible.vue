@@ -1,17 +1,31 @@
 <template>
-    <div class="w-full accordion-container">
-    <component :is="props.is || 'div'"><button class="p-2 mt-4 text-left w-full"
+    <div class="w-full collapsible-container">
+    <component :id="id" :is="is || 'div'"><button class="p-2 mt-4 text-left w-full"
                                                @click="expanded = !expanded" 
                                                :aria-expanded="expanded"
-                                               :aria-controls="expanded? id : null">
-                                               <BootstrapIcon class="pr-2" :icon="expanded ? 'bi-chevron-up' : 'bi-chevron-down'"/>{{header}}
+                                               :aria-controls="expanded? id + '-content': null">
+                                               <BootstrapIcon class="pr-4" :icon="expanded ? 'bi-chevron-up' : 'bi-chevron-down'"/>{{header}}
                                         </button></component>
+
+
     
-    <div  v-if="expanded" :id="id  " class="pt-2 pb-4"><slot></slot></div>
+
+  
+        <div  :hidden="expanded ? null : 'until-found'" :id="id  " class="expanding">
+      <slot></slot>
+    </div>
+
+
+
+
     </div>
 </template>
 
 <script setup lang="ts">
+
+
+import { useRoute } from 'vue-router'
+const route = useRoute()
 
 const props = defineProps({
     is: String,
@@ -19,9 +33,13 @@ const props = defineProps({
     id: String
 })
 
-const expanded = ref(false)
+console.log(route.hash, props.id)
 
-const id = props.id || encodeURIComponent(props.header)
+const expanded = ref(false) //route.hash == '#'+props.id
+
+
+
+const id = props.id
 
 
 </script>
@@ -35,7 +53,7 @@ button {
 
 }
 
-.accordion-container:not(:last-child) {
+.collapsible-container:not(:last-child) {
     border-bottom: solid 1px theme('colors.gray.100');
     
 }
@@ -56,6 +74,7 @@ h4 i {
 h3 i {
     @apply text-gray-700;
 }
+
 
 
 

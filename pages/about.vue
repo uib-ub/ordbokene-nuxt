@@ -10,7 +10,7 @@
 		  <li>{{$t('contact.content[3]')}}<a href="mailto:ordbok-teknisk@uib.no">ordbok-teknisk@uib.no</a></li>
 	  </ul>
 
-    <Accordion is="h3" header="What if I cannot find a word in the dictionary?">
+    <Collapsible id="missing-word" is="h3" header="What if I cannot find a word in the dictionary?">
         <p><em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are medium-sized online dictionaries. The original dictionary in Bokmål contained around 65,000 articles and the Nynorsk dictionary freatured almost 90,000. After the <a href="https://www.uib.no/lle/revisjonsprosjektet">current dictionary revision</a>, it is estimated that both dictionaries will contain around 100,000 articles. The dictionaries document the central vocabulary in Norwegian – basically the most commonly occurring words in the written languages Bokmål and Nynorsk in the last 50 years that have been included. Specialised terms and terminology are only included if also used outside the field in which they have arisen.</p>
         <p>The most common way to make new words in Norwegian is to compound existing words in new ways – and there are countless combination possibilities. Therefore, many compounds will not have their own articles in Bokmålsordboka and Nynorskordboka. Thus, if you do not find the Norwegian term for ‘bicycle seat’ (<em>sykkelsete</em>) as an entry in the dictionaries, it does not mean that the word does not exist or is not allowed to use. Compound words are generally only included based on the following considerations:</p>
         <ul>
@@ -22,26 +22,26 @@
         <p>The <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are not to be regarded as lists of words permitted to use in Norwegian. There are many words – old as well as new – that are not in the dictionaries. But you can use anyway. New words do not need official approval before they can be used. It is the language users who jointly decide which words are commonly used in Norwegian. Normally, new words do not enter the dictionaries until they have been in use for some time and are well-established in the language. The dictionary editors decide which words are to be included based on surveys of large text corpora, and the Norwegian Language Council decides how the words are to be spelled and inflected.</p>
         <p><a href="https://www.sprakradet.no/Vi-og-vart/Publikasjoner/Spraaknytt/spraknytt-2014/Spraknytt-12014/Ord-som-finst-og-ikkje-finst/">Read more about the word selection</a> in e.g. <em>Bokmålsordboka</em> and <em>Nynorskordboka</em>.</p>
         <p>If you do not find the word you are looking for, you can check the larger documentation dictionaries <a href="https://alfa.norsk-ordbok.no">Norsk Ordbok (for Nynorsk and dialect words)</a> and <a href="https://naob.no/">NAOB (for Bokmål)</a>.</p>
-    </Accordion>
+    </Collapsible>
 
-<Accordion is="h3" header="Quality-Assured Content">
+<Collapsible id="quality" is="h3" header="Quality-Assured Content">
 
           <p><em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are two independent, monolingual dictionaries for Bokmål and Nynorsk, respectively. The dictionaries are jointly owned by the Language Council and the University of Bergen.</p>
           <p><a href ="https://www.sprakradet.no/">The Norwegian Language Council</a> decides how words are spelled and inflected in Bokmål and Nynorsk. <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are continuously being updated in line with spelling decisions in the Language Council and is the right place for information on what is current and correct spelling in Bokmål and Nynorsk.</p>
           <p>Since 2016, the editorial work with the standard dictionaries <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> has been carried out at the University of Bergen, with several departments involved. <a href ="https://www.uib.no/ub/101277/norsk-kulturarv-i-skrift-og-tale">The Norwegian Language Collections</a> manage the dictionaries and the source material on which they are based. The dictionary editors are employed at the <a href="https://www.uib.no/lle">Department of Linguistic, Literary and Aesthetic Studies (LLE)</a>, and the computer technical work takes place at the <a href="https://www.uib.no/it">IT department</a> and the Norwegian Language Collections at the University Library. The content of the dictionaries is quality assured by the Language Council.</p>
 
 
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Citing the dictionaries">
+<Collapsible id="cite" is="h3" header="Citing the dictionaries">
   <p>The contents of <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are protected by copyright, cf. the Norwegian copyright act: Lov om opphavsrett til åndsverk. Should you wish to quote an article in Bokmålsordboka or Nynorskordboka, we recommend stating when the article was retrieved (read) when quoting, such as e.g.:</p>
   <p>"Hvordan". In: <em>Bokmålsordboka</em>. The Norwegian Language Council and the University of Bergen. &lt;http: //ordbøkene.no&gt; (retrieved 25.1.2022).</p>
   <p>Both owners of the dictionary, the Norwegian Language Council and the University of Bergen, must be mentioned in the reference</p>
 
 
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Adding a shortcut on your smartphone">
+<Collapsible id="smartphone" is="h3" header="Adding a shortcut on your smartphone">
   <p>The website, ordbøkene.no, has a responsive design. This means that the dictionary content adapts to screens of all sizes. If you wish to have a shortcut to Bokmålsordboka and Nynorskordboka on your smartphone, search for ordbøkene.no in the browser and place it as an icon on the screen. The icon looks like an app, and you can click right into the website without opening your browser.</p>
           <h4>For iPhone / iOS</h4>
           <ul>
@@ -58,23 +58,23 @@
             <li>A new window appears asking you to add ordbøkene.no to your home screen. Click "Add".</li>
           </ul>
           <p>The dictionaries icon is now on your home screen, and you can access the dictionary page directly by clicking on it.NB! On some models from Samsung, the option "Add page in" is found in a menu at the bottom of the page. From there, select the home screen.</p>
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Open Data">
+<Collapsible id="open-data" is="h3" header="Open Data">
       <p>The contents of <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are openly available for download, and can be used for any purpose, including commercial, in accordance with the conditions given. <a href="https://www.uib.no/ub/fagressurser/spesialsamlingene/142334/lisens-bokm%C3%A5lsordboka-og-nynorskordboka">Read more about the open license here</a>.</p>
       <p>Inflection information in Bokmålsordboka and Nynorskordboka is sourced from from Norsk ordbank (Norwegian Word Database). Ordbanken is a lexical database for Bokmål and Nynorsk providing information on word class and standard inflection for far more words than those found in the standard dictionaries. Norsk ordbank is available for download at Språkbanken at the National Library under a CC-BY license.</p>
 
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="History">
+<Collapsible id="history" is="h3" header="History">
           <p>The standard dictionaries <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> were first published in 1986 as a collaborative project between the University of Oslo and the Norwegian Language Council and have since been issued in several editions. In printed form, <em>Bokmålsordboka</em> and <em>Nynorskordboka</em> are large single-volume dictionaries. Spelling and inflection are always in line with current standards. Furthermore, the dictionaries state meanings, examples of usage and give short etymologies. </p>
           <p><a href="https://www.uib.no/sites/w3.uib.no/files/attachments/om_ordbokene_0.pdf">Here you will find the preface to the printed editions (in Norwegian)</a> and more information about previous dictionary editors and the earlier work carried out at the University of Oslo. </p>
           <p>The University of Bergen and the Language Council will no longer be issuing printed editions of the standard dictionaries. </p>
 
 
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Dictionary revision">
+<Collapsible id="revision" is="h3" header="Dictionary revision">
           <p>The Bokmålsordboka and Nynorskordboka are currently undergoing an extensive content update. During the period 2018–2023, an editorial group is revising both dictionaries from a to å. The most important tasks are to bring in new words and update meanings, and make sure that the content is in line with current language use. Making the selection of words more similar in the two dictionaries is also a priority. More information can be found on the Dictionary Revision Project’s website (in Norwegian). </p>
           <p>Current editorial staff of <em>Bokmålsordboka</em> and <em>Nynorskordboka</em>:</p>
           <ul class="no-bullet">
@@ -106,9 +106,9 @@
             <li>Ole Voldsæter, head engineer, IT department 2019–2021</li>
           </ul>
           <p><a href="https://www.netlife.com/">Netlife</a> has conducted user surveys and prepared design sketches for ordbøkene.no.</p>  
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Useful Links to Language Resources">
+<Collapsible id="links" is="h3" header="Useful Links to Language Resources">
 
   <p>Should you have questions about clear, good and correct Norwegian language use, please contact the <a href="mailto:sporsmal@sprakradet.no">Language Council's response service.</a></p>
   <h4>Online language resources</h4>
@@ -133,13 +133,13 @@
   </ul>
 
 
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Privacy">
+<Collapsible id="privacy" is="h3" header="Privacy">
   <p>Ordbøkene.no does not use cookies, but saves user preferences using local storage in the browser, without sending this information to our server at UiB. Searches are logged on the server, but we do not use this information for other purposes than search statistics. 
             We use a Nginx-webserver that continuously overwrites the logs, so that we never store IP-addresses permanently. We also log the usage of certain features on the website using plausible.io, a service that does not store IP-addresses or other information that can connect the usage statistics to individual users.</p>
 
-</Accordion>
+</Collapsible>
 
 
 
@@ -165,7 +165,7 @@
 		  <li>{{$t('contact.content[3]')}}<a href="mailto:ordbok-teknisk@uib.no">ordbok-teknisk@uib.no</a></li>
 	  </ul>
 
-<Accordion is="h3" header="Kva betyr det om du ikkje finn eit ord i ordboka?">
+<Collapsible id="missing-word" is="h3" header="Kva betyr det om du ikkje finn eit ord i ordboka?">
 
           <p>
             <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> er mellomstore nettordbøker.<em>Bokmålsordboka</em> har hatt rundt 65&nbsp;000 oppslagsord og <em>Nynorskordboka</em> rundt 90&nbsp;000, men etter
@@ -197,9 +197,9 @@
           <p><a href="https://www.sprakradet.no/Vi-og-vart/Publikasjoner/Spraaknytt/spraknytt-2014/Spraknytt-12014/Ord-som-finst-og-ikkje-finst/">Her kan du lese meir om ordutvalet</a> mellom anna i <em>Bokmålsordboka </em>og <em>Nynorskordboka</em>.</p>
           <p>Dersom du ikkje finn ordet du leitar etter, kan du sjekke dei større og dokumenterande ordbøkene <a href="https://alfa.norsk-ordbok.no"><em>Norsk Ordbok</em></a> (for dialektord og nynorsk) og <a href="https://naob.no/">NAOB</a> (for bokmål).</p>  
 
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Kvalitetssikra innhald">
+<Collapsible id="quality" is="h3" header="Kvalitetssikra innhald">
           <p><em>Bokmålsordboka</em> og <em>Nynorskordboka</em> er to sjølvstendige, einspråklege ordbøker. Språkrådet og Universitetet i Bergen (UiB) eig ordbøkene i fellesskap.</p>
           <p><a href="https://www.sprakradet.no/">Språkrådet</a> avgjer korleis ord skal skrivast og bøyast på bokmål og nynorsk. <em>Bokmålsordboka</em> og <em>Nynorskordboka</em>blir løpande oppdaterte i tråd med rettskrivingsvedtak i Språkrådet, så det er her du finn fasiten på kva som er gjeldande og fullstendig rettskriving i bokmål og nynorsk.</p>
           <p>
@@ -208,16 +208,16 @@
             er tilsette ved <a href="https://www.uib.no/lle">Institutt for lingvistiske, litterære og estetiske studium</a>, og det datatekniske arbeidet går føre seg ved 
             <a href="https://www.uib.no/it">IT-avdelinga</a>. Innhaldet i ordbøkene er kvalitetssikra av Språkrådet.
           </p>
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Sitere ordbøkene">
+<Collapsible id="cite" is="h3" header="Sitere ordbøkene">
           <p>Innhaldet i <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> er verna av opphavsrett, jf. <a href="https://lovdata.no/dokument/NL/lov/2018-06-15-40">lov om opphavsrett til åndsverk</a>mv.</p>
           <p>Ønskjer du å sitere ein artikkel i <em>Bokmålsordboka</em> eller <em>Nynorskordboka</em>, rår vi deg til å gje opp når artikkelen vart henta (lesen), t.d. slik:</p>
           <p>«Korleis». I: <em>Nynorskordboka</em>. Språkrådet og Universitetet i Bergen. &lt;<a href="http://ordbokene.no/">http://ordbøkene.no</a> &gt; (henta 25.1.2022).</p>
           <p>Begge eigarane av ordboka, Språkrådet og Universitetet i Bergen, bør nemnast i referansen.</p> 
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Ordbøkene på smarttelefon">
+<Collapsible id="smartphone" is="h3" header="Ordbøkene på smarttelefon">
 
           <p>Nettsida ordbøkene.no har responsivt design, som gjer at innhaldet tilpassar seg både store og små skjermar. Ynskjer du å ha lenkja til Bokmålsordboka og Nynorskordboka på mobilskjermen din, søkjer du opp ordbøkene.no i nettlesaren og legg henne ut som ikon på skjermen. Ikonet ut som ein app, og du kan trykkje deg rett inn på nettsida, utan å gå vegen om nettlesaren.</p>
           <h4>For iPhone/iOs</h4>
@@ -236,9 +236,9 @@
           </ul>
           <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico" aria-hidden="true"/> ligg no på startsida di, og du kjem direkte inn på ordboksida ved å klikke på det. NB! I somme modellar frå Samsung ligg valet «Legg til side i» i ein meny nedst på sida. Derfrå vel du startsida.</p>
 
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Opne data">
+<Collapsible id="open-data" is="h3" header="Opne data">
 
           <p><em>Innhaldet i Bokmålsordboka</em> og <em>Nynorskordboka</em> ligg ope tilgjengeleg for nedlasting. Det kan
             brukast til kva formål som helst, inkludert kommersielle, i samsvar med gjevne vilkår.
@@ -251,9 +251,9 @@
             ved Nasjonalbiblioteket under lisensen CC-BY.
           </p>
 
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Historikk">
+<Collapsible id="history" is="h3" header="Historikk">
 
           <p>
             <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> vart først gjevne ut i 1986, produsert gjennom eit samarbeidsprosjekt mellom Universitetet i Oslo og Norsk språkråd, og
@@ -263,9 +263,9 @@
           <p><a href="https://www.uib.no/sites/w3.uib.no/files/attachments/om_ordbokene_0.pdf">Her finner du fororda til dei trykte utgåvene</a> og meir informasjon om tidlegare ordbokredaktørar og arbeidet med ordbøkene ved Universitetet i Oslo.</p>
           <p>Universitetet i Bergen og Språkrådet kjem ikkje til å publisere fleire trykte utgåver av standardordbøkene.</p>  
 
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Revisjonsprosjektet">
+<Collapsible id="revision" is="h3" header="Revisjonsprosjektet">
           <p>
             Det går for tida føre seg eit omfattande arbeid med å oppdatere innhaldet i <em>Bokmålsordboka</em> og <em>Nynorskordboka</em>. I perioden 2018–2023
             går ei gruppe redaktørar gjennom begge ordbøkene frå a til å. Dei viktigaste oppgåvene er å få inn nye ord og tydingar, passe på at innhaldet
@@ -302,9 +302,9 @@
             <li>Ole Voldsæter, overingeniør, IT-avdelinga 2019–2021</li>
           </ul>
           <p><a href="https://www.netlife.com/">Netlife</a> har gjennomført brukerundersøkingar og utarbeidd designskisser til ordbøkene.no.</p>
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Grammatiske kodar i ordbøkene">
+<Collapsible id="grammar" is="h3" header="Grammatiske kodar i ordbøkene">
           <p>Kodane nedanfor viser dei regelrette bøyingane for substantiv, adjektiv og verb. Ord med ufullstendige eller uregelrette bøyingar i desse ordklassane har bøyingskodar utan tal. Dei er merkte f. (femininum, hokjønn), m. (maskulinum, hankjønn), n. (nøytrum, inkjekjønn), subst. (substantiv), adj. (adjektiv) eller v. (verb).</p>
           <h4>Substantiv (Nynorskordboka)</h4>
           <table class="table table-bordered">
@@ -677,9 +677,9 @@
 	            </tr>
             </tbody>
           </table>
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Nyttige språklenkjer">
+<Collapsible id="link" is="h3" header="Nyttige språklenkjer">
     <p>
       Har du spørsmål om klar, god og korrekt språkbruk, kan du ta kontakt med <a href="mailto:sporsmal@sprakradet.no">svartenesta</a> til Språkrådet.
       Språkrådet har mange språkressursar samla under menyen Språkhjelp: Gå til <a href="https://www.sprakradet.no/sprakhjelp/Skriveregler/">skriveregler</a>,
@@ -703,9 +703,9 @@
       <li><a href="http://www.ordnet.dk/">ordnet.dk</a> : fleire danske ordbøker og korpus</li>
       <li><a href="http://www.svenska.se/">svenska.se</a> : fleire svenske ordbøker</li>
     </ul>
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Bruk av ordbøkene.no i skulen">
+<Collapsible id="education" is="h3" header="Bruk av ordbøkene.no i skulen">
     <p>Blant dei norskspråklege ordbøkene og ordlistene er det berre dei som er godkjende av Språkrådet, som kan nyttast i undervisning og på prøver og eksamen. <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> er blant desse, og dei andre finn du i <a href ="https://www.sprakradet.no/sprakhjelp/Skriverad/Ordlister/Ordlister-til-skulebruk/">oversikta til Språkrådet over godkjende ressursar</a>.</p>
     <p>Når skulane stengjer ein del nettsider på prøver og eksamen, må eit utval andre sider vere opne for at ordbøkene.no skal fungere. Her er domena som ordboksida brukar:</p>
     <ul>
@@ -720,11 +720,11 @@
       <li><a href="https://nynorsksenteret.no/blogg/ta-i-bruk-dei-nye-ordbokene">Ta i bruk dei nye ordbøkene</a></li>
     </ul>
     <p>Nynorsksenteret har dessutan eit opplegg for ungdomsskulen om <a href="https://nynorsksenteret.no/ungdomsskule/skriving/kreativ-skriving/hiphop-ordboka-som-kreativt-verktoy">hiphop og bruk av ordbøkene som kreative verktøy</a></p>
-</Accordion>
+</Collapsible>
 
-<Accordion is="h3" header="Personvern">
+<Collapsible id="privacy" is="h3" header="Personvern">
   <p>Ordbøkene brukar ikkje informasjonskapslar (cookiar), men lagrar brukarinnstillingane lokalt i nettlesaren (local storage), utan at informasjonen blir sendt vidare til serveren vår på UiB. Søkjeord blir logga på serveren, men vi brukar dette berre til å lage søkjestatistikk. Vi brukar ein Nginx-webserver der loggane blir overskrivne etter ei stund, slik at IP-adressene ikkje blir lagra permanent nokon stad. Vi loggar òg bruken av enkelte funksjonar på nettsida med plausible.io, som ikkje lagrar IP-adresser eller annan informasjon som kan knyte bruksstatistikken til enkeltbrukarar.</p>
-</Accordion>
+</Collapsible>
 
 </div>
 
@@ -736,15 +736,8 @@
 		  <li>{{$t('contact.content[2]')}}<a href="mailto:ordbok@uib.no">ordbok@uib.no</a></li>
 		  <li>{{$t('contact.content[3]')}}<a href="mailto:ordbok-teknisk@uib.no">ordbok-teknisk@uib.no</a></li>
 	  </ul>
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingEn">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEn" aria-expanded="false" aria-controls="flush-collapseEn">
-          Hva betyr det om du ikke finner et ord i ordboka?
-        </button>
-      </h3>
-      <div id="flush-collapseEn" class="accordion-collapse collapse" aria-labelledby="flush-headingEn" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+
+<Collapsible id="missing-word" is="h3" header="Hva betyr det om du ikke finner et ord i ordboka?">
           <p><em>Bokmålsordboka</em> og <em>Nynorskordboka</em> er mellomstore nettordbøker. <em>Bokmålsordboka</em> har hatt rundt 65&nbsp;000 oppslagsord og <em>Nynorskordboka</em> rundt 90&nbsp;000, men etter <a href="http://www.uib.no/lle/revisjonsprosjektet">den revisjonen som pågår</a> regner vi med at begge skal inneholde rundt 100 000 oppslagsord. Ordbøkene skal gjøre rede for det sentrale ordforrådet, og det er i utgangspunktet de vanligste ordene i skriftspråkene bokmål og nynorsk de siste 50 årene som er tatt med. Faguttrykk er bare tatt med i den grad de også brukes utenfor fagfeltet de har oppstått i.</p>
           <p>Den vanligste måten vi lager nye norske ord på, er å sette sammen gamle ord på nye måter, og det er talløse kombinasjonsmuligheter. Derfor er det mange sammensetninger som ikke har egne artikler i <em>Bokmålsordboka</em> og <em>Nynorskordboka</em>. Selv om du ikke finner <em>sykkelsete</em> som oppslagsord her, betyr det ikke at ordet ikke finnes eller ikke er tillatt. Sammensatte ord er særlig tatt med ut fra tre hensyn:</p>
           <ul>
@@ -756,45 +749,21 @@
           <p><em>Bokmålsordboka</em> og <em>Nynorskordboka</em> er ikke å betrakte som lister over hvilke ord som er tillatt å bruke på norsk. Det finnes mange ord, både gamle og nye, som ikke er med i ordbøkene, men som du gjerne kan bruke likevel. Det er heller ikke slik at nye ord må godkjennes før de kan tas i bruk, det er språkbrukerne som i fellesskap avgjør hvilke ord som er gangbare i norsk. Normalt kommer ikke nye ord inn i ordbøkene før de har vært i bruk en stund og er etablert i språket. Ordbokredaksjonen avgjør hvilke ord som skal være med basert på undersøkelser av store tekstsamlinger, og Språkrådet bestemmer hvordan ordene skal staves og bøyes.</p>
           <p><a href="https://www.sprakradet.no/Vi-og-vart/Publikasjoner/Spraaknytt/spraknytt-2014/Spraknytt-12014/Ord-som-finst-og-ikkje-finst/">Her kan du lese mer om ordutvalget</a> bl.a. i <em>Bokmålsordboka</em> og <em>Nynorskordboka</em>.</p>
           <p>Dersom du ikke finner ordet du leter etter, kan du sjekke de større og dokumenterende ordbøkene <a href="https://alfa.norsk-ordbok.no">Norsk Ordbok</a> (for dialektord og nynorsk) og <a href="https://naob.no/">NAOB</a> (for bokmål).</p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingTo">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTo" aria-expanded="false" aria-controls="flush-collapseTo">
-          Kvalitetssikret innhold
-        </button>
-      </h3>
-      <div id="flush-collapseTo" class="accordion-collapse collapse" aria-labelledby="flush-headingTo" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+</Collapsible>
+
+<Collapsible id="quality" is="h3" header="Kvalitetssikret innhold">
           <p><em>Bokmålsordboka</em> og <em>Nynorskordboka</em> er to selvstendige, enspråklige ordbøker for henholdsvis bokmål og nynorsk. Ordbøkene eies av Språkrådet og Universitetet i Bergen i fellesskap.</p>
           <p><a href="https://www.sprakradet.no/">Språkrådet</a> avgjør hvordan ord skal skrives og bøyes på bokmål og nynorsk. <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> blir løpende oppdatert i tråd med rettskrivingsvedtak i Språkrådet, så det er her du finner fasiten på hva som er gjeldende og fullstendig rettskriving i bokmål og nynorsk. </p>
           <p>Siden 2016 har det redaksjonelle arbeidet med standardordbøkene blitt utført ved Universitetet i Bergen, der flere avdelinger er involvert. <a href="https://www.uib.no/ub/101277/norsk-kulturarv-i-skrift-og-tale">Språksamlingane</a> forvalter ordbøkene og kildegrunnlaget de bygger på, ordbokredaktørene er ansatt ved <a href="https://www.uib.no/lle">Institutt for lingvistiske, litterære og estetiske studium</a>, og det datatekniske arbeidet foregår ved IT-avdelingen. Innholdet i ordbøkene er kvalitetssikret av Språkrådet.</p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingTre">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTre" aria-expanded="false" aria-controls="flush-collapseTre">
-          Sitere ordbøkene
-        </button>
-      </h3>
-      <div id="flush-collapseTre" class="accordion-collapse collapse" aria-labelledby="flush-headingTre" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+</Collapsible>
+
+<Collapsible id="cite" is="h3" header="Sitere ordbøkene">
           <p>Innholdet i Bokmålsordboka og Nynorskordboka er beskyttet av opphavsrett, jf. lov om opphavsrett til åndsverk mv. Ønsker du å sitere en artikkel i <em>Bokmålsordboka</em> eller <em>Nynorskordboka</em>, anbefaler vi å oppgi når artikkelen ble hentet (lest), f.eks. slik:</p>
           <blockquote><p>«Hvordan». I: <em>Bokmålsordboka</em>. Språkrådet og Universitetet i Bergen. <br>‹http://ordbøkene.no› (hentet 25.1.2022).</p></blockquote>
           <p>Begge eierne av ordboka, Språkrådet og Universitetet i Bergen, bør nevnes i referansen.</p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingFire">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFire" aria-expanded="false" aria-controls="flush-collapseFire">
-          Ordbøkene på smarttelefon
-        </button>
-      </h3>
-      <div id="flush-collapseFire" class="accordion-collapse collapse" aria-labelledby="flush-headingFire" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+</Collapsible>
+
+<Collapsible id="smartphone" is="h3" header="Ordbøkene på smarttelefon">
           <p> Nettsiden ordbøkene.no har responsivt design, som gjør at innholdet tilpasser seg skjermer av alle størrelser. Ønsker du å ha lenken til <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> på mobilskjermen din, søker du opp ordbøkene.no i nettleseren og legger den til som ikon på skjermen. Ikonet ser ut som en app, og du kan trykke deg rett inn på nettsiden, uten å gå veien om nettleseren.</p>
           <h4>For iPhone/iOs:</h4>
           <ul>
@@ -811,44 +780,20 @@
             <li>Det dukker opp et vindu som foreslår at du legger til ordbøkene.no på startsiden. Klikk på valget «Legg til».</li>
           </ul>
           <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico" aria-hidden="true"/> ligger nå på startsiden din, og du kommer direkte inn på ordboksiden ved å klikke på det. NB! I noen modeller fra Samsung ligger valget «Legg til side i» i en meny nederst på siden. Derfra velger du startsiden.</p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingFem">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFem" aria-expanded="false" aria-controls="flush-collapseFem">
-          Åpne data
-        </button>
-      </h3>
-      <div id="flush-collapseFem" class="accordion-collapse collapse" aria-labelledby="flush-headingFem" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+</Collapsible>
+
+<Collapsible id="open-data" is="h3" header="Åpne data">
           <p>Innholdet i <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> ligger åpent tilgjengelig for nedlasting. De kan brukes til alle formål, inkludert kommersielle, i samsvar med gitte vilkår. <a href="https://www.uib.no/ub/fagressurser/spesialsamlingene/142334/lisens-bokm%C3%A5lsordboka-og-nynorskordboka">Les mer om den åpne lisensen her</a>.</p>
           <p>Informasjonen i bøyingstabellene i <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> er hentet fra Norsk ordbank. Ordbanken er en leksikalsk database for bokmål og nynorsk med informasjon om ordklasse og normert bøying for langt flere ord enn de som er oppslagsord i standardordbøkene. Norsk ordbank ligger <a href="https://www.nb.no/sprakbanken/ressurskatalog/?_search=ordbank">tilgjengelig for nedlasting hos Språkbanken</a> ved Nasjonalbiblioteket under lisensen CC-BY. </p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingSeks">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeks" aria-expanded="false" aria-controls="flush-collapseSeks">
-          Historikk
-        </button>
-      </h3>
-      <div id="flush-collapseSeks" class="accordion-collapse collapse" aria-labelledby="flush-headingSeks" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+</Collapsible>
+
+<Collapsible id="history" is="h3" header="Historikk">
           <p><em>Bokmålsordboka</em> og <em>Nynorskordboka</em> ble utgitt første gang i 1986, produsert gjennom et samarbeidsprosjekt mellom Universitetet i Oslo og Norsk Språkråd, og er siden kommet i flere utgaver. I trykt form er <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> store ettbinds ordbøker. De viser skrivemåter og bøying som alltid er i tråd med de gjeldende normene. Videre oppgir ordbøkene betydninger, brukseksempler og korte etymologier.</p>
           <p><a href="https://www.uib.no/sites/w3.uib.no/files/attachments/om_ordbokene_0.pdf">Her finner du forordene til de trykte utgavene</a> og mer informasjon om tidligere ordbokredaktører og arbeidet med ordbøkene ved Universitetet i Oslo.</p>
           <p>Universitetet i Bergen og Språkrådet kommer ikke til publisere flere trykte utgaver av standardordbøkene.</p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingSyv">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSyv" aria-expanded="false" aria-controls="flush-collapseSyv">
-          Revisjonsprosjektet
-        </button>
-      </h3>
-      <div id="flush-collapseSyv" class="accordion-collapse collapse" aria-labelledby="flush-headingSyv" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+</Collapsible>
+
+<Collapsible id="revision" is="h3" header="Revisjonsprosjektet">
           <p>Det pågår for tiden et omfattende arbeid med å oppdatere innholdet i <em>Bokmålsordboka</em> og <em>Nynorskordboka</em>. I perioden 2018–2023 går en gruppe redaktører gjennom begge ordbøkene fra a til å. De viktigste oppgavene er å få inn nye ord og betydninger, passe på at innholdet er i tråd med dagens språkbruk, og gjøre utvalget av ord likere i de to ordbøkene. Mer informasjon finner du på  <a href="https://www.uib.no/lle/revisjonsprosjektet">nettsiden til Revisjonsprosjektet</a>.</p>
           <p>Nåværende redaksjon for <em>Bokmålsordboka</em> og <em>Nynorskordboka</em>:</p>
           <ul class="no-bullet">
@@ -880,17 +825,9 @@
             <li>Ole Voldsæter, overingeniør, IT-avdelingen 2019–2021</li>
           </ul>
           <p><a href="https://www.netlife.com/">Netlife</a> har gjennomført brukerundersøkelser og utarbeidet designskisser til ordbøkene.no.</p>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingÅtte">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseÅtte" aria-expanded="false" aria-controls="flush-collapseÅtte">
-          Grammatiske koder i ordbøkene
-        </button>
-      </h3>
-      <div id="flush-collapseÅtte" class="accordion-collapse collapse" aria-labelledby="flush-headingÅtte" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+</Collapsible>
+
+<Collapsible id="grammar" is="h3" header="Grammatiske koder i ordbøkene">
           <p>Kodene nedenfor viser de regelrette bøyningene for substantiv, adjektiv og verb. Ord med med ufullstendige eller uregelrette bøyninger i disse ordklassene har koder uten tall. De er merket med f. (femininum, hunkjønn), m. (maskulinum, hankjønn), n. (nøytrum, intetkjønn), subst. (substantiv), adj. (adjektiv) eller v. (verb).</p>
           <h4>Substantiv (Bokmålsordboka)</h4>
           <table class="table table-bordered">
@@ -1263,17 +1200,10 @@
 		          <td> ropt</td>
 	          </tr>
           </table>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingNi">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNi" aria-expanded="false" aria-controls="flush-collapseNi">
-          Nyttige språklenker
-        </button>
-      </h3>
-      <div id="flush-collapseNi" class="accordion-collapse collapse" aria-labelledby="flush-headingNi" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+
+</Collapsible>
+
+<Collapsible id="links" is="h3" header="Nyttige språklenker">
           <p>Har du spørsmål om klar, god og korrekt språkbruk, kan du ta kontakt med <a href="mailto:sporsmal@sprakradet.no">Språkrådets svartjeneste</a>.</p>
           <h4>Språkressurser på nettet</h4>
           <p>Språksamlingene ved Universitetsbiblioteket i Bergen har en rekke språkressurser, blant annet:</p>
@@ -1296,17 +1226,9 @@
             <li><a href="http://ordnet.dk/">ordnet.dk:</a> flere danske ordbøker og korpus</li>
             <li><a href="https://svenska.se/">svenska.se:</a> flere svenske ordbøker</li>
           </ul>
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingTi">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTi" aria-expanded="false" aria-controls="flush-collapseTi">
-          Bruk av ordbøkene.no i skolen
-        </button>
-      </h3>
-      <div id="flush-collapseTi" class="accordion-collapse collapse" aria-labelledby="flush-headingTi" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+</Collapsible>
+
+<Collapsible id="education" is="h3" header="Bruk av ordbøkene.no i skolen">
           <p>Blant norskspråklige ordbøker og ordlister er det bare de som er godkjent av Språkrådet, som kan brukes i undervisning og på prøver og eksamen. <em>Bokmålsordboka</em> og <em>Nynorskordboka</em> er blant disse, og de andre finner du på <a href ="https://www.sprakradet.no/sprakhjelp/Skriverad/Ordlister/Ordlister-til-skulebruk/"> Språkrådets oversikt over godkjente ressurser</a>.</p>
           <p>Når skolene stenger en del nettsider på prøver og eksamen, må et utvalg andre sider være åpne for at ordbøkene.no skal fungere. Her er domenene som ordboksida bruker:</p>
          <ul>
@@ -1321,25 +1243,17 @@
             <li><a href="https://nynorsksenteret.no/blogg/ta-i-bruk-dei-nye-ordbokene">Ta i bruk dei nye ordbøkene</a></li>
           </ul>
           <p>Nynorsksenteret har dessuten et opplegg for ungdomsskolen om <a href="https://nynorsksenteret.no/ungdomsskule/skriving/kreativ-skriving/hiphop-ordboka-som-kreativt-verktoy">hiphop og bruk av ordbøkene som kreative verktøy</a></p>   
-        </div>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <h3 class="accordion-header" id="flush-headingElve">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseElve" aria-expanded="false" aria-controls="flush-collapseElve">
-          Personvern
-        </button>
-      </h3>
-      <div id="flush-collapseElve" class="accordion-collapse collapse" aria-labelledby="flush-headingElve" data-bs-parent="#accordionFlushExample">
-        <div class="accordion-body">
+</Collapsible>
+
+<Collapsible id="privacy" is="h3" header="Personvern">
           <p>Ordbøkene bruker ikke informasjonskapsler (cookier), men lagrer brukerinnstillinger lokalt i nettleseren (local storage), uten å sende denne informasjonen til vår server på UiB. Søkeord logges på serveren, 
             men dette bruker vi kun til å lage søkestatistikk. Vi benytter en Nginx-webserver der loggene overskrives etter en stund, slik at IP-adressene ikke lagres permanent noe sted. Vi logger også bruken av enkelte 
             funksjoner på nettsiden med plausible.io, som ikke lagrer IP-adresser eller annen informasjon som kan knytte bruksstatistikken til bestemte brukere.</p>
-        </div>
-      </div>
-    </div>
-    </div>
-  </div>
+</Collapsible>
+
+
+</div>
+
 </main>
 </template>
 

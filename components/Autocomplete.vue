@@ -81,7 +81,6 @@ const emit = defineEmits(['dropdown-submit'])
 
 
 const clearText = () => {
-  console.log("CLEARING")
   store.input = ""
 }
 

@@ -30,11 +30,12 @@
     {{$t('options.fulltext')}}
 </FormCheckbox>
 </div>
+  <div class="select-wrapper" v-bind:class="{not_null: store.pos}">
 
-   
-  <select name="pos" v-model="store.pos" class="bg-tertiary">
-    <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="tag">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</option>
+  <select name="pos" class="bg-tertiary" @change="store.pos = $event.target.value">
+    <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="tag" :selected="store.pos == tag" v-bind:class="{selected: store.pos == tag}">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</option>
   </select>
+  </div>
 
 </div>
 
@@ -86,7 +87,7 @@ const route = useRoute()
 
 const dicts = ['bm,nn', 'bm', 'nn']
 
-const pos_tags = [null, 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCONJ', 'SCONJ', 'INTJ']
+const pos_tags = ['', 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCONJ', 'SCONJ', 'INTJ']
 
 const fulltext_enabled = ref(store.scope.includes('f'))
 const inflection_enabled = ref(store.scope.includes('i'))
@@ -156,8 +157,27 @@ const submitForm = async (item) => {
 
 
   option {
-    @apply text-text bg-canvas p-2;
+    @apply text-text bg-canvas;
   }
+
+
+  option.selected {
+    @apply text-white bg-primary;
+  }
+
+.select-wrapper {
+  @apply bg-none p-1 rounded-1xl;
+
+  }
+
+  .select-wrapper.not_null {
+    @apply bg-primary;
+    select {
+      @apply bg-primary text-white
+    }
+  }
+
+ 
 
 
 

@@ -189,7 +189,6 @@ const test = (event) => {
 
 <template>
   <div class="search-container">
-    {{store.show_autocomplete}}
   <div class="input-wrapper border-1 bg-canvas border-primary flex content-center justify-between  pr-2 lg:pr-4" v-bind="{'data-dropdown-open': store.show_autocomplete > 0}" aria-label="Søkefelt">
    <input class="input-element p-3 pl-6 lg:p-4 lg:px-8"
           :value="store.input"

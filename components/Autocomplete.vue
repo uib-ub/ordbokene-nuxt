@@ -180,13 +180,13 @@ const exit_input = event => {
 
 
 watch(() => store.q, () => {
+  console.log("MEDIA", document)
   // 
   if (!navigator || navigator.userAgentData? navigator.userAgentData.mobile : !window.matchMedia('(pointer: fine)').matches) {
-    input_element.value.select()
-
+    input_element.value.blur()
   }
   else {
-    input_element.value.blur()
+    input_element.value.select()
   }
   
 })

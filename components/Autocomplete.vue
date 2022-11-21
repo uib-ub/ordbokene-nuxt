@@ -219,7 +219,6 @@ const test = (event) => {
         >
         <!-- button hidden from screen readers? -->
         <button class="w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)"><span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span></button>
-        <button @click="test" class="bg-[red] text-white">CLICK ME</button>
    </li>
   </ul>
   </div>

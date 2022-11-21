@@ -82,6 +82,7 @@ const emit = defineEmits(['dropdown-submit'])
 
 const clearText = () => {
   store.input = ""
+  input_element.value.select()
 }
 
 
@@ -265,15 +266,21 @@ transform: translateX(-50%);
   width: calc(100% - 1rem);
 }
 
+
 #autocomplete-dropdown button {
   text-align: left;
-  border-bottom: solid 1px;
-  @apply border-gray-300 p-2 mx-2;
+  @apply p-2 mx-2;
 
   .word {
     @apply text-primary;
     font-weight: bolder;
 }
+}
+
+#autocomplete-dropdown li:not(:last-child) button {
+  border-bottom: solid 1px;
+  @apply border-gray-300;
+
 }
 
 #autocomplete-dropdown li[aria-selected=true] button {

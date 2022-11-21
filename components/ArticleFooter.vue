@@ -1,4 +1,10 @@
 <script setup>
+
+import { useStore } from '~/stores/searchStore'
+const store = useStore()
+
+
+
 const props = defineProps({
     lemmas: Array,
     dict: String,
@@ -40,12 +46,11 @@ const shareViaWebShare = () => {
       })
       };
 
-const copy_link = () => {
+const copy_link = (event) => {
       let link = create_link()
         navigator.clipboard.writeText(link).then(() => {
           console.log("SUCCESS")
-          copy_popup = true;
-          showToast();
+          store.copied = event.target.id
          }).catch(err => {
            console.log("ERROR COPYING:",err)
          })
@@ -69,10 +74,10 @@ const create_citation = () => {
       return citation
     }
 
-const copy_citation = () => {
+const copy_citation = (event) => {
       let citation = document.getElementById("citation").textContent;
       navigator.clipboard.writeText(citation)
-      copy_popup = true
+      store.copied = event.target.id
     }
 
 const download_ris = () => {
@@ -101,17 +106,19 @@ const download_ris = () => {
   <div class="position-absolute top-50 start-50 translate-middle"><span>{{$t('article.link_copied', 1, { locale: content_locale})}}</span></div>
   </div>
 <div class="flex justify-around gap-3 mt-3 flex-wrap">
-    <button class="btn-borderless" v-if="showLinkCopy" @click="copy_link"><BootstrapIcon icon="bi-link" left/> {{$t("article.copy_link", 1, { locale: content_locale})}}</button>
-    <button class="btn-borderless" v-if="webShareApiSupported" @click="shareViaWebShare"><BootstrapIcon icon="bi-share-fill" left/> {{$t("article.share", 1, { locale: content_locale})}}</button>
+    <button class="btn-borderless" :id="'copy-link-'+article_id" v-if="showLinkCopy" @click="copy_link"><BootstrapIcon :icon="store.copied == 'copy-link-'+article_id ? 'bi-clipboard-check-fill' : 'bi-link'" left primary/> {{$t("article.copy_link", 1, { locale: content_locale})}}
+      <span aria-live="assertive" class="sr-only" v-if="'copy-citation-'+article_id == store.copied">{{$t('article.link_copied')}}</span></button>
+    <button class="btn-borderless" v-if="webShareApiSupported" @click="shareViaWebShare"><BootstrapIcon icon="bi-share-fill" left primary/> {{$t("article.share", 1, { locale: content_locale})}}</button>
     <button class="btn-borderless" type="button" :aria-expanded="cite_expanded" :aria-controls="cite_expanded?  'cite-'+article_id : null" @click="cite_expanded = !cite_expanded">
-    <BootstrapIcon icon="bi-quote" left/> {{$t("article.cite", 1, { locale: content_locale})}}</button>
+    <BootstrapIcon icon="bi-quote" left primary/> {{$t("article.cite", 1, { locale: content_locale})}}</button>
 </div>
 <div class="cite-container p-4 pb-1 pt-2 mt-2" v-if="cite_expanded" :id="'cite-'+article_id">
       <h4>{{$t('article.cite_title')}}</h4>
       <p>{{$t("article.cite_description[0]", 1, { locale: content_locale})}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", 1, { locale: content_locale})}}</p>
       <div id="citation" v-html="$t('article.citation', create_citation())" />
       <div class="flex justify start mt-4 mb-2 flex-wrap gap-3">
-       <button class="btn-primary" @click="copy_citation"><BootstrapIcon icon="bi-clipboard" left primary/> {{$t("article.copy", 1, { locale: content_locale})}}</button>
+       <button class="btn-primary" :id="'copy-citation-'+article_id" @click="copy_citation"><BootstrapIcon :icon="store.copied == 'copy-citation-'+article_id ? 'bi-clipboard-check-fill' : 'bi-clipboard'" left primary/> {{$t("article.copy", 1, { locale: content_locale})}}
+        <span aria-live="assertive" class="sr-only" v-if="'copy-citation-'+article_id == store.copied">{{$t('article.citation_copied')}}</span></button>
        <button class="btn-primary" @click="download_ris"><BootstrapIcon icon="bi-download" left primary /> {{$t("article.download")}}</button>
       </div>
 

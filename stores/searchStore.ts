@@ -18,6 +18,7 @@ export const useStore = defineStore('store', {
       view: null,
       concepts_bm: [],
       concepts_nn: [],
-      endpoint: ""
+      endpoint: "",
+      copied: ""
     })
   })

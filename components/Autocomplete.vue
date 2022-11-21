@@ -162,7 +162,7 @@ const input_sync = (event) => {
   }
 }
 
-const dropdown_select = (event, q) => {
+const dropdown_select = (q) => {
   console.log("DROPDOWN: Input from", store.input, "to", q)
   store.input= q
   store.autocomplete = []
@@ -177,6 +177,11 @@ const exit_input = event => {
   if (!(event.relatedTarget && event.relatedTarget.hasAttribute('data-dropdown-item'))) {
     store.autocomplete = []
   }
+}
+
+const test = (event) => {
+  console.log("BUTTON CLICKED")
+  console.log(event)
 }
 
 
@@ -214,7 +219,8 @@ const exit_input = event => {
         :id="'autocomplete-item-'+idx"
         >
         <!-- button hidden from screen readers? -->
-        <button class="w-full" data-dropdown-item tabindex="-1" @click="dropdown_select($event, item.q)"><span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span></button>
+        <button class="w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)"><span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span></button>
+        <button @click="test" class="bg-[red] text-white">CLICK ME</button>
    </li>
   </ul>
   </div>

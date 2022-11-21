@@ -7,7 +7,6 @@ const route = useRoute()
 
 const input_element = ref('')
 const selected_option = ref(-1)
-const show_dropdown = ref(false);
 
 async function fetchAutocomplete(q) {
 

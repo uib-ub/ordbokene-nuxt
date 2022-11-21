@@ -205,7 +205,7 @@ const exit_input = event => {
 
   </div>
   <div class="dropdown-wrapper" v-show="store.autocomplete.length">
-   <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown" class="w-full">
+   <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown">
     <li v-for="(item, idx) in store.autocomplete" 
         :key="idx" 
         :aria-selected="idx == selected_option"
@@ -250,13 +250,15 @@ transform: translateX(-50%);
 
 
 #autocomplete-dropdown {
-  overflow: auto;
+  overflow-y: auto;
   max-height: 50vh;
   @apply px-0 mx-0 flex flex-col;
 }
 
+
 #autocomplete-dropdown li {
   position: relative;
+  width: calc(100% - 1rem);
 }
 
 #autocomplete-dropdown button {

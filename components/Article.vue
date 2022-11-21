@@ -53,11 +53,10 @@
       <button v-if="!settings.inflectionExpanded && inflected && !welcome" class="btn-primary my-1" @click="inflection_expanded = !inflection_expanded" type="button" :aria-expanded="inflection_expanded" :aria-controls="inflection_expanded ? 'inflection-'+article_id : null">
              {{$t('article.show_inflection')}}<span v-if="!inflection_expanded"><BootstrapIcon icon="bi-plus-lg" right/></span><span v-if="inflection_expanded"><BootstrapIcon icon="bi-dash-lg" right/></span>
         </button>
-
         <div v-show="inflected && !welcome && (inflection_expanded || settings.inflectionExpanded)" class="collapse py-2 transition-all duration-300 ease-in-out" :id="'inflection-'+article_id" ref="inflection_table">
             <div class="inflection-container p-2">
                 <NuxtErrorBoundary @error="inflection_error">
-                <InflectionTable :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" mq="xs" :context="true" :key="$i18n.locale"/>
+                <InflectionTable :mq="store.dict == 'bm,nn' && store.view != 'article' ? 'xs' : 'lg'" :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :context="true" :key="$i18n.locale"/>
                 </NuxtErrorBoundary>
             </div>
         </div>

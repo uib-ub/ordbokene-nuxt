@@ -1,4 +1,5 @@
 <template>
+  <div >
   <Header/>
 <div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
 <NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
@@ -6,7 +7,7 @@
     <NuxtPage @click="menu_expanded=false" 
               v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict'), 'without_back_button': !store.searchUrl}"/>
 
-
+</div>
 <Footer/>
 </template>
 
@@ -24,6 +25,12 @@ useHead({
     }
 })
 
+
+if (process.client) {
+  document.addEventListener('click', () => {
+  store.show_autocomplete = false
+})
+}
 
 
 

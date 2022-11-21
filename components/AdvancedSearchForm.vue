@@ -120,7 +120,7 @@ watch(inflection_enabled, () => {
 
 
 const submitForm = async (item) => {
-  store.autocomplete = []
+  //store.autocomplete = []
   store.q = store.input
   mini_help.value = false
 

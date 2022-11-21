@@ -7,41 +7,40 @@ const route = useRoute()
 
 const input_element = ref('')
 const selected_option = ref(-1)
-const autocomplete_dropdown = ref()
-const autocomplete_item_1 = ref()
+const show_dropdown = ref(false);
 
 async function fetchAutocomplete(q) {
 
   q = q.trim()
     if (q.length == 0) {
-      store.autocomplete = [];
+      store.show_autocomplete = false;
       return
     }
-    let blank = specialSymbols(q) ? "advanced" : "empty"
+
+    const advanced = specialSymbols(q)
     const time = Date.now()
-    if (store.autocomplete[0]) {
-      if (store.autocomplete[0].time < time) {
-        store.autocomplete.splice(0,1, {q, time, type: blank})
-      }
+    if (advanced && (!store.autocomplete[0] || store.autocomplete[0].time < time)) {
+      store.autocomplete = [{q, time, type: "advanced"}]
     }
-    else {
-      store.autocomplete.push({q, time, type: blank})
-    }
+    
+
 
     // Intercept queries containing too many words or characters
     let words = q.split(/ |\|/)
     if (words.length > 20) {
-      store.autocomplete = [{q, time, type: blank}]
+      store.autocomplete = []
+      store.show_autocomplete = false;
       return
     }
     for (let i = 0; i < words.length; i++) {
       if (words[i].length > 40) {
-        store.autocomplete = [{q, time, type: blank}]
+        store.autocomplete = []
+        store.show_autocomplete = false;
         return
       }
     }
 
-    if (blank != "advanced") {
+    if (!advanced) {
 
       let response = ref([])
       let url = `${store.endpoint}api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=${store.advanced ? store.scope + (store.pos ? '&wc='+store.pos : '') : 'e'}`
@@ -63,12 +62,13 @@ async function fetchAutocomplete(q) {
           }
         }
 
-        if (autocomplete_suggestions.length && store.input.trim() == q && response.value.a.exact) {
+        if (autocomplete_suggestions.length && store.input.trim() == q) {
 
           store.autocomplete = autocomplete_suggestions
+          store.show_autocomplete = true;
         }
         else {
-          store.autocomplete = []
+          store.show_autocomplete = false
         }
 
 
@@ -126,7 +126,7 @@ const keys = (event) => {
   }
   else if (event.key == "Escape" || event.key == "Esc") {
     selected_option.value = -1
-    store.autocomplete = []
+    store.show_autocomplete = false
   }
   else if (event.key == "Home" && selected_option.value > -1) {
     selected_option.value = 0
@@ -165,7 +165,7 @@ const input_sync = (event) => {
 const dropdown_select = (q) => {
   console.log("DROPDOWN: Input from", store.input, "to", q)
   store.input= q
-  store.autocomplete = []
+  store.show_autocomplete = false
   emit('dropdown-submit')
   console.log("NEXT")
   input_element.value.select()
@@ -175,7 +175,7 @@ const dropdown_select = (q) => {
 
 const exit_input = event => {
   if (!(event.relatedTarget && event.relatedTarget.hasAttribute('data-dropdown-item'))) {
-    store.autocomplete = []
+    store.show_autocomplete = false
   }
 }
 
@@ -189,7 +189,8 @@ const test = (event) => {
 
 <template>
   <div class="search-container">
-  <div class="input-wrapper border-1 bg-canvas border-primary flex content-center justify-between  pr-2 lg:pr-4" v-bind="{'data-dropdown-open': store.autocomplete.length > 0}" aria-label="Søkefelt">
+    {{store.show_autocomplete}}
+  <div class="input-wrapper border-1 bg-canvas border-primary flex content-center justify-between  pr-2 lg:pr-4" v-bind="{'data-dropdown-open': store.show_autocomplete > 0}" aria-label="Søkefelt">
    <input class="input-element p-3 pl-6 lg:p-4 lg:px-8"
           :value="store.input"
           ref="input_element" 
@@ -201,7 +202,6 @@ const test = (event) => {
           placeholder="Search here"
           autocomplete="off"
           autocapitalize="off"
-          @blur="exit_input"
           @keydown="keys"
           :aria-expanded="store.autocomplete.length > 0" 
           :aria-controls="store.autocomplete.length > 0 ? 'autocomplete-dropdown' : null"/>
@@ -209,7 +209,7 @@ const test = (event) => {
           <button class="appended-button px-2 py-1" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
 
   </div>
-  <div class="dropdown-wrapper" v-show="store.autocomplete.length">
+  <div class="dropdown-wrapper" v-show="store.show_autocomplete">
    <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown">
     <li v-for="(item, idx) in store.autocomplete" 
         :key="idx" 
@@ -322,26 +322,7 @@ transform: translateX(-50%);
 }
 
 
-.combobox[data-headlessui-state=open].has-input .autocomplete-dropdown {
-
-    position: absolute;
-    width: 100%;
-    z-index: 1000;
-    left: 0;
-    border-radius: 0 0 2rem 2rem ;
-    border: solid 1px inherti;
-    @apply bg-white border-primary;
-    padding-bottom: 1.75rem;
-    padding-left: .5rem;
-    border-top: unset;    
-  }    
-
-
-.combobox[data-headlessui-state=open].has-input .input-wrapper {
-  border-radius: 1.75rem 1.75rem 0 0;
-  border-bottom: solid 1px white !important;
-}
-
+ 
 
 .combobox:focus-within .input-wrapper, .combobox:focus-within .autocomplete-dropdown {
   box-shadow: 2px 2px 1px var(--bs-primary);

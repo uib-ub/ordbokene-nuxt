@@ -16,7 +16,7 @@ const store = useStore()
 const route = useRoute()
 
 const submitForm = async (item) => {
-  store.autocomplete = [] 
+  store.show_autocomplete = false
   let url = '/' + store.dict
   
   if (store.input) {

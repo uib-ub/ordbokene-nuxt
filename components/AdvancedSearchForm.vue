@@ -67,7 +67,7 @@
 </div>
 <div v-if="!store.q || mini_help" class="secondary-page container advanced-info">
       <h2>{{$t('advanced_help')}}</h2>
-      <p>Bla bla bla</p>
+      <p>Enkelt søk viser kun treff på oppslagsord i resultatlisten, og vi prøver å gi deg det beste alternativet hvis det du søker etter ikke er et oppslagsord. I avansert søk kan du derimot vise treff på bøyde former og i definisjonene (fritekstsøk). Du kan også filtrere etter ordklasse, og trunkere og kombinere søkene med spesialtegn.</p>
 
       <AdvancedHelp/>
 

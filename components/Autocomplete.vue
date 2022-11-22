@@ -215,14 +215,14 @@ watch(() => store.q, () => {
           autocapitalize="off"
           @keydown="keys"
           :aria-expanded="store.autocomplete.length > 0" 
-          :aria-own="selected_option > 0 ? 'autocomplete-dropdown' : null"/>
+          :aria-owns="selected_option > 0 ? 'autocomplete-dropdown' : null"/>
           <button type="button" :title="$t('clear')" class="appended-button px-2 py-0" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
           <button class="appended-button px-2 py-1" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
 
   </div>
-  <div class="dropdown-wrapper" v-show="store.show_autocomplete">
-    <div class="sr-only" role="status">{{store.autocomplete.length}} søkeforslag i nedtrekksmenyen</div>
-   <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown" aria-live="polite">
+  <div class="dropdown-wrapper" v-if="store.show_autocomplete">
+    <div aria-live="polite">{{store.autocomplete.length}} søkeforslag på i nedtrekksmenyen</div>
+   <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown">
     <li v-for="(item, idx) in store.autocomplete" 
         :key="idx" 
         :aria-selected="idx == selected_option"

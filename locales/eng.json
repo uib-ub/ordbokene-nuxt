@@ -2,7 +2,7 @@
   "name": "English",
   "sub_title": "Bokmålsordboka and Nynorskordboka",
   "help": "Help",
-  "search_nav_hint": "You can choose a dictionary or advanced search by using the links in the menu above the search form.",
+  "maximum_autocomplete": "maximum number of suggestions",
   "advanced_help": "About advanced search",
   "advanced": "Advanced search",
   "show_articles": "Show articles",

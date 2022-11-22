@@ -222,7 +222,7 @@ watch(() => store.q, () => {
 
   </div>
   <div class="dropdown-wrapper" v-if="store.show_autocomplete">
-    <div :key="store.input" aria-live="polite">{{store.autocomplete.length}} søkeforslag i nedtrekksmenyen</div>
+    
    <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown">
     <li v-for="(item, idx) in store.autocomplete" 
         :key="idx" 
@@ -235,6 +235,7 @@ watch(() => store.q, () => {
         <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)"><span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span></div>
    </li>
   </ul>
+  <div class="font-semibold text-primary text-right px-8 pt-2" :key="store.input" aria-live="polite">{{store.autocomplete.length}} søkeforslag<span class="text-text font-normal" v-if="store.autocomplete.length == 20"> ({{$t('maximum_autocomplete')}})</span></div>
   </div>
   </div>
 
@@ -256,7 +257,7 @@ transform: translateX(-50%);
   z-index: 1000;
   left: 0;
   border-radius: 0 0 2rem 2rem ;
-  padding-bottom: 1.75rem;
+  padding-bottom: .75rem;
   padding-left: .5rem;
   border-left: 1px solid;
   border-right: 1px solid;

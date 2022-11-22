@@ -59,7 +59,8 @@
     "pos": "Part of speech",
     "collapse": "Collapse articles"
   },
-"all_pos": "All parts of speech",
+  "pos": "Part of speech",
+"all_pos": "all",
 "tags": {
   "NOUN": "noun",
   "VERB": "verb",

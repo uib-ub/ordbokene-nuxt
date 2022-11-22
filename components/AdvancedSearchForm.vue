@@ -30,10 +30,10 @@
     {{$t('options.fulltext')}}
 </FormCheckbox>
 </div>
+  <label for="pos-select">{{$t('pos')}}:</label>
   <div class="select-wrapper" v-bind:class="{not_null: store.pos}">
-
-  <select name="pos" class="bg-tertiary" @change="store.pos = $event.target.value">
-    <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="tag" :selected="store.pos == tag" v-bind:class="{selected: store.pos == tag}">{{tag ? $t("pos_tags_plural." + tag) : $t("all_pos")}}</option>
+  <select id="pos-select" name="pos" class="bg-tertiary" @change="store.pos = $event.target.value">
+    <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="tag" :selected="store.pos == tag" v-bind:class="{selected: store.pos == tag}">{{tag ? $t("tags." + tag) : $t("all_pos")}}</option>
   </select>
   </div>
 

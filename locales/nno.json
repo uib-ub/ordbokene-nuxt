@@ -65,7 +65,8 @@
         "pos": "Ordklasse",
         "collapse": "Komprimer artiklar"
     },
-    "all_pos": "Alle ordklasser",
+    "pos": "Ordklasse",
+    "all_pos": "alle",
     "tags": {
     "NOUN": "substantiv",
     "VERB": "verb",

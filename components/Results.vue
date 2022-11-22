@@ -5,10 +5,11 @@
   <span class="sr-only">Loading</span>
         </div>
     </div>
-    <div ref="results" tabindex="-1" v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta">
-    <div>
-    <div id="" aria-live="assertive" class="md:sr-only" v-if="articles.meta.bm">{{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.bm')}}</div>
-    <div id="" aria-live="assertive" class="md:sr-only" v-if="articles.meta.nn">{{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.nn')}}</div>
+    <div ref="results" tabindex="-1" v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta" >
+    <div aria-live="polite" class="md:sr-only">
+      <div class="sr-only" v-if="store.originalInput">Viser resultater for oppslagsordet <strong>{{$route.params.slug[0]}}.</strong></div>
+    <div class="result-announcement p-1" v-if="articles.meta.bm">{{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.bm')}}</div>
+    <div class="result-announcement p-1" v-if="articles.meta.nn">{{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.nn')}}</div>
     </div>
 
 
@@ -286,5 +287,7 @@ button[disabled] {
   color: theme('colors.gray.100');
   cursor: default;
 }
+
+
 
 </style>

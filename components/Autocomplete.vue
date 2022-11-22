@@ -198,7 +198,6 @@ watch(() => store.q, () => {
 <template>
   <div class="search-container">
   <div class="input-wrapper border-1 bg-canvas border-primary flex content-center justify-between  pr-2 lg:pr-4" v-bind="{'data-dropdown-open': store.show_autocomplete > 0}">
-  <div class="sr-only" id="header_info">{{$t('search_nav_hint')}}</div>
    <input class="input-element p-3 pl-6 lg:p-4 lg:px-8"
           :value="store.input"
           ref="input_element" 
@@ -211,7 +210,6 @@ watch(() => store.q, () => {
           enterkeyhint="search"
           :aria-label="$t('search_placeholder') + $t(`dicts_inline.${store.dict}`)"
           :placeholder="$t('search_placeholder') + $t(`dicts_inline.${store.dict}`)"
-          aria-describedby="header_info"
           autocomplete="off"
           autocapitalize="off"
           @keydown="keys"

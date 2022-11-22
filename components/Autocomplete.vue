@@ -221,7 +221,7 @@ watch(() => store.q, () => {
 
   </div>
   <div class="dropdown-wrapper" v-if="store.show_autocomplete">
-    <div aria-live="polite">{{store.autocomplete.length}} søkeforslag på i nedtrekksmenyen</div>
+    <div :key="store.input" aria-live="polite">{{store.autocomplete.length}} søkeforslag på i nedtrekksmenyen</div>
    <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown">
     <li v-for="(item, idx) in store.autocomplete" 
         :key="idx" 

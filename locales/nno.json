@@ -2,7 +2,7 @@
     "name": "Nynorsk",
     "sub_title": "Bokmålsordboka og Nynorskordboka",
     "help": "Hjelp til søk",
-    "autocomplete_suggestions": "søkeforslag",
+    "autocomplete_suggestions": "Søkjeforslag | søkjeforslag",
     "maximum_autocomplete": "maksimalt antall",
     "advanced_help": "Om avansert søk",
     "advanced": "Avansert søk",

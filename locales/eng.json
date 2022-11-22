@@ -2,7 +2,7 @@
   "name": "English",
   "sub_title": "Bokmålsordboka and Nynorskordboka",
   "help": "Help",
-  "autocomplete_suggestions": "search suggestions",
+  "autocomplete_suggestions": "Search suggestion | search suggestions",
   "maximum_autocomplete": "maximum number of suggestions",
   "advanced_help": "About advanced search",
   "advanced": "Advanced search",

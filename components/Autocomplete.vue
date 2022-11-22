@@ -229,7 +229,7 @@ watch(() => store.q, () => {
         :id="'autocomplete-item-'+idx"
         >
         <!-- button hidden from screen readers? -->
-        <button class="w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)"><span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span></button>
+        <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)"><span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span></div>
    </li>
   </ul>
   </div>
@@ -277,7 +277,7 @@ transform: translateX(-50%);
 }
 
 
-#autocomplete-dropdown button {
+#autocomplete-dropdown .dropdown-item {
   text-align: left;
   @apply p-2 mx-2;
 
@@ -287,17 +287,17 @@ transform: translateX(-50%);
 }
 }
 
-#autocomplete-dropdown li:not(:last-child) button {
+#autocomplete-dropdown li:not(:last-child) .dropdown-item {
   border-bottom: solid 1px;
   @apply border-gray-300;
 
 }
 
-#autocomplete-dropdown li[aria-selected=true] button {
+#autocomplete-dropdown li[aria-selected=true] .dropdown-item {
   @apply bg-gray-50;
 }
 
-#autocomplete-dropdown button:hover  {
+#autocomplete-dropdown .dropdown-item:hover  {
     @apply bg-gray-100;
 }
 

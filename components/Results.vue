@@ -164,10 +164,16 @@ onMounted(() => {
 
 const slice_results = () => {
   offset.value = page.value * per_page
-  let end_bm = offset.value < articles.value.articles.bm.length ? offset.value + per_page : articles.value.articles.bm.length
-  let end_nn = offset.value < articles.value.articles.nn.length ? offset.value + per_page : articles.value.articles.nn.length
-  bm_articles.value =  articles.value.articles.bm.slice(offset.value, end_bm)
-  nn_articles.value =  articles.value.articles.nn.slice(offset.value, end_nn)
+  if (articles.value.articles.bm) {
+    let end_bm = offset.value < articles.value.articles.bm.length ? offset.value + per_page : articles.value.articles.bm.length
+    bm_articles.value =  articles.value.articles.bm.slice(offset.value, end_bm)
+  }
+  if (articles.value.articles.nn) {
+    let end_nn = offset.value < articles.value.articles.nn.length ? offset.value + per_page : articles.value.articles.nn.length
+    nn_articles.value =  articles.value.articles.nn.slice(offset.value, end_nn)
+  }
+  
+  
   if (results.value) {
     results.value.focus()
     results.value.scrollIntoView();

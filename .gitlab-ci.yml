@@ -23,9 +23,9 @@ deploy-dev:
     - spraaksamlingene_01
   stage: deploy
   rules:
-  - if: '$CI_COMMIT_BRANCH !~ /^WIP(.?)*/'
-    when: always
-  - when: manual
+  - if: '$CI_COMMIT_MESSAGE =~ /^WIP(.?)*/'
+    when: manual
+  - when: on_success
 
   before_script:
   - eval $(ssh-agent -s)

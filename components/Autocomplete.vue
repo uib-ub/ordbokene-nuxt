@@ -215,7 +215,7 @@ watch(() => store.q, () => {
           autocapitalize="off"
           @keydown="keys"
           :aria-expanded="store.autocomplete.length > 0" 
-          :aria-controls="store.autocomplete.length > 0 ? 'autocomplete-dropdown' : null"/>
+          :aria-own="selected_option > 0 ? 'autocomplete-dropdown' : null"/>
           <button type="button" :title="$t('clear')" class="appended-button px-2 py-0" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
           <button class="appended-button px-2 py-1" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
 

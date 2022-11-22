@@ -1,11 +1,11 @@
 <template>
-    <div ref="results" tabindex="-1" v-bind:class="{'list': listView}">     
+    <div v-bind:class="{'list': listView}">     
     <div v-if="pending" class="flex align-items-center justifycenter py-5 my-5">
         <div class="spinner-border text-primary" role="status">
   <span class="sr-only">Loading</span>
         </div>
     </div>
-    <div v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta">
+    <div ref="results" tabindex="-1" v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta">
     <div>
     <div id="" aria-live="assertive" class="md:sr-only" v-if="articles.meta.bm">{{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.bm')}}</div>
     <div id="" aria-live="assertive" class="md:sr-only" v-if="articles.meta.nn">{{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.nn')}}</div>
@@ -18,7 +18,7 @@
           <span v-if="articles.meta.bm.total" aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span>
           <span v-else aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></div>
         <component :is="store.advanced && listView ? 'ol' : 'div'" class="article-column">
-          <component v-for="(article_id, idx) in store.advanced ? bm_articles : articles.articles.bm" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="article_id in store.advanced ? bm_articles : articles.articles.bm" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
               <Article :article_id="article_id" dict="bm"/>
             </NuxtErrorBoundary>
@@ -30,7 +30,7 @@
           <span v-if="articles.meta.nn.total" aria-hidden="true" class="result-count">  | {{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')}}</span>
           <span v-else aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
-          <component v-for="(article_id, idx) in store.advanced ? nn_articles : articles.articles.nn" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="article_id in store.advanced ? nn_articles : articles.articles.nn" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">
               <Article :article_id="article_id" dict="nn"/>
             </NuxtErrorBoundary>
@@ -47,7 +47,7 @@
           <span v-else class="result-count">  | {{$t('notifications.no_results')}}</span>
         </div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
-          <component v-for="(article_id, idx) in store.advanced ? bm_articles : articles.articles.bm" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="article_id in store.advanced ? bm_articles : articles.articles.bm" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
               <Article :article_id="article_id" dict="bm"/>
             </NuxtErrorBoundary>
@@ -223,6 +223,30 @@ const article_error = (error, article, dict) => {
     font-size: 1rem;
 }
 
+ol.article-column>li {
+  list-style: none;
+}
+
+
+
+.list-view-item>a {
+    margin-bottom: 0.6rem !important;
+    margin-top: 0.5rem !important;
+    margin-left: 1rem;
+    margin-right: 1rem !important;
+    text-overflow: ellipsis;
+    white-space: nowrap !important;
+    border: none !important;
+    color: red !important;
+}
+
+
+.list-view-item>a:hover {
+    background-color: red !important;
+}
+
+
+
 .list .article-column  {
     border-radius: 2rem;
     border: solid 1px rgba(0,0,0, .5);
@@ -235,17 +259,17 @@ const article_error = (error, article, dict) => {
     display: none;
 }
 
-.article-column>div>.list-view-item {
-  border-bottom: solid 1px rgba(0,0,0, .25);
+.article-column>li>.list-view-item {
+  border-bottom: solid 1px ;
 }
 
 
-.article-column>div:first-child .list-view-item {
+.article-column>li:first-child .list-view-item {
   border-top-left-radius: 1.5rem;
   border-top-right-radius: 1.5rem;
 }
 
-.article-column>div:last-child .list-view-item {
+.article-column>li:last-child .list-view-item {
   border-bottom: none;
   border-bottom-left-radius: 1.5rem;
   border-bottom-right-radius: 1.5rem;
@@ -253,7 +277,7 @@ const article_error = (error, article, dict) => {
 
 
 button[disabled] {
-  color: gray;
+  color: theme('colors.gray.100');
   cursor: default;
 }
 

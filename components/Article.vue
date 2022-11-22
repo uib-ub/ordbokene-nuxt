@@ -530,21 +530,6 @@ span.lemma-group {
 
 }
 
-a.result-list-item {
-    margin-bottom: 0.6rem;
-    margin-top: 0.5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    border: none !important;
-}
-
-
-a.result-list-item:hover {
-    background-color: rgba(0,0,0, .1);
-}
 
 
 

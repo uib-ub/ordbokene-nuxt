@@ -198,7 +198,7 @@ watch(() => store.q, () => {
 
 <template>
   <div class="search-container">
-  <div class="input-wrapper border-1 bg-canvas border-primary flex content-center justify-between  pr-2 lg:pr-4" v-bind="{'data-dropdown-open': store.show_autocomplete > 0}">
+  <div class="input-wrapper border-1 bg-canvas border-primary flex content-center justify-between  pr-2 lg:pr-4" v-bind="{'data-dropdown-open': store.show_autocomplete}">
    <input class="input-element p-3 pl-6 lg:p-4 lg:px-8"
           :value="store.input"
           id="input-element"
@@ -216,7 +216,7 @@ watch(() => store.q, () => {
           autocomplete="off"
           autocapitalize="off"
           @keydown="keys"
-          :aria-expanded="store.autocomplete.length > 0" 
+          :aria-expanded="store.show_autocomplete || 'false'" 
           :aria-owns="selected_option >= 0 ? 'autocomplete-dropdown' : null"/>
           <button aria-hidden="true" type="button" :title="$t('clear')" class="appended-button px-2 py-0" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
           <button class="appended-button px-2 py-1" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
@@ -225,14 +225,12 @@ watch(() => store.q, () => {
   <div class="dropdown-wrapper" v-if="store.show_autocomplete">
     
    <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown">
-    <li v-for="(item, idx) in store.autocomplete" 
+    <li v-for="(item, idx) in store.autocomplete"
         :key="idx" 
         :aria-selected="idx == selected_option"
-        
         role="option"
         tabindex="-1"
-        :id="'autocomplete-item-'+idx"
-        >
+        :id="'autocomplete-item-'+idx">
         <!-- button hidden from screen readers? -->
         <div :aria-live="store.autocomplete.length == 1? 'polite' : null" class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)">
           

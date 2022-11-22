@@ -1,5 +1,5 @@
 <template>
-    <div v-bind:class="{'list': listView}">     
+    <div ref="results" tabindex="-1" v-bind:class="{'list': listView}">     
     <div v-if="pending" class="flex align-items-center justifycenter py-5 my-5">
         <div class="spinner-border text-primary" role="status">
   <span class="sr-only">Loading</span>
@@ -106,10 +106,11 @@ const route = useRoute()
 
 const suggestions = ref()
 const error_message = ref()
-const per_page = 3
+const per_page = 10
 const page = ref((parseInt(route.query.page || "1") - 1))
 const pages = ref(0)
 const offset = ref(per_page * page)
+const results = ref()
 
 
 const bm_articles = ref([])
@@ -167,10 +168,10 @@ const slice_results = () => {
   let end_nn = offset.value < articles.value.articles.nn.length ? offset.value + per_page : articles.value.articles.nn.length
   bm_articles.value =  articles.value.articles.bm.slice(offset.value, end_bm)
   nn_articles.value =  articles.value.articles.nn.slice(offset.value, end_nn)
-
-  //console.log(articles.value.articles.bm[offset.value-1], articles.value.articles.bm.slice(offset.value, end_bm), articles.value.articles.bm[end_bm])
-  //console.log(articles.value.articles.nn[offset.value-1], articles.value.articles.nn.slice(offset.value, end_nn), articles.value.articles.nn[end_nn])
-  
+  if (results.value) {
+    results.value.focus()
+    results.value.scrollIntoView();
+  }
 }
 
 
@@ -190,8 +191,7 @@ watch(articles, (newArticles) => {
     if (store.advanced) {
       let offset = page.value * per_page
       console.log("OFFSET", offset)
-      //bm_articles.value = newArticles.articles.bm.length < max_articles.value ? newArticles.articles.bm : newArticles.articles.bm.slice(max_articles.value)
-      //nn_articles.value = newArticles.articles.nn.length < max_articles.value ? newArticles.articles.nn : newArticles.articles.nn.slice(max_articles.value)
+      slice_results()
     }
     
 

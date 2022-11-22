@@ -18,7 +18,7 @@
           <span v-if="articles.meta.bm.total" aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span>
           <span v-else aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></div>
         <component :is="store.advanced && listView ? 'ol' : 'div'" class="article-column">
-          <component v-for="(article_id, idx) in store.advanced ? bm_articles : articles.articles.bm" :key="idx" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="(article_id, idx) in store.advanced ? bm_articles : articles.articles.bm" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
               <Article :article_id="article_id" dict="bm"/>
             </NuxtErrorBoundary>
@@ -30,7 +30,7 @@
           <span v-if="articles.meta.nn.total" aria-hidden="true" class="result-count">  | {{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')}}</span>
           <span v-else aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
-          <component v-for="(article_id, idx) in store.advanced ? nn_articles : articles.articles.nn" :key="idx" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="(article_id, idx) in store.advanced ? nn_articles : articles.articles.nn" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">
               <Article :article_id="article_id" dict="nn"/>
             </NuxtErrorBoundary>
@@ -47,7 +47,7 @@
           <span v-else class="result-count">  | {{$t('notifications.no_results')}}</span>
         </div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
-          <component v-for="(article_id, idx) in store.advanced ? bm_articles : articles.articles.bm" :key="idx" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="(article_id, idx) in store.advanced ? bm_articles : articles.articles.bm" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
               <Article :article_id="article_id" dict="bm"/>
             </NuxtErrorBoundary>
@@ -163,8 +163,13 @@ onMounted(() => {
 
 const slice_results = () => {
   offset.value = page.value * per_page
-  console.log(offset.value)
-  console.log(articles.value.articles.bm.slice(offset.value, offset.value + per_page))
+  let end_bm = offset.value < articles.value.articles.bm.length ? offset.value + per_page : articles.value.articles.bm.length
+  let end_nn = offset.value < articles.value.articles.nn.length ? offset.value + per_page : articles.value.articles.nn.length
+  bm_articles.value =  articles.value.articles.bm.slice(offset.value, end_bm)
+  nn_articles.value =  articles.value.articles.nn.slice(offset.value, end_nn)
+
+  //console.log(articles.value.articles.bm[offset.value-1], articles.value.articles.bm.slice(offset.value, end_bm), articles.value.articles.bm[end_bm])
+  //console.log(articles.value.articles.nn[offset.value-1], articles.value.articles.nn.slice(offset.value, end_nn), articles.value.articles.nn[end_nn])
   
 }
 

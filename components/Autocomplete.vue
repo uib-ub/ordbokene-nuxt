@@ -7,6 +7,7 @@ const route = useRoute()
 
 const input_element = ref('')
 const selected_option = ref(-1)
+const top_option = ref()
 
 async function fetchAutocomplete(q) {
 
@@ -227,16 +228,26 @@ watch(() => store.q, () => {
     <li v-for="(item, idx) in store.autocomplete" 
         :key="idx" 
         :aria-selected="idx == selected_option"
+        
         role="option"
         tabindex="-1"
         :id="'autocomplete-item-'+idx"
         >
         <!-- button hidden from screen readers? -->
-        <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)"><span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span><span v-if="item.type == 'advanced' && !store.advanced" class="badge bg-primary">{{$t('advanced')}} <BootstrapIcon icon="bi-arrow-right" /></span></div>
+        <div :aria-live="store.autocomplete.length == 1? 'polite' : null" class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)">
+          
+          <span v-if="item.type == 'advanced' && !store.advanced" class=" bg-primary text-white p-1 rounded-1xl ml-3">{{$t('to_advanced')}} 
+            <BootstrapIcon icon="bi-arrow-right" />
+          </span>
+          <span v-else>
+            <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span>
+          </span>
+        </div>
    </li>
   </ul>
-  <div class="font-semibold text-primary text-right px-8 pt-2" :key="store.input" aria-live="polite">{{store.autocomplete.length}} {{$t('autocomplete_suggestions')}}<span class="text-text font-normal" v-if="store.autocomplete.length == 20"> ({{$t('maximum_autocomplete')}})</span></div>
-  </div>
+  <div v-if="store.autocomplete.length > 1" class="font-semibold text-primary text-right px-8 pt-2" :key="store.input" aria-live="polite">{{store.autocomplete.length}} {{$t('autocomplete_suggestions')}}<span class="text-text font-normal" v-if="store.autocomplete.length == 20"> ({{$t('maximum_autocomplete')}})</span></div>
+
+ </div>
   </div>
 
 

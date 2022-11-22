@@ -6,17 +6,17 @@
         </div>
     </div>
     <div ref="results" tabindex="-1" v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta" >
-    <div aria-live="polite" class="md:sr-only">
+    <div aria-live="polite" class="lg:sr-only">
       <div class="sr-only" v-if="store.originalInput">Viser resultater for oppslagsordet <strong>{{$route.params.slug[0]}}.</strong></div>
-    <div class="result-announcement p-1" v-if="articles.meta.bm">{{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.bm')}}</div>
-    <div class="result-announcement p-1" v-if="articles.meta.nn">{{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')+$t("in")+$t('dicts_inline.nn')}}</div>
+    <div class="result-announcement p-1" v-if="articles.meta.bm">{{$t('notifications.results', {count: articles.meta.bm.total})+$t("in")+$t('dicts_inline.bm')}}</div>
+    <div class="result-announcement p-1" v-if="articles.meta.nn">{{$t('notifications.results', {count: articles.meta.nn.total})+$t("in")+$t('dicts_inline.nn')}}</div>
     </div>
 
 
     <div class="gap-3 lg:gap-8 grid lg:grid-cols-2 mx-1" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
       <section class="lg:grid-cols-6" :aria-label="$t('dicts.bm')">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Bokmålsordboka</h2>
-          <span v-if="articles.meta.bm.total" aria-hidden="true" class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span>
+          <span v-if="articles.meta.bm.total" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.bm.total})}}</span>
           <span v-else aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></div>
         <component :is="store.advanced && listView ? 'ol' : 'div'" class="article-column">
           <component v-for="article_id in store.advanced ? bm_articles : articles.articles.bm" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
@@ -28,7 +28,7 @@
     </section>
       <section class="lg:grid-cols-6" :aria-label="$t('dicts.nn')">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Nynorskordboka</h2>
-          <span v-if="articles.meta.nn.total" aria-hidden="true" class="result-count">  | {{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')}}</span>
+          <span v-if="articles.meta.nn.total" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
           <span v-else aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
           <component v-for="article_id in store.advanced ? nn_articles : articles.articles.nn" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
@@ -44,8 +44,7 @@
     <div v-if="route.params.dict != 'bm,nn' && route.query.dict != 'bm,nn' ">
       <div v-if="(route.params.dict == 'bm' || route.query.dict == 'bm') && articles.meta.bm">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Bokmålsordboka</h2>
-          <span v-if="articles.meta.bm.total" class="result-count">  | {{articles.meta.bm.total}} {{$t(articles.meta.bm.total == 1? 'notifications.result' : 'notifications.results')}}</span>
-          <span v-else class="result-count">  | {{$t('notifications.no_results')}}</span>
+          <span class="result-count">  | {{$t('notifications.results', {count: articles.meta.bm.total})}}</span>
         </div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
           <component v-for="article_id in store.advanced ? bm_articles : articles.articles.bm" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
@@ -57,8 +56,7 @@
       </div>
       <div v-if="(route.params.dict == 'nn' || route.query.dict == 'nn' )  && articles.meta.nn">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Nynorskordboka</h2>
-          <span v-if="articles.meta.nn.total" class="result-count">  | {{articles.meta.nn.total}} {{$t(articles.meta.nn.total == 1? 'notifications.result' : 'notifications.results')}}</span>
-          <span v-else class="result-count">  | {{$t('notifications.no_results')}}</span>
+          <span class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
         </div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
           <component v-for="(article_id, idx) in store.advanced ? nn_articles : articles.articles.nn" :key="idx" :is="store.advanced && listView ? 'li' : 'div'">
@@ -83,7 +81,7 @@
   <div v-if="error_message">
     {{error_message}}
   </div>
-  <div v-if="error">
+  <div v-if="error" aria-live="">
     ERROR: {{error}}
   </div>
 

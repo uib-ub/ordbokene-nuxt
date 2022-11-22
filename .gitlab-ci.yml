@@ -24,7 +24,9 @@ deploy-dev:
   stage: deploy
   rules:
   - if: '$CI_COMMIT_BRANCH !~ /^WIP(.?)*/'
-    when: manual
+    when: always
+  - when: manual
+
   before_script:
   - eval $(ssh-agent -s)
   - echo "$NREC_DEV_KEY" | base64 --decode | ssh-add -

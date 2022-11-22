@@ -96,15 +96,6 @@ const download_ris = () => {
 
 <template>
 <client-only>
-  <div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="4000">
-    <div class="flex">
-      <div class="toast-body">{{$t('article.link_copied', 1, { locale: content_locale})}}</div>
-      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-  </div>
-  <div v-if="copy_popup">
-  <div class="position-absolute top-50 start-50 translate-middle"><span>{{$t('article.link_copied', 1, { locale: content_locale})}}</span></div>
-  </div>
 <div class="flex justify-around gap-3 mt-3 flex-wrap">
     <button class="btn-borderless" :id="'copy-link-'+article_id" v-if="showLinkCopy" @click="copy_link"><BootstrapIcon :icon="store.copied == 'copy-link-'+article_id ? 'bi-clipboard-check-fill' : 'bi-link'" left primary/> {{$t("article.copy_link", 1, { locale: content_locale})}}
     <span aria-live="assertive" class="sr-only" v-if="false && 'copy-citation-'+article_id == store.copied">{{$t('article.link_copied')}}</span></button>

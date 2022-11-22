@@ -201,6 +201,7 @@ watch(() => store.q, () => {
    <input class="input-element p-3 pl-6 lg:p-4 lg:px-8"
           :value="store.input"
           ref="input_element" 
+          type="search"
           @input="input_sync"
           role="combobox" 
           :aria-activedescendant="selected_option >= 0 ? 'autocomplete-item-'+selected_option : null"
@@ -220,6 +221,7 @@ watch(() => store.q, () => {
 
   </div>
   <div class="dropdown-wrapper" v-show="store.show_autocomplete">
+    <div class="sr-only" role="status">{{store.autocomplete.length}} søkeforslag i nedtrekksmenyen</div>
    <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown" aria-live="polite">
     <li v-for="(item, idx) in store.autocomplete" 
         :key="idx" 

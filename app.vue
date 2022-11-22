@@ -1,10 +1,11 @@
 <template>
   <Header/>
-<div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name) && store.searchUrl">
-<NuxtLink :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
+<div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name)">
+  <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
+<NuxtLink v-else to="/"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('home')}}</NuxtLink>
 </div>
     <NuxtPage @click="menu_expanded=false" 
-              v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict'), 'without_back_button': !store.searchUrl}"/>
+              v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
 <Footer/>
 </template>
 
@@ -154,10 +155,6 @@ section a, .secondary-page a  {
 .secondary-page {
   @apply bg-white mb-4 p-4 py-8 md:p-12 md:pt-10;
   
-  &.without_back_button {
-    margin-top: 1rem;
-  }
-
   ul {
     list-style: disc;
     margin-block-start: 1em;

@@ -13,8 +13,8 @@
       <button class="lg:hidden text-lg ml-auto  p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" 
               @keydown="escape_menu" 
               @click="menu_expanded = !menu_expanded">
-      
-      <div @keydown="escapeHtmlComment" class="hidden sm:inline">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/></button>
+      <div class="sr-only sm:inline sm:not-sr-only">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/>
+    </button>
       </div>
 
       <div class="nav-buttons flex-wrap lg:flex-row content-center lg:ml-auto  mr-1" v-bind:class="{hidden: !menu_expanded}">
@@ -37,9 +37,9 @@
           <BootstrapIcon icon="bi bi-globe pr-2"/>
           <label for="locale-select" class="sr-only">{{$t('settings.locale.title')}}</label>
           <select id="locale-select" class="bg-primary text-white" v-model="i18n.locale.value" @change="update_locale">
-            <option class="text-text bg-canvas" value="eng" :selected="i18n.locale.value=='eng' || null">English</option>
-            <option class="text-text bg-canvas" value="nob" :selected="i18n.locale.value=='nob' || null">Bokmål</option>
-            <option class="text-text bg-canvas" value="nno" :selected="i18n.locale.value=='nno' || null">Nynorsk</option>
+            <option class="text-text bg-canvas" value="eng">English</option>
+            <option class="text-text bg-canvas" value="nob">Bokmål</option>
+            <option class="text-text bg-canvas" value="nno">Nynorsk</option>
           </select> 
         </li>
       </ul>

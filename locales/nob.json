@@ -2,6 +2,7 @@
   "name": "Bokmål",
   "sub_title": "Bokmålsordboka og Nynorskordboka",
   "help": "Hjelp til søk",
+  "search_nav_hint": "Du kan velje ordbok eller avansert søk ved å bruke lenkjene i menyen over søkefeltet.",
   "advanced_help": "Om avansert søk",
   "advanced": "Avansert søk",
   "show_articles": "Vis artikler",
@@ -21,7 +22,7 @@
   "in": " i ",
   "and": " og ",
   "from": "fra",
-  "search_placeholder": "Søk her",
+  "search_placeholder": "Søk i ",
   "search": "Søk",
   "reset": "Nullstill",
   "clear": "Tøm",
@@ -117,7 +118,7 @@
   "settings": {
       "title": "Innstillinger",
       "inflection_no": "Vis bøyningskodene fra de trykte ordbøkene",
-      "inflection_expanded": "Vis alltid bøyningstabellene i fullstendige artikler",
+      "inflection_expanded": "Vis alltid bøyningstabellene",
       "inflection_table_context": "Vis kontekst for partisippformer i bøyningstabellene",
       "locale": {
         "title": "Språk" ,
@@ -147,7 +148,7 @@
                          "Les mer på informasjonssiden"]
               },
               {"title": "Hvor er bøyningskodene fra de trykte ordbøkene?", "text": "Du kan velge å vise bøyningskodene i innstillingene, som du finner nederst på siden og i menyen øverst til høyre på siden."},
-              {"title": "Kan jeg slippe å trykke «vis bøyning» og «vis artikkel»?", "text": "Ja, du kan endre dette i innstillingene, som du finner nederst på siden og i menyen øverst til høyre på siden. Velg «Vis alltid bøyningstabellene i fullstendige artikler» og «Vis bare fullstendige artikler» hvis du ønsker minst mulig klikking."}
+              {"title": "Kan jeg slippe å trykke «vis bøyning» og «vis artikkel»?", "text": "Ja, du kan endre dette i innstillingene, som du finner nederst på siden og i menyen øverst til høyre på siden. Velg «Vis alltid bøyningstabellene hvis du ønsker minst mulig klikking."}
         ]
       }
   },

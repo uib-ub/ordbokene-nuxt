@@ -2,6 +2,7 @@
     "name": "Nynorsk",
     "sub_title": "Bokmålsordboka og Nynorskordboka",
     "help": "Hjelp til søk",
+    "search_nav_hint": "Du kan velge ordbok eller avansert søk ved å bruke lenkene i menyen over søkefeltet.",
     "advanced_help": "Om avansert søk",
     "advanced": "Avansert søk",
     "show_articles": "Vis artikler",
@@ -21,7 +22,7 @@
     "in": " i ",
     "and": " og ",
     "from": "frå",
-    "search_placeholder": "Søk her",
+    "search_placeholder": "Søk i ",
     "search": "Søk",
     "reset": "Nullstill",
     "clear": "Tøm",
@@ -105,7 +106,7 @@
     "settings": {
         "title": "Innstillingar",
         "inflection_no": "Vis bøyingskodane frå dei trykte ordbøkene",
-        "inflection_expanded": "Vis alltid bøyingstabellane i fullstendige artiklar",
+        "inflection_expanded": "Vis alltid bøyingstabellane",
         "inflection_table_context": "Vis kontekst for partisippformer i bøyingstabellane",
         "locale": {
           "title": "Språk",
@@ -135,7 +136,7 @@
                            "Les meir på informasjonssida"]
                 },
                 {"title": "Kvar er bøyingskodane frå dei trykte ordbøkene?", "text": "Du kan hake av for «Vis bøyingskodane frå dei trykte ordbøkene» i innstillingane, som du finn nedst på sida og i menyen øvst til høgre på sida."},
-                {"title": "Kan eg sleppe å trykkje «vis bøying» og «vis artikkel»?", "text": "Ja, du kan endre dette i innstillingane, som du finn nedst på sida og i menyen øvst til høgre på sida. Hak av for «Vis alltid bøyingstabellane i fullstendige artiklar» og «Vis berre fullstendige artiklar» dersom du ønskjer minst mogleg klikking."}
+                {"title": "Kan eg sleppe å trykkje «vis bøying» og «vis artikkel»?", "text": "Ja, du kan endre dette i innstillingane, som du finn nedst på sida og i menyen øvst til høgre på sida. Hak av for «Vis alltid bøyingstabellane» dersom du ønskjer minst mogleg klikking."}
           ]
         }
     },

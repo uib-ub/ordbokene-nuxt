@@ -2,6 +2,7 @@
   "name": "English",
   "sub_title": "Bokmålsordboka and Nynorskordboka",
   "help": "Help",
+  "search_nav_hint": "You can choose a dictionary or advanced search by using the links in the menu above the search form.",
   "advanced_help": "About advanced search",
   "advanced": "Advanced search",
   "show_articles": "Show articles",
@@ -20,7 +21,7 @@
   "to_top": "Back to top",
   "home": "Home",
   "per_page": "Results per page: ",
-  "search_placeholder": "Search here",
+  "search_placeholder": "Search in ",
   "search": "Search",
   "reset": "Reset",
   "clear": "Clear",
@@ -99,7 +100,7 @@
   "settings": {
       "title": "Settings",
       "inflection_no": "Show inflection codes",
-      "inflection_expanded": "Always show inflection tables in expanded articles",
+      "inflection_expanded": "Always show inflection tables",
       "inflection_table_context": "Show context for participle forms in the inflection tables",
       "locale": {
         "title": "Locale" ,
@@ -133,7 +134,7 @@
                      "Read more in the About-page"]
           },
           {"title": "Where are the inflection codes from the printed dictionaries?", "text": "You can toggle this feature in settings, which is located at the bottom of the page and in the navigation menu."},
-          {"title": "Can I avoid having to click “show inflection” and “show article”?", "text": "Yes, you can change this in settings, which is located at the bottom of the page and in the navigation menu. Choose “Always show inflection tables in expanded articles” and “Show complete articles” if you want to reduce the number of clicks as much as possible."}
+          {"title": "Can I avoid having to click “show inflection” and “show article”?", "text": "Yes, you can change this in settings, which is located at the bottom of the page and in the navigation menu. Choose “Always show inflection tables” if you want to reduce the number of clicks to a minimum."}
     ]
   }
 },

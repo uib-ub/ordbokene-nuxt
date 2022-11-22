@@ -200,6 +200,7 @@ watch(() => store.q, () => {
   <div class="input-wrapper border-1 bg-canvas border-primary flex content-center justify-between  pr-2 lg:pr-4" v-bind="{'data-dropdown-open': store.show_autocomplete > 0}">
    <input class="input-element p-3 pl-6 lg:p-4 lg:px-8"
           :value="store.input"
+          id="input-element"
           ref="input_element" 
           type="search"
           @input="input_sync"
@@ -216,7 +217,7 @@ watch(() => store.q, () => {
           @keydown="keys"
           :aria-expanded="store.autocomplete.length > 0" 
           :aria-owns="selected_option >= 0 ? 'autocomplete-dropdown' : null"/>
-          <button type="button" :title="$t('clear')" class="appended-button px-2 py-0" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
+          <button aria-hidden="true" type="button" :title="$t('clear')" class="appended-button px-2 py-0" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
           <button class="appended-button px-2 py-1" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
 
   </div>
@@ -384,5 +385,8 @@ transform: translateX(-50%);
 }
 
 
+#input-element::-webkit-search-cancel-button{
+    @apply sr-only;
+}
 
 </style>

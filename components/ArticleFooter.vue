@@ -31,11 +31,11 @@ const create_link = () => {
     };
 
 const webShareApiSupported = computed(() => {
-  return navigator.share
+  return !process.client || navigator.share
 })
 
 const showLinkCopy = computed(() => {
-  return navigator.clipboard
+  return !process.client || navigator.clipboard
 })
 
 const shareViaWebShare = () => {

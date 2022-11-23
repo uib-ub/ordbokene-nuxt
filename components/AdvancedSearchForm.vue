@@ -38,7 +38,7 @@
 
 
 <div class="flex gap-2 ms-auto mt-auto justify-between md:justify-end">
-  <button :aria-label="$t('search')" class="bg-secondary-darken border-secondary text-white" type="reset" @click="reset"> <CustomIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
+  <button :aria-label="$t('search')" class="bg-gray-500 border-gray-600 text-white" type="reset" @click="reset"> <CustomIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
   <button :aria-label="$t('search')" class="bg-primary text-white border-primary-lighten" type="submit"> <CustomIcon icon="bi-search" left/>{{$t('search')}}</button>
 
 </div>
@@ -189,6 +189,11 @@ const submitForm = async (item) => {
   }
 
 
+button.bg-primary i, button.bg-gray-500 i {
+  @apply text-white
+
+}
+
 
 button.bg-primary:hover {
   @apply bg-primary-lighten;
@@ -196,14 +201,18 @@ button.bg-primary:hover {
 
 button.bg-primary:focus {
   @apply bg-primary-lighten2;
+
+  i {
+    @apply text-white
+  }
 }
 
-button.bg-secondary-darken:hover {
+button.bg-gray-500:hover {
   @apply bg-secondary;
 }
 
-button.bg-secondary-darken:focus {
-  @apply bg-secondary;
+button.bg-gray-500:focus {
+  @apply bg-secondary-darken;
 }
 
  

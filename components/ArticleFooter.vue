@@ -97,7 +97,7 @@ const download_ris = () => {
 <template>
 <client-only>
 <div class="flex justify-around gap-3 mt-3 flex-wrap">
-    <button class="btn-borderless" :id="'copy-link-'+article_id" v-if="showLinkCopy" @click="copy_link"><CustomIcon :icon="store.copied == 'copy-link-'+article_id ? 'bi-clipboard-check-fill' : 'bi-link'" left/> {{$t("article.copy_link", 1, { locale: content_locale})}}
+    <button class="btn-borderless" :id="'copy-link-'+article_id" v-if="showLinkCopy" @click="copy_link"><CustomIcon :icon="store.copied == 'copy-link-'+article_id ? 'bi-clipboard-check-fill' : 'bi-clipboard'" left/> {{$t("article.copy_link", 1, { locale: content_locale})}}
     <span aria-live="assertive" class="sr-only" v-if="'copy-citation-'+article_id == store.copied">{{$t('article.link_copied')}}</span></button>
     <button class="btn-borderless" v-if="webShareApiSupported" @click="shareViaWebShare"><CustomIcon icon="bi-share-fill" left/> {{$t("article.share", 1, { locale: content_locale})}}</button>
     <button class="btn-borderless" type="button" :aria-expanded="cite_expanded" :aria-controls="cite_expanded?  'cite-'+article_id : null" @click="cite_expanded = !cite_expanded">

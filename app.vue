@@ -283,13 +283,20 @@ ol.sub_definitions {
 
 button {
   @apply px-4 py-1 rounded-4xl border-1 font-semibold;
-}
-
-button.btn-borderless {
   i {
     @apply text-primary;
   }
 }
+
+button:hover {
+  @apply bg-gray-50;
+}
+
+button:focus {
+  @apply bg-gray-100;
+}
+
+
 
 button.btn-primary {
   @apply  border-primary;
@@ -297,12 +304,10 @@ button.btn-primary {
 }
 
 
-button:focus {
-  @apply bg-gray-100;
-}
+
 
 button[aria-expanded=true] {
-    @apply bg-primary text-white;
+    @apply bg-primary-lighten text-white;
     box-shadow: 2px 2px 1px theme('colors.gray.400');
 
     i {

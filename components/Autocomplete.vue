@@ -218,8 +218,8 @@ watch(() => store.q, () => {
           @keydown="keys"
           :aria-expanded="store.show_autocomplete || 'false'" 
           :aria-owns="selected_option >= 0 ? 'autocomplete-dropdown' : null"/>
-          <button aria-hidden="true" type="button" :title="$t('clear')" class="appended-button px-2 py-0" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><CustomIcon icon="bi-x-lg"/></button>
-          <button class="appended-button px-2 py-1" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"> <CustomIcon icon="bi-search"/></button>
+          <button aria-hidden="true" type="button" :title="$t('clear')" class="appended-button" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><CustomIcon icon="bi-x-lg"/></button>
+          <button class="appended-button" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"> <CustomIcon icon="bi-search"/></button>
 
   </div>
   <div class="dropdown-wrapper" v-if="store.show_autocomplete">
@@ -375,21 +375,20 @@ transform: translateX(-50%);
 
 .appended-button {
   font-size: 1.25rem;
-  @apply text-primary;
+  @apply text-primary my-1 mr-[-.5rem] py-2 px-3;
   border: none;
   border-radius: 2rem; 
   background: unset;
-  &:hover {
-    background-color: rgba(0,0,0,.25);
-  }
-  &:active {
-    background-color: rgba(0,0,0,.5);
+  
+  
+  
+  &:hover, &:active {
+    @apply bg-gray-200;
   }
 }
 
 .advanced-search .appended-button  {
   font-size: 1.25rem;
-  margin-right: .34rem;
 }
 
 

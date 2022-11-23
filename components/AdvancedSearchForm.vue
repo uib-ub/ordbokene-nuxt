@@ -4,19 +4,9 @@
 
   <div class="mb-3 p-3 md:pb-5 px-4 md:px-5 advanced-search w-full flex gap-4 flex-wrap" >
     <div class="md:p-2 flex gap-4 md:gap-6 lg:gap-10 flex-wrap">
-
-    <fieldset v-if="false" class="flex flex-row gap-3 flex-wrap">
-    <legend class="sr-only">Ordbok</legend>
-    <div v-for="(item, idx) in dicts" :key="idx">
-      <input type="radio" :id="'dixt-radio-'+idx" :value="item" name="dict" v-model="store.dict"/>
-      <label :for="'dixt-radio-'+idx">{{$t(`dicts.${item}`)}}</label>
-    </div>
-  </fieldset>
-
-
   <fieldset class="flex flex-row gap-3 flex-wrap">
   <legend class="sr-only">Ordbok</legend>
-    <FormRadio v-for="(item, idx) in dicts" :key="idx" v-model="store.dict" :value="item" name="dict" :labelId="'dict-radio-'+idx">
+    <FormRadio v-for="(item, idx) in dicts" :key="store.dict + idx" :model="store.dict || 'bm,nn'" @change="dict_radio" :value="item" name="dict" :labelId="'dict-radio-'+idx">
       {{$t(`dicts.${item}`)}}
     </FormRadio>
   </fieldset>
@@ -86,13 +76,17 @@ const store = useStore()
 const route = useRoute()
 
 const dicts = ['bm,nn', 'bm', 'nn']
-
 const pos_tags = ['', 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCONJ', 'SCONJ', 'INTJ']
 
 const fulltext_enabled = ref(store.scope.includes('f'))
 const inflection_enabled = ref(store.scope.includes('i'))
 
 const mini_help = ref(store.q == "")
+
+const dict_radio = (value) => {
+  store.dict = value
+
+}
 
 const reset = () => {
   store.input = ""

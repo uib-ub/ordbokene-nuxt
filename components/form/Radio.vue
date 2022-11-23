@@ -1,6 +1,6 @@
 <template>
     <div>
-      <input  class="sr-only" type="radio" :id="props.labelId" :name="props.name" :value="props.value" v-model="model">
+      <input  class="sr-only" type="radio" :id="labelId" :name="name" :checked="props.value==props.model" :value="props.value" @change="change">
       <label :for="props.labelId">
         <slot></slot>
       </label>
@@ -10,23 +10,22 @@
     
     <script setup lang="ts">
     
-    const emit= defineEmits(['update:modelValue'])
     
     const props = defineProps({
         labelId: String,
         name: String,
-        value: String
+        value: String,
+        model: String
     })
+
+    const emit = defineEmits(['change'])
     
-    const model = computed({
-        get() {
-            return props.value
-        },
-        set(val) {
-            emit('update:modelValue', val)
-        }
-    })
-    
+
+    const change = (event) => {
+        console.log(event)
+        emit('change', props.value)
+    }
+
     
     </script>
     

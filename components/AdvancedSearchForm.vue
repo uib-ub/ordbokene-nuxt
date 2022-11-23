@@ -189,17 +189,17 @@ const submitForm = async (item) => {
   }
 
 
-button.btn-primary i, button.btn-secondary i {
+.btn-primary i, button.btn-secondary i {
   @apply text-white
 
 }
 
 
-button.btn-primary:hover {
+.btn-primary:hover {
   @apply bg-primary-lighten;
 }
 
-button.btn-primary:focus {
+.btn-primary:focus {
   @apply bg-primary-lighten2;
 
   i {
@@ -207,11 +207,11 @@ button.btn-primary:focus {
   }
 }
 
-button.btb-secondary:hover {
+.btn-secondary:hover {
   @apply bg-secondary;
 }
 
-button.btn-secondary:focus {
+.btn-secondary:focus {
   @apply bg-secondary-darken;
 }
 

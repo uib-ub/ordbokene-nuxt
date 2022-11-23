@@ -230,7 +230,6 @@ watch(() => store.q, () => {
         role="option"
         tabindex="-1"
         :id="'autocomplete-item-'+idx">
-        <!-- button hidden from screen readers? -->
         <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)">
           <span v-if="item.type == 'advanced' && !store.advanced" aria-live="polite" class=" bg-primary text-white p-1 rounded-1xl ml-3">{{$t('to_advanced')}} 
             <BootstrapIcon icon="bi-arrow-right" />
@@ -242,7 +241,7 @@ watch(() => store.q, () => {
         </div>
    </li>
   </ul>
-  <div v-if="store.autocomplete.length > 1" class="font-normal text-primary text-right px-8 pt-2" :key="store.input" aria-live="polite">
+  <div v-if="store.autocomplete.length > 1" class="font-normal text-primary text-right px-6 pt-2" :key="store.input" aria-live="polite">
     {{store.autocomplete.length}} {{$t('autocomplete_suggestions', 0)}}<span class="text-gray-600" v-if="store.autocomplete.length == 20"> ({{$t('maximum_autocomplete')}})</span></div>
  </div>
   </div>

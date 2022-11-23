@@ -122,8 +122,6 @@ const submitForm = async (item) => {
   if (store.pos) {
     query.pos = store.pos
   }
-
-
   return navigateTo({query})
 }
 

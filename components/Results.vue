@@ -19,7 +19,7 @@
           <span v-if="articles.meta.bm.total" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.bm.total})}}</span>
           <span v-else aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></div>
         <component :is="store.advanced && listView ? 'ol' : 'div'" class="article-column">
-          <component v-for="article_id in store.advanced ? bm_articles : articles.articles.bm" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="article_id in store.advanced ? bm_articles : articles.articles.bm" :key="article_id + page" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
               <Article :article_id="article_id" dict="bm"/>
             </NuxtErrorBoundary>
@@ -31,7 +31,7 @@
           <span v-if="articles.meta.nn.total" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
           <span v-else aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
-          <component v-for="article_id in store.advanced ? nn_articles : articles.articles.nn" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="article_id in store.advanced ? nn_articles : articles.articles.nn" :key="article_id  + page" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">
               <Article :article_id="article_id" dict="nn"/>
             </NuxtErrorBoundary>
@@ -47,7 +47,7 @@
           <span class="result-count">  | {{$t('notifications.results', {count: articles.meta.bm.total})}}</span>
         </div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
-          <component v-for="article_id in store.advanced ? bm_articles : articles.articles.bm" :key="article_id" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="article_id in store.advanced ? bm_articles : articles.articles.bm" :key="article_id + page" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
               <Article :article_id="article_id" dict="bm"/>
             </NuxtErrorBoundary>
@@ -59,7 +59,7 @@
           <span class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
         </div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
-          <component v-for="(article_id, idx) in store.advanced ? nn_articles : articles.articles.nn" :key="idx" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="(article_id, idx) in store.advanced ? nn_articles : articles.articles.nn" :key="article_id + page" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">
               <Article :article_id="article_id" dict="nn"/>
             </NuxtErrorBoundary>
@@ -69,13 +69,14 @@
       
     </div>
     <div v-if="store.advanced && pages > 1" class="p-8 flex flex-wrap justify-center flex-col flex sm:flex-row gap-4 content-center align-middle">
-    <button :disabled="page == 0" @click="page -= 1" class="bg-primary text-white rounded-4xl p-3 px-8">
+    <button :disabled="page == 1" @click="change_page(-1)" class="bg-primary text-white rounded-4xl p-3 px-8">
       <BootstrapIcon icon="bi-chevron-left" left/>forrige side
     </button>
-    <div class="align-middle text-center mx-8">Side {{page + 1}} av {{pages}}</div>
-    <button :disabled="page == pages-1" @click="page += 1" class="bg-primary text-white rounded-4xl p-3 px-8">
+    <div class="align-middle text-center mx-8">Side {{page}} av {{pages}}</div>
+    <button :disabled="page == pages" @click="change_page(1)" class="bg-primary text-white rounded-4xl p-3 px-8">
       neste side<BootstrapIcon icon="bi-chevron-right" right/>
     </button>
+    {{page}}
     </div>
   </div>
   <div v-if="error_message">
@@ -102,11 +103,12 @@ import {useSettingsStore } from '~/stores/settingsStore'
 const settings = useSettingsStore()
 const store = useStore()
 const route = useRoute()
+const router = useRouter()
 
 const suggestions = ref()
 const error_message = ref()
 const per_page = 10
-const page = ref((parseInt(route.query.page || "1") - 1))
+const page = ref(parseInt(route.query.page) || 1)
 const pages = ref(0)
 const offset = ref(per_page * page)
 const results = ref()
@@ -150,9 +152,17 @@ const { pending, error, refresh, data: articles } = await useAsyncData("articles
 
 
 watch(() => store.searchUrl, () => {
-  page.value = 0
-  if (store.advanced && page.value== 0) {
-    refresh()
+  if (store.advanced) {
+    if (route.query.page) {
+      slice_results()
+      console.log("UPDATING", route.query.page)
+      
+    }
+    else {
+      refresh()
+
+    }
+    
   }
 })
 
@@ -162,15 +172,19 @@ onMounted(() => {
 
 
 const slice_results = () => {
-  offset.value = page.value * per_page
+  offset.value = (page.value-1) * per_page
   if (articles.value.articles.bm) {
     let end_bm = offset.value < articles.value.articles.bm.length ? offset.value + per_page : articles.value.articles.bm.length
+    console.log(offset.value, end_bm)
     bm_articles.value =  articles.value.articles.bm.slice(offset.value, end_bm)
   }
   if (articles.value.articles.nn) {
     let end_nn = offset.value < articles.value.articles.nn.length ? offset.value + per_page : articles.value.articles.nn.length
+    console.log(offset.value, end_nn)
     nn_articles.value =  articles.value.articles.nn.slice(offset.value, end_nn)
   }
+
+  console.log(nn_articles.value)
   
   
   if (results.value) {
@@ -180,7 +194,8 @@ const slice_results = () => {
 }
 
 
-watch(() => page.value, () => {
+watch(() => route.query.page, () => {
+  page.value = route.query.page
   slice_results()
 
 
@@ -194,7 +209,7 @@ watch(articles, (newArticles) => {
     pages.value = Math.ceil(Math.max(total_bm, total_nn) / per_page)
     console.log("PAGES", pages)
     if (store.advanced) {
-      let offset = page.value * per_page
+      let offset = (page.value-1) * per_page
       console.log("OFFSET", offset)
       slice_results()
     }
@@ -219,6 +234,10 @@ const listView = computed(() => {
 const article_error = (error, article, dict) => {
   console.log("ARTICLE_ERROR", article, dict)
   console.log(error)
+}
+
+const change_page = async (change) => {
+  navigateTo({query: {...route.query, ...{page: parseInt(page.value) + change}}})
 }
 
 </script>

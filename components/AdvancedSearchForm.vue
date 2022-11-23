@@ -118,11 +118,13 @@ const submitForm = async (item) => {
   //store.autocomplete = []
   store.q = store.input
   mini_help.value = false
+  let query = {q: store.input, dict: store.dict, scope: store.scope}
+  if (store.pos) {
+    query.pos = store.pos
+  }
 
 
-  let url = `/search?q=${store.input}&dict=${store.dict}&scope=${store.scope}`
-  if (store.pos) url += "&pos=" + store.pos
-  return navigateTo(url)
+  return navigateTo({query})
 }
 
 </script>

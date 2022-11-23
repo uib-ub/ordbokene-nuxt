@@ -242,8 +242,8 @@ watch(() => store.q, () => {
         </div>
    </li>
   </ul>
-  <div v-if="store.autocomplete.length > 1" class="font-semibold text-primary text-right px-8 pt-2" :key="store.input" aria-live="polite">
-    {{store.autocomplete.length}} {{$t('autocomplete_suggestions', 0)}}<span class="text-text font-normal" v-if="store.autocomplete.length == 20"> ({{$t('maximum_autocomplete')}})</span></div>
+  <div v-if="store.autocomplete.length > 1" class="font-normal text-primary text-right px-8 pt-2" :key="store.input" aria-live="polite">
+    {{store.autocomplete.length}} {{$t('autocomplete_suggestions', 0)}}<span class="text-gray-600" v-if="store.autocomplete.length == 20"> ({{$t('maximum_autocomplete')}})</span></div>
  </div>
   </div>
 

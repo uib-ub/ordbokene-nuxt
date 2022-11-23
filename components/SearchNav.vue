@@ -2,7 +2,7 @@
     <nav :aria-label="$t('label.dict_nav')">
       <div class="h-full md:hidden w-full">
           <button @click="search_nav_expanded = ! search_nav_expanded" class="w-full p-2 px-4 bg-primary-lighten content-left text-white" type="button" :aria-controls="search_nav_expanded ? 'searchNavContent' : null" :aria-expanded="search_nav_expanded">
-            <BootstrapIcon :icon="search_nav_expanded ? 'bi-chevron-up' : 'bi-chevron-down'" left/>{{$t(advanced ? 'advanced' : `dicts.${store.dict}`)}}
+            <CustomIcon :icon="search_nav_expanded ? 'bi-chevron-up' : 'bi-chevron-down'" left/>{{$t(advanced ? 'advanced' : `dicts.${store.dict}`)}}
     </button>
       </div>
   <ul id="searchNavContent" class="md:flex" v-bind:class="{hidden: !search_nav_expanded}">

@@ -13,7 +13,7 @@
       <button class="lg:hidden text-lg ml-auto  p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" 
               @keydown="escape_menu" 
               @click="menu_expanded = !menu_expanded">
-      <div class="sr-only sm:inline sm:not-sr-only">{{$t('menu.title')}}</div><BootstrapIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/>
+      <div class="sr-only sm:inline sm:not-sr-only">{{$t('menu.title')}}</div><CustomIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/>
     </button>
       </div>
 
@@ -34,7 +34,7 @@
           <NuxtLink @click="menu_expanded=false" class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
         <li class="relative nav-item">
-          <BootstrapIcon icon="bi bi-globe pr-2"/>
+          <CustomIcon icon="bi bi-globe pr-2"/>
           <label for="locale-select" class="sr-only">{{$t('settings.locale.title')}}</label>
           <select id="locale-select" class="bg-primary text-white" v-model="i18n.locale.value" @change="update_locale">
             <option class="text-text bg-canvas" value="eng">English</option>

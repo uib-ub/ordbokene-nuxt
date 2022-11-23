@@ -46,14 +46,14 @@
           <h4>For iPhone / iOS</h4>
           <ul>
             <li>Open your browser and type ordbokene.no or ordbøkene.no.</li>
-            <li>From the front page, select the share icon <BootstrapIcon icon="bi-box-arrow-up"/> at the bottom of the page.</li>
-            <li>From the double row of sub-options, select the icon "Add to Home Screen" <BootstrapIcon icon="bi-plus-square-fill" />. You may need to drag the row from the right to get to the icon.</li>
+            <li>From the front page, select the share icon <CustomIcon icon="bi-box-arrow-up"/> at the bottom of the page.</li>
+            <li>From the double row of sub-options, select the icon "Add to Home Screen" <CustomIcon icon="bi-plus-square-fill" />. You may need to drag the row from the right to get to the icon.</li>
           </ul>
           <p>The dictionaries icon <img class="ordbokene-icon" src="/favicon.ico" aria-hidden="true"/> is now on your home screen, and you can access the dictionary page directly by clicking on it.</p>
           <h4>For Android</h4>
           <ul>
             <li>Open the browser and type ordbokene.no or ordbøkene.no.</li>
-            <li>From the front page, select the icon with the three vertical dots in the upper right corner: <BootstrapIcon icon="bi-three-dots-vertical" /></li>
+            <li>From the front page, select the icon with the three vertical dots in the upper right corner: <CustomIcon icon="bi-three-dots-vertical" /></li>
             <li>A list of options appears. Select "Add to home page", a little down the list.</li>
             <li>A new window appears asking you to add ordbøkene.no to your home screen. Click "Add".</li>
           </ul>
@@ -223,14 +223,14 @@
           <h4>For iPhone/iOs</h4>
           <ul>
             <li>Opne nettlesaren og skriv inn enten ordbokene.no eller ordbøkene.no.</li>
-            <li>Når du er inne på forsida, vel du ikonet nedst på sida for å dele:  <BootstrapIcon icon="bi-box-arrow-up"/>.</li>
-            <li>Det kjem opp delealternativ i to rader. I den nedste rada vel du «Legg til på Heim-skjerm» med ikonet <BootstrapIcon icon="bi-plus-square-fill" /> Det kan hende du må drage rada frå høgre for å kome til ikonet.</li>
+            <li>Når du er inne på forsida, vel du ikonet nedst på sida for å dele:  <CustomIcon icon="bi-box-arrow-up"/>.</li>
+            <li>Det kjem opp delealternativ i to rader. I den nedste rada vel du «Legg til på Heim-skjerm» med ikonet <CustomIcon icon="bi-plus-square-fill" /> Det kan hende du må drage rada frå høgre for å kome til ikonet.</li>
           </ul>
           <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico"  aria-hidden="true"/> ligg no på heim-skjermen din, og du kjem direkte inn på ordboksida ved å klikke på det.</p>
           <h4>For Android</h4>
           <ul>
             <li>Opne nettlesaren og skriv inn enten ordbokene.no eller ordbøkene.no.</li>
-            <li>Når du er inne på forsida, vel du ikonet med dei tre loddrette prikkane i øvre høgre hjørnet:  <BootstrapIcon icon="bi-three-dots-vertical" />.</li>
+            <li>Når du er inne på forsida, vel du ikonet med dei tre loddrette prikkane i øvre høgre hjørnet:  <CustomIcon icon="bi-three-dots-vertical" />.</li>
             <li>Det kjem då fram ei liste med valalternativ, og du vel «Legg til på startsida», eit stykke nede på lista.</li>
             <li>Det dukkar opp eit vindauge som føreslår at du legg til Ordbøkene på startsida. Klikk på valet «Legg til».</li>
           </ul>
@@ -768,14 +768,14 @@
           <h4>For iPhone/iOs:</h4>
           <ul>
             <li>Åpne nettleseren og skriv inn enten ordbokene.no eller ordbøkene.no.</li>
-            <li>Når du er inne på forsiden, velger du ikonet nederst på siden for å dele:  <BootstrapIcon icon="bi-box-arrow-up" />.</li>
-            <li>Det kommer opp delealternativer i to rader. I den nederste raden velger du «Legg til på Hjem-skjerm» med ikonet <BootstrapIcon icon="bi-plus-square-fill" /> . Det kan hende du må dra raden fra høyre for å komme til ikonet.</li>
+            <li>Når du er inne på forsiden, velger du ikonet nederst på siden for å dele:  <CustomIcon icon="bi-box-arrow-up" />.</li>
+            <li>Det kommer opp delealternativer i to rader. I den nederste raden velger du «Legg til på Hjem-skjerm» med ikonet <CustomIcon icon="bi-plus-square-fill" /> . Det kan hende du må dra raden fra høyre for å komme til ikonet.</li>
           </ul>
           <p>Ordbøkene-ikonet <img class="ordbokene-icon" src="/favicon.ico"  aria-hidden="true"/> ligger nå på hjem-skjermen din, og du kommer direkte inn på ordboksiden ved å klikke på det.</p>
           <h4>For Android:</h4>
           <ul>
             <li>Åpne nettleseren og skriv inn enten ordbokene.no eller ordbøkene.no.</li>
-            <li>Når du er inne på forsiden, velger du ikonet med de tre loddrette prikkene i øvre høyre hjørnet: <BootstrapIcon icon="bi-three-dots-vertical" />.</li>
+            <li>Når du er inne på forsiden, velger du ikonet med de tre loddrette prikkene i øvre høyre hjørnet: <CustomIcon icon="bi-three-dots-vertical" />.</li>
             <li>Det kommer da opp en liste med valgalternativer, og du velger «Legg til på startsiden», et stykke nede på listen.</li>
             <li>Det dukker opp et vindu som foreslår at du legger til ordbøkene.no på startsiden. Klikk på valget «Legg til».</li>
           </ul>

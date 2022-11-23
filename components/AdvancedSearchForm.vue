@@ -6,19 +6,19 @@
     <div class="md:p-2 flex gap-4 md:gap-6 lg:gap-10 flex-wrap">
   <fieldset class="flex flex-row gap-3 flex-wrap">
   <legend class="sr-only">Ordbok</legend>
-    <FormRadio v-for="(item, idx) in dicts" :key="store.dict + idx" :model="store.dict || 'bm,nn'" @change="dict_radio" :value="item" name="dict" :labelId="'dict-radio-'+idx">
+    <CustomRadio v-for="(item, idx) in dicts" :key="store.dict + idx" :model="store.dict || 'bm,nn'" @change="dict_radio" :value="item" name="dict" :labelId="'dict-radio-'+idx">
       {{$t(`dicts.${item}`)}}
-    </FormRadio>
+    </CustomRadio>
   </fieldset>
 
 
 <div class="flex gap-3 flex-wrap">
-<FormCheckbox labelId="inflectedCheckbox" :checked="inflection_enabled" v-model="inflection_enabled">
+<CustomCheckbox labelId="inflectedCheckbox" :checked="inflection_enabled" v-model="inflection_enabled">
     {{$t('options.inflected')}}
-</FormCheckbox>
-<FormCheckbox labelId="fulltextCheckbox" :checked="fulltext_enabled" v-model="fulltext_enabled">
+</CustomCheckbox>
+<CustomCheckbox labelId="fulltextCheckbox" :checked="fulltext_enabled" v-model="fulltext_enabled">
     {{$t('options.fulltext')}}
-</FormCheckbox>
+</CustomCheckbox>
 </div>
   <label for="pos-select">{{$t('pos')}}:</label>
   <div class="select-wrapper" v-bind:class="{not_null: store.pos}">
@@ -38,19 +38,19 @@
 
 
 <div class="flex gap-2 ms-auto mt-auto justify-between md:justify-end">
-  <button :aria-label="$t('search')" class="btn-secondary" type="reset" @click="reset"> <BootstrapIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
-  <button :aria-label="$t('search')" class="btn-primary" type="submit"> <BootstrapIcon icon="bi-search" left/>{{$t('search')}}</button>
+  <button :aria-label="$t('search')" class="bg-secondary-darken border-secondary text-white" type="reset" @click="reset"> <CustomIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
+  <button :aria-label="$t('search')" class="bg-primary text-white border-primary-lighten" type="submit"> <CustomIcon icon="bi-search" left/>{{$t('search')}}</button>
 
 </div>
 </div>
   </div>
 </form>
 <div v-if="store.q" class="flex mb-2 flex-wrap gap-2">
-  <button class="btn-light me-auto" v-if="store.q" @click="mini_help = !mini_help"><BootstrapIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
+  <button class="btn btn-light me-auto" v-if="store.q" @click="mini_help = !mini_help"><CustomIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
 
 
-  <button v-if="settings.listView" @click="settings.listView = false" class="btn-light" v-bind:class="{active: !settings.listView}"><BootstrapIcon icon="bi-file-text" left/>{{$t('show_articles')}}</button>
-  <button v-else @click="settings.listView = true" class="btn-light" v-bind:class="{active: settings.listView}"><BootstrapIcon icon="bi-list" left/>{{$t(store.dict=='bm,nn'? 'show_lists' : 'show_list')}}</button>
+  <button v-if="settings.listView" @click="settings.listView = false" class="btn btn-light" v-bind:class="{active: !settings.listView}"><CustomIcon icon="bi-file-text" left/>{{$t('show_articles')}}</button>
+  <button v-else @click="settings.listView = true" class="btn btn-light" v-bind:class="{active: settings.listView}"><CustomIcon icon="bi-list" left/>{{$t(store.dict=='bm,nn'? 'show_lists' : 'show_list')}}</button>
 
 
 
@@ -136,17 +136,24 @@ const submitForm = async (item) => {
 
 }
 
+.welcome .advanced-search {
+  @apply bg-tertiary border-tertiary-darken2;
+
+}
+
 @screen md {
   .advanced-search {
     border-top: none;
   }
+
+  .welcome .advanced-search {
+    @apply bg-tertiary border-1 border-tertiary-darken2;
+    box-shadow: 2px 2px 1px theme('colors.tertiary.darken2');
+  }
   
 }
 
-.welcome .advanced-search {
-  @apply bg-tertiary border-primary-lighten;
-  border: none;
-}
+
 
 
   option {
@@ -169,6 +176,35 @@ const submitForm = async (item) => {
       @apply bg-primary text-white
     }
   }
+
+
+
+
+  .btn-light {
+    border-radius: 2rem;
+    padding: .25rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+  }
+
+
+
+button.bg-primary:hover {
+  @apply bg-primary-lighten;
+}
+
+button.bg-primary:focus {
+  @apply bg-primary-lighten2;
+}
+
+button.bg-secondary-darken:hover {
+  @apply bg-secondary;
+}
+
+button.bg-secondary-darken:focus {
+  @apply bg-secondary;
+}
 
  
 

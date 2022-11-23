@@ -1,6 +1,6 @@
 <template>
     <div class="callout error lg:p-4">
-    <h2><BootstrapIcon class="bi-exclamation-triangle-fill" left/>{{title}}</h2>
+    <h2><CustomIcon class="bi-exclamation-triangle-fill" left/>{{title}}</h2>
     <p>Feil feil feil!</p>{{error}}
   </div>
 

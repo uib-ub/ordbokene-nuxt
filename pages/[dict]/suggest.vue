@@ -2,7 +2,7 @@
       <div class="pb-1 md:mx-10">
         
   
-    <div class="callout" role="status"><BootstrapIcon icon="bi-info-circle-fill" left/> <strong>{{store.q}}</strong> er ikke et oppslagsord i {{store.dict}}.</div>
+    <div class="callout" role="status"><CustomIcon icon="bi-info-circle-fill" left/> <strong>{{store.q}}</strong> er ikke et oppslagsord i {{store.dict}}.</div>
     <SuggestResults v-if="suggestions" :suggestions="suggestions" :key="store.q"/>
   
 

@@ -218,8 +218,8 @@ watch(() => store.q, () => {
           @keydown="keys"
           :aria-expanded="store.show_autocomplete || 'false'" 
           :aria-owns="selected_option >= 0 ? 'autocomplete-dropdown' : null"/>
-          <button aria-hidden="true" type="button" :title="$t('clear')" class="appended-button px-2 py-0" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><BootstrapIcon icon="bi-x-lg"/></button>
-          <button class="appended-button px-2 py-1" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"> <BootstrapIcon icon="bi-search"/></button>
+          <button aria-hidden="true" type="button" :title="$t('clear')" class="appended-button px-2 py-0" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><CustomIcon icon="bi-x-lg"/></button>
+          <button class="appended-button px-2 py-1" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"> <CustomIcon icon="bi-search"/></button>
 
   </div>
   <div class="dropdown-wrapper" v-if="store.show_autocomplete">
@@ -232,7 +232,7 @@ watch(() => store.q, () => {
         :id="'autocomplete-item-'+idx">
         <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)">
           <span v-if="item.type == 'advanced' && !store.advanced" aria-live="polite" class=" bg-primary text-white p-1 rounded-1xl ml-3">{{$t('to_advanced')}} 
-            <BootstrapIcon icon="bi-arrow-right" />
+            <CustomIcon icon="bi-arrow-right" />
           </span>
           <span v-else>
             <span v-if="store.autocomplete.length == 1" aria-live="polite">{{$t('autocomplete_suggestions', 1)}}: {{item.q}}, {{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span>

@@ -1,8 +1,8 @@
 <template>
   <Header/>
 <div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name)">
-  <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
-<NuxtLink v-else to="/"> <strong><BootstrapIcon icon="bi-arrow-left" primary/></strong> {{$t('home')}}</NuxtLink>
+  <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"> <strong><CustomIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
+<NuxtLink v-else to="/"> <strong><CustomIcon icon="bi-arrow-left" primary/></strong> {{$t('home')}}</NuxtLink>
 </div>
     <NuxtPage @click="menu_expanded=false" 
               v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
@@ -97,46 +97,6 @@ h1 {
   @apply bg-secondary text-white;
 }
 
-
-.btn-primary, .btn-secondary, .btn-borderless {
-    border-radius: 2rem;
-    padding: .25rem 1rem .25rem 1rem;
-    font-weight: 600;
-}
-
-.btn-primary {
-  @apply bg-white border-1 border-primary;
-  i {
-    @apply primary;
-  }
-}
-
-.btn-primary:focus, .btn-borderless:focus, .btn-primary:active, .btn-borderless:active {
-  @apply bg-primary bg-opacity-25;
-}
-
-.btn-secondary {
-  @apply bg-white border-1 border-secondary;
-
-  &:focus, &:active {
-    @apply bg-secondary bg-opacity-25;
-
-  }
-}
-
-.btn-light {
-  @apply bg-white border-1 border-secondary;
-}
-
-
-
-
-
-.ordbok-btn[aria-expanded=true] {
-
-    @apply bg-primary text-white border-1 border-primary;
-
-}
 
 
 @screen lg {
@@ -309,9 +269,8 @@ ol.sub_definitions {
 
 
 .article-view .article, .secondary-page {
-    border-radius: 0;
-    border: solid 1px rgba(0,0,0, .5) !important;
-    box-shadow: 2px 2px 1px rgba(0,0,0, .5) !important;
+    border: solid 1px theme('colors.gray.200') !important;
+    box-shadow: 2px 2px 1px theme('colors.gray.200') !important;
 
 }
 
@@ -319,6 +278,48 @@ ol.sub_definitions {
         width: 12em;
         height: 12rem;
     }
+
+
+
+button {
+  @apply px-4 py-1 rounded-4xl border-1 font-semibold;
+}
+
+button.btn-borderless {
+  i {
+    @apply text-primary;
+  }
+}
+
+button.btn-primary {
+  @apply  border-primary;
+
+}
+
+
+button:focus {
+  @apply bg-gray-100;
+}
+
+button[aria-expanded=true] {
+    @apply bg-primary text-white;
+    box-shadow: 2px 2px 1px theme('colors.gray.400');
+
+    i {
+      @apply text-white;
+    }
+
+    &:focus {
+      @apply bg-gray-600;
+    }
+
+}
+
+
+.btn-borderless {
+  @apply border-none;
+}
+
 
 
 

@@ -13,12 +13,14 @@ export default defineConfig({
         primary: {
           DEFAULT: "#560027",
           lighten: "#711f3d",
+          lighten2: '#8c3854',
           darken: "#3c0012"
         },
         secondary: {
           DEFAULT: "#BC477B",
           lighten: "#d96295",
-          darken: "#9f2b62"
+          darken: "#9f2b62",
+          darken2: "#83034a"
         },
         tertiary: {
           DEFAULT: "#FDF4F5",

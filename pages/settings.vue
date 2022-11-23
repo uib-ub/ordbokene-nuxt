@@ -22,20 +22,20 @@ title: t('settings.title')
 <template>
 <main id="main" class="secondary-page flex flex-col gap-2">
   <h2>{{$t('settings.title')}}</h2>
-<FormCheckbox labelId="toggle-inflection-expanded" v-model="settings.$state.inflectionExpanded" :checked="settings.$state.inflectionExpanded">
+<CustomCheckbox labelId="toggle-inflection-expanded" v-model="settings.$state.inflectionExpanded" :checked="settings.$state.inflectionExpanded">
       {{$t('settings.inflection_expanded')}}
-    </FormCheckbox>
-    <FormCheckbox labelId="toggle-inflection-no" v-model="settings.$state.inflectionNo" :checked="settings.$state.inflectionNo">
+    </CustomCheckbox>
+    <CustomCheckbox labelId="toggle-inflection-no" v-model="settings.$state.inflectionNo" :checked="settings.$state.inflectionNo">
       {{$t('settings.inflection_no')}}
-    </FormCheckbox>
-    <FormCheckbox labelId="toggle-inflection-context" v-model="settings.$state.inflectionTableContext" :checked="settings.$state.inflectionTableContext">
+    </CustomCheckbox>
+    <CustomCheckbox labelId="toggle-inflection-context" v-model="settings.$state.inflectionTableContext" :checked="settings.$state.inflectionTableContext">
       {{$t('settings.inflection_table_context')}}
-    </FormCheckbox>
+    </CustomCheckbox>
 
 
 <div class="mt-4">
-  <button class="btn-primary" @click="resetSettings(settings)">
-    <BootstrapIcon icon="bi-trash-fill" left primary/><span>{{$t('settings.reset')}}</span>
+  <button class="btn btn-primary" @click="resetSettings(settings)">
+    <CustomIcon icon="bi-trash-fill" left primary/><span>{{$t('settings.reset')}}</span>
   </button>
 </div>
 </main>

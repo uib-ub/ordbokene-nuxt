@@ -4,7 +4,7 @@
                                                @click="expanded = !expanded" 
                                                :aria-expanded="expanded"
                                                :aria-controls="expanded? id + '-content': null">
-                                               <BootstrapIcon class="pr-4" :icon="expanded ? 'bi-chevron-up' : 'bi-chevron-down'"/>{{header}}
+                                               <CustomIcon class="pr-4" :icon="expanded ? 'bi-chevron-up' : 'bi-chevron-down'"/>{{header}}
                                         </button></component>
 
 

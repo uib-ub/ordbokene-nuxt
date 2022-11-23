@@ -50,9 +50,9 @@
 
         <ArticleHeader :lemma_groups="lemma_groups" :secondary_header_text="secondary_header_text" :content_locale="content_locale" :dict="dict"/>
       
-      <button v-if="!settings.inflectionExpanded && inflected && !welcome" class="btn-primary my-1" @click="inflection_expanded = !inflection_expanded" type="button" :aria-expanded="inflection_expanded" :aria-controls="inflection_expanded ? 'inflection-'+article_id : null">
-             {{$t('article.show_inflection')}}<span v-if="!inflection_expanded"><BootstrapIcon icon="bi-plus-lg" right/></span><span v-if="inflection_expanded"><BootstrapIcon icon="bi-dash-lg" right/></span>
-        </button>
+      <button v-if="!settings.inflectionExpanded && inflected && !welcome" class="btn btn-primary my-1" @click="inflection_expanded = !inflection_expanded" type="button" :aria-expanded="inflection_expanded" :aria-controls="inflection_expanded ? 'inflection-'+article_id : null">
+             {{$t('article.show_inflection')}}<span v-if="!inflection_expanded"><CustomIcon icon="bi-plus-lg" right/></span><span v-if="inflection_expanded"><CustomIcon icon="bi-dash-lg" right/></span>
+      </button>
         <div v-show="inflected && !welcome && (inflection_expanded || settings.inflectionExpanded)" class="collapse py-2 transition-all duration-300 ease-in-out" :id="'inflection-'+article_id" ref="inflection_table">
             <div class="inflection-container p-2">
                 <NuxtErrorBoundary @error="inflection_error">
@@ -100,7 +100,6 @@
 import { useStore } from '~/stores/searchStore'
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
-import Icon from './bootstrap/Icon.vue';
 import {useSettingsStore } from '~/stores/settingsStore'
 
 const { t } = useI18n()

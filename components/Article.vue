@@ -533,4 +533,45 @@ span.lemma-group {
 
 
 
+.list-view-item {
+  display: flex;
+}
+
+
+.list-view-item>a {
+    padding-bottom: 0.6rem;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: none;
+    display: inline-block;
+    width: 100%;
+}
+
+
+.list-view-item>a:hover {
+    background-color:theme('colors.gray.100');
+}
+
+.article-column>li .result-list-item {
+  border-bottom: solid 1px theme('colors.gray.200') ;
+}
+
+
+.article-column>li:first-child .result-list-item {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+
+.article-column>li:last-child .result-list-item {
+  border-bottom: none;
+  border-bottom-left-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+
+
+
 </style>

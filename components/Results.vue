@@ -251,26 +251,6 @@ ol.article-column>li {
   list-style: none;
 }
 
-
-
-.list-view-item>a {
-    margin-bottom: 0.6rem !important;
-    margin-top: 0.5rem !important;
-    margin-left: 1rem;
-    margin-right: 1rem !important;
-    text-overflow: ellipsis;
-    white-space: nowrap !important;
-    border: none !important;
-    color: red !important;
-}
-
-
-.list-view-item>a:hover {
-    background-color: red !important;
-}
-
-
-
 .list .article-column  {
     border-radius: 2rem;
     border: solid 1px rgba(0,0,0, .5);
@@ -283,21 +263,8 @@ ol.article-column>li {
     display: none;
 }
 
-.article-column>li>.list-view-item {
-  border-bottom: solid 1px ;
-}
 
 
-.article-column>li:first-child .list-view-item {
-  border-top-left-radius: 1.5rem;
-  border-top-right-radius: 1.5rem;
-}
-
-.article-column>li:last-child .list-view-item {
-  border-bottom: none;
-  border-bottom-left-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
-}
 
 
 button[disabled] {

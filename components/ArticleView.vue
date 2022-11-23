@@ -13,7 +13,7 @@ const store = useStore()
 <style scoped lang="scss">
 
 .article {
-    border-radius: .25rem;
+    border-radius: 0;
 }
 
 </style>

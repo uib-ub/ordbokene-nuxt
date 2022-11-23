@@ -137,7 +137,6 @@ const submitForm = async (item) => {
 
 .advanced-search {
   @apply bg-tertiary border-gray-500 border-1 md:pt-4;
-  border-radius: .25rem;
   
   
 
@@ -146,13 +145,13 @@ const submitForm = async (item) => {
 @screen md {
   .advanced-search {
     border-top: none;
-    border-radius: 0 0 .25rem .25rem;
   }
   
 }
 
 .welcome .advanced-search {
   @apply bg-tertiary border-primary-lighten;
+  border: none;
 }
 
 

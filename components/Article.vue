@@ -526,7 +526,7 @@ span.lemma-group {
 
 
 .welcome .article {
-  @apply md:bg-tertiary md:rounded-0.25rem md:shadow-none md:border-none;
+  @apply md:bg-tertiary md:shadow-none md:border-none;
 
 }
 

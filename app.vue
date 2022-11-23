@@ -281,32 +281,29 @@ ol.sub_definitions {
 
 
 
-button {
+.btn {
   @apply px-4 py-1 rounded-4xl border-1 font-semibold;
   i {
     @apply text-primary;
   }
 }
 
-button:hover {
+.btn:hover {
   @apply bg-gray-50;
 }
 
-button:focus {
+.btn:focus {
   @apply bg-gray-100;
 }
 
 
 
-button.btn-primary {
+.btn.btn-primary {
   @apply  border-primary;
 
 }
 
-
-
-
-button[aria-expanded=true] {
+.btn[aria-expanded=true] {
     @apply bg-primary-lighten text-white;
     box-shadow: 2px 2px 1px theme('colors.gray.400');
 
@@ -315,7 +312,7 @@ button[aria-expanded=true] {
     }
 
     &:focus {
-      @apply bg-gray-600;
+      @apply bg-gray-700;
     }
 
 }

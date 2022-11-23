@@ -38,8 +38,8 @@
 
 
 <div class="flex gap-2 ms-auto mt-auto justify-between md:justify-end">
-  <button :aria-label="$t('search')" class="bg-gray-500 border-gray-600 text-white" type="reset" @click="reset"> <CustomIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
-  <button :aria-label="$t('search')" class="bg-primary text-white border-primary-lighten" type="submit"> <CustomIcon icon="bi-search" left/>{{$t('search')}}</button>
+  <button :aria-label="$t('search')" class="btn btn-secondary bg-gray-500 border-gray-600 text-white" type="reset" @click="reset"> <CustomIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
+  <button :aria-label="$t('search')" class="btn btn-primary bg-primary text-white border-primary-lighten" type="submit"> <CustomIcon icon="bi-search" left/>{{$t('search')}}</button>
 
 </div>
 </div>
@@ -189,17 +189,17 @@ const submitForm = async (item) => {
   }
 
 
-button.bg-primary i, button.bg-gray-500 i {
+button.btn-primary i, button.btn-secondary i {
   @apply text-white
 
 }
 
 
-button.bg-primary:hover {
+button.btn-primary:hover {
   @apply bg-primary-lighten;
 }
 
-button.bg-primary:focus {
+button.btn-primary:focus {
   @apply bg-primary-lighten2;
 
   i {
@@ -207,11 +207,11 @@ button.bg-primary:focus {
   }
 }
 
-button.bg-gray-500:hover {
+button.btb-secondary:hover {
   @apply bg-secondary;
 }
 
-button.bg-gray-500:focus {
+button.btn-secondary:focus {
   @apply bg-secondary-darken;
 }
 

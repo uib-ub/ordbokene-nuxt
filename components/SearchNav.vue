@@ -48,7 +48,7 @@ const dict_click = (dict) => {
       search_nav_expanded.value = false;
       store.dict = dict
       if (store.q != store.input) {
-        store.input = store.q
+        store.input = store.originalInput || store.q
       }
     }
     
@@ -77,7 +77,10 @@ const dict_click = (dict) => {
       if (specialSymbols(store.q)) {
         return  url
       }
-      if (store.q) {
+      if (store.originalInput) {
+        url = url + `search?q=${store.originalInput}`
+      }
+      else if (store.q) {
         url = url + `search?q=${store.q}`
       }
       return url

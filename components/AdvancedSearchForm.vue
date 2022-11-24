@@ -116,13 +116,15 @@ watch(inflection_enabled, () => {
 
 const submitForm = async (item) => {
   //store.autocomplete = []
-  store.q = store.input
-  mini_help.value = false
-  let query = {q: store.input, dict: store.dict, scope: store.scope}
-  if (store.pos) {
-    query.pos = store.pos
+  if (store.input) {
+    store.q = store.input
+    mini_help.value = false
+    let query = {q: store.input, dict: store.dict, scope: store.scope}
+    if (store.pos) {
+      query.pos = store.pos
+    }
+    return navigateTo({query})
   }
-  return navigateTo({query})
 }
 
 </script>

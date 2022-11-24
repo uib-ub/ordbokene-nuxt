@@ -16,14 +16,15 @@ const store = useStore()
 const route = useRoute()
 
 const submitForm = async (item) => {
-  store.show_autocomplete = false
-  let url = '/' + store.dict
-  
   if (store.input) {
+    store.show_autocomplete = false
+    let url = '/' + store.dict
     url += '/search?q='+store.input
     store.q = store.input
+
+    return navigateTo(url)
   }
-  return navigateTo(url)
+  
 }
 
 const autocomplete_error = (error) => {

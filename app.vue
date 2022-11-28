@@ -313,7 +313,7 @@ ol.sub_definitions {
     }
 
     &:focus {
-      @apply bg-gray-700;
+      @apply bg-gray-700 border-gray-900;
     }
 
 }

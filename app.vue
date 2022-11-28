@@ -1,4 +1,5 @@
 <template>
+  <div class=" bg-tertiary text-center text-anchor sr-only  !focus-within:p-1 focus-within:not-sr-only"><a href="#main" class="text-xl font-semibold underline">Til innhold</a></div>
   <Header/>
 <div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name)">
   <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"> <strong><CustomIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>

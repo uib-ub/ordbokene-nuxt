@@ -1,21 +1,25 @@
 <template>
-<header>
-    <nav class="bg-primary pl-3 pr-0 lg:px-5 py-1 lg:flex content-center
-      text-white" :aria-label="$t('label.nav')">
-      <div class="flex content-center w-full lg:w-auto">
-      <NuxtLink class="navbar-brand" to="/" :aria-current="$route.name == 'dict' && 'page'">
+<header class="bg-primary pl-3 pr-0 lg:px-5 py-1 flex flex-col lg:flex-row content-center
+      text-white">
+      <div class="flex flex-row content-center w-full lg:w-auto">
+  <NuxtLink class="navbar-brand" to="/" :aria-current="$route.name == 'dict' && 'page'">
       <div class="mx-1 md:my-1 lg:my-3 xl:my-4">
-      <div><h1 class="brand-title">Ordbøkene</h1>
+      <div><h1 class="brand-title">Ordbøkene <span class="sr-only">, {{$t('home')}}</span></h1>
       <p class="hidden xl:block brand-subtitle">{{$t("sub_title")}}</p>
       </div>
     </div>
       </NuxtLink>
-      <button class="lg:hidden text-lg ml-auto  p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" 
+      <div class="lg:hidden text-lg ml-auto">
+
+      <button class="ltext-lg p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" 
               @keydown="escape_menu" 
               @click="menu_expanded = !menu_expanded">
-      <div class="sr-only sm:inline sm:not-sr-only">{{$t('menu.title')}}</div><CustomIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/>
-    </button>
+        <div class="sr-only sm:inline sm:not-sr-only">{{$t('menu.title')}}</div><CustomIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/>
+      </button>
+</div>
       </div>
+    <nav class="lg:flex lg:ml-auto content-center lg:h-full" :aria-label="$t('label.nav')">
+
 
       <div class="nav-buttons flex-wrap lg:flex-row content-center lg:ml-auto  mr-1" v-bind:class="{hidden: !menu_expanded}">
       
@@ -43,10 +47,7 @@
           </select> 
         </li>
       </ul>
-      
- 
       </div>
-
     </nav>
   </header>
     

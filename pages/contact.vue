@@ -1,5 +1,5 @@
 <template>
-<main id="main" class="secondary-page">
+<main id="main" tabindex="-1" class="secondary-page">
   <h2>{{$t('contact.title')}}</h2>
   <div>
     <h3>{{$t('contact.content[0]')}}</h3>

@@ -20,7 +20,7 @@ title: t('settings.title')
 </script>
 
 <template>
-<main id="main" class="secondary-page flex flex-col gap-2">
+<main id="main" tabindex="-1" class="secondary-page flex flex-col gap-2">
   <h2>{{$t('settings.title')}}</h2>
 <CustomCheckbox labelId="toggle-inflection-expanded" v-model="settings.$state.inflectionExpanded" :checked="settings.$state.inflectionExpanded">
       {{$t('settings.inflection_expanded')}}

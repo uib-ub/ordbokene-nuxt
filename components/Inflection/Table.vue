@@ -955,11 +955,7 @@ td[class="infl-cell"] {
 }
 
 .context {
-  color: var(--v-text-lighten4) !important;
-}
-
-.context {
-    color: #5e5e5e;
+  color: theme('colors.gray.500') !important;
 }
 
 div.lemma {
@@ -977,7 +973,7 @@ th, td {
   font-size: 1rem;
 }
 
-.table-responsive .table-responsive:last-child tr:last-child td  {
+.table-responsive .table-responsive:last-child tr:last-child td, tbody tr:last-child th {
   border-bottom: none !important;
 }
 

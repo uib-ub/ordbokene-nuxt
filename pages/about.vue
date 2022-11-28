@@ -1268,26 +1268,6 @@ useHead({
 </script>
 
 <style scoped>
-.accordion-button {
-  @apply text-primary;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
-.accordion-button.collapsed{
-  @apply text-primary;
-}
-
-.accordion-button:after {
-    order: -1;
-    margin-left: 0; 
-    margin-right:0.5em;
-    @apply text-primary;
-}
-.accordion-button:focus{
-  outline: solid 1px var(--bs-primary);
-}
-
 
 .no-bullet {
   list-style-type: none;

@@ -922,51 +922,53 @@ export default {
 
 <style>
 
-.sub {
+
+
+.infl-wrapper .sub {
 
     font-weight: normal
 }
 
-span.comma:empty {
+.infl-wrapper span.comma:empty {
     display: none;
 }
 
-span.comma:not(:first-child):before {
+.infl-wrapper span.comma:not(:first-child):before {
     content: ", ";
 }
 
-div.comma:not(:last-child):after {
+.infl-wrapper div.comma:not(:last-child):after {
     content: ", ";
 }
 
-td[class="infl-group"] {
+.infl-wrapper td[class="infl-group"] {
   background-color: #FDF4F5;
   font-style: italic;
   text-align: center;
 }
 
-td[class*="infl-label"] {
+.infl-wrapper td[class*="infl-label"] {
   font-style: italic;
   text-align: left;
 }
 
-td[class="infl-cell"] {
+.infl-wrapper td[class="infl-cell"] {
   text-align: center;
 }
 
-.context {
+.infl-wrapper .context {
   color: theme('colors.gray.500') !important;
 }
 
-div.lemma {
+.infl-wrapper div.lemma {
   display: none;
 }
 
-table {
+.infl-wrapper table {
   border-collapse: collapse;
 }
 
-th, td {
+.infl-wrapper th, td {
   border: solid 0px theme('colors.gray.200');
   border-width: 0px 0px 1px 0px;
   padding: 0.5rem;
@@ -989,23 +991,22 @@ th, td {
   margin-top: 2rem;
 }
 
-th {
+.infl-wrapper th {
   font-variant-caps: all-small-caps;
   font-size: 1rem;
   padding-top: 0.25rem;
 }
 
-.infl-label {
+.infl-wrapper .infl-label {
     text-align: center;
     vertical-align: top;
 }
 
-td.hilite {
+.infl-wrapper td.hilite {
     text-align: center;
     background-color: #f7E1EB !important;
 
 }
-
 
 
 </style>

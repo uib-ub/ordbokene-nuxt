@@ -1,11 +1,11 @@
 <template>
   <component :is="tag" :class="body.type_"><!--
  --><component :is="item.tag || 'span'" v-for="(item, index) in assemble_text"
-          :class="item.type"
+          :class="item.type + (item.tag == 'em' ? ' notranslate' : '')"
           :key="index"
            v-bind="item.props"><!--
           -->{{item.html}}<!--
-       --><NuxtLink class="article_ref" v-if="!welcome && item.type == 'article_ref'" :to="item.ref" v-on:click="link_click" :key="index"><!--
+       --><NuxtLink class="article_ref notranslate" v-if="!welcome && item.type == 'article_ref'" :to="item.ref" v-on:click="link_click" :key="index"><!--
        --><DefElement tag='span' v-if="item.link_text.type_" :dict="dict" :key="item.id+'_sub'" :body='item.link_text' :content_locale="content_locale"/><span v-else>{{item.link_text}}</span><!--
        --><span class="homograph" v-if="item.lemmas[0].hgno" :aria-label="`${dict=='bm'? 'Betydning': 'Tyding'} ${item.lemmas[0].hgno}`" :title="`${dict=='bm'? 'Betydning': 'Tyding'} ${item.lemmas[0].hgno}`" :key="index"><!--
         --> ({{roman_hgno(item.lemmas[0])}}{{item.definition_order ? '': ')'}}</span>

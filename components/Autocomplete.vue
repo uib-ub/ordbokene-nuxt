@@ -310,6 +310,7 @@ transform: translateX(-50%);
 
 #autocomplete-dropdown .dropdown-item:hover  {
     @apply bg-gray-100;
+    cursor: pointer;
 }
 
 

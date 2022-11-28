@@ -926,7 +926,7 @@ export default {
 
 .infl-wrapper .sub {
 
-    font-weight: normal
+    color: theme('colors.gray.700');
 }
 
 .infl-wrapper span.comma:empty {

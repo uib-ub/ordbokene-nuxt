@@ -403,7 +403,7 @@ if (store.view == 'article') {
 
     
 
-    @apply primary-shadow border-primary overflow-auto;
+    @apply border-primary overflow-auto;
 }
 
 ol > li:only-child.level1, li:only-child.level2 {

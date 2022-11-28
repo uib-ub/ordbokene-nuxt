@@ -48,6 +48,7 @@ const shareViaWebShare = () => {
 
 const copy_link = (event) => {
       let link = create_link()
+      
         navigator.clipboard.writeText(link).then(() => {
           console.log("SUCCESS")
           store.copied = event.target.id
@@ -120,8 +121,8 @@ const download_ris = () => {
 <style scoped>
 
 .cite-container {
-    box-shadow: 1px 1px 1px theme("colors.primary.DEFAULT");
-    border: solid 1px theme("colors.primary.DEFAULT");
+    box-shadow: 1px 1px 1px theme("colors.gray.500");
+    border: solid 1px theme("colors.gray.500");
     border-radius: 1.5rem;
 }
 

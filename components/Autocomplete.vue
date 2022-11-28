@@ -234,8 +234,8 @@ watch(() => store.q, () => {
           <span v-if="item.type == 'advanced' && !store.advanced" aria-live="polite" class=" bg-primary text-white p-1 rounded-1xl ml-3">{{$t('to_advanced')}} 
             <CustomIcon icon="bi-arrow-right" />
           </span>
-          <span v-else>
-            <span v-if="store.autocomplete.length == 1" aria-live="polite">{{$t('autocomplete_suggestions', 1)}}: {{item.q}}, {{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span>
+          <span v-else :aria-live="store.autocomplete.length == 1? 'polite' : null">
+            <span v-if="store.autocomplete.length == 1" class="sr-only">{{$t('autocomplete_suggestions', 1)}}: </span>
             <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span>
           </span>
         </div>

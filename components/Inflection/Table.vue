@@ -971,14 +971,26 @@ table {
 }
 
 th, td {
-  border: solid 0px theme('colors.gray.100');
+  border: solid 0px theme('colors.gray.200');
   border-width: 0px 0px 1px 0px;
   padding: 0.5rem;
   font-size: 1rem;
 }
 
-.table-responsive .table-responsive:last-child tr:last-child td {
+.table-responsive .table-responsive:last-child tr:last-child td  {
   border-bottom: none !important;
+}
+
+.table-responsive .table-responsive:last-child tr:nth-last-child(2) td[rowspan='2']  {
+  border-bottom: none !important;
+}
+
+.table-responsive .table-responsive:last-child tr:nth-last-child(3) td[rowspan='3']  {
+  border-bottom: none !important;
+}
+
+.table-responsive .table-responsive:not(:first-child) {
+  margin-top: 2rem;
 }
 
 th {

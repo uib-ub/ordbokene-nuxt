@@ -52,10 +52,10 @@ const unparsed = computed(() => {
             if (item.type_ == 'usage') {
               if (item.items) {
                 item.content = item.text
-                return {type: item.type_, html: '', tag: 'DefElement', props: {body: item, tag: 'i', dict: props.dict}}
+                return {type: item.type_, html: '', tag: 'DefElement', props: {body: item, tag: 'em', dict: props.dict}}
               }
               else {
-                return {type: item.type_, html: item.text, tag: 'i'}
+                return {type: item.type_, html: item.text, tag: 'em'}
               }
             }
             else if (item.type_ == 'article_ref') {

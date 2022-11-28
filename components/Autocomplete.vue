@@ -324,7 +324,7 @@ transform: translateX(-50%);
     border-radius: 2rem;
 }
 
-.input-wrapper:focus-within {
+.input-wrapper:focus-within, .input-wrapper[data-dropdown-open] {
   box-shadow: 2px 2px 1px theme("colors.primary.DEFAULT");
   
 }

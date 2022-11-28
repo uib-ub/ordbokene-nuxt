@@ -68,11 +68,11 @@
       </div>
       
     </div>
-    <div v-if="store.advanced && pages > 1" class="p-8 flex flex-wrap justify-center flex-col flex sm:flex-row gap-4 content-center align-middle">
+    <div v-if="store.advanced && pages > 1" class="p-8 flex flex-wrap justify-center flex-col flex sm:flex-row gap-4">
     <button :disabled="page == 1" @click="change_page(-1)" class="bg-primary text-white rounded-4xl p-3 px-8">
       <CustomIcon icon="bi-chevron-left" left/>forrige side
     </button>
-    <div class="align-middle text-center mx-8">Side {{page}} av {{pages}}</div>
+    <div class="text-center self-center align-middle mx-8 text-lg h-full">Side {{page}} av {{pages}}</div>
     <button :disabled="page == pages" @click="change_page(1)" class="bg-primary text-white rounded-4xl p-3 px-8">
       neste side<CustomIcon icon="bi-chevron-right" right/>
     </button>

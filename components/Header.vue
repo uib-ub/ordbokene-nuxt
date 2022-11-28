@@ -1,5 +1,5 @@
 <template>
-<header class="bg-primary pl-3 pr-0 lg:px-5 py-1 flex flex-col lg:flex-row content-center
+<header class="bg-primary pl-3 pr-0 lg:px-5 py-1 flex flex-col lg:flex-row content-center 
       text-white">
       <div class="flex flex-row content-center w-full lg:w-auto">
   <NuxtLink class="navbar-brand" to="/" :aria-current="$route.name == 'dict' && 'page'">
@@ -9,21 +9,21 @@
       </div>
     </div>
       </NuxtLink>
-      <div class="lg:hidden text-lg ml-auto">
+      <div class="lg:hidden text-lg ml-auto flex align-center">
 
-      <button class="ltext-lg p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" 
+      <button class="text-lg p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" 
               @keydown="escape_menu" 
               @click="menu_expanded = !menu_expanded">
         <div class="sr-only sm:inline sm:not-sr-only">{{$t('menu.title')}}</div><CustomIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/>
       </button>
 </div>
       </div>
-    <nav class="lg:flex lg:ml-auto content-center lg:h-full" :aria-label="$t('label.nav')">
+    <nav class="lg:flex lg:ml-auto text-center" :aria-label="$t('label.nav')">
 
 
-      <div class="nav-buttons flex-wrap lg:flex-row content-center lg:ml-auto  mr-1" v-bind:class="{hidden: !menu_expanded}">
+      <div class="nav-buttons flex-wrap lg:flex-row content-center lg:ml-auto  mr-1 mt-2 lg:mt-0" v-bind:class="{hidden: !menu_expanded}">
       
-        <ul class="flex flex-col lg:flex-row lg:space-x-3 xl:space-x-8 content-center" >
+        <ul class="flex flex-col lg:flex-row gap-4 lg:space-x-3 xl:space-x-8 content-center mb-4 lg:mb-0" >
         <li class="nav-item">
           <NuxtLink @click="menu_expanded=false" class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
         </li>
@@ -37,7 +37,7 @@
                 <li class="nav-item">
           <NuxtLink @click="menu_expanded=false" class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
-        <li class="relative nav-item">
+              <li class="relative nav-item ">
           <CustomIcon icon="bi bi-globe pr-2"/>
           <label for="locale-select" class="sr-only">{{$t('settings.locale.title')}}</label>
           <select id="locale-select" class="bg-primary text-white" v-model="i18n.locale.value" @change="update_locale">
@@ -47,6 +47,7 @@
           </select> 
         </li>
       </ul>
+
       </div>
     </nav>
   </header>
@@ -108,7 +109,6 @@ const update_locale = () => {
 
   }
   .nav-link {
-    
     font-variant-caps: all-small-caps;
     font-size: 1.25rem;
     letter-spacing: .1rem;
@@ -135,26 +135,7 @@ const update_locale = () => {
     }
   }
 
-  @media (max-width: 992px) {
-    .nav-link {
-      padding-left: 1.25rem;
-      border-bottom: none !important;
-      &:hover {
-        border-left: solid 0.125rem rgba(255,255,255, .5);
-        background-color: rgba(255,255,255, .1);
-        border-bottom: none !important;
-        padding-left: 1rem !important;
-      }
 
-      &[aria-current=page] {
-        border-left: solid 0.25rem;
-        padding: 0rem;
-        border-bottom: none !important;
-        padding-left: 1rem !important;
-        @apply border-secondary;
-      }
-    }
-  }
 }
 
 </style>

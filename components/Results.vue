@@ -76,7 +76,6 @@
     <button :disabled="page == pages" @click="change_page(1)" class="bg-primary text-white rounded-4xl p-3 px-8">
       neste side<CustomIcon icon="bi-chevron-right" right/>
     </button>
-    {{page}}
     </div>
   </div>
   <div v-if="error_message">

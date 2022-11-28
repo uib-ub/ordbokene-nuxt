@@ -17,6 +17,7 @@ import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
 
+console.log("CLIENT?",process.client)
 
 useHead({
     titleTemplate: (titleChunk) => {

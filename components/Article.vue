@@ -395,7 +395,8 @@ if (store.view == 'article') {
 
 
 .inflection-container {
-    box-shadow: 1px 1px 1px theme("colors.primary.DEFAULT");
+    box-shadow: 1px 1px 1px theme("colors.gray.500");
+    border-color: theme("colors.gray.500") !important;
     border: solid 1px;
     border-radius: 1.5rem;
     display: inline-flex;

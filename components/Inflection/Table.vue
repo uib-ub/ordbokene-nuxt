@@ -968,19 +968,23 @@ div.lemma {
 
 table {
   border-collapse: collapse;
-  margin-top: 0.5rem;
 }
 
 th, td {
-  border: solid 0px #d9d9d9;
+  border: solid 0px theme('colors.gray.100');
   border-width: 0px 0px 1px 0px;
   padding: 0.5rem;
   font-size: 1rem;
 }
 
+.table-responsive .table-responsive:last-child tr:last-child td {
+  border-bottom: none !important;
+}
+
 th {
   font-variant-caps: all-small-caps;
   font-size: 1rem;
+  padding-top: 0.25rem;
 }
 
 .infl-label {

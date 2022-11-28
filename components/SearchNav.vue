@@ -5,7 +5,7 @@
             <CustomIcon :icon="search_nav_expanded ? 'bi-chevron-up' : 'bi-chevron-down'" left/>{{$t(advanced ? 'advanced' : `dicts.${store.dict}`)}}
     </button>
       </div>
-  <ul id="searchNavContent" class="md:flex" v-bind:class="{hidden: !search_nav_expanded}">
+  <ul id="searchNavContent" class="md:flex md:gap-1" v-bind:class="{hidden: !search_nav_expanded}">
   <li class="nav-item">
     <NuxtLink :aria-current="route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"

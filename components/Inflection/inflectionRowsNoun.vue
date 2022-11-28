@@ -19,7 +19,7 @@
         <span v-html="formattedForm(tags,forms[0])"/>
       </th>
       <td v-else
-          class="infl-cell"
+          class="notranslate nfl-cell"
           :colspan="rowspan"
           :index="rowindex"
           :headers="headers"

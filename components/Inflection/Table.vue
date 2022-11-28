@@ -539,7 +539,7 @@
           </thead>
           <tbody>
             <tr>
-              <td class="infl-cell label-border">{{lemma.lemma}}</td>
+              <td class="notranslate infl-cell label-border">{{lemma.lemma}}</td>
             </tr>
           </tbody>
         </table>
@@ -952,7 +952,7 @@ export default {
   text-align: left;
 }
 
-.infl-wrapper td[class="infl-cell"] {
+.infl-wrapper td[class="notranslate nfl-cell"] {
   text-align: center;
 }
 

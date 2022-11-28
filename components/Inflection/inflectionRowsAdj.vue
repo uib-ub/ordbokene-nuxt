@@ -6,7 +6,7 @@
         scope="row">
       {{tagToName(tags.label)}}
     </th>
-    <td class="infl-cell xs"
+    <td class="notranslate infl-cell xs"
         v-for="([rowspan,rowindex,forms], index) in cells"
         :key="index"
         :colspan="rowspan"

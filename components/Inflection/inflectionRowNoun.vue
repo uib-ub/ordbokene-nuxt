@@ -15,7 +15,7 @@
             :key="i">{{tagToName(form)}}</span>
     </th>
     <td v-else
-        class="infl-cell"
+        class="notranslate infl-cell"
         :headers="colref"
         :rowspan="rowspan"
         :index="rowindex"

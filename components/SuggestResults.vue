@@ -1,5 +1,5 @@
 <template>
-<div v-if="suggestions.length" class="suggestions p-2 mb-4 mt-8">
+<div v-if="suggestions && suggestions.length" class="suggestions p-2 mb-4 mt-8">
     <h2>{{$t('notifications.similar')}}</h2>
     <ul class="nav nav-pills flex-column md:flex md:flex-wrap md:gap-8 py-6 pt-4 md:py-8">
         <li class="nav-item py-3 md:py-0" v-for="(item, idx) in suggestions" :key="idx">

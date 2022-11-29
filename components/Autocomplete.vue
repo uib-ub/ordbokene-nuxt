@@ -203,7 +203,6 @@ watch(() => store.q, () => {
           :value="store.input"
           id="input-element"
           ref="input_element" 
-          type="search"
           @input="input_sync"
           role="combobox" 
           :aria-activedescendant="selected_option >= 0 ? 'autocomplete-item-'+selected_option : null"
@@ -218,7 +217,7 @@ watch(() => store.q, () => {
           @keydown="keys"
           :aria-expanded="store.show_autocomplete || 'false'" 
           :aria-owns="selected_option >= 0 ? 'autocomplete-dropdown' : null"/>
-          <button aria-hidden="true" type="button" :title="$t('clear')" class="appended-button" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><CustomIcon icon="bi-x-lg"/></button>
+          <button type="button" :title="$t('clear')" class="appended-button" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><CustomIcon icon="bi-x-lg"/></button>
           <button class="appended-button" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"> <CustomIcon icon="bi-search"/></button>
 
   </div>
@@ -393,8 +392,6 @@ transform: translateX(-50%);
 }
 
 
-#input-element::-webkit-search-cancel-button{
-    @apply sr-only;
-}
+
 
 </style>

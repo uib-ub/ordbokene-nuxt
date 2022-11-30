@@ -14,8 +14,14 @@ export default defineNuxtConfig({
     },
     modules: [
         '@pinia/nuxt',
+        '@pinia-plugin-persistedstate/nuxt',
         'nuxt-windicss'
       ],
+      piniaPersistedstate: {
+        cookieOptions: {
+          sameSite: 'strict',
+        }
+      },
     vite: {
       resolve: {
         alias: {

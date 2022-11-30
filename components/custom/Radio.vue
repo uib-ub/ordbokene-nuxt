@@ -76,6 +76,6 @@
     
     input:focus + label::before {
       outline: theme('colors.secondary.DEFAULT') solid 1px;
-      box-shadow: 2px 2px 1px theme('colors.secondary.DEFAULT');
+      box-shadow: 2px 2px 0px theme('colors.secondary.DEFAULT');
     }   
     </style>

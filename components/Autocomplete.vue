@@ -268,7 +268,7 @@ transform: translateX(-50%);
   border-left: 1px solid;
   border-right: 1px solid;
   border-bottom: 1px solid;   
-  box-shadow: 2px 2px 1px theme("colors.primary.DEFAULT");
+  box-shadow: 2px 2px 0px theme("colors.primary.DEFAULT");
 
   @apply border-primary bg-canvas block;
 }
@@ -325,7 +325,8 @@ transform: translateX(-50%);
 }
 
 .input-wrapper:focus-within, .input-wrapper[data-dropdown-open=true] {
-  box-shadow: 2px 2px 1px theme("colors.primary.DEFAULT");
+  box-shadow: 2px 2px 0px theme("colors.primary.DEFAULT");
+
   
 }
 

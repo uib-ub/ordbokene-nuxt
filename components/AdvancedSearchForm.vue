@@ -150,7 +150,7 @@ const submitForm = async (item) => {
 
   .welcome .advanced-search {
     @apply bg-tertiary border-1 border-tertiary-darken2;
-    box-shadow: 2px 2px 1px theme('colors.tertiary.darken2');
+    box-shadow: 2px 2px 0px theme('colors.tertiary.darken2');
   }
   
 }

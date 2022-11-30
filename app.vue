@@ -138,6 +138,10 @@ section a, .secondary-page a  {
     font-size: 1.125rem;
     padding-top: 1rem;
   }
+
+  p {
+    padding-bottom: 1rem;
+  }
 }
 
 .dict-view h3 {

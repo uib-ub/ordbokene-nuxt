@@ -349,11 +349,7 @@ transform: translateX(-50%);
 }
 
 
- 
 
-.combobox:focus-within .input-wrapper, .combobox:focus-within .autocomplete-dropdown {
-  box-shadow: 2px 2px 1px var(--bs-primary);
-}  
 
 ::-webkit-scrollbar {
   width: 1rem;

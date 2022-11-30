@@ -1,5 +1,5 @@
 <template>
-  <div class=" bg-tertiary text-center text-anchor sr-only  !focus-within:p-2 focus-within:not-sr-only"><a href="#main" class="text-xl font-semibold underline">Til innhold</a></div>
+  <a class=" bg-tertiary-darken1 text-center text-anchor sr-only text-xl font-semibold underline  !focus-within:p-2 focus-within:not-sr-only" href="#main"> Til innhold</a>
   <Header/>
 <div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name)">
   <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"> <strong><CustomIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>

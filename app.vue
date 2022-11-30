@@ -272,7 +272,7 @@ ol.sub_definitions {
 
 .article-view .article, .secondary-page {
     border: solid 1px theme('colors.gray.200') !important;
-    box-shadow: 2px 2px 1px theme('colors.gray.200') !important;
+    box-shadow: 2px 2px 0px theme('colors.gray.200') !important;
 
 }
 
@@ -307,7 +307,7 @@ ol.sub_definitions {
 
 .btn[aria-expanded=true] {
     @apply bg-primary-lighten text-white;
-    box-shadow: 2px 2px 1px theme('colors.gray.400');
+    box-shadow: 2px 2px 0px theme('colors.gray.400');
 
     i {
       @apply text-white;

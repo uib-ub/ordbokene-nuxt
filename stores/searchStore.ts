@@ -22,5 +22,5 @@ export const useStore = defineStore('store', {
       concepts_nn: [],
       endpoint: "",
       copied: ""
-    })
+    }),
   })

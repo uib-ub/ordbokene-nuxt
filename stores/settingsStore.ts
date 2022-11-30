@@ -1,57 +1,89 @@
 import { defineStore } from "pinia";
 
-
 export const useSettingsStore = defineStore('settings', () => {
-    const inflectionExpanded = ref(false)
-    const inflectionNo = ref(false)
-    const inflectionTableContext = ref(false)
-    const listView = ref(false)
 
-    const expanded = useCookie<boolean>('expanded')
-    const no = useCookie<boolean>('no')
-    const tableContext = useCookie<boolean>('tableContext')
-    const listViewCookie = useCookie<boolean>('listView')
+    const checkLocalstorage = (key: string, defaultValue: any) => {
+        if (process.client) {
+            try {
+                let stored = localStorage.getItem(key)
+                if (stored) {
+                    return ref(typeof defaultValue === 'boolean' ?  stored == 'true' : stored)
+                }
+                else {
+                    localStorage.setItem(key, defaultValue)
+                    return ref(defaultValue)
+                }
+            }
+            catch {
+                return ref(defaultValue)
+            }
+        }
+        else {
+            return ref(defaultValue)
+        }
+    }
 
-    if(expanded.value){
-        inflectionExpanded.value = expanded.value
-    }
-    if(no.value){
-        inflectionNo.value = no.value
-    }
-    if(tableContext.value){
-        inflectionTableContext.value = tableContext.value
-    }
-    if(listViewCookie.value){
-        listView.value = listViewCookie.value
-    }
 
+    const submitSelect = useCookie<boolean>('submitSelect') || checkLocalstorage('submitSelect', false)
+    const inflectionExpanded = useCookie<boolean>('inflectionExpanded') || checkLocalstorage('inflectionExpanded', false)
+    const inflectionNo = useCookie<boolean>('inflectionNo') || checkLocalstorage('inflectionNo', false)
+    const inflectionTableContext = useCookie<boolean>('inflectionTableContext') || checkLocalstorage('inflectionNo', false)
+    const listView = useCookie<boolean>('listView')  || checkLocalstorage('inflectionNo', false)
+    
+
+    watch(submitSelect, () => {
+        try {
+            localStorage.setItem('searchSubmit', submitSelect.value ? 'true' : 'false')
+        }
+        catch {
+            console.log("No local storage")
+        }
+    },
+    {deep: true})
     watch(inflectionExpanded, () => {
-        expanded.value = inflectionExpanded.value
+        try {
+            localStorage.setItem('inflectionExpanded', inflectionExpanded.value ? 'true' : 'false')
+        }
+        catch {
+            console.log("No local storage")
+        }
     },
     {deep: true})
     watch(inflectionNo, () => {
-        no.value = inflectionNo.value
+        try {
+            localStorage.setItem('inflectionNo', inflectionNo.value ? 'true' : 'false')
+        }
+        catch {
+            console.log("No local storage")
+        }
     },
     {deep: true})
     watch(inflectionTableContext, () => {
-        tableContext.value = inflectionTableContext.value
-    },
-    {deep: true})
-    watch(listView, () => {
-        listViewCookie.value = listView.value
+        try {
+            localStorage.setItem('inflectionTableContext', inflectionTableContext.value ? 'true' : 'false')
+        }
+        catch {
+            console.log("No local storage")
+        }
     },
     {deep: true})
 
-    return{
+    watch(listView, () => {
+        try {
+            localStorage.setItem('listView', listView.value ? 'true' : 'false')
+        }
+        catch {
+            console.log("No local storage")
+        }
+    },
+    {deep: true})
+
+    return  {
+        submitSelect,
         inflectionExpanded,
         inflectionNo,
         inflectionTableContext,
-        listView,
-        expanded,
-        no,
-        tableContext,
-        listViewCookie
-
+        listView
     }
 
 

@@ -110,8 +110,9 @@
         "inflection_no": "Vis bøyingskodane frå dei trykte ordbøkene",
         "inflection_expanded": "Vis alltid bøyingstabellane",
         "inflection_table_context": "Vis kontekst for partisippformer i bøyingstabellane",
+        "submit_select": "Merk søkjeteksten når du gjennomfører søket",
         "locale": {
-          "title": "Språk",
+          "title": "Visningsspråk",
           "description": "Her kan du velje om du vil ha bokmål, nynorsk eller engelsk som språk på knappar, meldingar og menyar. Dette påverkar ikkje tydingar, døme og faste uttrykk i ordbøkene: Bokmålsordboka kjem framleis til å vere på bokmål, og Nynorskordboka kjem til å vere på nynorsk."
         },
         "collapse": {

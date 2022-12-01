@@ -27,6 +27,7 @@
     </p><p>
     Kva ordbok du får treff i, avheng av kva ordbok du har valt å søkje i, og om ordet blir brukt i begge skriftspråka. Det ligg per i dag ikkje inne koplingar mellom ordbøkene, men vi har utvikla ein meinte-du-funksjon, som vi håpar blir til hjelp for å finne dei riktige orda både i bokmål og nynorsk.</p>
     <p>Du kan søkje direkte på faste uttrykk, t.d. <em>gi katten i</em>. Alternativt finn du uttrykka samla til slutt i artikkelen eller artiklane dei er knytte til. Når du skriv inn eit enkelt ord i søkjefeltet, viser nedtrekksmenyen òg dei faste uttrykka som ordet er ein del av.</p>
+    <AdvancedHelp/>
 </div>
 
 

@@ -24,7 +24,7 @@ title: t('settings.title')
 <template>
 <main id="main" tabindex="-1" class="secondary-page flex flex-col gap-2">
   <h2>{{$t('settings.title')}}</h2>
-  <CustomCheckbox labelId="toggle-submit-select" v-model="settings.$state.submitSelect" :checked="settings.submitSelect">
+  <CustomCheckbox v-if="false" labelId="toggle-submit-select" v-model="settings.$state.submitSelect" :checked="settings.submitSelect">
       {{$t('settings.submit_select')}}
     </CustomCheckbox>
 <CustomCheckbox labelId="toggle-inflection-expanded" v-model="settings.$state.inflectionExpanded" :checked="settings.inflectionExpanded">

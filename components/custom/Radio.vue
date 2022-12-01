@@ -43,21 +43,21 @@
     
     input + label::before {
       content: '';
-      margin-bottom: -.125rem;
+      margin-bottom: -2px;
       position: relative;
       display: inline-block;
-      margin-right: .5rem;
-      width: 1rem;
-      height: 1rem;
+      margin-right: 8px;
+      width: 16px;
+      height: 16px;
       border: solid 1px theme('colors.gray.500');
       background: white;
-      border-radius: .25rem;
-      border-radius: 1rem;
+      border-radius: 4px;
+      border-radius: 16px;
     }
     
     
     input:checked + label::before {
-      margin-bottom: -.125rem;
+      margin-bottom: -2px;
       border-color: theme('colors.primary.DEFAULT');
       border-width: 2px;
     }
@@ -65,13 +65,15 @@
     input:checked + label::after {
         content: '';
         position: absolute;
-        top: .5rem;
-        left: .25rem;
+        top: 8px;
+        left: 4px;
         right: 0;
-        height: .5rem;
-        width: .5rem;
+        height: 8px;
+        width: 8px;
         background: theme('colors.primary.DEFAULT');
-        border-radius: 1rem;
+        border-radius: 16px;
+
+ 
     }
     
     input:focus + label::before {

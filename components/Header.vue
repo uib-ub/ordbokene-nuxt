@@ -13,16 +13,14 @@
 
       <button class="text-lg p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" 
               @keydown="escape_menu" 
+              :aria-expanded="menu_expanded"
+              :aria-controls="menu_expanded? 'main_menu' : null"
               @click="menu_expanded = !menu_expanded">
         <div class="sr-only sm:inline sm:not-sr-only">{{$t('menu.title')}}</div><CustomIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/>
       </button>
 </div>
       </div>
-    <nav class="lg:flex lg:ml-auto text-center" :aria-label="$t('label.nav')">
-
-
-      <div class="nav-buttons flex-wrap lg:flex-row content-center lg:ml-auto  mr-1 mt-2 lg:mt-0" v-bind:class="{hidden: !menu_expanded}">
-      
+    <nav id="main_menu" class="lg:flex lg:ml-auto text-center nav-buttons flex-wrap lg:flex-row content-center lg:ml-auto  mr-1 mt-2 lg:mt-0" :aria-label="$t('label.nav')" v-bind:class="{hidden: !menu_expanded}">
         <ul class="flex flex-col lg:flex-row gap-4 lg:space-x-3 xl:space-x-8 content-center mb-4 lg:mb-0" >
         <li class="nav-item">
           <NuxtLink @click="menu_expanded=false" class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
@@ -47,8 +45,6 @@
           </select> 
         </li>
       </ul>
-
-      </div>
     </nav>
   </header>
     

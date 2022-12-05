@@ -44,7 +44,7 @@
     <div v-if="route.params.dict != 'bm,nn' && route.query.dict != 'bm,nn' ">
       <div v-if="(route.params.dict == 'bm' || route.query.dict == 'bm') && articles.meta.bm">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Bokmålsordboka</h2>
-          <span class="result-count">  | {{$t('notifications.results', {count: articles.meta.bm.total})}}</span>
+          <span v-if="store.advanced" class="result-count">  | {{$t('notifications.results', {count: articles.meta.bm.total})}}</span>
         </div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
           <component v-for="article_id in store.advanced ? bm_articles : articles.articles.bm" :key="article_id + page" :is="store.advanced && listView ? 'li' : 'div'">
@@ -56,7 +56,7 @@
       </div>
       <div v-if="(route.params.dict == 'nn' || route.query.dict == 'nn' )  && articles.meta.nn">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Nynorskordboka</h2>
-          <span class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
+          <span v-if="store.advanced" class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
         </div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
           <component v-for="(article_id, idx) in store.advanced ? nn_articles : articles.articles.nn" :key="article_id + page" :is="store.advanced && listView ? 'li' : 'div'">

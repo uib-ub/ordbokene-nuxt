@@ -13,13 +13,13 @@
     <template>
       <div class="flex justify-center align-center xl:h-30vw">
       
-      <div class="grid lg:grid-cols-2 lg:px-5 lg:py-2 py-5 items-center h-full" v-if="welcome_bm && welcome_nn">
+      <div class="grid lg:grid-cols-2 lg:px-5 lg:py-2 md:py-5 items-center h-full" v-if="welcome_bm && welcome_nn">
         
         
-          <section class="lg:col-auto px-0lg:p-3">
+          <section class="lg:col-auto px-0 lg:p-3">
           <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm" welcome/>
           </section>
-          <section class="lg:col-auto px-0lg:p-3">
+          <section class="lg:col-auto px-0 lg:p-3">
           <Article :article_id="parseInt(welcome_nn.front_article.value)" dict="nn" welcome/>
           </section>
                   

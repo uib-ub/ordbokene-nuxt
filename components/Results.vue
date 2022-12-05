@@ -68,13 +68,13 @@
       </div>
       
     </div>
-    <div v-if="store.advanced && pages > 1" class="p-8 flex flex-wrap justify-center flex-col flex sm:flex-row gap-4">
-    <button :disabled="page == 1" @click="change_page(-1)" class="bg-primary text-white rounded-4xl p-3 px-8">
-      <CustomIcon icon="bi-chevron-left" left/>forrige side
+    <div v-if="store.advanced && pages > 1" class="p-2 py-6 md:p-8 flex md:flex-wrap justify-center flex md:gap-4">
+    <button :disabled="page == 1" @click="change_page(-1)" class="bg-primary text-white rounded-4xl p-1 px-2 md:p-3 md:px-8">
+      <CustomIcon icon="bi-chevron-left md:pr-0.75em"/><span class="sr-only md:not-sr-only">forrige side</span>
     </button>
-    <div class="text-center self-center align-middle mx-8 text-lg h-full">Side {{page}} av {{pages}}</div>
-    <button :disabled="page == pages" @click="change_page(1)" class="bg-primary text-white rounded-4xl p-3 px-8">
-      neste side<CustomIcon icon="bi-chevron-right" right/>
+    <div class="text-center self-center align-middle mx-4 md:mx-8 text-lg h-full">Side {{page}} av {{pages}}</div>
+    <button :disabled="page == pages" @click="change_page(1)" class="bg-primary text-white rounded-4xl p-1 px-2 md:p-3 md:px-8">
+      <span class="sr-only md:not-sr-only">neste side</span><CustomIcon icon="bi-chevron-right md:pl-0.75em"/>
     </button>
     </div>
   </div>

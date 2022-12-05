@@ -20,8 +20,9 @@
       </button>
 </div>
       </div>
-    <nav id="main_menu" class="lg:flex lg:ml-auto text-center nav-buttons flex-wrap lg:flex-row content-center lg:ml-auto  mr-1 mt-2 lg:mt-0" :aria-label="$t('label.nav')" v-bind:class="{hidden: !menu_expanded}">
-        <ul class="flex flex-col lg:flex-row gap-4 lg:space-x-3 xl:space-x-8 content-center mb-4 lg:mb-0" >
+    <div id="main_menu" class="lg:flex lg:ml-auto text-center nav-buttons flex-wrap lg:flex-row content-center lg:ml-auto  mr-1 mt-2 lg:mt-0" :aria-label="$t('label.nav')" v-bind:class="{hidden: !menu_expanded}">
+      <nav class="lg:mr-4">
+      <ul class="flex flex-col lg:flex-row gap-4 lg:space-x-3 xl:space-x-8 content-center mb-4 lg:mb-0" >
         <li class="nav-item">
           <NuxtLink @click="menu_expanded=false" class="nav-link" :aria-current="$route.name == 'help' && 'page'" to="/help">{{$t('help')}}</NuxtLink>
         </li>
@@ -35,7 +36,10 @@
                 <li class="nav-item">
           <NuxtLink @click="menu_expanded=false" class="nav-link" :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink>
         </li>
-              <li class="relative nav-item ">
+
+      </ul>
+    </nav>
+    <div class="relative mb-4 lg:mb-0 lg:ml-4 mt-1">
           <CustomIcon icon="bi bi-globe pr-2"/>
           <label for="locale-select" class="sr-only">{{$t('settings.locale.title')}}</label>
           <select id="locale-select" class="bg-primary text-white" v-model="i18n.locale.value" @change="update_locale">
@@ -43,9 +47,8 @@
             <option class="text-text bg-canvas" value="nob">Bokmål</option>
             <option class="text-text bg-canvas" value="nno">Nynorsk</option>
           </select> 
-        </li>
-      </ul>
-    </nav>
+      </div>
+    </div>
   </header>
     
 </template>
@@ -97,12 +100,9 @@ const update_locale = () => {
 
  nav {
   #locale-select {
-    font-variant-caps: all-small-caps;
     letter-spacing: .1rem;
-    font-weight: 600;
-    font-size: 1.25rem;
+    font-size: 1rem;
     cursor: pointer;
-
   }
   .nav-link {
     font-variant-caps: all-small-caps;

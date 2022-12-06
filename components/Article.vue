@@ -489,8 +489,8 @@ span.lemma-group {
     border-radius: 2rem;
     border: solid 1px;
     box-shadow: 2px 2px 0px theme("colors.gray.100");
-    margin-bottom: 1rem;
-    @apply p-1 md:p-2 lg:p-3 bg-canvas border-gray-100;
+    
+    @apply p-1 mb-2 md:mb-4 md:p-2 lg:p-3 bg-canvas border-gray-100;
 
     .dict_label {
     @apply text-text

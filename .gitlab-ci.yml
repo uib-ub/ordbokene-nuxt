@@ -10,7 +10,9 @@ build-dev:
   stage: build
   script:
   - npm install
-  - npm run build
+  - echo "WATERMARK=$CI_COMMIT_BRANCH ($CI_COMMIT_SHORT_SHA)" >> .env.dev_server
+  - 'echo -e "\n: /" >> dist/robots.txt'
+  - npm run build -- --mode dev_server
   artifacts:
     expire_in: "1 week"
     paths:

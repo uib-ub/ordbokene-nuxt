@@ -11,9 +11,9 @@
     </script>
     
     <template>
-      <div class="flex justify-center align-center xl:h-30vw">
+      <div class="flex md:justify-center xl:h-30vw">
       
-      <div class="grid lg:grid-cols-2 lg:px-5 lg:py-2 md:py-5 items-center h-full" v-if="welcome_bm && welcome_nn">
+      <div class="grid lg:grid-cols-2 lg:px-5 lg:py-2 md:py-5 md:items-center h-full w-full md:w-auto" v-if="welcome_bm && welcome_nn">
         
         
           <section class="lg:col-auto px-0 lg:p-3">

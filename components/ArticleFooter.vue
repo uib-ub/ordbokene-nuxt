@@ -124,6 +124,8 @@ const download_ris = () => {
     box-shadow: 1px 1px 1px theme("colors.gray.500");
     border: solid 1px theme("colors.gray.500");
     border-radius: 1.5rem;
+    word-break: break-word;
+    
 }
 
 h4 {

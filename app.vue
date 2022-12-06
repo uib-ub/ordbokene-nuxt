@@ -1,6 +1,7 @@
 <template>
   <a ref="skip_link" class="bg-tertiary-darken1 text-center z-1000 text-anchor sr-only text-xl font-semibold underline w-full  !focus-within:p-2 focus:not-sr-only focus:absolute focus:min-w-screen" href="#main"> Til innhold</a>
   <Header/>
+  TEST
 <div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name)">
   <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"> <strong><CustomIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
 <NuxtLink v-else to="/"> <strong><CustomIcon icon="bi-arrow-left" primary/></strong> {{$t('home')}}</NuxtLink>

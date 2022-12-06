@@ -117,6 +117,8 @@ const pages = ref(0)
 const offset = ref(per_page * page)
 const results = ref()
 
+const announcement = useState('announcement')
+
 
 const bm_articles = ref([])
 const nn_articles = ref([])

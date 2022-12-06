@@ -374,19 +374,21 @@ transform: translateX(-50%);
 .input-wrapper {
     width: 100%;
     border-radius: 2rem;
+    box-shadow: unset;
 }
 
-.input-wrapper:focus-within, .input-wrapper[data-dropdown-open=true] {
-  box-shadow: 2px 2px 0px theme("colors.primary.DEFAULT");
 
-  
+  .input-wrapper:focus-within, .input-wrapper[data-dropdown-open=true] {
+  box-shadow: 2px 2px 0 theme("colors.primary.DEFAULT");
 }
+
 
 .input-element {
   border-radius: 2rem 0 0 2rem;
   background: none;
   outline: none;
   width: 100%;
+  
 
 }
 
@@ -397,7 +399,8 @@ transform: translateX(-50%);
 
 .input-wrapper[data-dropdown-open=true] {
   border-radius: 1.75rem 1.75rem 0 0;
-  border-bottom: solid 1px white !important;
+  border-bottom: none;
+  padding-bottom: 1px;
 }
 
 

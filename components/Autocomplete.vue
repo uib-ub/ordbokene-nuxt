@@ -91,12 +91,6 @@ const clearText = () => {
 }
 
 
-onBeforeMount(() => {    
-    nextTick(function () {
-    input_element.value.select()
-  })
-})
-
 
 
 const keys = (event) => {

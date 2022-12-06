@@ -2,38 +2,43 @@
     <div v-bind:class="{'list': listView}">     
     <div v-if="pending" class="flex align-items-center justifycenter py-5 my-5">
         <div class="spinner-border text-primary" role="status">
-  <span class="sr-only">Loading</span>
+  <span class="sr-only" aria-live="polite">Loading</span>
         </div>
     </div>
-    <div ref="results" tabindex="-1" v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta" >
-    <div aria-live="polite" class="lg:sr-only">
+    <div ref="results"  v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta" >
+    <div tabindex="0" aria-live="polite" role="status" ref="announcement" class="announcement lg:sr-only pb-2 pl-1 text-gray-900 text-xs" v-bind:class="{'sr-only': !store.advanced}">
       <div class="sr-only" v-if="store.originalInput">Viser resultater for oppslagsordet <strong>{{$route.params.slug[0]}}.</strong></div>
-    <div class="result-announcement p-1" v-if="articles.meta.bm">{{$t('notifications.results', {count: articles.meta.bm.total})+$t("in")+$t('dicts_inline.bm')}}</div>
-    <div class="result-announcement p-1" v-if="articles.meta.nn">{{$t('notifications.results', {count: articles.meta.nn.total})+$t("in")+$t('dicts_inline.nn')}}</div>
+    <span v-if="articles.meta.bm"><div></div>{{$t('notifications.results', {count: articles.meta.bm.total})+$t("in")+$t('dicts_inline.bm')}}</span>
+    <span v-if="articles.meta.nn && articles.meta.bm"> | </span>
+    <span v-if="articles.meta.nn">{{$t('notifications.results', {count: articles.meta.nn.total})+$t("in")+$t('dicts_inline.nn')}}</span>
+    <div class="sr-only" v-if="listView"> Søkeresultatene ligger i en liste med lenker du kan nå med tabulatortasten.</div>
+    <div class="sr-only" v-else> Søkeresultatene ligger nå i et hierarki av overskrifter du ikke kan nå med tabulatortasten.</div>
+    
+    <div class="hidden snackbar-search">Trykk Shift + 7 for å gå til søkefeltet</div>
     </div>
 
 
     <div class="gap-3 lg:gap-8 grid lg:grid-cols-2 mx-1" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
       <section class="lg:grid-cols-6" :aria-label="$t('dicts.bm')">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Bokmålsordboka</h2>
-          <span v-if="articles.meta.bm.total" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.bm.total})}}</span>
-          <span v-else aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></div>
+          <span><span v-if="(articles.meta.bm.total > 1)" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.bm.total})}}</span>
+          <span v-else-if="store.advanced && articles.meta.bm.total == 0" aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></span></div>
         <component :is="store.advanced && listView ? 'ol' : 'div'" class="article-column">
-          <component v-for="article_id in store.advanced ? bm_articles : articles.articles.bm" :key="article_id + page" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="(article_id, idx) in store.advanced ? bm_articles : articles.articles.bm" :key="article_id + page" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
-              <Article :article_id="article_id" dict="bm"/>
+              <Article :article_id="article_id" dict="bm" :idx="idx"/>
             </NuxtErrorBoundary>
           </component>
         </component>
     </section>
       <section class="lg:grid-cols-6" :aria-label="$t('dicts.nn')">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Nynorskordboka</h2>
-          <span v-if="articles.meta.nn.total" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
-          <span v-else aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></div>
+          <span><span v-if="articles.meta.nn.total>1" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
+          <span v-else-if="store.advanced && articles.meta.nn.total == 0" aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></span></div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
-          <component v-for="article_id in store.advanced ? nn_articles : articles.articles.nn" :key="article_id  + page" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="(article_id, idx) in store.advanced ? nn_articles : articles.articles.nn" :key="article_id  + page" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">
-              <Article :article_id="article_id" dict="nn"/>
+              <Article :article_id="article_id" dict="nn" :idx="idx"/>
             </NuxtErrorBoundary>
           </component>
         </component>
@@ -44,24 +49,24 @@
     <div v-if="route.params.dict != 'bm,nn' && route.query.dict != 'bm,nn' ">
       <div v-if="(route.params.dict == 'bm' || route.query.dict == 'bm') && articles.meta.bm">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Bokmålsordboka</h2>
-          <span v-if="store.advanced" class="result-count">  | {{$t('notifications.results', {count: articles.meta.bm.total})}}</span>
+          <span v-if="(articles.meta.bm.total>1)" class="result-count">  | {{$t('notifications.results', {count: articles.meta.bm.total})}}</span>
         </div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
-          <component v-for="article_id in store.advanced ? bm_articles : articles.articles.bm" :key="article_id + page" :is="store.advanced && listView ? 'li' : 'div'">
+          <component v-for="(article_id, idx) in store.advanced ? bm_articles : articles.articles.bm" :key="article_id + page" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
-              <Article :article_id="article_id" dict="bm"/>
+              <Article :article_id="article_id" dict="bm" :idx="idx"/>
             </NuxtErrorBoundary>
           </component>
         </component>
       </div>
       <div v-if="(route.params.dict == 'nn' || route.query.dict == 'nn' )  && articles.meta.nn">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Nynorskordboka</h2>
-          <span v-if="store.advanced" class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
+          <span v-if="(articles.meta.nn.total>1)" class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
         </div>
         <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
           <component v-for="(article_id, idx) in store.advanced ? nn_articles : articles.articles.nn" :key="article_id + page" :is="store.advanced && listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">
-              <Article :article_id="article_id" dict="nn"/>
+              <Article :article_id="article_id" dict="nn" :idx="idx"/>
             </NuxtErrorBoundary>
           </component>
         </component>

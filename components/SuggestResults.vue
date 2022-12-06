@@ -46,7 +46,7 @@ a {
     border: none;
 }
 
-.nav-link:hover .link-content {
+.suggest-link:hover .link-content {
     border-bottom: solid 2px var(--link-decoration);
 }
 

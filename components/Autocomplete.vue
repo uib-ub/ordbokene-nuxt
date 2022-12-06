@@ -67,7 +67,7 @@ async function fetchAutocomplete(q) {
           }
         }
 
-        if (autocomplete_suggestions.length && store.input.trim() == q) {
+        if (autocomplete_suggestions.length && store.input.trim() == q && q != store.q) {
 
           store.autocomplete = autocomplete_suggestions
           store.show_autocomplete = true;

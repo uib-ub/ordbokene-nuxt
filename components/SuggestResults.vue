@@ -3,7 +3,7 @@
     <h2>{{$t('notifications.similar')}}</h2>
     <ul class="nav nav-pills flex-column md:flex md:flex-wrap md:gap-8 py-6 pt-4 md:py-8">
         <li class="nav-item flex" v-for="(item, idx) in suggestions" :key="idx">
-            <NuxtLink class="suggest-link py-3 md:py-0 md w-full" :to="suggest_link(item[0])"><CustomIcon icon="bi-search" left/><span class="link-content">{{item[0]}}</span></NuxtLink>
+            <NuxtLink @click="submit_suggestion" class="suggest-link py-3 md:py-0 md w-full" :to="suggest_link(item[0])"><CustomIcon icon="bi-search" left/><span class="link-content">{{item[0]}}</span></NuxtLink>
         </li>
     </ul>
 </div>
@@ -29,6 +29,10 @@ const suggest_link = (suggestion) => {
     else {
         return suggestion
     }
+}
+
+const submit_suggestion = () => {
+    store.focus =  'announcement';
 }
 
 

@@ -1,5 +1,5 @@
 <template>
-  <a class=" bg-tertiary-darken1 text-center text-anchor sr-only text-xl font-semibold underline  !focus-within:p-2 focus-within:not-sr-only" href="#main"> Til innhold</a>
+  <a ref="skip_link" class="bg-tertiary-darken1 text-center z-1000 text-anchor sr-only text-xl font-semibold underline w-full  !focus-within:p-2 focus:not-sr-only focus:absolute focus:min-w-screen" href="#main"> Til innhold</a>
   <Header/>
 <div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name)">
   <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"> <strong><CustomIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
@@ -17,6 +17,11 @@ import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
 
+const input_element = useState('input_element')
+const announcement = useState('announcement')
+const skip_link = ref()
+const keyboard_navigation = ref(false)
+
 console.log("CLIENT?",process.client)
 
 useHead({
@@ -26,12 +31,59 @@ useHead({
 })
 
 
+
+// Global event listeners
 if (process.client) {
   document.addEventListener('click', () => {
   store.show_autocomplete = false
-})
+  })
+
+
+
+  // Handle mouse vs keyboard navigation
+  document.addEventListener('mouseup', (event) => {
+      keyboard_navigation.value = false;
+  })
+
+  document.addEventListener('keyup', (event) => {
+    if (event.key == "Tab") {
+      keyboard_navigation.value = true
+    }
+  })
+  
+
 }
 
+
+const nuxtApp = useNuxtApp()
+
+nuxtApp.hook("page:finish", () => {
+  // Handle focus in one place
+
+   window.scrollTo(0, 0)
+   if (input_element.value) {
+    if (!navigator || navigator.userAgentData? navigator.userAgentData.mobile : !window.matchMedia('(pointer: fine)').matches) {
+      if (announcement.value) {
+        announcement.value.focus()
+      }
+    }
+    else {
+      input_element.value.select()
+    }
+    
+   }
+   else {
+    
+    if (keyboard_navigation.value) {
+      skip_link.value.focus()
+
+
+    }
+    
+
+   }
+
+})
 
 
 </script>

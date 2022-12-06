@@ -1,11 +1,16 @@
 <script setup>
 import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
+import {useSettingsStore } from '~/stores/settingsStore'
 
 const store = useStore()
 const route = useRoute()
+const settings = useSettingsStore()
 
-const input_element = ref('')
+const input_element = useState('input_element')
+const announcement = useState('announcement')
+
+
 const selected_option = ref(-1)
 const top_option = ref()
 
@@ -180,17 +185,64 @@ const exit_input = event => {
 }
 
 
+/*
+
 watch(() => store.q, () => {
-  console.log("MEDIA", document)
-  // 
   if (!navigator || navigator.userAgentData? navigator.userAgentData.mobile : !window.matchMedia('(pointer: fine)').matches) {
-    input_element.value.blur()
+    if (!store.advanced) {
+      store.focus = 'announcement'
+    }
   }
   else {
-    input_element.value.select()
+    //input_element.value.select()
+
   }
   
 })
+
+
+watch(() => announcement.value, () => {
+  if (store.focus == 'announcement') {
+    if (announcement.value) {
+      console.log("ANNOUNCEMENT", announcement)
+      announcement.value.focus()
+      store.focus = null
+    }
+  }
+})
+
+
+watch(() => input_element.value, () => {
+  if (input_element.value) {
+    //input_element.value.select()
+  }
+})
+
+*/
+
+
+if (process.client) {
+  document.addEventListener('keyup', (e) => {
+    if (e.key === "/") {
+    if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (/^(?:input|textarea|select)$/i.test(e.target.tagName)) return;
+    if(e.shiftKey && input_element.value) {
+      input_element.value.select()
+      input_element.value.scrollIntoView({block: 'end'})
+      e.preventDefault()
+    }
+    }
+
+    if (e.key === "Esc" || e.key == "Escape") {
+      store.show_autocomplete == false 
+      selected_option.value = -1
+    }
+    
+  })
+
+
+}
+
 
 
 

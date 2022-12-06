@@ -425,19 +425,21 @@ transform: translateX(-50%);
 
 
 
-.appended-button {
+.appended-button, .appended-button-disabled {
   font-size: 1.25rem;
   @apply text-primary my-1 mr-[-.5rem] py-2 px-3;
   border: none;
   border-radius: 2rem; 
   background: unset;
+
+}
+
+
   
-  
-  
-  &:hover, &:active {
+.appended-button:hover, .appended-button:active {
     @apply bg-gray-200;
   }
-}
+
 
 .advanced-search .appended-button  {
   font-size: 1.25rem;

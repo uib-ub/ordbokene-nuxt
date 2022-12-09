@@ -67,7 +67,7 @@ const unparsed = computed(() => {
                     ref: '/' + props.dict + '/' + item.article_id + (item.definition_id ? '#def' + item.definition_id : ''),
                     article_id: item.article_id,
                     definition_id: item.definition_id,
-                    definition_order: item.definition_order,
+                    definition_order: !item.word_form && item.definition_order,
                     source: "" //TODO: handle focus when returning from article
                     }
                 } 

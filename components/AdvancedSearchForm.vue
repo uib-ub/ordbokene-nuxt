@@ -49,7 +49,7 @@
   <button class="btn btn-light me-auto" v-if="store.q" @click="mini_help = !mini_help"><CustomIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
 
 
-  <button @click="(settings.listView = !settings.listView)" class="btn btn-light"><CustomIcon :icon='settings.listView ? "bi-list" : "bi-file-text"' left/>{{settings.listView ? $t('show_list',store.dict==='bm,nn'? 0 : 1) : $t('show_articles')}}</button>
+  <button @click="(settings.listView = !settings.listView)" class="btn btn-light"><CustomIcon :icon='settings.listView ? "bi-list" : "bi-file-text"' left/>{{settings.listView ? $t('show_articles') : $t('show_list',store.dict==='bm,nn'? 0 : 1)}}</button>
 
 
 

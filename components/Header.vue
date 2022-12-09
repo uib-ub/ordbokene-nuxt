@@ -108,26 +108,22 @@ const update_locale = () => {
     font-variant-caps: all-small-caps;
     font-size: 1.25rem;
     letter-spacing: .1rem;
-    font-weight: 600;
+
     list-style-type: none;
 
     padding-top: .5rem;
-    padding-bottom: .75rem;
+    border-bottom: solid .125rem theme('colors.secondary.DEFAULT');
+    
 
     &:focus {
-      @apply text-white;
+      @apply text-white border-white;
     }
 
     &:hover {
-      
-      border-bottom: solid 0.125rem !important;
-      @apply text-white border-white;
-      padding-bottom: .5rem;
+      @apply border-white;
     }
     &[aria-current=page] {
-      border-bottom: solid 0.125rem !important;
-      padding-bottom: .5rem;
-      @apply border-secondary !important;
+      @apply border-white;
     }
   }
 

@@ -31,7 +31,7 @@
 
 nav {
   font-variant: all-small-caps;
-  font-weight: 600;
+
 
 }
 

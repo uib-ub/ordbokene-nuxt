@@ -135,13 +135,13 @@ ul {
   }
 
   .welcome a {
-    @apply bg-primary-lighten-1 text-white;
+    @apply bg-primary-lighten text-white;
   }
 
   a[aria-current=true] {
     border-left: none;
     padding-left: 1.25rem;
-    @apply border-secondary bg-tertiary text-primary;
+    @apply border-secondary bg-tertiary text-primary-lighten;
   }
 
 

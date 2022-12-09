@@ -108,11 +108,9 @@ const update_locale = () => {
     font-variant-caps: all-small-caps;
     font-size: 1.25rem;
     letter-spacing: .1rem;
-
     list-style-type: none;
-
     padding-top: .5rem;
-    border-bottom: solid .125rem theme('colors.secondary.DEFAULT');
+    
     
 
     &:focus {
@@ -120,10 +118,10 @@ const update_locale = () => {
     }
 
     &:hover {
-      @apply border-white;
+      border-bottom: solid .125rem theme('colors.white');
     }
     &[aria-current=page] {
-      @apply border-white;
+      border-bottom: solid .125rem theme('colors.secondary.DEFAULT');
     }
   }
 

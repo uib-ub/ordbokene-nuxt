@@ -382,13 +382,11 @@ if (store.view == 'article') {
  h2 {
     color: theme("colors.gray.700") !important;
     margin-left: 1rem;
-    margin-top: 0.5rem;
     margin-bottom: 0rem;
     letter-spacing: .1rem;
     font-variant-caps: all-small-caps;
     font-weight: 600;
     font-size: 1.25rem !important;
-
 }
 
 
@@ -437,15 +435,9 @@ h4 {
 
 .article-dict-label {
     font-size: 1.5rem !important;
-    padding-left: 0.5rem;
     padding-bottom: 1rem;
-
 }
 
-.dict-label {
-    padding-left: .25rem;
-    margin-top: .5rem;
-}
 
 
 .skeleton {

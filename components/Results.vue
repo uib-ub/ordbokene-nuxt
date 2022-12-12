@@ -191,12 +191,7 @@ const slice_results = () => {
   }
 
   console.log(nn_articles.value)
-  
-  
-  if (results.value) {
-    results.value.focus()
-    results.value.scrollIntoView();
-  }
+
 }
 
 

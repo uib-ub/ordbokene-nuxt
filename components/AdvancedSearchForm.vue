@@ -38,8 +38,8 @@
 
 
 <div class="flex gap-2 ms-auto mt-auto justify-between md:justify-end">
-  <button :aria-label="$t('search')" class="btn btn-secondary bg-gray-500 border-gray-600 text-white" type="reset" @click="reset"> <CustomIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
-  <button :aria-label="$t('search')" class="btn btn-primary bg-primary text-white border-primary-lighten" type="submit"> <CustomIcon icon="bi-search" left/>{{$t('search')}}</button>
+  <button class="btn btn-secondary bg-gray-500 border-gray-600 text-white" type="reset" @click="reset"> <CustomIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
+  <button class="btn btn-primary bg-primary text-white border-primary-lighten" type="submit"> <CustomIcon icon="bi-search" left/>{{$t('search')}}</button>
 
 </div>
 </div>

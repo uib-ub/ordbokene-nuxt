@@ -24,8 +24,6 @@ const keyboard_navigation = ref(false)
 
 console.log("CLIENT?",process.client)
 
-console.log(process)
-
 useHead({
     titleTemplate: (titleChunk) => {
       return titleChunk ? `${titleChunk} - ordbøkene.no` : 'ordbøkene.no';

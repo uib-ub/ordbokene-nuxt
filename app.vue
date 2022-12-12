@@ -1,6 +1,5 @@
 <template>
   <a ref="skip_link" class="bg-tertiary-darken1 text-center z-1000 text-anchor sr-only text-xl font-semibold underline w-full  !focus-within:p-2 focus:not-sr-only focus:absolute focus:min-w-screen" href="#main"> Til innhold</a>
-  <div class="absolute bg-secondary text-white p-1" aria-hidden="true">{{config.public.endpointEnv}}</div>
   <Header/>
 <div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name)">
   <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"> <strong><CustomIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
@@ -17,7 +16,6 @@ import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
-const config = useRuntimeConfig()
 
 const input_element = useState('input_element')
 const announcement = useState('announcement')
@@ -25,6 +23,8 @@ const skip_link = ref()
 const keyboard_navigation = ref(false)
 
 console.log("CLIENT?",process.client)
+
+console.log(process)
 
 useHead({
     titleTemplate: (titleChunk) => {

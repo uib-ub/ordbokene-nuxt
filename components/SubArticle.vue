@@ -3,10 +3,10 @@
     <span class="sub_article_header">
     {{body.lemmas[0]}}
     </span>
-    <ul>
+    <div>
     <DefElement :body="body.intro" v-if="body.intro" :dict="dict" @link-click="link_click"/>
     <Definition :level="9" :body="body.article.body.definitions[0]" :dict="dict" @link-click="link_click" :content_locale="content_locale"/>
-    </ul>
+    </div>
 </li>
 </template>
 

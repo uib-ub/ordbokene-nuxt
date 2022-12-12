@@ -9,8 +9,8 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
       public: {
-        endpointEnv: process.env.ENDPOINT_ENV,
-        versionWatermark: process.env.WATERMARK
+        endpointEnv: process.env.ENDPOINT_ENV || 'dev',
+        versionWatermark: process.env.WATERMARK || 'test'
       }
     },
     modules: [

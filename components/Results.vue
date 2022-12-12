@@ -276,4 +276,9 @@ button[disabled] {
 
 
 .announcement:focus-within .snackbar-search {
+  display: absolute !important;
+  bottom: 1rem;
+
+}
+
 </style>

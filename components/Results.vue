@@ -133,10 +133,7 @@ const get_suggestions = async () => {
   }
   else {
     suggestions.value = null
-  }
-  
-  
-  
+  } 
 }
 const { pending, error, refresh, data: articles } = await useAsyncData("articles_"+ store.searchUrl, ()=> 
       $fetch(store.endpoint + 'api/articles?', {
@@ -173,7 +170,7 @@ watch(() => store.searchUrl, () => {
 })
 
 onMounted(() => {
-    get_suggestions()
+    get_suggestions()    
 })
 
 
@@ -214,6 +211,8 @@ watch(articles, (newArticles) => {
       console.log("OFFSET", offset)
       slice_results()
     }
+
+    
     
 
 
@@ -275,4 +274,6 @@ button[disabled] {
 
 
 
+
+.announcement:focus-within .snackbar-search {
 </style>

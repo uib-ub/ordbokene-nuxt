@@ -7,8 +7,8 @@
     "advanced_help": "Om avansert søk",
     "advanced": "Avansert søk",
     "to_advanced": "Gå til avansert søk",
-    "show_articles": "Vis heile teksten",
-    "show_list": "Vis liste med lenkjer | Vis lister med lenkjer",
+    "show_articles": "Vis forklaringar",
+    "show_list": "Vis liste | Vis lister",
     "simple": "Enkelt søk",
     "about": "Om ordbøkene",
     "photo": "Foto: Clay Banks (unsplash.com)",
@@ -60,7 +60,7 @@
     "options": {
         "title": "Søkjealternativ",
         "inflected": "Søk i bøygde former",
-        "fulltext": "Fritekstsøk",
+        "fulltext": "Søk i ordforklaringer",
         "pos": "Ordklasse",
         "collapse": "Komprimer artiklar"
     },
@@ -112,7 +112,7 @@
         "inflection_table_context": "Vis kontekst for partisippformer i bøyingstabellane",
         "submit_select": "Merk søkjeteksten når du gjennomfører søket",
         "locale": {
-          "title": "Visningsspråk",
+          "title": "Nettsidespråk",
           "description": "Her kan du velje om du vil ha bokmål, nynorsk eller engelsk som språk på knappar, meldingar og menyar. Dette påverkar ikkje tydingar, døme og faste uttrykk i ordbøkene: Bokmålsordboka kjem framleis til å vere på bokmål, og Nynorskordboka kjem til å vere på nynorsk."
         },
         "collapse": {
@@ -151,6 +151,7 @@
         "search": "Søk i ordbøkene",
         "back": "Tilbake til søkjeresultata",
         "no_results": "Ingen treff",
+        "not_a_word": " er ikkje eit oppslagsord i ",
         "results": "Ingen treff | Eitt treff| {count} treff",
         "ignored_words": "Søket vart ignorert fordi vi avgrensar talet på førespurnader til 20 ord.",
         "ignored_chars": "Søket vart ignorert fordi vi ikkje tillèt søkjeord med meir enn 40 teikn.",

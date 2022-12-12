@@ -1,8 +1,8 @@
 <template>
-<footer class="p-3 bg-primary text-white">
-  <div class="ord-container pt-4 md:pt-0">
-  <div class="flex  flex-col xl:flex-row items-center">
-    <div class="flex  flex-col md:flex-row m-1 items-center">
+<footer class=" bg-primary text-white">
+  <div class="ord-container p-3 pt-10 md:pt-4">
+  <div class="flex  flex-col xl:flex-row items-center xl:items-start">
+    <div class="flex  flex-col md:flex-row m-1 lg:mr-4 items-center">
       <img class="srlogo m-1" src="../assets/Sprakradet_logo_neg.png" alt="Språkrådet, logo" />
       <img class="uiblogo mx-4 my-4 lg:my-0" src="../assets/uib-logo.svg" alt="Universitetet i Bergen, logo" />
     </div>
@@ -23,7 +23,10 @@
         <NuxtLink :aria-current="$route.name == 'contact' && 'page'" to="/contact">{{$t('contact.title')}}</NuxtLink></li>
     </ul>
   </nav>
+  
   </div>
+  <div class="float-right px-1 text-gray-300" aria-hidden="true">{{$config.public.versionWatermark}}</div>
+  
 </footer>
 </template>
 

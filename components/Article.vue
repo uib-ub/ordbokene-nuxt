@@ -1,7 +1,7 @@
 <template>
     <div class="list-view-item" v-if="settings.listView && store.advanced == true && $route.name == 'search' && store.q">
         <span v-if="pending" class="list-view-item"><div class="skeleton skeleton-content w-25"/><div class="skeleton skeleton-content w-50"/></span>
-        <NuxtLink v-else class="result-list-item" :to="link_to_self()">
+        <NuxtLink v-else :id="dict + '-' + idx" class="result-list-item" ref="self_ref" :to="link_to_self()">
 
     <div v-for="(lemma_group, i) in lemma_groups" :key="i">
     <span class="lemma-group">
@@ -107,11 +107,13 @@ const i18n = useI18n()
 const store = useStore()
 const inflection_expanded = ref(false)
 const settings = useSettingsStore()
+const self_ref = ref()
 
 const props = defineProps({
     article_id: Number,
     dict: String,
-    welcome: Boolean
+    welcome: Boolean,
+    idx: Number
 })
 
 const { pending, data, error } = useAsyncData('article_'+props.article_id, () => $fetch(`${store.endpoint}${props.dict}/article/${props.article_id}.json`,
@@ -188,6 +190,10 @@ const sub_articles = computed(() => {
 
 const link_click = (event) => {
     console.log("ARTICLE CLICKED", event)
+}
+
+const click_self = () => {
+  store.clickedArticle = self_ref.value
 }
 
 const link_to_self = () => {

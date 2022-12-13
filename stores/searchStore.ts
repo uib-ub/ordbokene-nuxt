@@ -17,6 +17,7 @@ export const useStore = defineStore('store', {
       suggestQuery: "",
       articles: {},
       searchUrl: null,
+      clickedArticle: null,
       view: null,
       concepts_bm: [],
       concepts_nn: [],

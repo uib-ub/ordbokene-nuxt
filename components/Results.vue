@@ -23,8 +23,8 @@
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Bokmålsordboka</h2>
           <span><span v-if="(articles.meta.bm.total > 1)" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.bm.total})}}</span>
           <span v-else-if="store.advanced && articles.meta.bm.total == 0" aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></span></div>
-        <component :is="store.advanced && listView ? 'ol' : 'div'" class="article-column">
-          <component v-for="(article_id, idx) in store.advanced ? bm_articles : articles.articles.bm" :key="article_id + page" :is="store.advanced && listView ? 'li' : 'div'">
+        <component :is="listView ? 'ol' : 'div'" class="article-column">
+          <component v-for="(article_id, idx) in store.advanced ? bm_articles : articles.articles.bm" :key="article_id + page" :is="listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'bm')">
               <Article :article_id="article_id" dict="bm" :idx="idx"/>
             </NuxtErrorBoundary>
@@ -35,8 +35,8 @@
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Nynorskordboka</h2>
           <span><span v-if="articles.meta.nn.total>1" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
           <span v-else-if="store.advanced && articles.meta.nn.total == 0" aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></span></div>
-        <component class="article-column" :is="store.advanced && listView ? 'ol' : 'div'">
-          <component v-for="(article_id, idx) in store.advanced ? nn_articles : articles.articles.nn" :key="article_id  + page" :is="store.advanced && listView ? 'li' : 'div'">
+        <component class="article-column" :is="listView ? 'ol' : 'div'">
+          <component v-for="(article_id, idx) in store.advanced ? nn_articles : articles.articles.nn" :key="article_id  + page" :is="listView ? 'li' : 'div'">
             <NuxtErrorBoundary v-on:error="article_error($event, article_id, 'nn')">
               <Article :article_id="article_id" dict="nn" :idx="idx"/>
             </NuxtErrorBoundary>
@@ -101,7 +101,6 @@
 <script setup>
 
 import { useStore } from '~/stores/searchStore'
-import { useRoute } from 'vue-router'
 import {useSettingsStore } from '~/stores/settingsStore'
 
 const settings = useSettingsStore()
@@ -122,6 +121,10 @@ const announcement = useState('announcement')
 
 const bm_articles = ref([])
 const nn_articles = ref([])
+
+const listView = computed(() => {
+  return store.q && store.advanced ? settings.listView && route.name == 'search' : settings.simpleListView && route.name == 'dict-slug'
+})
 
 
 const get_suggestions = async () => {
@@ -227,9 +230,6 @@ watch(articles, (newArticles) => {
 }
 )
 
-const listView = computed(() => {
-  return settings.listView && store.advanced == true && route.name == 'search' && store.q
-})
 
 const article_error = (error, article, dict) => {
   console.log("ARTICLE_ERROR", article, dict)
@@ -252,11 +252,10 @@ ol.article-column>li {
 }
 
 .list .article-column  {
-    border-radius: 2rem;
     border: solid 1px rgba(0,0,0, .5);
     @apply bg-white;
     box-shadow: 2px 2px 0px rgba(0,0,0, .5);
-    padding: 0.5rem;
+    padding: 0rem;
 }
 
 .list .article-column:empty  {

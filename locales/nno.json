@@ -111,6 +111,7 @@
         "inflection_expanded": "Vis alltid bøyingstabellane",
         "inflection_table_context": "Vis kontekst for partisippformer i bøyingstabellane",
         "submit_select": "Merk søkjeteksten når du gjennomfører søket",
+        "simple_search_list": "Listevisning i enkelt søk",
         "locale": {
           "title": "Nettsidespråk",
           "description": "Her kan du velje om du vil ha bokmål, nynorsk eller engelsk som språk på knappar, meldingar og menyar. Dette påverkar ikkje tydingar, døme og faste uttrykk i ordbøkene: Bokmålsordboka kjem framleis til å vere på bokmål, og Nynorskordboka kjem til å vere på nynorsk."

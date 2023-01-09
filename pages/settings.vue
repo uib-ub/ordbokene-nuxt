@@ -36,6 +36,9 @@ title: t('settings.title')
     <CustomCheckbox labelId="toggle-inflection-context" v-model="settings.$state.inflectionTableContext" :checked="settings.inflectionTableContext">
       {{$t('settings.inflection_table_context')}}
     </CustomCheckbox>
+    <CustomCheckbox labelId="toggle-simple-list-view" v-model="settings.$state.simpleListView" :checked="settings.simpleListView">
+      {{$t('settings.simple_search_list')}}
+    </CustomCheckbox>
 
 
 <div class="mt-4">

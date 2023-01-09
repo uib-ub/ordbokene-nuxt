@@ -123,6 +123,7 @@
       "inflection_expanded": "Vis alltid bøyningstabellene",
       "inflection_table_context": "Vis kontekst for partisippformer i bøyningstabellene",
       "submit_select": "Merk søkjeteksten når du gjennomfører søket",
+      "simple_search_list": "Listevisning i enkelt søk",
       "locale": {
         "title": "Nettsidespråk" ,
         "description":  "Her kan du endre språk eller målform på knapper, meldinger og menyer. Dette vil ikke påvirke definisjoner og eksempler i ordbøkene: Bokmålsordboka vil fortsatt være på bokmål, og Nynorskordboka vil være på nynorsk"

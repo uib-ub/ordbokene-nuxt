@@ -1,5 +1,5 @@
 <template>
-    <div class="list-view-item" v-if="settings.listView && store.advanced == true && $route.name == 'search' && store.q">
+    <div class="list-view-item" v-if="listView">
         <span v-if="pending" class="list-view-item"><div class="skeleton skeleton-content w-25"/><div class="skeleton skeleton-content w-50"/></span>
         <NuxtLink v-else class="result-list-item" :to="link_to_self()">
 
@@ -99,7 +99,6 @@
 <script setup>
 import { useStore } from '~/stores/searchStore'
 import { useI18n } from 'vue-i18n'
-import { computed } from 'vue'
 import {useSettingsStore } from '~/stores/settingsStore'
 
 const { t } = useI18n()
@@ -107,11 +106,16 @@ const i18n = useI18n()
 const store = useStore()
 const inflection_expanded = ref(false)
 const settings = useSettingsStore()
+const route = useRoute()
 
 const props = defineProps({
     article_id: Number,
     dict: String,
     welcome: Boolean
+})
+
+const listView = computed(() => {
+  return store.q && store.advanced ? settings.listView && route.name == 'search' : settings.simpleListView && route.name == 'dict-slug'
 })
 
 const { pending, data, error } = useAsyncData('article_'+props.article_id, () => $fetch(`${store.endpoint}${props.dict}/article/${props.article_id}.json`,
@@ -361,6 +365,7 @@ const snippet = computed(() => {
   }
   
 })
+
 
 if (store.view == 'article') {
   useHead({

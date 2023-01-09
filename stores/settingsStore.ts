@@ -7,7 +7,8 @@ export const useSettingsStore = defineStore('settings', {
             inflectionExpanded: false,
             inflectionNo: false,
             inflectionTableContext: false,
-            listView: false
+            listView: false,
+            simpleListView: false
         }
     },
     persist: true,

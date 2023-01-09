@@ -109,7 +109,7 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
   
 
      .text-primary {
-      @apply text-white) !important;
+      @apply text-white !important;
     }
 
 
@@ -118,26 +118,26 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
     .mode-nav .nav-link[aria-current=true] {
       border-bottom: solid 0.125rem;
 
-      @apply text-white);
+      @apply text-white;
       &:hover, &:active {
-        @apply text-white) !important;
+        @apply text-white !important;
       }
     }
 
     .mode-nav .nav-link {
-      @apply text-white);
+      @apply text-white;
       text-shadow: 1px 1px 1px black;
     }
 
     .mode-nav .nav-link:hover {
       border-bottom: solid 0.125rem;
-      @apply bg-black);
+      @apply bg-black;
     }
 
     .mode-nav .nav-link
      &:active {
       &hover {
-        @apply text-white) !important;
+        @apply text-white !important;
       }
 
      }
@@ -150,7 +150,7 @@ $font-family-base: 'Noto Sans', Helvetica, Arial, sans-serif;
 
     .article {
       border-radius: .25rem !important;
-      @apply bg-body-bg) !important;
+      @apply bg-body-bg !important;
       box-shadow: none !important;
       border: none !important;
     }

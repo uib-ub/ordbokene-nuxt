@@ -113,7 +113,7 @@ const router = useRouter()
 const suggestions = ref()
 const error_message = ref()
 const per_page = 10
-const page = ref(parseInt(route.query.page) || 1)
+const page = ref(parseInt(route.query.page || "1"))
 const pages = ref(0)
 const offset = ref(per_page * page)
 const results = ref()
@@ -198,7 +198,7 @@ const slice_results = () => {
 
 
 watch(() => route.query.page, () => {
-  page.value = route.query.page
+  page.value = route.query.page || 1
   slice_results()
 
 
@@ -239,7 +239,7 @@ const article_error = (error, article, dict) => {
 }
 
 const change_page = async (change) => {
-  navigateTo({query: {...route.query, ...{page: parseInt(page.value) + change}}})
+  navigateTo({query: {...route.query, ...{page: parseInt(page.value || "1") + change}}})
 }
 
 </script>

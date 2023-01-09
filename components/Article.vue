@@ -195,7 +195,7 @@ const link_click = (event) => {
 }
 
 const link_to_self = () => {
-    return `/${props.dict}/${props.article_id}/${encodeURIComponent(data.value.lemmas[0].lemma)}`
+    return `/${props.dict}/${props.article_id}`
     }
 
 

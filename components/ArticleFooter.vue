@@ -27,7 +27,7 @@ const showToast = () => {
 }
 
 const create_link = () => {
-      return `https://ordbokene.no/${props.dict}/${props.article_id}/${encodeURIComponent(props.lemmas[0].lemma)}`
+      return `https://ordbokene.no/${props.dict}/${props.article_id}`
     };
 
 const webShareApiSupported = computed(() => {
@@ -42,7 +42,7 @@ const shareViaWebShare = () => {
         navigator.share({
         title: "Ordbøkene.no: " + props.lemmas[0].lemma,
         text: "",
-        url: "/" + props.dict + '/' + props.article_id + '/' + encodeURIComponent(props.lemmas[0].lemma)
+        url: "/" + props.dict + '/' + props.article_id
       })
       };
 

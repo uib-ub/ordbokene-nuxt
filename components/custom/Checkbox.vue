@@ -1,8 +1,14 @@
 <template>
-<div>
+<div class="checkbox-container">
+
+  <svg aria-hidden="true" class="text-primary absolute pointer-events-none" v-if="checked" style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M10,17L5,12L6.41,10.58L10,14.17L17.59,6.58L19,8M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3Z" />
+      </svg>
+      <svg aria-hidden="true" class="text-gray-700 absolute pointer-events-none" v-else style="width:24px;height:24px" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M19,3H5C3.89,3 3,3.89 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5C21,3.89 20.1,3 19,3M19,5V19H5V5H19Z" /></svg>
 
   <input  class="sr-only" type="checkbox" :id="props.labelId" :checked="props.checked" v-model="model">
-  <label :for="props.labelId">
+  <label class="pl-8" :for="props.labelId">
     <slot></slot>
   </label>
 </div>
@@ -36,51 +42,11 @@ const model = computed({
 
 <style scoped lang="scss">
 
-input {
-  position: absolute;
+
+
+.checkbox-container:focus-within svg { 
+  outline: solid 2px theme('colors.secondary.DEFAULT');
+
 }
-
-input + label {
-  display: block;
-  position: relative;
-}
-
-input + label::before {
-  content: '';
-  margin-bottom: -.125rem;
-  position: relative;
-  display: inline-block;
-  margin-right: .5rem;
-  width: 1rem;
-  height: 1rem;
-  border: solid 1px theme('colors.gray.500');
-  background: white;
-  border-radius: .25rem;
-}
-
-
-input:checked + label::before {
-  margin-bottom: -.125rem;
-  background: theme('colors.primary.DEFAULT');
-  border-color: theme('colors.primary.DEFAULT');
-}
-
-input:checked + label::after {
-  content: '';
-  position: absolute;
-  top: .5rem;
-  left: .25rem;
-  border-left: 2px solid white;
-  border-bottom: 2px solid white;
-  height: .35rem;
-  width: .75rem;
-  transform: rotate(-45deg);
-}
-
-input:focus + label::before {
-  outline: theme('colors.secondary.DEFAULT') solid 1px;
-  box-shadow: 2px 2px 0px theme('colors.secondary.DEFAULT');
-}
-
 
 </style>

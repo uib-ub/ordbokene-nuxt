@@ -256,6 +256,7 @@ ol.article-column>li {
     @apply bg-white;
     box-shadow: 2px 2px 0px rgba(0,0,0, .5);
     padding: 0rem;
+    width: 100%;
 }
 
 .list .article-column:empty  {

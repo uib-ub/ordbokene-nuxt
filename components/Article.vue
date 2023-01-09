@@ -19,7 +19,7 @@
     </span>
 </span>
 <span v-if="secondary_header_text">,&nbsp;<span class="lemma-group lemma">{{secondary_header_text}}</span></span>
-    &nbsp;<em v-if="lemma_group.description" class="subheader">
+    &nbsp;<em v-if="lemma_group.description" class="subheader ">
     <span class="header_group_list">{{lemma_group.description}}</span>
           {{lemma_group.genus}}
     <span v-if="settings.inflectionNo" class="inflection_classes">{{lemma_group.inflection_classes}}</span>
@@ -542,10 +542,13 @@ span.lemma-group {
     padding-right: 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    
     border: none;
     display: inline-block;
     width: 100%;
+    @screen md {
+      white-space: nowrap;
+    }
 }
 
 

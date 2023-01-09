@@ -131,7 +131,7 @@ const submitForm = async (item) => {
 <style lang="scss" scoped>
 
 .advanced-search {
-  @apply bg-tertiary border-gray-50 border-1 md:pt-4;
+  @apply bg-tertiary md:pt-4;
   
   
 
@@ -142,17 +142,7 @@ const submitForm = async (item) => {
 
 }
 
-@screen md {
-  .advanced-search {
-    border-top: none;
-  }
 
-  .welcome .advanced-search {
-    @apply bg-tertiary border-1 border-tertiary-darken2;
-    box-shadow: 2px 2px 0px theme('colors.tertiary.darken2');
-  }
-  
-}
 
 
 

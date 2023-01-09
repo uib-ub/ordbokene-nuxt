@@ -115,7 +115,7 @@ const props = defineProps({
 })
 
 const listView = computed(() => {
-  return store.q && store.advanced ? settings.listView && route.name == 'search' : settings.simpleListView && route.name == 'dict-slug'
+  return store.q && store.view != 'article' &&  (store.advanced ? settings.listView && route.name == 'search' : settings.simpleListView && route.name == 'dict-slug')
 })
 
 const { pending, data, error } = useAsyncData('article_'+props.article_id, () => $fetch(`${store.endpoint}${props.dict}/article/${props.article_id}.json`,
@@ -546,7 +546,7 @@ span.lemma-group {
     border: none;
     display: inline-block;
     width: 100%;
-    @screen md {
+    @screen lg {
       white-space: nowrap;
     }
 }
@@ -561,15 +561,10 @@ span.lemma-group {
 }
 
 
-.article-column>li:first-child .result-list-item {
-  border-top-left-radius: 1.5rem;
-  border-top-right-radius: 1.5rem;
-}
+
 
 .article-column>li:last-child .result-list-item {
   border-bottom: none;
-  border-bottom-left-radius: 1.5rem;
-  border-bottom-right-radius: 1.5rem;
 }
 
 

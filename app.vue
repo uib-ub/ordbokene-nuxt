@@ -65,13 +65,13 @@ nuxtApp.hook("page:finish", () => {
 
    window.scrollTo(0, 0)
    if (input_element.value) {
-    if (!settings.autoSelect && (!navigator || navigator.userAgentData? navigator.userAgentData.mobile : !window.matchMedia('(pointer: fine)').matches)) {
+    if (!settings.autoSelect && store.view != 'article') {
       if (announcement.value) {
         announcement.value.focus()
       }
     }
     else {
-      //input_element.value.select()
+      input_element.value.select()
     }
     
    }

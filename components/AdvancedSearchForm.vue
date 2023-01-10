@@ -1,18 +1,18 @@
 <template>
 <div class="my-2 md:mt-0">
-<form  @submit.prevent="submitForm" ref="form" class="flex gap-10 flex-wrap">
+<form  @submit.prevent="submitForm" ref="form" class="flex flex-col md:flex-row gap-10 flex-wrap">
 
-  <div class="mb-3 p-3 md:pb-5 px-4 md:px-5 advanced-search w-full flex gap-4 flex-wrap" >
-    <div class="md:p-2 flex gap-4 md:gap-6 lg:gap-10 flex-wrap">
-  <fieldset class="flex flex-row gap-3 flex-wrap">
+  <div class="mb-4 md:mb-3 md:pb- px-0 gap-3 md:gap-0 advanced-search w-full flex flex-wrap" >
+    <div class="mb-2 md:mb-1 p-3 md:p-0 flex flex-row gap-4 md:gap-3 lg:gap-2 flex-wrap">
+  <fieldset class="flex flex-col lg:flex-row gap-3 flex-wrap">
   <legend class="sr-only">Ordbok</legend>
     <CustomRadio v-for="(item, idx) in dicts" :key="store.dict + idx" :model="store.dict || 'bm,nn'" @change="dict_radio" :value="item" name="dict" :labelId="'dict-radio-'+idx">
       {{$t(`dicts.${item}`)}}
     </CustomRadio>
   </fieldset>
 
-
-<div class="flex gap-3 flex-wrap">
+<div class="flex flex-col lg:flex-row gap-3 flex-wrap">
+<div class="flex flex-col lg:flex-row gap-3 flex-wrap">
 <CustomCheckbox labelId="inflectedCheckbox" :checked="inflection_enabled" v-model="inflection_enabled">
     {{$t('options.inflected')}}
 </CustomCheckbox>
@@ -20,12 +20,15 @@
     {{$t('options.fulltext')}}
 </CustomCheckbox>
 </div>
+<div class="flex flex-row gap-3">
   <label for="pos-select">{{$t('pos')}}:</label>
   <div class="select-wrapper" v-bind:class="{not_null: store.pos}">
   <select id="pos-select" name="pos" class="bg-tertiary" @change="store.pos = $event.target.value">
     <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="tag" :selected="store.pos == tag" v-bind:class="{selected: store.pos == tag}">{{tag ? $t("tags." + tag) : $t("all_pos")}}</option>
   </select>
   </div>
+</div>
+</div>
 
 </div>
 
@@ -37,9 +40,9 @@
   
 
 
-<div class="flex gap-2 ms-auto mt-auto justify-between md:justify-end">
-  <button class="btn btn-secondary bg-gray-500 border-gray-600 text-white" type="reset" @click="reset"> <CustomIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
-  <button class="btn btn-primary bg-primary text-white border-primary-lighten" type="submit"> <CustomIcon icon="bi-search" left/>{{$t('search')}}</button>
+<div class="flex gap-2 justify-between w-full md:w-auto justify-end content-end">
+  <button class="btn btn-secondary bg-gray-500 border-gray-600 text-white w-50 " type="reset" @click="reset"> <CustomIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
+  <button class="btn btn-primary bg-primary text-white border-primary-lighten w-50" type="submit"> <CustomIcon icon="bi-search" left/>{{$t('search')}}</button>
 
 </div>
 </div>

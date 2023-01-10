@@ -1,9 +1,9 @@
 <template>
     <span>
-      <svg aria-hidden="true" class="text-primary absolute pointer-events-none" v-if="value == model" style="width:24px;height:24px" viewBox="0 0 24 24">
+      <svg aria-hidden="true" class="text-primary absolute pointer-events-none w-6 h-6" v-if="value == model" viewBox="0 0 24 24">
     <path fill="currentColor" d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7Z" />
 </svg>
-      <svg aria-hidden="true" class="text-gray-700 absolute pointer-events-none" v-else style="width:24px;height:24px" viewBox="0 0 24 24">
+      <svg aria-hidden="true" class="text-gray-700 absolute pointer-events-none w-6 h-6" v-else viewBox="0 0 24 24">
     <path fill="currentColor" d="M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
 </svg>
 

@@ -178,43 +178,6 @@ const exit_input = event => {
   }
 }
 
-
-/*
-
-watch(() => store.q, () => {
-  if (!navigator || navigator.userAgentData? navigator.userAgentData.mobile : !window.matchMedia('(pointer: fine)').matches) {
-    if (!store.advanced) {
-      store.focus = 'announcement'
-    }
-  }
-  else {
-    //input_element.value.select()
-
-  }
-  
-})
-
-
-watch(() => announcement.value, () => {
-  if (store.focus == 'announcement') {
-    if (announcement.value) {
-      console.log("ANNOUNCEMENT", announcement)
-      announcement.value.focus()
-      store.focus = null
-    }
-  }
-})
-
-
-watch(() => input_element.value, () => {
-  if (input_element.value) {
-    //input_element.value.select()
-  }
-})
-
-*/
-
-
 if (process.client) {
   document.addEventListener('keyup', (e) => {
     if (e.key === "/") {

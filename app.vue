@@ -14,7 +14,10 @@
 import { useI18n } from 'vue-i18n'
 import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
+import Settings from './pages/settings.vue'
+import { useSettingsStore } from './stores/settingsStore'
 const store = useStore()
+const settings = useSettingsStore()
 const route = useRoute()
 
 const input_element = useState('input_element')
@@ -62,13 +65,13 @@ nuxtApp.hook("page:finish", () => {
 
    window.scrollTo(0, 0)
    if (input_element.value) {
-    if (!navigator || navigator.userAgentData? navigator.userAgentData.mobile : !window.matchMedia('(pointer: fine)').matches) {
+    if (!settings.autoSelect && (!navigator || navigator.userAgentData? navigator.userAgentData.mobile : !window.matchMedia('(pointer: fine)').matches)) {
       if (announcement.value) {
         announcement.value.focus()
       }
     }
     else {
-      input_element.value.select()
+      //input_element.value.select()
     }
     
    }

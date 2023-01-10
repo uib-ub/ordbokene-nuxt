@@ -31,10 +31,6 @@ const suggest_link = (suggestion) => {
     }
 }
 
-const submit_suggestion = () => {
-    store.focus =  'announcement';
-}
-
 
 </script>
 

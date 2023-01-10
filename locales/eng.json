@@ -106,6 +106,7 @@
       "inflection_table_context": "Show context for participle forms in the inflection tables",
       "submit_select": "Select search query when submitting search",
       "simple_search_list": "List view in simple search",
+      "auto_select": "Select search term automatically after search",
       "locale": {
         "title": "Locale" ,
         "description": "Default language settings for the language of headings, buttons, messages, and menus. The settings will not affect examples and definitions: the Bokmål dictionary will remain in Bokmål and the Nynorsk dictionary stays Nynorsk "

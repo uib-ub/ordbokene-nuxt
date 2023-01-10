@@ -24,6 +24,12 @@ title: t('settings.title')
 <template>
 <main id="main" tabindex="-1" class="secondary-page flex flex-col gap-2">
   <h2>{{$t('settings.title')}}</h2>
+  <CustomCheckbox labelId="toggle-simple-list-view" v-model="settings.$state.simpleListView" :checked="settings.simpleListView">
+      {{$t('settings.simple_search_list')}}
+    </CustomCheckbox>
+    <CustomCheckbox labelId="toggle-auto-select" v-model="settings.$state.autoSelect" :checked="settings.autoSelect">
+      {{$t('settings.auto_select')}}
+    </CustomCheckbox>
   <CustomCheckbox v-if="false" labelId="toggle-submit-select" v-model="settings.$state.submitSelect" :checked="settings.submitSelect">
       {{$t('settings.submit_select')}}
     </CustomCheckbox>
@@ -36,9 +42,7 @@ title: t('settings.title')
     <CustomCheckbox labelId="toggle-inflection-context" v-model="settings.$state.inflectionTableContext" :checked="settings.inflectionTableContext">
       {{$t('settings.inflection_table_context')}}
     </CustomCheckbox>
-    <CustomCheckbox labelId="toggle-simple-list-view" v-model="settings.$state.simpleListView" :checked="settings.simpleListView">
-      {{$t('settings.simple_search_list')}}
-    </CustomCheckbox>
+
 
 
 <div class="mt-4">

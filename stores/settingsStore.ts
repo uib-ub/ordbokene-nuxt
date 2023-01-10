@@ -8,7 +8,8 @@ export const useSettingsStore = defineStore('settings', {
             inflectionNo: false,
             inflectionTableContext: false,
             listView: false,
-            simpleListView: false
+            simpleListView: false,
+            autoSelect: false
         }
     },
     persist: true,

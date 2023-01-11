@@ -3,10 +3,10 @@ import { fileURLToPath } from 'url'
 import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 
 export default defineNuxtConfig({
-    preset: 'vercel-edge',
     css: ['~/assets/fonts/fonts.css', 'bootstrap-icons/font/bootstrap-icons.scss'],
     nitro: {
       compressPublicAssets: true,
+      preset: 'vercel-edge'
     },
     runtimeConfig: {
       public: {

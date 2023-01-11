@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     css: ['~/assets/fonts/fonts.css', 'bootstrap-icons/font/bootstrap-icons.scss'],
     nitro: {
       compressPublicAssets: true,
-      preset: 'vercel-edge'
     },
     runtimeConfig: {
       public: {

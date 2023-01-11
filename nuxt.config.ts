@@ -5,7 +5,7 @@ import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 export default defineNuxtConfig({
     css: ['~/assets/fonts/fonts.css', 'bootstrap-icons/font/bootstrap-icons.scss'],
     nitro: {
-      preset: 'vercel-edge'
+      compressPublicAssets: true,
     },
     runtimeConfig: {
       public: {

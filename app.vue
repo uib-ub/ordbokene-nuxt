@@ -335,12 +335,6 @@ ol.sub_definitions {
 
 }
 
-.spinner-border {
-        width: 12em;
-        height: 12rem;
-    }
-
-
 
 .btn {
   @apply px-4 py-1 rounded-4xl border-1 font-semibold;

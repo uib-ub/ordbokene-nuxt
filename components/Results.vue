@@ -1,10 +1,7 @@
 <template>
     <div v-bind:class="{'list': listView}">     
-    <div v-if="pending" class="flex align-items-center justifycenter py-5 my-5">
-        <div class="spinner-border text-primary" role="status">
-  <span class="sr-only" aria-live="polite">Loading</span>
-        </div>
-    </div>
+    <Spinner v-if="pending"/>
+
     <div ref="results"  v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta" >
     <div tabindex="0" aria-live="polite" role="status" ref="announcement" class="announcement lg:sr-only pb-2 pl-1 text-gray-900 text-xs" v-bind:class="{'sr-only': !store.advanced}">
       <div class="sr-only" v-if="store.originalInput">Viser resultater for oppslagsordet <strong>{{$route.params.slug[0]}}.</strong></div>

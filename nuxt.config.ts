@@ -16,7 +16,8 @@ export default defineNuxtConfig({
     modules: [
         '@pinia/nuxt',
         '@pinia-plugin-persistedstate/nuxt',
-        'nuxt-windicss'
+        'nuxt-windicss',
+        'nuxt-icon'
       ],
       piniaPersistedstate: {
         cookieOptions: {

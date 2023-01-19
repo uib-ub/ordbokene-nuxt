@@ -101,6 +101,8 @@ const download_ris = () => {
     <button class="btn btn-borderless" :id="'copy-link-'+article_id" v-if="showLinkCopy" @click="copy_link"><CustomIcon :icon="store.copied == 'copy-link-'+article_id ? 'bi-clipboard-check-fill' : 'bi-clipboard'" left/> {{$t("article.copy_link", 1, { locale: content_locale})}}
     <span aria-live="assertive" class="sr-only" v-if="'copy-citation-'+article_id == store.copied">{{$t('article.link_copied')}}</span></button>
     <button class="btn btn-borderless" v-if="webShareApiSupported" @click="shareViaWebShare"><CustomIcon icon="bi-share-fill" left/> {{$t("article.share", 1, { locale: content_locale})}}</button>
+    <button class="btn btn-borderless" v-if="webShareApiSupported" @click="shareViaWebShare">
+      <IconShare class="mr-3"/>{{$t("article.share", 1, { locale: content_locale})}}</button>
     <button class="btn btn-borderless" type="button" :aria-expanded="cite_expanded" :aria-controls="cite_expanded?  'cite-'+article_id : null" @click="cite_expanded = !cite_expanded">
     <CustomIcon icon="bi-quote" left/> {{$t("article.cite", 1, { locale: content_locale})}}</button>
 </div>

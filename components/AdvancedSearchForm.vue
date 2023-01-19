@@ -6,19 +6,19 @@
     <div class="mb-2 md:mb-1 p-3 md:p-0 flex flex-row gap-4 md:gap-3 lg:gap-2 flex-wrap">
   <fieldset class="flex flex-col lg:flex-row gap-3 flex-wrap">
   <legend class="sr-only">Ordbok</legend>
-    <CustomRadio v-for="(item, idx) in dicts" :key="store.dict + idx" :model="store.dict || 'bm,nn'" @change="dict_radio" :value="item" name="dict" :labelId="'dict-radio-'+idx">
+    <FormRadio v-for="(item, idx) in dicts" :key="store.dict + idx" :model="store.dict || 'bm,nn'" @change="dict_radio" :value="item" name="dict" :labelId="'dict-radio-'+idx">
       {{$t(`dicts.${item}`)}}
-    </CustomRadio>
+    </FormRadio>
   </fieldset>
 
 <div class="flex flex-col lg:flex-row gap-3 flex-wrap">
 <div class="flex flex-col lg:flex-row gap-3 flex-wrap">
-<CustomCheckbox labelId="inflectedCheckbox" :checked="inflection_enabled" v-model="inflection_enabled">
+<FormCheckbox labelId="inflectedCheckbox" :checked="inflection_enabled" v-model="inflection_enabled">
     {{$t('options.inflected')}}
-</CustomCheckbox>
-<CustomCheckbox labelId="fulltextCheckbox" :checked="fulltext_enabled" v-model="fulltext_enabled">
+</FormCheckbox>
+<FormCheckbox labelId="fulltextCheckbox" :checked="fulltext_enabled" v-model="fulltext_enabled">
     {{$t('options.fulltext')}}
-</CustomCheckbox>
+</FormCheckbox>
 </div>
 <div class="flex flex-row gap-3">
   <label for="pos-select">{{$t('pos')}}:</label>

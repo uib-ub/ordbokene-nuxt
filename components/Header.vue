@@ -40,7 +40,7 @@
       </ul>
     </nav>
     <div class="relative mb-4 lg:mb-0 lg:ml-4 mt-1">
-          <CustomIcon icon="bi bi-globe pr-2"/>
+          <Icon name="bi:globe2" size="1.25em" class="mr-2"/>
           <label for="locale-select" class="sr-only">{{$t('settings.locale.title')}}</label>
           <select id="locale-select" class="bg-primary text-white" v-model="i18n.locale.value" @change="update_locale">
             <option class="text-text bg-canvas" value="eng">English</option>

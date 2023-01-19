@@ -41,8 +41,8 @@
 
 
 <div class="flex gap-2 justify-between w-full md:w-auto justify-end content-end">
-  <button class="btn btn-secondary bg-gray-500 border-gray-600 text-white w-50 " type="reset" @click="reset"> <CustomIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
-  <button class="btn btn-primary bg-primary text-white border-primary-lighten w-50" type="submit"> <CustomIcon icon="bi-search" left/>{{$t('search')}}</button>
+  <button class="btn btn-secondary bg-gray-500 border-gray-600 text-white w-50" type="reset" @click="reset"> <Icon name="bi:x-lg" size="1.25rem" class="mr-3" />{{$t('reset')}}</button>
+  <button class="btn btn-primary bg-primary text-white border-primary-lighten w-50" type="submit"> <Icon name="bi:search" size="1.25rem" class="mr-3"/>{{$t('search')}}</button>
 
 </div>
 </div>

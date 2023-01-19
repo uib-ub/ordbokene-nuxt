@@ -226,10 +226,10 @@ if (process.client) {
           @keydown="keys"
           :aria-expanded="store.show_autocomplete || 'false'" 
           :aria-owns="selected_option >= 0 ? 'autocomplete-dropdown' : null"/>
-          <button type="button" :title="$t('clear')" class="appended-button" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><CustomIcon icon="bi-x-lg"/></button>
+          <button type="button" :title="$t('clear')" class="appended-button" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><Icon name="bi-x-lg" size="1em"/></button>
           
-          <button v-if=" !store.advanced && store.input && store.q != store.input" class="appended-button" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"> <CustomIcon icon="bi-search"/></button>
-          <div aria-hidden="true" class="appended-button-disabled" v-else-if="!store.advanced" v-bind:class="{'sr-only': store.advanced}"><CustomIcon icon="bi-search text-primary text-gry-400"/></div>
+          <button v-if=" !store.advanced && store.input && store.q != store.input" class="appended-button" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"><Icon name="bi:search"/></button>
+          <div aria-hidden="true" class="appended-button-disabled" v-else-if="!store.advanced" v-bind:class="{'sr-only': store.advanced}"><Icon name="bi:search" class="text-primary text-gray-400"/></div>
 
   </div>
   <div class="dropdown-wrapper" v-if="store.show_autocomplete">

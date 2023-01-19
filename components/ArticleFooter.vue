@@ -98,13 +98,16 @@ const download_ris = () => {
 <template>
 <client-only>
 <div class="flex justify-around gap-3 mt-3 flex-wrap">
-    <button class="btn btn-borderless" :id="'copy-link-'+article_id" v-if="showLinkCopy" @click="copy_link"><CustomIcon :icon="store.copied == 'copy-link-'+article_id ? 'bi-clipboard-check-fill' : 'bi-clipboard'" left/> {{$t("article.copy_link", 1, { locale: content_locale})}}
+    <button class="btn btn-borderless" :id="'copy-link-'+article_id" v-if="showLinkCopy" @click="copy_link">
+      <Icon :name="store.copied == 'copy-link-'+article_id ? 'bi:clipboard-check-fill' : 'bi:clipboard'" class="mr-3 mb-1 text-primary"/> {{$t("article.copy_link", 1, { locale: content_locale})}}
     <span aria-live="assertive" class="sr-only" v-if="'copy-citation-'+article_id == store.copied">{{$t('article.link_copied')}}</span></button>
-    <button class="btn btn-borderless" v-if="webShareApiSupported" @click="shareViaWebShare"><CustomIcon icon="bi-share-fill" left/> {{$t("article.share", 1, { locale: content_locale})}}</button>
+    
     <button class="btn btn-borderless" v-if="webShareApiSupported" @click="shareViaWebShare">
-      <IconShare class="mr-3"/>{{$t("article.share", 1, { locale: content_locale})}}</button>
+      <Icon name="bi:share-fill" class="mr-3 mb-1 text-primary"/>{{$t("article.share", 1, { locale: content_locale})}}
+    </button>
     <button class="btn btn-borderless" type="button" :aria-expanded="cite_expanded" :aria-controls="cite_expanded?  'cite-'+article_id : null" @click="cite_expanded = !cite_expanded">
-    <CustomIcon icon="bi-quote" left/> {{$t("article.cite", 1, { locale: content_locale})}}</button>
+      <Icon name="bi:quote" class="mr-3 mb-1 text-primary"/>{{$t("article.cite", 1, { locale: content_locale})}}
+    </button>
 </div>
 <div class="cite-container p-4 pb-1 pt-2 mt-2" v-if="cite_expanded" :id="'cite-'+article_id">
       <h4>{{$t('article.cite_title')}}</h4>

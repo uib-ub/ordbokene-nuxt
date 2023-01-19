@@ -338,17 +338,6 @@ ol.sub_definitions {
 
 .btn {
   @apply px-4 py-1 rounded-4xl border-1 font-semibold;
-  white-space: nowrap;
-  vertical-align:middle;
-  
-
-  svg {
-    @apply text-primary;
-    display: inline-block;
-    width:1.25em;
-    height:1.25em;
-
-  }
 }
 
 .btn:hover {

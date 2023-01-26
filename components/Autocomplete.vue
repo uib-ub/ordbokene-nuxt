@@ -207,7 +207,7 @@ if (process.client) {
 
 <template>
   <div class="search-container">
-  <div class="input-wrapper h-3.5rem border-1 gap-1 bg-canvas border-primary flex content-center justify-between pr-3" v-bind="{'data-dropdown-open': store.show_autocomplete}">
+  <div class="input-wrapper h-3.5rem border-1 bg-canvas border-primary flex content-center justify-between pr-2" v-bind="{'data-dropdown-open': store.show_autocomplete}">
    <input class="input-element p-3 pl-6 lg:p-4 lg:px-8"
           :value="store.input"
           id="input-element"
@@ -383,7 +383,7 @@ transform: translateX(-50%);
 
 
 .appended-button, .appended-button-disabled {
-  @apply text-primary m-0 p-1 self-center;
+  @apply text-primary m-0 p-2 self-center;
   border: none;
   border-radius: 2rem; 
   background: unset;

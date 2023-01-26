@@ -41,7 +41,7 @@
 
 
 <div class="flex gap-2 justify-between w-full md:w-auto justify-end content-end">
-  <button class="btn btn-secondary bg-gray-500 border-gray-600 text-white w-50" type="reset" @click="reset"> <Icon name="bi:x-lg" size="1.25rem" class="mr-3" />{{$t('reset')}}</button>
+  <button class="btn btn-secondary bg-gray-500 border-gray-600 text-white w-50" type="reset" @click="reset"> <Icon name="bi:trash" size="1.25rem" class="mr-3" />{{$t('reset')}}</button>
   <button class="btn btn-primary bg-primary text-white border-primary-lighten w-50" type="submit"> <Icon name="bi:search" size="1.25rem" class="mr-3"/>{{$t('search')}}</button>
 
 </div>
@@ -91,10 +91,13 @@ const dict_radio = (value) => {
 }
 
 const reset = () => {
-  store.input = ""
+  //store.input = ""
   store.pos = null
+  store.scope = "ei"
+  fulltext_enabled.value = false
+  inflection_enabled.value = true
   store.dict = "bm,nn"
-  store.input = ""
+  //store.input = ""
 }
 
 watch(fulltext_enabled, () => {

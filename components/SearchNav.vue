@@ -21,7 +21,7 @@
               @click="dict_click('nn')"
               :to="dict_link('nn')">{{$t('dicts.nn')}}</NuxtLink>
   </li>
-  <li class="nav-item">
+  <li class="nav-item nav-advanced">
     <NuxtLink :aria-current="advanced ? 'true' : 'false'"
               @click="search_nav_expanded = false; store.advanced = true"
               :to="advanced_link">{{$t('advanced')}}</NuxtLink>

@@ -40,12 +40,12 @@
   <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-primary bg-primary text-white border-primary-lighten" type="submit"> <Icon name="bi:search" size="1.25rem" class="mr-3 m-"/>{{$t('search')}}</button>
   <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-secondary bg-gray-500 border-gray-600 text-white" v-if="!(store.pos == null &&  store.scope == 'ei' && fulltext_enabled == false && inflection_enabled == true && store.dict == 'bm,nn')" type="reset" @click="reset"> <Icon name="bi:trash" size="1.25rem" class="mr-3" />{{$t('reset')}}</button>
   <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-light" type="button" @click="(settings.listView = !settings.listView)" ><Icon :name='settings.listView ? "bi:list" : "bi:file-text"' class="mb-1 mr-2"/>{{settings.listView ? $t('show_articles') : $t('show_list',store.dict==='bm,nn'? 0 : 1)}}</button>
-  <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-light" type="button" @click="mini_help = !mini_help"><Icon name="bi:question-circle" class="mb-1 mr-2"/>{{$t(mini_help ? 'advanced_help_hide' : 'advanced_help')}}</button>
+  <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-light" :aria-expanded="mini_help" aria-controls="advanced-info" type="button" @click="mini_help = !mini_help"><Icon name="bi:question-circle" class="mb-1 mr-2"/>{{$t(mini_help ? 'advanced_help_hide' : 'advanced_help')}}</button>
   
   </div>
 </div>
 </form>
-<div v-if="mini_help" class="secondary-page container advanced-info">
+<div v-if="mini_help" id="advanced-info" class="secondary-page container">
       <h2>{{$t('advanced')}}</h2>
       <p>Enkelt søk viser kun treff på oppslagsord i resultatlisten, og vi prøver å gi deg det beste alternativet hvis det du søker etter ikke er et oppslagsord. I avansert søk kan du derimot vise treff på bøyde former og i definisjonene (fritekstsøk). Du kan også filtrere etter ordklasse, og trunkere og kombinere søkene med spesialtegn.</p>
 

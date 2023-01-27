@@ -224,7 +224,7 @@ section a, .secondary-page a  {
 
 
 
-.advanced-info h2 {
+#advanced-info h2 {
   font-family: Inria Serif;
   font-variant: normal;
   @apply text-primary;
@@ -352,14 +352,11 @@ ol.sub_definitions {
 
 
 
-.btn.btn-primary {
-  @apply  border-primary;
 
-}
 
 .btn[aria-expanded=true] {
     @apply bg-tertiary-darken1;
-    box-shadow: 2px 2px 0px theme('colors.gray.400');
+    box-shadow: 2px 2px 0px theme('colors.gray.500');
     border: none;
     &:hover {
       @apply bg-tertiary-darken2;

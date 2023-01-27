@@ -206,7 +206,7 @@ if (process.client) {
 </script>
 
 <template>
-  <div>
+  <div class="search-container">
   <div class="input-wrapper h-3.5rem border-1 bg-canvas border-primary flex content-center justify-between pr-2" v-bind="{'data-dropdown-open': store.show_autocomplete}">
    <input class="input-element p-3 pl-6 lg:p-4 lg:px-8"
           :value="store.input"
@@ -261,7 +261,11 @@ if (process.client) {
 
 <style lang="scss" scoped>
 
-
+.search-container {
+  position: relative;
+  left: 50%;
+transform: translateX(-50%);
+}
 
 .dropdown-wrapper {
   position: absolute;

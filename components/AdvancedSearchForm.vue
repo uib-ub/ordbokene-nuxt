@@ -140,7 +140,10 @@ const submitForm = async (item) => {
   }
 
 
+.select-wrapper:focus-within {
+  box-shadow: 2px 2px 0px theme("colors.primary.DEFAULT");
 
+}
 
   .select-wrapper.not_null {
         border: solid 1px;

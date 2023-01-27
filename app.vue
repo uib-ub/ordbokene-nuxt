@@ -344,10 +344,6 @@ ol.sub_definitions {
   @apply bg-gray-50;
 }
 
-.btn:focus {
-  @apply bg-gray-100;
-}
-
 
 
 .btn.btn-primary {
@@ -356,19 +352,12 @@ ol.sub_definitions {
 }
 
 .btn[aria-expanded=true] {
-    @apply bg-primary-lighten text-white;
+    @apply bg-tertiary-darken1;
     box-shadow: 2px 2px 0px theme('colors.gray.400');
-
-    i {
-      @apply text-white;
+    &:hover {
+      @apply bg-tertiary-darken2;
     }
-
-    &:focus {
-      @apply bg-gray-700 border-gray-900;
-    }
-
 }
-
 
 .btn-borderless {
   @apply border-none;

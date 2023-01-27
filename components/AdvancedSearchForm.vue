@@ -11,8 +11,8 @@
     </FormRadio>
   </fieldset>
 
-<div class="flex flex-col lg:flex-row gap-3 flex-wrap">
-<div class="flex flex-col lg:flex-row gap-3 flex-wrap">
+<div class="flex flex-col xl:flex-row gap-3 flex-wrap">
+<div class="flex flex-col xl:flex-row gap-3 flex-wrap">
 <FormCheckbox labelId="inflectedCheckbox" :checked="inflection_enabled" v-model="inflection_enabled">
     {{$t('options.inflected')}}
 </FormCheckbox>
@@ -28,6 +28,9 @@
   </select>
   </div>
 </div>
+<div class="justify-end">
+<button v-if="!(store.pos == null &&  store.scope == 'ei' && fulltext_enabled == false && inflection_enabled == true && store.dict == 'bm,nn')" class="btn btn-secondary bg-gray-500 border-gray-600 text-white" type="reset" @click="reset"> <Icon name="bi:trash" size="1.25rem" class="mr-3" />{{$t('reset')}}</button>
+</div>
 </div>
 
 </div>
@@ -37,12 +40,8 @@
 <div class="flex-auto" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete  v-on:dropdown-submit="submitForm"/>
 </div>
-  
-
-
 <div class="flex gap-2 justify-between w-full md:w-auto justify-end content-end">
-  <button class="btn btn-secondary bg-gray-500 border-gray-600 text-white w-50" type="reset" @click="reset"> <Icon name="bi:trash" size="1.25rem" class="mr-3" />{{$t('reset')}}</button>
-  <button class="btn btn-primary bg-primary text-white border-primary-lighten w-50" type="submit"> <Icon name="bi:search" size="1.25rem" class="mr-3"/>{{$t('search')}}</button>
+  <button class="btn btn-primary bg-primary text-white border-primary-lighten px-3" type="submit"> <Icon name="bi:search" size="1.25rem" class="mr-3"/>{{$t('search')}}</button>
 
 </div>
 </div>
@@ -90,14 +89,13 @@ const dict_radio = (value) => {
 
 }
 
+
 const reset = () => {
-  //store.input = ""
   store.pos = null
   store.scope = "ei"
   fulltext_enabled.value = false
   inflection_enabled.value = true
   store.dict = "bm,nn"
-  //store.input = ""
 }
 
 watch(fulltext_enabled, () => {

@@ -47,7 +47,7 @@ title: t('settings.title')
 
 <div class="mt-4">
   <button class="btn btn-primary" @click="resetSettings(settings)">
-    <CustomIcon icon="bi-trash-fill" left primary/><span>{{$t('settings.reset')}}</span>
+    <Icon name="bi:trash-fill" class="mr-3 mb-1 text-primary"/><span>{{$t('settings.reset')}}</span>
   </button>
 </div>
 </main>

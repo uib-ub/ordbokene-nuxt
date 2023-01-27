@@ -226,7 +226,7 @@ if (process.client) {
           @keydown="keys"
           :aria-expanded="store.show_autocomplete || 'false'" 
           :aria-owns="selected_option >= 0 ? 'autocomplete-dropdown' : null"/>
-          <button type="button" :title="$t('clear')" class="appended-button" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><Icon name="bi-x-lg" size="1.25rem"/></button>
+          <button type="button" :title="$t('clear')" class="appended-button" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><Icon name="bi:x-lg" size="1.25rem"/></button>
           <button v-if=" !store.advanced && store.input && store.q != store.input" class="appended-button" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"><Icon name="bi:search" size="1.25rem"/></button>
           <div aria-hidden="true" class="appended-button-disabled" v-else-if="!store.advanced" v-bind:class="{'sr-only': store.advanced}"><Icon name="bi:search" class="text-gray-400 align-middle" size="1.25rem"/></div>
 
@@ -241,7 +241,7 @@ if (process.client) {
         :id="'autocomplete-item-'+idx">
         <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)">
           <span v-if="item.type == 'advanced' && !store.advanced" aria-live="polite" class=" bg-primary text-white p-1 rounded-1xl ml-3">{{$t('to_advanced')}} 
-            <CustomIcon icon="bi-arrow-right" />
+            <Icon name="bi:arrow-right" class="mb-1"/>
           </span>
           <span v-else :aria-live="store.autocomplete.length == 1? 'polite' : null">
             <span v-if="store.autocomplete.length == 1" class="sr-only">{{$t('autocomplete_suggestions', 1)}}: </span>

@@ -107,9 +107,7 @@ const download_ris = () => {
       <h4>{{$t('article.cite_title')}}</h4>
       <p>{{$t("article.cite_description[0]", 1, { locale: content_locale})}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", 1, { locale: content_locale})}}</p>
       <div id="citation" v-html="$t('article.citation', create_citation())" />
-
-       <button class="mt-4 mb-2 btn btn-borderless" @click="download_ris"><CustomIcon icon="bi-download" left /> {{$t("article.download")}}</button>
-
+       <button class="mt-4 mb-2 btn btn-borderless" @click="download_ris"><Icon name="bi:download" class="mb-1 mr-3 text-primary" /> {{$t("article.download")}}</button>
 
 </div>
 </client-only>

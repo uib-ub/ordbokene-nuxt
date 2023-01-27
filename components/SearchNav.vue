@@ -2,7 +2,7 @@
     <nav :aria-label="$t('label.dict_nav')">
       <div class="h-full md:hidden w-full">
           <button @click="search_nav_expanded = ! search_nav_expanded" class="w-full p-2 px-4 bg-primary-lighten content-left text-white" type="button" :aria-controls="search_nav_expanded ? 'searchNavContent' : null" :aria-expanded="search_nav_expanded">
-            <CustomIcon :icon="search_nav_expanded ? 'bi-chevron-up' : 'bi-chevron-down'" left/>{{$t(advanced ? 'advanced' : `dicts.${store.dict}`)}}
+            <Icon :name="search_nav_expanded ? 'bi:chevron-up' : 'bi:chevron-down'" class="mb-1 mr-2"/>{{$t(advanced ? 'advanced' : `dicts.${store.dict}`)}}
     </button>
       </div>
   <ul id="searchNavContent" class="md:flex md:gap-1" v-bind:class="{hidden: !search_nav_expanded}">
@@ -21,7 +21,7 @@
               @click="dict_click('nn')"
               :to="dict_link('nn')">{{$t('dicts.nn')}}</NuxtLink>
   </li>
-  <li class="nav-item">
+  <li class="nav-item nav-advanced">
     <NuxtLink :aria-current="advanced ? 'true' : 'false'"
               @click="search_nav_expanded = false; store.advanced = true"
               :to="advanced_link">{{$t('advanced')}}</NuxtLink>
@@ -129,7 +129,7 @@ ul {
 @screen md {
   a {
     
-    @apply px-4 pt-1 pb-0.25rem border-transparent text-sm text-white bg-primary-lighten;
+    @apply px-4 pt-1 pb-0.25rem text-sm text-white bg-primary-lighten;
     height: 2rem;
     
   }

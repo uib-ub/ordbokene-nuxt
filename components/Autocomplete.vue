@@ -207,7 +207,7 @@ if (process.client) {
 
 <template>
   <div class="search-container">
-  <div class="input-wrapper h-3.5rem border-1 bg-canvas border-primary flex content-center justify-between  pr-2 lg:pr-4" v-bind="{'data-dropdown-open': store.show_autocomplete}">
+  <div class="input-wrapper h-3.5rem border-1 bg-canvas border-primary flex content-center justify-between pr-2" v-bind="{'data-dropdown-open': store.show_autocomplete}">
    <input class="input-element p-3 pl-6 lg:p-4 lg:px-8"
           :value="store.input"
           id="input-element"
@@ -222,14 +222,13 @@ if (process.client) {
           :aria-label="$t('search_placeholder') + $t(`dicts_inline.${store.dict}`)"
           :placeholder="$t('search_placeholder') + $t(`dicts_inline.${store.dict}`)"
           autocomplete="off"
-          autocapitalize="off"
+          autocapitalize="none"
           @keydown="keys"
           :aria-expanded="store.show_autocomplete || 'false'" 
           :aria-owns="selected_option >= 0 ? 'autocomplete-dropdown' : null"/>
-          <button type="button" :title="$t('clear')" class="appended-button" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><CustomIcon icon="bi-x-lg"/></button>
-          
-          <button v-if=" !store.advanced && store.input && store.q != store.input" class="appended-button" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"> <CustomIcon icon="bi-search"/></button>
-          <div aria-hidden="true" class="appended-button-disabled" v-else-if="!store.advanced" v-bind:class="{'sr-only': store.advanced}"><CustomIcon icon="bi-search text-primary text-gry-400"/></div>
+          <button type="button" :title="$t('clear')" class="appended-button" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><Icon name="bi:x-lg" size="1.25rem"/></button>
+          <button v-if=" !store.advanced && store.input && store.q != store.input" class="appended-button" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"><Icon name="bi:search" size="1.25rem"/></button>
+          <div aria-hidden="true" class="appended-button-disabled" v-else-if="!store.advanced" v-bind:class="{'sr-only': store.advanced}"><Icon name="bi:search" class="text-gray-400 align-middle" size="1.25rem"/></div>
 
   </div>
   <div class="dropdown-wrapper" v-if="store.show_autocomplete">
@@ -242,7 +241,7 @@ if (process.client) {
         :id="'autocomplete-item-'+idx">
         <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)">
           <span v-if="item.type == 'advanced' && !store.advanced" aria-live="polite" class=" bg-primary text-white p-1 rounded-1xl ml-3">{{$t('to_advanced')}} 
-            <CustomIcon icon="bi-arrow-right" />
+            <Icon name="bi:arrow-right" class="mb-1"/>
           </span>
           <span v-else :aria-live="store.autocomplete.length == 1? 'polite' : null">
             <span v-if="store.autocomplete.length == 1" class="sr-only">{{$t('autocomplete_suggestions', 1)}}: </span>
@@ -383,13 +382,12 @@ transform: translateX(-50%);
 
 
 
-
 .appended-button, .appended-button-disabled {
-  font-size: 1.25rem;
-  @apply text-primary my-1 mr-[-.5rem] py-2 px-3;
+  @apply text-primary m-0 p-2 self-center;
   border: none;
   border-radius: 2rem; 
   background: unset;
+  display: flex;
 
 }
 

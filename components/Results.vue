@@ -1,12 +1,9 @@
 <template>
     <div v-bind:class="{'list': listView}">     
-    <div v-if="pending" class="flex align-items-center justifycenter py-5 my-5">
-        <div class="spinner-border text-primary" role="status">
-  <span class="sr-only" aria-live="polite">Loading</span>
-        </div>
-    </div>
+    <Spinner v-if="pending"/>
+
     <div ref="results"  v-if="store.view != 'suggest' && !pending && !error && articles && articles.meta" >
-    <div tabindex="0" aria-live="polite" role="status" ref="announcement" class="announcement lg:sr-only pb-2 pl-1 text-gray-900 text-xs" v-bind:class="{'sr-only': !store.advanced}">
+    <div tabindex="0" aria-live="polite" role="status" ref="announcement" class="announcement lg:sr-only pb-2 pl-1 text-gray-900 text-md" v-bind:class="{'sr-only': !store.advanced}">
       <div class="sr-only" v-if="store.originalInput">Viser resultater for oppslagsordet <strong>{{$route.params.slug[0]}}.</strong></div>
     <span v-if="articles.meta.bm"><div></div>{{$t('notifications.results', {count: articles.meta.bm.total})+$t("in")+$t('dicts_inline.bm')}}</span>
     <span v-if="articles.meta.nn && articles.meta.bm"> | </span>
@@ -77,11 +74,11 @@
     </div>
     <div v-if="store.advanced && pages > 1" class="p-2 py-6 md:p-8 flex md:flex-wrap justify-center flex md:gap-4">
     <button :disabled="page == 1" @click="change_page(-1)" class="bg-primary text-white rounded-4xl p-1 px-2 md:p-3 md:px-8">
-      <CustomIcon icon="bi-chevron-left md:pr-0.75em"/><span class="sr-only md:not-sr-only">forrige side</span>
+      <Icon name="bi:chevron-left" class="md:mr-0.75em mb-0.125em"/><span class="sr-only md:not-sr-only">forrige side</span>
     </button>
     <div class="text-center self-center align-middle mx-4 md:mx-8 text-lg h-full">Side {{page}} av {{pages}}</div>
     <button :disabled="page == pages" @click="change_page(1)" class="bg-primary text-white rounded-4xl p-1 px-2 md:p-3 md:px-8">
-      <span class="sr-only md:not-sr-only">neste side</span><CustomIcon icon="bi-chevron-right md:pl-0.75em"/>
+      <span class="sr-only md:not-sr-only">neste side</span><Icon name="bi:chevron-right" class="md:ml-0.75em mb-0.125em"/>
     </button>
     </div>
   </div>

@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url'
 import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 
 export default defineNuxtConfig({
-    css: ['~/assets/fonts/fonts.css', 'bootstrap-icons/font/bootstrap-icons.scss'],
+    css: ['~/assets/fonts/fonts.css'],
     nitro: {
       compressPublicAssets: true,
     },
@@ -16,7 +16,8 @@ export default defineNuxtConfig({
     modules: [
         '@pinia/nuxt',
         '@pinia-plugin-persistedstate/nuxt',
-        'nuxt-windicss'
+        'nuxt-windicss',
+        'nuxt-icon'
       ],
       piniaPersistedstate: {
         cookieOptions: {

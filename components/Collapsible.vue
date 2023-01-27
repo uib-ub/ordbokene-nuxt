@@ -3,8 +3,8 @@
     <component :id="id" :is="is || 'div'"><button class="p-2 mt-4 text-left w-full"
                                                @click="expanded = !expanded" 
                                                :aria-expanded="expanded"
-                                               :aria-controls="expanded? id + '-content': null">
-                                               <CustomIcon class="pr-4" :icon="expanded ? 'bi-chevron-up' : 'bi-chevron-down'"/>{{header}}
+                                               :aria-controls="expanded ? id + '-content': undefined">
+                                               <Icon class="mr-4 ml-1 text-gray-700" :name="expanded ? 'bi:chevron-up' : 'bi:chevron-down'"/>{{header}}
                                         </button></component>
 
 

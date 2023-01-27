@@ -1,64 +1,52 @@
 <template>
 <div class="my-2 md:mt-0">
-<form  @submit.prevent="submitForm" ref="form" class="flex flex-col md:flex-row gap-10 flex-wrap">
-
-  <div class="mb-4 md:mb-3 md:pb- px-0 gap-3 md:gap-0 advanced-search w-full flex flex-wrap" >
-    <div class="mb-2 md:mb-1 p-3 md:p-0 flex flex-row gap-4 md:gap-3 lg:gap-2 flex-wrap">
-  <fieldset class="flex flex-col lg:flex-row gap-3 flex-wrap">
+<form  @submit.prevent="submitForm" ref="form" class="flex flex-col lg:flex-row flex-wrap my-3 gap-6 justify-between">
+  <div class="flex flex-col sm:flex-row gap-8 sm:gap-3 m-3 sm:m-0">
+  <fieldset class="flex flex-col gap-8 sm:gap-3">
   <legend class="sr-only">Ordbok</legend>
-    <CustomRadio v-for="(item, idx) in dicts" :key="store.dict + idx" :model="store.dict || 'bm,nn'" @change="dict_radio" :value="item" name="dict" :labelId="'dict-radio-'+idx">
+    <FormRadio v-for="(item, idx) in dicts" :key="store.dict + idx" :model="store.dict || 'bm,nn'" @change="dict_radio" :value="item" name="dict" :labelId="'dict-radio-'+idx">
       {{$t(`dicts.${item}`)}}
-    </CustomRadio>
+    </FormRadio>
   </fieldset>
 
-<div class="flex flex-col lg:flex-row gap-3 flex-wrap">
-<div class="flex flex-col lg:flex-row gap-3 flex-wrap">
-<CustomCheckbox labelId="inflectedCheckbox" :checked="inflection_enabled" v-model="inflection_enabled">
+<div class="flex flex-col gap-8 sm:gap-3">
+
+<FormCheckbox labelId="inflectedCheckbox" :checked="inflection_enabled" v-model="inflection_enabled">
     {{$t('options.inflected')}}
-</CustomCheckbox>
-<CustomCheckbox labelId="fulltextCheckbox" :checked="fulltext_enabled" v-model="fulltext_enabled">
+</FormCheckbox>
+<FormCheckbox labelId="fulltextCheckbox" :checked="fulltext_enabled" v-model="fulltext_enabled">
     {{$t('options.fulltext')}}
-</CustomCheckbox>
-</div>
-<div class="flex flex-row gap-3">
+</FormCheckbox>
+
+<div class="flex flex-row gap-4 sm:gap-2">
   <label for="pos-select">{{$t('pos')}}:</label>
-  <div class="select-wrapper" v-bind:class="{not_null: store.pos}">
+  <div class="select-wrapper py-1 px-4 sm:px-2 sm:py-0.5" v-bind:class="{not_null: store.pos}">
   <select id="pos-select" name="pos" class="bg-tertiary" @change="store.pos = $event.target.value">
     <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="tag" :selected="store.pos == tag" v-bind:class="{selected: store.pos == tag}">{{tag ? $t("tags." + tag) : $t("all_pos")}}</option>
   </select>
   </div>
 </div>
-</div>
 
 </div>
 
+</div>
 
-<div class="flex justify-between flex-wrap gap-4 md:gap-12 xl:gap-24 w-full">
+
+<div class="flex-1">
 <div class="flex-auto" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete  v-on:dropdown-submit="submitForm"/>
 </div>
+  <div class="flex gap-4 mt-3 flex-wrap flex-col sm:justify-start sm:flex-row-reverse">
+  <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-primary bg-primary text-white border-primary-lighten" type="submit"> <Icon name="bi:search" size="1.25rem" class="mr-3 m-"/>{{$t('search')}}</button>
+  <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-secondary bg-gray-500 border-gray-600 text-white" v-if="!(store.pos == null &&  store.scope == 'ei' && fulltext_enabled == false && inflection_enabled == true && store.dict == 'bm,nn')" type="reset" @click="reset"> <Icon name="bi:trash" size="1.25rem" class="mr-3" />{{$t('reset')}}</button>
+  <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-light" type="button" @click="(settings.listView = !settings.listView)" ><Icon :name='settings.listView ? "bi:list" : "bi:file-text"' class="mb-1 mr-2"/>{{settings.listView ? $t('show_articles') : $t('show_list',store.dict==='bm,nn'? 0 : 1)}}</button>
+  <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-light" :aria-expanded="mini_help" aria-controls="advanced-info" type="button" @click="mini_help = !mini_help"><Icon :name="mini_help ? 'bi:x-lg' : 'bi:question-lg'" class="mb-1 mr-2"/>{{$t(mini_help ? 'advanced_help_hide' : 'advanced_help')}}</button>
   
-
-
-<div class="flex gap-2 justify-between w-full md:w-auto justify-end content-end">
-  <button class="btn btn-secondary bg-gray-500 border-gray-600 text-white w-50 " type="reset" @click="reset"> <CustomIcon icon="bi-x-lg" left/>{{$t('reset')}}</button>
-  <button class="btn btn-primary bg-primary text-white border-primary-lighten w-50" type="submit"> <CustomIcon icon="bi-search" left/>{{$t('search')}}</button>
-
-</div>
-</div>
   </div>
-</form>
-<div v-if="store.q" class="flex mb-2 flex-wrap gap-2">
-  <button class="btn btn-light me-auto" v-if="store.q" @click="mini_help = !mini_help"><CustomIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
-
-
-  <button @click="(settings.listView = !settings.listView)" class="btn btn-light"><CustomIcon :icon='settings.listView ? "bi-list" : "bi-file-text"' left/>{{settings.listView ? $t('show_articles') : $t('show_list',store.dict==='bm,nn'? 0 : 1)}}</button>
-
-
-
 </div>
-<div v-if="!store.q || mini_help" class="secondary-page container advanced-info">
-      <h2>{{$t('advanced_help')}}</h2>
+</form>
+<div v-if="mini_help" id="advanced-info" class="secondary-page container">
+      <h2>{{$t('advanced')}}</h2>
       <p>Enkelt søk viser kun treff på oppslagsord i resultatlisten, og vi prøver å gi deg det beste alternativet hvis det du søker etter ikke er et oppslagsord. I avansert søk kan du derimot vise treff på bøyde former og i definisjonene (fritekstsøk). Du kan også filtrere etter ordklasse, og trunkere og kombinere søkene med spesialtegn.</p>
 
       <AdvancedHelp/>
@@ -83,18 +71,20 @@ const pos_tags = ['', 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCONJ
 const fulltext_enabled = ref(store.scope.includes('f'))
 const inflection_enabled = ref(store.scope.includes('i'))
 
-const mini_help = ref(store.q == "")
+const mini_help = ref(!store.q)
 
 const dict_radio = (value) => {
   store.dict = value
 
 }
 
+
 const reset = () => {
-  store.input = ""
   store.pos = null
+  store.scope = "ei"
+  fulltext_enabled.value = false
+  inflection_enabled.value = true
   store.dict = "bm,nn"
-  store.input = ""
 }
 
 watch(fulltext_enabled, () => {
@@ -133,20 +123,10 @@ const submitForm = async (item) => {
 
 <style lang="scss" scoped>
 
-.advanced-search {
-  @apply bg-tertiary md:pt-4;
-  
-  
-
-}
-
 .welcome .advanced-search {
   @apply bg-tertiary border-tertiary-darken2;
 
 }
-
-
-
 
 
 
@@ -159,28 +139,21 @@ const submitForm = async (item) => {
     @apply text-white bg-primary;
   }
 
-.select-wrapper {
-  @apply bg-none p-1 rounded-1xl;
 
-  }
+.select-wrapper:focus-within {
+  box-shadow: 2px 2px 0px theme("colors.primary.DEFAULT");
+
+}
 
   .select-wrapper.not_null {
-    @apply bg-primary;
-    select {
-      @apply bg-primary text-white
-    }
+        border: solid 1px;
+        border-radius: 1rem;
+        @apply border-primary;
   }
 
 
 
 
-  .btn-light {
-    border-radius: 2rem;
-    padding: .25rem;
-    padding-right: 1rem;
-    padding-left: 1rem;
-
-  }
 
 
 .btn-primary i, button.btn-secondary i {

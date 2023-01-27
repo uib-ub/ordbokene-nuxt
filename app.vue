@@ -360,6 +360,7 @@ ol.sub_definitions {
 .btn[aria-expanded=true] {
     @apply bg-tertiary-darken1;
     box-shadow: 2px 2px 0px theme('colors.gray.400');
+    border: none;
     &:hover {
       @apply bg-tertiary-darken2;
     }

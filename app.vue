@@ -127,7 +127,13 @@ main {
 
 
 .ord-container, .secondary-page {
-  @apply container mx-auto px-2;
+  @apply sm:mx-auto px-2;
+
+  @screen md {
+    @apply container;
+  }
+
+  
 }
 
 

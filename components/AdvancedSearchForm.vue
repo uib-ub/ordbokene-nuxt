@@ -1,15 +1,15 @@
 <template>
 <div class="my-2 md:mt-0">
-<form  @submit.prevent="submitForm" ref="form" class="flex flex-row flex-wrap my-3 gap-6 justify-between">
-  <div class="flex flex-col sm:flex-row gap-3">
-  <fieldset class="flex flex-row lg:flex-col gap-3">
+<form  @submit.prevent="submitForm" ref="form" class="flex flex-col lg:flex-row flex-wrap my-3 gap-6 justify-between">
+  <div class="flex flex-col sm:flex-row gap-8 sm:gap-3 m-3 sm:m-0">
+  <fieldset class="flex flex-col gap-8 sm:gap-3">
   <legend class="sr-only">Ordbok</legend>
     <FormRadio v-for="(item, idx) in dicts" :key="store.dict + idx" :model="store.dict || 'bm,nn'" @change="dict_radio" :value="item" name="dict" :labelId="'dict-radio-'+idx">
       {{$t(`dicts.${item}`)}}
     </FormRadio>
   </fieldset>
 
-<div class="flex flex-row lg:flex-col gap-3">
+<div class="flex flex-col gap-8 sm:gap-3">
 
 <FormCheckbox labelId="inflectedCheckbox" :checked="inflection_enabled" v-model="inflection_enabled">
     {{$t('options.inflected')}}
@@ -18,9 +18,9 @@
     {{$t('options.fulltext')}}
 </FormCheckbox>
 
-<div class="flex flex-row gap-2">
+<div class="flex flex-row gap-4 sm:gap-2">
   <label for="pos-select">{{$t('pos')}}:</label>
-  <div class="select-wrapper" v-bind:class="{not_null: store.pos}">
+  <div class="select-wrapper py-1 px-4 sm:px-2 sm:py-0.5" v-bind:class="{not_null: store.pos}">
   <select id="pos-select" name="pos" class="bg-tertiary" @change="store.pos = $event.target.value">
     <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="tag" :selected="store.pos == tag" v-bind:class="{selected: store.pos == tag}">{{tag ? $t("tags." + tag) : $t("all_pos")}}</option>
   </select>
@@ -36,11 +36,11 @@
 <div class="flex-auto" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete  v-on:dropdown-submit="submitForm"/>
 </div>
-  <div class="flex gap-2 mt-3 flex-wrap flex-col sm:justify-start sm:flex-row-reverse">
-  <button class="btn sm:min-w-8rem xl:min-w-12rem btn-primary bg-primary text-white border-primary-lighten" type="submit"> <Icon name="bi:search" size="1.25rem" class="mr-3"/>{{$t('search')}}</button>
-  <button class="btn sm:min-w-8rem xl:min-w-12rem btn-secondary bg-gray-500 border-gray-600 text-white" v-if="!(store.pos == null &&  store.scope == 'ei' && fulltext_enabled == false && inflection_enabled == true && store.dict == 'bm,nn')" type="reset" @click="reset"> <Icon name="bi:trash" size="1.25rem" class="mr-3" />{{$t('reset')}}</button>
-  <button class="btn sm:min-w-8rem xl:min-w-12rem btn-light" type="button" @click="(settings.listView = !settings.listView)" ><Icon :name='settings.listView ? "bi:list" : "bi:file-text"' class="mb-1 mr-2"/>{{settings.listView ? $t('show_articles') : $t('show_list',store.dict==='bm,nn'? 0 : 1)}}</button>
-  <button class="btn sm:min-w-8rem xl:min-w-12rem btn-light" type="button"  v-if="store.q" @click="mini_help = !mini_help"><Icon name="bi:question-circle" class="mb-1 mr-2"/>{{$t(mini_help ? 'advanced_help_hide' : 'advanced_help')}}</button>
+  <div class="flex gap-4 mt-3 flex-wrap flex-col sm:justify-start sm:flex-row-reverse">
+  <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-primary bg-primary text-white border-primary-lighten" type="submit"> <Icon name="bi:search" size="1.25rem" class="mr-3 m-"/>{{$t('search')}}</button>
+  <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-secondary bg-gray-500 border-gray-600 text-white" v-if="!(store.pos == null &&  store.scope == 'ei' && fulltext_enabled == false && inflection_enabled == true && store.dict == 'bm,nn')" type="reset" @click="reset"> <Icon name="bi:trash" size="1.25rem" class="mr-3" />{{$t('reset')}}</button>
+  <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-light" type="button" @click="(settings.listView = !settings.listView)" ><Icon :name='settings.listView ? "bi:list" : "bi:file-text"' class="mb-1 mr-2"/>{{settings.listView ? $t('show_articles') : $t('show_list',store.dict==='bm,nn'? 0 : 1)}}</button>
+  <button class="btn !p-3 !sm:py-1 !sm:px-2 sm:min-w-8rem xl:min-w-12rem btn-light" type="button"  v-if="store.q" @click="mini_help = !mini_help"><Icon name="bi:question-circle" class="mb-1 mr-2"/>{{$t(mini_help ? 'advanced_help_hide' : 'advanced_help')}}</button>
   
   </div>
 </div>
@@ -130,9 +130,6 @@ const submitForm = async (item) => {
 
 
 
-
-
-
   option {
     @apply text-text bg-canvas;
   }
@@ -142,17 +139,15 @@ const submitForm = async (item) => {
     @apply text-white bg-primary;
   }
 
-.select-wrapper {
-  @apply bg-none p-1 rounded-1xl;
 
-  }
+
 
   .select-wrapper.not_null {
-    @apply bg-primary;
-    select {
-      @apply bg-primary text-white
-    }
+        border: solid 1px;
+        border-radius: 1rem;
+        @apply border-primary;
   }
+
 
 
 

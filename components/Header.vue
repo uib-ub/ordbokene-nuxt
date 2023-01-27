@@ -16,7 +16,7 @@
               :aria-expanded="menu_expanded"
               :aria-controls="menu_expanded? 'main_menu' : null"
               @click="menu_expanded = !menu_expanded">
-        <div class="sr-only sm:inline sm:not-sr-only">{{$t('menu.title')}}</div><CustomIcon class="text-xl sm:pl-2" :icon="menu_expanded ? 'bi-x' : 'bi-list'"/>
+        <div class="sr-only sm:inline sm:not-sr-only">{{$t('menu.title')}}</div><Icon :name="menu_expanded ? 'bi:x-lg' : 'bi:list'" class="sm:ml-2"/>
       </button>
 </div>
       </div>
@@ -40,7 +40,7 @@
       </ul>
     </nav>
     <div class="relative mb-4 lg:mb-0 lg:ml-4 mt-1">
-          <CustomIcon icon="bi bi-globe pr-2"/>
+          <Icon name="bi:globe2" size="1.25em" class="mr-2"/>
           <label for="locale-select" class="sr-only">{{$t('settings.locale.title')}}</label>
           <select id="locale-select" class="bg-primary text-white" v-model="i18n.locale.value" @change="update_locale">
             <option class="text-text bg-canvas" value="eng">English</option>

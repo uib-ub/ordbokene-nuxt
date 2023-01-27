@@ -9,6 +9,6 @@ const different = store.originalInput
 
 <template>
     <div>
-    <div aria-hidden="true" class="callout" v-if="different"><CustomIcon icon="bi-info-circle-fill" left/> Viser resultater for oppslagsordet <strong>{{$route.params.slug[0]}}.</strong></div>
+    <div aria-hidden="true" class="callout" v-if="different"><Icon name="bi:info-circle-fill" size="1.25em" class="mr-3 text-primary mb-0.5"/> Viser resultater for oppslagsordet <strong>{{$route.params.slug[0]}}.</strong></div>
     </div>
 </template>

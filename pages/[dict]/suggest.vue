@@ -2,7 +2,7 @@
       <div class="pb-1 md:mx-10">
         
   
-    <div class="callout" aria-live="polite" role="status"><CustomIcon icon="bi-info-circle-fill" left/> <strong>{{store.q}}</strong>{{($t('notifications.not_a_word') + $t('dicts_inline.'+store.dict))}}.<div v-if="suggestions && suggestions.length" class="sr-only">Se lenkene under med forslag til andre søkeord.</div></div>
+    <div class="callout" aria-live="polite" role="status"><Icon name="bi:info-circle-fill" size="1.25em" class="mr-3 text-primary mb-0.5"/>  <strong>{{store.q}}</strong>{{($t('notifications.not_a_word') + $t('dicts_inline.'+store.dict))}}.<div v-if="suggestions && suggestions.length" class="sr-only">Se lenkene under med forslag til andre søkeord.</div></div>
     <SuggestResults v-if="suggestions" :suggestions="suggestions" :key="store.q"/>
   
 

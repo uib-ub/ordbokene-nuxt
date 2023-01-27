@@ -38,10 +38,6 @@
 }
 
 
-.ordbok-btn[aria-expanded=true] {
 
-    @apply bg-primary text-white border-1 border-primary;
-
-}
 
 </style>

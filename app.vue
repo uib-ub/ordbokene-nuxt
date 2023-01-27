@@ -1,9 +1,9 @@
 <template>
   <a ref="skip_link" class="bg-tertiary-darken1 text-center z-1000 text-anchor sr-only text-xl font-semibold underline w-full  !focus-within:p-2 focus:not-sr-only focus:absolute focus:min-w-screen" href="#main"> Til innhold</a>
   <Header/>
-<div class="ord-container p-2 my-1 back-to-search" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name)">
-  <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"> <strong><CustomIcon icon="bi-arrow-left" primary/></strong> {{$t('notifications.back')}}</NuxtLink>
-<NuxtLink v-else to="/"> <strong><CustomIcon icon="bi-arrow-left" primary/></strong> {{$t('home')}}</NuxtLink>
+<div class="p-2 my-1 ord-container back-to-search justify-start" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name)">
+  <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"> <strong><Icon name="bi:arrow-left" size="1.25em" class="mb-1 text-primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
+<NuxtLink v-else to="/"> <strong><Icon name="bi:arrow-left" size="1.25em" class="mb-1 text-primary"/></strong> {{$t('home')}}</NuxtLink>
 </div>
     <NuxtPage @click="menu_expanded=false" 
               v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
@@ -127,7 +127,13 @@ main {
 
 
 .ord-container, .secondary-page {
-  @apply container mx-auto px-2;
+  @apply md:mx-auto px-2;
+
+  @screen md {
+    @apply container;
+  }
+
+  
 }
 
 
@@ -218,7 +224,7 @@ section a, .secondary-page a  {
 
 
 
-.advanced-info h2 {
+#advanced-info h2 {
   font-family: Inria Serif;
   font-variant: normal;
   @apply text-primary;
@@ -335,49 +341,27 @@ ol.sub_definitions {
 
 }
 
-.spinner-border {
-        width: 12em;
-        height: 12rem;
-    }
-
-
 
 .btn {
   @apply px-4 py-1 rounded-4xl border-1 font-semibold;
-  i {
-    @apply text-primary;
-  }
 }
 
 .btn:hover {
   @apply bg-gray-50;
 }
 
-.btn:focus {
-  @apply bg-gray-100;
-}
 
 
 
-.btn.btn-primary {
-  @apply  border-primary;
-
-}
 
 .btn[aria-expanded=true] {
-    @apply bg-primary-lighten text-white;
-    box-shadow: 2px 2px 0px theme('colors.gray.400');
-
-    i {
-      @apply text-white;
+    @apply bg-tertiary-darken1;
+    box-shadow: 2px 2px 0px theme('colors.gray.500');
+    border: none;
+    &:hover {
+      @apply bg-tertiary-darken2;
     }
-
-    &:focus {
-      @apply bg-gray-700 border-gray-900;
-    }
-
 }
-
 
 .btn-borderless {
   @apply border-none;

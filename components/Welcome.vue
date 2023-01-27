@@ -9,13 +9,9 @@
       ])
     
     </script>
-    
     <template>
-      <div class="flex md:justify-center xl:h-30vw">
-      
+      <div class="flex justify-center">
       <div class="grid lg:grid-cols-2 lg:px-5 lg:py-2 md:py-5 md:items-center h-full w-full md:w-auto" v-if="welcome_bm && welcome_nn">
-        
-        
           <section class="lg:col-auto px-0 lg:p-3">
           <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm" welcome/>
           </section>
@@ -24,14 +20,7 @@
           </section>
                   
       </div> 
-      <div v-else class="row justify-center items-center">
-        <div class="spinner-border text-primary" role="status">
-          <span class="sr-only">Loading</span>
-        </div>
-    </div>
-
-
-
+        <Spinner v-else/>
       </div> 
     </template>
 

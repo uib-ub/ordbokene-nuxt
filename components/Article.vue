@@ -50,8 +50,8 @@
 
         <ArticleHeader :lemma_groups="lemma_groups" :secondary_header_text="secondary_header_text" :content_locale="content_locale" :dict="dict"/>
       
-      <button v-if="!settings.inflectionExpanded && inflected && !welcome" class="btn btn-primary my-1" @click="inflection_expanded = !inflection_expanded" type="button" :aria-expanded="inflection_expanded" :aria-controls="inflection_expanded ? 'inflection-'+article_id : null">
-             {{$t('article.show_inflection')}}<span v-if="!inflection_expanded"><CustomIcon icon="bi-plus-lg" right/></span><span v-if="inflection_expanded"><CustomIcon icon="bi-dash-lg" right/></span>
+      <button v-if="!settings.inflectionExpanded && inflected && !welcome" class="btn btn-primary my-1 !pr-2" @click="inflection_expanded = !inflection_expanded" type="button" :aria-expanded="inflection_expanded" :aria-controls="inflection_expanded ? 'inflection-'+article_id : null">
+             {{$t('article.show_inflection')}}<span v-if="!inflection_expanded"><Icon name="bi:plus" class="text-primary ml-4" size="1.5rem"/></span><span v-if="inflection_expanded"><Icon name="bi:dash" class="text-primary ml-4" size="1.5rem"/></span>
       </button>
         <div v-if="inflected && !welcome && (inflection_expanded || settings.inflectionExpanded)" class="collapse py-2 transition-all duration-300 ease-in-out" :id="'inflection-'+article_id" ref="inflection_table">
             <div class="inflection-container p-2">
@@ -88,7 +88,7 @@
             </section>
         </div>
         <ArticleFooter v-if="!welcome" :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
-        <div v-else class="flex justify-end pt-8"><NuxtLink :to="link_to_self()">{{$t('article.show')}} <i class="bi-arrow-right"/></NuxtLink></div>
+        <div v-else class="flex justify-end pt-8"><NuxtLink :to="link_to_self()">{{$t('article.show')}} <Icon name="bi:arrow-right" class="mb-1"/></NuxtLink></div>
 
         </NuxtErrorBoundary>
     </div>

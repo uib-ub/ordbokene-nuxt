@@ -36,11 +36,11 @@
 </div>
 
 
-<div class="flex justify-between flex-wrap gap-4 md:gap-12 xl:gap-24 w-full">
+<div class="flex justify-between flex-wrap gap-4  w-full">
 <div class="flex-auto" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
   <Autocomplete  v-on:dropdown-submit="submitForm"/>
 </div>
-<div class="flex gap-2 justify-between w-full md:w-auto justify-end content-end">
+<div class="flex">
   <button class="btn btn-primary bg-primary text-white border-primary-lighten px-3" type="submit"> <Icon name="bi:search" size="1.25rem" class="mr-3"/>{{$t('search')}}</button>
 
 </div>
@@ -48,10 +48,10 @@
   </div>
 </form>
 <div v-if="store.q" class="flex mb-2 flex-wrap gap-2">
-  <button class="btn btn-light me-auto" v-if="store.q" @click="mini_help = !mini_help"><CustomIcon icon="bi-question-circle" left/>{{$t('advanced_help')}}</button>
+  <button class="btn btn-light me-auto" v-if="store.q" @click="mini_help = !mini_help"><Icon name="bi:question-circle" class="mb-1 mr-2"/>{{$t(mini_help ? 'advanced_help_hide' : 'advanced_help')}}</button>
 
 
-  <button @click="(settings.listView = !settings.listView)" class="btn btn-light"><CustomIcon :icon='settings.listView ? "bi-list" : "bi-file-text"' left/>{{settings.listView ? $t('show_articles') : $t('show_list',store.dict==='bm,nn'? 0 : 1)}}</button>
+  <button @click="(settings.listView = !settings.listView)" class="btn btn-light"><Icon :name='settings.listView ? "bi:list" : "bi:file-text"' class="mb-1 mr-2"/>{{settings.listView ? $t('show_articles') : $t('show_list',store.dict==='bm,nn'? 0 : 1)}}</button>
 
 
 

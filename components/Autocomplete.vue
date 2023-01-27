@@ -222,7 +222,7 @@ if (process.client) {
           :aria-label="$t('search_placeholder') + $t(`dicts_inline.${store.dict}`)"
           :placeholder="$t('search_placeholder') + $t(`dicts_inline.${store.dict}`)"
           autocomplete="off"
-          autocapitalize="off"
+          autocapitalize="none"
           @keydown="keys"
           :aria-expanded="store.show_autocomplete || 'false'" 
           :aria-owns="selected_option >= 0 ? 'autocomplete-dropdown' : null"/>

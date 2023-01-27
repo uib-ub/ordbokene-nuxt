@@ -19,15 +19,9 @@ build-dev:
 
 
 deploy-dev:
-
   tags:
     - spraaksamlingene_01
   stage: deploy
-  rules:
-  - if: '$CI_COMMIT_MESSAGE =~ /^WIP(.?)*/'
-    when: manual
-  - when: on_success
-
   before_script:
   - eval $(ssh-agent -s)
   - echo "$NREC_DEV_KEY" | base64 --decode | ssh-add -

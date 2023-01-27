@@ -173,7 +173,6 @@
     "cite": "Cite",
     "cite_title": "Cite the article",
     "cite_description": ["If you want to cite this article in the ", " we recommend that you state when the article was retrieved (read), e. g. as follows:"],
-    "copy": "Copy citation",
     "download": "Download RIS file",
     "link_copied": "Link copied to the clipboard",
     "citation_copied": "Citation copied to the clipboard",

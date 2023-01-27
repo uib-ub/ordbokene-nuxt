@@ -75,12 +75,6 @@ const create_citation = () => {
       return citation
     }
 
-const copy_citation = (event) => {
-      let citation = document.getElementById("citation").textContent;
-      navigator.clipboard.writeText(citation)
-      store.copied = event.target.id
-    }
-
 const download_ris = () => {
       const [lemma, dd, mm, yyyy, link] = get_citation_info()
       const a = document.createElement("a")
@@ -113,11 +107,9 @@ const download_ris = () => {
       <h4>{{$t('article.cite_title')}}</h4>
       <p>{{$t("article.cite_description[0]", 1, { locale: content_locale})}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", 1, { locale: content_locale})}}</p>
       <div id="citation" v-html="$t('article.citation', create_citation())" />
-      <div class="flex justify start mt-4 mb-2 flex-wrap gap-3">
-       <button class="btn btn-borderless" :id="'copy-citation-'+article_id" @click="copy_citation"><CustomIcon :icon="store.copied == 'copy-citation-'+article_id ? 'bi-clipboard-check-fill' : 'bi-clipboard'" left/> {{$t("article.copy", 1, { locale: content_locale})}}
-        <span aria-live="assertive" class="sr-only" v-if="'copy-citation-'+article_id == store.copied">{{$t('article.citation_copied')}}</span></button>
-       <button class="btn btn-borderless" @click="download_ris"><CustomIcon icon="bi-download" left /> {{$t("article.download")}}</button>
-      </div>
+
+       <button class="mt-4 mb-2 btn btn-borderless" @click="download_ris"><CustomIcon icon="bi-download" left /> {{$t("article.download")}}</button>
+
 
 </div>
 </client-only>

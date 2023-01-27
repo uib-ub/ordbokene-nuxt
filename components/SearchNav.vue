@@ -129,7 +129,7 @@ ul {
 @screen md {
   a {
     
-    @apply px-4 pt-1 pb-0.25rem border-transparent text-sm text-white bg-primary-lighten;
+    @apply px-4 pt-1 pb-0.25rem text-sm text-white bg-primary-lighten;
     height: 2rem;
     
   }

@@ -4,7 +4,7 @@
       <DefElement :body="explanation" :dict="dict" :has_article_ref=has_article_ref(explanation) v-for="(explanation, index) in explanations" :semicolon="might_need_semicolon(explanations, index)" :key="index" v-on:link-click="link_click" :content_locale="content_locale" :welcome="welcome"/>
     </span>
     <div v-if="examples.length && !welcome">
-      <h5 v-if="level <3 && !body.sub_definition">{{$t('article.headings.examples', 1, { locale: content_locale})}}</h5>
+      <h5 v-if="level <3 && !body.sub_definition" :lang="content_locale">{{ {"nb": 'Eksempler', 'nn': 'eksempel', 'en': 'Examples'}[content_locale]}}</h5>
       <ul class="examples">
         <Example :body="example" :dict="dict" v-for="(example, index) in examples" :key="index" v-on:link-click="link_click" :content_locale="content_locale" :semicolon="might_need_semicolon(examples, index)"/>
       </ul>

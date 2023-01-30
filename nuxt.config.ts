@@ -1,7 +1,3 @@
-import { resolve, dirname } from 'node:path'
-import { fileURLToPath } from 'url'
-import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
-
 export default defineNuxtConfig({
     css: ['~/assets/fonts/fonts.css'],
     nitro: {
@@ -15,36 +11,30 @@ export default defineNuxtConfig({
     },
     modules: [
         '@pinia/nuxt',
+        '@nuxtjs/i18n',
         '@pinia-plugin-persistedstate/nuxt',
         'nuxt-windicss',
         'nuxt-icon'
       ],
+      i18n: {
+        locales: [
+          { code: 'nb', iso: 'nb-NO', file: 'nob.json' },
+          { code: 'nn', iso: 'nn-NO', file: 'nno.json' },
+          { code: 'en', iso: 'en-GB', file: 'eng.json' },
+        ],
+        langDir: '~/locales/',
+        defaultLocale: 'nb',
+        lazy: false,
+        detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: 'i18n_redirected',
+          redirectOn: 'root',
+        }
+      },
       piniaPersistedstate: {
         cookieOptions: {
           sameSite: 'strict',
         }
-      },
-    vite: {
-      resolve: {
-        alias: {
-          'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
-        }
-    },
-    plugins: [
-      VueI18nVitePlugin({
-        include: [
-          resolve(dirname(fileURLToPath(import.meta.url)), './locales/*.json')
-        ]
-      })
-    ],
-    i18n: {
-      // ...
-      detectBrowserLanguage: {
-        useCookie: true,
-        cookieKey: 'i18n_redirected',
-        redirectOn: 'root',  // recommended
       }
-    }
-    }
 
 })

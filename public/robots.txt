@@ -1,3 +1,4 @@
 # Disable search engine indexing
 
 User-agent: *
+Disallow: /

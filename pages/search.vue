@@ -2,7 +2,7 @@
     <main id="main" tabindex="-1" class="dict-view">
       <div>
         <div class="search-nav-wrapper md:bg-primary-lighten">
-          <SearchNav class="ord-container" advanced/>
+          <SearchNav advanced/>
         </div>
 
         <NuxtErrorBoundary @error="form_error">

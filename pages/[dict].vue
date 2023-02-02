@@ -1,7 +1,7 @@
 <template>
 <main id="main" tabindex="-1" class="dict-view simple-search">
-  <div class="search-nav-wrapper md:bg-primary-lighten">    
-  <SearchNav class="ord-container"/>
+  <div class="search-nav-wrapper">    
+  <SearchNav class="flex justify-center md:mt-8"/>
 </div>
 
 

@@ -99,7 +99,7 @@ nav {
 a {
   display: block;
   letter-spacing: .1rem;
-  @apply px-4 pt-1 pb-0.5rem border-transparent bg-tertiary text-text;
+  @apply px-4 pt-1 pb-0.5rem border-none bg-tertiary text-text;
 
   
 
@@ -129,19 +129,19 @@ ul {
 @screen md {
   a {
     
-    @apply px-4 pt-1 pb-0.25rem text-sm text-white bg-primary-lighten;
+    @apply px-4 pt-1 pb-0.25rem text-sm text-white bg-primary;
     height: 2rem;
     
   }
 
   .welcome a {
-    @apply bg-primary-lighten text-white;
+    @apply bg-primary text-white;
   }
 
   a[aria-current=true] {
     border-left: none;
     padding-left: 1.25rem;
-    @apply border-secondary bg-tertiary text-primary-lighten;
+    @apply border-secondary bg-tertiary text-primary;
   }
 
 

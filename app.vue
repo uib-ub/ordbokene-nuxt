@@ -120,7 +120,7 @@ main {
 
 @screen md {
   .welcome.simple-search {
-  background-image: url(assets/images/janko-ferlic-sfL_QOnmy00-unsplash.jpg); // url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
+  background-image: url(assets/images/janko-ferlic-sfL_QOnmy00-unsplash.webp); // url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
   @apply flex-col content-between bg-;
   }
 }

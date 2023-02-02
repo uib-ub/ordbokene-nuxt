@@ -24,7 +24,7 @@
   <li class="nav-item nav-advanced">
     <NuxtLink :aria-current="advanced ? 'true' : 'false'"
               @click="search_nav_expanded = false; store.advanced = true"
-              :to="advanced_link">{{$t('advanced')}}</NuxtLink>
+              :to="advanced_link">{{$t('advanced')}}<Icon name="bi:arrow-right"/></NuxtLink>
   </li>
 </ul>
 

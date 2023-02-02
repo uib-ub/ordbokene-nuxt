@@ -1,7 +1,7 @@
 <template>
 <main id="main" tabindex="-1" class="dict-view simple-search">
   <div class="search-nav-wrapper">    
-  <SearchNav class="flex justify-center md:mt-8"/>
+  <SearchNav class="md:flex md:justify-center lg:container md:mt-4"/>
 </div>
 
 

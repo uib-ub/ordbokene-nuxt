@@ -1,10 +1,6 @@
 <template>
     <main id="main" tabindex="-1" class="dict-view">
       <div>
-        <div class="search-nav-wrapper md:bg-primary-lighten">
-          <SearchNav advanced/>
-        </div>
-
         <NuxtErrorBoundary @error="form_error">
         <AdvancedSearchForm class="ord-container"/>
       </NuxtErrorBoundary>
@@ -13,7 +9,7 @@
     <Results v-if="store.q" class="ord-container"/>
       </NuxtErrorBoundary>
 
-        
+
     </main>
     </template>
     

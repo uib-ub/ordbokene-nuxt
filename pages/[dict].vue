@@ -1,12 +1,12 @@
 <template>
 <main id="main" tabindex="-1" class="dict-view simple-search">
   <div class="search-nav-wrapper">    
-  <SearchNav class="md:flex md:justify-center lg:container md:mt-4"/>
+  <SearchNav v-if="!store.advanced"  class="md:flex md:justify-center lg:container md:mt-4"/>
 </div>
 
 
     <NuxtErrorBoundary @error="form_error">
-    <SearchForm class="ord-container"/>
+    <SearchForm v-if="!store.advanced" class="ord-container"/>
   </NuxtErrorBoundary>
 
   

@@ -129,19 +129,18 @@ ul {
 @screen md {
   a {
     
-    @apply px-4 pt-1 pb-0.25rem text-sm text-white bg-primary;
+    @apply px-4 pt-1 pb-0.25rem text-sm text-primary bg-tertiary;
     height: 2rem;
     
   }
 
-  .welcome a {
-    @apply bg-primary text-white;
-  }
+
 
   a[aria-current=true] {
     border-left: none;
     padding-left: 1.25rem;
-    @apply border-secondary bg-tertiary text-primary;
+    
+    @apply bg-primary-lighten text-tertiary;
   }
 
 

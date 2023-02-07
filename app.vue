@@ -126,8 +126,9 @@ main {
 }
 
 .welcome .ord-container {
-  @apply md:!px-20;
+  @apply md:!px-10 xl:!px-40;
 }
+
 
 @screen md {
   .welcome.simple-search {

@@ -127,26 +127,21 @@ ul {
 
 
 @screen md {
-  a {
-    
-    @apply px-4 pt-1 pb-0.25rem text-sm text-primary bg-tertiary;
-    height: 2rem;
+   a {
+    @apply px-4 mt-1 pb-0.25rem mx-1 text-sm text-primary bg-tertiary whitespace-nowrap;
+    border-radius: 1rem;
     
   }
-
 
 
   a[aria-current=true] {
     border-left: none;
-    padding-left: 1.25rem;
-    
-    @apply bg-primary-lighten text-tertiary;
+    @apply bg-primary-lighten text-tertiary
   }
 
 
   a[aria-current=false] {
-    padding-left: 1.25rem;
-    @apply border-secondary pb-0.25rem;
+    @apply border-secondary;
 
   }
 

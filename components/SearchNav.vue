@@ -99,13 +99,12 @@ nav {
 a {
   display: block;
   letter-spacing: .1rem;
-  @apply px-4 pt-1 pb-0.5rem border-none bg-tertiary text-text;
+  @apply px-4 pt-1 pb-0.5rem border-none bg-tertiary text-text py-4;
 
   
 
   &[aria-current=true] {
     border-left: solid .25rem;
-    
       @apply border-secondary;
   }
   &[aria-current=false] {
@@ -128,21 +127,15 @@ ul {
 
 @screen md {
    a {
-    @apply px-4 mt-1 pb-0.25rem mx-1 text-sm text-primary bg-tertiary whitespace-nowrap;
+    @apply py-1 !px-4 !mt-1 !pb-0.25rem !lg:mx-1 text-sm text-primary bg-tertiary whitespace-nowrap;
     border-radius: 1rem;
+    border: none !important;
     
   }
 
 
   a[aria-current=true] {
-    border-left: none;
     @apply bg-primary-lighten text-tertiary
-  }
-
-
-  a[aria-current=false] {
-    @apply border-secondary;
-
   }
 
 

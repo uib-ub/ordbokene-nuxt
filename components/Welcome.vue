@@ -11,7 +11,7 @@
     </script>
     <template>
       <div class="flex justify-center">
-      <div class="grid lg:grid-cols-2 lg:py-2 md:py-5 md:items-center h-full w-full md:w-auto" v-if="welcome_bm && welcome_nn">
+      <div class="grid lg:grid-cols-2 lg:py-2 md:py-5 h-full w-full md:w-auto" v-if="welcome_bm && welcome_nn">
           <section class="lg:col-auto lg:pr-3">
           <Article :article_id="parseInt(welcome_bm.front_article.value)" dict="bm" welcome/>
           </section>

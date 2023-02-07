@@ -5,7 +5,7 @@
             <Icon :name="search_nav_expanded ? 'bi:chevron-up' : 'bi:chevron-down'" class="mb-1 mr-2"/>{{$t(advanced ? 'advanced' : `dicts.${store.dict}`)}}
     </button>
       </div>
-  <ul id="searchNavContent" class="md:flex md:gap-1" v-bind:class="{hidden: !search_nav_expanded}">
+  <ul id="searchNavContent" class="md:flex md:gap-3" v-bind:class="{hidden: !search_nav_expanded}">
   <li class="nav-item">
     <NuxtLink :aria-current="route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"
@@ -127,8 +127,7 @@ ul {
 
 @screen md {
    a {
-    @apply py-1 !px-4 !mt-1 !pb-0.25rem !lg:mx-1 text-sm text-primary bg-tertiary whitespace-nowrap;
-    border-radius: 1rem;
+    @apply py-1 !px-4 !mt-1 !pb-0.25rem !lg:mx-0 text-sm text-primary bg-tertiary whitespace-nowrap;
     border: none !important;
     
   }

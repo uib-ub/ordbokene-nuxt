@@ -1,29 +1,25 @@
 <template>
-    <nav :aria-label="$t('label.dict_nav')">
-      <div class="h-full md:hidden w-full">
-          <button @click="search_nav_expanded = ! search_nav_expanded" class="w-full p-2 px-4 bg-primary-lighten content-left text-white" type="button" :aria-controls="search_nav_expanded ? 'searchNavContent' : null" :aria-expanded="search_nav_expanded">
-            <Icon :name="search_nav_expanded ? 'bi:chevron-up' : 'bi:chevron-down'" class="mb-1 mr-2"/>{{$t(advanced ? 'advanced' : `dicts.${store.dict}`)}}
-    </button>
-      </div>
-  <ul id="searchNavContent" class="md:flex md:gap-3" v-bind:class="{hidden: !search_nav_expanded}">
+    <nav :aria-label="$t('label.dict_nav')" class="mt-2 mb-2 md:mt-0 md:mb-0 mx-2">
+
+  <ul id="searchNavContent" class="flex gap-0 md:gap-3">
   <li class="nav-item">
     <NuxtLink :aria-current="route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"
-              :to="dict_link('bm,nn')">{{$t('dicts.bm,nn')}}</NuxtLink>
+              :to="dict_link('bm,nn')"><span class="hidden sm:block">{{$t('dicts.bm,nn')}}</span><span class="block sm:hidden">{{$t('dicts_short.bm,nn')}}</span></NuxtLink>
   </li>
   <li class="nav-item">
     <NuxtLink :aria-current="route.params.dict =='bm' ? 'true' : 'false'"
               @click="dict_click('bm')"
-              :to="dict_link('bm')">{{$t('dicts.bm')}}</NuxtLink>
+              :to="dict_link('bm')"><span class="hidden sm:block">{{$t('dicts.bm')}}</span><span class="block sm:hidden">{{$t('dicts_short.bm')}}</span></NuxtLink>
   </li>
   <li class="nav-item">
     <NuxtLink :aria-current="route.params.dict =='nn' ? 'true' : 'false'"
               @click="dict_click('nn')"
-              :to="dict_link('nn')">{{$t('dicts.nn')}}</NuxtLink>
+              :to="dict_link('nn')"><span class="hidden sm:block">{{$t('dicts.nn')}}</span><span class="block sm:hidden">{{$t('dicts_short.nn')}}</span></NuxtLink>
   </li>
   <li class="nav-item nav-advanced">
     <NuxtLink :aria-current="advanced ? 'true' : 'false'"
-              @click="search_nav_expanded = false; store.advanced = true"
+              @click="store.advanced = true"
               :to="advanced_link">{{$t('advanced')}}<Icon name="bi:arrow-right"/></NuxtLink>
   </li>
 </ul>
@@ -37,15 +33,12 @@ import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
-const search_nav_expanded = ref(false)
-
 const props = defineProps({
     advanced: Boolean
 })
 
 const dict_click = (dict) => {
       store.advanced = false
-      search_nav_expanded.value = false;
       store.dict = dict
       if (store.q != store.input) {
         store.input = store.originalInput || store.q
@@ -93,25 +86,11 @@ const dict_click = (dict) => {
 
 nav {
   padding: 0;
+  overflow: hidden;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-
-
-a {
-  display: block;
-  letter-spacing: .1rem;
-  @apply px-4 pt-1 pb-0.5rem border-none bg-tertiary text-text py-4;
-
-  
-
-  &[aria-current=true] {
-    border-left: solid .25rem;
-      @apply border-secondary;
-  }
-  &[aria-current=false] {
-    padding-left: 1.25rem;
-  }
-}
-
 
 
 button {
@@ -119,30 +98,26 @@ button {
 }
 
 ul {
-
   @apply text-lg;
-  
 }
 
 
-@screen md {
-   a {
-    @apply py-1 !px-4 !mt-1 !pb-0.25rem !lg:mx-0 text-sm text-primary bg-tertiary whitespace-nowrap;
-    border: none !important;
-    
+  a {
+  @apply flex py-1 px-4 text-sm text-primary bg-tertiary whitespace-nowrap md:rounded-none;
+  border: none !important;
+  border-radius: 2rem;
+  
   }
-
 
   a[aria-current=true] {
     @apply bg-primary-lighten text-tertiary
   }
 
-
+  /* Hide scrollbar for Chrome, Safari and Opera */
+nav::-webkit-scrollbar {
+  display: none;
 }
 
 
 
-
-
-  
 </style>

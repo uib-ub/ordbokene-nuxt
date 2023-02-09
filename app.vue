@@ -1,7 +1,7 @@
 <template>
   <a ref="skip_link" class="bg-tertiary-darken1 text-center z-1000 text-anchor sr-only text-xl font-semibold underline w-full  !focus-within:p-2 focus:not-sr-only focus:absolute focus:min-w-screen" href="#main"> Til innhold</a>
   <Header/>
-<div class="p-2 my-1 ord-container back-to-search justify-start" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name)">
+<div class="my-2 ord-container back-to-search justify-start" v-if="['article', 'settings', 'about', 'help', 'contact'].includes($route.name)">
   <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"> <strong><Icon name="bi:arrow-left" size="1.25em" class="mb-1 text-primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 <NuxtLink v-else to="/"> <strong><Icon name="bi:arrow-left" size="1.25em" class="mb-1 text-primary"/></strong> {{$t('home')}}</NuxtLink>
 </div>
@@ -118,12 +118,26 @@ main {
   flex: 1;
 }
 
+.welcome .article {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  border: none;
+  @apply !bg-tertiary-darken1 md:!bg-tertiary md:!border-none md:shadow-none;
+}
+
+.welcome .ord-container {
+  @apply md:!px-10 xl:!px-40;
+}
+
+
 @screen md {
   .welcome.simple-search {
-  background-image: url('https://images.unsplash.com/photo-1512389142860-9c449e58a543?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80'); // url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
-  @apply flex-col content-between;
+  background-image: url(assets/images/janko-ferlic-sfL_QOnmy00-unsplash.webp); // url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
+  @apply flex-col;
   }
 }
+
+
 
 
 .ord-container, .secondary-page {
@@ -349,9 +363,6 @@ ol.sub_definitions {
 .btn:hover {
   @apply bg-gray-50;
 }
-
-
-
 
 
 .btn[aria-expanded=true] {

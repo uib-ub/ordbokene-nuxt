@@ -496,37 +496,6 @@ span.lemma-group {
 
 }
 
-.welcome .article {
-  box-shadow: none !important;
-  border-radius: 0;
-  border: none;
-  @apply bg-tertiary-darken1;
-
-  
-}
-
-@screen md {
-  .welcome .article {
-    border: none !important;
-    @apply bg-tertiary;
-    
-  }
-}
-
-@screen lg {
-  .welcome .article {
-    padding: 1rem !important;
-    padding-bottom: 0rem !important;
-    margin: 2rem !important;
-  }
-}
-
-
-.welcome .article {
-  @apply md:bg-tertiary md:shadow-none md:border-none;
-
-}
-
 
 
 

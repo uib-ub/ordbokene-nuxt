@@ -1,10 +1,8 @@
 <template>
     <main id="main" tabindex="-1" class="dict-view">
-      <div>
-        <NuxtErrorBoundary @error="form_error">
+      <NuxtErrorBoundary @error="form_error">
         <AdvancedSearchForm class="ord-container"/>
       </NuxtErrorBoundary>
-      </div>
       <NuxtErrorBoundary @error="content_error">  
     <Results v-if="store.q" class="ord-container"/>
       </NuxtErrorBoundary>

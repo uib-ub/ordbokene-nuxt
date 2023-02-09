@@ -1,5 +1,5 @@
 <template>
-    <nav :aria-label="$t('label.dict_nav')" class="md:flex md:justify-center !pt-2 !pl-2 !md:pl-0">
+    <nav :aria-label="$t('label.dict_nav')" class="md:flex md:justify-center !my-1 !pl-2 !md:pl-0">
   <ul id="searchNavContent" class="flex gap-2 md:gap-3">
   <li class="nav-item">
     <NuxtLink :aria-current="route.params.dict =='bm,nn' ? 'true' : 'false'"

@@ -1,5 +1,5 @@
 <template>
-<div class="my-2 md:mt-0">
+<div class="my-1 md:mt-0">
 <form  @submit.prevent="submitForm" ref="form" class="flex flex-col lg:flex-row flex-wrap my-3 gap-6 justify-between">
   <div class="flex flex-col sm:flex-row gap-8 sm:gap-3 m-3 sm:m-0">
   <fieldset class="flex flex-col gap-8 sm:gap-3">

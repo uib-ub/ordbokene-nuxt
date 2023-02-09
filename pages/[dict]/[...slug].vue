@@ -1,5 +1,5 @@
 <template>
-  <div class="md:mx-10 my-2">
+  <div class="md:mx-10 my-1">
       <NuxtLink v-if="store.view == 'article' && store.searchUrl" class="border-none" :to="store.searchUrl"> <strong><Icon name="bi:arrow-left" size="1.25em" class="mb-1 text-primary"/></strong> {{$t('notifications.back')}}</NuxtLink>
 
   <ArticleView v-if="store.view == 'article'"/>

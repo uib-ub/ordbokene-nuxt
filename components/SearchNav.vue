@@ -1,7 +1,6 @@
 <template>
-    <nav :aria-label="$t('label.dict_nav')" class="mt-2 mb-2 md:mt-0 md:mb-0 mx-2">
-
-  <ul id="searchNavContent" class="flex gap-1 md:gap-3">
+    <nav :aria-label="$t('label.dict_nav')" class="md:flex md:justify-center !pt-2 !pl-2 !md:pl-0">
+  <ul id="searchNavContent" class="flex gap-2 md:gap-3">
   <li class="nav-item">
     <NuxtLink :aria-current="route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"
@@ -103,7 +102,7 @@ ul {
 
 
   a {
-  @apply flex py-1 px-4 text-sm text-gray-900 bg-tertiary border-gray-700 md:text-primary border-1 md:border-none whitespace-nowrap md:rounded-none;
+  @apply flex py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 md:text-primary border-1 md:border-none whitespace-nowrap md:rounded-none;
 
   border-radius: 2rem;
   

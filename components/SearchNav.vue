@@ -19,7 +19,7 @@
   <li class="nav-item nav-advanced">
     <NuxtLink :aria-current="advanced ? 'true' : 'false'"
               @click="store.advanced = true"
-              :to="advanced_link">{{$t('advanced')}}<Icon name="bi:arrow-right"/></NuxtLink>
+              :to="advanced_link">{{$t('advanced')}}<Icon name="bi:arrow-right" class="ml-1 mt-1.5 md:mt-1"/></NuxtLink>
   </li>
 </ul>
 
@@ -101,12 +101,12 @@ ul {
 }
 
 
-  a {
-  @apply flex py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 md:text-primary border-1 md:border-none whitespace-nowrap md:rounded-none;
+a {
+@apply flex py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 md:text-primary border-1 md:border-none whitespace-nowrap md:rounded-none;
 
-  border-radius: 2rem;
-  
-  }
+border-radius: 2rem;
+
+}
 
   a[aria-current=true] {
     @apply bg-primary-lighten text-tertiary

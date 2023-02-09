@@ -19,7 +19,7 @@
   <li class="nav-item nav-advanced">
     <NuxtLink :aria-current="advanced ? 'true' : 'false'"
               @click="store.advanced = true"
-              :to="advanced_link">{{$t('advanced')}}<Icon name="bi:arrow-right" class="ml-1 mt-1.5 md:mt-1"/></NuxtLink>
+              :to="advanced_link">{{$t('advanced')}}<Icon name="bi:arrow-right" size="1.25em" class="ml-1 md:mt-0.5"/></NuxtLink>
   </li>
 </ul>
 

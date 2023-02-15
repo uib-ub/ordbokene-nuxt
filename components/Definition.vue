@@ -1,5 +1,5 @@
 <template>
-      <component :is="level==1 ? 'div' : 'li'" :class="['definition', 'level'+level, {hilite: higlighted}]" :id="level != 9 && store.view == 'article' ? 'def' + body.id : ''"><component :is="level <= 2 ? 'div' : 'span'">
+      <component :is="level==1 ? 'div' : 'li'" :class="['definition', 'level'+level, {hilite: highlighted}]" :id="level != 9 && store.view == 'article' ? 'def' + body.id : ''"><component :is="level <= 2 ? 'div' : 'span'">
         <span class="explanations" v-if="explanations.length">
       <DefElement :body="explanation" :dict="dict" :has_article_ref=has_article_ref(explanation) v-for="(explanation, index) in explanations" :semicolon="might_need_semicolon(explanations, index)" :key="index" v-on:link-click="link_click" :content_locale="content_locale" :welcome="welcome"/>
     </span>
@@ -37,15 +37,18 @@ const props = defineProps({
 })
 
 
+const highlighted = ref(false)
 
-const higlighted = computed(() => {
-  if (route && route.hash) {
-      return route.hash.slice(1) == 'def' + props.body.id
+
+onMounted(() => {
+  console.log('myheader mounted');
+  if (route && route.hash && route.hash.slice(1) == 'def' + props.body.id) {
+    highlighted.value = true
   }
-  else {
-    return false
-  }
-})
+});
+
+
+
 
 
 const emit = defineEmits(['link-click'])

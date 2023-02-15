@@ -62,7 +62,7 @@ const nuxtApp = useNuxtApp()
 
 nuxtApp.hook("page:finish", () => {
   // Handle focus in one place
-
+/*
    window.scrollTo(0, 0)
    if (input_element.value) {
     if (!settings.autoSelect && store.view != 'article') {
@@ -85,6 +85,7 @@ nuxtApp.hook("page:finish", () => {
     
 
    }
+   */
 
 })
 

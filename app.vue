@@ -5,6 +5,7 @@
   <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"> <Icon name="bi:arrow-left" size="1.25em" class="mb-1 mr-1 text-primary"/>{{$t('notifications.back')}}</NuxtLink>
 <NuxtLink v-else to="/"><Icon name="bi:arrow-left" size="1.25em" class="mb-1 mr-1 text-primary"/>{{$t('home')}}</NuxtLink>
 </div>
+{{ route.name }}
     <NuxtPage @click="menu_expanded=false" 
               v-bind:class="{'welcome': !store.q && (route.name == 'search' || route.name == 'dict')}"/>
 <Footer/>
@@ -57,17 +58,20 @@ if (process.client) {
 
 }
 
-
 const nuxtApp = useNuxtApp()
 
 nuxtApp.hook("page:finish", () => {
+  
+  if (settings.autoSelect || route.name == "dict") {
+    input_element.value.select()
+  }
   // Handle focus in one place
 /*
    window.scrollTo(0, 0)
    if (input_element.value) {
     if (!settings.autoSelect && store.view != 'article') {
       if (announcement.value) {
-        announcement.value.focus()
+        announcement.focus()
       }
     }
     else {

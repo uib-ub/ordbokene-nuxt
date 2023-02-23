@@ -1,6 +1,6 @@
 <template>
-  <div class="nav-container">
-    <nav :aria-label="$t('label.dict_nav')" class="md:flex md:justify-center !my-1 !pl-2 !md:pl-0">
+  <div class="nav-container px-2">
+    <nav :aria-label="$t('label.dict_nav')" class="md:flex md:justify-center !my-1">
   <ul id="searchNavContent" class="flex gap-2 md:gap-3">
   <li>
     <NuxtLink 

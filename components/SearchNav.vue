@@ -102,7 +102,7 @@ ul {
 
 
 a {
-@apply flex py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 md:text-primary border-1 md:border-none whitespace-nowrap md:rounded-none;
+@apply flex py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 md:text-primary border-1 md:border-none whitespace-nowrap;
 
 border-radius: 2rem;
 

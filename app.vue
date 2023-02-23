@@ -382,7 +382,12 @@ ol.sub_definitions {
   @apply border-none;
 }
 
-
+@-moz-document url-prefix() {
+  /* Styles for Firefox only */
+  *:focus {
+    outline: 2px solid theme("colors.secondary.DEFAULT");
+  }
+}
 
 
 

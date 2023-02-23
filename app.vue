@@ -385,7 +385,7 @@ ol.sub_definitions {
 @-moz-document url-prefix() {
   /* Styles for Firefox only */
   *:focus {
-    outline: 2px solid theme("colors.secondary.DEFAULT");
+    outline: 3px solid theme("colors.secondary.DEFAULT");
   }
 }
 

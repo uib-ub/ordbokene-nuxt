@@ -19,12 +19,11 @@
               :to="dict_link('nn')"><span class="hidden sm:block">{{$t('dicts.nn')}}</span><span class="block sm:hidden">{{$t('dicts_short.nn')}}</span></NuxtLink>
   </li>
   <li>
-    <NuxtLink     :aria-current="advanced ? 'true' : 'false'"
+    <NuxtLink :aria-current="advanced ? 'true' : 'false'"
               @click="store.advanced = true"
               :to="advanced_link">{{$t('advanced')}}<Icon name="bi:arrow-right" size="1.25em" class="ml-1 md:mt-0.5"/></NuxtLink>
   </li>
 </ul>
-
 </nav>
 </div>
 </template>

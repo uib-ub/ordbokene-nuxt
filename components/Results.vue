@@ -91,7 +91,6 @@
 
   <SuggestResults v-if="!pending" :suggestions="suggestions"/>
 
-
 </div>
 
 

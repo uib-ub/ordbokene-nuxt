@@ -90,7 +90,7 @@ const download_ris = () => {
 </script>
 
 <template>
-<client-only>
+<ClientOnly>
 <div class="flex justify-around gap-3 mt-3 flex-wrap">
     <button class="btn btn-borderless" :id="'copy-link-'+article_id" v-if="showLinkCopy" @click="copy_link">
       <Icon :name="store.copied == 'copy-link-'+article_id ? 'bi:clipboard-check-fill' : 'bi:clipboard'" class="mr-3 mb-1 text-primary"/> {{$t("article.copy_link", 1, { locale: content_locale})}}
@@ -110,7 +110,7 @@ const download_ris = () => {
        <button class="mt-4 mb-2 btn btn-borderless" @click="download_ris"><Icon name="bi:download" class="mb-1 mr-3 text-primary" /> {{$t("article.download")}}</button>
 
 </div>
-</client-only>
+</ClientOnly>
 </template>
 
 <style scoped>

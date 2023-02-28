@@ -12,7 +12,7 @@ export const useStore = defineStore('store', {
       dict: "bm,nn",
       autocompletePending: false,
       autocomplete: [],
-      autocomplete_suggestions: [],
+      autocomplete_suggestions: {},
       show_autocomplete: false,
       suggest: {},
       suggestQuery: "",

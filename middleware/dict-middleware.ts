@@ -1,6 +1,4 @@
 import { useStore } from '~/stores/searchStore'
-
-
 export default defineNuxtRouteMiddleware(async (to, from) => {
     console.log("MIDDLEWARE\nFROM: ", from, "\nTO: ", to, "\nREDIRECTED FROM:",to.redirectedFrom)
     const store = useStore()
@@ -9,7 +7,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         if (/^[0-9]+$/.test(to.params.slug[0])) {
             store.view = 'article'
         }
-
         else if (specialSymbols(to.query.q)) {
             store.scope = "e"
             return navigateTo(`/${store.dict}/search?q=${to.query.q}&scope=${store.scope}`)
@@ -22,9 +19,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
             if (!store.autocomplete_suggestions) {
                 store.input = store.q
             } 
-            
         }
     }
-
-
 })

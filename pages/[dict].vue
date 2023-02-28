@@ -1,11 +1,10 @@
 <template>
 <main id="main" tabindex="-1" class="dict-view simple-search py-1">
   <SearchNav v-if="!store.advanced"/>
-  <ClientOnly>
+
     <NuxtErrorBoundary @error="form_error">
     <SearchForm v-if="!store.advanced" class="ord-container"/>
   </NuxtErrorBoundary>
-  </ClientOnly>
 
   
   <section class="dict-content">

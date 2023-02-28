@@ -72,7 +72,7 @@ const clearText = () => {
 
 const keys = (event) => {
   
-  if (store.show_autocomplete) {
+  if (store.show_autocomplete && store.autocomplete.exact) {
     if (event.key == "ArrowDown" || event.key == "Down") {
     
     if (selected_option.value <  store.autocomplete.exact.length -1) {

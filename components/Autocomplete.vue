@@ -22,13 +22,7 @@ async function fetchAutocomplete(q) {
       return
     }
 
-    const advanced = specialSymbols(q)
-    //const time = Date.now()
-    if (advanced && (!store.autocomplete.exact[0])) {
-      store.autocomplete = [{q, time, type: "advanced"}]
-    }
-    
-
+    const advanced = specialSymbols(q)   
 
     // Intercept queries containing too many words or characters
     let words = q.split(/ |\|/)
@@ -46,45 +40,21 @@ async function fetchAutocomplete(q) {
     }
 
     if (!advanced) {
-
       let response = ref([])
-      let url = `${store.endpoint}api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=${store.advanced ? store.scope + (store.pos ? '&wc='+store.pos : '') : 'eif'}`
+      let url = `${store.endpoint}api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=${store.advanced ? store.scope + (store.pos ? '&wc='+store.pos : '') : 'ei'}`
       response.value = await $fetch(url)
 
-      
-      if (q == store.input) { // prevent suggestions after submit
-        let autocomplete_suggestions = []
-        if (store.input.trim() == q) {
-
-          store.autocomplete = response.value.a
-          if (response.value.a.exact) {
-            store.show_autocomplete = true;
-          } /*
-          
-          let { exact, inflect, freetext } = response.value.a
-          autocomplete_suggestions = exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "word"}))
-          if (inflect) {
-            let inflection_suggestions = response.value.a.inflect.map(item => ({q: item[0], time: time, dict: [item[1]], type: "inflect"}))
-            autocomplete_suggestions = autocomplete_suggestions.concat(inflection_suggestions)
-          }
-          if (freetext) {
-            let inflection_suggestions = response.value.a.freetext.map(item => ({q: item[0], time: time, dict: [item[1]], type: "freetext"}))
-            autocomplete_suggestions = autocomplete_suggestions.concat(inflection_suggestions)
-          }
-        } 
-
-        if (autocomplete_suggestions.length && store.input.trim() == q && q != store.q) {
-
-          store.autocomplete = autocomplete_suggestions
-          
-        } */
-        else {
-          store.show_autocomplete = false
+      store.autocomplete = response.value.a
+      if (response.value.a.exact) {
+          store.show_autocomplete = true;
         }
+      else {
+        store.show_autocomplete = false
       }
-
-
-      }
+    }
+    else {
+      store.autocomplete = []
+      store.show_autocomplete = false
     }
 }
 

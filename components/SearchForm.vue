@@ -19,11 +19,22 @@ const submitForm = async (item) => {
   if (store.input) {
     console.log("SUBMITTED")
     store.show_autocomplete = false
-    let url = '/' + store.dict
-    url += '/search?q='+store.input
+    store.autocomplete_suggestions = store.autocomplete
+    //let url = '/' + store.dict
+    //url += '/search?q='+store.input
     store.q = store.input
+    if (store.autocomplete_suggestions.exact && store.autocomplete_suggestions.exact[0][0].length == store.q.length) {
+      return navigateTo("/" + store.dict + "/" +  store.autocomplete_suggestions.exact[0][0])
+    }
+    else if (store.autocomplete_suggestions.inflect) {
+      return navigateTo("/" + store.dict + "/" + store.autocomplete_suggestions.inflect[0][0])
+    }
+    else {
+      return navigateTo("/" + store.dict + "/" + store.q )
+    }
+    
 
-    return navigateTo(url)
+    //return navigateTo(url)
   }
   
 }

@@ -23,8 +23,8 @@ async function fetchAutocomplete(q) {
     }
 
     const advanced = specialSymbols(q)
-    const time = Date.now()
-    if (advanced && (!store.autocomplete[0] || store.autocomplete[0].time < time)) {
+    //const time = Date.now()
+    if (advanced && (!store.autocomplete.exact[0])) {
       store.autocomplete = [{q, time, type: "advanced"}]
     }
     
@@ -48,13 +48,19 @@ async function fetchAutocomplete(q) {
     if (!advanced) {
 
       let response = ref([])
-      let url = `${store.endpoint}api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=${store.advanced ? store.scope + (store.pos ? '&wc='+store.pos : '') : 'e'}`
+      let url = `${store.endpoint}api/suggest?&q=${q}&dict=${store.dict}&n=20&dform=int&meta=n&include=${store.advanced ? store.scope + (store.pos ? '&wc='+store.pos : '') : 'eif'}`
       response.value = await $fetch(url)
 
-      // prevent suggestions after submit
-      if (q == store.input) {
+      
+      if (q == store.input) { // prevent suggestions after submit
         let autocomplete_suggestions = []
-        if (store.input.trim() == q && response.value.a.exact) {
+        if (store.input.trim() == q) {
+
+          store.autocomplete = response.value.a
+          if (response.value.a.exact) {
+            store.show_autocomplete = true;
+          } /*
+          
           let { exact, inflect, freetext } = response.value.a
           autocomplete_suggestions = exact.map(item => ({q: item[0], time: time, dict: [item[1]], type: "word"}))
           if (inflect) {
@@ -65,16 +71,17 @@ async function fetchAutocomplete(q) {
             let inflection_suggestions = response.value.a.freetext.map(item => ({q: item[0], time: time, dict: [item[1]], type: "freetext"}))
             autocomplete_suggestions = autocomplete_suggestions.concat(inflection_suggestions)
           }
-        }
+        } 
 
         if (autocomplete_suggestions.length && store.input.trim() == q && q != store.q) {
 
           store.autocomplete = autocomplete_suggestions
-          store.show_autocomplete = true;
-        }
+          
+        } */
         else {
           store.show_autocomplete = false
         }
+      }
 
 
       }
@@ -98,14 +105,14 @@ const keys = (event) => {
   if (store.show_autocomplete) {
     if (event.key == "ArrowDown" || event.key == "Down") {
     
-    if (selected_option.value <  store.autocomplete.length -1) {
+    if (selected_option.value <  store.autocomplete.exact.length -1) {
       selected_option.value += 1;
     }
     else {
       selected_option.value = 0;      
     }
     
-    store.input = store.autocomplete[selected_option.value].q
+    store.input = store.autocomplete.exact[selected_option.value][0]
 
     //event.stopPropagation()
     event.preventDefault()
@@ -116,7 +123,7 @@ const keys = (event) => {
     selected_option.value -= 1;
 
     if (selected_option.value > -1) {
-    store.input = store.autocomplete[selected_option.value].q
+    store.input = store.autocomplete.exact[selected_option.value][0]
     
     }
     
@@ -233,7 +240,7 @@ if (process.client) {
   </div>
   <div class="dropdown-wrapper" v-if="store.show_autocomplete">
    <ul id="autocomplete-dropdown" role="listbox" ref="autocomplete_dropdown">
-    <li v-for="(item, idx) in store.autocomplete"
+    <li v-for="(item, idx) in store.autocomplete.exact"
         :key="idx" 
         :aria-selected="idx == selected_option"
         role="option"
@@ -243,15 +250,15 @@ if (process.client) {
           <span v-if="item.type == 'advanced' && !store.advanced" aria-live="polite" class=" bg-primary text-white p-1 rounded-1xl ml-3">{{$t('to_advanced')}} 
             <Icon name="bi:arrow-right" class="mb-1"/>
           </span>
-          <span v-else :aria-live="store.autocomplete.length == 1? 'polite' : null">
-            <span v-if="store.autocomplete.length == 1" class="sr-only">{{$t('autocomplete_suggestions', 1)}}: </span>
-            <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span>
+          <span v-else :aria-live="store.autocomplete.exact.length == 1? 'polite' : null">
+            <span v-if="store.autocomplete.exact.length == 1" class="sr-only">{{$t('autocomplete_suggestions', 1)}}: </span>
+            <span :class="item.type">{{ item[0] }}</span> <span class="dict-parentheses" v-if="store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item[1]-1]}})</span>
           </span>
         </div>
    </li>
   </ul>
-  <div v-if="store.autocomplete.length > 1" class="font-normal text-primary text-right px-6 pt-2" :key="store.input" aria-live="polite">
-    {{store.autocomplete.length}} {{$t('autocomplete_suggestions', 0)}}<span class="text-gray-600" v-if="store.autocomplete.length == 20"> ({{$t('maximum_autocomplete')}})</span></div>
+  <div v-if="store.autocomplete.exact.length > 1" class="font-normal text-primary text-right px-6 pt-2" :key="store.input" aria-live="polite">
+    {{store.autocomplete.exact.length}} {{$t('autocomplete_suggestions', 0)}}<span class="text-gray-600" v-if="store.autocomplete.exact.length == 20"> ({{$t('maximum_autocomplete')}})</span></div>
  </div>
   </div>
 

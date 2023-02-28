@@ -6,17 +6,17 @@
     <NuxtLink 
               :aria-current="route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"
-              :to="dict_link('bm,nn')"><span class="hidden sm:block">{{$t('dicts.bm,nn')}}</span><span class="block sm:hidden">{{$t('dicts_short.bm,nn')}}</span></NuxtLink>
+              :to="'/bm,nn/'+store.q"><span class="hidden sm:block">{{$t('dicts.bm,nn')}}</span><span class="block sm:hidden">{{$t('dicts_short.bm,nn')}}</span></NuxtLink>
   </li>
   <li>
     <NuxtLink  :aria-current="route.params.dict =='bm' ? 'true' : 'false'"
               @click="dict_click('bm')"
-              :to="dict_link('bm')"><span class="hidden sm:block">{{$t('dicts.bm')}}</span><span class="block sm:hidden">{{$t('dicts_short.bm')}}</span></NuxtLink>
+              :to="'/bm/'+store.q"><span class="hidden sm:block">{{$t('dicts.bm')}}</span><span class="block sm:hidden">{{$t('dicts_short.bm')}}</span></NuxtLink>
   </li>
   <li>
     <NuxtLink :aria-current="route.params.dict =='nn' ? 'true' : 'false'"
               @click="dict_click('nn')"
-              :to="dict_link('nn')"><span class="hidden sm:block">{{$t('dicts.nn')}}</span><span class="block sm:hidden">{{$t('dicts_short.nn')}}</span></NuxtLink>
+              :to="'/nn/'+store.q"><span class="hidden sm:block">{{$t('dicts.nn')}}</span><span class="block sm:hidden">{{$t('dicts_short.nn')}}</span></NuxtLink>
   </li>
   <li>
     <NuxtLink :aria-current="advanced ? 'true' : 'false'"
@@ -41,9 +41,6 @@ const props = defineProps({
 const dict_click = (dict) => {
       store.advanced = false
       store.dict = dict
-      if (store.q != store.input) {
-        store.input = store.originalInput || store.q
-      }
     }
     
     
@@ -66,20 +63,6 @@ const dict_click = (dict) => {
       
     })
     
-    const dict_link = ((dict) => {
-      let url = `/${dict}/`
-      if (specialSymbols(store.q)) {
-        return  url
-      }
-      if (store.originalInput) {
-        url = url + `search?q=${store.originalInput}`
-      }
-      else if (store.q) {
-        url = url + `search?q=${store.q}`
-      }
-      return url
-      
-    })
 
 </script>
 

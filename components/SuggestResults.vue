@@ -27,7 +27,7 @@ const props = defineProps({
 
 const suggest_link = (suggestion) => {
     if (store.advanced) {
-        let url = `/${store.dict}/search?q=${suggestion}&scope=${store.scope}`
+        let url = `/search?q=${suggestion}&scope=${store.scope}`
         if (store.pos) {
             url = url + '&pos=' + store.pos
         }

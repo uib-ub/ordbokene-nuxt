@@ -1,22 +1,23 @@
 <template>
     <div>
-    <div v-if="store.autocomplete_suggestions.exact && store.autocomplete_suggestions.exact[0][0] != store.q">
+    <div v-if="exact.length">
     <h2>Treff i oppslagsord</h2>
     <ul class="nav nav-pills flex-column md:flex md:flex-wrap md:gap-8 py-6 pt-4 md:py-8">
-        <li class="nav-item flex" v-for="(item, idx) in store.autocomplete.exact.slice(0,6)" :key="idx">
+        <li class="nav-item flex" v-for="(item, idx) in exact" :key="idx">
             <NuxtLink class="suggest-link py-3 md:py-0 md w-full" :to="suggest_link(item[0])"><Icon name="bi:search" class="mr-3 mb-1"/><span class="link-content">{{item[0]}}</span></NuxtLink>
         </li>
     </ul>
     </div>
-    <div v-if="store.autocomplete_suggestions.inflect && store.autocomplete_suggestions.inflect[0][0] != store.q">
-    <h2>Treff i former</h2>
 
+    <div v-if="inflect.lenght">
+    <h2>Treff i former av oppslagsord</h2>
     <ul class="nav nav-pills flex-column md:flex md:flex-wrap md:gap-8 py-6 pt-4 md:py-8">
-        <li class="nav-item flex" v-for="(item, idx) in store.autocomplete.inflect.slice(0,6)" :key="idx">
+        <li class="nav-item flex" v-for="(item, idx) in inflect" :key="idx">
             <NuxtLink class="suggest-link py-3 md:py-0 md w-full" :to="suggest_link(item[0])"><Icon name="bi:search" class="mr-3 mb-1"/><span class="link-content">{{item[0]}}</span></NuxtLink>
         </li>
     </ul>
     </div>
+
 <div v-if="suggestions && suggestions.length" class="suggestions py-2 px-1 mb-4 mt-8">
     
     <h2>{{$t('notifications.similar')}}</h2>
@@ -50,6 +51,26 @@ const suggest_link = (suggestion) => {
         return suggestion
     }
 }
+
+const exact = computed(() => {
+    if (store.autocomplete_suggestions.exact && store.autocomplete_suggestions.exact[0][0] != store.q) {
+        return store.autocomplete_suggestions.exact.slice(0, 6)
+    }
+    else {
+        return []
+    }
+})
+
+const inflect = computed(()=> {
+    console.log("INFLECT", store.autocomplete_suggestions.inflect)
+    if (store.autocomplete_suggestions.inflect && store.autocomplete_suggestions.inflect[0][0] != store.q) {
+
+        return store.autocomplete_suggestions.inflect.slice(0, 6)
+    }
+    else {
+        return []
+    }
+})
 
 
 </script>

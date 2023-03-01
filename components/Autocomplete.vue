@@ -186,6 +186,7 @@ if (process.client) {
   <div class="search-container">
   <div class="input-wrapper h-3.5rem border-1 bg-canvas border-primary flex content-center justify-between pr-2" v-bind="{'data-dropdown-open': store.show_autocomplete}">
    <input class="input-element p-3 pl-6 lg:p-4 lg:px-8"
+          name="q"
           :value="store.input"
           id="input-element"
           ref="input_element" 
@@ -203,7 +204,7 @@ if (process.client) {
           @keydown="keys"
           :aria-expanded="store.show_autocomplete || 'false'" 
           :aria-owns="selected_option >= 0 ? 'autocomplete-dropdown' : null"/>
-          <button type="button" :title="$t('clear')" class="appended-button" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><Icon name="bi:x-lg" size="1.25rem"/></button>
+          <button type="button" :title="$t('clear')" class="appended-button" v-if="store.input && store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><Icon name="bi:x-lg" size="1.25rem"/></button>
           <button v-if=" !store.advanced" class="appended-button" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"><Icon name="bi:search" size="1.25rem"/></button>
           
 

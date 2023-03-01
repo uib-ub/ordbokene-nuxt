@@ -89,7 +89,7 @@
     ERROR: {{error}}
   </div>
 
-  <SuggestResults v-if="!pending" :suggestions="suggestions"/>
+  <SuggestResults v-if="!pending"/>
 
 </div>
 
@@ -106,7 +106,6 @@ const store = useStore()
 const route = useRoute()
 const router = useRouter()
 
-const suggestions = ref()
 const error_message = ref()
 const per_page = 10
 const page = ref(parseInt(route.query.page || "1"))
@@ -125,17 +124,7 @@ const listView = computed(() => {
 })
 
 
-const get_suggestions = async () => {
-  if (!(store.advanced && specialSymbols(store.q))) {
-  let key = ((store.advanced && store.pos) || '') + 'suggest_'+ (store.q)
 
-  const response = await $fetch(`${store.endpoint}api/suggest?&q=${store.q}&dict=${store.dict}${store.advanced && store.pos ? '&pos=' + store.pos : ''}&n=20&dform=int&meta=n&include=eis`)                                
-  suggestions.value = filterSuggestions(response, store.originalInput || store.q)
-  }
-  else {
-    suggestions.value = null
-  } 
-}
 const { pending, error, refresh, data: articles } = await useAsyncData("articles_"+ store.searchUrl, ()=> 
       $fetch(store.endpoint + 'api/articles?', {
           params: {
@@ -147,10 +136,6 @@ const { pending, error, refresh, data: articles } = await useAsyncData("articles
           onRequestError({ request, options, error}) {
             console.log("ERROR")
           },
-
-          onResponse({ request, options, response }) {
-            get_suggestions()
-          }
         }))
 
 
@@ -170,9 +155,6 @@ watch(() => store.searchUrl, () => {
   }
 })
 
-onMounted(() => {
-    get_suggestions()    
-})
 
 
 const slice_results = () => {
@@ -218,7 +200,6 @@ watch(articles, (newArticles) => {
 
 
     
-    if (total_bm + total_nn == 0) get_suggestions()
 
     
   }

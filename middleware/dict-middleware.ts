@@ -21,4 +21,23 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
             } 
         }
     }
+    else if (to.query.q) {
+        console.log("HAS QUERY", store.autocomplete_suggestions)
+
+        if (!store.autocomplete_suggestions || !store.autocomplete_suggestions.length) {
+            console.log("NO SUGGESTIONS")
+            const { data: suggest_test } = await useAsyncData(
+                'suggest_'+ to.query.q + "_" + store.dict, 
+                () => $fetch(`${store.endpoint}api/suggest?&q=${to.query.q}&dict=${store.dict}&n=20&dform=int&meta=n&include=ei`))
+
+            let { exact, inflect } =  suggest_test.value.a
+            console.log("MIDDLEWARE SUGGESTIONS", exact, inflect)
+            
+
+        }
+        
+
+        //return navigateTo(`/${store.dict}/${to.query.q}`)
+
+    }
 })

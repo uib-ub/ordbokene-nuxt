@@ -62,33 +62,31 @@
         </div>
         <NuxtErrorBoundary @error="body_error">
         <div class="article_content pt-1" ref="article_content">
-            <section v-if="!welcome && data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
+            <div v-if="!welcome && data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
                 <h4>{{$t('article.headings.pronunciation', 1, { locale: content_locale})}}</h4>
 
                 <DefElement v-for="(element, index) in data.body.pronunciation" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
-            </section>
-            <section v-if="!welcome && data.body.etymology && data.body.etymology.length" class="etymology">
+            </div>
+            <div v-if="!welcome && data.body.etymology && data.body.etymology.length" class="etymology">
                 <h4>{{$t('article.headings.etymology', 1, { locale: content_locale})}}</h4>
 
                 <DefElement v-for="(element, index) in data.body.etymology" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
-            </section>
-            <section class="definitions" v-if="has_content">
+            </div>
+            <div class="definitions" v-if="has_content">
                 <h4 v-if="!welcome">{{$t('article.headings.definitions', 1, { locale: content_locale})}}</h4>
 
-                <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click" :welcome="welcome"/>
+                <Definition v-for="definition in data.body.definitions" :content_locale="content_locale" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click" :welcome="welcome"/>
 
-            </section>
-            <section v-if="sub_articles.length && !welcome" class="expressions">
+            </div>
+            <div v-if="sub_articles.length && !welcome" class="expressions">
                 <h4>{{$t('article.headings.expressions', 1, { locale: content_locale})}}</h4>
                 <ul>
-                <SubArticle :body="subart" v-for="(subart, index) in sub_articles" :dict="dict" :key="index" v-on:link-click="link_click"/>
+                <SubArticle v-for="(subart, idx) in sub_articles" :body="subart" :dict="dict" :key="idx" v-on:link-click="link_click" :content_locale="content_locale"/>
                 </ul>
-            </section>
+              </div>
         </div>
-        <ArticleFooter v-if="!welcome" :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
-        <div v-else class="flex justify-end pt-8"><NuxtLink :to="link_to_self()">{{$t('article.show')}} <Icon name="bi:arrow-right" class="mb-1"/></NuxtLink></div>
 
         </NuxtErrorBoundary>
     </div>

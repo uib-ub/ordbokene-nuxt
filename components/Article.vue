@@ -183,9 +183,26 @@ const find_sub_articles = (definition) => {
   }
 }
 const sub_articles = computed(() => {
-    return data.value.body.definitions.reduce((acc, val) => acc.concat(find_sub_articles(val)), []).sort((s1, s2) => s1.lemmas[0].localeCompare(s2.lemmas[0]))
-})
+    return data.value.body.definitions.reduce((acc, val) => acc.concat(find_sub_articles(val)), []).sort((s1, s2) => {   // Sort æ, ø and å correctly  
+      let lemma1 = s1.lemmas[0].toLowerCase()
+      let lemma2 = s1.lemmas[0].toLowerCase()
+      let lettermap = {229: 299, 248: 298, 230: 297}
 
+      for (var i = 0; i < Math.min(lemma1.length, lemma2.length); i++) {
+        let charcode1 = lemma1.charCodeAt(i)
+        let charcode2 = lemma2.charCodeAt(i)
+
+        charcode1 = lettermap[charcode1] || charcode1
+        charcode2 = lettermap[charcode2] || charcode2
+
+        if (charcode1 != charcode2) {
+          return charcode1 - charcode2
+        }
+      }
+      return lemma1.lenght < lemma2.length || -1          
+
+    })
+})
 
 
 const link_click = (event) => {

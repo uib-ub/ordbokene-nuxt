@@ -1,5 +1,5 @@
 <template>
-      <component :is="level==1 ? 'div' : 'li'" :class="['definition', 'level'+level]"  :ref="level != 9 ? 'def' + body.id : ''" :id="level != 9? 'def' + body.id : ''"><component :is="level <= 2 ? 'div' : 'span'">
+      <component :is="(level==1 || level == 9) ? 'div' : 'li'" :class="['definition', 'level'+level]"  :ref="level != 9 ? 'def' + body.id : ''" :id="level != 9? 'def' + body.id : ''"><component :is="level <= 2 ? 'div' : 'span'">
     <span class="explanations" v-if="explanations.length">
       <DefElement :body="explanation" :dict="dict" :has_article_ref=has_article_ref(explanation) v-for="(explanation, index) in explanations" :semicolon="might_need_semicolon(explanations, index)" :key="index" v-on:link-click="link_click" :content_locale="content_locale" :welcome="welcome"/>
     </span>

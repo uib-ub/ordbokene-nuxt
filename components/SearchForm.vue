@@ -17,6 +17,7 @@ const route = useRoute()
 
 const submitForm = async (item) => {
   if (store.input) {
+    console.log("SUBMITTED")
     store.show_autocomplete = false
     let url = '/' + store.dict
     url += '/search?q='+store.input

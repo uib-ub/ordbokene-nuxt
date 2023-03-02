@@ -62,30 +62,30 @@
         </div>
         <NuxtErrorBoundary @error="body_error">
         <div class="article_content pt-1" ref="article_content">
-            <div v-if="!welcome && data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
+            <section v-if="!welcome && data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
                 <h4>{{$t('article.headings.pronunciation', 1, { locale: content_locale})}}</h4>
 
                 <DefElement v-for="(element, index) in data.body.pronunciation" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
-            </div>
-            <div v-if="!welcome && data.body.etymology && data.body.etymology.length" class="etymology">
+            </section>
+            <section v-if="!welcome && data.body.etymology && data.body.etymology.length" class="etymology">
                 <h4>{{$t('article.headings.etymology', 1, { locale: content_locale})}}</h4>
 
                 <DefElement v-for="(element, index) in data.body.etymology" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
-            </div>
-            <div class="definitions" v-if="has_content">
+            </section>
+            <section class="definitions" v-if="has_content">
                 <h4 v-if="!welcome">{{$t('article.headings.definitions', 1, { locale: content_locale})}}</h4>
 
                 <Definition v-for="definition in data.body.definitions" :content_locale="content_locale" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click" :welcome="welcome"/>
 
-            </div>
-            <div v-if="sub_articles.length && !welcome" class="expressions">
+            </section>
+            <section v-if="sub_articles.length && !welcome" class="expressions">
                 <h4>{{$t('article.headings.expressions', 1, { locale: content_locale})}}</h4>
                 <ul>
                 <SubArticle v-for="(subart, idx) in sub_articles" :body="subart" :dict="dict" :key="idx" v-on:link-click="link_click" :content_locale="content_locale"/>
                 </ul>
-              </div>
+              </section>
         </div>
 
         </NuxtErrorBoundary>

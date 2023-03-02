@@ -6,13 +6,13 @@
   </NuxtErrorBoundary>
 
   
-  <div class="dict-content">
+  <section class="dict-content">
     <div class="ord-container">
   <NuxtErrorBoundary @error="content_error">
     <NuxtPage/>
   </NuxtErrorBoundary>
     </div>
-  </div>
+  </section>
 
 </main>
 </template>

@@ -16,7 +16,7 @@
 
 
     <div class="gap-3 lg:gap-8 grid lg:grid-cols-2 mx-1" v-if="route.params.dict == 'bm,nn' || route.query.dict == 'bm,nn' ">
-      <div class="lg:grid-cols-6" :aria-label="$t('dicts.bm')">
+      <section class="lg:grid-cols-6" :aria-label="$t('dicts.bm')">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Bokmålsordboka</h2>
           <span><span v-if="(articles.meta.bm.total > 1)" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.bm.total})}}</span>
           <span v-else-if="store.advanced && articles.meta.bm.total == 0" aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></span></div>
@@ -28,8 +28,8 @@
             </NuxtErrorBoundary>
           </component>
         </component>
-      </div>
-      <div class="lg:grid-cols-6" :aria-label="$t('dicts.nn')">
+      </section>
+      <section class="lg:grid-cols-6" :aria-label="$t('dicts.nn')">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Nynorskordboka</h2>
           <span><span v-if="articles.meta.nn.total>1" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
           <span v-else-if="store.advanced && articles.meta.nn.total == 0" aria-hidden="true" class="result-count">  | {{$t('notifications.no_results')}}</span></span></div>
@@ -41,7 +41,7 @@
             </NuxtErrorBoundary>
           </component>
         </component>
-      </div>
+      </section>
   </div>
 
     

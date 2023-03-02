@@ -188,7 +188,7 @@ h1 {
 }
 
 
-main a  {
+section a, .secondary-page a  {
   border-bottom: 2px solid;
   @apply border-anchor;
 }

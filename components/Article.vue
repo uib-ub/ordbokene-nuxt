@@ -77,18 +77,16 @@
             <div class="definitions" v-if="has_content">
                 <h4 v-if="!welcome">{{$t('article.headings.definitions', 1, { locale: content_locale})}}</h4>
 
-                <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click" :welcome="welcome"/>
+                <Definition v-for="definition in data.body.definitions" :content_locale="content_locale" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click" :welcome="welcome"/>
 
             </div>
             <div v-if="sub_articles.length && !welcome" class="expressions">
                 <h4>{{$t('article.headings.expressions', 1, { locale: content_locale})}}</h4>
                 <ul>
-                <SubArticle :body="subart" v-for="(subart, index) in sub_articles" :dict="dict" :key="index" v-on:link-click="link_click"/>
+                <SubArticle v-for="(subart, idx) in sub_articles" :body="subart" :dict="dict" :key="idx" v-on:link-click="link_click" :content_locale="content_locale"/>
                 </ul>
               </div>
         </div>
-        <ArticleFooter v-if="!welcome" :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
-        <div v-else class="flex justify-end pt-8"><NuxtLink :to="link_to_self()">{{$t('article.show')}} <Icon name="bi:arrow-right" class="mb-1"/></NuxtLink></div>
 
         </NuxtErrorBoundary>
     </div>

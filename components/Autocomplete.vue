@@ -227,8 +227,8 @@ if (process.client) {
           :aria-expanded="store.show_autocomplete || 'false'" 
           :aria-owns="selected_option >= 0 ? 'autocomplete-dropdown' : null"/>
           <button type="button" :title="$t('clear')" class="appended-button" v-if="store.input.length > 0" :aria-label="$t('clear')" v-on:click="clearText"><Icon name="bi:x-lg" size="1.25rem"/></button>
-          <button v-if=" !store.advanced && store.input && store.q != store.input" class="appended-button" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"><Icon name="bi:search" size="1.25rem"/></button>
-          <div aria-hidden="true" class="appended-button-disabled" v-else-if="!store.advanced" v-bind:class="{'sr-only': store.advanced}"><Icon name="bi:search" class="text-gray-400 align-middle" size="1.25rem"/></div>
+          <button v-if=" !store.advanced" class="appended-button" type="submit" v-bind:class="{'sr-only': store.advanced}" :aria-label="$t('search')"><Icon name="bi:search" size="1.25rem"/></button>
+          
 
   </div>
   <div class="dropdown-wrapper" v-if="store.show_autocomplete">

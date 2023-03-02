@@ -1,6 +1,6 @@
 <template>
-      <component :is="level==1 ? 'div' : 'li'" :class="['definition', 'level'+level]"  :ref="level != 9 ? 'def' + body.id : ''" :id="level != 9? 'def' + body.id : ''"><component :is="level <= 2 ? 'div' : 'span'">
-    <span class="explanations" v-if="explanations.length">
+      <component :is="level==1 ? 'div' : 'li'" :class="['definition', 'level'+level, {hilite: highlighted}]" :id="level != 9 && store.view == 'article' ? 'def' + body.id : ''"><component :is="level <= 2 ? 'div' : 'span'">
+        <span class="explanations" v-if="explanations.length">
       <DefElement :body="explanation" :dict="dict" :has_article_ref=has_article_ref(explanation) v-for="(explanation, index) in explanations" :semicolon="might_need_semicolon(explanations, index)" :key="index" v-on:link-click="link_click" :content_locale="content_locale" :welcome="welcome"/>
     </span>
     <div v-if="examples.length && !welcome">
@@ -22,6 +22,10 @@
 
 
 <script setup>
+import { useStore } from '~/stores/searchStore'
+import { useRoute } from 'vue-router'
+const store = useStore()
+const route = useRoute()
 
 const props = defineProps({
     body: Object,
@@ -31,6 +35,21 @@ const props = defineProps({
     content_locale: String,
     welcome: Boolean
 })
+
+
+const highlighted = ref(false)
+
+
+onMounted(() => {
+  console.log('myheader mounted');
+  if (route && route.hash && route.hash.slice(1) == 'def' + props.body.id) {
+    highlighted.value = true
+  }
+});
+
+
+
+
 
 const emit = defineEmits(['link-click'])
 const link_click = (event) => {
@@ -71,6 +90,11 @@ const has_article_ref = (item) => {
 
 ul.examples {
   padding-left: 0rem;
+}
+
+.hilite {
+  background: theme('colors.tertiary.darken1') !important;
+  border-radius: 0.25rem;
 }
 
 

@@ -57,17 +57,20 @@ if (process.client) {
 
 }
 
-
 const nuxtApp = useNuxtApp()
 
 nuxtApp.hook("page:finish", () => {
+  
+  if (settings.autoSelect || route.name == "dict") {
+    input_element.value.select()
+  }
   // Handle focus in one place
-
+/*
    window.scrollTo(0, 0)
    if (input_element.value) {
     if (!settings.autoSelect && store.view != 'article') {
       if (announcement.value) {
-        announcement.value.focus()
+        announcement.focus()
       }
     }
     else {
@@ -85,6 +88,7 @@ nuxtApp.hook("page:finish", () => {
     
 
    }
+   */
 
 })
 
@@ -378,7 +382,12 @@ ol.sub_definitions {
   @apply border-none;
 }
 
-
+@-moz-document url-prefix() {
+  /* Styles for Firefox only */
+  *:focus {
+    outline: 3px solid theme("colors.secondary.DEFAULT");
+  }
+}
 
 
 

@@ -1,6 +1,6 @@
 <template>
 <div class="py-1">
-<form>
+<form @submit="submitForm" :action="'/' + route.params.dict">
 <NuxtErrorBoundary @error="autocomplete_error">
   <Autocomplete v-on:dropdown-submit="submitForm"/>
 </NuxtErrorBoundary>
@@ -16,19 +16,31 @@ const store = useStore()
 const route = useRoute()
 
 const submitForm = async (item) => {
-  // Submit fuction for dropdown selection. Remove?
   if (store.input) {
     console.log("SUBMITTED")
     store.show_autocomplete = false
-    //store.autocomplete_suggestions = store.autocomplete
-    console.log("")
-    let url = '/' + store.dict
-    url += '?q='+store.input
-    store.q = store.input
+    store.autocomplete_suggestions = store.autocomplete
 
-    return navigateTo(url)
+    store.q = store.input
+    if (store.autocomplete_suggestions.exact && store.autocomplete_suggestions.exact[0][0].length == store.q.length) {
+      if (store.q != store.autocomplete_suggestions.exact[0][0]) {
+        store.originalInput = store.q
+      }
+      else {
+        store.originalInput = ""
+      }
+      
+      return navigateTo("/" + store.dict + "/" +  store.autocomplete_suggestions.exact[0][0])
+    }
+    else if (store.autocomplete_suggestions.inflect) {
+      store.originalInput = store.q
+      return navigateTo("/" + store.dict + "/" + store.autocomplete_suggestions.inflect[0][0])
+    }
+    else {
+      store.originalInput = ""
+      return navigateTo("/" + store.dict + "/" + store.q )
+    }  
   }
-  
 }
 
 const autocomplete_error = (error) => {

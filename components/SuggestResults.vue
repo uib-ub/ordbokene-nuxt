@@ -1,5 +1,6 @@
 <template>
     <div>
+    <ClientOnly>
     <div v-if="inflect.length">
     <h2>Treff i former av oppslagsord</h2>
     <ul class="nav nav-pills flex-column md:flex md:flex-wrap md:gap-8 py-6 pt-4 md:py-8">
@@ -8,6 +9,7 @@
         </li>
     </ul>
     </div>
+    </ClientOnly>
 
 <div v-if="suggestions && suggestions.length" class="suggestions py-2 px-1 mb-4 mt-8">
     

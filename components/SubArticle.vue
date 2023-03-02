@@ -5,7 +5,6 @@
     </span>
     <div>
     <DefElement :body="body.intro" v-if="body.intro" :dict="dict" @link-click="link_click" :content_locale="content_locale"/>
-
     <Definition :level="9" :body="body.article.body.definitions[0]" :dict="dict" @link-click="link_click" :content_locale="content_locale"/>
     </div>
 </li>

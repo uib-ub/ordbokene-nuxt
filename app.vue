@@ -25,7 +25,14 @@ const announcement = useState('announcement')
 const skip_link = ref()
 const keyboard_navigation = ref(false)
 
-console.log("CLIENT?",process.client)
+if (process.client) {
+  console.log("app.vue loaded client side")
+
+}
+else {
+  console.log("app.vue loaded server side")
+}
+
 
 useHead({
     titleTemplate: (titleChunk) => {

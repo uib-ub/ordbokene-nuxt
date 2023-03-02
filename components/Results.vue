@@ -89,7 +89,7 @@
     ERROR: {{error}}
   </div>
 
-  <SuggestResults v-if="!pending"/>
+  <SuggestResults v-if="false && !pending"/>
 
 </div>
 

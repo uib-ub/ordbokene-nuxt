@@ -4,7 +4,7 @@
 
   <ArticleView v-if="store.view == 'article'"/>
   <WordView v-if="store.view == 'word'"/>
-  <Results v-if="store.view != 'article'"/>
+  <BasicResults v-if="store.view != 'article' && (route.query.q || route.params.slug[0])"/>
 
   </div>
 </template>
@@ -13,9 +13,10 @@
 // pick main component: word, article or search
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
+const route = useRoute()
 
 useHead({
-  title: store.q
+  title: route.query.q || route.params.slug[0] // Håndtere tittel for artikkel
   })
 
 definePageMeta({

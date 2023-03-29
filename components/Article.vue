@@ -87,8 +87,10 @@
                 </ul>
               </section>
         </div>
-
         </NuxtErrorBoundary>
+        <ArticleFooter v-if="!welcome" :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
+
+        
     </div>
 </div>
 </div>

@@ -3,28 +3,15 @@
 import { useStore } from '~/stores/searchStore'
 const store = useStore()
 
-
-
 const props = defineProps({
     lemmas: Array,
     dict: String,
     article_id: Number,
-    title_id: String,
     content_locale: String
 })
 
-let copy_popup = ref(false);
 const cite_expanded = ref(false)
 
-
-const showToast = () => {
-  const toastElList = [].slice.call(document.querySelectorAll('.toast'))
-  const toastList = toastElList.map(function(toastEl) {
-          return new bootstrap.Toast(toastEl)
-        });
-        toastList.forEach(toast => toast.show());
-        console.log(toastList);
-}
 
 const create_link = () => {
       return `https://ordbokene.no/${props.dict}/${props.article_id}`

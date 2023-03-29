@@ -71,7 +71,7 @@
   "ADP": "preposition",
   "PFX": "prefix",
   "ADV": "adverb",
-  "DET": "determinative",
+  "DET": "determiner",
   "PROPN": "proper noun",
   "ABBR": "abbreviation",
   "INTJ": "interjection",
@@ -89,7 +89,7 @@
 "pos_tags_plural": {
   "NOUN": "Nouns",
   "PRON": "Pronouns",
-  "DET": "Determinatives",
+  "DET": "Determiners",
   "ADJ": "Adjectives",
   "CCONJ": "Conjunctions",
   "SCONJ": "Subjunctions",
@@ -97,6 +97,11 @@
   "ADP": "Prepositions",
   "VERB": "Verbs",
   "INTJ": "Interjections"
+},
+"determiner": {
+  "Quant": "quantifier",
+  "Dem": "demonstrative",
+  "Poss": "possessive"
 },
 "split_inf": {
   "title": "split infinitive",

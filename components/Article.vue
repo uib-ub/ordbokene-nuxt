@@ -21,7 +21,7 @@
 <span v-if="secondary_header_text">,&nbsp;<span class="lemma-group lemma">{{secondary_header_text}}</span></span>
     &nbsp;<em v-if="lemma_group.description" class="subheader ">
     <span class="header_group_list">{{lemma_group.description}}</span>
-          {{lemma_group.genus}}
+          {{lemma_group.pos_group}}
     <span v-if="settings.inflectionNo" class="inflection_classes">{{lemma_group.inflection_classes}}</span>
 
     </em>
@@ -239,8 +239,8 @@ const inflection_classes = (lemmas) => {
 const lemma_groups = computed(() => {
     let groups = [{lemmas: data.value.lemmas}]
       try {
-        if (data.value.lemmas[0].paradigm_info[0] && data.value.lemmas[0].paradigm_info[0].tags[0] != 'NOUN' && data.value.lemmas[0].paradigm_info[0].tags[0] != 'EXPR') {
-          groups = [{description:  t('tags.'+data.value.lemmas[0].paradigm_info[0].tags[0], 1, { locale: content_locale}), lemmas: data.value.lemmas}]
+        if (data.value.lemmas[0].paradigm_info[0].tags[0] == "DET" && data.value.lemmas[0].paradigm_info[0].tags.length > 1) {
+          groups = [{description: t('tags.'+data.value.lemmas[0].paradigm_info[0].tags[0], {locale: content_locale}), pos_group: t('determiner.' + data.value.lemmas[0].paradigm_info[0].tags[1], {locale: content_locale}), lemmas: data.value.lemmas}]
         }
         else if (data.value.lemmas[0].paradigm_info[0].tags[0] == 'NOUN') {
             let genus_map  = {}
@@ -265,10 +265,13 @@ const lemma_groups = computed(() => {
               }
             })
             groups = Object.keys(genus_map).map(key => {
-              return {description:  t('tags.NOUN', 1, { locale: content_locale}), genus: key, lemmas: genus_map[key], }
+              return {description:  t('tags.NOUN', 1, { locale: content_locale}), pos_group: key, lemmas: genus_map[key], }
             })
 
 
+        }
+        else if (data.value.lemmas[0].paradigm_info[0].tags[0] != 'EXPR') {
+          groups = [{description:  t('tags.'+data.value.lemmas[0].paradigm_info[0].tags[0], 1, { locale: content_locale}), lemmas: data.value.lemmas}]
         }
 
         groups.forEach((lemma_group, index) => {

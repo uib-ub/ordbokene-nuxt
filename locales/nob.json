@@ -116,6 +116,11 @@
     "VERB": "verb",
     "INTJ": "interjeksjoner"
 },
+"determiner": {
+    "Quant": "kvantor",
+    "Dem": "demonstrativ",
+    "Poss": "possessiv"
+  },
 "split_inf": {
     "title": "kløyvd infinitiv",
     "label": "Mer informasjon om kløyvd infinitiv",

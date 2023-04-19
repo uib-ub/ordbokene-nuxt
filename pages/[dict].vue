@@ -4,16 +4,11 @@
     <NuxtErrorBoundary @error="form_error">
     <SearchForm v-if="!store.advanced" class="ord-container"/>
   </NuxtErrorBoundary>
-
-  
-  <section class="dict-content">
-    <div class="ord-container">
-  <NuxtErrorBoundary @error="content_error">
-    <NuxtPage/>
-  </NuxtErrorBoundary>
-    </div>
+  <section ref="contentContainer" tabindex="-1" class="ord-container">
+    <NuxtErrorBoundary @error="content_error">
+      <NuxtPage/>
+    </NuxtErrorBoundary>
   </section>
-
 </main>
 </template>
 

@@ -15,6 +15,8 @@ import { useRoute } from 'vue-router'
 const store = useStore()
 const route = useRoute()
 
+const input_element = useState('input_element')
+
 const submitForm = async (item) => {
   if (store.input) {
     console.log("SUBMITTED")
@@ -22,6 +24,7 @@ const submitForm = async (item) => {
     let url = '/' + store.dict
     url += '/search?q='+store.input
     store.q = store.input
+    input_element.value.blur()
 
     return navigateTo(url)
   }

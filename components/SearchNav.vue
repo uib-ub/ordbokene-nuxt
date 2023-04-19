@@ -1,29 +1,31 @@
 <template>
-    <nav :aria-label="$t('label.dict_nav')" class="md:flex md:justify-center !pt-2 !pl-2 !md:pl-0">
+  <div class="nav-container px-2">
+    <nav :aria-label="$t('label.dict_nav')" class="md:flex md:justify-center !my-1">
   <ul id="searchNavContent" class="flex gap-2 md:gap-3">
-  <li class="nav-item">
-    <NuxtLink :aria-current="route.params.dict =='bm,nn' ? 'true' : 'false'"
+  <li>
+    <NuxtLink 
+              :aria-current="route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"
               :to="dict_link('bm,nn')"><span class="hidden sm:block">{{$t('dicts.bm,nn')}}</span><span class="block sm:hidden">{{$t('dicts_short.bm,nn')}}</span></NuxtLink>
   </li>
-  <li class="nav-item">
-    <NuxtLink :aria-current="route.params.dict =='bm' ? 'true' : 'false'"
+  <li>
+    <NuxtLink  :aria-current="route.params.dict =='bm' ? 'true' : 'false'"
               @click="dict_click('bm')"
               :to="dict_link('bm')"><span class="hidden sm:block">{{$t('dicts.bm')}}</span><span class="block sm:hidden">{{$t('dicts_short.bm')}}</span></NuxtLink>
   </li>
-  <li class="nav-item">
+  <li>
     <NuxtLink :aria-current="route.params.dict =='nn' ? 'true' : 'false'"
               @click="dict_click('nn')"
               :to="dict_link('nn')"><span class="hidden sm:block">{{$t('dicts.nn')}}</span><span class="block sm:hidden">{{$t('dicts_short.nn')}}</span></NuxtLink>
   </li>
-  <li class="nav-item nav-advanced">
+  <li>
     <NuxtLink :aria-current="advanced ? 'true' : 'false'"
               @click="store.advanced = true"
               :to="advanced_link">{{$t('advanced')}}<Icon name="bi:arrow-right" size="1.25em" class="ml-1 md:mt-0.5"/></NuxtLink>
   </li>
 </ul>
-
 </nav>
+</div>
 </template>
 
 <script setup>
@@ -83,11 +85,9 @@ const dict_click = (dict) => {
 
 <style scoped lang="scss" >
 
-nav {
-  padding: 0;
-  overflow: hidden;
-  overflow-x: scroll;
-  -ms-overflow-style: none;
+.nav-container {
+  overflow-x: auto;
+  white-space: nowrap;
   scrollbar-width: none;
 }
 
@@ -102,18 +102,20 @@ ul {
 
 
 a {
-@apply flex py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 md:text-primary border-1 md:border-none whitespace-nowrap md:rounded-none;
-
+@apply flex py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 md:text-primary border-1 md:border-none whitespace-nowrap;
 border-radius: 2rem;
 
 }
+
+
+
 
   a[aria-current=true] {
     @apply bg-primary-lighten text-tertiary
   }
 
   /* Hide scrollbar for Chrome, Safari and Opera */
-nav::-webkit-scrollbar {
+.nav-container::-webkit-scrollbar {
   display: none;
 }
 

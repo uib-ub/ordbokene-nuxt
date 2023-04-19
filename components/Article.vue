@@ -21,7 +21,7 @@
 <span v-if="secondary_header_text">,&nbsp;<span class="lemma-group lemma">{{secondary_header_text}}</span></span>
     &nbsp;<em v-if="lemma_group.description" class="subheader ">
     <span class="header_group_list">{{lemma_group.description}}</span>
-          {{lemma_group.genus}}
+          {{lemma_group.pos_group}}
     <span v-if="settings.inflectionNo" class="inflection_classes">{{lemma_group.inflection_classes}}</span>
 
     </em>
@@ -77,20 +77,20 @@
             <section class="definitions" v-if="has_content">
                 <h4 v-if="!welcome">{{$t('article.headings.definitions', 1, { locale: content_locale})}}</h4>
 
-                <Definition v-for="definition in data.body.definitions" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click" :welcome="welcome"/>
+                <Definition v-for="definition in data.body.definitions" :content_locale="content_locale" :dict="dict" :level="1" :key="definition.id" :body='definition' v-on:link-click="link_click" :welcome="welcome"/>
 
             </section>
             <section v-if="sub_articles.length && !welcome" class="expressions">
                 <h4>{{$t('article.headings.expressions', 1, { locale: content_locale})}}</h4>
                 <ul>
-                <SubArticle :body="subart" v-for="(subart, index) in sub_articles" :dict="dict" :key="index" v-on:link-click="link_click"/>
+                <SubArticle v-for="(subart, idx) in sub_articles" :body="subart" :dict="dict" :key="idx" v-on:link-click="link_click" :content_locale="content_locale"/>
                 </ul>
-            </section>
+              </section>
         </div>
-        <ArticleFooter v-if="!welcome" :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
-        <div v-else class="flex justify-end pt-8"><NuxtLink :to="link_to_self()">{{$t('article.show')}} <Icon name="bi:arrow-right" class="mb-1"/></NuxtLink></div>
-
         </NuxtErrorBoundary>
+        <ArticleFooter v-if="!welcome" :lemmas="data.lemmas" :content_locale="content_locale" :dict="dict" :article_id="article_id" />
+
+        
     </div>
 </div>
 </div>
@@ -185,9 +185,26 @@ const find_sub_articles = (definition) => {
   }
 }
 const sub_articles = computed(() => {
-    return data.value.body.definitions.reduce((acc, val) => acc.concat(find_sub_articles(val)), []).sort((s1, s2) => s1.lemmas[0].localeCompare(s2.lemmas[0]))
-})
+    return data.value.body.definitions.reduce((acc, val) => acc.concat(find_sub_articles(val)), []).sort((s1, s2) => {   // Sort æ, ø and å correctly  
+      let lemma1 = s1.lemmas[0].toLowerCase()
+      let lemma2 = s1.lemmas[0].toLowerCase()
+      let lettermap = {229: 299, 248: 298, 230: 297}
 
+      for (var i = 0; i < Math.min(lemma1.length, lemma2.length); i++) {
+        let charcode1 = lemma1.charCodeAt(i)
+        let charcode2 = lemma2.charCodeAt(i)
+
+        charcode1 = lettermap[charcode1] || charcode1
+        charcode2 = lettermap[charcode2] || charcode2
+
+        if (charcode1 != charcode2) {
+          return charcode1 - charcode2
+        }
+      }
+      return lemma1.lenght < lemma2.length || -1          
+
+    })
+})
 
 
 const link_click = (event) => {
@@ -224,8 +241,8 @@ const inflection_classes = (lemmas) => {
 const lemma_groups = computed(() => {
     let groups = [{lemmas: data.value.lemmas}]
       try {
-        if (data.value.lemmas[0].paradigm_info[0] && data.value.lemmas[0].paradigm_info[0].tags[0] != 'NOUN' && data.value.lemmas[0].paradigm_info[0].tags[0] != 'EXPR') {
-          groups = [{description:  t('tags.'+data.value.lemmas[0].paradigm_info[0].tags[0], 1, { locale: content_locale}), lemmas: data.value.lemmas}]
+        if (data.value.lemmas[0].paradigm_info[0].tags[0] == "DET" && data.value.lemmas[0].paradigm_info[0].tags.length > 1) {
+          groups = [{description: t('tags.'+data.value.lemmas[0].paradigm_info[0].tags[0], {locale: content_locale}), pos_group: t('determiner.' + data.value.lemmas[0].paradigm_info[0].tags[1], {locale: content_locale}), lemmas: data.value.lemmas}]
         }
         else if (data.value.lemmas[0].paradigm_info[0].tags[0] == 'NOUN') {
             let genus_map  = {}
@@ -250,10 +267,13 @@ const lemma_groups = computed(() => {
               }
             })
             groups = Object.keys(genus_map).map(key => {
-              return {description:  t('tags.NOUN', 1, { locale: content_locale}), genus: key, lemmas: genus_map[key], }
+              return {description:  t('tags.NOUN', 1, { locale: content_locale}), pos_group: key, lemmas: genus_map[key], }
             })
 
 
+        }
+        else if (data.value.lemmas[0].paradigm_info[0].tags[0] != 'EXPR') {
+          groups = [{description:  t('tags.'+data.value.lemmas[0].paradigm_info[0].tags[0], 1, { locale: content_locale}), lemmas: data.value.lemmas}]
         }
 
         groups.forEach((lemma_group, index) => {

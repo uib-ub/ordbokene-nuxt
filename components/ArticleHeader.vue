@@ -17,7 +17,7 @@
 <h3 v-if="secondary_header_text">{{secondary_header_text}}</h3>  
     <span v-if="lemma_group.description" class="subheader">
     <span class="header_group_list">{{lemma_group.description}}</span>
-          {{lemma_group.genus}}
+          {{lemma_group.pos_group}}
     <span v-if="settings.inflectionNo" class="inflection_classes">{{lemma_group.inflection_classes}}</span>
 
     </span>

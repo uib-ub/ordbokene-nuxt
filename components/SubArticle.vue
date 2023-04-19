@@ -1,10 +1,10 @@
 <template>
 <li class="sub_article">
-    <span class="sub_article_header">
+    <strong class="text-primary">
     {{body.lemmas[0]}}
-    </span>
+    </strong>
     <div>
-    <DefElement :body="body.intro" v-if="body.intro" :dict="dict" @link-click="link_click"/>
+    <DefElement :body="body.intro" v-if="body.intro" :dict="dict" @link-click="link_click" :content_locale="content_locale"/>
     <Definition :level="9" :body="body.article.body.definitions[0]" :dict="dict" @link-click="link_click" :content_locale="content_locale"/>
     </div>
 </li>
@@ -26,11 +26,6 @@ const link_click = (event) => {
 </script>
 
 <style scoped>
-
-.sub_article_header {
-  font-weight: bold;
-  @apply text-primary;
-}
 
 li.sub_article {
   padding-top: 8px;

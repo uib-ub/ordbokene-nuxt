@@ -1,5 +1,5 @@
 <template>
-<div class="my-2">
+<div class="py-1">
 <form  @submit.prevent="submitForm" ref="form">
 <NuxtErrorBoundary @error="autocomplete_error">
   <Autocomplete v-on:dropdown-submit="submitForm"/>
@@ -17,6 +17,7 @@ const route = useRoute()
 
 const submitForm = async (item) => {
   if (store.input) {
+    console.log("SUBMITTED")
     store.show_autocomplete = false
     let url = '/' + store.dict
     url += '/search?q='+store.input

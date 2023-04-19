@@ -28,7 +28,7 @@
             </NuxtErrorBoundary>
           </component>
         </component>
-    </section>
+      </section>
       <section class="lg:grid-cols-6" :aria-label="$t('dicts.nn')">
         <div class="hidden lg:inline-block py-2"><h2 class="lg:inline-block">Nynorskordboka</h2>
           <span><span v-if="articles.meta.nn.total>1" aria-hidden="true" class="result-count">  | {{$t('notifications.results', {count: articles.meta.nn.total})}}</span>
@@ -41,7 +41,7 @@
             </NuxtErrorBoundary>
           </component>
         </component>
-    </section>
+      </section>
   </div>
 
     

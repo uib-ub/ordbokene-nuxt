@@ -7,6 +7,7 @@ export default defineConfig({
       sans: ['Noto Sans', 'sans-serif'],
       serif: ['Inria Serif', 'serif'],
     },
+    
       colors:{
         primary: {
           DEFAULT: "#560027",

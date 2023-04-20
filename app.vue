@@ -362,7 +362,7 @@ ol.sub_definitions {
 
 
 .btn {
-  @apply px-4 py-1 rounded-lg border font-semibold hover:bg-gray-50;
+  @apply px-4 py-1 rounded border font-semibold hover:bg-gray-50;
 }
 
 

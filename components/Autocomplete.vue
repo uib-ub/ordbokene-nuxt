@@ -207,7 +207,7 @@ if (process.client) {
 
 <template>
   <div class="search-container">
-  <div class="input-wrapper h-3.5rem border-1 bg-canvas border-primary flex content-center justify-between pr-2" v-bind="{'data-dropdown-open': store.show_autocomplete}">
+  <div class="input-wrapper h-3.5rem border bg-canvas border-primary flex content-center justify-between pr-2" v-bind="{'data-dropdown-open': store.show_autocomplete}">
    <input class="input-element p-3 pl-6 lg:p-4 lg:px-8"
           :value="store.input"
           id="input-element"
@@ -245,7 +245,7 @@ if (process.client) {
           </span>
           <span v-else :aria-live="store.autocomplete.length == 1? 'polite' : null">
             <span v-if="store.autocomplete.length == 1" class="sr-only">{{$t('autocomplete_suggestions', 1)}}: </span>
-            <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span>
+            <span :class="item.type">{{ item.q }}</span> <span class="dict-parentheses text-gray-900" v-if="item.dict && store.dict =='bm,nn'">({{["bokmål","nynorsk","bokmål, nynorsk"][item.dict-1]}})</span>
           </span>
         </div>
    </li>
@@ -259,7 +259,7 @@ if (process.client) {
 </template>
 
 
-<style lang="scss" scoped>
+<style scoped>
 
 .search-container {
   position: relative;
@@ -301,10 +301,12 @@ transform: translateX(-50%);
   text-align: left;
   @apply p-2 mx-2;
 
-  .word {
+
+}
+
+ #autocomplete-dropdown .word {
     @apply text-primary;
     font-weight: bolder;
-}
 }
 
 #autocomplete-dropdown li:not(:last-child) .dropdown-item {
@@ -324,7 +326,6 @@ transform: translateX(-50%);
 
 
 .dict-parentheses {
-    @apply text-gray-900
     font-size: 85%;
     font-weight: 400;
 }

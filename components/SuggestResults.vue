@@ -34,7 +34,7 @@ const suggest_link = (suggestion) => {
 
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 
 a {
     font-size: 1.17rem;
@@ -52,7 +52,7 @@ li:not(:last-child) {
 
 }
 
-@screen md {
+@media screen(md) {
     li {
         border: none !important; 
     }

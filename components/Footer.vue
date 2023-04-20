@@ -40,7 +40,7 @@ nav {
 }
 
 li {
- @apply pb-0.25rem ;
+ @apply pb-1 ;
 list-style-type: none;
 
 }

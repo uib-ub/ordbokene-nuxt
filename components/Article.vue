@@ -403,7 +403,7 @@ if (store.view == 'article') {
 
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 
  h2 {
     color: theme("colors.gray.700") !important;
@@ -510,12 +510,14 @@ span.lemma-group {
     
     @apply p-1 mb-2 md:mb-4 md:p-2 lg:p-3 bg-canvas border-gray-100;
 
-    .dict_label {
-    @apply text-text
-    }
+    
 
 
 }
+
+.article .dict_label {
+    @apply text-text
+    }
 
 
 
@@ -536,9 +538,13 @@ span.lemma-group {
     border: none;
     display: inline-block;
     width: 100%;
-    @screen lg {
-      white-space: nowrap;
-    }
+
+}
+
+@media screen(lg) {
+  .list-view-item>a {
+    white-space: nowrap;
+  }
 }
 
 

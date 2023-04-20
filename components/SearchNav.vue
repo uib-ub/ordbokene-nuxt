@@ -6,17 +6,17 @@
     <NuxtLink class="inline-block"
               :aria-current="route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"
-              :to="dict_link('bm,nn')"><span class="<sm:sr-only">{{$t('dicts.bm,nn')}}</span><span aria-hidden="true" class="block sm:hidden">{{$t('dicts_short.bm,nn')}}</span></NuxtLink>
+              :to="dict_link('bm,nn')"><span class="max-sm:sr-only">{{$t('dicts.bm,nn')}}</span><span aria-hidden="true" class="block sm:hidden">{{$t('dicts_short.bm,nn')}}</span></NuxtLink>
   </li>
   <li>
     <NuxtLink  :aria-current="route.params.dict =='bm' ? 'true' : 'false'"
               @click="dict_click('bm')"
-              :to="dict_link('bm')"><span class="<sm:sr-only">{{$t('dicts.bm')}}</span><span aria-hidden="true" class="block sm:hidden">{{$t('dicts_short.bm')}}</span></NuxtLink>
+              :to="dict_link('bm')"><span class="max-sm:sr-only">{{$t('dicts.bm')}}</span><span aria-hidden="true" class="block sm:hidden">{{$t('dicts_short.bm')}}</span></NuxtLink>
   </li>
   <li>
     <NuxtLink :aria-current="route.params.dict =='nn' ? 'true' : 'false'"
               @click="dict_click('nn')"
-              :to="dict_link('nn')"><span class="<sm:sr-only">{{$t('dicts.nn')}}</span><span aria-hidden="true" class="block sm:hidden">{{$t('dicts_short.nn')}}</span></NuxtLink>
+              :to="dict_link('nn')"><span class="max-sm:sr-only">{{$t('dicts.nn')}}</span><span aria-hidden="true" class="block sm:hidden">{{$t('dicts_short.nn')}}</span></NuxtLink>
   </li>
   <li>
     <NuxtLink :aria-current="advanced ? 'true' : 'false'"

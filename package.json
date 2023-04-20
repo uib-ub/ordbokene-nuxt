@@ -9,9 +9,8 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.6.6",
     "@pinia-plugin-persistedstate/nuxt": "^1.0.0",
-    "nuxt": "^3.4.1",
-    "nuxt-icon": "^0.2.6",
-    "nuxt-windicss": "^2.5.5"
+    "nuxt": "~3.4.1",
+    "nuxt-icon": "^0.2.6"
   },
   "dependencies": {
     "@intlify/unplugin-vue-i18n": "^0.5.0",

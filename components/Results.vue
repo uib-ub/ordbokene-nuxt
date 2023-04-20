@@ -241,7 +241,7 @@ const change_page = async (change) => {
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .result-count {
     font-size: 1rem;
 }

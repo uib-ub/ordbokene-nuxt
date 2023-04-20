@@ -33,7 +33,7 @@ const model = computed({
 
 
 </script>
-<style scoped lang="scss">
+<style scoped>
 .checkbox-container:focus-within svg { 
   outline: solid 2px theme('colors.secondary.DEFAULT');
   border-radius: .125rem;

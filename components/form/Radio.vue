@@ -11,7 +11,7 @@
     
     </template>
     
-    <script setup lang="ts">
+    <script setup>
     
     
     const props = defineProps({
@@ -33,7 +33,7 @@
     </script>
     
     
-    <style scoped lang="scss">
+    <style scoped>
     
     input {
       position: absolute;
@@ -58,11 +58,9 @@
     
 
     
-    input:checked + label::after {
-        content: '';
-
- 
-    }
+input:checked + label::after {
+    content: '';
+}
     
 
     </style>

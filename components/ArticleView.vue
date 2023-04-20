@@ -10,7 +10,7 @@ const store = useStore()
 </script>
 
 
-<style scoped lang="scss">
+<style scoped>
 
 .article {
     border-radius: 0;

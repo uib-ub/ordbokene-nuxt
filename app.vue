@@ -271,7 +271,7 @@ section a, .secondary-page a  {
 }
 
 .callout i {
-  @apply text-primary;
+  background-color: theme("colors.primary.DEFAULT");
   padding-right: 0.5rem;
   font-size: 1.25rem;
 }

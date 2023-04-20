@@ -121,39 +121,31 @@ const submitForm = async (item) => {
 
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 
 .welcome .advanced-search {
   @apply bg-tertiary border-tertiary-darken2;
 
 }
 
-
-
-  option {
+option {
     @apply text-text bg-canvas;
-  }
+}
 
-
-  option.selected {
-    @apply text-white bg-primary;
-  }
-
+option.selected {
+  @apply text-white bg-primary;
+}
 
 .select-wrapper:focus-within {
   box-shadow: 2px 2px 0px theme("colors.primary.DEFAULT");
 
 }
 
-  .select-wrapper.not_null {
-        border: solid 1px;
-        border-radius: 1rem;
-        @apply border-primary;
-  }
-
-
-
-
+.select-wrapper.not_null {
+      border: solid 1px;
+      border-radius: 1rem;
+      @apply border-primary;
+}
 
 
 .btn-primary i, button.btn-secondary i {
@@ -168,10 +160,10 @@ const submitForm = async (item) => {
 
 .btn-primary:focus {
   @apply bg-primary-lighten2;
+}
 
-  i {
+.btn-primary:focus i {
     @apply text-white
-  }
 }
 
 .btn-secondary:hover {
@@ -181,9 +173,6 @@ const submitForm = async (item) => {
 .btn-secondary:focus {
   @apply bg-secondary-darken;
 }
-
- 
-
 
 
 </style>

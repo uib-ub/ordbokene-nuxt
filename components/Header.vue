@@ -11,7 +11,7 @@
       </NuxtLink>
       <div class="lg:hidden text-lg ml-auto flex align-center">
 
-      <button class="text-lg p-2 px-3 rounded active:bg-primary-darken focus:bg-primary-darken" 
+      <button class="text-lg p-2 px-3 rounded-4xl active:bg-primary-darken focus:bg-primary-darken" 
               @keydown="escape_menu" 
               :aria-expanded="menu_expanded"
               :aria-controls="menu_expanded? 'main_menu' : null"

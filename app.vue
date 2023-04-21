@@ -362,7 +362,17 @@ ol.sub_definitions {
 
 
 .btn {
-  @apply px-4 py-1 rounded border font-semibold hover:bg-gray-50;
+  border-radius: 2rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-width: 1px;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: theme(colors.gray.50)
 }
 
 
@@ -376,6 +386,10 @@ ol.sub_definitions {
 
 .btn-borderless {
   @apply border-none;
+}
+
+.rounded-4xl {
+  border-radius: 2rem;
 }
 
 @-moz-document url-prefix() {

@@ -73,11 +73,11 @@
       
     </div>
     <div v-if="store.advanced && pages > 1" class="p-2 py-6 md:p-8 flex md:flex-wrap justify-center flex md:gap-4">
-    <button :disabled="page == 1" @click="change_page(-1)" class="bg-primary text-white rounded p-1 px-2 md:p-3 md:px-8">
+    <button :disabled="page == 1" @click="change_page(-1)" class="bg-primary text-white rounded-4xl p-1 px-2 md:p-3 md:px-8">
       <Icon name="bi:chevron-left" class="md:mr-0.75em mb-0.125em"/><span class="sr-only md:not-sr-only">{{$t('previous-page') }}</span>
     </button>
     <div class="text-center self-center align-middle mx-4 md:mx-8 text-lg h-full">{{$t('pageof', {page, pages})}}</div>
-    <button :disabled="page == pages" @click="change_page(1)" class="bg-primary text-white rounded p-1 px-2 md:p-3 md:px-8">
+    <button :disabled="page == pages" @click="change_page(1)" class="bg-primary text-white rounded-4xl p-1 px-2 md:p-3 md:px-8">
       <span class="sr-only md:not-sr-only">{{$t('next-page')}}</span><Icon name="bi:chevron-right" class="md:ml-0.75em mb-0.125em"/>
     </button>
     </div>

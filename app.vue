@@ -96,7 +96,7 @@ nuxtApp.hook("page:finish", () => {
 </script>
 
 
-<style lang="scss">
+<style>
 
 
 #__nuxt {
@@ -130,24 +130,24 @@ main {
 }
 
 .welcome .ord-container {
-  @apply md:!px-10 xl:!px-40;
+    @apply md:!px-10 xl:!px-40;
 }
 
 
-@screen md {
+
+
+@media screen(md) {
   .welcome.simple-search {
-  background-image: url(assets/images/janko-ferlic-sfL_QOnmy00-unsplash.webp); // url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
-  @apply flex-col;
+    background-image: url(assets/images/janko-ferlic-sfL_QOnmy00-unsplash.webp);
+    @apply flex-col;
   }
 }
-
-
 
 
 .ord-container, .secondary-page {
   @apply md:mx-auto px-2;
 
-  @screen md {
+  @media screen(md) {
     @apply container;
   }
 
@@ -175,16 +175,16 @@ h1 {
 
 
 ::selection {
-  @apply bg-secondary text-white;
+  background-color: theme(colors.secondary.DEFAULT);
+  @apply text-white bg-secondary;
 }
 
 
 
-@screen lg {
-  .nav-buttons.hidden {
-    display: flex;
-}
-
+@media screen(lg) {
+    .nav-buttons.hidden {
+      display: flex;
+  }
 }
 
 
@@ -196,7 +196,9 @@ section a, .secondary-page a  {
 .secondary-page {
   @apply bg-white mb-4 p-4 py-8 md:p-12 md:pt-10;
   
-  ul {
+}
+
+ .secondary-page ul {
     list-style: disc;
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -204,24 +206,23 @@ section a, .secondary-page a  {
   }
 
 
-  h2 {
+  .secondary-page h2 {
     font-family: Inria Serif;
-    @apply text-primary test-base;
+    @apply text-primary;
     font-weight: bold;
     font-size: 2rem;
   }
 
-  h4 {
+  .secondary-page h4 {
     @apply text-primary;
     font-weight: 600;
     font-size: 1.125rem;
     padding-top: 1rem;
   }
 
-  p {
+ .secondary-page p {
     padding-bottom: 1rem;
   }
-}
 
 .dict-view h3 {
     font-size: calc(1.3rem + .6vw);
@@ -270,7 +271,7 @@ section a, .secondary-page a  {
 }
 
 .callout i {
-  @apply text-primary;
+  background-color: theme("colors.primary.DEFAULT");
   padding-right: 0.5rem;
   font-size: 1.25rem;
 }
@@ -287,7 +288,7 @@ section a, .secondary-page a  {
 }
 
 .article li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
   margin-top: 0.25rem;
 }
 
@@ -361,25 +362,34 @@ ol.sub_definitions {
 
 
 .btn {
-  @apply px-4 py-1 rounded-4xl border-1 font-semibold;
+  border-radius: 2rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-width: 1px;
+  font-weight: 600;
 }
 
 .btn:hover {
-  @apply bg-gray-50;
+  background-color: theme(colors.gray.50)
 }
 
 
 .btn[aria-expanded=true] {
-    @apply bg-tertiary-darken1;
+    @apply bg-tertiary-darken1 hover:bg-tertiary-darken2;
     box-shadow: 2px 2px 0px theme('colors.gray.500');
     border: none;
-    &:hover {
-      @apply bg-tertiary-darken2;
-    }
+
 }
+
 
 .btn-borderless {
   @apply border-none;
+}
+
+.rounded-4xl {
+  border-radius: 2rem;
 }
 
 @-moz-document url-prefix() {

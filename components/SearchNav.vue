@@ -3,25 +3,25 @@
     <nav :aria-label="$t('label.dict_nav')" class="md:flex md:justify-center !my-1">
   <ul id="searchNavContent" class="flex gap-2 md:gap-3">
   <li>
-    <NuxtLink 
+    <NuxtLink class="inline-block"
               :aria-current="route.params.dict =='bm,nn' ? 'true' : 'false'"
               @click="dict_click('bm,nn')"
-              :to="dict_link('bm,nn')"><span class="hidden sm:block">{{$t('dicts.bm,nn')}}</span><span class="block sm:hidden">{{$t('dicts_short.bm,nn')}}</span></NuxtLink>
+              :to="dict_link('bm,nn')"><span class="max-sm:sr-only">{{$t('dicts.bm,nn')}}</span><span aria-hidden="true" class="block sm:hidden">{{$t('dicts_short.bm,nn')}}</span></NuxtLink>
   </li>
   <li>
     <NuxtLink  :aria-current="route.params.dict =='bm' ? 'true' : 'false'"
               @click="dict_click('bm')"
-              :to="dict_link('bm')"><span class="hidden sm:block">{{$t('dicts.bm')}}</span><span class="block sm:hidden">{{$t('dicts_short.bm')}}</span></NuxtLink>
+              :to="dict_link('bm')"><span class="max-sm:sr-only">{{$t('dicts.bm')}}</span><span aria-hidden="true" class="block sm:hidden">{{$t('dicts_short.bm')}}</span></NuxtLink>
   </li>
   <li>
     <NuxtLink :aria-current="route.params.dict =='nn' ? 'true' : 'false'"
               @click="dict_click('nn')"
-              :to="dict_link('nn')"><span class="hidden sm:block">{{$t('dicts.nn')}}</span><span class="block sm:hidden">{{$t('dicts_short.nn')}}</span></NuxtLink>
+              :to="dict_link('nn')"><span class="max-sm:sr-only">{{$t('dicts.nn')}}</span><span aria-hidden="true" class="block sm:hidden">{{$t('dicts_short.nn')}}</span></NuxtLink>
   </li>
   <li>
     <NuxtLink :aria-current="advanced ? 'true' : 'false'"
               @click="store.advanced = true"
-              :to="advanced_link">{{$t('advanced')}}<Icon name="bi:arrow-right" size="1.25em" class="ml-1 md:mt-0.5"/></NuxtLink>
+              :to="advanced_link">{{$t('advanced')}} <Icon name="bi:arrow-right" size="1.25em" class="ml-1 md:mt-0.5"/></NuxtLink>
   </li>
 </ul>
 </nav>
@@ -83,14 +83,13 @@ const dict_click = (dict) => {
 
 </script>
 
-<style scoped lang="scss" >
+<style scoped>
 
 .nav-container {
   overflow-x: auto;
   white-space: nowrap;
   scrollbar-width: none;
 }
-
 
 button {
   font-weight: 600;
@@ -100,19 +99,15 @@ ul {
   @apply text-lg;
 }
 
-
 a {
-@apply flex py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 md:text-primary border-1 md:border-none whitespace-nowrap;
+@apply flex py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 md:text-primary border md:border-none whitespace-nowrap;
 border-radius: 2rem;
 
 }
 
-
-
-
-  a[aria-current=true] {
-    @apply bg-primary-lighten text-tertiary
-  }
+a[aria-current=true] {
+  @apply bg-primary-lighten text-tertiary
+}
 
   /* Hide scrollbar for Chrome, Safari and Opera */
 .nav-container::-webkit-scrollbar {

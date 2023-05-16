@@ -95,37 +95,33 @@ const update_locale = () => {
 
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 
-
- nav {
-  #locale-select {
-    letter-spacing: .1rem;
-    font-size: 1rem;
-    cursor: pointer;
-  }
-  .nav-link {
-    font-variant-caps: all-small-caps;
-    font-size: 1.25rem;
-    letter-spacing: .1rem;
-    list-style-type: none;
-    padding-top: .5rem;
-    
-    
-
-    &:focus {
-      @apply text-white border-white;
-    }
-
-    &:hover {
-      border-bottom: solid .125rem theme('colors.white');
-    }
-    &[aria-current=page] {
-      border-bottom: solid .125rem theme('colors.secondary.DEFAULT');
-    }
-  }
-
-
+nav #locale-select {
+  letter-spacing: .1rem;
+  font-size: 1rem;
+  cursor: pointer;
 }
+nav .nav-link {
+  font-variant-caps: all-small-caps;
+  font-size: 1.25rem;
+  letter-spacing: .1rem;
+  list-style-type: none;
+  padding-top: .5rem;
+}
+    
+    
+
+nav .nav-link:focus {
+  @apply text-white border-white;
+}
+
+nav .nav-link:hover {
+  border-bottom: solid .125rem theme('colors.white');
+}
+nav .nav-link[aria-current=page] {
+  border-bottom: solid .125rem theme('colors.secondary.DEFAULT');
+}
+  
 
 </style>

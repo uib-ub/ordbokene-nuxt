@@ -53,10 +53,11 @@
       <button v-if="!settings.inflectionExpanded && inflected && !welcome" class="btn btn-primary my-1 !pr-2" @click="inflection_expanded = !inflection_expanded" type="button" :aria-expanded="inflection_expanded" :aria-controls="inflection_expanded ? 'inflection-'+article_id : null">
              {{$t('article.show_inflection')}}<span v-if="!inflection_expanded"><Icon name="bi:plus" class="text-primary ml-4" size="1.5rem"/></span><span v-if="inflection_expanded"><Icon name="bi:dash" class="text-primary ml-4" size="1.5rem"/></span>
       </button>
-        <div v-if="inflected && !welcome && (inflection_expanded || settings.inflectionExpanded)" class="collapse py-2 transition-all duration-300 ease-in-out" :id="'inflection-'+article_id" ref="inflection_table">
+        <div v-if="inflected && !welcome && (inflection_expanded || settings.inflectionExpanded)" class="border-collapse py-2 transition-all duration-300 ease-in-out" :id="'inflection-'+article_id" ref="inflection_table">
             <div class="inflection-container p-2">
                 <NuxtErrorBoundary @error="inflection_error">
-                <InflectionTable :mq="store.dict == 'bm,nn' && store.view != 'article' ? 'sm' : 'sm'" :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :context="true" :key="$i18n.locale"/>
+                <InflectionTable :class="store.dict == 'bm,nn' ? 'xl:hidden' : 'sm:hidden'" mq="xs" :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :context="true" :key="$i18n.locale"/>
+                <InflectionTable :class="store.dict == 'bm,nn' ? 'hidden xl:flex' : 'hidden sm:flex'" mq="sm" :eng="$i18n.locale == 'eng'" :lemmaList="lemmas_with_word_class_and_lang" :context="true" :key="$i18n.locale"/>
                 </NuxtErrorBoundary>
             </div>
         </div>
@@ -402,7 +403,7 @@ if (store.view == 'article') {
 
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 
  h2 {
     color: theme("colors.gray.700") !important;
@@ -509,12 +510,14 @@ span.lemma-group {
     
     @apply p-1 mb-2 md:mb-4 md:p-2 lg:p-3 bg-canvas border-gray-100;
 
-    .dict_label {
-    @apply text-text
-    }
+    
 
 
 }
+
+.article .dict_label {
+    @apply text-text
+    }
 
 
 
@@ -535,9 +538,13 @@ span.lemma-group {
     border: none;
     display: inline-block;
     width: 100%;
-    @screen lg {
-      white-space: nowrap;
-    }
+
+}
+
+@media screen(lg) {
+  .list-view-item>a {
+    white-space: nowrap;
+  }
 }
 
 

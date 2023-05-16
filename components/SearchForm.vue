@@ -34,7 +34,7 @@ const autocomplete_error = (error) => {
 
 </script>
 
-<style scoped lang="scss">
+<style scoped>
 
 
 form {

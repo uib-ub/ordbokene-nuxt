@@ -23,12 +23,6 @@ const link_click = (event) => {
 
 <style scoped>
 
-li {
-    list-style: none;
-    margin-top: 0rem;
-    margin-bottom: 0rem;
-}
-
 em {
     font-style: italic !important;
     display: inline;

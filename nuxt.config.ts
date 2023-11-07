@@ -30,7 +30,7 @@ export default defineNuxtConfig({
   },
 
   build: {
-		transpile: ["primevue"]
+		transpile: ["primevue", 'vue-i18n']
 	},
 
   modules: [
@@ -188,15 +188,15 @@ export default defineNuxtConfig({
       alias: {
         'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'
       }
-  },
-  plugins: [
-    VueI18nVitePlugin({
-      include: [
-        resolve(dirname(fileURLToPath(import.meta.url)), './locales/*.json')
-      ]
-    })
+    },
+    plugins: [
+      VueI18nVitePlugin({
+        include: [
+          resolve(dirname(fileURLToPath(import.meta.url)), './locales/*.json')
+        ]
+      })
 
-  ],
+    ],
   },
   devtools: false
 })

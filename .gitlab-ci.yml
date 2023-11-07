@@ -32,5 +32,5 @@ ordbokene_preview:
                     -m gitlabCommitRepo="uib-ub-monorepo"
                     -m gitlabCommitSha="${CI_COMMIT_SHA}"
                     -m gitlabOrg="https://git.app.uib.no/"
-                    -m gitlabRepo="uib-ub-monorepo"
+                    -m gitlabRepo="ordbokene-nuxt"
                     -m gitlabCommitAuthorLogin="${GITLAB_USER_LOGIN}"

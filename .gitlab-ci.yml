@@ -1,38 +1,31 @@
-stages:
-  - build
-  - deploy
+default:
+  image: node:18
 
-image: node:16
-
-build-nrec-preview:
+.ordbokene:
+  variables:
+    VERCEL_ORG_ID: $VERCEL_ORG_ID
+    VERCEL_PROJECT_ID: $VERCEL_ORDBOKENE_PROJECT_ID
+    VERCEL_TOKEN: $VERCEL_TOKEN_HENRIK
   tags:
-    - spraaksamlingene_01
-  stage: build
+    - group_runner_spraaksamlingene_01
+
+
+ordbokene_preview:
+  stage: preview
+  extends: .ordbokene
   script:
-  - npm install
-  - echo "WATERMARK=$CI_COMMIT_BRANCH ($CI_COMMIT_SHORT_SHA)" >> .env.dev_server
-  - npm run build -- --mode dev_server
-  artifacts:
-    expire_in: "1 week"
-    paths:
-    - .output
-
-
-deploy-nrec-preview:
-  tags:
-    - spraaksamlingene_01
-  stage: deploy
-  before_script:
-  - eval $(ssh-agent -s)
-  - echo "$NREC_DEV_KEY" | base64 --decode | ssh-add -
-
-  script:
-  - ssh -o StrictHostKeyChecking=no node@$NREC_DEV_IP
-    "sudo /usr/bin/systemctl stop nuxt-dev.service &&
-    whoami &&
-    rm -rf /node/.output"
-  - scp -r .output node@$NREC_DEV_IP:/node/.output
-  - ssh -o StrictHostKeyChecking=no node@$NREC_DEV_IP
-    sudo /usr/bin/systemctl start nuxt-dev.service
-
-    
+    - npm install --global vercel
+    - vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
+    - cat .vercel/project.json
+    - vercel build --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt --token=$VERCEL_TOKEN
+                    -m gitlabDeployment="1"
+                    -m gitlabCommitAuthorName="${CI_COMMIT_AUTHOR}"
+                    -m gitlabCommitMessage="${CI_COMMIT_MESSAGE}"
+                    -m gitlabCommitOrg="${CI_PROJECT_NAMESPACE}"
+                    -m gitlabCommitRef="${CI_COMMIT_REF_NAME}"
+                    -m gitlabCommitRepo="uib-ub-monorepo"
+                    -m gitlabCommitSha="${CI_COMMIT_SHA}"
+                    -m gitlabOrg="https://git.app.uib.no/"
+                    -m gitlabRepo="uib-ub-monorepo"
+                    -m gitlabCommitAuthorLogin="${GITLAB_USER_LOGIN}"

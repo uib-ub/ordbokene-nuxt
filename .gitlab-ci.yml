@@ -1,6 +1,11 @@
 default:
   image: node:18
 
+stages:
+  - preview
+  - prod
+
+
 .ordbokene:
   variables:
     VERCEL_ORG_ID: $VERCEL_ORG_ID

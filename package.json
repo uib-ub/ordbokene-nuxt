@@ -1,25 +1,28 @@
 {
+  "name": "ordbokene-nuxt",
   "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview"
+    "preview": "nuxt preview",
+    "lint": "eslint --ext .ts,.js,.vue --ignore-path ../../.gitignore ."
   },
   "devDependencies": {
-    "@nuxt/devtools": "^0.4.1",
-    "@nuxtjs/tailwindcss": "^6.6.6",
-    "@pinia-plugin-persistedstate/nuxt": "^1.0.0",
-    "nuxt": "~3.4.1",
-    "nuxt-icon": "^0.2.6"
-  },
-  "dependencies": {
     "@intlify/unplugin-vue-i18n": "^0.5.0",
+    "@nuxt/content": "2.7.0",
+    "@nuxtjs/html-validator": "^1.5.2",
+    "@nuxtjs/plausible": "^0.2.3",
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
     "@pinia/nuxt": "^0.4.1",
     "@vueuse/core": "^9.1.0",
+    "eslint": "^8.51.0",
     "notosans-fontface": "^1.3.0",
-    "pinia": "^2.0.21",
-    "vue": "^3.2.38",
+    "nuxt": "~3.6.0",
+    "nuxt-icon": "^0.5.0",
+    "pinia": "^2.1.6",
+    "primevue": "^3.35.0",
     "vue-i18n": "^9.2.2"
   }
 }

@@ -1,117 +1,116 @@
 <template>
-<div class="my-1 md:mt-0">
-<form  @submit.prevent="submitForm" ref="form" class="flex flex-col lg:flex-row flex-wrap my-3 gap-6 justify-between">
-  <div class="flex flex-col sm:flex-row gap-8 sm:gap-3 m-3 sm:m-0">
-  <fieldset class="flex flex-col gap-8 sm:gap-3">
-  <legend class="sr-only">Ordbok</legend>
-    <FormRadio v-for="(item, idx) in dicts" :key="store.dict + idx" :model="store.dict || 'bm,nn'" @change="dict_radio" :value="item" name="dict" :labelId="'dict-radio-'+idx">
-      {{$t(`dicts.${item}`)}}
-    </FormRadio>
-  </fieldset>
+    <form  ref="form" class="flex flex-col gap-4 grow mt-2" @submit.prevent="submitForm">
+        <div class="flex flex-col md:flex-row sm:flex-wrap w-full gap-3 mt-2 lg:mt-0">
+        <div class="whitespace-nowrap p-1 xl:bg-tertiary xl:shadow-none flex flex-grow-0 items-baseline"> 
+          
+            <label for="dict-select">{{ $t('options.dict') }} </label>
+            <select id="dict-select" class="bg-tertiary flex-grow md:grow-0 p-2 md:p-0" name="dict" @change="update_dict">
+                <option v-for="(dict, idx) in  dicts" :key="idx" :value="dict" :selected="store.dict == dict" :class="{selected: store.dict == dict}">{{$t("dicts." + dict)}}</option>
+            </select>
 
-<div class="flex flex-col gap-8 sm:gap-3">
-
-<FormCheckbox labelId="inflectedCheckbox" :checked="inflection_enabled" v-model="inflection_enabled">
-    {{$t('options.inflected')}}
-</FormCheckbox>
-<FormCheckbox labelId="fulltextCheckbox" :checked="fulltext_enabled" v-model="fulltext_enabled">
-    {{$t('options.fulltext')}}
-</FormCheckbox>
-
-<div class="flex flex-row gap-4 sm:gap-2">
-  <label for="pos-select">{{$t('pos')}}:</label>
-  <div class="select-wrapper py-1 px-4 sm:px-2 sm:py-0.5" v-bind:class="{not_null: store.pos}">
-  <select id="pos-select" name="pos" class="bg-tertiary" @change="store.pos = $event.target.value">
-    <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="tag" :selected="store.pos == tag" v-bind:class="{selected: store.pos == tag}">{{tag ? $t("tags." + tag) : $t("all_pos")}}</option>
-  </select>
-  </div>
-</div>
-
-</div>
-
-</div>
+        </div>
 
 
-<div class="flex-1">
-<div class="flex-auto" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
-  <Autocomplete  v-on:dropdown-submit="submitForm"/>
-</div>
-  <div class="flex gap-4 mt-3 flex-wrap flex-col sm:justify-start sm:flex-row-reverse">
-  <button class="btn !py-2 !sm:py-1 !sm:px-2 sm:min-w-[8rem] xl:min-w-[12rem] btn-primary bg-primary text-white border-primary-lighten" type="submit"> <Icon name="bi:search" size="1.25rem" class="mr-3 m-"/>{{$t('search')}}</button>
-  <button class="btn !py-2 !sm:py-1 !sm:px-2 sm:min-w-[8rem] xl:min-w-[12rem] btn-secondary bg-gray-500 border-gray-600 text-white" v-if="!(store.pos == null &&  store.scope == 'ei' && fulltext_enabled == false && inflection_enabled == true && store.dict == 'bm,nn')" type="reset" @click="reset"> <Icon name="bi:trash" size="1.25rem" class="mr-3" />{{$t('reset')}}</button>
-  <button class="btn !py-2 !sm:py-1 !sm:px-2 sm:min-w-[8rem] xl:min-w-[12rem] btn-light" type="button" @click="(settings.listView = !settings.listView)" ><Icon :name='settings.listView ? "bi:list" : "bi:file-text"' class="mb-1 mr-2"/>{{settings.listView ? $t('show_articles') : $t('show_list',store.dict==='bm,nn'? 0 : 1)}}</button>
-  <button class="btn !py-2 !sm:py-1 !sm:px-2 sm:min-w-[8rem] xl:min-w-[12rem] btn-light" :aria-expanded="mini_help" aria-controls="advanced-info" type="button" @click="mini_help = !mini_help"><Icon :name="mini_help ? 'bi:x-lg' : 'bi:question-lg'" class="mb-1 mr-2"/>{{$t(mini_help ? 'advanced_help_hide' : 'advanced_help')}}</button>
-  
-  </div>
-</div>
-</form>
-<div v-if="mini_help" id="advanced-info" class="secondary-page container">
-      <h2>{{$t('advanced')}}</h2>
-      <p>Enkelt søk viser kun treff på oppslagsord i resultatlisten, og vi prøver å gi deg det beste alternativet hvis det du søker etter ikke er et oppslagsord. I avansert søk kan du derimot vise treff på bøyde former og i definisjonene (fritekstsøk). Du kan også filtrere etter ordklasse, og trunkere og kombinere søkene med spesialtegn.</p>
-
-      <AdvancedHelp/>
+        <div class="whitespace-nowrap p-1 xl:bg-tertiary xl:shadow-none  flex flex-grow-0 items-baseline"> 
+            <label for="scope-select">{{ $t('options.scope.title') }}</label>
+            <select id="scope-select" name="scope" class="bg-tertiary flex-grow md:grow-0 p-2 md:p-0" @change="update_scope">
+                <option v-for="(scope, idx) in  ['e', 'ei', 'eif']" :key="idx" :value="scope" :selected="store.scope == scope" :class="{selected: store.scope == scope}">{{$t("options.scope.value." + scope)}}</option>
+            </select>
+        </div>
 
 
-    </div>
-</div>
+        <div class="whitespace-nowrap p-1 xl:bg-tertiary xl:shadow-none flex xl:flex-grow-0 items-baseline"> 
+            <label for="pos-select">{{ $t('pos') }}</label>
+            <select id="pos-select" name="pos" class="bg-tertiary flex-grow md:grow-0 p-2 md:p-0" @change="update_pos">
+                <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="tag" :selected="store.pos == tag" :class="{selected: store.pos == tag}">{{tag ? $t("tags." + tag) : $t("all_pos")}}</option>
+            </select>
+        </div>
+        <div  v-if="!(store.pos == null &&  store.scope == 'e' && store.dict == 'bm,nn')"  class="flex w-full sm:w-[128px] sm:min-w-[128px] sm:max-w-[128px] !py-0">
+            <button class="btn w-full py-2 lg:py-0" type="reset" @click="reset"> <Icon name="bi:arrow-clockwise" size="1.25em" class="mr-3 text-primary" />{{$t('reset')}}</button>
+          </div>
+
+        </div>
+      
+
+        <div class="flex flex-col lg:flex-row grow lg:flex-wrap w-full gap-x-6 gap-y-3">
+          <div class="grow" :class="{activeAutocomplete: store.autocomplete && store.autocomplete.length}">
+            <Autocomplete  @dropdown-submit="submitForm"/>
+          </div>
+
+          <div v-if="store.q" class="flex gap-6">
+            <div class="flex justify-center items-center">
+                <label class="checkbox-label">
+                <input  v-model="settings.listView" type="checkbox">
+                  {{$t('show_list')}}
+                </label>
+            </div>
+            <div class="flex justify-center items-center"><NuxtLink :to="`/${$i18n.locale}/help/advanced`"><Icon name="bi:info-circle-fill" size="1.25rem" class="mr-2 mb-1 text-primary"/><span class="hoverlink">{{$t('advanced_help')}}</span></NuxtLink></div>
+          </div>
+        </div>
+    </form>
 </template>
-
+  
 <script setup>
-
-import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
+import { useSearchStore } from '~/stores/searchStore'
 import {useSettingsStore } from '~/stores/settingsStore'
 const settings = useSettingsStore()
-const store = useStore()
+const store = useSearchStore()
 const route = useRoute()
 
 const dicts = ['bm,nn', 'bm', 'nn']
 const pos_tags = ['', 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCONJ', 'SCONJ', 'INTJ']
+const input_element = useState('input_element')
 
-const fulltext_enabled = ref(store.scope.includes('f'))
-const inflection_enabled = ref(store.scope.includes('i'))
 
 const mini_help = ref(!store.q)
 
-const dict_radio = (value) => {
-  store.dict = value
+const update_pos = event => {
+  store.pos = event.target.value
+  submitForm()
 
+}
+
+const update_dict = (event) => {
+  store.dict = event.target.value
+  if (store.q) {
+    submitForm()
+  }
+  
+}
+
+const update_scope = (event) => {
+  store.scope = event.target.value
+  if (store.q) {
+    submitForm()
+  }
 }
 
 
 const reset = () => {
   store.pos = null
-  store.scope = "ei"
-  fulltext_enabled.value = false
-  inflection_enabled.value = true
+  store.scope = "e"
   store.dict = "bm,nn"
+
+  if (store.q) {
+    submitForm()
+  }
+
 }
 
-watch(fulltext_enabled, () => {
-  if (fulltext_enabled.value) {
-    store.scope = store.scope + "f"
-  }
-  else {
-    store.scope = store.scope.replace('f', '')
-  }
-})
 
-watch(inflection_enabled, () => {
-  if (inflection_enabled.value) {
-    store.scope = store.scope + "i"
-  }
-  else {
-    store.scope = store.scope.replace('i', '')
-  }
-})
-
-
-const submitForm = async (item) => {
-  //store.autocomplete = []
-  if (store.input) {
+const submitForm =  (item) => {
+  if (store.input && input_element.value) {
+    if (settings.autoSelect && !isMobileDevice()) {
+      input_element.value.select()
+    }
+    else {
+      input_element.value.blur()
+    }
+    
     store.q = store.input
     mini_help.value = false
-    let query = {q: store.input, dict: store.dict, scope: store.scope}
+    const query = {q: store.input, dict: store.dict, scope: store.scope}
     if (store.pos) {
       query.pos = store.pos
     }
@@ -129,7 +128,11 @@ const submitForm = async (item) => {
 }
 
 option {
-    @apply text-text bg-canvas;
+  @apply text-text bg-canvas-darken;
+}
+
+option:hover {
+  @apply text-text bg-tertiary;
 }
 
 option.selected {
@@ -141,38 +144,10 @@ option.selected {
 
 }
 
-.select-wrapper.not_null {
-      border: solid 1px;
-      border-radius: 1rem;
-      @apply border-primary;
+
+label {
+  @apply px-1 whitespace-nowrap font-semibold;
 }
-
-
-.btn-primary i, button.btn-secondary i {
-  @apply text-white
-
-}
-
-
-.btn-primary:hover {
-  @apply bg-primary-lighten;
-}
-
-.btn-primary:focus {
-  @apply bg-primary-lighten2;
-}
-
-.btn-primary:focus i {
-    @apply text-white
-}
-
-.btn-secondary:hover {
-  @apply bg-secondary;
-}
-
-.btn-secondary:focus {
-  @apply bg-secondary-darken;
-}
-
 
 </style>
+  

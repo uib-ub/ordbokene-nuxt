@@ -1,30 +1,27 @@
 <template>
-    <li class="compound_list">
-      <ul>
-        <DefElement :body="body.intro" v-if="body.intro" :dict="dict" :content_locale="content_locale" :welcome="welcome"/>
-        <li
-          :key="index"
-          v-for="(item, index) in body.elements"
-          >{{' '}}<NuxtLink v-if="!welcome"
-            :to="'/' + dict + '/' + item.article_id + (item.definition_id ? '#def'+item.definition_id : '')"
-            @click="link_click(item)"
-            >{{item.lemmas[0].lemma}}</NuxtLink><span v-else>{{item.lemmas[0].lemma}}</span>
-        </li>
-      </ul>
-    </li>
-  </template>
+  <li class="compound_list">
+    <ul>
+      <DefElement v-if="body.intro" :body="body.intro" :dict="dict" :scoped_locale="scoped_locale" />
+      <li v-for="(item, index) in body.elements"
+          :key="index">{{' '}}<NuxtLink
+          :to="`/${$i18n.locale}/${dict}/${item.article_id}${item.definition_id ? '#def'+item.definition_id : ''}`"
+          @click="link_click(itemref)"
+          >{{item.lemmas[0].lemma}}</NuxtLink>
+      </li>
+    </ul>
+  </li>
+</template>
 <script setup>
 
 const props = defineProps({
-    body: Object,
-    dict: String,
-    content_locale: String,
-    welcome: Boolean
+  body: Object,
+  dict: String,
+  scoped_locale: String,
 })
 
 const emit = defineEmits(['link-click'])
-const link_click = (event) => {
-    emit('link-click', event)
+const link_click = (itemref) => {
+  emit('link-click', itemref)
 }
 
 </script>
@@ -32,15 +29,15 @@ const link_click = (event) => {
 <style scoped>
 
 li.compound_list ul li {
-    display: inline;
-  }
+  @apply inline;
+}
 
-  li.compound_list li:not(:last-child):not(:first-child):after {
-    content: ",";
-  }
+li.compound_list li:not(:last-child):not(:first-child):after {
+  content: ",";
+}
 
-  ul {
-    padding-left: 0px !important;
-  }
+ul {
+  @apply italic;
+}
 </style>
-    
+  

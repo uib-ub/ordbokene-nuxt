@@ -1,27 +1,17 @@
 // Some values syncronized with routing in middleware
 import { defineStore } from 'pinia'
-export const useStore = defineStore('store', {
+export const useSearchStore = defineStore('store', {
     state: () => ({
       q:"",
       input: "",
-      originalInput: "",
       selected: {},
-      scope: "ei",
+      scope: "e",
       pos: "",
-      advanced: false,
       dict: "bm,nn",
-      autocompletePending: false,
       autocomplete: [],
-      show_autocomplete: false,
+      lemmas: {bm: new Set(), nn: new Set()},
       suggest: {},
       suggestQuery: "",
-      articles: {},
-      searchUrl: null,
-      view: null,
-      concepts_bm: [],
-      concepts_nn: [],
-      endpoint: "",
-      copied: "",
-      focus: null
+      searchUrl: null
     }),
   })

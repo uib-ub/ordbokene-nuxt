@@ -1,53 +1,52 @@
 <template>
-<tr>
-  <template v-for="([prefix, [rowspan,rowindex,forms], gender, colref], index) in cells" :key="index"> 
-    <th v-if="gender"
-        class="infl-label"
-        :id="colref"
-        scope="row"
-        headers="gender"
-        :rowspan="rowspan"
-        :index="rowindex"
-        v-bind:class="{hilite: $parent.highlighted(rowindex, lemma.id)}"
-        v-on:mouseover="$emit('hilite', rowindex, lemma.id)">
-      <span class='comma'
-            v-for="(form, i) in forms"
-            :key="i">{{tagToName(form)}}</span>
-    </th>
-    <td v-else
-        class="notranslate infl-cell"
-        :headers="colref"
-        :rowspan="rowspan"
-        :index="rowindex"
-        v-bind:class="{hilite: $parent.highlighted(rowindex, lemma.id)}"
-        v-on:mouseover="$emit('hilite', rowindex, lemma.id)"
-        v-on:mouseleave="$emit('unhilite')">
-      <span class='comma'
-            v-for="(form, i) in forms"
-            :key="i"><em v-if="prefix" class="context">{{prefix}}</em>&nbsp;<span v-html="formattedForm(form)"/></span>
-    </td>
-  </template>
-</tr>
+    <tr>
+      <template v-for="([prefix, [rowspan,rowindex,forms], gender, colref], index) in cells" :key="index"> 
+        <th v-if="gender"
+            class="infl-label"
+            :id="colref"
+            scope="row"
+            headers="gender"
+            :rowspan="rowspan"
+            v-bind:class="{hilite: $parent.highlighted(rowindex, lemma.id)}"
+            v-on:mouseover="$emit('hilite', rowindex, lemma.id)">
+          <span class='comma'
+                v-for="(form, i) in forms"
+                :key="i">{{tagToName(form)}}</span>
+        </th>
+        <td v-else
+            class="notranslate infl-cell"
+            :headers="colref"
+            :rowspan="rowspan"
+            v-bind:class="{hilite: $parent.highlighted(rowindex, lemma.id)}"
+            v-on:mouseover="$emit('hilite', rowindex, lemma.id)"
+            v-on:mouseleave="$emit('unhilite')">
+          <span class='comma'
+                v-for="(form, i) in forms"
+                :key="i"><em v-if="prefix" class="context">{{prefix}}</em>&nbsp;<span v-html="formattedForm(form)"/></span>
+        </td>
+      </template>
+    </tr>
 </template>
-
+    
 <script>
 
 
 
 import { inflectedForm, tagToName, indefArticle, markdownToHTML
-       } from './mixins/ordbankUtils.js' 
+        } from './mixins/ordbankUtils.js' 
 
 export default {
     name: 'inflectionRowNoun',
-    props: ['paradigm','language', 'showGender', 'lemma'],
+    props: ['paradigm','language', 'showGender', 'lemma','hasDef', 'hasSing', 'hasPlur'],
     data: function () {
         return {
             cells: [
                 this.showGender ? this.inflForm(['_gender']) : null, // special gender column
-                this.inflForm(['Sing','Ind'], this.indefArticle()),
-                this.inflForm(['Sing','Def']),
-                this.inflForm(['Plur','Ind']),
-                this.inflForm(['Plur','Def'])
+                this.inflForm(['Sing','Ind'], this.hasSing, this.indefArticle()),
+                this.inflForm(['Sing','Def'], this.hasSing && this.hasDef),
+                this.inflForm(['Plur','Ind'], this.hasPlur),
+                this.inflForm(['Plur','Def'], this.hasPlur && this.hasDef)
+
             ].filter(r => r)
         }
     },
@@ -55,10 +54,12 @@ export default {
         indefArticle: function () {
             return indefArticle(this.paradigm.tags, this.language)
         },
-        inflForm: function (tagList,prefix) {
+        inflForm: function (tagList,display,prefix) {
             let forms = inflectedForm(this.paradigm, tagList, [])
             if (!forms) {
                 return null
+            } else if (forms[0] == null) {
+                return display ? [null, [1,null,['–'],null,'STANDARD'], false, ''] : null
             } else if (tagList[0]=='_gender') {
                 return [prefix, forms, true, forms[2]]
             } else {
@@ -72,6 +73,8 @@ export default {
         tagToName: function (tag) {
             return tagToName(tag, this.language)
         }
+
+
     }
 }
 </script>

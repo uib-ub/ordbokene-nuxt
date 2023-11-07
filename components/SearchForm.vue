@@ -1,8 +1,8 @@
 <template>
-<div class="py-1">
-<form  @submit.prevent="submitForm" ref="form">
+<div class="lg:py-1">
+<form ref="form" class="md:mx-[10%]" :action="`/${$i18n.locale}/${store.dict || 'bm,nn'}`" @submit.prevent="submitForm"  >
 <NuxtErrorBoundary @error="autocomplete_error">
-  <Autocomplete v-on:dropdown-submit="submitForm"/>
+  <Autocomplete @dropdown-submit="submitForm"/>
 </NuxtErrorBoundary>
 
 </form>
@@ -10,20 +10,67 @@
 </template>
 
 <script setup>
-import { useStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
-const store = useStore()
-const route = useRoute()
+import { useI18n } from 'vue-i18n'
+import { useSearchStore } from '~/stores/searchStore'
+import { useSettingsStore } from '~/stores/settingsStore'
+import { useSessionStore } from '~/stores/sessionStore'
 
-const submitForm = async (item) => {
+const store = useSearchStore()
+const route = useRoute()
+const settings = useSettingsStore()
+const session = useSessionStore()
+const i18n = useI18n()
+
+const input_element = useState('input_element')
+
+const submitForm = (item) => {
+  
+  if (typeof item === 'string') {
+    if (settings.auto_select && !isMobileDevice()) {
+      input_element.value.select()
+    }
+    else {
+      input_element.value.blur()
+    }
+    return navigateTo(`/${i18n.locale.value}/${store.dict}?q=${item}`)
+  }
+  
   if (store.input) {
-    console.log("SUBMITTED")
-    store.show_autocomplete = false
-    let url = '/' + store.dict
-    url += '/search?q='+store.input
+    if (settings.auto_select && !isMobileDevice()) {
+      input_element.value.select()
+    }
+    else {
+      input_element.value.blur()
+    }
+    
+    session.show_autocomplete = false
     store.q = store.input
 
-    return navigateTo(url)
+
+    if (advancedSpecialSymbols(store.q)) {
+      return navigateTo(`/${i18n.locale.value}/search?q=${store.q}&dict=${store.dict}&scope=${store.scope}`)
+    }
+    else  if (store.input.includes("|") || session.dropdown_selected !== -1) {
+      return navigateTo(`/${i18n.locale.value}/${store.dict}?q=${store.q}`)
+    }
+
+    const { exact, inflect } = store.suggest
+    
+    if (exact) {
+      
+        if (exact[0][0].length === store.q.length) {
+            const redirectUrl = `/${i18n.locale.value}/${store.dict}/${exact[0][0]}`
+            return navigateTo(redirectUrl)
+        }
+    }
+
+    if (inflect && inflect.length === 1 && inflect[0][0] && inflect[0][0][0] !== "-" && inflect[0][0].slice(-1) !== "-") { // suppress prefixes and suffixes
+        return navigateTo(`/${i18n.locale.value}/${store.dict}/${inflect[0][0]}?orig=${store.q}`)
+    }
+
+    return navigateTo(`/${i18n.locale.value}/${store.dict}?q=${store.q}`)
+    // navigateTo(`/${route.params.dict}/${store.q}`)
   }
   
 }
@@ -33,18 +80,3 @@ const autocomplete_error = (error) => {
 }
 
 </script>
-
-<style scoped>
-
-
-form {
-    @apply md:mx-10;
-  }
-
-.welcome form {
-  @apply md:mx-0;
-}
-
-  
-
-</style>

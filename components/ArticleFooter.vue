@@ -1,16 +1,78 @@
+<template>
+<div :lang="locale2lang[scoped_locale]" class="flex mt-4 mb-4 md:mb-0 flex-wrap gap-y-6">
+  <client-only>
+    <div role="toolbar" class="flex justify-center sm:justify-normal gap-2 flex-wrap gap-y-2">
+    <button v-if="showLinkCopy" type="button" class="btn btn-borderless px-3" :class="{'hidden xl:block': store.dict == 'bm,nn' && $route.name!= 'article', 'hidden md:block': store.dict != 'bm,nn' && $route.name != 'article'}" @click="copy_link">
+      <Icon :name="session.copied_link == create_link() ? 'bi:clipboard-check-fill' : 'bi:clipboard'" class="mr-3 mb-1 text-primary"/>
+      <span>{{ session.copied_link == create_link() ? $t('article.link_copied') : $t('article.copy_link', 1, { locale: scoped_locale }) }} </span>
+    </button>
+    <button v-if="webShareApiSupported" type="button" class="btn btn-borderless px-3" @click="shareViaWebShare">
+        <Icon name="bi:share-fill" class="mr-3 mb-1 text-primary"/>{{$t("article.share", 1, { locale: scoped_locale})}}
+    </button>
+      <button type="button" class="btn btn-borderless px-3" :aria-expanded="cite_expanded" :aria-controls="cite_expanded?  'cite-'+article_id : null" @click="cite_expanded = !cite_expanded">
+        <Icon name="bi:quote" class="mr-3 mb-1 text-primary"/>{{$t("article.cite", 1, { locale: scoped_locale})}}
+      </button>
+      <div v-if="cite_expanded" :id="'cite-'+article_id" class="cite-container p-4 pb-1 pt-2 text-1 basis-full">
+        <h4>{{$t('article.cite_title')}}</h4>
+        <p>{{$t("article.cite_description[0]", 1, { locale: scoped_locale})}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", 1, { locale: scoped_locale})}}</p>
+
+        <blockquote class="break-all sm:break-keep">
+          <i18n-t id="citation" keypath="article.citation" tag="div">
+            <template #lemma>{{citation.lemma}}</template>>
+            <template #link>
+              &lt;<a :href="citation.link">{{citation.link}}</a>&gt;
+            </template>
+            <template #dict>
+              <em>{{citation.dict}}</em>
+            </template>
+            <template #dd>
+              {{citation.dd}}
+            </template>
+            <template #mm>
+              {{citation.mm}}
+            </template>
+            <template #yyyy>
+              {{citation.yyyy}}
+            </template>
+          </i18n-t>
+
+        </blockquote>
+          <button type="button" class="mt-4 mb-2 btn btn-borderless" @click="copy_citation">
+            <Icon :name="copycitation ? 'bi:file-earmark-plus' : 'bi:file-earmark-check-fill'" class="mb-1 mr-3 text-primary" />{{ citationCopied ? $t('article.citation_copied') : $t('article.copy') }}
+          </button>
+          <button type="button" class="mt-4 mb-2 btn btn-borderless" @click="download_ris"><Icon name="bi:download" class="mb-1 mr-3 text-primary" /> {{$t("article.download")}}</button>
+    </div>
+    </div>
+  </client-only>
+
+<span v-if="$route.name != 'article'" class="px-4 pt-1 ml-auto">
+    <NuxtLink class="whitespace-nowrap"  :to="`/${$i18n.locale}/${dict}/${article_id}`">
+       <span>{{$t("article.open", 1, { locale: scoped_locale})}}</span>
+    </NuxtLink>
+    </span>
+    
+</div>
+  
+
+
+</template>
+
 <script setup>
 
-import { useStore } from '~/stores/searchStore'
-const store = useStore()
+import { useSearchStore } from '~/stores/searchStore'
+import { useSessionStore } from '~/stores/sessionStore'
+const store = useSearchStore()
+const session = useSessionStore()
 
 const props = defineProps({
-    lemmas: Array,
-    dict: String,
-    article_id: Number,
-    content_locale: String
+    lemmas: {type: Array, required: true},
+    dict: {type: String, required: true},
+    article_id: {type: Number, required: true},
+    scoped_locale: {type: String, required: true}
 })
 
 const cite_expanded = ref(false)
+const citationCopied = ref(false);
 
 
 const create_link = () => {
@@ -33,34 +95,33 @@ const shareViaWebShare = () => {
       })
       };
 
+
 const copy_link = (event) => {
-      let link = create_link()
-      
-        navigator.clipboard.writeText(link).then(() => {
-          console.log("SUCCESS")
-          store.copied = event.target.id
-         }).catch(err => {
-           console.log("ERROR COPYING:",err)
-         })
-    }
+  const link = create_link();
+  navigator.clipboard.writeText(link).then(() => {
+    session.copied_link = link;
+  }).catch(err => {
+    console.log("ERROR COPYING:", err);
+  });
+};
 
 const get_citation_info = () => {
-      let date = new Date();
-      let dd = (date.getDate() < 10? '0' : '') + date.getDate()
-      let mm = (date.getMonth() < 9? '0' : '') + (date.getMonth()+1)
-      let yyyy = date.getFullYear()
-      let link = create_link()
-      let lemma = props.lemmas[0].lemma
-      let dict = {"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[props.dict]
+      const date = new Date();
+      const dd = (date.getDate() < 10? '0' : '') + date.getDate()
+      const mm = (date.getMonth() < 9? '0' : '') + (date.getMonth()+1)
+      const yyyy = date.getFullYear()
+      const link = create_link()
+      const lemma = props.lemmas[0].lemma
+      const dict = {"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[props.dict]
       return [lemma, dd, mm, yyyy, link, dict]
     }
 
-const create_citation = () => {
+const citation = computed(() => {
       const [lemma, dd, mm, yyyy, link, dict] = get_citation_info()
-      let citation = {lemma, link, dd, mm, yyyy, dict}
+      const citation = {lemma, link, dd, mm, yyyy, dict}
 
       return citation
-    }
+    })
 
 const download_ris = () => {
       const [lemma, dd, mm, yyyy, link] = get_citation_info()
@@ -74,47 +135,30 @@ const download_ris = () => {
       a.click()
       document.body.removeChild(a)
     }
+
+const copycitation = ref(true);
+
+const copy_citation = () => {
+  const citation = document.getElementById("citation").textContent;
+  navigator.clipboard.writeText(citation);
+  copycitation.value = !copycitation.value;
+  citationCopied.value = !citationCopied.value; // Toggle the citationCopied value
+};
+
+
 </script>
-
-<template>
-<client-only>
-<div class="flex justify-around gap-3 mt-3 flex-wrap">
-    <button class="btn btn-borderless" :id="'copy-link-'+article_id" v-if="showLinkCopy" @click="copy_link">
-      <Icon :name="store.copied == 'copy-link-'+article_id ? 'bi:clipboard-check-fill' : 'bi:clipboard'" class="mr-3 mb-1 text-primary"/> {{$t("article.copy_link", 1, { locale: content_locale})}}
-    <span aria-live="assertive" class="sr-only" v-if="'copy-citation-'+article_id == store.copied">{{$t('article.link_copied')}}</span></button>
-    
-    <button class="btn btn-borderless" v-if="webShareApiSupported" @click="shareViaWebShare">
-      <Icon name="bi:share-fill" class="mr-3 mb-1 text-primary"/>{{$t("article.share", 1, { locale: content_locale})}}
-    </button>
-    <button class="btn btn-borderless" type="button" :aria-expanded="cite_expanded" :aria-controls="cite_expanded?  'cite-'+article_id : null" @click="cite_expanded = !cite_expanded">
-      <Icon name="bi:quote" class="mr-3 mb-1 text-primary"/>{{$t("article.cite", 1, { locale: content_locale})}}
-    </button>
-</div>
-<div class="cite-container p-4 pb-1 pt-2 mt-2" v-if="cite_expanded" :id="'cite-'+article_id">
-      <h4>{{$t('article.cite_title')}}</h4>
-      <p>{{$t("article.cite_description[0]", 1, { locale: content_locale})}}<em>{{$t('dicts.'+$props.dict)}}</em>{{$t("article.cite_description[1]", 1, { locale: content_locale})}}</p>
-      <div id="citation" v-html="$t('article.citation', create_citation())" />
-       <button class="mt-4 mb-2 btn btn-borderless" @click="download_ris"><Icon name="bi:download" class="mb-1 mr-3 text-primary" /> {{$t("article.download")}}</button>
-
-</div>
-</client-only>
-</template>
 
 <style scoped>
 
 .cite-container {
-    box-shadow: 1px 1px 1px theme("colors.gray.500");
-    border: solid 1px theme("colors.gray.500");
     border-radius: 1.5rem;
-    word-break: break-word;
-    
+    @apply mt-4  border border-gray shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] ;
 }
+
 
 h4 {
-  font-size: 1.5rem;
-  @apply text-primary;
+  @apply text-primary text-2xl font-semibold;
   font-variant: all-small-caps;
-  font-weight: 600;
+  }
 
-}
 </style>

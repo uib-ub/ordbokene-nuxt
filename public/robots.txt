@@ -1,4 +1,1 @@
-# Disable search engine indexing
-
-User-agent: *
-Disallow: /
+# Report security bugs to ordbok-teknisk@uib.no

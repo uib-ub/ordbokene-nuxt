@@ -1,33 +1,49 @@
 <template>
-<div v-if="suggestions && suggestions.length" class="suggestions py-2 px-1 mb-4 mt-8">
-    <h2>{{$t('notifications.similar')}}</h2>
-    <ul class="nav nav-pills flex-column md:flex md:flex-wrap md:gap-8 py-6 pt-4 md:py-8">
-        <li class="nav-item flex" v-for="(item, idx) in suggestions" :key="idx">
-            <NuxtLink class="suggest-link py-3 md:py-0 md w-full" :to="suggest_link(item[0])"><Icon name="bi:search" class="mr-3 mb-1"/><span class="link-content">{{item[0]}}</span></NuxtLink>
+<section v-if="suggestions && suggestions.length" class="suggestions">
+    <slot/>
+    <ul class="nav nav-pills flex-column md:flex md:flex-wrap md:gap-2 pt-4 md:py-4">
+        <template  v-for="(item, idx) in suggestions" :key="idx">
+        <li v-if="minimal || !store.lemmas[dict].has(item.q)" class="!border-1 flex px-2 mx-0">
+            <NuxtLink :lang="dictLang[dict]" no-prefetch class="suggest-link notranslate py-3 md:py-0 w-full" :to="suggest_link(compare ? store.q + '|' + item : item)" @click="track_suggest(item)"><Icon :name="icon || 'bi:search'" class="mr-3 mb-1 text-primary"/><span class="link-content hoverlink">{{item}}</span></NuxtLink>
         </li>
+        </template>
     </ul>
-</div>
+</section>
 </template>
 
 <script setup>
 
-import { useStore } from '~/stores/searchStore'
-const store = useStore()
+import { useI18n } from 'vue-i18n'
+import { useSearchStore } from '~/stores/searchStore'
+const store = useSearchStore()
+const route = useRoute()
+const i18n = useI18n()
 
 const props = defineProps({
-    suggestions: Object
+    suggestions: Object,
+    dict: String,
+    minimal: Boolean,
+    icon: String,
+    compare: Boolean,
+    plausibleGoal: String
 })
 
+
+const track_suggest = (to) => {
+    useTrackEvent(props.plausibleGoal + "_" + props.dict, {props: {from: store.q, to, combined: store.q + "|" + to}})
+
+}
+
 const suggest_link = (suggestion) => {
-    if (store.advanced) {
-        let url = `/${store.dict}/search?q=${suggestion}&scope=${store.scope}`
+    if (route.name === 'search') {
+        let url = `/${i18n.locale.value}/search?q=${suggestion}&dict=${store.dict}&scope=${store.scope}`
         if (store.pos) {
             url = url + '&pos=' + store.pos
         }
         return url
     }
     else {
-        return suggestion
+        return `/${i18n.locale.value}/${store.dict}/${suggestion}` 
     }
 }
 
@@ -38,25 +54,19 @@ const suggest_link = (suggestion) => {
 
 a {
     font-size: 1.17rem;
-    letter-spacing: .1rem;
-    border: none;
+    border: 2px;
+    @apply md:p-2 no-underline;
 }
 
-.suggest-link:hover .link-content {
-    border-bottom: solid 2px var(--link-decoration);
-}
 
 li:not(:last-child) {
     border-bottom: solid 1px theme('colors.gray.300')
 
-
 }
 
-@media screen(md) {
-    li {
-        border: none !important; 
-    }
+li {
+    @apply md:!border-none;
 }
-
-
+    
+    
 </style>

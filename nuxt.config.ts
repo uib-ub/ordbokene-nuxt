@@ -39,7 +39,7 @@ export default defineNuxtConfig({
     ],
 
   htmlValidator: {
-    usePrettier: true
+    usePrettier: false
   },     
   plausible: {
     domain: 'test.ordbokene.no',

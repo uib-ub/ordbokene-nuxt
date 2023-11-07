@@ -1,5 +1,14 @@
 <template>
     <main id="main" tabindex="-1">
+      <div class="flex">
+
+    <h1 class="font-semibold !px-4 sm:!px-3 text-primary lg:top-0 lg:left-0 text-xl">
+      {{$t('advanced')}} 
+    </h1><div class="whitespace-nowrap pl-2 pt-[4px] text-base ml-auto mr-4 md:ml-0">
+            <NuxtLink :to="`/${$i18n.locale}/${store.dict}/${advancedSpecialSymbols(store.q) ? '' : store.q}`"><Icon name="bi:arrow-left-short" size="1.5rem" class="mb-1 text-primary"/>{{$t('notifications.simple')}}</NuxtLink>
+        </div>
+      </div>
+
       <NuxtErrorBoundary @error="form_error">
         <AdvancedSearchForm class="ord-container"/>
       </NuxtErrorBoundary>
@@ -11,9 +20,9 @@
 </template>
   
 <script setup>
-import { useSearchStore } from '~/stores/searchStore'
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useSearchStore } from '~/stores/searchStore'
 
 const store = useSearchStore()
 const route = useRoute()
@@ -37,3 +46,12 @@ const content_error = (error) => {
 
 
 </script>
+
+<style scoped>
+
+h1 {
+  font-variant: all-small-caps;
+  letter-spacing: .1rem;
+}
+
+</style>

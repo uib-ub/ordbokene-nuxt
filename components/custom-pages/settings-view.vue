@@ -1,6 +1,7 @@
 <script setup>
-import {useSettingsStore } from '~/stores/settingsStore'
 import { useI18n } from 'vue-i18n'
+import {useSettingsStore } from '~/stores/settingsStore'
+
 
 const { t } = useI18n()
 const settings = useSettingsStore()
@@ -17,7 +18,7 @@ const default_settings = {
 
 const not_default = computed(() => {
   for (const item in default_settings) {
-    if (default_settings[item] != settings.$state[item]) {
+    if (default_settings[item] !== settings.$state[item]) {
       return true
     }
   }
@@ -44,23 +45,27 @@ useHead({
 <main id="main" tabindex="-1" class="secondary-page flex flex-col gap-4">
   <h1>{{$t('settings.title')}}</h1>
   <client-only>
-  <FormCheckbox v-model="settings.$state.simpleListView" :checked="settings.simpleListView">
+    <label class="checkbox-label">
+    <input  v-model="settings.simpleListView" type="checkbox">
       {{$t('settings.simple_search_list')}}
-    </FormCheckbox>
-    <FormCheckbox v-model="settings.$state.autoSelect" :checked="settings.autoSelect">
+    </label>
+    <label class="checkbox-label">
+    <input  v-model="settings.autoSelect" type="checkbox">
       {{$t('settings.auto_select')}}
-    </FormCheckbox>
-    <FormCheckbox v-model="settings.$state.inflectionExpanded" :checked="settings.inflectionExpanded">
+    </label>
+    <label class="checkbox-label">
+    <input  v-model="settings.inflectionExpanded" type="checkbox">
       {{$t('settings.inflection_expanded')}}
-    </FormCheckbox>
-    <FormCheckbox v-model="settings.$state.inflectionNo" :checked="settings.inflectionNo">
+    </label>
+    <label class="checkbox-label">
+    <input  v-model="settings.inflectionNo" type="checkbox">
       {{$t('settings.inflection_no')}}
-    </FormCheckbox>
-    <FormCheckbox v-model="settings.$state.inflectionTableContext" :checked="settings.inflectionTableContext">
+    </label>
+    <label class="checkbox-label">
+    <input  v-model="settings.inflectionTableContext" type="checkbox">
       {{$t('settings.inflection_table_context')}}
-    </FormCheckbox>
-
-
+    </label>
+    
 
   <div class="mt-4 flex flex-col md:flex-row gap-3">
     <button v-if="not_default" class="btn btn-primary" @click="resetSettings(settings)">

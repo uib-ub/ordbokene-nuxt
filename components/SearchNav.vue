@@ -5,23 +5,26 @@
   <li>
     <NuxtLink class="inline-block"
               :aria-current="store.dict =='bm,nn' ? 'true' : 'false'"
-              @click="dict_click('bm,nn')"
-              :to="dict_link('bm,nn')"><span class="max-md:sr-only">{{$t('dicts.bm,nn')}}</span><span aria-hidden="true" class="block md:hidden">{{$t('dicts_short.bm,nn')}}</span></NuxtLink>
+              :to="dict_link('bm,nn')"
+              :aria-label="$t('dicts.bm,nn')"
+              @click="dict_click('bm,nn')"><span class="md:hidden">{{$t('dicts_short.bm,nn')}}</span><span class="hidden md:block">{{$t('dicts.bm,nn')}}</span></NuxtLink>
   </li>
   <li>
     <NuxtLink  :aria-current="store.dict =='bm' ? 'true' : 'false'"
-              @click="dict_click('bm')"
-              :to="dict_link('bm')"><span class="max-md:sr-only">{{$t('dicts.bm')}}</span><span aria-hidden="true" class="block md:hidden">{{$t('dicts_short.bm')}}</span></NuxtLink>
+              :to="dict_link('bm')"
+              :aria-label="$t('dicts.bm')"
+              @click="dict_click('bm')"><span class="md:hidden">{{$t('dicts_short.bm')}}</span><span class="hidden md:block">{{$t('dicts.bm')}}</span></NuxtLink>
   </li>
   <li>
     <NuxtLink :aria-current="store.dict =='nn' ? 'true' : 'false'"
-              @click="dict_click('nn')"
-              :to="dict_link('nn')"><span class="max-md:sr-only">{{$t('dicts.nn')}}</span><span aria-hidden="true" class="block md:hidden">{{$t('dicts_short.nn')}}</span></NuxtLink>
+              :to="dict_link('nn')"
+              :aria-label="$t('dicts.nn')"
+              @click="dict_click('nn')"><span class="md:hidden">{{$t('dicts_short.nn')}}</span><span class="hidden md:block">{{$t('dicts.nn')}}</span></NuxtLink>
   </li>
   <li>
     <NuxtLink :aria-current="advanced ? 'true' : 'false'"
               :to="advanced_link"
-              class="!pr-1">{{$t('advanced')}} <Icon name="bi:arrow-right-short" size="1.5em"/></NuxtLink>
+              class="!pr-1">{{$t('advanced')}} <Icon class="text-primary" name="bi:arrow-right-short" size="1.5em"/></NuxtLink>
   </li>
 </ul>
 </nav>
@@ -29,10 +32,10 @@
 </template>
 
 <script setup>
-
-import { useSearchStore } from '~/stores/searchStore'
-import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
+import { useSearchStore } from '~/stores/searchStore'
+
 const i18n = useI18n()
 const store = useSearchStore()
 const route = useRoute()
@@ -44,7 +47,7 @@ const dict_click = (dict) => {
       store.dict = dict
       store.lemmas.bm = new Set()
       store.lemmas.nn = new Set()
-      if (store.q != store.input) {
+      if (store.q !== store.input) {
         store.input = route.query.orig || store.q
       }
     }
@@ -91,7 +94,7 @@ ul {
 }
 
 a {
-@apply flex py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 md:text-primary border md:border-none whitespace-nowrap;
+@apply flex py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 border md:border-none whitespace-nowrap;
 border-radius: 2rem;
 
 }

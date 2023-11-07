@@ -29,8 +29,32 @@ ordbokene_preview:
                     -m gitlabCommitMessage="${CI_COMMIT_MESSAGE}"
                     -m gitlabCommitOrg="${CI_PROJECT_NAMESPACE}"
                     -m gitlabCommitRef="${CI_COMMIT_REF_NAME}"
-                    -m gitlabCommitRepo="uib-ub-monorepo"
+                    -m gitlabCommitRepo="ordbokene-nuxt"
                     -m gitlabCommitSha="${CI_COMMIT_SHA}"
                     -m gitlabOrg="https://git.app.uib.no/"
                     -m gitlabRepo="ordbokene-nuxt"
                     -m gitlabCommitAuthorLogin="${GITLAB_USER_LOGIN}"
+
+
+ordbokene_prod:
+  extends: .ordbokene
+  stage: prod
+  when: manual
+  only:
+    - main
+  script:
+    - npm install --global vercel
+    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+    - vercel build --prod --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+                    -m gitlabDeployment="1"
+                    -m gitlabCommitAuthorName="${CI_COMMIT_AUTHOR}"
+                    -m gitlabCommitMessage="${CI_COMMIT_MESSAGE}"
+                    -m gitlabCommitOrg="${CI_PROJECT_NAMESPACE}"
+                    -m gitlabCommitRef="${CI_COMMIT_REF_NAME}"
+                    -m gitlabCommitRepo="ordbokene-nuxt"
+                    -m gitlabCommitSha="${CI_COMMIT_SHA}"
+                    -m gitlabOrg="https://git.app.uib.no/"
+                    -m gitlabRepo="ordbokene-nuxt"
+                    -m gitlabCommitAuthorLogin="${GITLAB_USER_LOGIN}"
+

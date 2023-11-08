@@ -64,15 +64,7 @@
              {{ $t(inflection_expanded ? 'article.hide_inflection' : 'article.show_inflection', 1, {locale: scoped_locale})}}<span v-if="!inflection_expanded"><Icon name="bi:chevron-down" class="ml-4" size="1.25em"/></span><span v-if="inflection_expanded"><Icon name="bi:chevron-up" class="ml-4" size="1.5em"/></span>
       </button>
         <div v-if="inflected && !welcome && (inflection_expanded || single || list)" :id="`${dict}_${article_id}_inflection`" ref="inflection_table" class="motion-reduce:transition-none border-collapse py-2 transition-all duration-300 ease-in-out">
-            <div class="overflow-x-auto p-2">
-                <client-only>
-                  <InflectionTable :scoped_locale="scoped_locale" :eng="$i18n.locale == 'eng'" :ukr="$i18n.locale == 'ukr'" :mq="inflection_size()" :lemma-list="lemmas_with_word_class_and_lang"  :context="true" :dict="dict" :article_id="article_id"/>
-                  <template #fallback>
-                    <InflectionTable v-if="single" :scoped_locale="scoped_locale" :eng="$i18n.locale == 'eng'" :ukr="$i18n.locale == 'ukr'" :lemma-list="lemmas_with_word_class_and_lang"  :context="true" :dict="dict" :article_id="article_id"/>
-                  </template>
-                </client-only>
-     
-            </div>
+          <InflectionWrapper :single="single" :scoped_locale="scoped_locale" :lemmaList="lemmas_with_word_class_and_lang" :dict="dict"/>
         </div>
         <div ref="article_content" class="article_content pt-1">
             <section v-if="!welcome && data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
@@ -246,15 +238,6 @@ const link_click = (itemref) => {
 const link_to_self = () => {
   return `/${i18n.locale.value}/${props.dict}/${props.article_id}`
   }
-
-const inflection_size = () => {
-    if (store.dict === 'bm,nn' ) {
-      return window.matchMedia('(min-width: 1280px)').matches ? 'sm' : 'xs'
-    }
-    else {
-      return window.matchMedia('(min-width: 1024px)').matches ? 'sm' : 'xs'
-    }
-}
 
 const inflection_classes = (lemmas) => {
   const inf_classes = new Set()

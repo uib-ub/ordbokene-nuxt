@@ -1,9 +1,9 @@
 <template>
 <div class="overflow-x-auto p-2">
     <client-only>
-        <InflectionTable :translate="translate" :mq="inflection_size()" :lemma-list="lemmaList"  :context="true"/>
+        <InflectionTable :custom-translate="translate" :mq="inflection_size()" :lemma-list="lemmaList"  :context="true"/>
         <template #fallback>
-        <InflectionTable v-if="single" :translate="translate" :lemmaList="lemmaList"  :context="true"/>
+        <InflectionTable v-if="single" :custom-translate="translate" :lemmaList="lemmaList"  :context="true"/>
         </template>
     </client-only>
 </div>

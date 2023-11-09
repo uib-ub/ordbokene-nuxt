@@ -46,6 +46,11 @@ const translate = (...args) => {
 
 <style>
 
+.infl-wrapper {
+    @apply flex flex-col items-start gap-4
+}
+
+
 .infl-wrapper caption {
     @apply sr-only;
 

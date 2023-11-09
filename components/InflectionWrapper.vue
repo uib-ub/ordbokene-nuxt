@@ -104,7 +104,7 @@ const translate = (...args) => {
 }
 
 .infl-wrapper .infl-label {
-    @apply text-left align-top;
+    @apply text-center align-top;
 }
 
 .infl-wrapper td.hilite {

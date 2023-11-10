@@ -66,7 +66,7 @@
         <div v-if="inflected && !welcome && (inflection_expanded || single || list)" :id="`${dict}_${article_id}_inflection`" ref="inflection_table" class="motion-reduce:transition-none border-collapse py-2 transition-all duration-300 ease-in-out">
           <InflectionWrapper :single="single" :scoped_locale="scoped_locale" :lemmaList="lemmas_with_word_class_and_lang" :dict="dict"/>
         </div>
-        <div ref="article_content" class="pt-1" :key="store.scope == 'e'? store.q : store.scope + '_' + store.q">
+        <div ref="article_content" class="pt-1" :key="store.scope == 'e'? store.scope : store.scope + '_' + store.q">
             <section v-if="!welcome && data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
                 <h4 :lang="locale2lang[scoped_locale]">{{$t('article.headings.pronunciation', 1, { locale: scoped_locale})}}</h4>
 

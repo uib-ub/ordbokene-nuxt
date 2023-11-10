@@ -108,7 +108,7 @@ const translate = (...args) => {
 }
 
 .infl-wrapper .infl-label[scope='row'] {
-    @apply text-left align-bottom;
+    @apply text-left align-baseline;
 }
 
 .infl-wrapper td.hilite {

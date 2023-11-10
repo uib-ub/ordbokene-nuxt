@@ -3,7 +3,7 @@
   <Spinner v-if="!error && !articles"/>
   <div v-if="!error && articles && articles.meta" >
   <div class="sr-only" role="status" aria-live="polite">{{$t('notifications.results', total, {count: total})}}</div>
-  <div  :class="{'gap-2 lg:gap-8 lg:grid lg:grid-cols-2': dicts.length == 2}">
+  <div :class="{'gap-2 lg:gap-8 lg:grid lg:grid-cols-2': dicts.length == 2}">
     <section v-for="dict in dicts" 
              :key="dict" 
              class="lg:grid-cols-6" 
@@ -72,7 +72,6 @@ const store = useSearchStore()
 const route = useRoute()
 const session = useSessionStore()
 const i18n = useI18n()
-
 const error_message = ref()
 
 const page = computed(() => {

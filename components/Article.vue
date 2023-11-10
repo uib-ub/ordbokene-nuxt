@@ -28,12 +28,12 @@
       </span>
       
         </span>
-    <span :id="`${dict}_${article_id}_snippet`" class="text-start truncate ">{{snippet}}</span>
+    <span ref="snippet_content" :id="`${dict}_${article_id}_snippet`" class="text-start truncate ">{{snippet}}</span>
     </span> 
     
     </button>
 </div>
-<div v-if="!list || expanded" :id="`${dict}_${article_id}_body`" :lang="dictLang[dict]" class="flex flex-col grow" :class="{'expanded-article': list}">
+<div v-if="!list || expanded" :id="`${dict}_${article_id}_body`" :lang="dictLang[dict]" class="flex flex-col grow" :class="{'expanded-article article': list}">
       <div>
         <h2 v-if="welcome" :class="{'!text-base': $i18n.locale == 'ukr'}" class="dict-label">{{$t('monthly', {dict: $t('dicts_inline.' + dict)}, { locale: scoped_locale})}}</h2>
         <h2 v-else-if="single" class="dict-label">{{{"bm":"Bokmålsordboka", "nn":"Nynorskordboka"}[dict]}}</h2>
@@ -41,7 +41,7 @@
 
         <ArticleHeader :lemma_groups="lemma_groups" :secondary_header_text="secondary_header_text" :scoped_locale="scoped_locale" :dict="dict" :article_id="article_id"/>
       
-      <div v-if="data.lemmas[0].split_inf" class="mt-2 mb-3">
+      <div v-if="data.lemmas[0].split_inf" class="mt-2 mb-3 split-inf">
         <div class="flex gap-2 align-middle"><span :id="`${dict}_${article_id}_split_inf_label`">{{$t('split_inf.title')}}: -a</span>
         <button type="button" class="rounded leading-none !p-0 !text-primary hover:bg-primary-lighten bg-primary  border-primary-lighten" :aria-expanded="split_inf_expanded" :aria-label="`${dict}_${article_id}_split_inf_label`" aria-controls="split-inf-explanation" @click="split_inf_expanded = !split_inf_expanded">
           <Icon :name="split_inf_expanded? 'bi:dash' : 'bi:plus'" class="text-white !m-0 !p-0" size="1.5em"/>
@@ -66,7 +66,7 @@
         <div v-if="inflected && !welcome && (inflection_expanded || single || list)" :id="`${dict}_${article_id}_inflection`" ref="inflection_table" class="motion-reduce:transition-none border-collapse py-2 transition-all duration-300 ease-in-out">
           <InflectionWrapper :single="single" :scoped_locale="scoped_locale" :lemmaList="lemmas_with_word_class_and_lang" :dict="dict"/>
         </div>
-        <div ref="article_content" class="article_content pt-1">
+        <div ref="article_content" class="pt-1" :key="store.scope == 'e'? store.q : store.scope + '_' + store.q">
             <section v-if="!welcome && data.body.pronunciation && data.body.pronunciation.length" class="pronunciation">
                 <h4 :lang="locale2lang[scoped_locale]">{{$t('article.headings.pronunciation', 1, { locale: scoped_locale})}}</h4>
 
@@ -123,7 +123,8 @@ const route = useRoute()
 const session = useSessionStore()
 const expanded = ref(false)
 const inflection_expanded = ref(settings.inflectionExpanded || false)
-
+const article_content = ref()
+const snippet_content = ref()
 
 const props = defineProps({
     scoped_locale: {type: String, required: true},
@@ -135,11 +136,49 @@ const props = defineProps({
 })
 
 
-
 const { pending, data, error } = await useAsyncData('article_' + props.dict + props.article_id, () => $fetch(`${session.endpoint}${props.dict}/article/${props.article_id}.json`))
 
 
-if (route.name != 'welcome' && route.name !== 'index' && route.name !== 'search' && data.value)
+import Mark from 'mark.js';
+
+const highlight_results = () => {
+  if (route.name === 'search' && store.scope != 'e') {
+    if (process.client) {
+        if (store.scope.includes('f')) {
+            const regex = new RegExp("(?<=[^\\w]|^)" + store.q.replace(/[*%]/g, "\\w*").replace(/[_?]/g, "\\w") + "(?=[^\\w]|$)")
+            new Mark(snippet_content.value).markRegExp(regex, {acrossElements: true})
+            new Mark(article_content.value).markRegExp(regex, {acrossElements: true, exclude: ['h4', 'h5', '.suggestions *']})
+            
+        }
+    }
+  }
+}
+
+
+watch(() => route.query, () =>  {
+    console.log("UPDATED", props.dict, props.article_id)
+    highlight_results()
+
+})
+
+
+onMounted (() => {
+  console.log("MOUNTED", props.dict, props.article_id)
+  highlight_results()
+
+})
+
+
+
+// fallback api
+if (error.value && session.endpoint === "https://oda.uib.no/opal/prod/`") {
+  session.endpoint = `https://odd.uib.no/opal/prod/`
+  console.log("ERROR", error.value)
+  refresh()
+}
+
+// Add lemmas to store so that redundant search suggestions can be filtered out in suggest.vue
+if (route.name != 'welcome' && route.name !== 'index' && route.name !== 'search' && data.value) {
   data.value.lemmas.forEach(lemma => {
       store.lemmas[props.dict].add(lemma.lemma)
       lemma.paradigm_info.forEach(paradigm => {
@@ -151,6 +190,10 @@ if (route.name != 'welcome' && route.name !== 'index' && route.name !== 'search'
 
       })
 })
+}
+
+  
+
 
 
 const expand_inflection = () => {
@@ -158,12 +201,6 @@ const expand_inflection = () => {
   inflection_expanded.value = !inflection_expanded.value
 }
 
-
-if (error.value && session.endpoint === "https://oda.uib.no/opal/prod/`") {
-  session.endpoint = `https://odd.uib.no/opal/prod/`
-  console.log("ERROR", error.value)
-  refresh()
-}
 
 
 const has_content = () => {
@@ -186,6 +223,25 @@ const lemmas_with_word_class_and_lang = computed(() => {
   return data.value.lemmas.map(lemma => Object.assign({language: props.dict === 'bm' ? 'nob' : 'nno',
                                                    word_class: lemma.paradigm_info[0].inflection_group.split('_')[0]}, lemma))
 })
+
+/*
+// part of an attempt at highlighting inflected results
+const highlight_inflected_result = computed(() => {
+  if (store.scope === 'e') {
+    return false
+  }
+  for (const lemma of data.value.lemmas) {
+    if (lemma.lemma === route.query.q) {
+      return false
+    }
+    for (const inflection of lemma.paradigm_info[0].inflection)
+      if (inflection.word_form === route.query.q ) {
+        console.log(inflection.word_form, route.query.q )
+        return true
+      }
+  }
+})
+*/
 
 
 const find_sub_articles = (definition) => {

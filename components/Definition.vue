@@ -103,9 +103,6 @@ ul.examples {
 @apply pl-0;
 }
 
-.hilite {
-@apply shadow !bg-tertiary-darken1;
-}
 
 .single_sub_definition{
   @apply list-disc ml-2;

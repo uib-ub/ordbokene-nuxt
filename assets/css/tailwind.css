@@ -305,6 +305,11 @@
           @apply grid gap-2;
       }
 
-      
+
+      .hilite, mark {
+        @apply shadow !bg-tertiary-darken1;
+        }
+
+
 
 }

@@ -103,8 +103,12 @@ const translate = (...args) => {
     @apply bg-canvas-darken pt-1 text-base;
 }
 
-.infl-wrapper .infl-label {
+.infl-wrapper .infl-label[scope='col'] {
     @apply text-center align-top;
+}
+
+.infl-wrapper .infl-label[scope='row'] {
+    @apply text-left align-bottom;
 }
 
 .infl-wrapper td.hilite {

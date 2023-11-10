@@ -156,14 +156,14 @@ const highlight_results = () => {
 
 
 watch(() => route.query, () =>  {
-    console.log("UPDATED", props.dict, props.article_id)
+    //console.log("UPDATED", props.dict, props.article_id)
     highlight_results()
 
 })
 
 
 onMounted (() => {
-  console.log("MOUNTED", props.dict, props.article_id)
+  //console.log("MOUNTED", props.dict, props.article_id)
   highlight_results()
 
 })

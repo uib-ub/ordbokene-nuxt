@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     '~/assets/fonts/fonts.css',
   ],
   components: [
-    {path: "~/vue-inflection", pathPrefix: false},
+    {path: "~/node_modules/inflection-table/src/components", pathPrefix: false},
     "~/components"
 
   ],

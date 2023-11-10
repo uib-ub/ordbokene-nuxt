@@ -171,7 +171,7 @@
             "thanks": "Takk for tilbakemeldinga!"
           }
     },
-    "table": {
+    "infl": {
         "caption":{
           "NOUN": "Bøyningstabell for dette substantivet",
           "VERB": "Bøyningstabell for dette verbet",
@@ -181,10 +181,8 @@
           "ADV": "Bøyningstabell for dette adverbet",
           "DET": "Bøyningstabell for dette determinativet",
           "PRON": "Bøyningstabell for dette pronomenet"
-        }
-        
         },
-        "infl_table_tags": { 
+        "tags": { 
             "Form": "form",
             "Gender": "kjønn",
             "Sing": "eintal",
@@ -214,8 +212,10 @@
             "SupDef": "superlativ bunden",
             "Nom": "subjektsform",
             "Acc": "objektsform",
-            "Uninfl": "ubøyeleg"
-        },
+            "Uninfl": "ubøyeleg",
+            "NOUN": "substantiv"
+        }
+    },
     "article": {
         "definition": "Definisjon",
         "show": "Opne artikkel",

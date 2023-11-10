@@ -175,7 +175,7 @@
     }
     
 },
-"table": {
+"infl": {
 "caption":{
   "NOUN": "Inflection table for this noun",
   "VERB": "Inflection table for this verb",
@@ -185,10 +185,8 @@
   "ADV": "Inflection table for this adverb",
   "DET": "Inflection table for this determinative",
   "PRON": "Inflection table for this pronoun"
-}
-
 },
-"infl_table_tags": { 
+"tags": { 
   "Form": "form",
   "Gender": "gender",
   "Sing": "singular",
@@ -218,7 +216,9 @@
   "SupDef": "superlative definite",
   "Nom": "subject form",
   "Acc": "object form",
-  "Uninfl": "uninflected"              
+  "Uninfl": "uninflected",
+  "NOUN": "noun"    
+}       
 },
 "article": {
     "definition": "Definition",

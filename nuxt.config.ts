@@ -8,12 +8,12 @@ const optionalLocale = "/:locale(" + locales.join("|") + ")?"
 export default defineNuxtConfig({
   css: [
     '~/assets/fonts/fonts.css',
-  ],  /*
+  ],
   components: [
-    {path: "~/components/Inflection", pathPrefix: false},
+    {path: "~/vue-inflection", pathPrefix: false},
     "~/components"
 
-  ], */
+  ],
   nitro: {
     preset: 'vercel',
     compressPublicAssets: true
@@ -178,12 +178,12 @@ export default defineNuxtConfig({
     }
   },
 
-  vite: { /*
+  vite: {
     server: {
       fs: {
           allow: ["../vue-inflection/src/components"]
       }
-    }, */
+    },
     resolve: {
       alias: {
         'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js'

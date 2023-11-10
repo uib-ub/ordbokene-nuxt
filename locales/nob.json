@@ -171,7 +171,7 @@
             "thanks": "Takk for tilbakemeldingen!"
         }
     },
-    "table": {
+    "infl": {
         "caption":{
           "NOUN": "Bøyingstabell for dette substantivet",
           "VERB": "Bøyingstabell for dette verbet",
@@ -181,42 +181,41 @@
           "ADV": "Bøyingstabell for dette adverbet",
           "DET": "Bøyingstabell for dette determinativet",
           "PRON": "Bøyingstabell for dette pronomenet"
-        }
-        
         },
-    "infl_table_tags": { 
-        "Form": "form",
-        "Gender": "kjønn",
-        "Sing": "entall",
-        "Plur": "flertall",
-        "Ind": "ubestemt",
-        "Def": "bestemt",
-        "Finite": "finitte former",
-        "Inf": "infinitiv",
-        "Pres": "presens",
-        "Past": "preteritum",
-        "PresPerf": "presens perfektum",
-        "Imp": "imperativ",
-        "PerfPart": "perfektum partisipp",
-        "Fem": "hunkjønn",
-        "FemShort": "hunkjønn",
-        "Masc": "hankjønn",
-        "MascShort": "hankjønn",
-        "MascFem": "hankjønn/ hunkjønn",
-        "Neuter": "intetkjønn",
-        "NeuterShort": "intetkjønn",
-        "PresPart": "presens partisipp",
-        "Deg": "gradbøying",
-        "Pos": "positiv",
-        "Cmp": "komparativ",
-        "Sup": "superlativ",
-        "SupInd": "superlativ ubestemt",
-        "SupDef": "superlativ bestemt",
-        "Nom": "subjektsform",
-        "Acc": "objektsform",
-        "Uninfl": "ubøyelig"
+        "tags": { 
+            "Form": "form",
+            "Gender": "kjønn",
+            "Sing": "entall",
+            "Plur": "flertall",
+            "Ind": "ubestemt",
+            "Def": "bestemt",
+            "Finite": "finitte former",
+            "Inf": "infinitiv",
+            "Pres": "presens",
+            "Past": "preteritum",
+            "PresPerf": "presens perfektum",
+            "Imp": "imperativ",
+            "PerfPart": "perfektum partisipp",
+            "Fem": "hunkjønn",
+            "FemShort": "hunkjønn",
+            "Masc": "hankjønn",
+            "MascShort": "hankjønn",
+            "MascFem": "hankjønn/ hunkjønn",
+            "Neuter": "intetkjønn",
+            "NeuterShort": "intetkjønn",
+            "PresPart": "presens partisipp",
+            "Deg": "gradbøying",
+            "Pos": "positiv",
+            "Cmp": "komparativ",
+            "Sup": "superlativ",
+            "SupInd": "superlativ ubestemt",
+            "SupDef": "superlativ bestemt",
+            "Nom": "subjektsform",
+            "Acc": "objektsform",
+            "Uninfl": "ubøyelig",
+            "NOUN": "substantiv"
+        }
     },
-
     "article": {
         "definition": "Definisjon",
         "show": "Åpne artikkel",

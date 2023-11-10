@@ -46,7 +46,7 @@ const translate = (...args) => {
 
 <style>
 
-.infl-wrapper {
+.infl-wrapper, .infl-wrapper>div {
     @apply flex flex-col items-start gap-4
 }
 

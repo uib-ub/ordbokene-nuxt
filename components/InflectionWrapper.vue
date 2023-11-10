@@ -52,7 +52,8 @@ const translate = (...args) => {
 
 
 .infl-wrapper caption {
-    @apply sr-only;
+    @apply w-0 h-0 overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
 
 }
 

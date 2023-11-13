@@ -32,10 +32,10 @@ export default defineNuxtConfig({
     sitemaps: true,
     strictNuxtContentPaths: false,
     defaultSitemapsChunkSize: 20000,
+    cacheMaxAgeSeconds: 360,
     sources: [
       '/api/__sitemap__/urls'
-    ]
-
+    ],
   },
 
   build: {

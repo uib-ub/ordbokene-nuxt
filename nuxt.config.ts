@@ -28,6 +28,9 @@ export default defineNuxtConfig({
       commit: process.env.VERCEL_GIT_COMMIT_SHA
     }
   },
+  site: {
+    url: 'https://dev.ordbokene.no',
+  },
   sitemap: {
     sitemaps: true,
     cacheMaxAgeSeconds: 360,

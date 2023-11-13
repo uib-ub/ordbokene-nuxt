@@ -1,18 +1,35 @@
 # Ordbøkene: nuxt
-:warning: Git history not transferred from previous repos :warning:
-## Before migration to monorepo
-<p>https://git.app.uib.no/spraksamlingane/ordbok-nuxt/-/tree/main</p>
-
-## Before migration to Nuxt
-* https://git.app.uib.no/spraksamlingane/beta.ordbok.uib.no (Mainly developed by Ole Voldsæter and Henrik Askjer)
-* https://git.app.uib.no/spraksamlingane/vue-inflection (Mainly developed by Ole Voldsæter and Paul Maurer)
 
 
-## New features
-* Migrated from vue 2 to Nuxt 3 (vue 3)
-* Search split into two:
-    - Simple search: redirects to inflected result if no exact matches
-    - Advanced search: all additional query parameters moved here, wildcards, pagination.
-* Vuetify => TailwindCSS with custom components
-    - Custom search bar/autocomplete
-    - New styling closer to the design from Netlife (since we no longer depend on Vuetify and Meterial Design)
+## Project setup
+### Add the inflection tables:
+1. Clone [vue-inflection repo](https://git.app.uib.no/spraksamlingane/vue-inflection), e. g. in the parent directory of ordbokene-nuxt.
+2. Create a symlink between vue-inflection/src/components and ordbokene-nuxt/vue-inflection
+Windows:
+```console
+mklink /d C:\path\to\repos\ordbokene-nuxt\vue-inflection C:\path\to\repos\vue-inflection\src\components
+
+```
+
+Mac and Linux
+```console
+ln -s /path/to/repos/vue-inflection/src/components /path/to/repos/ordbokene-nuxt/vue-inflection
+```
+
+When deploying, the main branch will use the version of vue-inflection specified in .gitlab-ci.yml, while other branches will use the branch vue3-dev.
+
+
+### Install packages
+Installing and running dev environment:
+```console
+npm install
+```
+
+### Develop
+```console
+npm run dev
+```
+
+## Text content
+The text content of the help pages, about pages and contact us page are fetched at build time from the master branch of this repo:
+https://git.app.uib.no/spraksamlingane/ordbokene-content

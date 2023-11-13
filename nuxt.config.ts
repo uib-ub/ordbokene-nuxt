@@ -28,6 +28,15 @@ export default defineNuxtConfig({
       commit: process.env.VERCEL_GIT_COMMIT_SHA
     }
   },
+  sitemap: {
+    sitemaps: true,
+    strictNuxtContentPaths: false,
+    defaultSitemapsChunkSize: 20000,
+    sources: [
+      '/api/__sitemap__/urls'
+    ]
+
+  },
 
   build: {
 		transpile: ["primevue", 'vue-i18n']
@@ -41,6 +50,7 @@ export default defineNuxtConfig({
       '@nuxt/content',
       '@nuxtjs/html-validator',
       '@nuxtjs/plausible',
+      'nuxt-simple-sitemap'
     ],
 
   htmlValidator: {

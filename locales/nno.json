@@ -78,17 +78,17 @@
     "NOUN": "substantiv",
     "VERB": "verb",
     "ADJ": "adjektiv",
-    "ADP": "preposisjon",
+    "ADP": "preposisjon|preposisjonar",
     "PFX": "prefiks",
     "ADV": "adverb",
     "DET": "determinativ",
     "PROPN": "eigennamn",
     "ABBR": "forkorting",
-    "INTJ": "interjeksjon",
+    "INTJ": "interjeksjon|interjeksjonar",
     "SYM": "symbol",
     "PRON": "pronomen",
-    "CCONJ": "konjunksjon",
-    "SCONJ": "subjunksjon",
+    "CCONJ": "konjunksjon|konjunksjonar",
+    "SCONJ": "subjunksjon|subjunksjonar",
     "INFM": "infinitivsmerke",
     "COMPPFX": "i samansetjing",
     "Masc": "hankjønn",
@@ -96,18 +96,6 @@
     "Neuter": "inkjekjønn",
     "Uninfl": "ubøyeleg"
     },
-  "pos_tags_plural": {
-      "NOUN": "substantiv",
-      "PRON": "pronomen",
-      "DET": "determinativ",
-      "ADJ": "adjektiv",
-      "CCONJ": "konjunksjonar",
-      "SCONJ": "subjunksjonar",
-      "ADV": "adverb",
-      "ADP": "preposisjonar",
-      "VERB": "verb",
-      "INTJ": "interjeksjonar"
-  },
   "determiner": {
     "Quant": "kvantor",
     "Dem": "demonstrativ",
@@ -183,7 +171,7 @@
             "thanks": "Takk for tilbakemeldinga!"
           }
     },
-    "table": {
+    "infl": {
         "caption":{
           "NOUN": "Bøyningstabell for dette substantivet",
           "VERB": "Bøyningstabell for dette verbet",
@@ -193,10 +181,8 @@
           "ADV": "Bøyningstabell for dette adverbet",
           "DET": "Bøyningstabell for dette determinativet",
           "PRON": "Bøyningstabell for dette pronomenet"
-        }
-        
         },
-        "infl_table_tags": { 
+        "tags": { 
             "Form": "form",
             "Gender": "kjønn",
             "Sing": "eintal",
@@ -226,8 +212,10 @@
             "SupDef": "superlativ bunden",
             "Nom": "subjektsform",
             "Acc": "objektsform",
-            "Uninfl": "ubøyeleg"
-        },
+            "Uninfl": "ubøyeleg",
+            "NOUN": "substantiv"
+        }
+    },
     "article": {
         "definition": "Definisjon",
         "show": "Opne artikkel",

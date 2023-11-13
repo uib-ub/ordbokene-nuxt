@@ -6,55 +6,61 @@ stages:
   - prod
 
 
-.ordbokene:
+.deploy:
   variables:
     VERCEL_ORG_ID: $VERCEL_ORG_ID
     VERCEL_PROJECT_ID: $VERCEL_ORDBOKENE_PROJECT_ID
     VERCEL_TOKEN: $VERCEL_TOKEN_HENRIK
+  script:
+  - curl -L https://git.app.uib.no/api/v4/projects/16442/jobs/artifacts/${INFLECTION_VERSION}/raw/components.tar.gz?job=publish_vue3 | tar xz
+  - npm install --global vercel
+  - vercel pull --yes --environment=$ENVIRONMENT --token=$VERCEL_TOKEN
+  - vercel build --token=$VERCEL_TOKEN $([ "$ENVIRONMENT" = "production"] && echo "--prod")
+  - vercel deploy --prebuilt $([ "$ENVIRONMENT" = "production"] && echo "--prod") --token=$VERCEL_TOKEN
+                  -m gitlabDeployment="1"
+                  -m gitlabCommitAuthorName="${CI_COMMIT_AUTHOR}"
+                  -m gitlabCommitMessage="${CI_COMMIT_MESSAGE}"
+                  -m gitlabCommitOrg="${CI_PROJECT_NAMESPACE}"
+                  -m gitlabCommitRef="${CI_COMMIT_REF_NAME}"
+                  -m gitlabCommitRepo="ordbokene-nuxt"
+                  -m gitlabCommitSha="${CI_COMMIT_SHA}"
+                  -m gitlabOrg="https://git.app.uib.no/"
+                  -m gitlabRepo="ordbokene-nuxt"
+                  -m gitlabCommitAuthorLogin="${GITLAB_USER_LOGIN}"
   tags:
     - group_runner_spraaksamlingene_01
 
 
-ordbokene_preview:
+
+preview_dev:
+  extends: .deploy
   stage: preview
-  extends: .ordbokene
-  script:
-    - npm install --global vercel
-    - vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
-    - cat .vercel/project.json
-    - vercel build --token=$VERCEL_TOKEN
-    - vercel deploy --prebuilt --token=$VERCEL_TOKEN
-                    -m gitlabDeployment="1"
-                    -m gitlabCommitAuthorName="${CI_COMMIT_AUTHOR}"
-                    -m gitlabCommitMessage="${CI_COMMIT_MESSAGE}"
-                    -m gitlabCommitOrg="${CI_PROJECT_NAMESPACE}"
-                    -m gitlabCommitRef="${CI_COMMIT_REF_NAME}"
-                    -m gitlabCommitRepo="ordbokene-nuxt"
-                    -m gitlabCommitSha="${CI_COMMIT_SHA}"
-                    -m gitlabOrg="https://git.app.uib.no/"
-                    -m gitlabRepo="ordbokene-nuxt"
-                    -m gitlabCommitAuthorLogin="${GITLAB_USER_LOGIN}"
+  except: 
+  - main
+  variables:
+    ENVIRONMENT: preview
+    INFLECTION_VERSION: vue3-dev
 
 
-ordbokene_prod:
-  extends: .ordbokene
+.main-branch:
+  extends: .deploy
+  only: 
+  - main
+  variables:
+    INFLECTION_VERSION: 1.2.1
+
+
+preview_main:
+  extends: .main-branch
+  stage: preview
+  variables:
+    ENVIRONMENT: preview
+
+
+prod_main:
+  extends: .main-branch
   stage: prod
   when: manual
-  only:
-    - main
-  script:
-    - npm install --global vercel
-    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
-    - vercel build --prod --token=$VERCEL_TOKEN
-    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
-                    -m gitlabDeployment="1"
-                    -m gitlabCommitAuthorName="${CI_COMMIT_AUTHOR}"
-                    -m gitlabCommitMessage="${CI_COMMIT_MESSAGE}"
-                    -m gitlabCommitOrg="${CI_PROJECT_NAMESPACE}"
-                    -m gitlabCommitRef="${CI_COMMIT_REF_NAME}"
-                    -m gitlabCommitRepo="ordbokene-nuxt"
-                    -m gitlabCommitSha="${CI_COMMIT_SHA}"
-                    -m gitlabOrg="https://git.app.uib.no/"
-                    -m gitlabRepo="ordbokene-nuxt"
-                    -m gitlabCommitAuthorLogin="${GITLAB_USER_LOGIN}"
+  variables:
+    ENVIRONMENT: production
 

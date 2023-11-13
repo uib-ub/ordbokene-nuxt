@@ -74,20 +74,20 @@
 "all_pos": "all",
 "gender":"gender",
 "tags": {
-  "NOUN": "noun",
-  "VERB": "verb",
-  "ADJ": "adjective",
-  "ADP": "preposition",
+  "NOUN": "noun|nouns",
+  "VERB": "verb|verbs",
+  "ADJ": "adjective|adjectives",
+  "ADP": "preposition|prepositions",
   "PFX": "prefix",
-  "ADV": "adverb",
-  "DET": "determiner",
+  "ADV": "adverb|adverbs",
+  "DET": "determiner|determiners",
   "PROPN": "proper noun",
   "ABBR": "abbreviation",
-  "INTJ": "interjection",
+  "INTJ": "interjection|interjections",
   "SYM": "symbol",
-  "PRON": "pronoun",
-  "CCONJ": "conjunction",
-  "SCONJ": "subjunction",
+  "PRON": "pronoun|Pronouns",
+  "CCONJ": "conjunction|conjunctions",
+  "SCONJ": "subjunction|subjunctions",
   "INFM": "infinitive particle",
   "COMPPFX": "in compounds",
   "Masc": "masculine",
@@ -95,18 +95,6 @@
   "Neuter": "neuter",
   "Uninfl": "uninflectable"
   },
-"pos_tags_plural": {
-  "NOUN": "Nouns",
-  "PRON": "Pronouns",
-  "DET": "Determiners",
-  "ADJ": "Adjectives",
-  "CCONJ": "Conjunctions",
-  "SCONJ": "Subjunctions",
-  "ADV": "Adverbs",
-  "ADP": "Prepositions",
-  "VERB": "Verbs",
-  "INTJ": "Interjections"
-},
 "determiner": {
   "Quant": "quantifier",
   "Dem": "demonstrative",
@@ -187,7 +175,7 @@
     }
     
 },
-"table": {
+"infl": {
 "caption":{
   "NOUN": "Inflection table for this noun",
   "VERB": "Inflection table for this verb",
@@ -197,10 +185,8 @@
   "ADV": "Inflection table for this adverb",
   "DET": "Inflection table for this determinative",
   "PRON": "Inflection table for this pronoun"
-}
-
 },
-"infl_table_tags": { 
+"tags": { 
   "Form": "form",
   "Gender": "gender",
   "Sing": "singular",
@@ -230,7 +216,9 @@
   "SupDef": "superlative definite",
   "Nom": "subject form",
   "Acc": "object form",
-  "Uninfl": "uninflected"              
+  "Uninfl": "uninflected",
+  "NOUN": "noun"    
+}       
 },
 "article": {
     "definition": "Definition",

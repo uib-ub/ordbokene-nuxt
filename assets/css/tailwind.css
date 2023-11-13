@@ -306,5 +306,10 @@
       }
 
 
+      .hilite, mark {
+        @apply shadow !bg-tertiary-darken1;
+        }
+
+
 
 }

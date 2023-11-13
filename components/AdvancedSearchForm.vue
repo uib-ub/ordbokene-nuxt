@@ -22,7 +22,7 @@
         <div class="whitespace-nowrap p-1 xl:bg-tertiary xl:shadow-none flex xl:flex-grow-0 items-baseline"> 
             <label for="pos-select">{{ $t('pos') }}</label>
             <select id="pos-select" name="pos" class="bg-tertiary flex-grow md:grow-0 p-2 md:p-0" @change="update_pos">
-                <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="tag" :selected="store.pos == tag" :class="{selected: store.pos == tag}">{{tag ? $t("tags." + tag) : $t("all_pos")}}</option>
+                <option v-for="(tag, idx) in  pos_tags" :key="idx" :value="tag" :selected="store.pos == tag" :class="{selected: store.pos == tag}">{{tag ? $t("tags." + tag, 2) : $t("all_pos")}}</option>
             </select>
         </div>
         <div  v-if="!(store.pos == null &&  store.scope == 'e' && store.dict == 'bm,nn')"  class="flex w-full sm:w-[128px] sm:min-w-[128px] sm:max-w-[128px] !py-0">

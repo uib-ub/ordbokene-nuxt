@@ -38,7 +38,7 @@ build-sitemap:
   image: "python:3.9"
   stage: "sitemap"
   script:
-    - npm install requests
+    - pip3 install requests
     - mkdir public/sitemaps
     - python3 sitemap.py
   artifacts:

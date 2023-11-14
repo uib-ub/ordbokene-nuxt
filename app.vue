@@ -1,5 +1,5 @@
 <template>
   <div>
-    <h1>I am alive</h1>
+    <h1>I am alive(dev).</h1>
   </div>
 </template>

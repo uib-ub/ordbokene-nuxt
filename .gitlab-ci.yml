@@ -2,6 +2,7 @@ default:
   image: node:18
 
 stages:
+  - sitemap
   - preview
   - prod
 
@@ -31,6 +32,20 @@ stages:
     - group_runner_spraaksamlingene_01
 
 
+build-sitemap:
+  tags:
+  - group_runner_spraaksamlingene_01
+  image: "python:3.9"
+  stage: "sitemap"
+  script:
+    - pip3 install requests
+    - mkdir public/sitemaps
+    - python3 sitemap.py
+  artifacts:
+    expire_in: 1 week
+    paths:
+    - public/sitemap_index.xml
+    - public/sitemaps/*
 
 preview_dev:
   extends: .deploy

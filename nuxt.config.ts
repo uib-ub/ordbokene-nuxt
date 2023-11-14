@@ -16,7 +16,11 @@ export default defineNuxtConfig({
   ],
   nitro: {
     preset: 'vercel',
-    compressPublicAssets: true
+    compressPublicAssets: true,
+    prerender: {
+      routes: ['/api/0-sitemap.xml']
+    }
+
   },
   runtimeConfig: {
     public: {

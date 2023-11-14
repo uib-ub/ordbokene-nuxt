@@ -23,9 +23,9 @@
         </client-only>
       </template>
       <component :is="settings.listView ? 'ol' : 'div'" v-if="articles.meta[dict] && articles.meta[dict].total > 0"  class="article-column">
-        <component :is="settings.listView ? 'li' : 'div'" v-for="(article_id, idx) in articles.articles[dict].slice(offset, offset + perPage)" :key="article_id">
+        <component :is="settings.listView ? 'li' : 'div'" v-for="article_id in articles.articles[dict].slice(offset, offset + perPage)" :key="article_id">
           <NuxtErrorBoundary @error="article_error($event, article_id, dict)">
-            <Article :scoped_locale="scoped_locale(dict)" :article_id="article_id" :dict="dict" :idx="idx" :list="settings.listView"/>
+            <Article :scoped_locale="scoped_locale(dict)" :article_id="article_id" :dict="dict" :list="settings.listView"/>
           </NuxtErrorBoundary>
         </component>
       </component>

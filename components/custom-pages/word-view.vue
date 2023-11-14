@@ -16,9 +16,9 @@
             </h2>
           </div>
           <component :is="listView ? 'ol' : 'div'" v-if="articles.meta[dict] && articles.meta[dict].total"  class="article-column">
-            <component :is="listView ? 'li' : 'div'" v-for="(article_id, idx) in articles.articles[dict]" :key="article_id" >
+            <component :is="listView ? 'li' : 'div'" v-for="article_id in articles.articles[dict]" :key="article_id" >
               <NuxtErrorBoundary @error="article_error($event, article_id, dict)">
-                <Article :scoped_locale="scoped_locale(dict)" :list="listView" :article_id="article_id" :dict="dict" :idx="idx"/>
+                <Article :scoped_locale="scoped_locale(dict)" :list="listView" :article_id="article_id" :dict="dict"/>
               </NuxtErrorBoundary>
             </component>
           </component>

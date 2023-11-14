@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     preset: 'vercel',
     compressPublicAssets: true,
     prerender: {
-      routes: ['/api/0-sitemap.xml'].concat(locales.reduce((acc, locale) => acc.concat(['help', 'about', 'contact'].map(page => "/" + locale + "/" + page)), []))
+      routes: ['/api/0-sitemap.xml']
     }
 
   },

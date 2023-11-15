@@ -16,12 +16,12 @@ export default defineEventHandler(async (event) => {
             return  '<url><loc>' + site + '/' + page + '</loc>' 
             + localeConfig.map(item => {
                 return '<xhtml:link rel="alternate" hreflang="' + item.lang + '" href="' + site + '/' + item.locale + '/' + page + '"/>'
-            }).join("\n")
+            }).join("\n") + '</url>\n'
         
         }
         ).join("\n")
         }
-        </url>\n</urlset>
+        </urlset>
         `
 
 

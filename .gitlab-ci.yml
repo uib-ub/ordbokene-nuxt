@@ -9,8 +9,8 @@ stages:
 
 .deploy:
   rules:
-  - if: $CI_PIPELINE_SOURCE == "schedule"
-    when: never
+  except:
+  - schedules
   variables:
     VERCEL_ORG_ID: $VERCEL_ORG_ID
     VERCEL_PROJECT_ID: $VERCEL_ORDBOKENE_PROJECT_ID
@@ -36,8 +36,8 @@ stages:
 
 
 build-sitemap:
-  rules:
-  - if: $CI_PIPELINE_SOURCE == "schedule"
+  only:
+  - schedules
   tags:
   - group_runner_spraaksamlingene_01
   image: "python:3.9"

@@ -16,7 +16,11 @@ export default defineNuxtConfig({
   ],
   nitro: {
     preset: 'vercel',
-    compressPublicAssets: true
+    compressPublicAssets: true,
+    prerender: {
+      routes: ['/api/0-sitemap.xml']
+    }
+
   },
   runtimeConfig: {
     public: {
@@ -28,7 +32,6 @@ export default defineNuxtConfig({
       commit: process.env.VERCEL_GIT_COMMIT_SHA
     }
   },
-
   build: {
 		transpile: ["primevue", 'vue-i18n']
 	},
@@ -40,7 +43,7 @@ export default defineNuxtConfig({
       'nuxt-icon',
       '@nuxt/content',
       '@nuxtjs/html-validator',
-      '@nuxtjs/plausible',
+      '@nuxtjs/plausible'
     ],
 
   htmlValidator: {

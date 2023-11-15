@@ -81,7 +81,7 @@
           <section v-if="has_content && !welcome" class="definitions">
               <h4 v-if="!welcome" :lang="locale2lang[scoped_locale]">{{$t('article.headings.definitions', 1, { locale: scoped_locale})}}</h4>
 
-              <Definition v-for="definition in data.body.definitions" :key="definition.id" :scoped_locale="scoped_locale" :dict="dict" :level="1" :body='definition' :welcome="welcome" @link-click="link_click"/>
+              <Definition v-for="definition in data.body.definitions" :key="definition.id" :scoped_locale="scoped_locale" :dict="dict" :level="1" :body='definition' @link-click="link_click"/>
 
           </section>
           <section v-if="sub_articles.length && !welcome" class="expressions">
@@ -288,7 +288,7 @@ const sub_articles = computed(() => {
 
 
 const link_click = (itemref) => {
-  useTrackEvent('article_clicked', {props: {combined: props.dict + "/" + props.article_id, to: itemref, combined: props.dict + "/" + props.article_id + " => " + itemref}})
+  useTrackEvent('article_clicked', {props: {to: itemref, combined: props.dict + "/" + props.article_id + " => " + itemref}})
 }
 
 const link_to_self = () => {

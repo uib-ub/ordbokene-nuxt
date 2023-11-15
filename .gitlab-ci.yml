@@ -45,7 +45,7 @@ build-sitemap:
   script:
     - pip3 install requests
     - mkdir sitemaps
-    - python3 sitemap.py
+    - python3 sitemap.py $CI_COMMIT_REF_NAME
   artifacts:
     expire_in: 1 week
     paths:

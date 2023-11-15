@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
         {lang: 'uk', locale: 'ukr'},
     ]
     const pages = ['', 'bm', 'nn', 'search', 'help', 'about', 'contact' ]
-    const baseurl = (process.env.VERCEL_ENV ? 'https://' : 'http://') + event.headers.get('host').toString()
+    const baseurl = {preview: 'https://dev.ordbokene.no', production: 'https://test.ordbokene.no'}[process.env.VERCEL_ENV] || 'http://' + event.headers.get('host').toString()
 
     event.node.res.setHeader("Content-Type", 'text/xml')
     return `<?xml version="1.0" encoding="UTF-8"?>

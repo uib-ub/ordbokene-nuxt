@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
         {lang: 'uk', locale: 'ukr'},
     ]
     const pages = ['', 'bm', 'nn', 'search', 'help', 'about', 'contact' ]
-    const site = "https://dev.ordbokene.no"
+    const baseurl = (process.env.VERCEL_ENV ? 'https://' : 'http://') + event.headers.get('host').toString()
 
     event.node.res.setHeader("Content-Type", 'text/xml')
     return `<?xml version="1.0" encoding="UTF-8"?>
@@ -15,7 +15,7 @@ export default defineEventHandler(async (event) => {
         ${  pages.map(page => {
             return  '<url><loc>' + site + '/' + page + '</loc>' 
             + localeConfig.map(item => {
-                return '<xhtml:link rel="alternate" hreflang="' + item.lang + '" href="' + site + '/' + item.locale + '/' + page + '"/>'
+                return '<xhtml:link rel="alternate" hreflang="' + item.lang + '" href="' + baseurl + '/' + item.locale + '/' + page + '"/>'
             }).join("\n") + '</url>\n'
         
         }

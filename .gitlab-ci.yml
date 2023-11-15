@@ -38,6 +38,8 @@ stages:
 build-sitemap:
   only:
   - schedules
+  - ordbokene-dev
+  - main
   tags:
   - group_runner_spraaksamlingene_01
   image: "python:3.9"

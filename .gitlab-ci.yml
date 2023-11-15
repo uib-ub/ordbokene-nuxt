@@ -49,7 +49,6 @@ build-sitemap:
   artifacts:
     expire_in: 1 week
     paths:
-    - sitemap_index.xml
     - sitemaps/*
 
 preview_dev:

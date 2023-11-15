@@ -56,7 +56,7 @@ if __name__ == "__main__":
     tree = ET.ElementTree(root)
     ET.indent(tree)
     
-    tree.write('sitemap_index.xml', encoding='utf-8', xml_declaration=True)
+    tree.write('sitemaps/sitemap_index.xml', encoding='utf-8', xml_declaration=True)
         
         
         

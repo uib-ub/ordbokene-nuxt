@@ -3,11 +3,8 @@ export default defineEventHandler(async (event) => {
     let filename = event.context.params["filename.xml"]
     event.node.res.setHeader("Content-Type", 'text/xml')
 
-    if (filename != "sitemap_index.xml") {
-        filename = "sitemaps/" + filename
-    }
-    
-    const xml = await $fetch(`https://git.app.uib.no/api/v4/projects/23985/jobs/artifacts/scheduled-sitemap/raw/${filename}?job=build-sitemap`, {
+    const branch = process.env.VERCEL_GIT_COMMIT_REF || 'scheduled-sitemap'
+    const xml = await $fetch(`https://git.app.uib.no/api/v4/projects/23985/jobs/artifacts/${branch}/raw/sitemaps/${filename}?job=build-sitemap`, {
     headers: {
       ContentType: 'text/xml'
     }

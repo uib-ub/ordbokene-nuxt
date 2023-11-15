@@ -92,9 +92,7 @@
             </section>
 
           <div v-if="welcome">
-            <WelcomeMarkdown :path="`/welcome/${dict}/${article_id}`">
-              {{snippet}}
-            </WelcomeMarkdown>
+            {{snippet}}
           </div>
       </div>
   </div>

@@ -3,8 +3,8 @@ import math
 import xml.etree.ElementTree as ET
 import sys
 
-BASEURL = "https://ordbokene.no/" if sys.argv[0] == 'main' else "https://dev.ordbokene.no"
-print(sys.argv[0])
+BASEURL = "https://ordbokene.no/" if sys.argv[1] == 'main' else "https://dev.ordbokene.no"
+print(sys.argv[1])
 
 def compile_urls():
     bm = requests.get('https://ord.uib.no/bm/fil/lemma.json').json()

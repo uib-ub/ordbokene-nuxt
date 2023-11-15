@@ -8,6 +8,9 @@ stages:
 
 
 .deploy:
+  rules:
+  except:
+  - schedules
   variables:
     VERCEL_ORG_ID: $VERCEL_ORG_ID
     VERCEL_PROJECT_ID: $VERCEL_ORDBOKENE_PROJECT_ID
@@ -33,25 +36,27 @@ stages:
 
 
 build-sitemap:
+  only:
+  - schedules
   tags:
   - group_runner_spraaksamlingene_01
   image: "python:3.9"
   stage: "sitemap"
   script:
     - pip3 install requests
-    - mkdir public/sitemaps
-    - python3 sitemap.py
+    - mkdir sitemaps
+    - python3 sitemap.py $CI_COMMIT_REF_NAME
   artifacts:
     expire_in: 1 week
     paths:
-    - public/sitemap_index.xml
-    - public/sitemaps/*
+    - sitemaps/*
 
 preview_dev:
   extends: .deploy
   stage: preview
   except: 
   - main
+  - schedules
   variables:
     ENVIRONMENT: preview
     INFLECTION_VERSION: vue3-dev

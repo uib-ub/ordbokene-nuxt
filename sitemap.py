@@ -1,8 +1,10 @@
 import requests
 import math
 import xml.etree.ElementTree as ET
+import sys
 
-BASEURL = "https://ordbokene.no"
+BASEURL = "https://ordbokene.no" if sys.argv[1] == 'main' else "https://dev.ordbokene.no"
+print(sys.argv[1])
 
 def compile_urls():
     bm = requests.get('https://ord.uib.no/bm/fil/lemma.json').json()
@@ -33,7 +35,7 @@ def save_sitemap_chunk(num, pages, urls):
     
     tree = ET.ElementTree(root)
     ET.indent(tree)
-    tree.write(f'public/sitemaps/{num}-sitemap.xml', encoding='utf-8', xml_declaration=True)
+    tree.write(f'sitemaps/{num}-sitemap.xml', encoding='utf-8', xml_declaration=True)
 
 
 
@@ -56,7 +58,7 @@ if __name__ == "__main__":
     tree = ET.ElementTree(root)
     ET.indent(tree)
     
-    tree.write('public/sitemap_index.xml', encoding='utf-8', xml_declaration=True)
+    tree.write('sitemaps/sitemap_index.xml', encoding='utf-8', xml_declaration=True)
         
         
         

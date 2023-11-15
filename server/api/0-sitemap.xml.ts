@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
     return `<?xml version="1.0" encoding="UTF-8"?>
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/TR/xhtml11/xhtml11_schema.html">
         ${  pages.map(page => {
-            return  '<url><loc>' + site + '/' + page + '</loc></url>\n' 
+            return  '<url><loc>' + site + '/' + page + '</loc>' 
             + localeConfig.map(item => {
                 return '<xhtml:link rel="alternate" hreflang="' + item.lang + '" href="' + site + '/' + item.locale + '/' + page + '"/>'
             }).join("\n")
@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
         }
         ).join("\n")
         }
-        </urlset>
+        </url>\n</urlset>
         `
 
 

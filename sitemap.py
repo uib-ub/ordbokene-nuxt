@@ -2,7 +2,7 @@ import requests
 import math
 import xml.etree.ElementTree as ET
 
-BASEURL = "https://ordbokene.no"
+BASEURL = "https://dev.ordbokene.no"
 
 def compile_urls():
     bm = requests.get('https://ord.uib.no/bm/fil/lemma.json').json()

@@ -28,7 +28,7 @@ export default defineNuxtConfig({
       apiFallback: 'https://odd.uib.no/opal/prod/',
       apiDev: 'https://oda.uib.no/opal/dev/',
       apiDevFallback:  'https://odd.uib.no/opal/dev/',
-      env: process.env.NODE_ENV || 'local',
+      env: process.env.VERCEL_ENV || 'local',
       commit: process.env.VERCEL_GIT_COMMIT_SHA
     }
   },

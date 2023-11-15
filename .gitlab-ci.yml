@@ -8,6 +8,9 @@ stages:
 
 
 .deploy:
+  rules:
+  - if: $CI_PIPELINE_SOURCE == "schedule"
+    when: never
   variables:
     VERCEL_ORG_ID: $VERCEL_ORG_ID
     VERCEL_PROJECT_ID: $VERCEL_ORDBOKENE_PROJECT_ID
@@ -33,19 +36,21 @@ stages:
 
 
 build-sitemap:
+  rules:
+  - if: $CI_PIPELINE_SOURCE == "schedule"
   tags:
   - group_runner_spraaksamlingene_01
   image: "python:3.9"
   stage: "sitemap"
   script:
     - pip3 install requests
-    - mkdir public/sitemaps
+    - mkdir sitemaps
     - python3 sitemap.py
   artifacts:
     expire_in: 1 week
     paths:
-    - public/sitemap_index.xml
-    - public/sitemaps/*
+    - sitemap_index.xml
+    - sitemaps/*
 
 preview_dev:
   extends: .deploy

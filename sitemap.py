@@ -33,7 +33,7 @@ def save_sitemap_chunk(num, pages, urls):
     
     tree = ET.ElementTree(root)
     ET.indent(tree)
-    tree.write(f'public/sitemaps/{num}-sitemap.xml', encoding='utf-8', xml_declaration=True)
+    tree.write(f'sitemaps/{num}-sitemap.xml', encoding='utf-8', xml_declaration=True)
 
 
 
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     tree = ET.ElementTree(root)
     ET.indent(tree)
     
-    tree.write('public/sitemap_index.xml', encoding='utf-8', xml_declaration=True)
+    tree.write('sitemap_index.xml', encoding='utf-8', xml_declaration=True)
         
         
         

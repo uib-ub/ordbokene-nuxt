@@ -57,6 +57,7 @@ preview_dev:
   stage: preview
   except: 
   - main
+  - schedules
   variables:
     ENVIRONMENT: preview
     INFLECTION_VERSION: vue3-dev

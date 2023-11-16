@@ -3,8 +3,16 @@ import math
 import xml.etree.ElementTree as ET
 import sys
 
-BASEURL = "https://test.ordbokene.no" if sys.argv[1] == 'main' else "https://dev.ordbokene.no"
-print(sys.argv[1])
+LOCALECONFIG = [
+        {"lang": 'en', "locale": 'eng'},
+        {"lang": 'nn', "locale": 'nno'},
+        {"lang": 'nb', "locale": 'nob'},
+        {"lang": 'uk', "locale": 'ukr'},
+    ]
+
+PAGES = ['', 'bm', 'nn', 'search', 'help', 'about', 'contact' ]
+
+BASEURL = "https://test.ordbokene.no" if len(sys.argv) > 1 and sys.argv[1] == 'main' else "https://dev.ordbokene.no"
 
 def compile_urls():
     bm = requests.get('https://ord.uib.no/bm/fil/lemma.json').json()
@@ -19,7 +27,21 @@ def compile_urls():
 
     return searches + list(bm_articles) + list(nn_articles)
 
-seen = set()
+def save_static_sitemap():
+    root = ET.Element('urlset', attrib={'xmlns': 'http://www.sitemaps.org/schemas/sitemap/0.9', ' xmlns:xhtml': 'http://www.w3.org/1999/xhtml'})   
+    for page in PAGES:
+        url = ET.SubElement(root, 'url')
+        loc = ET.SubElement(url, 'url')
+        loc.text = BASEURL + page
+        for locale_info in LOCALECONFIG:
+            link = ET.SubElement(root, 'xhtml:link', attrib={'rel': 'alternate', 'hreflang': locale_info["lang"], 'href': BASEURL + locale_info["locale"]+ page})
+
+
+    tree = ET.ElementTree(root)
+    ET.indent(tree)
+    tree.write(f'sitemaps/0-sitemap.xml', encoding='utf-8', xml_declaration=True)
+
+
 def save_sitemap_chunk(num, pages, urls):
     offset = 10000*(num - 1)
     end = 10000*num
@@ -27,8 +49,6 @@ def save_sitemap_chunk(num, pages, urls):
     chunk = urls[offset:end]
 
     for route in chunk:
-        assert route not in seen
-        seen.add(route)
         url = ET.SubElement(root, 'url')
         loc = ET.SubElement(url, 'loc')
         loc.text = BASEURL + route
@@ -50,7 +70,9 @@ if __name__ == "__main__":
         loc = ET.SubElement(sitemap, 'loc')
         loc.text = f"{BASEURL}/api/{num}-sitemap.xml"
 
-        if num > 0:
+        if num == 0:
+            save_static_sitemap()
+        else:
             save_sitemap_chunk(num, pages, urls)
 
     urlset = set(urls)

@@ -8,5 +8,5 @@ node_modules
 .vscode
 vue-inflection
 dist
-public/sitemap_index.xml
-public/sitemaps
+sitemaps
+sitemap_index.xml

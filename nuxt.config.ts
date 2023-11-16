@@ -192,5 +192,5 @@ export default defineNuxtConfig({
 
     ],
   },
-  devtools: false
+  devtools: true
 })

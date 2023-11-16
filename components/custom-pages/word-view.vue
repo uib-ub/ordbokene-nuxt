@@ -109,7 +109,7 @@ const dicts = computed(()=> {
 })
 
 const metaDescription = computed(() => {
-    return dicts.value.map(dict => i18n.t('notifications.results_dict', {dict: i18n.t('dicts_inline.'+dict), count: articles.value.meta[dict] && articles.value.meta[dict].total})).join(". ")
+    return articles.value && dicts.value.map(dict => i18n.t('notifications.results_dict', {dict: i18n.t('dicts_inline.'+dict), count: articles.value.meta[dict] && articles.value.meta[dict].total})).join(". ")
 })
 
 useHead({

@@ -33,6 +33,9 @@
     </div>
     
     <Spinner v-else-if="bm_pending || nn_pending || latest_bm_pending || latest_nn_pending" />
+    <div class="px-4 md:px-8" v-if="bm_error || nn_error || latest_bm_error || latest_nn_error">
+      <ErrorMessage :title="$t('content_not_found')" :error="bm_error || nn_error || latest_bm_error || latest_nn_error"/>  
+    </div>
     </div>
 </template>
 
@@ -55,10 +58,10 @@ const scoped_locale = dict => {
   return i18n.locale.value
 }
 
-const { data: welcome_bm, pending: bm_pending} = useFetch(session.endpoint + 'bm/parameters.json')
-const { data: welcome_nn, pending: nn_pending} = useFetch(session.endpoint + 'nn/parameters.json')
-const { data: latest_bm, pending: latest_bm_pending} = useLazyAsyncData('latest_bm', () => $fetch('https://ord.uib.no/bm/fil/article100new.json').then(response => { return sortArticles(response) }))
-const { data: latest_nn, pending: latest_nn_pending} = useLazyAsyncData('latest_nn', () => $fetch('https://ord.uib.no/nn/fil/article100new.json').then(response => { return sortArticles(response) }))
+const { data: welcome_bm, pending: bm_pending, error: bm_error} = useFetch(session.endpoint + 'bm/parameters.json')
+const { data: welcome_nn, pending: nn_pending, error: nn_error} = useFetch(session.endpoint + 'nn/parameters.json')
+const { data: latest_bm, pending: latest_bm_pending, error: latest_bm_error} = useLazyAsyncData('latest_bm', () => $fetch('https://ord.uib.no/bm/fil/article100new.json').then(response => { return sortArticles(response) }))
+const { data: latest_nn, pending: latest_nn_pending, error: latest_nn_error} = useLazyAsyncData('latest_nn', () => $fetch('https://ord.uib.no/nn/fil/article100new.json').then(response => { return sortArticles(response) }))
 
 
 </script>

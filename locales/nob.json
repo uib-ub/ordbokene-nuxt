@@ -261,7 +261,7 @@
               "description": "Det har oppstått en uventet feil i kommunikasjonen med serveren."},
           "network": {
               "title":"Tilkoblingsfeil",
-              "description": "Et nettverksproblem hindret lasting av siden. Prøv å laste siden på nytt, eller sjekk om du er koblet til internett."},
+              "description": "Et nettverksproblem hindret lasting av siden. Prøv å laste siden på nytt, eller sjekk at du er koblet til internett."},
           "no_article": "Serveren finner ingen artikkel med ID {id}. Artikkelen kan ha blitt slettet eller flyttet, eller du kan ha brukt en ugyldig lenke.",
           "generic": {
               "title": "Feil",

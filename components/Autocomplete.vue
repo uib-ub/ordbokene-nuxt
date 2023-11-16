@@ -227,7 +227,7 @@ if (process.client) {
 
 <template>
   <div class="search-container">
-  <div class="input-wrapper h-3.5rem border bg-canvas border-primary flex content-center justify-between pr-2" v-bind="{'data-dropdown-open': session.show_autocomplete}">
+  <div class="input-wrapper h-3.5rem border bg-canvas border-primary flex content-center justify-between pr-1" v-bind="{'data-dropdown-open': session.show_autocomplete}">
    <input id="input-element"
           ref="input_element" 
           type="text"
@@ -248,7 +248,7 @@ if (process.client) {
           @input="input_sync"
           @keydown="keys"/>
           <button v-if="store.input.length > 0" type="button" :title="$t('clear')" class="appended-button" :aria-label="$t('clear')" @click="clearText"><BootstrapIcon name="x-lg" size="1.25em"/></button>
-          <button type="submit" class="appended-button"  :aria-label="$t('search')"><BootstrapIcon name="search" size="1.25em"/></button>
+          <button type="submit" class="appended-button"  :aria-label="$t('search')"><BootstrapIcon name="search"/></button>
           
 
   </div>
@@ -400,7 +400,7 @@ transform: translateX(-50%);
 
 
 .appended-button, .appended-button-disabled {
-  @apply text-primary m-0 p-2 self-center flex motion-reduce:transition-none border-none;
+  @apply text-primary m-0 p-2 px-3 self-center flex motion-reduce:transition-none border-none;
   border-radius: 2rem; 
   background: unset;
 

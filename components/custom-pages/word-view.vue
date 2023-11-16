@@ -40,7 +40,7 @@
                 </p>
     </section>
   </div>
-  <ErrorMessage v-if="error" :error="error" :title="$t('error.articles')"/>
+  <ErrorMessage v-show="error" :error="error" :title="$t('error.articles')"/>
 </div>
 </template>
 

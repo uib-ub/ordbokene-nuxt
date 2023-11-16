@@ -14,18 +14,12 @@ export default defineNuxtConfig({
     "~/components"
 
   ],
-  nitro: {
-    preset: 'vercel',
-    compressPublicAssets: true
-  },
   runtimeConfig: {
     public: {
       api: 'https://oda.uib.no/opal/prod/',
       apiFallback: 'https://odd.uib.no/opal/prod/',
       apiDev: 'https://oda.uib.no/opal/dev/',
       apiDevFallback:  'https://odd.uib.no/opal/dev/',
-      env: process.env.VERCEL_ENV || 'local',
-      commit: process.env.VERCEL_GIT_COMMIT_SHA
     }
   },
 

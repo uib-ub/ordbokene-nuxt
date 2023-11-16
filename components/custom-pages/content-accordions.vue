@@ -27,10 +27,11 @@ import { useRoute } from 'vue-router'
 const i18n = useI18n()
 const route = useRoute()
 
-const { data: intro } = await useAsyncData('content-accordion', () => queryContent(i18n.locale.value, route.name).findOne())
+const { data: intro, error} = await useAsyncData('content-accordion', () => queryContent(i18n.locale.value, route.name).findOne())
 const sections =  queryContent(i18n.locale.value, route.name)
 
-useHead({
+if (!error) {
+  useHead({
     title: intro.value.title,
     meta: [
       {property: 'og:title', content: intro.value.title },
@@ -40,6 +41,9 @@ useHead({
       {property: 'og:description', content: intro.value.description }
     ]
 })
+
+}
+
 
 </script>
 

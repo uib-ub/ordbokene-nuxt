@@ -1,6 +1,5 @@
 {
   "name": "ordbokene-nuxt",
-  "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",

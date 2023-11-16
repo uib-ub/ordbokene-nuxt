@@ -27,7 +27,7 @@ else if (props.error.statusCode === 503) {
 
 }
 else if (props.error.statusCode === 404) {
-    description.value = i18n.t('error.404.description', )
+    description.value = i18n.t('error.404.description')
 
 }
 else if (props.error.statusCode && props.error.statusCode > 499) {

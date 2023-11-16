@@ -1,13 +1,13 @@
 <template>
   <div class="secondary-page">
-      <ContentRenderer :value="intro">
+      <ContentRenderer v-if="!error" :value="intro">
             <ContentRendererMarkdown :value="intro" />
-            <template #empty>
-              <p>{{$t('content_not_found')}}</p>
+            <template #not-found>
+              <ErrorMessage :title="$t('content_not_found')" :error="{}"/>  
             </template>
           </ContentRenderer>
   
-      <ContentNavigation v-if="$route.name != 'contact'" v-slot="{ navigation }" :query="sections" >
+      <ContentNavigation v-if="!error && $route.name != 'contact'" v-slot="{ navigation }" :query="sections" >
           <template v-for="loc in navigation" :key="loc._path" >
             <nav v-if="loc.children[0].children" class="mt-8">
             <ul class="w-full !pl-0">
@@ -18,6 +18,7 @@
             </nav>
           </template>
       </ContentNavigation>
+      <ErrorMessage v-if="error" :title="$t('content_not_found')" :error="error"/>  
   </div>
 </template>
   

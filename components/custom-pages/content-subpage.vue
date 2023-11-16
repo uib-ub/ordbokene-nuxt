@@ -1,12 +1,13 @@
 <template>
 <div class="secondary-page overflow-auto">
-        <ContentRenderer :value="data">
+        <ContentRenderer v-if="!error" :value="data">
           <ContentRendererMarkdown :value="data"/>
           <template #empty>
-            <p>{{$t('content_not_found')}}</p>
+            <ErrorMessage :title="$t('content_not_found')" :error="{}"/>  
           </template>
           
       </ContentRenderer>
+      <ErrorMessage v-if="error" :title="$t('content_not_found')" :error="error"/>  
 </div>
 </template>
 

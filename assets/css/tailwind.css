@@ -84,12 +84,9 @@
       }
       .callout i {
         /* background-color: theme("colors.primary.DEFAULT"); */
-        @apply text-xl pr-2 bg-primary;
+        @apply text-xl;
       }
 
-      .callout.error svg {
-        @apply text-primary-darken
-      }
 
       .suggestions h3 {
           @apply text-xl

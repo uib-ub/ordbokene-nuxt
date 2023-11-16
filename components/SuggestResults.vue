@@ -4,7 +4,7 @@
     <ul class="nav nav-pills flex-column md:flex md:flex-wrap md:gap-2 pt-4 md:py-4">
         <template  v-for="(item, idx) in suggestions" :key="idx">
         <li v-if="minimal || !store.lemmas[dict].has(item.q)" class="!border-1 flex px-2 mx-0">
-            <NuxtLink :lang="dictLang[dict]" no-prefetch class="suggest-link notranslate py-3 md:py-0 w-full" :to="suggest_link(compare ? store.q + '|' + item : item)" @click="track_suggest(item)"><Icon :name="icon || 'bi:search'" class="mr-3 mb-1 text-primary"/><span class="link-content hoverlink">{{item}}</span></NuxtLink>
+            <NuxtLink :lang="dictLang[dict]" no-prefetch class="suggest-link notranslate py-3 md:py-0 w-full" :to="suggest_link(compare ? store.q + '|' + item : item)" @click="track_suggest(item)"><BootstrapIcon :name="icon || 'search'" class="mr-3 mb-1 text-primary"/><span class="link-content hoverlink">{{item}}</span></NuxtLink>
         </li>
         </template>
     </ul>

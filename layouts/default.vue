@@ -13,13 +13,13 @@
     <Header/>
 
     <nav v-if="!['welcome', 'index', 'search', 'article', 'word'].includes($route.name)" :aria-label="$t('breadcrumbs')" class=" justify-start mt-2 mb-2 flex !pl-2 gap-4 flex-wrap">
-        <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"><Icon name="bi:arrow-left-short" size="1.5rem" class="mb-1 text-primary"/>{{$t('notifications.back')}}
+        <NuxtLink v-if="store.searchUrl" :to="store.searchUrl"><BootstrapIcon name="arrow-left-short" class="mb-1 text-primary"/>{{$t('notifications.back')}}
         </NuxtLink>
         <NuxtLink v-else :to="'/' + $i18n.locale">
-            <Icon name="bi:arrow-left-short" size="1.5rem" class="mb-1 text-primary"/>{{$t('home')}}
+            <BootstrapIcon name="arrow-left-short" class="mb-1 text-primary"/>{{$t('home')}}
         </NuxtLink>
         <NuxtLink v-if="$route.params.slug"  :to="$route.fullPath.slice(0, $route.fullPath.lastIndexOf('/'))">
-            <Icon name="bi:arrow-left-short" size="1.5rem" class="mb-1 text-primary"/>{{$t($route.matched[0].children[1].name)}}
+            <BootstrapIcon name="arrow-left-short" class="mb-1 text-primary"/>{{$t($route.matched[0].children[1].name)}}
         </NuxtLink>
     </nav>
     <slot/>

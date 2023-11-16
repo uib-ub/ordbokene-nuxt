@@ -8,10 +8,10 @@
     <NuxtErrorBoundary @error="form_error">
     <SearchForm v-if="route.name != 'search'" class="ord-container"/>
     <div v-if="route.name == 'article' && store.searchUrl" class="ord-container justify-start mt-2">
-      <NuxtLink :to="store.searchUrl"> <Icon name="bi:arrow-left-short" size="1.5rem" class="mb-1 text-primary"/>{{$t('notifications.back')}}</NuxtLink>
+      <NuxtLink :to="store.searchUrl"> <BootstrapIcon name="arrow-left-short" class="mb-1 text-primary"/>{{$t('notifications.back')}}</NuxtLink>
     </div>
     <div v-else-if="route.name == 'article'" class="ord-container justify-start mt-2">
-      <NuxtLink :to="`/${$i18n.locale}/`"> <Icon name="bi:arrow-left-short" size="1.5rem" class="mb-1 text-primary"/>{{$t('home')}}</NuxtLink>
+      <NuxtLink :to="`/${$i18n.locale}/`"> <BootstrapIcon name="arrow-left-short" class="mb-1 text-primary"/>{{$t('home')}}</NuxtLink>
     </div>
   </NuxtErrorBoundary>
     <div :class="{'md:pt-4': route.name != 'article', 'wallpaper': route.name == 'welcome' || route.name == 'index', 'ord-container': route.name != 'welcome' && route.name != 'index'}">

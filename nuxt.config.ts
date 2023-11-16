@@ -36,7 +36,7 @@ export default defineNuxtConfig({
       '@pinia/nuxt',
       '@pinia-plugin-persistedstate/nuxt',
       '@nuxtjs/tailwindcss',
-      'nuxt-icon',
+      'nuxt-bootstrap-icons',
       '@nuxt/content',
       '@nuxtjs/html-validator',
       '@nuxtjs/plausible'

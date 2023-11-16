@@ -247,8 +247,8 @@ if (process.client) {
           :aria-owns="session.dropdown_selected >= 0 ? 'autocomplete-dropdown' : null"
           @input="input_sync"
           @keydown="keys"/>
-          <button v-if="store.input.length > 0" type="button" :title="$t('clear')" class="appended-button" :aria-label="$t('clear')" @click="clearText"><Icon name="bi:x-lg" size="1.25em"/></button>
-          <button type="submit" class="appended-button"  :aria-label="$t('search')"><Icon name="bi:search" size="1.25em"/></button>
+          <button v-if="store.input.length > 0" type="button" :title="$t('clear')" class="appended-button" :aria-label="$t('clear')" @click="clearText"><BootstrapIcon name="x-lg" size="1.25em"/></button>
+          <button type="submit" class="appended-button"  :aria-label="$t('search')"><BootstrapIcon name="search" size="1.25em"/></button>
           
 
   </div>
@@ -265,7 +265,7 @@ if (process.client) {
         <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)">
           <span v-if="item.type == 'pattern' && route.name != 'search'" role="status" aria-live="polite" class=" bg-primary text-white p-1 rounded px-3 pr-1">
             {{$t('to_advanced')}} 
-            <Icon name="bi:arrow-right-short" size="1.5rem" class=""/>
+            <BootstrapIcon name="arrow-right-short" size="1.5rem" class=""/>
           </span>
           <span v-else :aria-live="store.autocomplete.length == 1? 'polite' : null">
             <span v-if="store.autocomplete.length == 1" class="sr-only">{{$t('autocomplete_suggestions', 1)}}: </span>

@@ -8,7 +8,7 @@
             :aria-expanded="expanded"
             :aria-controls="expanded ? `${dict}_${article_id}_snippet` : undefined"
             @click="expanded = !expanded">
-      <span class="self-center"><Icon :name="expanded ? 'bi:chevron-up' : 'bi:chevron-down'" size = "1.25rem"/></span>
+      <span class="self-center"><BootstrapIcon :name="expanded ? 'chevron-up' : 'chevron-down'" size = "1.25rem"/></span>
       <span class="flex flex-col  overflow-hidden">
         <span class="flex">
       <span v-for="(lemma_group, i) in lemma_groups" :key="i" class="block">
@@ -44,7 +44,7 @@
       <div v-if="data.lemmas[0].split_inf" class="mt-2 mb-3 split-inf">
         <div class="flex gap-2 align-middle"><span :id="`${dict}_${article_id}_split_inf_label`">{{$t('split_inf.title')}}: -a</span>
         <button type="button" class="rounded leading-none !p-0 !text-primary hover:bg-primary-lighten bg-primary  border-primary-lighten" :aria-expanded="split_inf_expanded" :aria-label="`${dict}_${article_id}_split_inf_label`" aria-controls="split-inf-explanation" @click="split_inf_expanded = !split_inf_expanded">
-          <Icon :name="split_inf_expanded? 'bi:dash' : 'bi:plus'" class="text-white !m-0 !p-0" size="1.5em"/>
+          <BootstrapIcon :name="split_inf_expanded? 'dash' : 'plus'" class="text-white !m-0 !px-1"/>
         </button>
         </div>
         
@@ -61,7 +61,7 @@
               :aria-controls="inflection_expanded ? `${dict}_${article_id}_inflection` : null"
               :lang="scoped_lang"
               @click="expand_inflection">
-             {{ $t(inflection_expanded ? 'article.hide_inflection' : 'article.show_inflection', 1, {locale: scoped_locale})}}<span v-if="!inflection_expanded"><Icon name="bi:chevron-down" class="ml-4" size="1.25em"/></span><span v-if="inflection_expanded"><Icon name="bi:chevron-up" class="ml-4" size="1.5em"/></span>
+             {{ $t(inflection_expanded ? 'article.hide_inflection' : 'article.show_inflection', 1, {locale: scoped_locale})}}<span v-if="!inflection_expanded"><BootstrapIcon name="chevron-down" class="ml-4" size="1.25em"/></span><span v-if="inflection_expanded"><BootstrapIcon name="chevron-up" class="ml-4" size="1.5em"/></span>
       </button>
         <div v-if="inflected && !welcome && (inflection_expanded || single || list)" :id="`${dict}_${article_id}_inflection`" ref="inflection_table" class="motion-reduce:transition-none border-collapse py-2 transition-all duration-300 ease-in-out">
           <InflectionWrapper :single="single" :scoped_locale="scoped_locale" :lemmaList="lemmas_with_word_class_and_lang" :dict="dict"/>

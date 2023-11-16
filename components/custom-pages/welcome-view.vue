@@ -32,7 +32,7 @@
       </section>
     </div>
     
-    <Spinner v-else />
+    <Spinner v-else-if="bm_pending || nn_pending || latest_bm_pending || latest_nn_pending" />
     </div>
 </template>
 
@@ -55,10 +55,10 @@ const scoped_locale = dict => {
   return i18n.locale.value
 }
 
-const { data: welcome_bm} = useFetch(session.endpoint + 'bm/parameters.json')
-const { data: welcome_nn} = useFetch(session.endpoint + 'nn/parameters.json')
-const { data: latest_bm} = useLazyAsyncData('latest_bm', () => $fetch('https://ord.uib.no/bm/fil/article100new.json').then(response => { return sortArticles(response) }))
-const { data: latest_nn} = useLazyAsyncData('latest_nn', () => $fetch('https://ord.uib.no/nn/fil/article100new.json').then(response => { return sortArticles(response) }))
+const { data: welcome_bm, pending: bm_pending} = useFetch(session.endpoint + 'bm/parameters.json')
+const { data: welcome_nn, pending: nn_pending} = useFetch(session.endpoint + 'nn/parameters.json')
+const { data: latest_bm, pending: latest_bm_pending} = useLazyAsyncData('latest_bm', () => $fetch('https://ord.uib.no/bm/fil/article100new.json').then(response => { return sortArticles(response) }))
+const { data: latest_nn, pending: latest_nn_pending} = useLazyAsyncData('latest_nn', () => $fetch('https://ord.uib.no/nn/fil/article100new.json').then(response => { return sortArticles(response) }))
 
 
 </script>

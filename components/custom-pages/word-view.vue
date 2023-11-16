@@ -1,5 +1,5 @@
 <template>
-    <div>     
+    <div> 
     <Spinner v-if="!error && !articles"/>    
     <div v-if="!error && !pending && articles && articles.meta && $route.name != 'index'" ref="results">
       <div class="md:sr-only pt-2 md:pt-0 px-2 text-sm" :class="{'sr-only': store.dict != 'bm,nn'}" role="status" aria-live="polite">
@@ -67,7 +67,12 @@ const { pending, error, refresh, data: articles } = await useFetch('api/articles
             w: store.q,
             dict: store.dict,
             scope: 'e',
-          }          
+          },
+          onRequestError({ request, options, error }) {
+            if (process.client) {
+              session.network_error = true
+            }
+          }
           })
 
 const feedback_given = ref(false)
@@ -109,7 +114,9 @@ const dicts = computed(()=> {
 })
 
 const metaDescription = computed(() => {
+  if (articles.value) {
     return dicts.value.map(dict => i18n.t('notifications.results_dict', {dict: i18n.t('dicts_inline.'+dict), count: articles.value.meta[dict] && articles.value.meta[dict].total})).join(". ")
+  }
 })
 
 useHead({

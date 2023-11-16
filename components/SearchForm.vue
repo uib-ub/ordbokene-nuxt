@@ -1,10 +1,7 @@
 <template>
 <div class="lg:py-1">
 <form ref="form" class="md:mx-[10%]" :action="`/${$i18n.locale}/${store.dict || 'bm,nn'}`" @submit.prevent="submitForm"  >
-<NuxtErrorBoundary @error="autocomplete_error">
   <Autocomplete @dropdown-submit="submitForm"/>
-</NuxtErrorBoundary>
-
 </form>
 </div>
 </template>
@@ -25,6 +22,7 @@ const i18n = useI18n()
 const input_element = useState('input_element')
 
 const submitForm = (item) => {
+  session.network_error = false
   
   if (typeof item === 'string') {
     if (settings.auto_select && !isMobileDevice()) {

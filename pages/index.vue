@@ -4,21 +4,20 @@
     <span v-if="route.name=='word' || route.name == 'index' || route.name == 'welcome'">{{$t('simple')}} <span class="text-gray-900 text-base">| <span>{{$t('dicts.' + store.dict)}}</span></span></span>
     <span v-if="route.name=='article'">{{$t('article_view')}}</span>
   </h1>
-  <SearchNav v-if="route.name != 'search'"/>
-    <NuxtErrorBoundary @error="form_error">
-    <SearchForm v-if="route.name != 'search'" class="ord-container"/>
+  <SearchNav/>
+    <SearchForm class="ord-container"/>
     <div v-if="route.name == 'article' && store.searchUrl" class="ord-container justify-start mt-2">
       <NuxtLink :to="store.searchUrl"> <Icon name="bi:arrow-left-short" size="1.5rem" class="mb-1 text-primary"/>{{$t('notifications.back')}}</NuxtLink>
     </div>
     <div v-else-if="route.name == 'article'" class="ord-container justify-start mt-2">
       <NuxtLink :to="`/${$i18n.locale}/`"> <Icon name="bi:arrow-left-short" size="1.5rem" class="mb-1 text-primary"/>{{$t('home')}}</NuxtLink>
     </div>
-  </NuxtErrorBoundary>
-    <div :class="{'md:pt-4': route.name != 'article', 'wallpaper': route.name == 'welcome' || route.name == 'index', 'ord-container': route.name != 'welcome' && route.name != 'index'}">
-  <NuxtErrorBoundary @error="content_error">
-    <NuxtPage/>
-  </NuxtErrorBoundary>
+    <div :class="{'md:pt-4': route.name != 'article', 'wallpaper': !session.network_error && (route.name == 'welcome' || route.name == 'index'), 
+                  'ord-container': session.network_error || route.name != 'welcome' && route.name != 'index'}">
+    <NuxtPage v-if="!session.network_error"/>
+     <ErrorMessage v-show="session.network_error" :title="$t('error.network.title')" :description="$t('error.network.description')"/>
     </div>
+   
 </main>
 </template>
 
@@ -34,13 +33,6 @@ definePageMeta({
       "simple-search-middleware"
     ]
   })
-
-const form_error = (error) => {
-  console.log("FORM ERROR",error)
-}
-const content_error = (error) => {
-  console.log("CONTENT ERROR", error)
-}
 
 </script>
 

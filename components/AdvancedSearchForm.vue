@@ -54,9 +54,11 @@
 import { useRoute } from 'vue-router'
 import { useSearchStore } from '~/stores/searchStore'
 import {useSettingsStore } from '~/stores/settingsStore'
+import {useSessionStore } from '~/stores/sessionStore'
 const settings = useSettingsStore()
 const store = useSearchStore()
 const route = useRoute()
+const session = useSessionStore()
 
 const dicts = ['bm,nn', 'bm', 'nn']
 const pos_tags = ['', 'VERB', 'NOUN', 'ADJ', 'PRON', 'DET', 'ADV', 'ADP', 'CCONJ', 'SCONJ', 'INTJ']
@@ -100,6 +102,8 @@ const reset = () => {
 
 
 const submitForm =  (item) => {
+  session.network_error = false
+
   if (store.input && input_element.value) {
     if (settings.autoSelect && !isMobileDevice()) {
       input_element.value.select()

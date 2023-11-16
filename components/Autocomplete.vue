@@ -64,7 +64,7 @@ async function fetchAutocomplete(q) {
       response.value = await $fetch(url)
 
       // prevent suggestions after submit
-      if (q === store.input) {
+      if (q === store.input && response.value) {
         store.suggest = response.value.a
         const autocomplete_suggestions = []
         if (store.input.trim() === q && response.value.a.exact) {

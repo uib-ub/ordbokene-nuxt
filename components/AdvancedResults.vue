@@ -105,7 +105,12 @@ const scoped_locale = dict => {
 
 const { pending, error, refresh, data: articles } = await useFetch(() => `api/articles?`, {
           query,
-          baseURL: session.endpoint
+          baseURL: session.endpoint,
+          onRequestError({ request, options, error }) {
+            if (process.client && !options.signal.aborted) {
+              session.network_error = true
+            }
+          }
         })
 
 const dicts = computed(()=> {

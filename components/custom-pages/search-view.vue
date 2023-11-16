@@ -9,13 +9,14 @@
         </div>
       </div>
 
-      <NuxtErrorBoundary @error="form_error">
-        <AdvancedSearchForm class="ord-container"/>
-      </NuxtErrorBoundary>
-      <NuxtErrorBoundary @error="content_error">  
-    <AdvancedResults v-if="store.q" class="ord-container mb-10"/>
-      </NuxtErrorBoundary>
+    <AdvancedSearchForm class="ord-container"/>
+    <template v-if="!session.network_error">
+        <AdvancedResults v-if="store.q" class="ord-container mb-10"/>
       <AdvancedHelp v-if="!store.q"/>
+    </template>
+    <div v-show="session.network_error" class="md:pt-4 ord-container">
+     <ErrorMessage :title="$t('error.network.title')" :description="$t('error.network.description')"/>
+    </div>
   </main>
 </template>
   
@@ -23,8 +24,10 @@
 import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { useSearchStore } from '~/stores/searchStore'
+import { useSessionStore } from '~/stores/sessionStore'
 
 const store = useSearchStore()
+const session = useSessionStore()
 const route = useRoute()
 const i18n = useI18n()
 
@@ -34,15 +37,7 @@ title: i18n.t('advanced')
 
 definePageMeta({
     middleware: ['advanced-search-middleware']
-  })
-
-
-const form_error = (error) => {
-  console.log("FORM ERROR",error)
-}
-const content_error = (error) => {
-  console.log("CONTENT ERROR", error)
-}    
+  })  
 
 
 </script>

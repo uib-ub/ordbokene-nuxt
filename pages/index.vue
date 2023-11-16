@@ -15,7 +15,7 @@
     <div :class="{'md:pt-4': route.name != 'article', 'wallpaper': !session.network_error && (route.name == 'welcome' || route.name == 'index'), 
                   'ord-container': session.network_error || route.name != 'welcome' && route.name != 'index'}">
     <NuxtPage v-if="!session.network_error"/>
-     <ErrorMessage v-show="session.network_error" :title="$t('error.network.title')" :description="$t('error.network.description')"/>
+     <ErrorMessage v-show="session.network_error" :title="$t('error.network.title')" :description="$t('error.network.description')" :key="session.network_error"/>
     </div>
    
 </main>

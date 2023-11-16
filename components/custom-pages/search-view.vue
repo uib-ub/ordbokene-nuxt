@@ -12,9 +12,12 @@
     <AdvancedSearchForm class="ord-container"/>
     <template v-if="!session.network_error">
         <AdvancedResults v-if="store.q" class="ord-container mb-10"/>
+
+      <NuxtErrorBoundary @error="">
       <AdvancedHelp v-if="!store.q"/>
+      </NuxtErrorBoundary>
     </template>
-    <div v-show="session.network_error" class="md:pt-4 ord-container">
+    <div v-show="session.network_error" class="md:pt-4 ord-container" :key="session.network_error">
      <ErrorMessage :title="$t('error.network.title')" :description="$t('error.network.description')"/>
     </div>
   </main>

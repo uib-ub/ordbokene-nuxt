@@ -103,7 +103,7 @@
         <div v-else class="text-right px-3 py-1"><NuxtLink :to="link_to_self()">{{$t('article.show', 1, {locale: scoped_locale})}}</NuxtLink></div>
 </div>
 </div>
-  </div>
+</div>
 </template>
 
 <script setup>
@@ -134,8 +134,16 @@ const props = defineProps({
 })
 
 
-const { pending, data, error } = await useAsyncData('article_' + props.dict + props.article_id, () => $fetch(`${session.endpoint}${props.dict}/article/${props.article_id}.json`))
-
+const { pending, data, error } = await useFetch(`${session.endpoint}${props.dict}/article/${props.article_id}.json`, {
+  key: 'article_' + props.dict + props.article_id,
+  onRequestError({ request, options, error }) {
+    
+            if (process.client) {
+              session.network_error = true
+            }
+            console.log("NETTVERK", session.network_error)
+          }
+}) 
 
 import Mark from 'mark.js';
 
@@ -213,12 +221,12 @@ const has_content = () => {
 }
 
 const inflected = computed(() => {
-  return data.value.lemmas.reduce((acc, lemma) => acc += lemma.paradigm_info.reduce((acc2, digm) => digm.inflection_group.includes("uninfl") ? 0 : acc2 += digm.inflection.length, 0), 0) > data.value.lemmas.length
+  return data.value && data.value.lemmas.reduce((acc, lemma) => acc += lemma.paradigm_info.reduce((acc2, digm) => digm.inflection_group.includes("uninfl") ? 0 : acc2 += digm.inflection.length, 0), 0) > data.value.lemmas.length
 
 })
 
 const lemmas_with_word_class_and_lang = computed(() => {
-  return data.value.lemmas.map(lemma => Object.assign({language: props.dict === 'bm' ? 'nob' : 'nno',
+  return data.value && data.value.lemmas.map(lemma => Object.assign({language: props.dict === 'bm' ? 'nob' : 'nno',
                                                    word_class: lemma.paradigm_info[0].inflection_group.split('_')[0]}, lemma))
 })
 
@@ -316,6 +324,9 @@ const inflection_classes = (lemmas) => {
 }
 
 const lemma_groups = computed(() => {
+  if (!data.value) {
+    return
+  }
   let groups = [{lemmas: data.value.lemmas}]
     try {
       if (data.value.lemmas[0].paradigm_info[0].tags[0] === "DET" && data.value.lemmas[0].paradigm_info[0].tags.length > 1) {

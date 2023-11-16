@@ -33,7 +33,7 @@
     </div>
     
     <Spinner v-else-if="bm_pending || nn_pending || latest_bm_pending || latest_nn_pending" />
-    <div class="px-4 md:px-8" v-show="bm_error || nn_error || latest_bm_error || latest_nn_error">
+    <div class="px-4 md:px-8" v-if="bm_error || nn_error || latest_bm_error || latest_nn_error">
       <ErrorMessage :title="$t('content_not_found')" :error="bm_error || nn_error || latest_bm_error || latest_nn_error"/>  
     </div>
     </div>

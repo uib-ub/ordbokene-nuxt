@@ -1,5 +1,5 @@
 <template>
-  <div  v-show="error && single"><ErrorMessage :error="error" :title="$t('error.article', {dict: $t('dicts_inline.' + dict ), article_id})"/></div>
+  <div  v-if="error && single"><ErrorMessage :error="error" :title="$t('error.article', {dict: $t('dicts_inline.' + dict ), article_id})"/></div>
   <div v-else :class="list && 'list-view-item flex-col' || 'article flex flex-col'">
   <div v-if="list && !welcome"  :lang="dictLang[dict]">
     <button type="button"

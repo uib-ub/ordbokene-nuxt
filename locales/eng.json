@@ -1,0 +1,284 @@
+{
+  "sub_title": "Bokmålsordboka and Nynorskordboka",
+  "home": "Home",
+  "menu": "Menu",
+  "help": "Help",
+  "about":"About",
+  "contact": "Contact us",
+  "autocomplete_suggestions": "Search suggestion | search suggestions",
+  "advanced_help": "About advanced search",
+  "advanced": "Advanced search",
+  "to_advanced": "Go to advanced search",
+  "show_articles": "Articles",
+  "show_list": "List view",
+  "simple": "Simple search",
+  "article_view": "Article view",
+  "breadcrumbs": "Breadcrumbs",
+  "content_not_found": "Content not available",
+  "monthly": "Titbit from {dict}",
+  "photo": "Photo by Erwan Hesry on unsplash.com",
+  "close": "Close",
+  "cancel": "Cancel",
+  "three_genera": "{m}, {f} or {n}",
+  "two_genera": "{a} or {b}",
+  "in": " in ",
+  "and": " and ",
+  "from": "from",
+  "to_top": "Back to top",
+  "per_page": "Results per page: ",
+  "previous-page": "Previous page",
+  "next-page": "Next page",
+  "pageof": "Page {page} of {pages}",
+  "search_placeholder": "Search in ",
+  "search": "Search",
+  "reset": "Reset",
+  "clear": "Clear",
+  "chosen_dict": "Chosen dictionary: ",
+  "footer_description": "{bm} and {nn} show spelling and inflection in line with official Norwegian spelling. The Language Council and the University of Bergen are behind the dictionaries.",
+  "privacy": "Privacy",
+  "accessibility": {
+    "page": "Accessibility",
+    "main_content": "Skip to main content",
+    "statement": "Accessibility statement"
+},
+  "dicts": {
+      "nn": "Nynorsk dictionary",
+      "bm": "Bokmål dictionary",
+      "bm,nn": "Both dictionaries"
+  },
+  "dicts_inline": {
+      "nn": "the Nynorsk dictionary",
+      "bm": "the Bokmål dictionary",
+      "bm,nn": "the dictionaries"
+  },
+  "dicts_short": {
+    "nn": "Nynorsk",
+    "bm": "Bokmål",
+    "bm,nn": "Both"
+  },
+  "options": {
+    "title": "Search options",
+    "dict": "Dictionaries",
+    "scope": {
+      "title": "Search for",
+      "value": {
+        "e": "Headwords",
+        "ei": "All words",
+        "eif": "All content"
+      }
+    },
+    "pos": "Part of speech",
+    "collapse": "Collapse articles"
+  },
+  "pos": "Part of speech",
+"all_pos": "all",
+"gender":"gender",
+"tags": {
+  "NOUN": "noun|nouns",
+  "VERB": "verb|verbs",
+  "ADJ": "adjective|adjectives",
+  "ADP": "preposition|prepositions",
+  "PFX": "prefix",
+  "ADV": "adverb|adverbs",
+  "DET": "determiner|determiners",
+  "PROPN": "proper noun",
+  "ABBR": "abbreviation",
+  "INTJ": "interjection|interjections",
+  "SYM": "symbol",
+  "PRON": "pronoun|Pronouns",
+  "CCONJ": "conjunction|conjunctions",
+  "SCONJ": "subjunction|subjunctions",
+  "INFM": "infinitive particle",
+  "COMPPFX": "in compounds",
+  "Masc": "masculine",
+  "Fem": "feminine",
+  "Neuter": "neuter",
+  "Uninfl": "uninflectable"
+  },
+"determiner": {
+  "Quant": "quantifier",
+  "Dem": "demonstrative",
+  "Poss": "possessive"
+},
+"split_inf": {
+  "title": "split infinitive",
+  "label": "More information about split infinitive",
+  "content": ["If you use split infinitive, the infinitive form of this verb will have the suffix", "", "Read more here (Norwegian)"]
+},
+  "settings": {
+      "title": "Settings",
+      "cookie_prompt": "For technical reasons we need to use cookies to store your settings for later. This is only used to enhance your user experience, and we do not use these cookies to track your activity.",
+      "accept_cookies": "Accept cookies",
+      "inflection_no": "Show inflection codes",
+      "inflection_expanded": "Always show inflection tables",
+      "inflection_table_context": "Show context for participle forms in the inflection tables",
+      "submit_select": "Select search query when submitting search",
+      "simple_search_list": "List view in simple search",
+      "auto_select": "Select search term automatically after search",
+      "locale": {
+        "title": "Locale" ,
+        "description": "Default language settings for the language of headings, buttons, messages, and menus. The settings will not affect examples and definitions: the Bokmål dictionary will remain in Bokmål and the Nynorsk dictionary stays Nynorsk "
+      },
+      "dict": {
+          "title": "Default dictionaries",
+          "description": "Default dictionary settings for which of the dictionaries to be queried when using ordbokene.no. The settings will not affect current searches or links to searches in dictionaries. To change the dictionary during use, change the settings temporarily via the menu to the right of the search field. "
+      },
+      "collapse": {
+        "description": "Default search presentation settings. Choose between seeing complete articles, article excepts or an automatically generated presentation.",
+        "auto": "Auto (exerpts when more than two results)",
+        "always": "Show exerpts of articles",
+        "never": "Show complete articles"
+    },
+    "reset": "Reset settings",
+    "clear_cookies": "Clear cookies",
+    "reset_done":"Deleted"
+},
+"notifications": {
+    "translation": "Click the suggestion below to add translation based on the translation software Apertium and the glossary {adm} from the The Language Council of Norway. | Click the suggestions below to add translation based on the translation software Apertium and the glossary {adm} from the The Language Council of Norway.",
+    "translation_title": "Possible translation",
+    "inflected": "{word} is an inflection of:",
+    "also_inflected": "{word} is also an inflection of:",
+    "inflected_title": "Inflected forms",
+    "did_you_mean": "Did you mean:",
+    "similar": "Similar words:",
+    "similar_bm": "Add similar results from Bokmålsordboka: ",
+    "similar_nn": "Add similar results from Nynorskordboka: ",
+    "search": "Search",
+    "back": "Back to search",
+    "simple": "Simple search",
+    "not_a_word": " is not a word in ",
+    "results": "No results | One result | {count} results",
+    "results_dict": "No results in {dict}|One result in {dict}|{count} results in {dict}",
+    "suggestions_available": "Search suggestions available | Additional search suggestions available",
+    "keywords": "entries",
+    "ignored_words": "The search was ignored because we limit queries to 20 words.",
+    "ignored_chars": "The search was ignored because we do not accept words with more than 40 characters.",
+    "no_pos_results": " (no matching {pos})",
+    "suggest_dict": [
+        "Did you search in the wrong dictionary?",
+        "Try searching"
+    ],
+    "fulltext": {
+      "title": "Full-text search",
+      "description": "Your query yields results in advanced search with full-text search enabled."
+    },
+    "no_results": {
+      "title": "No results",
+      "description": ["Your search yields no results in {dict}", "Note that there are endless ways of combining words into new compound words in Norwegian, and many such words are therefore not included in the dictionary."],
+      "link": "Read more"
+    },
+    "feedback": {
+      "title": "Did you find the word you were looking for?",
+      "yes": "Yes",
+      "no": "No",
+      "thanks": "Thank you for the feedback!"
+    }
+    
+},
+"infl": {
+"caption":{
+  "NOUN": "Inflection table for this noun",
+  "VERB": "Inflection table for this verb",
+  "VERBPP": "Inflection table for the participles of this verb",
+  "ADJ": "Inflection table for this adjective",
+  "ADJCS": "Inflection table for this adjective (comparative, superlative)",
+  "ADV": "Inflection table for this adverb",
+  "DET": "Inflection table for this determinative",
+  "PRON": "Inflection table for this pronoun"
+},
+"tags": { 
+  "Form": "form",
+  "Gender": "gender",
+  "Sing": "singular",
+  "Plur": "plural",
+  "Ind": "indefinite",
+  "Def": "definite",
+  "Finite": "finite forms",
+  "Inf": "infinitive",
+  "Pres": "present",
+  "Past": "past",
+  "PresPerf": "present perfect",
+  "Imp": "imperative",
+  "PerfPart": "perfect participle",
+  "Fem": "feminine",
+  "FemShort": "feminine",
+  "Masc": "masculine",
+  "MascShort": "masculine",
+  "MascFem": "masculine/ feminine",
+  "Neuter": "neuter",
+  "NeuterShort": "neuter",
+  "PresPart": "present participle",
+  "Deg": "degrees of comparison",
+  "Pos": "positive",
+  "Cmp": "comparative",
+  "Sup": "superlative",
+  "SupInd": "superlative indefinite",
+  "SupDef": "superlative definite",
+  "Nom": "subject form",
+  "Acc": "object form",
+  "Uninfl": "uninflected",
+  "NOUN": "noun"    
+}       
+},
+"article": {
+    "definition": "Definition",
+    "show": "Open article",
+    "show_inflection": "Inflection",
+    "hide_inflection": "Inflection",
+    "share": "Share",
+    "copy_link": "Copy link",
+    "cite": "Cite",
+    "open": "Article page",
+    "cite_title": "Cite the article",
+    "cite_description": ["If you want to cite this article in the ", " we recommend that you state when the article was retrieved (read), e. g. as follows:"],
+    "download": "Download RIS file",
+    "copy": "Copy",
+    "link_copied": "Copied",
+    "citation_copied": "Citation copied",
+    "citation": "« {lemma} ». In: {dict}. Språkrådet & Universitetet i Bergen. {link} ( retrieved {dd}. {mm}. {yyyy}). ",
+    "headings": {
+      "etymology": "Etymology",
+      "pronunciation": "Pronunciation",
+      "expressions": "Set phrases",
+      "definitions": "Senses and Example Sentences",
+      "examples": "Example"
+    },
+    "new": "New in {dict}"
+},
+"error": {
+      "article": "Could not fetch article {article_id} in {dict}",
+      "articles": "Cound not fetch search results",
+      "status": "Status code: {code}",
+      "404": {
+          "title": "Not Found",
+          "description": "The page may have been deleted or moved, or you may have used an invalid link."
+      },
+      "503": {
+          "title": "503: Unavailable service",
+          "description": "The server is temporarily overloaded or under maintenance."
+      },
+      "server": {
+          "title": "Server Error",
+          "description": "Something went wrong on the server side."},
+      "generic_code": {
+          "title": "Error",
+          "description": "An unexpected error occurred while communicating with the server."},
+      "network": {
+          "title": "Connection Error",
+          "description": "A network problem prevented the page from loading. Please try reloading the page or check if you are connected to the internet."},
+      "no_article": "The server could not find an article with ID {id}. The article may have been deleted or moved, or you may have used an invalid link.",
+      "generic": {
+          "title": "Error",
+          "description": "Something went wrong ..."
+      }
+  },
+"label": {
+  "nav": "Main menu",
+  "footer_nav": "Footer menu",
+  "search_pages": "Search pages",
+  "dict_nav": "Dictionary navigation"
+},
+"navigation": {
+  "site": "Navigation menu"
+}
+}

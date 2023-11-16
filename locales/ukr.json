@@ -1,0 +1,317 @@
+{
+    "sub_title": "Cловник букмола та Словник нюношка",
+    "home": "На головну сторінку",
+    "menu": "Меню",
+    "help": "Допомога в пошуку",
+    "about": "Про словники",
+    "contact": "Зв’язатися з нами",
+    "autocomplete_suggestions": "Search suggestion | search suggestions",
+    "advanced_help": "About advanced search",
+    "advanced": "Про розширений пошук",
+    "to_advanced": "Go to advanced search",
+    "show_articles": "Articles",
+    "show_list": "List view",
+    "simple": "Simple search",
+    "article_view": "Article view",
+    "content_not_found": "Вміст недоступний",
+    "breadcrumbs": "Breadcrumbs",
+    "monthly": "Фрагменти зі словників {dict}",
+    "photo": "фото: Erwan Hesry (unsplash.com)",
+    "close": "Закрити",
+    "cancel": "Скасувати",
+    "three_genera": "{m}, {f} or {n}",
+    "two_genera": "{a} or {b}",
+    "in": " in ",
+    "and": " і ",
+    "from": "зі",
+    "to_top": "Вгору",
+    "per_page": "Результати на сторінці: ",
+    "previous-page": "Previous page",
+    "next-page": "Next page",
+    "pageof": "Page {page} of {pages}",
+    "search_placeholder": "Пошук: ",
+    "search": "Search",
+    "reset": "Reset",
+    "clear": "Clear",
+    "chosen_dict": "Chosen dictionary: ",
+    "footer_description": "{bm} і {nn} показує написання та відмінювання, відповідно до норвезької орфографії. За розробкою словників стоять Мовна рада і Бергенський університет.",
+    "privacy": "Privacy",
+    "accessibility": {
+        "page": "Accessibility",
+        "main_content": "Skip to main content",
+        "statement": "Accessibility statement"
+    },
+    "dicts": {
+        "nn": "Словник нюношка",
+        "bm": "Словник букмола",
+        "bm,nn": "обидва словники"
+    },
+    "dicts_inline": {
+        "nn": "Словник нюношка",
+        "bm": "Словник букмола",
+        "bm,nn": "словники"
+    },
+    "dicts_short": {
+        "nn": "нюношк",
+        "bm": "букмол",
+        "bm,nn": "обидва"
+    },
+    "options": {
+        "title": "Параметри пошуку",
+        "dict": "Словники",
+        "scope": {
+            "title": "Search for",
+            "value": {
+                "e": "Заголовні слова",
+                "ei": "всі слова",
+                "eif": "весь вміст"
+            }
+        },
+        "pos": "Частини мови",
+        "collapse": "Скорочені статті"
+    },
+    "pos": "Part of speech",
+    "all_pos": "всі частини мови",
+    "gender": "gender",
+    "tags": {
+        "NOUN": "іменник|іменники",
+        "VERB": "дієслово|дієслова",
+        "ADJ": "прикметник|прикметники",
+        "ADP": "прийменник|прийменники",
+        "PFX": "префікс",
+        "ADV": "прислівник|прислівники",
+        "DET": "детермінатив|детермінативи",
+        "PROPN": "власна назва",
+        "ABBR": "абревіатура",
+        "INTJ": "вигук|вигуки",
+        "SYM": "символ",
+        "PRON": "займенник|займенники",
+        "CCONJ": "сурядний сполучник|сурядні сполучники",
+        "SCONJ": "підрядний сполучник|підрядні сполучники",
+        "INFM": "знак інфінітива",
+        "COMPPFX": "складне речення",
+        "Masc": "чоловічий",
+        "Fem": "жіночий",
+        "Neuter": "середній",
+        "Uninfl": "незмінні"
+    },
+    "determiner": {
+        "Quant": "kvantor",
+        "Dem": "demonstrativ",
+        "Poss": "possessiv"
+    },
+    "split_inf": {
+        "title": "розділений інфінітив",
+        "label": "Більше інформації про розділений інфінітив",
+        "content": [
+            "If you use split infinitive, the infinitive form of this verb will have the suffix",
+            "",
+            "Read more here (Norwegian)"
+        ]
+    },
+    "settings": {
+        "title": "Налаштування",
+        "cookie_prompt": "For technical reasons we need to use cookies to store your settings for later. This is only used to enhance your user experience, and we do not use these cookies to track your activity.",
+        "accept_cookies": "Accept cookies",
+        "inflection_no": "Показати коди відмінювання з друкованих словників",
+        "inflection_expanded": "Завжди показувати таблиці відмінювання у повних статтях",
+        "inflection_table_context": "Показувати контекст для форм дієприкметників у таблицях відмінювання",
+        "submit_select": "Select search query when submitting search",
+        "simple_search_list": "List view in simple search",
+        "auto_select": "Select search term automatically after search",
+        "locale": {
+            "title": "Locale",
+            "description": "Default language settings for the language of headings, buttons, messages, and menus. The settings will not affect examples and definitions: the Bokmål dictionary will remain in Bokmål and the Nynorsk dictionary stays Nynorsk "
+        },
+        "dict": {
+            "title": "Default dictionaries",
+            "description": "Default dictionary settings for which of the dictionaries to be queried when using ordbokene.no. The settings will not affect current searches or links to searches in dictionaries. To change the dictionary during use, change the settings temporarily via the menu to the right of the search field. "
+        },
+        "collapse": {
+            "description": "Default search presentation settings. Choose between seeing complete articles, article excepts or an automatically generated presentation.",
+            "auto": "Auto (exerpts when more than two results)",
+            "always": "Show exerpts of articles",
+            "never": "Show complete articles"
+        },
+        "reset": "Видалити налаштування",
+        "clear_cookies": "Clear cookies",
+        "reset_done": "Deleted"
+    },
+    "notifications": {
+        "translation": "Клацніть пропозицію нижче, щоб додати переклад на основі програмного забезпечення для перекладу Apertium і глосарію {adm} від Мовна рада Норвегії. | Клацніть пропозиції нижче, щоб додати переклад на основі програмного забезпечення перекладу Apertium і глосарію {adm} від Мовна рада Норвегії.",
+        "translation_title": "Потенційний переклад",
+        "inflected": "{word} is an inflection of:",
+        "also_inflected": "{word} is also an inflection of:",
+        "inflected_title": "Inflected forms",
+        "did_you_mean": "Did you mean:",
+        "similar": "Пропозиції щодо пошуку",
+        "similar_bm": "Додайте подібні збіги зі Словника Букмола: ",
+        "similar_nn": "Додайте подібні збіги зі Словника Нюношка: ",
+        "search": "Шукайте в словнику",
+        "back": "Повернутися до результатів пошуку",
+        "simple": "Simple search",
+        "results": "No results | One result | {count} results",
+        "results_dict": "No results in {dict}|One result in {dict}|{count} results in {dict}",
+        "suggestions_available": "Search suggestions available | Additional search suggestions available",
+        "more": "Показати більше",
+        "less": "Показати менше",
+        "fuzzy": "Схожі ключові слова",
+        "headwords": "Слова і словосполучення",
+        "ignored_words": "Пошук було призупинено, оскільки ми обмежуємо запити 20 словами.",
+        "ignored_chars": "Пошук було проігноровано, оскільки ми не дозволяємо використовувати слова довжиною понад 40 символів.",
+        "no_pos_results": " в пошуку {pos}",
+        "suggest_dict": [
+            "Did you search in the wrong dictionary?",
+            "Try searching"
+        ],
+        "fulltext": {
+            "title": "Повнотекстовий пошук",
+            "description": "Ваш запит дає результати в розширеному пошуку з увімкненим повнотекстовим пошуком."
+        },
+        "no_results": {
+            "title": "Збігів немає",
+            "description": [
+                "Ваш запит не дав результатів в словнику {dict}", "Зверніть увагу, що в норвезькій мові існує безліч можливих поєднань складених слів, і багато таких слів, отже, не включені до словників."
+            ],
+            "link": "Read more"
+        },
+        "feedback": {
+            "title": "Ви знайшли слово, яке шукали?",
+            "yes": "Так",
+            "no": "Ні",
+            "thanks": "Дякуємо за ваш відгук!"
+          }
+
+
+    },
+    "infl": {
+        "caption": {
+            "NOUN": "Inflection table for this noun",
+            "VERB": "Inflection table for this verb",
+            "VERBPP": "Inflection table for the participles of this verb",
+            "ADJ": "Inflection table for this adjective",
+            "ADJCS": "Inflection table for this adjective (comparative, superlative)",
+            "ADV": "Inflection table for this adverb",
+            "DET": "Inflection table for this determinative",
+            "PRON": "Inflection table for this pronoun"
+        },
+        "tags": { 
+            "Form": "форма",
+            "Gender": "рід",
+            "Sing": "однина",
+            "Plur": "множина",
+            "Ind": "неозначена",
+            "Def": "означена",
+            "Finite": "кінцеві форми",
+            "Inf": "інфінітив",
+            "Pres": "теперішній",
+            "Past": "минулий",
+            "PresPerf": "теперішній доконаний",
+            "Imp": "імператив",
+            "PerfPart": "дієприкметник минулого часу",
+            "Fem": "жіночий рід",
+            "FemShort": "жіночий",
+            "Masc": "чоловічий рід",
+            "MascShort": "чоловічий",
+            "MascFem": "чоловічий/ жіночий рід",
+            "Neuter": "середній рід",
+            "NeuterShort": "середній",
+            "PresPart": "дієприкметник теперішнього часу",
+            "Deg": "ступені порівняння",
+            "Pos": "звичайний",
+            "Cmp": "вищий",
+            "Sup": "найвищий",
+            "SupInd": "найвищий неозначений",
+            "SupDef": "найвищий означений",
+            "Nom": "суб’єкт",
+            "Acc": "об’єкт",
+            "Uninfl": "незмінні",
+            "NOUN": "іменник"
+        }
+    },
+    "article": {
+        "definition": "Визначення",
+        "show": "Показати статтю",
+        "show_inflection": "Показати відмінювання",
+        "hide_inflection": "Приховати відмінювання",
+        "share": "Поділитися цим словом",
+        "copy_link": "Скопіювати посилання",
+        "cite": "Цитувати",
+        "open": "Article page",
+        "cite_title": "Процитуйте статтю",
+        "cite_description": [
+            "If you want to cite this article in the ",
+            " we recommend that you state when the article was retrieved (read), e. g. as follows:"
+        ],
+        "download": "Завантажити файл RIS",
+        "copy": "Копіювати",
+        "link_copied": "Посилання скопійовано в буфер обміну",
+        "citation_copied": "Цитату скопійовано в буфер обміну",
+        "citation": "«{lemma}». Із: {dict}. Мовна рада та Бергенський університет. {link} (взято {dd}.{mm}.{yyyy}).",
+        "headings": {
+            "etymology": "Etymology",
+            "pronunciation": "Pronunciation",
+            "expressions": "Set phrases",
+            "definitions": "Senses and Example Sentences",
+            "examples": "Example"
+        },
+        "new": "Нове в {dict}"
+    },
+    "error": {
+        "article": "Could not fetch article {article_id} in {dict}",
+        "articles": "Cound not fetch search results",
+        "status": "Status code: {code}",
+        "404": {
+            "title": "Not Found",
+            "description": "The page may have been deleted or moved, or you may have used an invalid link."
+        },
+        "503": {
+            "title": "503: Unavailable service",
+            "description": "The server is temporarily overloaded or under maintenance."
+        },
+        "server": {
+            "title": "Server Error",
+            "description": "Something went wrong on the server side."
+        },
+        "generic_code": {
+            "title": "Error",
+            "description": "An unexpected error occurred while communicating with the server."
+        },
+        "network": {
+            "title": "Connection Error",
+            "description": "A network problem prevented the page from loading. Please try reloading the page or check if you are connected to the internet."
+        },
+        "no_article": "Serveren finner ingen artikkel med ID {id}. Artikkelen kan ha blitt slettet eller flyttet, eller du kan ha brukt en ugyldig lenke.",
+        "generic": {
+            "title": "Error",
+            "description": "Something went wrong ..."
+        }
+    },
+    "label": {
+        "nav": "Main menu",
+        "footer_nav": "Footer menu",
+        "search_pages": "Search pages",
+        "dict_nav": "Dictionary navigation"
+    },
+    "navigation": {
+        "site": "Navigation menu"
+    },
+    "title": "Помилка",
+    "description": "Щось пішло не так...",
+    "auto": "Автоматичний (більше двох результатів)",
+    "always": "Показувати лише витяги",
+    "never": "Показувати лише повні статті",
+    "NOUN": "Таблиця відмінювання для цього іменника",
+    "VERB": "Таблиця відмінювання для цього дієслова",
+    "VERBPP": "Таблиця відмінювання для цього дієслова (дієприкметника)",
+    "ADJ": "Таблиця відмінювання для цього прикметника",
+    "ADJCS": "Таблиця відмінювання для цього прикметника (ступені порівняння)",
+    "ADV": "Таблиця відмінювання для цього прислівника",
+    "DET": "Таблиця відмінювання для цього детермінатива",
+    "PRON": "Таблиця відмінювання для цього займенника",
+    "etymology": "Походження",
+    "pronunciation": "Вимова",
+    "expressions": "Фіксовані вирази",
+    "definitions": "Значення та вживання",
+    "examples": "Приклад"
+}

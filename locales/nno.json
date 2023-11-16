@@ -1,0 +1,280 @@
+{
+    "sub_title": "Bokmålsordboka og Nynorskordboka",
+    "home": "Til forsida",
+    "menu": "Meny",
+    "help": "Hjelp",
+    "about": "Om ordbøkene",
+    "contact":  "Kontakt oss",
+    "autocomplete_suggestions": "Søkjeforslag | søkjeforslag",
+    "advanced_help": "Søkjehjelp",
+    "advanced": "Avansert søk",
+    "to_advanced": "Gå til avansert søk",
+    "show_articles": "Artiklar",
+    "show_list": "Listevisning",
+    "simple": "Enkelt søk",
+    "article_view": "Artikkelside",
+    "breadcrumbs": "Brødsmulesti",
+    "content_not_found": "Innhold ikkje tilgjengeleg",
+    "photo": "Foto: Erwan Hesry (unsplash.com)",
+    "background": "Bakgrunnsbilde",
+    "monthly": "Smakebit frå {dict}",
+    "close": "Lukk",
+    "cancel": "Avbryt",
+    "to_top": "Til toppen",
+    "per_page": "Resultat per side: ",
+    "previous-page": "Forrige side",
+    "next-page": "Neste side",
+    "pageof": "Side {page} av {pages}",
+    "three_genera": "{m}, {f} eller {n}",
+    "two_genera": "{a} eller {b}",
+    "in": " i ",
+    "and": " og ",
+    "from": "frå",
+    "search_placeholder": "Søk i ",
+    "search": "Søk",
+    "reset": "Nullstill",
+    "clear": "Tøm",
+    "chosen_dict": "Vald ordbok: ",
+    "footer_description": "{bm} og {nn} viser skrivemåte og bøying i tråd med norsk rettskriving. Språkrådet og Universitetet i Bergen står bak ordbøkene.",
+    "privacy": "Personvern",
+    "accessibility": {
+        "page": "Tilgjenge",
+        "main_content": "Gå til hovudinnhald",
+        "statement": "Tilgjengeerklæring"
+    },
+    "dicts": {
+        "nn": "Nynorskordboka",
+        "bm": "Bokmålsordboka",
+        "bm,nn": "Begge ordbøkene"
+    },
+    "dicts_inline": {
+        "nn": "Nynorskordboka",
+        "bm": "Bokmålsordboka",
+        "bm,nn": "ordbøkene"
+    },
+    "dicts_short": {
+      "nn": "Nynorsk",
+      "bm": "Bokmål",
+      "bm,nn": "Begge"
+    },
+    "options": {
+        "title": "Søkjealternativ",
+        "dict": "Ordbøker",
+        "scope": {
+            "title": "Søk etter",
+            "value": {
+                "e": "Oppslagsord",
+                "ei": "Alle ordformer",
+                "eif": "Alt innhald"
+                }
+            },
+        "pos": "Ordklasse",
+        "collapse": "Komprimer artiklar"
+    },
+    "pos": "Ordklasse",
+    "all_pos": "alle",
+    "gender":"kjønn",
+    "tags": {
+    "NOUN": "substantiv",
+    "VERB": "verb",
+    "ADJ": "adjektiv",
+    "ADP": "preposisjon|preposisjonar",
+    "PFX": "prefiks",
+    "ADV": "adverb",
+    "DET": "determinativ",
+    "PROPN": "eigennamn",
+    "ABBR": "forkorting",
+    "INTJ": "interjeksjon|interjeksjonar",
+    "SYM": "symbol",
+    "PRON": "pronomen",
+    "CCONJ": "konjunksjon|konjunksjonar",
+    "SCONJ": "subjunksjon|subjunksjonar",
+    "INFM": "infinitivsmerke",
+    "COMPPFX": "i samansetjing",
+    "Masc": "hankjønn",
+    "Fem": "hokjønn",
+    "Neuter": "inkjekjønn",
+    "Uninfl": "ubøyeleg"
+    },
+  "determiner": {
+    "Quant": "kvantor",
+    "Dem": "demonstrativ",
+    "Poss": "possessiv"
+  },
+  "split_inf": {
+    "title": "kløyvd infinitiv",
+    "label": "Meir informasjon om kløyvd infinitiv",
+    "content": ["Dersom du bruker kløyvd infinitiv, skal dette verbet ha", "i infinitiv.", "Les meir her"]
+},
+    "settings": {
+        "title": "Innstillingar",
+        "cookie_prompt": "For å lagra innstillingane dine til seinare må me av tekniske årsaker bruke informasjonskapslar (cookiar). Dette blir berre brukt for å forbetra brukaropplevinga di, og vi bruker ikkje desse informasjonskapslane til å spora aktiviteten din.",
+        "accept_cookies": "Aksepter informasjonskaplslar",
+        "inflection_no": "Vis bøyingskodane frå dei trykte ordbøkene",
+        "inflection_expanded": "Vis alltid bøyingstabellane",
+        "inflection_table_context": "Vis kontekst for partisippformer i bøyingstabellane",
+        "submit_select": "Merk søkjeteksten når du gjennomfører søket",
+        "simple_search_list": "Listevisning i enkelt søk",
+        "auto_select": "Merk søkjeordet automatisk etter søk",
+        "locale": {
+          "title": "Nettsidespråk",
+          "description": "Her kan du velje om du vil ha bokmål, nynorsk eller engelsk som språk på knappar, meldingar og menyar. Dette påverkar ikkje tydingar, døme og faste uttrykk i ordbøkene: Bokmålsordboka kjem framleis til å vere på bokmål, og Nynorskordboka kjem til å vere på nynorsk."
+        },
+        "collapse": {
+            "description": "Vel når artiklane skal komprimerast til eit utdrag av tydingane.",
+            "auto": "Automatisk (meir enn to resultat)",
+            "always": "Vis berre utdrag",
+            "never": "Vis berre fullstendige artiklar"
+        },
+        "reset": "Nullstill innstillingar",
+        "clear_cookies": "Slett informasjonskaplslar",
+        "reset_done":"Slettet"
+    },
+    "notifications": {
+        "translation_title": "Mogleg omsetjing",
+        "translation": "Klikk på forslaget under for å legge til omsetjing basert på omsetjingsprogrammet Apertium og Språkrådets {adm}. | Klikk på forslaga under for å legge til omsetjing basert på omsetjingsprogrammet Apertium og Språkrådets {adm}. ",
+        "inflected": "{word} er ei bøygd form av:",
+        "also_inflected": "{word} er òg ei bøygd form av:",
+        "inflected_title": "Bøygde former",
+        "did_you_mean": "Meinte du:",
+        "similar": "Liknande oppslagsord:",
+        "similar_bm": "Legg til liknande treff frå Bokmålsordboka: ",
+        "similar_nn": "Legg til liknande treff frå Nynorskordboka: ",
+        "search": "Søk i ordbøkene",
+        "back": "Tilbake til søkjeresultata",
+        "simple": "Vanleg søk",
+        "not_a_word": " er ikkje eit oppslagsord i ",
+        "results": "Ingen treff | Eitt treff| {count} treff",
+        "results_dict": "Ingen treff i {dict}|Eitt treff i {dict}|{count} treff i {dict}",
+        "suggestions_available": "Søkjeforslag tilgjengelege | Ytterlegare søkjeforslag tilgjengelege",
+        "keywords": "oppslagsord",
+        "ignored_words": "Søket vart ignorert fordi vi avgrensar talet på førespurnader til 20 ord.",
+        "ignored_chars": "Søket vart ignorert fordi vi ikkje tillèt søkjeord med meir enn 40 teikn.",
+        "no_pos_results": " i søk på {pos}",
+        "suggest_dict": [
+            "Har du søkt i feil ordbok?",
+            "Prøv å søkje i "
+        ],
+        "fulltext": {
+            "title": "Fritekstsøk",
+            "description": "Søket ditt gir treff i avansert søk med fritekstsøk."
+          },
+          "no_results": {
+            "title": "Ingen treff",
+            "description": ["Søket ditt gav ingen treff i {dict}", "Merk at det er tallause kombinasjonsmoglegheiter av samansette ord på norsk, og mange slike ord er derfor ikkje tekne med i ordbøkene."],
+            "link": "Les meir"
+          },
+          "feedback": {
+            "title": "Fann du ordet du leita etter?",
+            "yes": "Ja",
+            "no": "Nei",
+            "thanks": "Takk for tilbakemeldinga!"
+          }
+    },
+    "infl": {
+        "caption":{
+          "NOUN": "Bøyningstabell for dette substantivet",
+          "VERB": "Bøyningstabell for dette verbet",
+          "VERBPP": "Bøyningstabell for dette verbet (partisippformer)",
+          "ADJ": "Bøyningstabell for dette adjektivet",
+          "ADJCS": "Bøyningstabell for dette adjektivet (gradbøyning)",
+          "ADV": "Bøyningstabell for dette adverbet",
+          "DET": "Bøyningstabell for dette determinativet",
+          "PRON": "Bøyningstabell for dette pronomenet"
+        },
+        "tags": { 
+            "Form": "form",
+            "Gender": "kjønn",
+            "Sing": "eintal",
+            "Plur": "fleirtal",
+            "Ind": "ubunden",
+            "Def": "bunden",
+            "Finite": "finitte former",
+            "Inf": "infinitiv",
+            "Pres": "presens",
+            "Past": "preteritum",
+            "PresPerf": "presens perfektum",
+            "Imp": "imperativ",
+            "PerfPart": "perfektum partisipp",
+            "Fem": "hokjønn",
+            "FemShort": "hokjønn",
+            "Masc": "hankjønn",
+            "MascShort": "hankjønn",
+            "MascFem": "hankjønn/ hokjønn",
+            "Neuter": "inkjekjønn",
+            "NeuterShort": "inkjekjønn",
+            "PresPart": "presens partisipp",
+            "Deg": "gradbøying",
+            "Pos": "positiv",
+            "Cmp": "komparativ",
+            "Sup": "superlativ",
+            "SupInd": "superlativ ubunden",
+            "SupDef": "superlativ bunden",
+            "Nom": "subjektsform",
+            "Acc": "objektsform",
+            "Uninfl": "ubøyeleg",
+            "NOUN": "substantiv"
+        }
+    },
+    "article": {
+        "definition": "Definisjon",
+        "show": "Opne artikkel",
+        "show_inflection": "Vis bøying",
+        "hide_inflection": "Skjul bøying",
+        "share": "Del",
+        "copy_link": "Kopier lenkje",
+        "cite": "Sitere",
+        "open": "Artikkelside",
+        "copy": "Kopier",
+        "cite_title": "Sitere artikkelen",
+        "cite_description": ["Ønskjer du å sitere denne artikkelen i ", ", rår vi deg til å gje opp når artikkelen vart henta (lesen), t.d. slik:"],
+        "download": "Last ned RIS-fil",
+        "link_copied": "Kopiert",
+        "citation_copied": "Sitatet er kopiert",
+        "citation": "«{lemma}». I: {dict} Språkrådet og Universitetet i Bergen. {link} (lesen {dd}.{mm}.{yyyy}).",
+        "headings": {
+            "etymology": "Opphav",
+            "pronunciation": "Uttale",
+            "expressions": "Faste uttrykk",
+            "definitions": "Tyding og bruk",
+            "examples": "Døme"
+        },  
+        "new": "Nytt i {dict}"
+    },
+    "error": {
+          "article": "Kunne ikkje hente artikkel {article_id} i {dict}",
+          "articles": "Kunne ikkje hente søkjeresultat",
+          "status": "Statuskode: {code}",
+          "404": {
+              "title": "Ikkje funne",
+              "description": "Sida kan ha blitt sletta eller flytta, eller du kan ha brukt ei ugyldig lenkje."
+          },
+          "503": {
+              "title": "503: Utilgjengeleg teneste",
+              "description": "Tenaren er mellombels overbelasta eller under vedlikehald."
+          },
+          "server": {
+              "title": "Feil på server",
+              "description": "Noko gjekk gale på serversida."},
+          "generic_code": {
+              "title": "Feil",
+              "description": "Det har oppstått ein uventa feil i kommunikasjonen med serveren."},
+          "network": {
+              "title":"Tilkoplingsfeil",
+              "description": "Eit nettverksproblem hindra lasting av sida. Prøv å laste sida på nytt, eller sjekk om du er kopla til internett."},
+          "no_article": "Serveren finn ingen artikkel med ID {id}. Artikkelen kan ha blitt sletta eller flytta, eller du kan ha brukt ei ugyldig lenkje.",
+          "generic": {
+              "title": "Feil",
+              "description":"Noko gjekk gale..."
+          }
+      },
+      "label": {
+        "nav": "Hovudmeny",
+        "footer_nav": "Botnlinjemeny",
+        "search_pages": "Søkjesider",
+        "dict_nav": "Ordboknavigasjon"
+      },
+      "navigation": {
+        "site": "Navigasjonsmeny"
+      }
+  }

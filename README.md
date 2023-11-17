@@ -38,3 +38,4 @@ https://git.app.uib.no/spraksamlingane/ordbokene-content
 ## Sitemaps
 Sitemaps for the production deployment are generated once a scheduled cicd pipeline. They are generated for the main branch.
 There is a scheduled pipeline for the ordbokene-dev branch that can be activated for debugging.
+.

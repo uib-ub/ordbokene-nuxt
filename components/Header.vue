@@ -17,7 +17,7 @@
                 :aria-controls="locale_menu && locale_menu.overlayVisible ? 'locale_menu' : null"
                 @click="locale_menu.toggle">
         <span class="relative">
-        <span aria-hidden="true" class="absolute text-xs right-2 top-3 bg-primary rounded px-1 select-none">{{locale2lang[$i18n.locale].toUpperCase()}}</span><Icon name="bi:globe" size="1.5em"/>
+        <span aria-hidden="true" class="absolute text-xs right-2 top-3 bg-primary rounded px-1 select-none">{{locale2lang[$i18n.locale].toUpperCase()}}</span><BootstrapIcon name="globe" class="text-2xl"/>
         <span class="sr-only">
           <span lang="no">Nettsidespråk</span>
           <span v-for="({button, lang}) in localeConfig.filter(item => item.button)" :key="lang" :lang="lang" class="">{{button}}</span>
@@ -31,7 +31,7 @@
                 :aria-expanded="menu_expanded"
                 :aria-controls="menu_expanded? 'main_menu' : null"
                 @click="menu_expanded = !menu_expanded">
-          <span class="sr-only sm:inline sm:not-sr-only">{{$t('menu')}}</span><Icon :name="menu_expanded && false ? 'bi:x-lg' : 'bi:list'" size="2rem" class="sm:ml-2"/>
+          <span class="sr-only sm:inline sm:not-sr-only">{{$t('menu')}}</span><BootstrapIcon :name="menu_expanded ? 'x-lg' : 'list'" class="sm:ml-2 text-2xl"/>
         </button>
       </div>
 
@@ -60,7 +60,7 @@
     </nav>
     <button  type="button" class="ml-6 hidden lg:flex" @click="locale_menu.toggle" aria-haspopup="true" :aria-controls="locale_menu && locale_menu.overlayVisible ? 'locale_menu' : null">
         <span class="relative">
-        <span aria-hidden="true" class="absolute text-xs right-2 top-3 bg-primary rounded px-1 select-none">{{locale2lang[$i18n.locale].toUpperCase()}}</span><Icon name="bi:globe" size="1.5em"/>
+        <span aria-hidden="true" class="absolute text-xs right-2 top-3 bg-primary rounded px-1 select-none">{{locale2lang[$i18n.locale].toUpperCase()}}</span><BootstrapIcon name="globe" class="text-xl"/>
         <span class="sr-only">
           <span lang="no">Nettsidespråk</span>
           <span v-for="({button, lang}) in localeConfig.filter(item => item.button)" :key="lang" :lang="lang" class="">{{button}}</span>
@@ -85,7 +85,7 @@
                           v-bind="props.action"
                           @click.prevent="change_locale(item.locale)">
                         <span aria-hidden="true" class="bg-primary rounded px-2 select-none">{{item.lang.toUpperCase()}}</span><span>{{item.label}}</span>
-                        <span><Icon v-if="$i18n.locale==item.locale" name="bi:check2" size="1.5rem"/></span>
+                        <span><BootstrapIcon v-if="$i18n.locale==item.locale" name="check2"/></span>
                   </a>
             </template>
         </Menu>

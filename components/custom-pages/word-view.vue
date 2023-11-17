@@ -16,9 +16,9 @@
             </h2>
           </div>
           <component :is="listView ? 'ol' : 'div'" v-if="articles.meta[dict] && articles.meta[dict].total"  class="article-column">
-            <component :is="listView ? 'li' : 'div'" v-for="(article_id, idx) in articles.articles[dict]" :key="article_id" >
+            <component :is="listView ? 'li' : 'div'" v-for="article_id in articles.articles[dict]" :key="article_id" >
               <NuxtErrorBoundary @error="article_error($event, article_id, dict)">
-                <Article :scoped_locale="scoped_locale(dict)" :list="listView" :article_id="article_id" :dict="dict" :idx="idx"/>
+                <Article :scoped_locale="scoped_locale(dict)" :list="listView" :article_id="article_id" :dict="dict"/>
               </NuxtErrorBoundary>
             </component>
           </component>
@@ -33,8 +33,8 @@
     <section v-if="!(no_suggestions_bm && no_suggestions_nn)" class="pt-0 mb-12 mt-12 px-2" :class="{'text-center': store.dict == 'bm,nn'}" aria-labelledby="feedback_title">
                 <h2 id="feedback_title">{{$t('notifications.feedback.title')}}</h2>
                 <div v-if="!feedback_given" class="flex gap-4 mt-4 my-6 mb-8 h-10" :class="{'justify-center': store.dict == 'bm,nn'}">
-                    <button type="button" class="btn w-[96px]" @click="track_feedback(true)" >{{$t('notifications.feedback.yes')}}<Icon class="text-primary ml-3" name="bi:hand-thumbs-up-fill"/></button>
-                    <button type="button" class="btn w-[96px]" @click="track_feedback(false)">{{$t('notifications.feedback.no')}}<Icon class="text-primary ml-3" name="bi:hand-thumbs-down-fill"/></button></div>
+                    <button type="button" class="btn w-[96px]" @click="track_feedback(true)" >{{$t('notifications.feedback.yes')}}<BootstrapIcon class="text-primary ml-3" name="hand-thumbs-up-fill"/></button>
+                    <button type="button" class="btn w-[96px]" @click="track_feedback(false)">{{$t('notifications.feedback.no')}}<BootstrapIcon class="text-primary ml-3" name="hand-thumbs-down-fill"/></button></div>
                     <p v-else class="mt-4 my-6 mb-8 justify-center h-10">
                     {{$t('notifications.feedback.thanks')}}
                 </p>
@@ -109,7 +109,7 @@ const dicts = computed(()=> {
 })
 
 const metaDescription = computed(() => {
-    return dicts.value.map(dict => i18n.t('notifications.results_dict', {dict: i18n.t('dicts_inline.'+dict), count: articles.value.meta[dict] && articles.value.meta[dict].total})).join(". ")
+    return articles.value && dicts.value.map(dict => i18n.t('notifications.results_dict', {dict: i18n.t('dicts_inline.'+dict), count: articles.value.meta[dict] && articles.value.meta[dict].total})).join(". ")
 })
 
 useHead({

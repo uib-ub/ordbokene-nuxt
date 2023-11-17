@@ -8,7 +8,7 @@
             :aria-expanded="expanded"
             :aria-controls="expanded ? `${dict}_${article_id}_snippet` : undefined"
             @click="expanded = !expanded">
-      <span class="self-center"><Icon :name="expanded ? 'bi:chevron-up' : 'bi:chevron-down'" size = "1.25rem"/></span>
+      <span class="self-center"><BootstrapIcon :name="expanded ? 'chevron-up' : 'chevron-down'" size = "1.25rem"/></span>
       <span class="flex flex-col  overflow-hidden">
         <span class="flex">
       <span v-for="(lemma_group, i) in lemma_groups" :key="i" class="block">
@@ -44,7 +44,7 @@
       <div v-if="data.lemmas[0].split_inf" class="mt-2 mb-3 split-inf">
         <div class="flex gap-2 align-middle"><span :id="`${dict}_${article_id}_split_inf_label`">{{$t('split_inf.title')}}: -a</span>
         <button type="button" class="rounded leading-none !p-0 !text-primary hover:bg-primary-lighten bg-primary  border-primary-lighten" :aria-expanded="split_inf_expanded" :aria-label="`${dict}_${article_id}_split_inf_label`" aria-controls="split-inf-explanation" @click="split_inf_expanded = !split_inf_expanded">
-          <Icon :name="split_inf_expanded? 'bi:dash' : 'bi:plus'" class="text-white !m-0 !p-0" size="1.5em"/>
+          <BootstrapIcon :name="split_inf_expanded? 'dash' : 'plus'" class="text-white !m-0 !px-1"/>
         </button>
         </div>
         
@@ -61,7 +61,7 @@
               :aria-controls="inflection_expanded ? `${dict}_${article_id}_inflection` : null"
               :lang="scoped_lang"
               @click="expand_inflection">
-             {{ $t(inflection_expanded ? 'article.hide_inflection' : 'article.show_inflection', 1, {locale: scoped_locale})}}<span v-if="!inflection_expanded"><Icon name="bi:chevron-down" class="ml-4" size="1.25em"/></span><span v-if="inflection_expanded"><Icon name="bi:chevron-up" class="ml-4" size="1.5em"/></span>
+             {{ $t(inflection_expanded ? 'article.hide_inflection' : 'article.show_inflection', 1, {locale: scoped_locale})}}<span v-if="!inflection_expanded"><BootstrapIcon name="chevron-down" class="ml-4" size="1.25em"/></span><span v-if="inflection_expanded"><BootstrapIcon name="chevron-up" class="ml-4" size="1.5em"/></span>
       </button>
         <div v-if="inflected && !welcome && (inflection_expanded || single || list)" :id="`${dict}_${article_id}_inflection`" ref="inflection_table" class="motion-reduce:transition-none border-collapse py-2 transition-all duration-300 ease-in-out">
           <InflectionWrapper :single="single" :scoped_locale="scoped_locale" :lemmaList="lemmas_with_word_class_and_lang" :dict="dict"/>
@@ -81,7 +81,7 @@
           <section v-if="has_content && !welcome" class="definitions">
               <h4 v-if="!welcome" :lang="locale2lang[scoped_locale]">{{$t('article.headings.definitions', 1, { locale: scoped_locale})}}</h4>
 
-              <Definition v-for="definition in data.body.definitions" :key="definition.id" :scoped_locale="scoped_locale" :dict="dict" :level="1" :body='definition' :welcome="welcome" @link-click="link_click"/>
+              <Definition v-for="definition in data.body.definitions" :key="definition.id" :scoped_locale="scoped_locale" :dict="dict" :level="1" :body='definition' @link-click="link_click"/>
 
           </section>
           <section v-if="sub_articles.length && !welcome" class="expressions">
@@ -92,9 +92,7 @@
             </section>
 
           <div v-if="welcome">
-            <WelcomeMarkdown :path="`/welcome/${dict}/${article_id}`">
-              {{snippet}}
-            </WelcomeMarkdown>
+            {{snippet}}
           </div>
       </div>
   </div>
@@ -288,7 +286,7 @@ const sub_articles = computed(() => {
 
 
 const link_click = (itemref) => {
-  useTrackEvent('article_clicked', {props: {combined: props.dict + "/" + props.article_id, to: itemref, combined: props.dict + "/" + props.article_id + " => " + itemref}})
+  useTrackEvent('article_clicked', {props: {to: itemref, combined: props.dict + "/" + props.article_id + " => " + itemref}})
 }
 
 const link_to_self = () => {
@@ -505,11 +503,11 @@ const scoped_lang = computed(() => {
 
 
 const metaSnippet = computed(() => {
-  return lemma_groups.value.map(item => item.description + " — ") + snippet.value
+  return lemma_groups && lemma_groups.value.map(item => item.description + " — ") + snippet.value
 })
 
 const title = computed(() => {
-return data.value.lemmas[0].lemma
+return data.value && data.value.lemmas[0].lemma
 })
 
 

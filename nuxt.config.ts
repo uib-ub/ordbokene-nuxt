@@ -14,12 +14,15 @@ export default defineNuxtConfig({
     "~/components"
 
   ],
+  nitro: {
+    inlineDynamicImports: true
+  },
   runtimeConfig: {
     public: {
       api: 'https://oda.uib.no/opal/prod/',
       apiFallback: 'https://odd.uib.no/opal/prod/',
       apiDev: 'https://oda.uib.no/opal/dev/',
-      apiDevFallback:  'https://odd.uib.no/opal/dev/',
+      apiDevFallback:  'https://odd.uib.no/opal/dev/'
     }
   },
   build: {
@@ -30,10 +33,10 @@ export default defineNuxtConfig({
       '@pinia/nuxt',
       '@pinia-plugin-persistedstate/nuxt',
       '@nuxtjs/tailwindcss',
-      'nuxt-icon',
+      'nuxt-bootstrap-icons',
       '@nuxt/content',
       '@nuxtjs/html-validator',
-      '@nuxtjs/plausible',
+      '@nuxtjs/plausible'
     ],
 
   htmlValidator: {

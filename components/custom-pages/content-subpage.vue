@@ -1,12 +1,13 @@
 <template>
 <div class="secondary-page overflow-auto">
-        <ContentRenderer :value="data">
+        <ContentRenderer v-if="!error" :value="data">
           <ContentRendererMarkdown :value="data"/>
           <template #empty>
-            <p>{{$t('content_not_found')}}</p>
+            <ErrorMessage :title="$t('content_not_found')" :error="{}"/>  
           </template>
           
       </ContentRenderer>
+      <ErrorMessage v-if="error" :title="$t('content_not_found')" :error="error"/>  
 </div>
 </template>
 
@@ -18,11 +19,11 @@ const i18n = useI18n()
 const route = useRoute()
 
 
-const { data } = await useAsyncData('subpage-data', () => {
+const { data, error } = await useAsyncData('subpage-data', () => {
   return queryContent(route.params.locale ? route.fullPath : '/' + i18n.locale.value + route.fullPath ).findOne()})
 
-
-useHead({
+if (!error) {
+  useHead({
     title: data.value.title,
     meta: [
       {property: 'og:title', content:  data.value.title},
@@ -32,5 +33,8 @@ useHead({
       {property: 'og:description', content: data.value.description }
     ]
 })
+
+}
+
 
 </script>

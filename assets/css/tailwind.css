@@ -82,11 +82,11 @@
          @apply bg-tertiary-darken1 my-4 p-4 border-solid border-l-4 border-primary;
       
       }
-      
       .callout i {
         /* background-color: theme("colors.primary.DEFAULT"); */
-        @apply text-xl pr-2 bg-primary;
+        @apply text-xl;
       }
+
 
       .suggestions h3 {
           @apply text-xl
@@ -194,7 +194,7 @@
       
       
       
-      .secondary-page h2, .ord-container h2 {
+      .secondary-page h2, .ord-container h2, .callout.error h2 {
         @apply text-primary text-xl md:text-2xl  mt-4 font-semibold;
       }
 

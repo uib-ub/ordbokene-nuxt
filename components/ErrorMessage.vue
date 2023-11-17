@@ -1,8 +1,8 @@
 <template>
-  <div class="callout pt-1" role="alert">
-  <h2 class="pb-2"><Icon name="bi:exclamation-triangle-fill" class="mr-3 mb-1"/>{{title}}</h2>
+  <div class="callout error pt-1 pb-6" role="alert">
+  <h2 class="pb-2"><BootstrapIcon name="exclamation-triangle-fill" class="mr-3 mb-1"/>{{title}}</h2>
   <p>{{description}}</p>
-  <p class="pt-2">{{$t('error.status', {code: error.statusCode})}}</p>
+  <p v-if="error.data" class="pt-2">{{$t('error.status', {code: error.statusCode})}}</p>
 </div>
 
 </template>
@@ -19,12 +19,15 @@ const props = defineProps({
 
 const description = ref()
 
-if (props.error.statusCode === 503) {
+if (props.error.data == undefined) {
+    description.value = i18n.t('error.network.description')
+}
+else if (props.error.statusCode === 503) {
     description.value = i18n.t('error.503.description')
 
 }
 else if (props.error.statusCode === 404) {
-    description.value = i18n.t('error.404.description', )
+    description.value = i18n.t('error.404.description')
 
 }
 else if (props.error.statusCode && props.error.statusCode > 499) {

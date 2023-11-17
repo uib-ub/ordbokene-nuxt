@@ -1,23 +1,24 @@
 <template>
   <div class="secondary-page">
-      <ContentRenderer :value="intro">
+      <ContentRenderer v-if="!error" :value="intro">
             <ContentRendererMarkdown :value="intro" />
-            <template #empty>
-              <p>{{$t('content_not_found')}}</p>
+            <template #not-found>
+              <ErrorMessage :title="$t('content_not_found')" :error="{}"/>  
             </template>
           </ContentRenderer>
   
-      <ContentNavigation v-if="$route.name != 'contact'" v-slot="{ navigation }" :query="sections" >
+      <ContentNavigation v-if="!error && $route.name != 'contact'" v-slot="{ navigation }" :query="sections" >
           <template v-for="loc in navigation" :key="loc._path" >
             <nav v-if="loc.children[0].children" class="mt-8">
             <ul class="w-full !pl-0">
             <li v-for="subpage in loc.children[0].children.slice(1, loc.children[0].children.length) " :key="subpage._path" class="list-none text-left w-full content-linkt-item">
-              <NuxtLink class="w-full link-header !no-underline flex justify-between hover:bg-canvas-darken hover:shadow-inner duration-100 px-5 pt-3 pb-4" :to="subpage._path">{{subpage.title}} <Icon class="self-end text-gray-700" name="bi:chevron-right"/></NuxtLink>
+              <NuxtLink class="w-full link-header !no-underline flex justify-between hover:bg-canvas-darken hover:shadow-inner duration-100 px-5 pt-3 pb-4" :to="subpage._path">{{subpage.title}} <BootstrapIcon class="self-end text-gray-700" name="chevron-right"/></NuxtLink>
             </li>
             </ul>
             </nav>
           </template>
       </ContentNavigation>
+      <ErrorMessage v-if="error" :title="$t('content_not_found')" :error="error"/>  
   </div>
 </template>
   
@@ -27,10 +28,11 @@ import { useRoute } from 'vue-router'
 const i18n = useI18n()
 const route = useRoute()
 
-const { data: intro } = await useAsyncData('content-accordion', () => queryContent(i18n.locale.value, route.name).findOne())
+const { data: intro, error} = await useAsyncData('content-accordion', () => queryContent(i18n.locale.value, route.name).findOne())
 const sections =  queryContent(i18n.locale.value, route.name)
 
-useHead({
+if (!error) {
+  useHead({
     title: intro.value.title,
     meta: [
       {property: 'og:title', content: intro.value.title },
@@ -40,6 +42,9 @@ useHead({
       {property: 'og:description', content: intro.value.description }
     ]
 })
+
+}
+
 
 </script>
 

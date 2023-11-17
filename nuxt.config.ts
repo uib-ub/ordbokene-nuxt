@@ -6,10 +6,6 @@ const locales = ["nob", "nno", "eng", "ukr"]
 const optionalLocale = "/:locale(" + locales.join("|") + ")?"
 
 export default defineNuxtConfig({
-  alias: {
-    "micromark/lib/preprocess.js": "micromark",
-    "micromark/lib/postprocess.js": "micromark",
-  },
   css: [
     '~/assets/fonts/fonts.css',
   ],

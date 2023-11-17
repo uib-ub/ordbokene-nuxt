@@ -100,10 +100,8 @@ export default defineNuxtConfig({
               {
                 name: 'welcome',
                 path: '',
-                alias: 'search', //legacy
                 file: '~/components/custom-pages/welcome-view.vue'
               }
-
             ]
           })
       pages.push(

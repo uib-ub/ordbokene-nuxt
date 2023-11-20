@@ -6,6 +6,7 @@ const locales = ["nob", "nno", "eng", "ukr"]
 const optionalLocale = "/:locale(" + locales.join("|") + ")?"
 
 export default defineNuxtConfig({
+  ssr: false,
   css: [
     '~/assets/fonts/fonts.css',
   ],

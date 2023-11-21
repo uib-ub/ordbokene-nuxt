@@ -35,13 +35,8 @@ export default defineNuxtConfig({
       '@nuxtjs/tailwindcss',
       'nuxt-bootstrap-icons',
       '@nuxt/content',
-      '@nuxtjs/html-validator',
       '@nuxtjs/plausible'
-    ],
-
-  htmlValidator: {
-    usePrettier: false
-  },     
+    ],    
   plausible: {
     domain: 'test.ordbokene.no',
   },

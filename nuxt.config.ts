@@ -15,7 +15,11 @@ export default defineNuxtConfig({
 
   ],
   nitro: {
-    inlineDynamicImports: true
+    preset: 'node-server',
+    inlineDynamicImports: true,
+    awsAmplify: {
+
+    }
   },
   runtimeConfig: {
     public: {

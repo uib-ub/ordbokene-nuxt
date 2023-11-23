@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     preset: 'node-server',
     inlineDynamicImports: true,
     awsAmplify: {
-
+      catchAllStaticFallback: true,
     }
   },
   runtimeConfig: {

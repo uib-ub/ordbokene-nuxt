@@ -15,7 +15,7 @@ export default defineNuxtConfig({
 
   ],
   nitro: {
-    preset: 'aws_amplify',
+    preset: 'node-server',
     inlineDynamicImports: true,
     awsAmplify: {
       catchAllStaticFallback: true,

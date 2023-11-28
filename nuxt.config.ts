@@ -49,6 +49,7 @@ export default defineNuxtConfig({
   plausible: {
     domain: 'test.ordbokene.no',
   },
+  ssr: false,
   content: {
     experimental: {
       clientDb: true

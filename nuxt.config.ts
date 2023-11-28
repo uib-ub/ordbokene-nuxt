@@ -32,11 +32,7 @@ export default defineNuxtConfig({
   build: {
 		transpile: ["primevue", 'vue-i18n']
 	},
-  router: {
-    options: {
-      strict: true,
-    },
-  },
+
   modules: [
       '@pinia/nuxt',
       '@pinia-plugin-persistedstate/nuxt',
@@ -54,6 +50,9 @@ export default defineNuxtConfig({
     domain: 'test.ordbokene.no',
   },
   content: {
+    experimental: {
+      clientDb: true
+    },
     sources: {
       github: {
         driver: "github",

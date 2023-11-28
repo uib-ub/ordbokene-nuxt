@@ -7,8 +7,7 @@
             </template>
           </ContentRenderer>
   
-      <ContentNavigation v-if="!error && $route.name != 'contact'" v-slot="{ navigation }" :query="sections" >
-          <template v-for="loc in navigation" :key="loc._path" >
+          <template v-for="loc in sections" :key="loc._path" >
             <nav v-if="loc.children[0].children" class="mt-8">
             <ul class="w-full !pl-0">
             <li v-for="subpage in loc.children[0].children.slice(1, loc.children[0].children.length) " :key="subpage._path" class="list-none text-left w-full content-linkt-item">
@@ -17,7 +16,7 @@
             </ul>
             </nav>
           </template>
-      </ContentNavigation>
+
       <ErrorMessage v-if="error" :title="$t('content_not_found')" :error="error"/>  
   </div>
 </template>
@@ -27,9 +26,9 @@ import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 const i18n = useI18n()
 const route = useRoute()
-
+const queryBuilder = queryContent(i18n.locale.value, route.name)
 const { data: intro, error} = await useAsyncData(`content-accordion-${route.name}-${i18n.locale.value}`, () => queryContent(i18n.locale.value, route.name).findOne())
-const sections =  queryContent(i18n.locale.value, route.name)
+const { data: sections } = await useAsyncData(`content-navigation-${route.name}-${i18n.locale.value}`, () => fetchContentNavigation(queryBuilder))
 
 if (!error) {
   useHead({

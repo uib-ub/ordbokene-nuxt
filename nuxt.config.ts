@@ -18,9 +18,6 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'node-server',
     compressPublicAssets: true,
-    prerender: {
-      routes: locales.reduce((acc, locale) => acc.concat(pages.map(page => "/" + locale + "/" + page)), [])
-    },
   },
   runtimeConfig: {
     public: {
@@ -49,20 +46,6 @@ export default defineNuxtConfig({
   },     
   plausible: {
     domain: 'test.ordbokene.no',
-  },
-  content: {
-    sources: {
-      github: {
-        driver: "github",
-        repo: "uib-ub/ordbokene-content",
-        prefix: "/",
-        dir: "content",
-      },
-    },
-    markdown: {
-      anchorLinks: false
-    }
-
   },
 
   piniaPersistedstate: {

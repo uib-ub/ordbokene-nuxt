@@ -21,10 +21,6 @@ export default defineNuxtConfig({
     prerender: {
       routes: locales.reduce((acc, locale) => acc.concat(pages.map(page => "/" + locale + "/" + page)), [])
     },
-    inlineDynamicImports: true,
-    awsAmplify: {
-
-    }
   },
   runtimeConfig: {
     public: {

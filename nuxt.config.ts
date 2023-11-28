@@ -32,7 +32,11 @@ export default defineNuxtConfig({
   build: {
 		transpile: ["primevue", 'vue-i18n']
 	},
-
+  router: {
+    options: {
+      strict: true,
+    },
+  },
   modules: [
       '@pinia/nuxt',
       '@pinia-plugin-persistedstate/nuxt',

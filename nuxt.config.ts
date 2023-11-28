@@ -51,12 +51,6 @@ export default defineNuxtConfig({
   plausible: {
     domain: 'test.ordbokene.no',
   },
-  content: {
-    markdown: {
-      anchorLinks: false
-    }
-
-  },
 
   piniaPersistedstate: {
     cookieOptions: {

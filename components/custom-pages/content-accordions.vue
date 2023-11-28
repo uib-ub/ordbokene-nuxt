@@ -26,9 +26,9 @@ import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 const i18n = useI18n()
 const route = useRoute()
-
+const queryBuilder = queryContent(i18n.locale.value, route.name)
 const { data: intro, error} = await useAsyncData(`content-accordion-${route.name}-${i18n.locale.value}`, () => queryContent(i18n.locale.value, route.name).findOne())
-const { data: sections } = await useAsyncData(`content-navigation-${route.name}-${i18n.locale.value}`, () => fetchContentNavigation(i18n.locale.value, route.name))
+const { data: sections } = await useAsyncData(`content-navigation-${route.name}-${i18n.locale.value}`, () => fetchContentNavigation(queryBuilder))
 
 if (!error) {
   useHead({

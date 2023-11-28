@@ -16,7 +16,7 @@
             </ul>
             </nav>
           </template>
-          
+
       <ErrorMessage v-if="error" :title="$t('content_not_found')" :error="error"/>  
   </div>
 </template>
@@ -28,10 +28,7 @@ const i18n = useI18n()
 const route = useRoute()
 
 const { data: intro, error} = await useAsyncData(`content-accordion-${route.name}-${i18n.locale.value}`, () => queryContent(i18n.locale.value, route.name).findOne())
-
-const queryBuilder = queryContent(i18n.locale.value, route.name)
-const { data: sections } = await useAsyncData(`content-navigation-${route.name}-${i18n.locale.value}`, () => fetchContentNavigation(queryBuilder))
-
+const { data: sections } = await useAsyncData(`content-navigation-${route.name}-${i18n.locale.value}`, () => fetchContentNavigation(i18n.locale.value, route.name))
 
 if (!error) {
   useHead({

@@ -16,16 +16,11 @@ export default defineNuxtConfig({
 
   ],
   nitro: {
-    preset: 'node-server',
+    preset: 'aws_amplify',
     compressPublicAssets: true,
   },
   content: {
-    dir: [
-      'eng',
-      'nno',
-      'nob',
-      'ukr',
-    ],},
+},
   runtimeConfig: {
     public: {
       api: 'https://oda.uib.no/opal/prod/',

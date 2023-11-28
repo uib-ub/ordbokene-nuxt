@@ -19,6 +19,13 @@ export default defineNuxtConfig({
     preset: 'node-server',
     compressPublicAssets: true,
   },
+  content: {
+    dir: [
+      'eng',
+      'nno',
+      'nob',
+      'ukr',
+    ],},
   runtimeConfig: {
     public: {
       api: 'https://oda.uib.no/opal/prod/',

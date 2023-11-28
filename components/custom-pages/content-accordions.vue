@@ -26,23 +26,23 @@ import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 const i18n = useI18n()
 const route = useRoute()
-const queryBuilder = queryContent(i18n.locale.value, route.name)
+
 const { data: intro, error} = await useAsyncData(`content-accordion-${route.name}-${i18n.locale.value}`, () => queryContent(i18n.locale.value, route.name).findOne())
+
+const queryBuilder = queryContent(i18n.locale.value, route.name)
 const { data: sections } = await useAsyncData(`content-navigation-${route.name}-${i18n.locale.value}`, () => fetchContentNavigation(queryBuilder))
 
-if (!error) {
-  useHead({
-    title: intro.value.title,
-    meta: [
-      {property: 'og:title', content: intro.value.title },
-      {name: 'twitter:title', content: intro.value.title },
-      {name: 'description', content: intro.value.description },
-      {name: 'twitter:description', content: intro.value.description },
-      {property: 'og:description', content: intro.value.description }
-    ]
-})
 
-}
+useContentHead(intro)
+
+useHead({
+  meta: [
+    {property: 'og:title', content: intro.value.title },
+    {name: 'twitter:title', content: intro.value.title },
+    {name: 'twitter:description', content: intro.value.description },
+    {property: 'og:description', content: intro.value.description }
+  ]
+})
 
 
 </script>

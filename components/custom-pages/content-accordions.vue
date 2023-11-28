@@ -28,7 +28,7 @@ import { useRoute } from 'vue-router'
 const i18n = useI18n()
 const route = useRoute()
 
-const { data: intro, error} = await useAsyncData('content-accordion', () => queryContent(i18n.locale.value, route.name).findOne())
+const { data: intro, error} = await useAsyncData('content-accordion-' + route.name, () => queryContent(i18n.locale.value, route.name).findOne())
 const sections =  queryContent(i18n.locale.value, route.name)
 
 if (!error) {

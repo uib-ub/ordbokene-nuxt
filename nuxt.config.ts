@@ -18,9 +18,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'aws_amplify',
     compressPublicAssets: true,
-    prerender: {
-      routes: locales.reduce((acc, locale) => acc.concat(pages.map(page => "/" + locale + "/" + page)), [])
-    },
+
   },
   runtimeConfig: {
     public: {

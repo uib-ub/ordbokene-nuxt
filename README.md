@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="favicon.ico" width=50px/>
+  <img src="assets/icon.png" width=50px/>
   <h1>Ordbøkene Nuxt</h1>
 
 <p align="center">
@@ -27,11 +27,6 @@
 - [Project setup](/projectSetup.md)
 - [Integration](/integration.md)
 
-<!-- ```mermaid
-
-
-
-``` -->
 
 
 ## Text content

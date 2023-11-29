@@ -1,7 +1,6 @@
 <div align="center">
-  <img src="./public/favicon.ico" width=50px/>
+  <img src="favicon.ico" width=50px/>
   <h1>Ordbøkene Nuxt</h1>
-</div>
 
 <p align="center">
   <a href="https://nuxt.com/">
@@ -14,6 +13,8 @@
     <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white">
   </a>
 </p>
+
+</div>
 
 
 

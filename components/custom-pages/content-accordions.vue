@@ -37,10 +37,10 @@ useContentHead(intro)
 
 useHead({
   meta: [
-    {property: 'og:title', content: intro.value.title },
-    {name: 'twitter:title', content: intro.value.title },
-    {name: 'twitter:description', content: intro.value.description },
-    {property: 'og:description', content: intro.value.description }
+    {property: 'og:title', content: intro.value?.title },
+    {name: 'twitter:title', content: intro.value?.title },
+    {name: 'twitter:description', content: intro.value?.description },
+    {property: 'og:description', content: intro.value?.description }
   ]
 })
 

@@ -503,11 +503,11 @@ const scoped_lang = computed(() => {
 
 
 const metaSnippet = computed(() => {
-  return lemma_groups && lemma_groups.value.map(item => item.description + " — ") + snippet.value
+  return lemma_groups.value?.map(item => item.description + " — ") + snippet.value
 })
 
 const title = computed(() => {
-return data.value && data.value.lemmas[0].lemma
+return data.value?.lemmas[0].lemma
 })
 
 

@@ -24,13 +24,13 @@ const { data, error } = await useAsyncData('subpage-data', () => {
 
 if (!error) {
   useHead({
-    title: data.value.title,
+    title: data.value?.title,
     meta: [
-      {property: 'og:title', content:  data.value.title},
-      {name: 'twitter:title', content:  data.value.title },
-      {name: 'description', content: data.value.description },
-      {name: 'twitter:description', content: data.value.description },
-      {property: 'og:description', content: data.value.description }
+      {property: 'og:title', content:  data.value?.title},
+      {name: 'twitter:title', content:  data.value?.title },
+      {name: 'description', content: data.value?.description },
+      {name: 'twitter:description', content: data.value?.description },
+      {property: 'og:description', content: data.value?.description }
     ]
 })
 

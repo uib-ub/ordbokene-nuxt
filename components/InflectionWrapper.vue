@@ -91,8 +91,12 @@ const translate = (...args) => {
 
 .infl-wrapper th, td {
     border-width: 0px 0px 1px 0px;
-    @apply border-2 border-gray-50 shadow-md duration-200 text-base p-2;
+    @apply border-2 border-gray-50 shadow-md duration-200 align-baseline p-2;
     
+}
+
+.infl-wrapper .xs th {
+    @apply text-left
 }
 
 

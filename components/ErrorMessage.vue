@@ -1,6 +1,6 @@
 <template>
   <div class="callout error pt-1 pb-6" role="alert">
-  <h2 class="pb-2"><BootstrapIcon name="exclamation-triangle-fill" class="mr-3 mb-1"/>{{title}}</h2>
+  <h2 class="pb-2"><BiExclamationTriangleFill class="mr-3 mb-1"/>{{title}}</h2>
   <p>{{description}}</p>
   <p v-if="error.data" class="pt-2">{{$t('error.status', {code: error.statusCode})}}</p>
 </div>

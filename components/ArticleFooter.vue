@@ -3,14 +3,14 @@
   <client-only>
     <div role="toolbar" class="flex justify-center sm:justify-normal gap-2 flex-wrap gap-y-2">
     <button v-if="showLinkCopy" type="button" class="btn btn-borderless px-3" :class="{'hidden xl:block': store.dict == 'bm,nn' && $route.name!= 'article', 'hidden md:block': store.dict != 'bm,nn' && $route.name != 'article'}" @click="copy_link">
-      <BootstrapIcon :name="session.copied_link == create_link() ? 'clipboard-check-fill' : 'clipboard'" class="mr-3 mb-1 text-primary"/>
+      <component :is="session.copied_link == create_link() ? BiClipboardCheckFill : BiClipboard" class="mr-3 text-primary"/>
       <span>{{ session.copied_link == create_link() ? $t('article.link_copied') : $t('article.copy_link', 1, { locale: scoped_locale }) }} </span>
     </button>
-    <button v-if="webShareApiSupported" type="button" class="btn btn-borderless px-3" @click="shareViaWebShare">
-        <BootstrapIcon name="share-fill" class="mr-3 mb-1 text-primary"/>{{$t("article.share", 1, { locale: scoped_locale})}}
+    <button v-if="webShareApiSupported" type="button" class="btn btn-borderless px-2" @click="shareViaWebShare">
+        <BiShareFill class="mr-3 mb-1 text-primary"/>{{$t("article.share", 1, { locale: scoped_locale})}}
     </button>
       <button type="button" class="btn btn-borderless px-3" :aria-expanded="cite_expanded" :aria-controls="cite_expanded?  'cite-'+article_id : null" @click="cite_expanded = !cite_expanded">
-        <BootstrapIcon name="quote" class="mr-3 mb-1 text-primary"/>{{$t("article.cite", 1, { locale: scoped_locale})}}
+        <BiQuote class="mr-3 mb-1 text-primary"/>{{$t("article.cite", 1, { locale: scoped_locale})}}
       </button>
       <div v-if="cite_expanded" :id="'cite-'+article_id" class="cite-container p-4 pb-1 pt-2 text-1 basis-full">
         <h4>{{$t('article.cite_title')}}</h4>
@@ -38,9 +38,9 @@
 
         </blockquote>
           <button type="button" class="mt-4 mb-2 btn btn-borderless" @click="copy_citation">
-            <BootstrapIcon :name="copycitation ? 'file-earmark-plus' : 'file-earmark-check-fill'" class="mb-1 mr-3 text-primary" />{{ citationCopied ? $t('article.citation_copied') : $t('article.copy') }}
+            <component :is="copycitation ? BiFileEarmark : BiFileEarmarkCheckFill" class="mb-1 mr-3 text-primary" />{{ citationCopied ? $t('article.citation_copied') : $t('article.copy') }}
           </button>
-          <button type="button" class="mt-4 mb-2 btn btn-borderless" @click="download_ris"><BootstrapIcon name="download" class="mb-1 mr-3 text-primary" /> {{$t("article.download")}}</button>
+          <button type="button" class="mt-4 mb-2 btn btn-borderless" @click="download_ris"><BiDownload class="mb-1 mr-3 text-primary" />{{$t("article.download")}}</button>
     </div>
     </div>
   </client-only>
@@ -63,6 +63,11 @@ import { useSearchStore } from '~/stores/searchStore'
 import { useSessionStore } from '~/stores/sessionStore'
 const store = useSearchStore()
 const session = useSessionStore()
+
+const BiClipboardCheckFill = resolveComponent('BiClipboardCheckFill')
+const BiClipboard = resolveComponent('BiClipboard')
+const BiFileEarmark = resolveComponent('BiFileEarmark')
+const BiFileEarmarkCheckFill = resolveComponent('BiFileEarmarkCheckFill')
 
 const props = defineProps({
     lemmas: {type: Array, required: true},

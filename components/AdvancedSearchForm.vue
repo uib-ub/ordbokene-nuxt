@@ -26,7 +26,7 @@
             </select>
         </div>
         <div  v-if="!(store.pos == null &&  store.scope == 'e' && store.dict == 'bm,nn')"  class="flex w-full sm:w-[128px] sm:min-w-[128px] sm:max-w-[128px] !py-0">
-            <button class="btn w-full py-2 lg:py-0" type="reset" @click="reset"> <BootstrapIcon name="arrow-clockwise" class="mr-3 text-primary" />{{$t('reset')}}</button>
+            <button class="btn w-full py-2 lg:py-0" type="reset" @click="reset"><BiArrowClockwise class="mr-3 text-primary text-xl align-text-bottom" />{{$t('reset')}}</button>
           </div>
 
         </div>
@@ -44,7 +44,7 @@
                   {{$t('show_list')}}
                 </label>
             </div>
-            <div class="flex justify-center items-center"><NuxtLink :to="`/${$i18n.locale}/help/advanced`"><BootstrapIcon name="info-circle-fill" class="mr-2 mb-1 text-primary"/><span class="hoverlink">{{$t('advanced_help')}}</span></NuxtLink></div>
+            <div class="flex justify-center items-center"><NuxtLink :to="`/${$i18n.locale}/help/advanced`"><BiInfoCircleFill class="mr-2 mb-1 text-primary"/><span class="hoverlink">{{$t('advanced_help')}}</span></NuxtLink></div>
           </div>
         </div>
     </form>

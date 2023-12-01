@@ -2,7 +2,7 @@
    <div class="mb-10 mx-2">
     <SuggestResults v-if="!pending && data.length" :minimal="true" :dict="dict" :suggestions="data"><h3>{{$t('notifications.similar')}}</h3></SuggestResults>
     <div v-if="!pending && !data.length" class="callout pt-0 my-0">
-        <h3><BootstrapIcon name="info-circle-fill" class="mr-3"/>{{$t('notifications.no_results.title', 1, {locale: scoped_locale})}}</h3>
+        <h3><BiInfoCircleFill class="mr-3 mb-1"/>{{$t('notifications.no_results.title', 1, {locale: scoped_locale})}}</h3>
         <p>
             <i18n-t keypath="notifications.no_results.description[0]" :locale="scoped_locale">
                 <template #dict>

@@ -4,7 +4,7 @@
    <div v-if="data" class="mb-10 mx-2 flex flex-col gap-8 mt-3">
     <div v-if="data.inflect.length" class ="callout py-0 my-0">
         <SuggestResults :suggestions="data.inflect"  :dict="dict" plausible-goal="click_inflect">
-            <h3><BootstrapIcon name="info-circle-fill" class="mr-2 mb-1"/>
+            <h3><BiInfoCircleFill class="mr-2 mb-1"/>
             {{$t('notifications.inflected_title', 1, {locale: scoped_locale})}}
             </h3>
             <i18n-t :keypath="articles_meta[dict] && articles_meta[dict].total ? 'notifications.also_inflected':'notifications.inflected'" :locale="scoped_locale">
@@ -15,8 +15,8 @@
         </SuggestResults>
     </div>
     <div v-if="data.translate.length" class ="callout py-0 my-0">
-        <SuggestResults compare :suggestions="data.translate"  :dict="dict" icon="book-half" plausible-goal="click_translate">
-                <h3><BootstrapIcon name="translate" class="mr-2 mb-1"/>
+        <SuggestResults compare :suggestions="data.translate"  :dict="dict" book plausible-goal="click_translate">
+                <h3><BiTranslate class="mr-2 mb-1"/>
                 {{$t('notifications.translation_title', 1, {locale: scoped_locale})}}</h3>
             <p class="pt-2">
                 <i18n-t id="citation" keypath="notifications.translation" tag="div" :locale="scoped_locale" :plural="data.translate.length > 1 ? 2 : 1">
@@ -33,16 +33,16 @@
         </SuggestResults>
     </div>
     <div v-if="$route.name != 'search' && data.freetext && !( (articles_meta[dict] && articles_meta[dict].total) || data.translate.length || data.inflect.length )" class ="callout pt-0 pb-4 my-0">
-            <h3><BootstrapIcon name="info-circle-fill" class="mr-2 mb-1"/>{{$t('notifications.fulltext.title', {dict: $t('dicts.'+dict), locale: scoped_locale})}}</h3>
+            <h3><BiInfoCircleFill class="mr-2 mb-1"/>{{$t('notifications.fulltext.title', {dict: $t('dicts.'+dict), locale: scoped_locale})}}</h3>
             <p>{{$t('notifications.fulltext.description', 1, {locale: scoped_locale})}}</p>
             <div class="flex">
-            <NuxtLink :to="`/${$i18n.locale}/search?q=${data.freetext}&dict=${store.dict}&scope=eif`" class=" ml-auto mt-3" @click="track_freetext(store.q, data.freetext)">{{$t('to_advanced')}} 
-            <BootstrapIcon name="arrow-right-short"/>
+            <NuxtLink :to="`/${$i18n.locale}/search?q=${data.freetext}&dict=${store.dict}&scope=eif`" class=" ml-auto mt-3 flex" @click="track_freetext(store.q, data.freetext)">{{$t('to_advanced')}} 
+            <BiArrowRightShort class="self-center text-[1.5em]"/>
             </NuxtLink>
             </div>
     </div>
     <div v-if="!(articles_meta[dict] && articles_meta[dict].total) && no_suggestions" class="callout pt-0 my-0">
-        <h3><BootstrapIcon name="info-circle-fill" class="mr-2 mb-1"/>{{$t('notifications.no_results.title')}}</h3>
+        <h3><BiInfoCircleFill class="mr-2 mb-1"/>{{$t('notifications.no_results.title')}}</h3>
         <p>
             <i18n-t keypath="notifications.no_results.description[0]" :locale="scoped_locale">
                 <template #dict>

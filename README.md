@@ -26,6 +26,7 @@
 ## Documentation
 - [Project setup](/projectSetup.md)
 - [Integration](/integration.md)
+- [Contributing](/CONTRIBUTING.md)
 
 
 

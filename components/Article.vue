@@ -465,7 +465,10 @@ const parse_definitions = (definition_list, shorten) => {
               
             }
             else {
-              definitionTexts[definitionTexts.length -1] += (".\u00A0" + {bm: "Eksempel: ", nn: "Døme: "}[props.dict] + parse_subitems(item.quote, item.quote.content))
+              if ((definitionTexts[definitionTexts.length -1]).slice(-1) != ".") { // In cases where definition ends in abbreviation
+                definitionTexts[definitionTexts.length -1] += "."
+              }
+              definitionTexts[definitionTexts.length -1] += ("\u00A0" + {bm: "Eksempel: ", nn: "Døme: "}[props.dict] + parse_subitems(item.quote, item.quote.content))
             }
           }
 

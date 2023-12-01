@@ -25,8 +25,5 @@
     "pinia": "^2.1.6",
     "primevue": "^3.35.0",
     "vue-i18n": "^9.6.5"
-  },
-  "dependencies": {
-    "cypress": "^13.6.0"
   }
 }

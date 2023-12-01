@@ -492,7 +492,7 @@ const parse_definitions = (definition_list, shorten) => {
 const snippet = computed(() => {
   
   if (data.value) {
-    const shorten =  data.value.body.definitions[0] && data.value.body.definitions[0].elements.length > 5   
+    const shorten =  data.value.body.definitions[0] && data.value.body.definitions[0].elements.length > 10   
     return parse_definitions(data.value.body.definitions, shorten)
   }
   else {

@@ -51,6 +51,7 @@
         <div v-if="split_inf_expanded" id="split-inf-explanation" class="mb-4 my-2">
           {{$t('split_inf.content[0]', scoped_locale)}} <em>-a</em> {{$t('split_inf.content[1]', scoped_locale)}}
           <a target="_blank" 
+             class="external-link"
              href="https://www.sprakradet.no/svardatabase/sporsmal-og-svar/kloyvd-infinitiv-/">{{$t('split_inf.content[2]', scoped_locale)}}</a>
         </div>
         </div>

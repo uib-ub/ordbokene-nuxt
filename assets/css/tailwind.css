@@ -63,15 +63,19 @@
 
 @layer components {
 
-  .secondary-page a[href^="http"]:not(a[href^="https://ordbokene"]):after, .split-inf-explanation a:after {
+  .secondary-page a[href^="http"]:not(a[href^="https://ordbokene"]):after, a.external-link:after {
     content: "";
     background-size: 1em 1em;
-    @apply  inline-block mr-[-1em] bg-[url('assets/icons/BiBoxArrowUpRight.svg')] ml-[.2em] inline-block h-[1em] w-[1em] !underline
+    @apply  inline-block mr-[-1em] bg-[url('assets/icons/BiBoxArrowUpRight.svg')] bg-[length:.75em] bg-left-bottom bg-no-repeat ml-[.2em] inline-block h-[1em] w-[1em]
     
   }
 
-  .secondary-page a[href^="http"]:not(a[href^="https://ordbokene"]), .split-inf-explanation a {
+  .secondary-page a[href^="http"]:not(a[href^="https://ordbokene"]), a.external-link {
     @apply inline-block pr-[1em]
+  }
+
+  .text-white .external-link:after {
+    @apply bg-[url('assets/icons/BiBoxArrowUpRightWhite.svg')]
   }
 
   blockquote a:after {

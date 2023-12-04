@@ -227,7 +227,7 @@ if (process.client) {
 
 <template>
   <div class="search-container">
-  <div class="input-wrapper h-3.5rem border bg-canvas border-primary flex content-center justify-between pr-2" v-bind="{'data-dropdown-open': session.show_autocomplete}">
+  <div class="input-wrapper h-3.5rem border bg-canvas border-primary flex content-center justify-between pr-0.5" v-bind="{'data-dropdown-open': session.show_autocomplete}">
    <input id="input-element"
           ref="input_element" 
           type="text"
@@ -247,8 +247,8 @@ if (process.client) {
           :aria-owns="session.dropdown_selected >= 0 ? 'autocomplete-dropdown' : null"
           @input="input_sync"
           @keydown="keys"/>
-          <button v-if="store.input.length > 0" type="button" :title="$t('clear')" class="appended-button" :aria-label="$t('clear')" @click="clearText"><Icon name="bi:x-lg" size="1.25em"/></button>
-          <button type="submit" class="appended-button"  :aria-label="$t('search')"><Icon name="bi:search" size="1.25em"/></button>
+          <button v-if="store.input.length > 0" type="button" :title="$t('clear')" class="appended-button" :aria-label="$t('clear')" @click="clearText"><BiXLg class="text-xl"/></button>
+          <button type="submit" class="appended-button !mr-1"  :aria-label="$t('search')"><BiSearch class="text-xl"/></button>
           
 
   </div>
@@ -265,7 +265,7 @@ if (process.client) {
         <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)">
           <span v-if="item.type == 'pattern' && route.name != 'search'" role="status" aria-live="polite" class=" bg-primary text-white p-1 rounded px-3 pr-1">
             {{$t('to_advanced')}} 
-            <Icon name="bi:arrow-right-short" size="1.5rem" class=""/>
+            <BiArrowRightShort  class="text-xl align-text-bottom"/>
           </span>
           <span v-else :aria-live="store.autocomplete.length == 1? 'polite' : null">
             <span v-if="store.autocomplete.length == 1" class="sr-only">{{$t('autocomplete_suggestions', 1)}}: </span>
@@ -400,7 +400,7 @@ transform: translateX(-50%);
 
 
 .appended-button, .appended-button-disabled {
-  @apply text-primary m-0 p-2 self-center flex motion-reduce:transition-none border-none;
+  @apply text-primary m-0 p-2 px-2 self-center flex motion-reduce:transition-none border-none;
   border-radius: 2rem; 
   background: unset;
 

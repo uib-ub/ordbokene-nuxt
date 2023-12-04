@@ -69,11 +69,11 @@ useHead({
 
   <div class="mt-4 flex flex-col md:flex-row gap-3">
     <button v-if="not_default" class="btn btn-primary" @click="resetSettings(settings)">
-      <Icon name="bi:arrow-clockwise" class="mr-3 mb-1 text-primary" />
+      <BiArrowClockwise name="arrow-clockwise" class="mr-3 text-primary text-xl align-text-bottom" />
       <span>{{$t('reset')}}</span>
     </button>
         <button v-if="locale_cookie || settings_cookie" class="btn btn-primary" @click="clearCookies(settings)">
-      <Icon name="bi:trash-fill" class="mr-3 mb-1 text-primary"/>
+      <BiTrash3Fill class="mr-3 mb-1 text-primary"/>
       <span>{{$t('settings.clear_cookies')}}</span>
     </button>
   </div>

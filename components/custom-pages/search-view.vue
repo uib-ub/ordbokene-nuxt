@@ -4,8 +4,8 @@
 
     <h1 class="font-semibold !px-4 sm:!px-3 text-primary lg:top-0 lg:left-0 text-xl">
       {{$t('advanced')}} 
-    </h1><div class="whitespace-nowrap pl-2 pt-[4px] text-base ml-auto mr-4 md:ml-0">
-            <NuxtLink :to="`/${$i18n.locale}/${store.dict}/${advancedSpecialSymbols(store.q) ? '' : store.q}`"><Icon name="bi:arrow-left-short" size="1.5rem" class="mb-1 text-primary"/>{{$t('notifications.simple')}}</NuxtLink>
+    </h1><div class="pl-2 pt-3 md:pt-[4px] text-base ml-auto mr-4 md:ml-0 text-xl md:text-base">
+            <NuxtLink class="whitespace-nowrap" :to="`/${$i18n.locale}/${store.dict}/${advancedSpecialSymbols(store.q) ? '' : store.q}`"><BiArrowLeftShort class="text-primary text-[1.5em] !align-text-top"/>{{$t('notifications.simple')}}</NuxtLink>
         </div>
       </div>
 

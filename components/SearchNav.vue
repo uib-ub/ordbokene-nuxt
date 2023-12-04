@@ -24,7 +24,7 @@
   <li>
     <NuxtLink :aria-current="advanced ? 'true' : 'false'"
               :to="advanced_link"
-              class="!pr-1">{{$t('advanced')}} <Icon class="text-primary" name="bi:arrow-right-short" size="1.5em"/></NuxtLink>
+              class="!pr-1">{{$t('advanced')}} <BiArrowRightShort class="text-primary  text-[1.5em] self-center"/></NuxtLink>
   </li>
 </ul>
 </nav>

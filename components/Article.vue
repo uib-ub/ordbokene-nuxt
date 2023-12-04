@@ -8,7 +8,7 @@
             :aria-expanded="expanded"
             :aria-controls="expanded ? `${dict}_${article_id}_snippet` : undefined"
             @click="expanded = !expanded">
-      <span class="self-center"><BootstrapIcon :name="expanded ? 'chevron-up' : 'chevron-down'" size = "1.25rem"/></span>
+      <span class="self-center"><component :is="expanded? BiChevronUp : BiChevronDown"/></span>
       <span class="flex flex-col  overflow-hidden">
         <span class="flex">
       <span v-for="(lemma_group, i) in lemma_groups" :key="i" class="block">
@@ -44,13 +44,14 @@
       <div v-if="data.lemmas[0].split_inf" class="mt-2 mb-3 split-inf">
         <div class="flex gap-2 align-middle"><span :id="`${dict}_${article_id}_split_inf_label`">{{$t('split_inf.title')}}: -a</span>
         <button type="button" class="rounded leading-none !p-0 !text-primary hover:bg-primary-lighten bg-primary  border-primary-lighten" :aria-expanded="split_inf_expanded" :aria-label="`${dict}_${article_id}_split_inf_label`" aria-controls="split-inf-explanation" @click="split_inf_expanded = !split_inf_expanded">
-          <BootstrapIcon :name="split_inf_expanded? 'dash' : 'plus'" class="text-white !m-0 !px-1"/>
+          <BiDash v-if="split_inf_expanded" class="text-white !m-0 !px-0 text-2xl"/><BiPlus v-else class="text-white !m-0 !px-0 text-2xl"/>
         </button>
         </div>
         
         <div v-if="split_inf_expanded" id="split-inf-explanation" class="mb-4 my-2">
           {{$t('split_inf.content[0]', scoped_locale)}} <em>-a</em> {{$t('split_inf.content[1]', scoped_locale)}}
           <a target="_blank" 
+             class="external-link"
              href="https://www.sprakradet.no/svardatabase/sporsmal-og-svar/kloyvd-infinitiv-/">{{$t('split_inf.content[2]', scoped_locale)}}</a>
         </div>
         </div>
@@ -61,7 +62,7 @@
               :aria-controls="inflection_expanded ? `${dict}_${article_id}_inflection` : null"
               :lang="scoped_lang"
               @click="expand_inflection">
-             {{ $t(inflection_expanded ? 'article.hide_inflection' : 'article.show_inflection', 1, {locale: scoped_locale})}}<span v-if="!inflection_expanded"><BootstrapIcon name="chevron-down" class="ml-4" size="1.25em"/></span><span v-if="inflection_expanded"><BootstrapIcon name="chevron-up" class="ml-4" size="1.5em"/></span>
+             {{ $t(inflection_expanded ? 'article.hide_inflection' : 'article.show_inflection', 1, {locale: scoped_locale})}}<span v-if="!inflection_expanded"><BiChevronDown class="ml-2"/></span><span v-if="inflection_expanded"><BiChevronUp class="ml-2"/></span>
       </button>
         <div v-if="inflected && !welcome && (inflection_expanded || single || list)" :id="`${dict}_${article_id}_inflection`" ref="inflection_table" class="motion-reduce:transition-none border-collapse py-2 transition-all duration-300 ease-in-out">
           <InflectionWrapper :single="single" :scoped_locale="scoped_locale" :lemmaList="lemmas_with_word_class_and_lang" :dict="dict"/>
@@ -111,6 +112,9 @@ import { useI18n } from 'vue-i18n'
 import { useSearchStore } from '~/stores/searchStore'
 import {useSettingsStore } from '~/stores/settingsStore'
 import {useSessionStore } from '~/stores/sessionStore'
+
+const BiChevronUp = resolveComponent('BiChevronUp')
+const BiChevronDown = resolveComponent('BiChevronDown')
 
 const { t } = useI18n()
 const i18n = useI18n()
@@ -462,7 +466,10 @@ const parse_definitions = (definition_list, shorten) => {
               
             }
             else {
-              definitionTexts[definitionTexts.length -1] += (".\u00A0" + {bm: "Eksempel: ", nn: "Døme: "}[props.dict] + parse_subitems(item.quote, item.quote.content))
+              if ((definitionTexts[definitionTexts.length -1]).slice(-1) != ".") { // In cases where definition ends in abbreviation
+                definitionTexts[definitionTexts.length -1] += "."
+              }
+              definitionTexts[definitionTexts.length -1] += ("\u00A0" + {bm: "Eksempel: ", nn: "Døme: "}[props.dict] + parse_subitems(item.quote, item.quote.content))
             }
           }
 
@@ -486,7 +493,7 @@ const parse_definitions = (definition_list, shorten) => {
 const snippet = computed(() => {
   
   if (data.value) {
-    const shorten =  data.value.body.definitions[0] && data.value.body.definitions[0].elements.length > 5   
+    const shorten =  data.value.body.definitions[0] && data.value.body.definitions[0].elements.length > 10   
     return parse_definitions(data.value.body.definitions, shorten)
   }
   else {
@@ -503,11 +510,11 @@ const scoped_lang = computed(() => {
 
 
 const metaSnippet = computed(() => {
-  return lemma_groups && lemma_groups.value.map(item => item.description + " — ") + snippet.value
+  return lemma_groups.value?.map(item => item.description + " — ") + snippet.value
 })
 
 const title = computed(() => {
-return data.value && data.value.lemmas[0].lemma
+return data.value?.lemmas[0].lemma
 })
 
 

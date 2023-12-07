@@ -61,7 +61,7 @@ preview_dev:
   - schedules
   variables:
     ENVIRONMENT: preview
-    INFLECTION_VERSION: 1.2.2
+    INFLECTION_VERSION: 1.2.3
 
 
 .main-branch:
@@ -69,7 +69,7 @@ preview_dev:
   only: 
   - main
   variables:
-    INFLECTION_VERSION: 1.2.2
+    INFLECTION_VERSION: 1.2.3
 
 
 preview_main:

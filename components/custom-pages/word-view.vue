@@ -24,7 +24,7 @@
           </component>
           <client-only>
             <div v-if="store.q && !specialSymbols(store.q)">
-              <Suggest :scoped_locale="scoped_locale(dict)"  :dict="dict" :articles_meta="articles.meta"/>
+              <Suggest :scoped_locale="scoped_locale(dict)"  :dict="dict" :articles_meta="articles.meta" :total="total"/>
             </div>
           </client-only>
         </section>

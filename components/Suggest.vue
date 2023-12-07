@@ -28,7 +28,7 @@
         </SuggestResults>
     </div>
     <div v-if="data.similar.length">
-        <SuggestResults  :suggestions="data.similar" :dict="dict" plausible-goal="click_similar">
+        <SuggestResults  :suggestions="data.similar" :dict="dict" plausible-goal="click_similar" :total="total" collapsible>
             <h3>{{$t('notifications.similar', 1, {locale: scoped_locale})}}</h3>
         </SuggestResults>
     </div>
@@ -67,7 +67,9 @@ const route = useRoute()
 const props = defineProps({
     scoped_locale: String,
     dict: String,
-    articles_meta: Object
+    articles_meta: Object,
+    total: Number,
+    collapsible: Boolean
 })
 
 const no_suggestions = useState('no_suggestions_' + props.dict)

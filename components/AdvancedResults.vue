@@ -18,8 +18,8 @@
 
       <template v-if="articles.meta[dict] && articles.meta[dict].total == 0">
         <client-only>
-          <Suggest v-if="store.scope=='e'" :key="store.searchUrl" :dict="dict" :articles_meta="articles.meta"/>
-          <MinimalSuggest v-else  :scoped_locale="scoped_locale(dict)" :dict="dict"/>
+          <Suggest v-if="store.scope=='e'" :key="store.searchUrl" :dict="dict" :articles_meta="articles.meta" :total="total"/>
+          <MinimalSuggest v-else  :scoped_locale="scoped_locale(dict)" :dict="dict" :total="total"/>
         </client-only>
       </template>
       <component :is="settings.listView ? 'ol' : 'div'" v-if="articles.meta[dict] && articles.meta[dict].total > 0"  class="article-column">

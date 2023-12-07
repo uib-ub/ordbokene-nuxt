@@ -1,13 +1,17 @@
 <template>
 <section v-if="suggestions && suggestions.length" class="suggestions">
-    <slot/>
-    <ul class="nav nav-pills flex-column md:flex md:flex-wrap md:gap-2 pt-4 md:py-4">
+    <span :class="{'flex gap-2 items-center': collapsible}"><slot/><button v-if="total > 0" :aria-controls="dict+ '_similar_list'" :aria-expanded="list_expanded" class="rounded border-[1px] p-1 px-3" @click="list_expanded=!list_expanded">{{list_expanded ? 'Hide' : 'Show'}}</button></span>
+    
+    <ul :id="dict + '_similar_list'" v-if="!collapsible || (total === 0 || list_expanded)" class="nav nav-pills flex-column md:flex md:flex-wrap md:gap-2 pt-4 md:py-4">
         <template  v-for="(item, idx) in suggestions" :key="idx">
         <li v-if="minimal || !store.lemmas[dict].has(item.q)" class="!border-1 flex px-2 mx-0">
             <NuxtLink :lang="dictLang[dict]" no-prefetch class="suggest-link notranslate py-3 md:py-0 w-full" :to="suggest_link(compare ? store.q + '|' + item : item)" @click="track_suggest(item)"><component :is="iconComponent" class="mr-3 mb-1 text-primary"/><span class="link-content hoverlink">{{item}}</span></NuxtLink>
         </li>
         </template>
+
     </ul>
+    
+    
 </section>
 </template>
 
@@ -25,8 +29,12 @@ const props = defineProps({
     minimal: Boolean,
     book: Boolean,
     compare: Boolean,
-    plausibleGoal: String
+    plausibleGoal: String,
+    total: Number,
+    collapsible: Boolean
 })
+
+const list_expanded = ref(false)
 
 const iconComponent = props.book ? resolveComponent('BiBookHalf') : resolveComponent('BiSearch')
 

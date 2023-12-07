@@ -1,6 +1,6 @@
 <template>
    <div class="mb-10 mx-2">
-    <SuggestResults v-if="!pending && data.length" :minimal="true" :dict="dict" :suggestions="data"><h3>{{$t('notifications.similar')}}</h3></SuggestResults>
+    <SuggestResults v-if="!pending && data.length" :minimal="true" :dict="dict" :suggestions="data" :total="total" collapsible><h3>{{$t('notifications.similar')}}</h3></SuggestResults>
     <div v-if="!pending && !data.length" class="callout pt-0 my-0">
         <h3><BiInfoCircleFill class="mr-3 mb-1"/>{{$t('notifications.no_results.title', 1, {locale: scoped_locale})}}</h3>
         <p>
@@ -27,7 +27,8 @@ const route = useRoute()
 
 const props = defineProps({
     dict: String,
-    scoped_locale: String
+    scoped_locale: String,
+    total: Boolean
 })
 
 const query = `${session.endpoint}api/suggest?&q=${store.q}&dict=${props.dict}${route.query.pos ? '&wc=' + route.query.pos : ''}&n=8&dform=int&meta=n&include=s`

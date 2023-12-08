@@ -38,7 +38,7 @@
     <div class="flex justify-center mt-4">
     <ul class="mt-2 flex flex-col lg:flex-row gap-4 text-center">
         <li>
-            <a href="https://uustatus.no/nb/erklaringer/publisert/b2a6f8d0-3a16-4716-8bc8-46ac3c161935" class="underline">{{$t('accessibility.statement')}}</a>
+            <a href="https://uustatus.no/nb/erklaringer/publisert/b2a6f8d0-3a16-4716-8bc8-46ac3c161935" class="underline external-link">{{$t('accessibility.statement')}}</a>
         </li>
         <li>
             <NuxtLink :to="`/${$i18n.locale}/about/privacy`" class="underline">{{$t('privacy')}}</NuxtLink>

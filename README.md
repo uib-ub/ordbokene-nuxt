@@ -26,6 +26,7 @@
 ## Documentation
 - [Project setup](/projectSetup.md)
 - [Integration](/integration.md)
+- [Contributing](/CONTRIBUTING.md)
 
 
 
@@ -33,7 +34,7 @@
 The text content of the help pages, about pages and contact us page are fetched at build time from the master branch of this repo: https://git.app.uib.no/spraksamlingane/ordbokene-content
 
 ## Deployments
-- Dev:  https://dev.d12b4gykgf01s4.amplifyapp.com
+- Dev:  https://dev.d3ryuz1ferzgvp.amplifyapp.com
 
-- Prod: https://main.d12b4gykgf01s4.amplifyapp.com
+- Prod: https://main.d3ryuz1ferzgvp.amplifyapp.com
 

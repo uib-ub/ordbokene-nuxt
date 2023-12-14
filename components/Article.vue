@@ -92,7 +92,7 @@
               </ul>
             </section>
             <section>
-              {{$t('article.no_content')}}
+              {{$t('article.no_content', 1, {locale: scoped_locale})}}
             </section>
 
           <div v-if="welcome">

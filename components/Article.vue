@@ -79,23 +79,19 @@
               <DefElement v-for="(element,index) in data.body.etymology" :semicolon="index == data.body.etymology.length-2" :comma="index < data.body.etymology.length-2" :dict="dict" :key="index" :body='element' v-on:link-click="link_click"/>
 
           </section>
-          <section v-if="(has_content || !sub_articles.length) && !welcome" class="definitions">
+          <section v-if="has_content && !welcome" class="definitions">
               <h4 v-if="!welcome" :lang="locale2lang[scoped_locale]">{{$t('article.headings.definitions', 1, { locale: scoped_locale})}}</h4>
-              <template v-if="has_content">
                 <Definition v-for="definition in data.body.definitions" :key="definition.id" :scoped_locale="scoped_locale" :dict="dict" :level="1" :body='definition' @link-click="link_click"/>
-              </template>
-              <div v-else-if="!sub_articles.lengh">
-                {{$t('article.no_content', 1, {locale: scoped_locale})}}
-              </div>
           </section>
           <section v-if="sub_articles.length && !welcome" class="expressions">
               <h4 :lang="locale2lang[scoped_locale]">{{$t('article.headings.expressions', 1, { locale: scoped_locale})}}</h4>
               <ul>
               <SubArticle v-for="(subart, index) in sub_articles" :key="index" class="p-2"  :body="subart" :dict="dict" :scoped_locale="scoped_locale" @link-click="link_click" />
               </ul>
-            </section>
-            
-
+          </section>
+          <section v-if="!welcome && !has_content && !sub_articles.length">
+              {{$t('article.no_content', 1, {locale: scoped_locale})}}
+          </section>
           <div v-if="welcome">
             {{snippet}}
           </div>

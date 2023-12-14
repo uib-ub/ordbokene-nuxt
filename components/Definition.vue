@@ -104,7 +104,7 @@ ul.examples {
 }
 
 .sub_definitions{
- @apply list-decimal;
+ @apply list-decimal ml-2;
 }
 
 .single_sub_definition{

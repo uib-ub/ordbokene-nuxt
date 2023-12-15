@@ -1,7 +1,7 @@
 ## Project setup
 
 ### Add the inflection tables:
-1. Clone [vue-inflection repo](https://git.app.uib.no/spraksamlingane/vue-inflection), e. g. in the parent directory of ordbokene-nuxt.
+Clone [vue-inflection repo](https://git.app.uib.no/spraksamlingane/vue-inflection), e. g. in the parent directory of ordbokene-nuxt.
 <!-- 2. Create a symlink between vue-inflection/src/components and ordbokene-nuxt/vue-inflection:
 
 - Windows

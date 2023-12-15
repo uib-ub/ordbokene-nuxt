@@ -81,17 +81,17 @@
           </section>
           <section v-if="has_content && !welcome" class="definitions">
               <h4 v-if="!welcome" :lang="locale2lang[scoped_locale]">{{$t('article.headings.definitions', 1, { locale: scoped_locale})}}</h4>
-
-              <Definition v-for="definition in data.body.definitions" :key="definition.id" :scoped_locale="scoped_locale" :dict="dict" :level="1" :body='definition' @link-click="link_click"/>
-
+                <Definition v-for="definition in data.body.definitions" :key="definition.id" :scoped_locale="scoped_locale" :dict="dict" :level="1" :body='definition' @link-click="link_click"/>
           </section>
           <section v-if="sub_articles.length && !welcome" class="expressions">
               <h4 :lang="locale2lang[scoped_locale]">{{$t('article.headings.expressions', 1, { locale: scoped_locale})}}</h4>
               <ul>
               <SubArticle v-for="(subart, index) in sub_articles" :key="index" class="p-2"  :body="subart" :dict="dict" :scoped_locale="scoped_locale" @link-click="link_click" />
               </ul>
-            </section>
-
+          </section>
+          <section v-if="!welcome && !has_content && !sub_articles.length">
+              {{$t('article.no_content', 1, {locale: scoped_locale})}}
+          </section>
           <div v-if="welcome">
             {{snippet}}
           </div>
@@ -205,7 +205,7 @@ const expand_inflection = () => {
 
 
 
-const has_content = () => {
+const has_content = computed(() => {
   for (const definition of data.value.body.definitions) {
       for (const element of definition.elements) {
         if (['explanation', 'example', 'compound_list', 'definition'].includes(element.type_)) {
@@ -214,7 +214,7 @@ const has_content = () => {
       }
     }
     return false
-}
+})
 
 const inflected = computed(() => {
   return data.value.lemmas.reduce((acc, lemma) => acc += lemma.paradigm_info.reduce((acc2, digm) => digm.inflection_group.includes("uninfl") ? 0 : acc2 += digm.inflection.length, 0), 0) > data.value.lemmas.length

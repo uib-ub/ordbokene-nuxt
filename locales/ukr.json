@@ -231,6 +231,7 @@
     },
     "article": {
         "definition": "Визначення",
+        "no_content": "This word is yet to be defined in the dictionary.",
         "show": "Показати статтю",
         "show_inflection": "Показати відмінювання",
         "hide_inflection": "Приховати відмінювання",

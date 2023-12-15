@@ -72,7 +72,7 @@ a {
     border: 2px;
 }
 
-li:not(:last-child) a:after {
+li:not(:last-child):after {
   @apply md:content-['|'] lg:content-none xl:content-['|'] pl-2 text-gray-500;
 
 

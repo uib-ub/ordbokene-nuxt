@@ -218,6 +218,7 @@
     },
     "article": {
         "definition": "Definisjon",
+        "no_content": "Dette ordet har foreløpig ikke fått definisjon i ordboka.",
         "show": "Åpne artikkel",
         "show_inflection": "Vis bøyning",
         "hide_inflection": "Skjul bøyning",

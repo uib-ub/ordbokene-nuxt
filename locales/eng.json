@@ -222,6 +222,7 @@
 },
 "article": {
     "definition": "Definition",
+    "no_content": "This word is yet to be defined in the dictionary.",
     "show": "Open article",
     "show_inflection": "Inflection",
     "hide_inflection": "Inflection",

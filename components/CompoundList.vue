@@ -2,7 +2,12 @@
   <li class="compound_list">
     <ul>
       <DefElement v-if="body.intro" :body="body.intro" :dict="dict" :scoped_locale="scoped_locale" />
-      
+      <li v-for="(item, index) in body.elements"
+          :key="index">{{' '}}<NuxtLink
+          :to="`/${$i18n.locale}/${dict}/${item.article_id}${item.definition_id ? '#def'+item.definition_id : ''}`"
+          @click="link_click(itemref)"
+          >{{item.lemmas[0].lemma}}</NuxtLink>
+      </li>
     </ul>
   </li>
 </template>
@@ -31,8 +36,9 @@ li.compound_list li:not(:last-child):not(:first-child):after {
   content: ",";
 }
 
-ul {
-  @apply italic;
-}
+/*i-900*/
+/* ul {
+  @apply italic; 
+} */
 </style>
   

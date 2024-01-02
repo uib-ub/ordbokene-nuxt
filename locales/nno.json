@@ -132,7 +132,7 @@
     },
     "notifications": {
         "translation_title": "Mogleg omsetjing",
-        "translation": "Klikk på forslaget under for å legge til omsetjing basert på omsetjingsprogrammet Apertium og Språkrådets {adm}. | Klikk på forslaga under for å legge til omsetjing basert på omsetjingsprogrammet Apertium og Språkrådets {adm}. ",
+        "translation": "Klikk på forslaget under for å leggje til omsetjing basert på omsetjingsprogrammet Apertium og Språkrådets {adm}. | Klikk på forslaga under for å leggje til omsetjing basert på omsetjingsprogrammet Apertium og Språkrådets {adm}. ",
         "inflected": "{word} er ei bøygd form av:",
         "also_inflected": "{word} er òg ei bøygd form av:",
         "inflected_title": "Bøygde former",

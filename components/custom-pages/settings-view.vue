@@ -68,7 +68,7 @@ useHead({
     </label>
         <label class="checkbox-label">
     <input  v-model="settings.disableSearchHotkey" type="checkbox">
-      {{$t('settings.disable_hotkey')}}
+      {{$t('settings.disable_search_hotkey')}}
     </label>
     
 

@@ -50,7 +50,7 @@ useHead({
       {{$t('settings.simple_search_list')}}
     </label>
     <label class="checkbox-label">
-    <input  v-model="settings.autoSelect" type="checkbox">
+    <input  v-model="settings.autoSelect" type="checkbox" :true-value="false" :false-value="true">
       {{$t('settings.auto_select')}}
     </label>
     <label class="checkbox-label">

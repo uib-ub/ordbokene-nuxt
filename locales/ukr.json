@@ -119,7 +119,7 @@
         "inflection_table_context": "Показувати контекст для форм дієприкметників у таблицях відмінювання",
         "submit_select": "Select search query when submitting search",
         "simple_search_list": "List view in simple search",
-        "auto_select": "Select search term automatically after search",
+        "auto_select": "Disable automatic selection of search term when submitting",
         "locale": {
             "title": "Locale",
             "description": "Default language settings for the language of headings, buttons, messages, and menus. The settings will not affect examples and definitions: the Bokmål dictionary will remain in Bokmål and the Nynorsk dictionary stays Nynorsk "

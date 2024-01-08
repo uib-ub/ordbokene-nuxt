@@ -239,8 +239,6 @@ if (process.client) {
           aria-autocomplete="list"
           aria-haspopup="listbox"
           maxlength="200"
-          :aria-label="$t('search_placeholder') + $t(`dicts_inline.${store.dict}`)"
-          :placeholder="$t('search_placeholder') + $t(`dicts_inline.${store.dict}`)"
           autocomplete="off"
           autocapitalize="none"
           :aria-expanded="session.show_autocomplete || 'false'" 

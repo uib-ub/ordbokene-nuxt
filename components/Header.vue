@@ -74,7 +74,7 @@
         menu: 'border-2 border-primary-lighten bg-primary-lighten text-white',
         menuitem: 'hover:bg-primary-lighten2',
         action: ({ props, state, context }) => ({
-            class: (context.focused ? 'bg-primary' : '' ) + ' p-4 px-4 w-[200px] hover:bg-primary-lighten2'
+            class: (context.focused ? 'bg-primary outline outline-gray-100' : '' ) + ' p-4 px-4 w-[200px] hover:bg-primary-lighten2'
         })
         }">
             <template #item="{ item, props }">

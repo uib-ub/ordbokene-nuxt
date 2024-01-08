@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     }
   },
   build: {
-		transpile: ["primevue", 'vue-i18n']
+		transpile: ['vue-i18n']
 	},
   modules: [
       '@pinia/nuxt',

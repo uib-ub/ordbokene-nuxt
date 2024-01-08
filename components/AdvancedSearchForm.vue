@@ -102,7 +102,7 @@ const reset = () => {
 const submitForm =  (item) => {
   if (store.input && input_element.value) {
     store.input = store.input.trim()
-    if (settings.autoSelect && !isMobileDevice()) {
+    if (!settings.disableAutoSelect && !isMobileDevice()) {
       input_element.value.select()
     }
     else {

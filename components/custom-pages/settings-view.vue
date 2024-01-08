@@ -10,10 +10,11 @@ const locale_cookie = useCookie('currentLocale')
 
 const default_settings = {
       simpleListView:false,
-      autoSelect: true, 
+      disableAutoSelect: false, 
       inflectionExpanded: false, 
       inflectionTableContext: false, 
       inflectionNo: false,
+      disableSearchHotkey: false
     }
 
 const not_default = computed(() => {
@@ -50,7 +51,7 @@ useHead({
       {{$t('settings.simple_search_list')}}
     </label>
     <label class="checkbox-label">
-    <input  v-model="settings.autoSelect" type="checkbox">
+    <input  v-model="settings.disableAutoSelect" type="checkbox">
       {{$t('settings.auto_select')}}
     </label>
     <label class="checkbox-label">
@@ -64,6 +65,10 @@ useHead({
     <label class="checkbox-label">
     <input  v-model="settings.inflectionTableContext" type="checkbox">
       {{$t('settings.inflection_table_context')}}
+    </label>
+        <label class="checkbox-label">
+    <input  v-model="settings.disableSearchHotkey" type="checkbox">
+      {{$t('settings.disable_search_hotkey')}}
     </label>
     
 

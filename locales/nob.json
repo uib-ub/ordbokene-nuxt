@@ -37,6 +37,7 @@
     "chosen_dict": "Valgt ordbok: ",
     "footer_description": "{bm} og {nn} viser skrivemåte og bøyning i tråd med norsk rettskrivning. Språkrådet og Universitetet i Bergen står bak ordbøkene.",
     "privacy": "Personvern",
+    "subpages": "Innholdsfortegnelse",
     "accessibility": {
       "page": "Tilgjengelighet",
       "main_content": "Gå til hovedinnhold",
@@ -115,7 +116,8 @@
         "inflection_table_context": "Vis kontekst for partisippformer i bøyningstabellene",
         "submit_select": "Merk søkjeteksten når du gjennomfører søket",
         "simple_search_list": "Listevisning i enkelt søk",
-        "auto_select": "Merk søkeordet automatisk etter søk",
+        "auto_select": "Deaktiver automatisk merking av søkeordet etter søk",
+        "disable_search_hotkey": "Deaktiver snarvei til søk (ctrl + 7)",
         "locale": {
           "title": "Nettsidespråk" ,
           "description":  "Her kan du endre språk eller målform på knapper, meldinger og menyer. Dette vil ikke påvirke definisjoner og eksempler i ordbøkene: Bokmålsordboka vil fortsatt være på bokmål, og Nynorskordboka vil være på nynorsk"

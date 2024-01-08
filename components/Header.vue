@@ -90,7 +90,7 @@
                           :lang="item.lang"
                           @click.prevent="change_locale(item.locale)">
                         <span>{{item.label}}</span>
-                        <span><BiCheck2 v-if="$i18n.locale==item.locale"/></span>
+                        <span><BiCheck2 v-if="$i18n.locale==item.locale" class="ml-1"/></span>
                   </a>
           </li>
         </ul>

@@ -202,6 +202,7 @@ if (process.client) {
   document.addEventListener('keyup', (e) => {
     if (e.key === "/") {
     if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (settings.disableSearchHotkey) return;
     if (/^(?:input|textarea|select)$/i.test(e.target.tagName)) return;
     if(e.shiftKey && input_element.value) {
       input_element.value.select()

@@ -14,6 +14,7 @@ const default_settings = {
       inflectionExpanded: false, 
       inflectionTableContext: false, 
       inflectionNo: false,
+      disableSearchHotkey: false
     }
 
 const not_default = computed(() => {
@@ -64,6 +65,10 @@ useHead({
     <label class="checkbox-label">
     <input  v-model="settings.inflectionTableContext" type="checkbox">
       {{$t('settings.inflection_table_context')}}
+    </label>
+        <label class="checkbox-label">
+    <input  v-model="settings.disableSearchHotkey" type="checkbox">
+      {{$t('settings.disable_hotkey')}}
     </label>
     
 

@@ -103,6 +103,9 @@ ul.examples {
 @apply pl-0;
 }
 
+.sub_definitions{
+ @apply list-decimal ml-2;
+}
 
 .single_sub_definition{
   @apply list-disc ml-2;

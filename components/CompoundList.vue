@@ -36,8 +36,9 @@ li.compound_list li:not(:last-child):not(:first-child):after {
   content: ",";
 }
 
-ul {
-  @apply italic;
-}
+/*i-900*/
+/* ul {
+  @apply italic; 
+} */
 </style>
   

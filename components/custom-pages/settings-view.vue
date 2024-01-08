@@ -10,7 +10,7 @@ const locale_cookie = useCookie('currentLocale')
 
 const default_settings = {
       simpleListView:false,
-      autoSelect: true, 
+      disableAutoSelect: false, 
       inflectionExpanded: false, 
       inflectionTableContext: false, 
       inflectionNo: false,

@@ -37,7 +37,7 @@
                 <div v-if="!feedback_given" class="flex gap-4 mt-4 my-6 mb-8 h-10" :class="{'justify-center': store.dict == 'bm,nn'}">
                     <button type="button" class="btn w-[96px]" @click="track_feedback(true)" >{{$t('notifications.feedback.yes')}}<BiHandThumbsUpFill class="text-primary ml-3"/></button>
                     <button type="button" class="btn w-[96px]" @click="track_feedback(false)">{{$t('notifications.feedback.no')}}<BiHandThumbsDownFill class="text-primary ml-3"/></button></div>
-                    <p v-else class="mt-4 my-6 mb-8 justify-center h-10">
+                    <p v-else class="mt-4 my-6 mb-8 justify-center h-10" role="status" aria-live="polite">
                     {{$t('notifications.feedback.thanks')}}
                 </p>
     </section>

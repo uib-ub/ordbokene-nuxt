@@ -32,9 +32,6 @@ export default defineNuxtConfig({
       commit: process.env.VERCEL_GIT_COMMIT_SHA
     }
   },
-  build: {
-		transpile: ["primevue", 'vue-i18n']
-	},
   modules: [
       '@pinia/nuxt',
       '@pinia-plugin-persistedstate/nuxt',

@@ -58,12 +58,12 @@
 
       </ul>
     </nav>
-    <button  type="button" class="ml-6 hidden lg:flex" @click="locale_menu.toggle" aria-haspopup="true" :aria-controls="locale_menu && locale_menu.overlayVisible ? 'locale_menu' : null">
+    <button  type="button" class="ml-6 hidden lg:flex" :title="$t('settings.locale.title')" @click="locale_menu.toggle" aria-haspopup="true" :aria-expanded="locale_menu && locale_menu.overlayVisible" :aria-controls="locale_menu && locale_menu.overlayVisible ? 'locale_menu' : null">
         <span class="relative">
         <span aria-hidden="true" class="absolute text-xs right-2 top-3 bg-primary rounded px-1 select-none">{{locale2lang[$i18n.locale].toUpperCase()}}</span><BiGlobe2 class="text-2xl"/>
         <span class="sr-only">
-          <span lang="no">Nettsidespråk</span>
-          <span v-for="({button, lang}) in localeConfig.filter(item => item.button)" :key="lang" :lang="lang" class="">{{button}}</span>
+          <span lang="no">Nettsidespråk, </span>
+          <span v-for="({button, lang}) in localeConfig.filter(item => item.button)" :key="lang" :lang="lang" class="">, {{button}}</span>
         </span>
         </span>
       </button> 

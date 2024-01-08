@@ -11,8 +11,10 @@
           <div class="pt-0 pb-3 px-2">
             <h2 :id="dict+'_heading'">
               {{$t('dicts.'+dict)}} 
-              <span class="result-count-text">{{articles.meta[dict] && articles.meta[dict].total}}</span>
-              <span class="sr-only">{{$t('notifications.keywords')}}</span>
+              <template v-if="articles.meta[dict]">
+                <span class="result-count-text">{{articles.meta[dict].total}}</span>
+                <span class="sr-only">&nbsp;{{$t('notifications.keywords')}}</span>
+              </template>
             </h2>
           </div>
           <component :is="listView ? 'ol' : 'div'" v-if="articles.meta[dict] && articles.meta[dict].total"  class="article-column">

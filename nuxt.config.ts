@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url'
 import VueI18nVitePlugin from '@intlify/unplugin-vue-i18n/vite'
 
 const locales = ["nob", "nno", "eng", "ukr"]
-const pages =  ['', 'bm', 'nn', 'search', 'help', 'about', 'contact' ]
+const pages =  ['help', 'about', 'contact' ]
 const optionalLocale = "/:locale(" + locales.join("|") + ")?"
 
 export default defineNuxtConfig({
@@ -18,6 +18,9 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'aws_amplify',
     compressPublicAssets: true,
+    prerender: {
+      routes: locales.reduce((acc, locale) => acc.concat(pages.map(page => "/" + locale + "/" + page)), [])
+    },
 
   },
   runtimeConfig: {
@@ -29,14 +32,13 @@ export default defineNuxtConfig({
     }
   },
   build: {
-		transpile: ["primevue", 'vue-i18n']
+		transpile: ['vue-i18n']
 	},
 
   modules: [
       '@pinia/nuxt',
       '@pinia-plugin-persistedstate/nuxt',
       '@nuxtjs/tailwindcss',
-      'nuxt-bootstrap-icons',
       '@nuxt/content',
       '@nuxtjs/html-validator',
       '@nuxtjs/plausible'
@@ -100,10 +102,8 @@ export default defineNuxtConfig({
               {
                 name: 'welcome',
                 path: '',
-                // alias: 'search', //legacy
                 file: '~/components/custom-pages/welcome-view.vue'
               }
-
             ]
           })
       pages.push(

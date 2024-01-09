@@ -36,6 +36,7 @@
     "chosen_dict": "Chosen dictionary: ",
     "footer_description": "{bm} і {nn} показує написання та відмінювання, відповідно до норвезької орфографії. За розробкою словників стоять Мовна рада і Бергенський університет.",
     "privacy": "Privacy",
+    "subpages": "Index",
     "accessibility": {
         "page": "Accessibility",
         "main_content": "Skip to main content",
@@ -118,7 +119,8 @@
         "inflection_table_context": "Показувати контекст для форм дієприкметників у таблицях відмінювання",
         "submit_select": "Select search query when submitting search",
         "simple_search_list": "List view in simple search",
-        "auto_select": "Select search term automatically after search",
+        "auto_select": "Disable automatic selection of search term when submitting",
+        "disable_search_hotkey": "Disable search hotkey (/)",
         "locale": {
             "title": "Locale",
             "description": "Default language settings for the language of headings, buttons, messages, and menus. The settings will not affect examples and definitions: the Bokmål dictionary will remain in Bokmål and the Nynorsk dictionary stays Nynorsk "

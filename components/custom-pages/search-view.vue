@@ -5,7 +5,7 @@
     <h1 class="font-semibold !px-4 sm:!px-3 text-primary lg:top-0 lg:left-0 text-xl">
       {{$t('advanced')}} 
     </h1><div class="pl-2 pt-3 md:pt-[4px] text-base ml-auto mr-4 md:ml-0 text-xl md:text-base">
-            <NuxtLink class="whitespace-nowrap" :to="`/${$i18n.locale}/${store.dict}/${advancedSpecialSymbols(store.q) ? '' : store.q}`"><BiArrowLeftShort class="text-primary text-[1.5em] !align-text-top"/>{{$t('notifications.simple')}}</NuxtLink>
+            <NuxtLink class="whitespace-nowrap" :to="`/${$i18n.locale}/${store.dict}/${advancedSpecialSymbols(store.q) || /^\d+$/.test(store.q) ? '' : store.q}`"><BiArrowLeftShort class="text-primary text-[1.5em] !align-text-top"/>{{$t('notifications.simple')}}</NuxtLink>
         </div>
       </div>
 

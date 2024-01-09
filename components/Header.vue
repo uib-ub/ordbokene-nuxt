@@ -77,7 +77,7 @@
   </div>
 
 
-        <nav v-if="locale_expanded" :aria-label="$t('')" id="locale_menu" class="flex flex-col lg:gap-8 my-8">
+        <nav v-if="locale_expanded" :aria-label="$t('')" id="locale_menu" class="flex flex-col lg:gap-8 my-8 container container mx-auto">
           <h2 class="text-xl"><span>
           <span lang="no">Nettsidespråk</span>
           <span v-for="({button, lang}) in localeConfig.filter(item => item.button)" :key="lang" :lang="lang">| {{button}}</span>

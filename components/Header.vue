@@ -83,9 +83,9 @@
           
           lg:flex lg:gap-4 lg:text-right">
 
-          <li v-for="item in locales" :key="item.id">
+          <li v-for="item in locales" :key="item.id" class="nav-item">
             <a      :href="item.route"
-                          class="gap-4"
+                          class="gap-4 nav-link"
                           :aria-current="$i18n.locale==item.locale"
                           :lang="item.lang"
                           @click.prevent="change_locale(item.locale)">

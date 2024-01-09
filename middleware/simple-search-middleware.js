@@ -2,7 +2,9 @@ import { useSearchStore } from '~/stores/searchStore'
 export default defineNuxtRouteMiddleware((to, from) => {
     const store = useSearchStore()
     // Redirect if javascript is disabled
-    if (to.query.q) {
+    
+    if (to.query.q && !/^\d+$/.test(to.query.q)) {
+
       return navigateTo(`${to.params.locale && "/" + to.params.locale}/${to.params.dict}/${to.query.q}`)
     }
 
@@ -14,7 +16,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
       store.lemmas.nn = new Set()
 
       // Redirect to advanced search if special symbols
-      if (advancedSpecialSymbols(store.q)) {
+      if (advancedSpecialSymbols(store.q) || /^\d+$/.test(store.q)) {
         if (from.name === 'search') {
           store.q = ""
           return

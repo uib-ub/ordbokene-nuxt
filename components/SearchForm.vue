@@ -27,6 +27,7 @@ const input_element = useState('input_element')
 const submitForm = (item) => {
   
   if (typeof item === 'string') {
+    item = item.trim()
     if (settings.auto_select && !isMobileDevice()) {
       input_element.value.select()
     }
@@ -37,6 +38,7 @@ const submitForm = (item) => {
   }
   
   if (store.input) {
+    store.input = store.input.trim()
     if (settings.auto_select && !isMobileDevice()) {
       input_element.value.select()
     }

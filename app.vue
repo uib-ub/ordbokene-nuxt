@@ -87,7 +87,7 @@ if (process.client) {
 const nuxtApp = useNuxtApp()
 
 nuxtApp.hook("page:finish", () => {
-  if (input_element.value && settings.autoSelect && !isMobileDevice()) {
+  if (input_element.value && !settings.disableAutoSelect && !isMobileDevice()) {
     input_element.value.select()
   }
 })

@@ -7,8 +7,9 @@ export const useSettingsStore = defineStore('settings', {
             inflectionNo: false,
             inflectionTableContext: false,
             listView: false,
+            disableSearchHotkey: false,
             simpleListView: false,
-            autoSelect: true,
+            disableAutoSelect: false,
             perPage: 10
         }
     },

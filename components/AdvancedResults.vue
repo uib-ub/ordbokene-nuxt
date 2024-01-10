@@ -11,8 +11,10 @@
              :lang="locale2lang[scoped_locale(dict)]">
       <div class="pt-0 pb-3 px-2">
         <h2 :id="dict+'_heading'" class="">{{$t('dicts.'+dict, 1, {locale: scoped_locale(dict)})}} 
-          <span v-if="articles.meta[dict]" class="result-count-text">{{articles.meta[dict].total}}</span>
-          <span class="sr-only">{{$t('notifications.keywords')}}</span>
+          <template v-if="articles.meta[dict]">
+            <span class="result-count-text">{{articles.meta[dict].total}}</span>
+            <span class="sr-only">&nbsp;{{$t('notifications.keywords')}}</span>
+          </template>
         </h2>
       </div>
 

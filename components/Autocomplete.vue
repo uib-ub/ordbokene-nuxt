@@ -202,6 +202,7 @@ if (process.client) {
   document.addEventListener('keyup', (e) => {
     if (e.key === "/") {
     if (e.altKey || e.ctrlKey || e.metaKey) return;
+    if (settings.disableSearchHotkey) return;
     if (/^(?:input|textarea|select)$/i.test(e.target.tagName)) return;
     if(e.shiftKey && input_element.value) {
       input_element.value.select()
@@ -239,8 +240,6 @@ if (process.client) {
           aria-autocomplete="list"
           aria-haspopup="listbox"
           maxlength="200"
-          :aria-label="$t('search_placeholder') + $t(`dicts_inline.${store.dict}`)"
-          :placeholder="$t('search_placeholder') + $t(`dicts_inline.${store.dict}`)"
           autocomplete="off"
           autocapitalize="none"
           :aria-expanded="session.show_autocomplete || 'false'" 

@@ -1,8 +1,12 @@
 export const localeConfig = [
-  {lang: 'en', locale: 'eng', label: 'English', button: 'Display language'},
-  {lang: 'nn', locale: 'nno', label: 'Nynorsk'},
-  {lang: 'nb', locale: 'nob', label: 'Bokmål'},
-  {lang: 'uk', locale: 'ukr', label: 'Українська', button: 'Мова'},
+  {lang: 'en', locale: 'eng', label: 'English', button: 'Display language', 
+  description: 'Choose English as display language for headings, buttons and menus'},
+  {lang: 'nn', locale: 'nno', label: 'Nynorsk',
+  description: 'Vis overskrifter, knappar, menyar og informasjonssider på nynorsk'},
+  {lang: 'nb', locale: 'nob', label: 'Bokmål', 
+  description: 'Vis overskrifter, knapper, menyer og informasjonssider på bokmål'},
+  {lang: 'uk', locale: 'ukr', label: 'Українська (ukrainsk)', button: 'Мова', 
+  description: 'Виберіть українську як мову відображення заголовків, кнопок і меню'},
 ]
 
 export const lang2locale = Object.fromEntries(localeConfig.map(item => [item.lang, item.locale]))

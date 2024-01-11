@@ -13,7 +13,6 @@
 
     <div class="lg:hidden flex items-center flex-auto flex-grow-0">
       <button  type="button"
-                id="locale_button"
                 class="text-center text-lg border-x-2 border-primary-lighten p-3"
                 aria-controls="locale_menu"
                 @click="toggle_locale_menu">
@@ -61,7 +60,7 @@
 
       </ul>
     </nav>
-    <button  type="button" id="locale_button" class="ml-6 hidden lg:flex" :title="$t('settings.locale.title')" @click="toggle_locale_menu" :aria-expanded="locale_expanded" aria-controls="locale_menu">
+    <button  type="button" class="ml-6 hidden lg:flex" :title="$t('settings.locale.title')" @click="toggle_locale_menu" :aria-expanded="locale_expanded" aria-controls="locale_menu">
         <span class="relative">
         <span v-if="!locale_expanded"><span aria-hidden="true" class="absolute text-xs right-2 top-3 bg-primary rounded px-1 select-none">{{locale2lang[$i18n.locale].toUpperCase()}}</span><BiGlobe2 class="text-2xl"/></span>
         <BiXLg v-else class="text-2xl"/>
@@ -78,22 +77,32 @@
   </div>
 
 
-        <nav v-if="locale_expanded" aria-labelledby="locale_button" id="locale_menu" class="lg:flex lg:gap-4 text-center lg:text-right lg:justify-end mb-4">
-          <ul class="flex flex-col lg:flex-row gap-8 lg:gap-6 lg:space-x-3 xl:space-x-8 content-center my-6 lg:my-0 text-lg
-          
-          lg:flex lg:gap-4 lg:text-right">
+        <nav v-if="locale_expanded" aria-labelledby="locale_heading" id="locale_menu" class="flex justify-center">
+          <div class="flex flex-col lg:gap-8 my-8 mb-16">
+          <h2 id="locale_heading" class="md:text-xl"><span>
+          <span lang="no">Nettsidespråk</span>
+          <span v-for="({button, lang}) in localeConfig.filter(item => item.button)" :key="lang" :lang="lang">| {{button}}</span>
+        </span></h2>
+          <ul class="flex flex-col gap-8 lg:gap-6 my-6 lg:my-0">
 
-          <li v-for="item in locales" :key="item.id" class="nav-item">
+          <li v-for="item in locales" :key="item.id" class="nav-item flex flex-col gap-2" :lang="item.lang">
+            <div class="flex">
             <a      :href="item.route"
-                          class="gap-4 nav-link"
+                          class="nav-link !pt-0 text-lg"
+                          :aria-describedby="item.lang + '_description'"
                           :aria-current="$i18n.locale==item.locale"
-                          :lang="item.lang"
                           @click.prevent="change_locale(item.locale)">
+                        <BiGlobe2 class="mr-2 mb-1"/>
                         <span>{{item.label}}</span>
-                        <span><BiCheck2 v-if="$i18n.locale==item.locale" class="ml-1"/></span>
-                  </a>
+                        <span><BiCheck2 v-if="$i18n.locale==item.locale" class="ml-2"/></span>
+                        
+                  </a></div>
+
+                <span :id="item.lang + '_description'" class="text-gray-50">{{item.description}}</span>
+                   
           </li>
         </ul>
+          </div>
       </nav> 
 
   </header>
@@ -175,7 +184,8 @@ nav .nav-link:focus {
 }
 
 nav .nav-link:hover {
-  border-bottom: solid .125rem theme('colors.white');
+  @apply underline decoration-2 underline-offset-4;
+  
 }
 nav .nav-link[aria-current=page] {
   border-bottom: solid .125rem theme('colors.secondary.DEFAULT');

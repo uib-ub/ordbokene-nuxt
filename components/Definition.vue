@@ -11,6 +11,7 @@
         :scoped_locale="scoped_locale"
         @link-click="link_click"
       />
+      <span v-if="compound_lists.length">;</span>
       <br v-if="might_need_semicolon(explanations, index)" />
     </component>
     <!-- i/s -->

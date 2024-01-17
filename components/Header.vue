@@ -103,6 +103,7 @@
           </li>
         </ul>
           </div>
+
       </nav> 
 
   </header>
@@ -185,7 +186,6 @@ nav .nav-link:focus {
 
 nav .nav-link:hover {
   @apply underline decoration-2 underline-offset-4;
-  
 }
 nav .nav-link[aria-current=page] {
   border-bottom: solid .125rem theme('colors.secondary.DEFAULT');

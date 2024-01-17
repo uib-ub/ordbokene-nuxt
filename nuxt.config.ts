@@ -16,7 +16,7 @@ export default defineNuxtConfig({
 
   ],
   nitro: {
-    preset: 'vercel',
+    preset: 'aws_amplify',
     compressPublicAssets: true,
     prerender: {
       routes: locales.reduce((acc, locale) => acc.concat(pages.map(page => "/" + locale + "/" + page)), [])

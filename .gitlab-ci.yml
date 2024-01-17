@@ -2,6 +2,7 @@ default:
   image: node:18
 
 stages:
+  - test
   - preview
   - sitemap
   - prod
@@ -86,3 +87,10 @@ prod_main:
   variables:
     ENVIRONMENT: production
 
+
+sast:
+  stage: test
+  except:
+  - schedules
+include:
+- template: Security/SAST.gitlab-ci.yml

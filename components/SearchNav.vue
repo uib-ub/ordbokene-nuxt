@@ -85,6 +85,7 @@ const dict_click = (dict) => {
 
 <style scoped>
 
+
 button {
   @apply font-semibold;
 }
@@ -94,8 +95,8 @@ ul {
 }
 
 a {
-@apply flex pt-2 pb-2 sm:py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 border-none sm:border md:border-none whitespace-nowrap sm:rounded;
 
+@apply flex pt-2 pb-2 sm:py-1 px-4 md:text-sm text-gray-900 bg-tertiary border-gray-700 border-none sm:border md:border-none whitespace-nowrap sm:rounded;
 
 }
 

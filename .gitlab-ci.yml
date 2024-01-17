@@ -90,7 +90,6 @@ prod_main:
 
 sast:
   stage: test
-  except:
-  - schedules
+
 include:
 - template: Security/SAST.gitlab-ci.yml

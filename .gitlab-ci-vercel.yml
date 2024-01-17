@@ -30,7 +30,7 @@ default:
     - group_runner_spraaksamlingene_01
 
 
-preview_dev:
+vercel_preview_dev:
   extends: .deploy
   stage: preview
   except: 
@@ -49,14 +49,14 @@ preview_dev:
     INFLECTION_VERSION: 1.2.3
 
 
-preview_main:
+vercel_preview_main:
   extends: .main-branch
   stage: preview
   variables:
     ENVIRONMENT: preview
 
 
-prod_main:
+vercel_prod_main:
   extends: .main-branch
   stage: prod
   when: manual

@@ -30,24 +30,6 @@ default:
     - group_runner_spraaksamlingene_01
 
 
-build-sitemap:
-  only:
-  - schedules
-  - ordbokene-dev
-  - main
-  tags:
-  - group_runner_spraaksamlingene_01
-  image: "python:3.9"
-  stage: "sitemap"
-  script:
-    - pip3 install requests
-    - mkdir sitemaps
-    - python3 sitemap.py $CI_COMMIT_REF_NAME
-  artifacts:
-    expire_in: 1 week
-    paths:
-    - sitemaps/*
-
 preview_dev:
   extends: .deploy
   stage: preview

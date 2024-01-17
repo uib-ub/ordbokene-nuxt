@@ -188,7 +188,7 @@ const input_sync = (event) => {
 const dropdown_select = (q, event) => {
   store.input= q
   session.show_autocomplete = false
-  emit('dropdown-submit', q, event.ctrlKey ? {open: {target: '_blank'}} : {})
+  emit('dropdown-submit', q)
 }
 
 
@@ -261,7 +261,7 @@ if (process.client) {
         role="option"
         tabindex="-1"
         :lang="['bm','nn','no'][item.dict-1]">
-        <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q, $event)">
+        <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)">
           <span v-if="item.type == 'pattern' && route.name != 'search'" role="status" aria-live="polite" class=" bg-primary text-white p-1 rounded px-3 pr-1">
             {{$t('to_advanced')}} 
             <BiArrowRightShort  class="text-xl align-text-bottom"/>

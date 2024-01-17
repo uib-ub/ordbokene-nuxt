@@ -24,7 +24,7 @@ const i18n = useI18n()
 
 const input_element = useState('input_element')
 
-const submitForm = (item) => {
+const submitForm = (item, open) => {
   
   if (typeof item === 'string') {
     item = item.trim()
@@ -34,7 +34,7 @@ const submitForm = (item) => {
     else {
       input_element.value.blur()
     }
-    return navigateTo(`/${i18n.locale.value}/${store.dict}?q=${item}`)
+    return navigateTo(`/${i18n.locale.value}/${store.dict}?q=${item}`, open)
   }
   
   if (store.input) {
@@ -51,10 +51,10 @@ const submitForm = (item) => {
 
 
     if (advancedSpecialSymbols(store.q)) {
-      return navigateTo(`/${i18n.locale.value}/search?q=${store.q}&dict=${store.dict}&scope=${store.scope}`)
+      return navigateTo(`/${i18n.locale.value}/search?q=${store.q}&dict=${store.dict}&scope=${store.scope}`, open)
     }
     else  if (store.input.includes("|") || session.dropdown_selected !== -1) {
-      return navigateTo(`/${i18n.locale.value}/${store.dict}?q=${store.q}`)
+      return navigateTo(`/${i18n.locale.value}/${store.dict}?q=${store.q}`, open)
     }
 
     const { exact, inflect } = store.suggest
@@ -63,15 +63,15 @@ const submitForm = (item) => {
       
         if (exact[0][0].length === store.q.length) {
             const redirectUrl = `/${i18n.locale.value}/${store.dict}/${exact[0][0]}`
-            return navigateTo(redirectUrl)
+            return navigateTo(redirectUrl, open)
         }
     }
 
     if (inflect && inflect.length === 1 && inflect[0][0] && inflect[0][0][0] !== "-" && inflect[0][0].slice(-1) !== "-") { // suppress prefixes and suffixes
-        return navigateTo(`/${i18n.locale.value}/${store.dict}/${inflect[0][0]}?orig=${store.q}`)
+        return navigateTo(`/${i18n.locale.value}/${store.dict}/${inflect[0][0]}?orig=${store.q}`, open)
     }
 
-    return navigateTo(`/${i18n.locale.value}/${store.dict}?q=${store.q}`)
+    return navigateTo(`/${i18n.locale.value}/${store.dict}?q=${store.q}`, open)
     // navigateTo(`/${route.params.dict}/${store.q}`)
   }
   

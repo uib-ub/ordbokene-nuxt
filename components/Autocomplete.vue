@@ -160,7 +160,7 @@ const keys = (event) => {
     event.preventDefault()
 
   }
-  else if (event.key !== "Enter") {
+  else if (event.key.length === 1 || event.key === "Space") {
     session.dropdown_selected = -1
   }
 
@@ -185,10 +185,10 @@ const input_sync = (event) => {
   }
 }
 
-const dropdown_select = (q) => {
+const dropdown_select = (q, event) => {
   store.input= q
   session.show_autocomplete = false
-  emit('dropdown-submit', q)
+  emit('dropdown-submit', q, event.ctrlKey ? {open: {target: '_blank'}} : {})
 }
 
 
@@ -261,7 +261,7 @@ if (process.client) {
         role="option"
         tabindex="-1"
         :lang="['bm','nn','no'][item.dict-1]">
-        <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q)">
+        <div class="dropdown-item w-full" data-dropdown-item tabindex="-1" @click="dropdown_select(item.q, $event)">
           <span v-if="item.type == 'pattern' && route.name != 'search'" role="status" aria-live="polite" class=" bg-primary text-white p-1 rounded px-3 pr-1">
             {{$t('to_advanced')}} 
             <BiArrowRightShort  class="text-xl align-text-bottom"/>

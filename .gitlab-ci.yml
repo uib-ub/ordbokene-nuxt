@@ -16,11 +16,12 @@ stages:
     VERCEL_ORG_ID: $VERCEL_ORG_ID
     VERCEL_PROJECT_ID: $VERCEL_ORDBOKENE_PROJECT_ID
     VERCEL_TOKEN: $VERCEL_TOKEN_HENRIK
+    VERCEL_PRESET: vercel
   script:
   - curl -L https://git.app.uib.no/api/v4/projects/16442/jobs/artifacts/${INFLECTION_VERSION}/raw/components.tar.gz?job=publish_vue3 | tar xz
   - npm install --global vercel
   - vercel pull --yes --environment=$ENVIRONMENT --token=$VERCEL_TOKEN
-  - vercel build --token=$VERCEL_TOKEN $([ "$ENVIRONMENT" = "production" ] && echo "--prod")
+  - vercel build --token=$VERCEL_TOKEN $([ "$ENVIRONMENT" = "production" ] && echo "--prod") 
   - vercel deploy --prebuilt $([ "$ENVIRONMENT" = "production" ] && echo "--prod") --token=$VERCEL_TOKEN
                   -m gitlabDeployment="1"
                   -m gitlabCommitAuthorName="${CI_COMMIT_AUTHOR}"

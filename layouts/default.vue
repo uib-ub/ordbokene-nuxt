@@ -23,8 +23,8 @@
         </NuxtLink>
     </nav>
     <slot/>
-    <ButtonScrollTop/>
     <Footer/>
+    <ButtonScrollTop/>
 </div>
 </template>
 

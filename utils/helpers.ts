@@ -1,6 +1,6 @@
 export const localeConfig = [
   {lang: 'en', locale: 'eng', label: 'English', button: 'Display language', 
-  description: 'Choose English as display language for headings, buttons and menus'},
+  description: 'Display headings, buttons, menus and information pages in English'},
   {lang: 'nn', locale: 'nno', label: 'Nynorsk',
   description: 'Vis overskrifter, knappar, menyar og informasjonssider på nynorsk'},
   {lang: 'nb', locale: 'nob', label: 'Bokmål', 

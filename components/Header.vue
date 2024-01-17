@@ -66,7 +66,7 @@
         <BiXLg v-else class="text-2xl"/>
         <span class="sr-only">
           <span lang="no">Nettsidespråk, </span>
-          <span v-for="({button, lang}) in localeConfig.filter(item => item.button)" :key="lang" :lang="lang" class="">, {{button}}</span>
+          <span v-for="({button, lang}) in localeConfig.filter(item => item.button)" :key="lang" :lang="lang">, {{button}}</span>
         </span>
         </span>
       </button>

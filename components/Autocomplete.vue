@@ -160,7 +160,7 @@ const keys = (event) => {
     event.preventDefault()
 
   }
-  else if (event.key !== "Enter") {
+  else if (event.key.length === 1 || event.key === "Space") {
     session.dropdown_selected = -1
   }
 
@@ -185,7 +185,7 @@ const input_sync = (event) => {
   }
 }
 
-const dropdown_select = (q) => {
+const dropdown_select = (q, event) => {
   store.input= q
   session.show_autocomplete = false
   emit('dropdown-submit', q)

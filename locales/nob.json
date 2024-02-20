@@ -38,6 +38,8 @@
     "footer_description": "{bm} og {nn} viser skrivemåte og bøyning i tråd med norsk rettskrivning. Språkrådet og Universitetet i Bergen står bak ordbøkene.",
     "privacy": "Personvern",
     "subpages": "Innholdsfortegnelse",
+    "bookmal_dict": "Bokmålsordboka",
+    "nynorsk_dict": "Nynorskordboka",
     "accessibility": {
       "page": "Tilgjengelighet",
       "main_content": "Gå til hovedinnhold",

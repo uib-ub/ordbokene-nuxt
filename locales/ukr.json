@@ -11,7 +11,7 @@
     "to_advanced": "Go to advanced search",
     "show_articles": "Articles",
     "show_list": "List view",
-    "simple": "Simple search",
+    "simple": "Простий пошук",
     "article_view": "Article view",
     "content_not_found": "Вміст недоступний",
     "breadcrumbs": "Breadcrumbs",
@@ -35,12 +35,14 @@
     "clear": "Clear",
     "chosen_dict": "Chosen dictionary: ",
     "footer_description": "{bm} і {nn} показує написання та відмінювання, відповідно до норвезької орфографії. За розробкою словників стоять Мовна рада і Бергенський університет.",
-    "privacy": "Privacy",
+    "privacy": "Конфіденційність",
+    "bookmal_dict": "Словник букмола",
+    "nynorsk_dict": "Словник нюношка",
     "subpages": "Index",
     "accessibility": {
         "page": "Accessibility",
         "main_content": "Skip to main content",
-        "statement": "Accessibility statement"
+        "statement": "Декларація про доступність"
     },
     "dicts": {
         "nn": "Словник нюношка",

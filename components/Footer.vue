@@ -8,10 +8,10 @@
         </div>
         <i18n-t keypath="footer_description" tag="div" class="p-4 md:px-16 md:ml-6 text-center xl:text-left">
           <template #bm>
-            <em>Bokmålsordboka</em>
+            <em>{{$t('bookmal_dict')}}</em>
           </template>
           <template #nn>
-            <em>Nynorskordboka</em>
+            <em>{{$t('nynorsk_dict')}}</em>
           </template>
         </i18n-t>
       </div>

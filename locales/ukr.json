@@ -120,9 +120,9 @@
         "inflection_expanded": "Завжди показувати таблиці відмінювання у повних статтях",
         "inflection_table_context": "Показувати контекст для форм дієприкметників у таблицях відмінювання",
         "submit_select": "Select search query when submitting search",
-        "simple_search_list": "List view in simple search",
-        "auto_select": "Disable automatic selection of search term when submitting",
-        "disable_search_hotkey": "Disable search hotkey (/)",
+        "simple_search_list": "Перегляд у вигляді списку у простому пошуку",
+        "auto_select": "Вимкнути автоматичне виділення пошукового запиту після пошуку",
+        "disable_search_hotkey": "Вимкнути гарячу клавішу пошуку (/)",
         "locale": {
             "title": "Locale",
             "description": "Default language settings for the language of headings, buttons, messages, and menus. The settings will not affect examples and definitions: the Bokmål dictionary will remain in Bokmål and the Nynorsk dictionary stays Nynorsk "
@@ -138,7 +138,7 @@
             "never": "Show complete articles"
         },
         "reset": "Видалити налаштування",
-        "clear_cookies": "Clear cookies",
+        "clear_cookies": "Видалити збережені налаштування",
         "reset_done": "Deleted"
     },
     "notifications": {

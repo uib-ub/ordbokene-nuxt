@@ -52,6 +52,8 @@
   "dicts_inline": {
       "nn": "the Nynorsk dictionary",
       "bm": "the Bokmål dictionary",
+      "nn_dativ": "the Nynorsk dictionary",
+      "bm_dativ": "the Bokmål dictionary",
       "bm,nn": "the dictionaries"
   },
   "dicts_short": {

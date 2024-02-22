@@ -53,6 +53,8 @@
     "dicts_inline": {
         "nn": "Nynorskordboka",
         "bm": "Bokmålsordboka",
+        "nn_dativ": "Nynorskordboka",
+        "bm_dativ": "Bokmålsordboka",
         "bm,nn": "ordbøkene"
     },
     "dicts_short": {

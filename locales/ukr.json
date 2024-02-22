@@ -237,18 +237,18 @@
     },
     "article": {
         "definition": "Визначення",
-        "no_content": "This word is yet to be defined in the dictionary.",
+        "no_content": "Це слово ще не отримало визначення в словнику.",
         "show": "Показати статтю",
         "show_inflection": "Показати відмінювання",
         "hide_inflection": "Приховати відмінювання",
         "share": "Поділитися цим словом",
         "copy_link": "Скопіювати посилання",
         "cite": "Цитувати",
-        "open": "Article page",
+        "open": "Сторінка статті",
         "cite_title": "Процитуйте статтю",
         "cite_description": [
-            "If you want to cite this article in the ",
-            " we recommend that you state when the article was retrieved (read), e. g. as follows:"
+            "Ви хочете процитувати цю статтю в ",
+            ", ми рекомендуємо вказати, коли стаття була витягнута (прочитана), наприклад, так:"
         ],
         "download": "Завантажити файл RIS",
         "copy": "Копіювати",
@@ -256,11 +256,11 @@
         "citation_copied": "Цитату скопійовано в буфер обміну",
         "citation": "«{lemma}». Із: {dict}. Мовна рада та Бергенський університет. {link} (взято {dd}.{mm}.{yyyy}).",
         "headings": {
-            "etymology": "Etymology",
-            "pronunciation": "Pronunciation",
-            "expressions": "Set phrases",
-            "definitions": "Senses and Example Sentences",
-            "examples": "Example"
+            "etymology": "Походження",
+            "pronunciation": "Вимова",
+            "expressions": "Фіксовані вирази",
+            "definitions": "Значення та вживання",
+            "examples": "Приклад"
         },
         "new": "Нове в {dict}"
     },

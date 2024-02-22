@@ -23,7 +23,7 @@
               &lt;<a :href="citation.link">{{citation.link}}</a>&gt;
             </template>
             <template #dict>
-              <em>{{citation.dict}}</em>
+              <em>{{$t('dicts.'+$props.dict)}}</em>
             </template>
             <template #dd>
               {{citation.dd}}

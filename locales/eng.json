@@ -125,10 +125,6 @@
         "title": "Locale" ,
         "description": "Default language settings for the language of headings, buttons, messages, and menus. The settings will not affect examples and definitions: the Bokmål dictionary will remain in Bokmål and the Nynorsk dictionary stays Nynorsk "
       },
-      "dict": {
-          "title": "Default dictionaries",
-          "description": "Default dictionary settings for which of the dictionaries to be queried when using ordbokene.no. The settings will not affect current searches or links to searches in dictionaries. To change the dictionary during use, change the settings temporarily via the menu to the right of the search field. "
-      },
       "collapse": {
         "description": "Default search presentation settings. Choose between seeing complete articles, article excepts or an automatically generated presentation.",
         "auto": "Auto (exerpts when more than two results)",

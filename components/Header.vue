@@ -60,7 +60,7 @@
 
       </ul>
     </nav>
-    <button  type="button" class="ml-6 hidden lg:flex" :title="$t('settings.locale.title')" @click="toggle_locale_menu" :aria-expanded="locale_expanded" aria-controls="locale_menu">
+    <button  type="button" class="ml-6 hidden lg:flex" @click="toggle_locale_menu" :aria-expanded="locale_expanded" aria-controls="locale_menu">
         <span class="relative">
         <span v-if="!locale_expanded"><span aria-hidden="true" class="absolute text-xs right-2 top-3 bg-primary rounded px-1 select-none">{{locale2lang[$i18n.locale].toUpperCase()}}</span><BiGlobe2 class="text-2xl"/></span>
         <BiXLg v-else class="text-2xl"/>

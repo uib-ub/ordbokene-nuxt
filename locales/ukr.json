@@ -116,22 +116,18 @@
     },
     "settings": {
         "title": "Налаштування",
-        "cookie_prompt": "For technical reasons we need to use cookies to store your settings for later. This is only used to enhance your user experience, and we do not use these cookies to track your activity.",
-        "accept_cookies": "Accept cookies",
+        "cookie_prompt": "З технічних причин нам потрібно використовувати файли cookie для збереження ваших налаштувань на майбутнє. Це використовується лише для покращення вашого користувацького досвіду, і ми не використовуємо ці файли cookie для відстеження вашої активності.",
+        "accept_cookies": "Прийняти файли cookie",
         "inflection_no": "Показати коди відмінювання з друкованих словників",
         "inflection_expanded": "Завжди показувати таблиці відмінювання у повних статтях",
         "inflection_table_context": "Показувати контекст для форм дієприкметників у таблицях відмінювання",
-        "submit_select": "Select search query when submitting search",
+        "submit_select": "Виділити текст запиту під час виконання пошуку",
         "simple_search_list": "Перегляд у вигляді списку у простому пошуку",
         "auto_select": "Вимкнути автоматичне виділення пошукового запиту після пошуку",
         "disable_search_hotkey": "Вимкнути гарячу клавішу пошуку (/)",
         "locale": {
             "title": "Locale",
             "description": "Default language settings for the language of headings, buttons, messages, and menus. The settings will not affect examples and definitions: the Bokmål dictionary will remain in Bokmål and the Nynorsk dictionary stays Nynorsk "
-        },
-        "dict": {
-            "title": "Default dictionaries",
-            "description": "Default dictionary settings for which of the dictionaries to be queried when using ordbokene.no. The settings will not affect current searches or links to searches in dictionaries. To change the dictionary during use, change the settings temporarily via the menu to the right of the search field. "
         },
         "collapse": {
             "description": "Default search presentation settings. Choose between seeing complete articles, article excepts or an automatically generated presentation.",

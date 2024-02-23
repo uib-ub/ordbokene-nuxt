@@ -15,7 +15,7 @@ async function downloadArticles(languages) {
   console.log(`Downloading articles for ${languages}`);
   isLoading.value = true;
   try {
-    const urls = languages.split(',').map(lang => `https://git.app.uib.no/Henrik.Askjer/tmp-ordbok-articles/-/raw/main/articles_${lang}.json`);
+    const urls = languages.split(',').map(lang => `https://git.app.uib.no/api/v4/projects/37117/repository/files/articles_${lang}.json/raw`);
     const storeNames = languages.split(',').map(lang => `articles_${lang}`);
 
     const responses = await Promise.all(urls.map(url => fetch(url)));

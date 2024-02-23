@@ -1,6 +1,7 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
 const { t } = useI18n()
+import { openDB } from 'idb';
 
 
 // If you want to use it in setup, import from the nuxtApp.
@@ -21,20 +22,26 @@ async function downloadArticles(languages) {
     const responses = await Promise.all(urls.map(url => fetch(url)));
     const articlesArray = await Promise.all(responses.map(response => response.json()));
 
-    const request = indexedDB.open("ordbokene_articles", 2); // increment the version number
+    const db = await openDB("ordbokene_articles", 2, {
+      upgrade(db) {
+        storeNames.forEach((storeName) => {
+          if (db.objectStoreNames.contains(storeName)) {
+            db.deleteObjectStore(storeName);
+          }
+          db.createObjectStore(storeName, { keyPath: 'id' });
+        });
+      }
+    });
 
-    request.onupgradeneeded = function (event) {
-      const db = event.target.result;
-      storeNames.forEach((storeName, index) => {
-        if (db.objectStoreNames.contains(storeName)) {
-          db.deleteObjectStore(storeName);
-        }
-        const store = db.createObjectStore(storeName);
-        for (const id in articlesArray[index]) {
-          store.put(articlesArray[index][id], parseInt(id));
-        }
-      });
-    };
+    for (let i = 0; i < storeNames.length; i++) {
+      const tx = db.transaction(storeNames[i], 'readwrite');
+      for (const id in articlesArray[i]) {
+        const article = articlesArray[i][id];
+        article.id = parseInt(id); // ensure each article has an 'id' property
+        tx.store.put(article);
+      }
+      await tx.done;
+    }
   } catch (error) {
     console.error(`Error downloading articles:`, error);
   } finally {

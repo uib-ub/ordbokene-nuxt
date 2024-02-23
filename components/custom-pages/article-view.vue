@@ -18,7 +18,7 @@ const dict = route.params.dict // prevent reactivity that causes error message w
 const i18n = useI18n()
 
 
-const article_error = (error, article_id, dict) => {
+const article_error = (error, article, dict) => {
   useTrackEvent("article_error", {props: {article: dict + "/" + article, message: dict + "/" + article + " " + error.toString()}})
   console.log(error)
 }

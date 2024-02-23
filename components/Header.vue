@@ -51,6 +51,9 @@
         <li class="nav-item">
           <NuxtLink class="nav-link" :aria-current="$route.name == 'about' && 'page'" :to="`/${$i18n.locale}/about`">{{$t('about')}}</NuxtLink>
         </li>
+        <li class="nav-item">
+          <NuxtLink class="nav-link"  :aria-current="$route.name == 'download' && 'page'" :to="`/${$i18n.locale}/download`">Offline</NuxtLink>
+        </li>
                 <li class="nav-item">
           <NuxtLink class="nav-link"  :aria-current="$route.name == 'settings' && 'page'" :to="`/${$i18n.locale}/settings`">{{$t('settings.title')}}</NuxtLink>
         </li>

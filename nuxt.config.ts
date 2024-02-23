@@ -7,6 +7,7 @@ const pages =  ['help', 'about', 'contact' ]
 const optionalLocale = "/:locale(" + locales.join("|") + ")?"
 
 export default defineNuxtConfig({
+  ssr: false,
   css: [
     '~/assets/fonts/fonts.css',
   ],
@@ -41,7 +42,8 @@ export default defineNuxtConfig({
       '@nuxtjs/tailwindcss',
       '@nuxt/content',
       '@nuxtjs/html-validator',
-      '@nuxtjs/plausible'
+      '@nuxtjs/plausible',
+      '@vite-pwa/nuxt' // https://vite-pwa-org.netlify.app/frameworks/nuxt
     ],
 
   htmlValidator: {
@@ -64,6 +66,53 @@ export default defineNuxtConfig({
     }
 
   },
+
+  pwa: {
+    workbox: {
+      navigateFallback: "/"
+    },
+    devOptions: {
+      enabled: true,
+      type: 'module'
+    },
+
+    manifest: {
+      name: "ordbøkene.no",
+      short_name: "ordbøkene.no",
+      description: "Bokmålsordboka og Nynorskordboka",
+      theme_color: "#560027",
+      icons: [ // android-launchericon-48x48.png etc
+        {
+          src: "/pwa-48x48.png",
+          sizes: "48x48",
+          type: "image/png"
+        },
+        {
+          src: "/pwa-72x72.png",
+          sizes: "72x72",
+          type: "image/png"
+        },
+        {
+          src: "/pwa-96x96.png",
+          sizes: "96x96",
+          type: "image/png"
+        },
+        {
+          src: "/pwa-144x144.png",
+          sizes: "144x144",
+          type: "image/png"
+        },
+        {
+          src: "/pwa-192x192.png",
+          sizes: "192x192",
+          type: "image/png"
+        },
+      ]
+
+    }
+
+  },
+
 
   piniaPersistedstate: {
     cookieOptions: {
@@ -163,6 +212,13 @@ export default defineNuxtConfig({
         path: optionalLocale + '/settings',
         file: '~/components/custom-pages/settings-view.vue',
       })
+
+      pages.push(
+        {
+          name: 'download',
+          path: optionalLocale + '/download',
+          file: '~/components/custom-pages/download.vue',
+        })
 
       pages.push({
         name: 'search',

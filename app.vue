@@ -23,6 +23,7 @@
     <Meta property="og:image:height" content="256px"/>
   </Head>
 <NuxtLayout>
+    <VitePwaManifest />
     <NuxtPage @click="menu_expanded=false"
               v-bind:class="{'welcome': route.name == 'welcome' || route.name == 'index'}"/>
 </NuxtLayout>

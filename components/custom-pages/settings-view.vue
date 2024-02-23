@@ -25,6 +25,7 @@ const not_default = computed(() => {
   }
 })
 
+
 const resetSettings = (settings) => {
     settings.$patch(default_settings)
 };
@@ -46,6 +47,8 @@ useHead({
 <main id="main" tabindex="-1" class="secondary-page flex flex-col gap-4">
   <h1>{{$t('settings.title')}}</h1>
   <client-only>
+    <section class="flex flex-col gap-4">
+      
     <label class="checkbox-label">
     <input  v-model="settings.simpleListView" type="checkbox">
       {{$t('settings.simple_search_list')}}
@@ -70,6 +73,7 @@ useHead({
     <input  v-model="settings.disableSearchHotkey" type="checkbox">
       {{$t('settings.disable_search_hotkey')}}
     </label>
+    </section>
     
 
   <div class="mt-4 flex flex-col md:flex-row gap-3">

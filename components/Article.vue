@@ -6,6 +6,8 @@
 
 <script setup>
 
+import { openDB } from 'idb';
+
 const props = defineProps({
     scoped_locale: {type: String, required: true},
     article_id:  {type: Number, required: true},
@@ -17,37 +19,19 @@ const props = defineProps({
 
 
 
-const getArticleFromIndexedDB = () => {
-  return new Promise((resolve, reject) => {
-    const openRequest = indexedDB.open('ordbokene_articles', 2);
-    console.log("OPEN", openRequest)
-
-    openRequest.onerror = function() {
-      console.log("ERROR")
-      reject(openRequest.error);
-    };
-
-    openRequest.onsuccess = function() {
-      console.log("SUCCESS", openRequest.result)
-      const db = openRequest.result;
-      console.log("DB", db)
-      const transaction = db.transaction("articles_" + props.dict, 'readonly');
-      console.log("TRANSACTION", transaction)
-      console.log("STORE", "articles_" + props.dict)
-      const store = transaction.objectStore("articles_" + props.dict);
-      const getRequest = store.get(props.article_id);
-      console.log("GET", getRequest)
-
-      getRequest.onerror = function() {
-        reject(getRequest.error);
-      };
-
-      getRequest.onsuccess = function() {
-        resolve(getRequest.result);
-      };
-    };
-  });
-};
+async function getArticleFromIndexedDB(lang, id) {
+  try {
+    const db = await openDB("ordbokene_articles", 2);
+    if (!db.objectStoreNames.contains(`articles_${lang}`)) {
+      console.log(`Object store articles_${lang} does not exist`);
+      return;
+    }
+    const article = await db.get(`articles_${lang}`, id);
+    return article;
+  } catch (error) {
+    console.error(`Error getting article from IndexedDB:`, error);
+  }
+}
 
 
 

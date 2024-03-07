@@ -24,7 +24,11 @@
   </Head>
 <NuxtLayout>
     <VitePwaManifest />
-    <NuxtPage @click="menu_expanded=false"
+    <main v-if="offlineLoading" id="main" tabindex="-1" class="secondary-page flex flex-col gap-4">
+      <h1>Offline</h1>
+      <div>Loading articles...</div>
+    </main>
+    <NuxtPage v-else @click="menu_expanded=false"
               v-bind:class="{'welcome': route.name == 'welcome' || route.name == 'index'}"/>
 </NuxtLayout>
 </Html>
@@ -41,6 +45,10 @@ const session = useSessionStore()
 const settings = useSettingsStore()
 const route = useRoute()
 const i18n = useI18n()
+
+import { openDB } from 'idb';
+const { $pwa } = useNuxtApp()
+const offlineLoading = ref(true);
 
 const { api, apiFallback, apiDev, apiDevFallback } = useRuntimeConfig().public
 
@@ -92,6 +100,44 @@ nuxtApp.hook("page:finish", () => {
     input_element.value.select()
   }
 })
+
+async function initOffline() {
+  const dicts = ["bm", "nn"];
+  try {
+    const urls = dicts.map(lang => `https://git.app.uib.no/api/v4/projects/37117/repository/files/articles_${lang}.json/raw`);
+    const storeNames = dicts.map(lang => `articles_${lang}`);
+
+    const responses = await Promise.all(urls.map(url => fetch(url)));
+    const articlesArray = await Promise.all(responses.map(response => response.json()));
+
+    const db = await openDB("ordbokene_articles", 2, {
+      upgrade(db) {
+        storeNames.forEach((storeName) => {
+          if (db.objectStoreNames.contains(storeName)) {
+            db.deleteObjectStore(storeName);
+          }
+          db.createObjectStore(storeName, { keyPath: 'id' });
+        });
+      }
+    });
+
+    for (let i = 0; i < storeNames.length; i++) {
+      const tx = db.transaction(storeNames[i], 'readwrite');
+      for (const id in articlesArray[i]) {
+        const article = articlesArray[i][id];
+        article.id = parseInt(id); // ensure each article has an 'id' property
+        tx.store.put(article);
+      }
+      await tx.done;
+    }
+  } catch (error) {
+    console.error(`Error downloading articles:`, error);
+  } finally {
+    offlineLoading.value = false;
+  }
+}
+
+initOffline()
 
 
 const { data: concepts, error, refresh} = await useAsyncData('concepts', async () => {

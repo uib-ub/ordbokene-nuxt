@@ -55,7 +55,7 @@ onMounted(async () => {
 */
 console.log("HERE")
 const pending = ref(true)
-const data = await getArticleFromIndexedDB(); 
+const data = await getArticleFromIndexedDB(props.dict, props.article_id); 
 const error = ref(null)
 pending.value = false
 

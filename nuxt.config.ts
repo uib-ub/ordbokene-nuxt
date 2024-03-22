@@ -55,6 +55,7 @@ export default defineNuxtConfig({
       github: {
         driver: "github",
         repo: "uib-ub/ordbokene-content",
+        branch: "dev",
         prefix: "/",
         dir: "content",
       },

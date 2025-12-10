@@ -1,4 +1,5 @@
 # Ordbøkene: nuxt
+ℹ️ Flyttet til https://git.app.uib.no/spraksamlingane/ordbokene
 
 
 ## Project setup
